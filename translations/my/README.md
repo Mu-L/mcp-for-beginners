@@ -12,357 +12,360 @@
 
 [![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
 
-Follow these steps to get started using these resources:
-1. **Fork the Repository**: Click [![GitHub forks](https://img.shields.io/github/forks/microsoft/mcp-for-beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/mcp-for-beginners/fork)
-2. **Clone the Repository**:   `git clone https://github.com/microsoft/mcp-for-beginners.git`
+ဒီရင်းမြစ်တွေကို အသုံးပြုဖို့ ဒီအဆင့်တွေ အတိုင်း လိုက်နာပါ-
+1. **Repository ကို Fork လုပ်ပါ**: Click [![GitHub forks](https://img.shields.io/github/forks/microsoft/mcp-for-beginners.svg?style=social&label=Fork)](https://GitHub.com/microsoft/mcp-for-beginners/fork)
+2. **Repository ကို Clone လုပ်ပါ**:   `git clone https://github.com/microsoft/mcp-for-beginners.git`
 3. **Join The** [![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
 
 
-### 🌐 Multi-Language Support
+### 🌐 ဘာသာစကားအများအပြား အထောက်အပံ့
 
-#### Supported via GitHub Action (Automated & Always Up-to-Date)
+#### GitHub Action ဖြင့် ထောက်ပံ့ထားသည် (အလိုအလျောက်ဖြစ်ပြီး အမြဲမကြာခဏ ပြင်ဆင်တင်သွင်း)
 
 <!-- CO-OP TRANSLATOR LANGUAGES TABLE START -->
 [Arabic](../ar/README.md) | [Bengali](../bn/README.md) | [Bulgarian](../bg/README.md) | [Burmese (Myanmar)](./README.md) | [Chinese (Simplified)](../zh-CN/README.md) | [Chinese (Traditional, Hong Kong)](../zh-HK/README.md) | [Chinese (Traditional, Macau)](../zh-MO/README.md) | [Chinese (Traditional, Taiwan)](../zh-TW/README.md) | [Croatian](../hr/README.md) | [Czech](../cs/README.md) | [Danish](../da/README.md) | [Dutch](../nl/README.md) | [Estonian](../et/README.md) | [Finnish](../fi/README.md) | [French](../fr/README.md) | [German](../de/README.md) | [Greek](../el/README.md) | [Hebrew](../he/README.md) | [Hindi](../hi/README.md) | [Hungarian](../hu/README.md) | [Indonesian](../id/README.md) | [Italian](../it/README.md) | [Japanese](../ja/README.md) | [Kannada](../kn/README.md) | [Korean](../ko/README.md) | [Lithuanian](../lt/README.md) | [Malay](../ms/README.md) | [Malayalam](../ml/README.md) | [Marathi](../mr/README.md) | [Nepali](../ne/README.md) | [Nigerian Pidgin](../pcm/README.md) | [Norwegian](../no/README.md) | [Persian (Farsi)](../fa/README.md) | [Polish](../pl/README.md) | [Portuguese (Brazil)](../pt-BR/README.md) | [Portuguese (Portugal)](../pt-PT/README.md) | [Punjabi (Gurmukhi)](../pa/README.md) | [Romanian](../ro/README.md) | [Russian](../ru/README.md) | [Serbian (Cyrillic)](../sr/README.md) | [Slovak](../sk/README.md) | [Slovenian](../sl/README.md) | [Spanish](../es/README.md) | [Swahili](../sw/README.md) | [Swedish](../sv/README.md) | [Tagalog (Filipino)](../tl/README.md) | [Tamil](../ta/README.md) | [Telugu](../te/README.md) | [Thai](../th/README.md) | [Turkish](../tr/README.md) | [Ukrainian](../uk/README.md) | [Urdu](../ur/README.md) | [Vietnamese](../vi/README.md)
 
-> **Prefer to Clone Locally?**
+> **ဒေသတွင်း Clone လုပ်ချင်ပါသလား?**
 
-> This repository includes 50+ language translations which significantly increases the download size. To clone without translations, use sparse checkout:
+> ဒီ repository မှာ ဘာသာစကား ၅၀ ကျော် ဘာသာပြန်ချက်တွေ ပါဝင်တာကြောင့် ဒေါင်းလုဒ်ခန့်မှန်းအရွယ်အစား များလွန်းတတ်ပါတယ်။ ဘာသာပြန်ချက်မပါဘဲ clone ဖို့ sparse checkout ကို သုံးပါ:
 > ```bash
 > git clone --filter=blob:none --sparse https://github.com/microsoft/mcp-for-beginners.git
 > cd mcp-for-beginners
 > git sparse-checkout set --no-cone '/*' '!translations' '!translated_images'
 > ```
-> This gives you everything you need to complete the course with a much faster download.
+> ဒီနည်းနဲ့ သင်ဟာ သင်ကြားမှုပုံစံကို မြန်မြန်ဆန်ဆန် ပြီးဆုံးဖို့လိုအပ်တဲ့အရာအားလုံးကို ရယူနိုင်မှာ ဖြစ်ပါတယ်။
 <!-- CO-OP TRANSLATOR LANGUAGES TABLE END -->
 
-# 🚀 စတင်တတ်နိုင်သူများအတွက် Model Context Protocol (MCP) သင်ရိုးညွှန်းတမ်း
+# 🚀 Model Context Protocol (MCP) အခြေခံသင်ရိုးစီမံချက်
 
-## **C#, Java, JavaScript, Rust, Python, နှင့် TypeScript ဖြင့် လက်တွေ့ ကုဒ်နမူနာများစွာဖြင့် MCP ကိုလေ့လာပါ**
+## **C#, Java, JavaScript, Rust, Python, နှင့် TypeScript တွင် ကိုယ်တိုင်ရေးသားသော ကုဒ် နမူနာများဖြင့် MCP ကိုလေ့လာပါ**
 
-## 🧠 Model Context Protocol သင်ရိုးညွှန်းတမ်း၏ အနှစ်ချုပ်
-Model Context Protocol (MCP) လောကထဲသို့ မင်္ဂလာပါ။ သင်သည် AI အပလီကေးရှင်းများသည် ကိရိယာများနှင့် ဝန်ဆောင်မှုများအပြောင်းအလဲ ပြောဆိုဆက်သွယ်ပုံကို စဉ်းစားဖူးခဲ့ပါက၊ သင်သည် ဖန်တီးသူများအနေဖြင့် စွမ်းအင်မြှင့်တင်နိုင်သော စနစ်အရာများကို ပြုပြင်ပြောင်းလဲနေသော ပေါ်လစီတစ်ခုကို တွေ့ရှိမည်ဖြစ်သည်။
+## 🧠 Model Context Protocol သင်ရိုး၏အနှံ့အပြား
+Model Context Protocol ကို သင်ခရီးမစသေးခင် ပိုမိုနားလည်မှုရဖို့ကြိုဆိုပါတယ်။ AI အသုံးပြုမှုများသည် မတူညီတဲ့ကိရိယာများနှင့် ဝန်ဆောင်မှုများကြား ဘယ်လို ဆက်သွယ်ဆောင်ရွက်ကြသည်ဆိုတာ သင်မေးမြန်းဖူးပါက၊ စနစ်တစ်ခုကို ဖန်တီးနေသော ဖန်တီးသူများအတွက် အထူးပြောင်းလဲနေသော ဖြေရှင်းချက်ကို သိရှိလာမည်ဖြစ်သည်။
 
-MCP ကို AI အပလီကေးရှင်းများအတွက် ကမ္ဘာလုံးဆိုင်ရာ ဘာသာပြန်သံလွှားတစ်ခုဟု ထင်ပါ။ USB ဆိပ်ကမ်းများက မည်သည့်ကိရိယာမဆို ကြိုးမဲ့ချိတ်ဆက်နိုင်သည့်အတိုင်း MCP သည် AI မော်ဒယ်များကို မည်သည့်ကိရိယာ သို့မဟုတ် ဝန်ဆောင်မှု သို့မဆို စံသတ်မှတ်ထားသော နည်းလမ်းဖြင့် ချိတ်ဆက်နိုင်ရန် လက်ခံထားသည်။ သင်၏ပထမဆုံး chatbot ကို တည်ဆောက်ပါက သို့မဟုတ် ရှုပ်ထွေးသော AI လုပ်ငန်းစဉ်များပေါ်တွင် အလုပ်လုပ်ပါက MCP ကိုနားလည်သွားခြင်းဖြင့် ပိုမိုစွမ်းရည်ပြည့်ဝပြီး အလွယ်တကူသုံးနိုင်သော အပလီကေးရှင်းများကို ဖန်တီးနိုင်မည်ဖြစ်သည်။
+MCP ကို AI အသုံးပြုမှုများအတွက် စံနှုန်းတူ ဘာသာပြန်သူတစ်ဦးအဖြစ် တွေးကြည့်ပါ—USB port တွေက မည်သည့်ကိရိယာမျိုးကိုမဆို မိမိကွန်ပျူတာနှင့် ချိတ်ဆက်နိုင်သလို၊ MCP က AI ပုံစံများကို မည်သည့်ကိရိယာ သို့မဟုတ် ဝန်ဆောင်မှုမဆို စံနည်းတူပုံစံဖြင့် ချိတ်ဆက်ခွင့်ပြုသည်။ သင်၏ ပထမ chatbot ကိုတည်ဆောက်နေဖြစ်စေ၊ ကြီးမားသော AI လည်ပတ်မှုစနစ်များ အပေါ် ကြိုးပမ်းနေဖြစ်စေ MCP ကို နားလည်ခြင်းဖြင့် ပိုမိုစွမ်းဆောင်ရည်မြင့်ပြီး သက်တောင့်သက်သာဖြစ်သော အက်ပလီကေးရှင်းများဖန်တီးနိုင်မည်ဖြစ်သည်။
 
-ဤသင်ရိုးညွှန်းတမ်းမှာ သင်၏သင်ယူမှု ခရီးကို သည်းခံမှုနှင့် သတိထားမှု ဖြင့် တည်ဆောက်ထားပါသည်။ သင်သည် ရိုးရှင်းပြီး ရိုးရာ ဗဟုသုတရှိသော အကြောင်းအရာများဖြင့် စတင်ကာ ကြိုက်နှစ်သက်သော ပရိုဂရမ်းမင်းဘာသာစကားဖြင့် လက်တွေ့လေ့ကျင့်မှုများဖြင့် သင်၏ကျွမ်းကျင်မှုကို တစ်ဆင့်ခြားတိုးတက်အောင်လုပ်ပါမည်။ အဆင့်တိုင်းတွင် နားလည်ရလွယ်ကူသော ရှင်းလင်းချက်များ၊ လက်တွေ့ နမူနာများနှင့် အားပေးမှုများလည်း ပါဝင်ပါသည်။
+ဤသင်ရိုးကို သင်၏ သင်ကြားရေး ခရီး၌ သည်းခံမှုနှင့်ဂရုစိုက်မှုဖြင့် တည်ဆောက်ထားသည်။ သင်နားလည်ပြီးသား ရိုးရှင်းသော အကြောင်းအရာများနှင့် စတင်၍ သင်၏ စိတ်ကြိုက် programing ဘာသာစကားဖြင့် လက်တွေ့လေ့ကျင့်မှုများမှတစ်ဆင့် ကျွမ်းကျင်မှုတိုးတက်အောင် လွှမ်းခြုံကူညီပေးမည်။ အဆင့်တိုင်းတွင် တိကျရှင်းလင်းသော ရှင်းပြချက်များ၊ လက်တွေ့နမူနာများနှင့် အားပေးမှုများ ပါဝင်သည်။
 
-ဤခရီးအပြီးတွင် သင်သည် မိမိရဲ့ MCP ဆာဗာများကို တည်ဆောက်နိုင်ခြင်း၊ လူကြိုက်များသော AI ပလက်ဖောင်းများနှင့် ပေါင်းစပ်အသုံးပြုနိုင်ခြင်း နှင့် ဤနည်းပညာက AI ဖွံ့ဖြိုးတိုးတက်မှု၏ အနာဂတ်ကို မည်သို့ပြောင်းလဲနေသည်ကို နားလည်ထားနိုင်ချိန် သို့ရောက်ရှိမည်ဖြစ်ပါသည်။ ဒီစိတ်လှုပ်ရှားဖွယ် ခရီးစဉ်ကိုအတူတကွ စလိုက်ကြပါစို့!
+ဤခရီးကိုပြီးစီးချိန်တွင် သင်သည် မိမိကိုယ်တိုင် MCP servers တည်ဆောက်နိုင်စွမ်း၊ လူကြိုက်များသော AI ပလက်ဖောင်းများနှင့် ပေါင်းစည်းနိုင်စွမ်း၊ နှင့် ဒီနည်းပညာက AI ဖွံ့ဖြိုးတိုးတက်မှု၏ အနာဂတ်ကို ဘယ်လိုပြုပြင်ပြောင်းလဲနေသည်ကို နားလည်နိုင်မည်။ စိတ်လှုပ်ရှားဖွယ် ဤခရီးစဉ်ကို စတင်လိုက်ပါစို့!
 
-### တရားဝင်စာရွက်စာတမ်းများနှင့် သတ်မှတ်ချက်များ
+### တရားဝင်စာချုပ်နှင့် အသေးစိတ်ဖော်ပြချက်များ
 
-ဤရင်းမြစ်များမှာ သင်၏နားလည်မှုများ တိုးတက်လာသည့်အခါ ပို၍တန်ဖိုးရှိလာပါမည်၊ သို့သော် အားလုံးကို ချက်ချင်းဖတ်ရန် ဖိအားမခံပါနဲ့။ သင်စိတ်ဝင်စားသည့် နေရာများမှ စတင်ဖတ်ရှုပါ!
-- 📘 [MCP Documentation](https://modelcontextprotocol.io/) – ကိုယ်တိုင်မြန်ဆန်စွာ လေ့လာနိုင်သော လမ်းညွှန်များ နှင့် အသုံးပြုသူ ညွှန်ကြားချက်များပါရှိသော သင်ခန်းစာအတွက် အဓိကရင်းမြစ်।
-- 📜 [MCP Specification](https://modelcontextprotocol.io/docs/) – အကျဉ်းချုပ် အညွန်းစာအုပ်တစ်အုပ်လိုဖြစ်သည်။ သင်သည် သင်ရိုးကို လေ့လာနေစဉ် တိကျသော အသေးစိတ်များကိုရှာဖွေ သို့မဟုတ် ထူးခြားသော လုပ်ဆောင်ချက်များကို စူးစမ်းနိုင်မည်။
-- 📜 [Original MCP Specification](https://modelcontextprotocol.io/specification/versioning) – ပိုမိုရှုပ်ထွေးသော အကောင်အထည်ဖော်တည်ဆောက်မှုများအတွက် အသုံးဝင်နိုင်သည့် နည်းပညာအသေးစိတ် ပါဝင်သည်။ ပိုမိုတိုးတက်သော လုပ်ဆောင်ချက်များအတွက် လိုအပ်ပါက သုံးနိုင်မည် ဖြစ်သော်လည်း အစပိုင်းတွင် စိတ်ပူစရာ မလိုပါ။
-- 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) – မတူညီသည့် ပရိုဂရမ်းမင်းဘာသာစကားများဖြင့် SDK များ၊ ကိရိယာများနှင့် ကုဒ်နမူနာများ ပါရှိသည်။
-- 🌐 [MCP Community](https://github.com/orgs/modelcontextprotocol/discussions) – MCP နှင့်ပတ်သက်သော ဆွေးနွေးပွဲများတွင် တက်ကြွစွာ ဝင်ရောက် ပါဝင်နိုင်သော ပူးပေါင်း ဆဲလျာမှုရှိသော မိတ်ဆွေများအုပ်စု။
+ဤရင်းမြစ်များသည် သင်၏ နားလည်မှု တိုးတက်လာသည့်အတိုင်း စိတ်တိုင်းကျ အသုံးဝင်လာပြီး၊ အားလုံးကို အချက်အလက် ဖတ်ရန် ဖိအားမခံရပါနဲ့။ သင်စိတ်ဝင်စားသော အပိုင်းများနဲ့ စတင်ဖတ်ပါ။
+- 📘 [MCP စာရွက်စာတမ်း](https://modelcontextprotocol.io/) – ဤနေရာမှာ သင့်အတွက် အဆင့်ဆင့် လေ့လာနိုင်သောလက်စွဲစာအုပ်နှင့် အသုံးပြုသူ လမ်းညွှန်များ ရှိသည်။ စတင်လေ့လာသူများအတွက် ရေးသားထားပြီး ရိုးရှင်း၍ ရှင်းလင်းသော နမူနာများဖြင့် မိမိအချိန်ဖြင့် လိုက်နာ၍ လေ့လာနိုင်သည်။
+- 📜 [MCP ဖော်ပြချက်စာတမ်း](https://modelcontextprotocol.io/docs/) – သင့်လေ့လာရေး ခရီးတလျှောက်မှာ ပိုမိုအသေးစိတ်တွေကို ကြည့်ရှုရန် အသုံးပြုနိုင်သော အကျယ်တဝင့် ရေးထားသော ရှင်းလင်းချက်စာအုပ်တစ်အုပ်အဖြစ် စဉ်းစားနိုင်သည်။
+- 📜 [မူလ MCP ဖော်ပြချက်စာတမ်း](https://modelcontextprotocol.io/specification/versioning) –  ပိုမိုအဆင့်မြင့် စနစ်များ တည်ဆောက်ရာတွင် အသုံးဝင်တဲ့ နည်းပညာအသေးစိတ်များပါဝင်သည်။ သင် လိုအပ်သောအခါသာ ရောက်ကြည့်နိုင်မှာဖြစ်ပြီး စတင်လေ့လာစဉ်မှာ မစိတ်ပူရပါ။
+- 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) – ဒီနေရာမှာ SDK များ၊ ကိရိယာများ နှင့် ဘာသာစကားများစွာဖြင့် ရေးသားထားသော ကုဒ်နမူနာများ ရှိသည်။  လက်တွေ့အသုံးချနိုင်သော အကြံပြုချက်များနှင့် အသုံးပြုနိုင်သော နမူနာများ များစွာ ပါဝင်သည်။
+- 🌐 [MCP လူထုအသိုင်းအဝိုင်း](https://github.com/orgs/modelcontextprotocol/discussions) – MCP နှင့်ပတ်သက်သော ဆွေးနွေးပွဲများတွင် လေ့လာသူများနှင့် အတွေ့အကြုံရှိ ဖန်တီးသူများနှင့် ပူးပေါင်းပါဝင်နိုင်သည်။ မေးခွန်းများပိုမိုမေးမြန်းနိုင်သော နိုင်ငံတကာ လူထုအား ပံ့ပိုးသော အသိုင်းအဝိုင်းဖြစ်သည်။
+  
+## သင်ယူရမည့်ရည်ရွယ်ချက်များ
 
-## သင်ယူရမည့် မျှော်မှန်းချက်များ
+ဤသင်ရိုးကိုပြီးဆုံးတိုင်း သင့်စွမ်းရည်အသစ်အပေါ် ယုံကြည်မှုနှင့် စိတ်အားထက်သန်မှုကြီးပွားမည်။ သင်အောင်မြင်မှာများမှာ -
 
-ဤသင်ရိုးပတ်လမ်း ပြီးဆုံးသောအခါ သင်သည် သင်၏ အသစ်ရရှိသော စွမ်းရည်များအပေါ် ယုံကြည်မှုရှိပြီး စိတ်လှုပ်ရှားနေပါလိမ့်မည်။ သင်သည်အောက်ပါ အချက်များကို မှီဝဲ ပြီး တတ်မြောက်ပါလိမ့်မည်-
+• **MCP အခြေခံများနားလည်ခြင်း**: Model Context Protocol ဆိုသည်မှာ ဘာလဲ၊ AI အက်ပလီကေးရှင်းများကို မည်သို့ပြောင်းလဲနေသည်ဆိုတာကို နားလည်သဘောပေါက်စေမယ့်အကြောင်းကောင်းများနှင့် နမူနာများနဲ့ နားလည်လိမ့်မယ်။
 
-• **MCP အခြေခံသဘောတရားများကို နားလည်ရန်**: Model Context Protocol ဆိုသည်မှာ မည်သို့ AI အပလီကေးရှင်းများ အတူတကွ တက်ကြွစွာ လုပ်ဆောင်ပုံကို လွယ်လင့်တယ်နားလည်နိုင်သော ဟောပြောချက်များနှင့် နမူနာများဖြင့် ခွဲခြား ဖော်ပြပေးပါမည်။
+• **သင်၏ ပထမ MCP server တည်ဆောက်ပါ**: သင်စိတ်ကြိုက်ဘာသာစကားဖြင့် လက်တွေ့သုံး MCP server တစ်ခုတည်ဆောက်မည်ဖြစ်ပြီး ရိုးရှင်းသောနမူနာများမှစပြီး အဆင့်လိုက် တိုးတက်မည်။
 
-• **မိမိ၏ ပထမဆုံး MCP ဆာဗာအား တည်ဆောက်ရန်**: ကြိုက်နှစ်သက်သော ပရိုဂရမ်းမင်းဘာသာစကားဖြင့် စတင်ကာ ပုံမှန်နမူနာများသုံး၍ ပထမဆုံး MCP ဆာဗာကို တည်ဆောက်ပြီး ကျွမ်းကျင်မှု မြှင့်တင်ပါမည်။
+• **AI မော်ဒယ်များကို အမှန်တကယ်ကိရိယာများနှင့် ချိတ်ဆက်ပါ**: AI မော်ဒယ်များနှင့် ဝန်ဆောင်မှုများအကြား ဧရိယာကွာဟမှု များကို ဖြည့်ဆည်းပေးသည့် နည်းလမ်းများကို လေ့လာမည်။
 
-• **AI မော်ဒယ်များကို အမှန်တကယ် ကိရိယာများနှင့် ချိတ်ဆက်ရန်**: AI မော်ဒယ်များနှင့် လက်တွေ့ ဝန်ဆောင်မှုများအကြား အချက်အလက်များ လွယ်ကူစွာတွေ့ဆုံဖလှယ်နိုင်ရန် ပြင်းထန်စွာ တိုးတက်စေမည့် နည်းလမ်းအား သင်ယူပါမည်။
+• **လုံခြုံရေး စံချိန်များ ထားရှိပါ**: သင်၏ MCP အင်တာဖေ့စ်များကိုလုံခြုံစေပြီး အက်ပလီကေးရှင်းများနှင့် အသုံးပြုသူများအား ကာကွယ်ပေးနိုင်မည့် နည်းလမ်းများကို နားလည်မည်။
 
-• **လုံခြုံရေး လုပ်ထုံးလုပ်နည်းများ အကောင်အထည်ဖော်ရန်**: မိမိ၏ MCP များကို လုံခြုံစိတ်ချစေပြီး အသုံးပြုသူများနှင့် အပလီကေးရှင်းများကို ကာကွယ်ထားနိုင်မည့် ဦးစားပေး လုံခြုံရေးနည်းလမ်းများကို နားလည်ပါမည်။
+• **ယုံကြည်စိတ်ချစွာ ထုတ်လုပ်မှုအဆင့်သို့ ဖြန့်ချိမည်**: ရိုးရှင်းသော ပြုပြင်ပေးဆောင်မှုနည်းလမ်းများဖြင့် MCP စီမံကိန်းများကို ထုတ်လုပ်မှုအဆင့် သို့ ရောင်းချကြောင်း အသိပေးမည်။
 
-• **ယုံကြည်စိတ်ချစွာ ဖြန့်ချိ ရေးဆွဲရန်**: ဖွံ့ဖြိုးမှုပြုလုပ်မှုပြီးနောက် MCP ပရောဂျက်များကို အမှန်တကယ် အသုံးချနိုင်သော ဖြန့်ချိမှုနည်းဗျူဟာများနဲ့ အသုံးဝင်စွာ ပြုလုပ်နိုင်ပါလိမ့်မည်။
+• **MCP လူထုအသိုင်းအဝိုင်းတွင် ပါဝင်ပါ**: AI အက်ပလီကေးရှင်း ဖွံ့ဖြိုးတိုးတက်ရေး အနာဂတ်ကို ဖော်ဆောင်နေသော ဖန်တီးသူအသိုင်းအဝိုင်းကြီး မိတ်ဖက် ဖြစ်လာမည်။
 
-• **MCP အသိုင်းအဝိုင်းတွင် ပါဝင်ပါ**: MCP အသုံးပြုသူအသစ်များနှင့် ဖန်တီးသူများ အဆုံးမဲ့ တိုးတက်နေသော အသိုင်းအဝိုင်း၏ အစိတ်အပိုင်းတစ်ခု ဖြစ်လာပါလိမ့်မည်။
+## အခြေခံရည်မှတ်တည်နေရာ
 
-## အခြေခံဖြစ်ကြောင်း သိရှိခြင်း
+MCP အကြောင်းအရာသပ်သပ် သွားမီ များသော အခြေခံအကြောင်းအရာများကို နားလည်မှုရှိဖို့ လိုအပ်ပါသည်။ ကျွမ်းကျင်သူ မဟုတ်လည်း မစောင့်ဆိုင်းပါနဲ့ - လိုအပ်သမျှအားလုံး ကို ကျွန်တော်တို့ရှင်းလင်းရှင်းလင်း ဖြေပြပါမည်။
 
-MCP အကြောင်းအသေးစိတ်သို့ ရောက်ရှိမည် မတိုင်မီ အခြေခံ အကြောင်းအရာများကို နားလည်ထားရမည်။ ဤနယ်ပယ်များတွင် ကျွမ်းကျင်သူ မဟုတ်လျှင်စိတ်မပူပါနဲ့ - သင်လိုအပ်သည့်အချက်အလက်အားလုံးကို လေ့လာသင်ယူ မည်ဖြစ်သည်။
+### Protocol များနားလည်ခြင်း (အခြေခံ)
 
-### ပရိုတိုကောများ၏နားလည်မှု (အခြေခံ)
+Protocol ဆိုတာဟာ စကားပြောဆိုရာက ထိန်းချုပ်စည်းကမ်းများအဖြစ် လိုက်နာရမည့် စည်းကမ်းများလိုပါပဲ။ မိတ်ဆွေကို ဖုန်းခေါ်တဲ့ အခါမှာ "ဟလို" ဆိုပြီးစတင်ရော၊ ပြောဆိုခိုင်းခိုင်း လုပ်ရလေ၊ ပြီးတိုင်း "ကြိုတင် နှုတ်ဆက်" ရတဲ့ စည်းမျဥ်းမျဥ်းကဲ့သို့ ပါပဲ။ ကွန်ပျူတာပရိုဂရမ်းများလည်း ဆက်သွယ်သည်မှာ ဒီလို စည်းကမ်းတွေလိုအပ်သည်။
 
-ပရိုတိုကောကို စကားပြောဆိုရေး ဥပဒေများလို ယူဆပါ။ မိတ်ဆွေတစ်ယောက်ကို ဖုန်းခေါ်လျှင် "ဟယ်လို" ဟု ပြောကြပြီး စကားပြောခွင့်ကို လဲလှယ်ကာ အဆုံးသတ်၍ "သွားတော့မယ်" ဟု ပြောကြသည်ဟူ၍ သဘောတူပါသည်။ ကွန်ပျူတာပရိုဂရမ်များသည် ထိုအတိုင်း စည်းမျဉ်းများ လိုအပ်သည်။
+MCP သည် protocol တစ်ခုဖြစ်ပြီး၊ AI မော်ဒယ်များ နှင့် အက်ပလီကေးရှင်းများ တိုက်ရိုက် ထိတွေ့ဆက်သွယ်ရာတွင် လိုအပ်သော စည်းကမ်းများပေါင်းစပ်ပေးပြီး ထိရောက်သော ဆက်သွယ်မှု ရရှိစေသည်။ လူသားများ စကားပြောဆိုရာတွင် စည်းကမ်းတွေ ရှိတာနဲ့ တူပဲ၊ MCP သည် AI အက်ပလီကေးရှင်းဆက်သွယ်မှုကို ပိုမိုယုံကြည်စိတ်ချရ၊ ခိုင်မာစေသည်။
 
-MCP သည် AI မော်ဒယ်များနှင့် အပလီကေးရှင်းများကို ကိရိယာများနှင့် ဝန်ဆောင်မှုများဆီ "စကားပြော" လုပ်ရန် ဆင်တူ စည်းမျဉ်းများ ဖြစ်သည်။ လူကြားစကားပြောဆိုရာတွင် စည်းမျဉ်းများရှိခြင်းက အဆင်ပြေစေသလို MCP ရှိခြင်းက AI အပလီကေးရှင်းများ အပြန်အလှန် ဆက်သွယ်ရာတွင် ယုံကြည်မှုနှင့် ထိရောက်မှုကို တိုးတက်စေသည်။
+### Client-Server ဆက်ဆံရေးများ (ပရိုဂရမ်းများ အတူတကွ အလုပ်လုပ်ခြင်း)
 
-### Client-Server ဆက်ဆံရေးများ (ပရိုဂရမ်းများ၏ ပူးပေါင်းဆောင်ရွက်ပုံ)
+သင်နေ့စဉ် Client-Server ဆက်ဆံရေးကို အသုံးပြုနေပြီ ဖြစ်သည်! မိမိက တရားဝင် ဝဘ်ဘရောက်ဇာ (client) အသုံးပြုပြီး ဝဘ်ဆိုဒ်တစ်ခုသို့ ဝင်ရောက်သည့်အခါ၊ ဝဘ်ဆာဗာက အကြောင်းအရာကို ထုတ်ပေးတယ်။ ဘရောက်ဇာက မေးခွန်းမေးနည်းကို သိပြီး ဆာဗာက မူလ တုံ့ပြန်နည်းကို သိသည်။
 
-သင်နေ့တိုင်း client-server ဆက်ဆံရေးများ အသုံးပြုနေပြီးဖြစ်သည်! ဝဘ်ဘောက်စရာ (client) ကိုသုံး၍ ဝဘ်ဆိုက်တစ်ခု သွားရောက်လျှင် ဝဘ်ဆာဗာမှ စာမျက်နှာအချက်အလက်များ ပေးပိုက်သည်။ ဘောက်စရာသည် မေးမြန်းရန် နည်းလမ်းကို သိပြီး ဆာဗာသည် ပြန်ဖြေ တတ်သည်။
+MCP မှာလည်း ထပ်တူဆက်ဆံရေး ရှိသည် - AI မော်ဒယ်များသည် client အဖြစ် ဆက်သွယ်မှုတောင်းဆိုနေပြီး MCP servers များက တုံ့ပြီး တာဝန်ယူပေးသည်။ AI မှ တောင်းဆိုလို့ ဖြစ်သော အလုပ်များကို တာဝန်ယူလုပ်ဆောင်ပေးတဲ့ အကူအညီသူ server တစ်ယောက်လိုပဲ ဖြစ်သည်။
 
-MCP တွင်လည်း ဆင်တူ client-server ဆက်ဆံရေး ရှိသည်- AI မော်ဒယ်များသည် အချက်အလက် သို့မဟုတ် လုပ်ဆောင်ချက် များကို တောင်းဆိုသော client အဖြစ် သန့်ရှင်းပြီး MCP ဆာဗာများက ၎င်းအတွက် လိုအပ်ချက်များကို ဖြေရှင်းပေးသည်။ အဆိုပါ MCP ဆာဗာကို AI ၏ ကူညီအကူအညီအဖြစ် ယူဆနိုင်သည်။
+### စံနှုန်းတူမှု အရေးကြီးခြင်း (အလုပ်အတူလုပ်နိုင်ဖို့)
 
-### စံချိန်စံညွှန်းထားခြင်း၏ အရေးပါပုံ (အတူတကွ လုပ်ဆောင်ရန်)
+ကားထုတ်လုပ်သူတိုင်းက မည်သို့မျှမတူညီသော ဂတ်စ် ပုံးများကို သုံးခဲ့ပါက၊ ကားတိုင်းအတွက် အသီးသီး အပလါ ကိုင်ရန်လိုမည်! စံနှုန်းတူမှု ဆိုသည်မှာ အတူတူသဘောတူထားခြင်းဖြင့် အရာဝတ္ထုများ အဆင်ပြေစေခြင်း ဖြစ်သည်။
 
-မော်တော်ကားကုမ္ပဏီတိုင်းက သံပတ်ပုံစံ မတူပေမယ့် အဆီဖြည့်စက်ပုံစံ မတူပါက မော်တော်ကားတစ်စီးစီအတွက် ချိတ်ဆက်စက်ကိရိယာထူးခြားချက်များ လိုက်နာရမည်ဖြစ်ပေ ။
+MCP သည် AI အက်ပလီကေးရှင်းများအတွက် စံနှုန်းတူမှု ဖြစ်ပေးသည်။ AI မော်ဒယ်တိုင်းသည် မတူညီသော ကိရိယာနှင့် အလုပ်လုပ်ရန် ထူးခြားသည့်ဇာတ်ညွှန်း မလိုအပ်တော့ပဲ MCP ကနေ စံတမ်းတစ်ခုဖြင့် ဆက်သွယ်ခွင့် ရရှိသည်။ ဒါက ဖန်တီးသူများအား ကိရိယာတစ်ခု တည်ဆောက်ပြီး မည်သည့် AI စနစ်များနှင့်မဆို အသုံးပြုနိုင်စေသည်။
 
-MCP သည် AI အပလီကေးရှင်းများအတွက် စံချိန်သတ်မှတ်ချက် တစ်ခုဖြစ်ပြီး AI မော်ဒယ်တိုင်း အတိအကျ မတူညီသော ကိရိယာများနှင့် သီးခြားရေးသားထားသော ကုဒ်များ မလိုအပ်ဘဲ ထိန်းညှိချက် တစ်မျိုးဖြင့် ဆက်သွယ်နိုင်စေသည်။ ထို့ကြောင့် ဖန်တီးသူများသည် ကိရိယာတစ်ခုကို တည်ဆောက်ပြီး များစွာသော AI စနစ်များနှင့် အသုံးချနိုင်သည်။
+## 🧭 သင်ယူရေးလမ်းကြောင်း အနှံ့အပြား
 
-## 🧭 သင်ယူမှုလမ်းကြောင်း အနှစ်ချုပ်
+သင်၏ MCP ခရီးသည် သေချာစွာ ဆိုသလို ဖန်တီးသူအဖြစ် ကျွမ်းကျင်မှု တိုးတက်မှု ရရှိစေသည်။ အဆင့်တိုင်းတွင် အသစ်သင်ယူမှုများ ထည့်သွင်းပြီး၊ လက်ရှိနားလည်ထားသည့် အထောက်အထားများကိုပြန်လည်သတ်မှတ်ပေးသည်။
 
-သင့် MCP ခရီးသည် သိပ္ပံနှင့် ကျွမ်းကျင်မှု များ တိုးတက်လာစေရန် စနစ်တကျ တည်ဆောက်ထားသည်။ အဆင့်တစ်ခုစီမှာ သင့်တွင် လေ့လာပြီးသားအကြောင်းအရာများကို အားဖြည့်ပေးကြောင်း အသစ်တစ်ခုစီကို မိတ်ဆက်ပေးမည်။
+### 🌱 အခြေခံအဆင့်: အခြေခံနားလည်မှု (Module 0-2)
 
-### 🌱 အခြေခံ အဆင့်: အခြေခံတွေ နားလည်ခြင်း (မော်ဂျူး ၀-၂)
+သင်၏ ဒေါက်တာချယ် ခရီးစတင်ရာပါ! MCP အကြောင်းအရာများကို နားလည်ရလွယ်ကူစေရန် သက်ဆိုင်ရာ တူညီမှုများနှင့် ရိုးရှင်းသော နမူနာများ ဖြင့် မှိတ်ဆက်ပေးပါမည်။ MCP ဆိုတာ ဘာလဲ၊ ဘာကြောင့် လိုအပ်လာတာလဲ၊ AI ဖွံ့ဖြိုးတိုးတက်ရေးတွင် ဘယ်လို ထည့်သွင်းထားတာလဲ ဆိုတာ နားလည်စေပါမည်။
 
-သင်၏ စွန့်စားခန်းကို ဒီနေရာကနေ စတင်ပါပြီ။ MCP အကြောင်းအရာများကို သိသာမြင်သာသော ရှင်းတမ်းများနှင့် ရိုးရိုးလေး နမူနာများဖြင့် မိတ်ဆက်ပေးမည်။ MCP ဆိုတာဘာလဲ၊ အတွက်ဘာလဲ၊ AI ဖွံ့ဖြိုးတိုးတက်မှု တစ်ခုအဖြစ် ဘယ်လို ပါဝင်တာလဲ ဆိုတာ မြင်သာပါလိမ့်မည်။
+• **Module 0 - MCP စတင်မိတ်ဆက်ခြင်း**: MCP ဆိုတာ ဘာလဲ၊ မျက်မှောက် AI အက်ပလီကေးရှင်းများအတွက် မည်သို့ အရေးကြီးသလဲ စူးစမ်းလေ့လာပါမည်။ MCP သုံးသပ်မှုနမူနာများကို မြင်တွေ့၍ ဖန်တီးသူများ တုံ့ပြန်မှု ရှာဖွေကြုံတွေ့သော ပြဿနာများကို MCP ဖြေရှင်းပုံကို နားလည်လိမ့်မည်။
 
-• **မော်ဂျူး ၀ - MCP နိဒါန်း**: MCP ရဲ့ အဓိက အထောက်အကူများနှင့် အသုံးဝင်မှု အကြောင်းကို စမ်းသပ်လေ့လာမည်။ MCP ကို တည်ဆောက်သူများ ကြုံတွေ့နေသော ပြဿနာများကို MCP မည်သို့ ဖြေရှင်းသည်၊ သက်သေများနှင့် ဆွဲဆောင်မှုများ လင့်ခ်ပါမည်။
+• **Module 1 - အခြေခံအယူအဆများရှင်းလင်းခြင်း**: MCP ၏ အခြေခံအချက်အလက်များကို သင်လေ့လာပါမည်။ နမူနာများနှင့် ပြင်ပရေးရာပုံစံများဖြင့် ထောက်ထားကာ သင့်အတွက် နားလည်ရလွယ်ကူစေပါမည်။
 
-• **မော်ဂျူး ၁ - အဓိက အသိပညာများ ရှင်းလင်းခြင်း**: MCP ၏ အခြေခံအစိတ်အပိုင်းများကို ရိုးရှင်းသေချာစွာ မိတ်ဆက်ပေးမည်။ အနားလည်ရန် လွယ်ကူစေဖို့ အချုပ်အခြာစက်များ၊ ကွဲပြားသော ဥပမာနဲ့ ရုပ်ပုံများ အသုံးပြုမည်။
+• **Module 2 - MCP တွင် လုံခြုံရေး**: လုံခြုံမှု ဆိုသည်မှာ မကြောက်ရပါ၊ MCP ၌ အတွင်းပိုင်း လုံခြုံရေး လုပ်ငန်းစဉ်များ ပါဝင်ကာ အက်ပလီကေးရှင်းများကို ပထမဦးဆုံး အကြမ်းစား ကာကွယ်နိုင်ရန် ပညာပေးပါမည်။
 
-• **မော်ဂျူး ၂ - MCP တွင် လုံခြုံရေး**: လုံခြုံရေးသည် စိတ်ဖိစီးမှုဖြစ်နိုင်ပေမယ့် MCP ၌ ထည့်သွင်းထားသော လုံခြုံအင်အားကောင်းသော လုပ်ဆောင်ချက်များနှင့် သင့်အက်ပ်များကို စတင်ကာကွယ်သည့် အကောင်းဆုံး လေ့လာရေးများကို တင်ပြမည်။
+### 🔨 တည်ဆောက်ခြင်း အဆင့်: ပထမဆုံး အကောင်အထည်ဖော်မှုများ (Module 3)
 
-### 🔨 တည်ဆောက်ခြင်း အဆင့်: ပထမဆုံး အကောင်အထည်ဖော်ခြင်း (မော်ဂျူး ၃)
+ယခုမှစ၍ အမှန်တကယ် စိတ်လှုပ်ရှားဖွယ် လုပ်ဆောင်မှုများ စတင်မည်! MCP server နှင့် client များကို ကိုယ်တိုင် လက်တွေ့ပညာလေ့ကျင့်ခြင်းခံစားပါမည်။ စိုးရိမ်စရာမလိုပါ - ရိုးရှင်းပြီး အဆင့်ဆင့် ညွှန်ကြားမှုမှ တဆင့် လုပ်ကွက်ခြင်း အပြည့်အဝ လုပ်ဆောင်ပေးပါမည်။
 
-ယခုမှစပြီး စိတ်လှုပ်ရှားဖွယ်ရာ စတင်မိပါပြီ! MCP ဆာဗာများနှင့် client များကို လက်တွေ့ အတူတူ တည်ဆောက်မည်။ စိတ်မပူပါနဲ့ - ရိုးရှင်းပြီး လမ်းညွှန်ချက်များ နဲ့ လိုက်ဖက်ကာ ပံ့ပိုးမပေးပါမည်။
+ဤ module တွင် သင်ဆုံးဖြတ်သော programming language တွင် လက်တွေ့လမ်းညွှန်ချက်များ ပါရှိသည်။ သင်၏ ပထမဆုံး server တည်ဆောက်မည်၊ client တစ်ခု ဖန်တီး၍ ချိတ်ဆက်မည်၊ လူကြိုက်များသော ဖန်တီးရေး ကိရိယာများဖြစ်သော VS Code နှင့် ပေါင်းစည်းမည်ဆို၍ လမ်းညွှန်မည်။
+အသီးသီးသောလမ်းညွှန်များတွင်ကုဒ်နမူနာများ၊ ပြဿနာဖြေရှင်းနည်းများနှင့်ဒီဇိုင်းရွေးချယ်မှုများ၏အကြောင်းဖော်ပြချက်များပါဝင်သည်။ ဒီအဆင့်စွန့်လွှတ်ပြီးနောက် စိတ်ချရသော MCP အကောင်အထည်ဖော်မှုများရှိသွားပါလိမ့်မယ်။
 
-ဤမော်ဂျူးတွင် သင်ကြိုက်နှစ်သက်သော ပရိုဂရမ်မင်းဘာသာစကားများဖြင့် လေ့ကျင့်နိုင်သော လမ်းညွှန်ချက်များစွာ ပါဝင်သည်။ သင်၏ ပထမဆုံး ဆာဗာကို တည်ဆောက်ပြီး ၎င်းနှင့် ချိတ်ဆက်ရန် client တစ်ခု ပြုလုပ်ကာ VS Code ကဲ့သို့ လူကြိုက်များသော ဖွံ့ဖြိုးရေးကိရိယာများနဲ့ ပေါင်းစပ်အသုံးပြုနိုင်ပါမည်။
-Each guide includes complete code examples, troubleshooting tips, and explanations of why we make specific design choices. By the end of this phase, you'll have working MCP implementations you can be proud of!
+### 🚀 တိုးတက်မှု အဆင့် - မြင့်မားသောအကြောင်းအရာများနှင့် လက်တွေ့အသုံးချမှု (Modules 4-5)
 
-### 🚀 Growing Phase: Advanced Concepts and Real-World Application (Modules 4-5)
+အခြေခံအချက်များကောင်းကောင်းလေ့လာပြီးနောက်၊ MCP ၏ မြင့်မားသောအင်္ဂါရပ်များကို သင်လေ့လာရန် ရှိနေပါပြီ။ လက်တွေ့အကောင်အထည်ဖော်နည်းများ၊ ဘတ်ခ်များကောင်းကောင်းပြုလုပ်နည်းများနှင့် မျိုးစုံ AI ပေါင်းစပ်ခြင်းကဲ့သို့သော မြင့်မားသောခေါင်းစဉ်များကိုဖော်ပြပါမည်။
 
-With the basics mastered, you're ready to explore more sophisticated MCP features. We'll cover practical implementation strategies, debugging techniques, and advanced topics like multi-modal AI integration.
+သင်၏ MCP အကောင်အထည်ဖော်မှုများကို ထုတ်လုပ်မှုအတွက် တိုးချဲ့အသုံးချနည်းနှင့် Azure ကဲ့သို့သော cloud ပလက်ဖောင်းများနှင့် ပေါင်းစပ်နည်းများကိုလည်း လေ့လာသင်ယူပါမည်။ ဤမော်ဂျူးများမှာ လက်တွေ့အသုံးပြုမှုလိုအပ်ချက်များကို ကျေနပ်စွာ ကိုင်တွယ်နိုင်သော MCP ဖြေရှင်းချက်များတည်ဆောက်ရန် သင့်အားပြင်ဆင်ပေးပါသည်။
 
-You'll also learn how to scale your MCP implementations for production use and integrate with cloud platforms like Azure. These modules prepare you to build MCP solutions that can handle real-world demands.
+### 🌟 ကျွမ်းကျင်မှု အဆင့် - လူမှုအသိုက်အဝန်းနှင့် နယ်ပယ်အထူးပြုခြင်း (Modules 6-11)
 
-### 🌟 Mastery Phase: Community and Specialization (Modules 6-11)
+နောက်ဆုံးအဆင့်မှာ MCP လူမှုအသိုက်အဝန်းနှင့် ပူးပေါင်းရန်နှင့် သင့်စိတ်ဝင်စားသော နယ်ပယ်များတွင် အထူးပြုရန် အာရုံစိုက်ပါသည်။ Open-source MCP စီမံကိန်းများတွင် ပံ့ပိုးမှုလုပ်နည်း၊ မြင့်မားသော အတည်ပြုပုံစံများကို လုပ်ဆောင်နည်းနှင့် ဒေတာဘေ့စ် ပေါင်းစပ်ပြီး ဖြေရှင်းချက် ပြုလုပ်သည့်နည်းလမ်းများကိုလေ့လာပါမည်။
 
-The final phase focuses on joining the MCP community and specializing in areas that interest you most. You'll learn how to contribute to open-source MCP projects, implement advanced authentication patterns, and build comprehensive database-integrated solutions.
+Module 11 သည် အထူးသဖြင့် ဖော်ပြသင့်သော တစ်ခုဖြစ်ပြီး PostgreSQL ပေါင်းစပ်နည်းပါဝင်သည့် ၁၃ လက်အောက်လက်တွေ့သင်ယူမှုလမ်းကြောင်းတစ်ခုဖြစ်သည်။ သင်လေ့လာမှုအားလုံးကို ပေါင်းစပ်ပြီး တည်ဆောက်ရန် ထူးခြားသည့်အစီအစဉ်တစ်ခုပါ။
 
-Module 11 deserves special mention - it's a complete 13-lab hands-on learning path that teaches you to build production-ready MCP servers with PostgreSQL integration. It's like a capstone project that brings together everything you've learned!
-
-### 📚 Complete Curriculum Structure
+### 📚 အပြည့်အစုံ သင်ကြားမှု ဖွဲ့စည်းမှု
 
 | Module | Topic | Description | Link |
 |--------|-------|-------------|------|
-| **Module 1-3: Fundamentals** | | | |
-| 00 | Introduction to MCP | Overview of the Model Context Protocol and its significance in AI pipelines | [Read more](./00-Introduction/README.md) |
-| 01 | Core Concepts Explained | In-depth exploration of core MCP concepts | [Read more](./01-CoreConcepts/README.md) |
-| 02 | Security in MCP | Security threats and best practices | [Read more](./02-Security/README.md) |
-| 03 | Getting Started with MCP | Environment setup, basic servers/clients, integration | [Read more](./03-GettingStarted/README.md) |
-| **Module 3: Building Your First Server & Client** | | | |
-| 3.1 | First Server | Create your first MCP server | [Guide](./03-GettingStarted/01-first-server/README.md) |
-| 3.2 | First Client | Develop a basic MCP client | [Guide](./03-GettingStarted/02-client/README.md) |
-| 3.3 | Client with LLM | Integrate large language models | [Guide](./03-GettingStarted/03-llm-client/README.md) |
-| 3.4 | VS Code Integration | Consume MCP servers in VS Code | [Guide](./03-GettingStarted/04-vscode/README.md) |
-| 3.5 | stdio Server | Create servers using stdio transport | [Guide](./03-GettingStarted/05-stdio-server/README.md) |
-| 3.6 | HTTP Streaming | Implement HTTP streaming in MCP | [Guide](./03-GettingStarted/06-http-streaming/README.md) |
-| 3.7 | AI Toolkit | Use AI Toolkit with MCP | [Guide](./03-GettingStarted/07-aitk/README.md) |
-| 3.8 | Testing | Test your MCP server implementation | [Guide](./03-GettingStarted/08-testing/README.md) |
-| 3.9 | Deployment | Deploy MCP servers to production | [Guide](./03-GettingStarted/09-deployment/README.md) |
-| 3.10 | Advanced server usage | Use advanced servers for advanced feature usage and improved architecture | [Guide](./03-GettingStarted/10-advanced/README.md) |
-| 3.11 | Simple auth | A chapter showing you auth from the beginning and RBAC | [Guide](./03-GettingStarted/11-simple-auth/README.md) |
-| **Module 4-5: Practical & Advanced** | | | |
-| 04 | Practical Implementation | SDKs, debugging, testing, reusable prompt templates | [Read more](./04-PracticalImplementation/README.md) |
-| 05 | Advanced Topics in MCP | Multi-modal AI, scaling, enterprise use | [Read more](./05-AdvancedTopics/README.md) |
-| 5.1 | Azure Integration | MCP Integration with Azure | [Guide](./05-AdvancedTopics/mcp-integration/README.md) |
-| 5.2 | Multi-modality | Working with multiple modalities | [Guide](./05-AdvancedTopics/mcp-multi-modality/README.md) |
-| 5.3 | OAuth2 Demo | Implement OAuth2 authentication | [Guide](./05-AdvancedTopics/mcp-oauth2-demo/README.md) |
-| 5.4 | Root Contexts | Understand and implement root contexts | [Guide](./05-AdvancedTopics/mcp-root-contexts/README.md) |
-| 5.5 | Routing | MCP routing strategies | [Guide](./05-AdvancedTopics/mcp-routing/README.md) |
-| 5.6 | Sampling | Sampling techniques in MCP | [Guide](./05-AdvancedTopics/mcp-sampling/README.md) |
-| 5.7 | Scaling | Scale MCP implementations | [Guide](./05-AdvancedTopics/mcp-scaling/README.md) |
-| 5.8 | Security | Advanced security considerations | [Guide](./05-AdvancedTopics/mcp-security/README.md) |
-| 5.9 | Web Search | Implement web search capabilities | [Guide](./05-AdvancedTopics/web-search-mcp/README.md) |
-| 5.10 | Realtime Streaming | Build realtime streaming functionality | [Guide](./05-AdvancedTopics/mcp-realtimestreaming/README.md) |
-| 5.11 | Realtime Search | Implement realtime search | [Guide](./05-AdvancedTopics/mcp-realtimesearch/README.md) |
-| 5.12 | Entra ID Auth | Authentication with Microsoft Entra ID | [Guide](./05-AdvancedTopics/mcp-security-entra/README.md) |
-| 5.13 | Foundry Integration | Integrate with Azure AI Foundry | [Guide](./05-AdvancedTopics/mcp-foundry-agent-integration/README.md) |
-| 5.14 | Context Engineering | Techniques for effective context engineering | [Guide](./05-AdvancedTopics/mcp-contextengineering/README.md) |
-| 5.15 | MCP Custom Transport | Custom Transport implementations | [Guide](./05-AdvancedTopics/mcp-transport/README.md) |
-| **Module 6-10: Community & Best Practices** | | | |
-| 06 | Community Contributions | How to contribute to the MCP ecosystem | [Guide](./06-CommunityContributions/README.md) |
-| 07 | Insights from Early Adoption | Real-world implementation stories | [Guide](./07-LessonsFromEarlyAdoption/README.md) |
-| 08 | Best Practices for MCP | Performance, fault-tolerance, resilience | [Guide](./08-BestPractices/README.md) |
-| 09 | MCP Case Studies | Practical implementation examples | [Guide](./09-CaseStudy/README.md) |
-| 10 | Hands-on Workshop | Building an MCP Server with AI Toolkit | [Lab](./10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) |
-| **Module 11: MCP Server Hands On Lab** | | | |
-| 11 | MCP Server Database Integration | Comprehensive 13-lab hands-on learning path for PostgreSQL integration | [Labs](./11-MCPServerHandsOnLabs/README.md) |
-| 11.1 | Introduction | Overview of MCP with database integration and retail analytics use case | [Lab 00](./11-MCPServerHandsOnLabs/00-Introduction/README.md) |
-| 11.2 | Core Architecture | Understanding MCP server architecture, database layers, and security patterns | [Lab 01](./11-MCPServerHandsOnLabs/01-Architecture/README.md) |
-| 11.3 | Security & Multi-Tenancy | Row Level Security, authentication, and multi-tenant data access | [Lab 02](./11-MCPServerHandsOnLabs/02-Security/README.md) |
-| 11.4 | Environment Setup | Setting up development environment, Docker, Azure resources | [Lab 03](./11-MCPServerHandsOnLabs/03-Setup/README.md) |
-| 11.5 | Database Design | PostgreSQL setup, retail schema design, and sample data | [Lab 04](./11-MCPServerHandsOnLabs/04-Database/README.md) |
-| 11.6 | MCP Server Implementation | Building the FastMCP server with database integration | [Lab 05](./11-MCPServerHandsOnLabs/05-MCP-Server/README.md) |
-| 11.7 | Tool Development | Creating database query tools and schema introspection | [Lab 06](./11-MCPServerHandsOnLabs/06-Tools/README.md) |
-| 11.8 | Semantic Search | Implementing vector embeddings with Azure OpenAI and pgvector | [Lab 07](./11-MCPServerHandsOnLabs/07-Semantic-Search/README.md) |
-| 11.9 | Testing & Debugging | Testing strategies, debugging tools, and validation approaches | [Lab 08](./11-MCPServerHandsOnLabs/08-Testing/README.md) |
-| 11.10 | VS Code Integration | Configuring VS Code MCP integration and AI Chat usage | [Lab 09](./11-MCPServerHandsOnLabs/09-VS-Code/README.md) |
-| 11.11 | Deployment Strategies | Docker deployment, Azure Container Apps, and scaling considerations | [Lab 10](./11-MCPServerHandsOnLabs/10-Deployment/README.md) |
-| 11.12 | Monitoring | Application Insights, logging, performance monitoring | [Lab 11](./11-MCPServerHandsOnLabs/11-Monitoring/README.md) |
-| 11.13 | Best Practices | Performance optimization, security hardening, and production tips | [Lab 12](./11-MCPServerHandsOnLabs/12-Best-Practices/README.md) |
+| **Module 1-3: မူလအခြေခံများ** | | | |
+| 00 | MCP သို့မိတ်ဆက်ခြင်း | Model Context Protocol ၏ အနှစ်ချုပ်နှင့် AI လမ်းကြောင်းတွင် ရှိသော အရေးပါမှု | [Read more](./00-Introduction/README.md) |
+| 01 | အဓိက အကြောင်းအရာများ ရှင်းလင်းချက် | MCP အဓိကအကြောင်းအရာများကို အပြည့်အစုံ လေ့လာခြင်း | [Read more](./01-CoreConcepts/README.md) |
+| 02 | MCP တွင် လုံခြုံရေး | လုံခြုံရေး ခြိမ်းခြောက်မှုများနှင့် ကောင်းမွန်သော လုပ်ထုံးလုပ်နည်းများ | [Read more](./02-Security/README.md) |
+| 03 | MCP နှင့် စတင် အလုပ်လုပ်ခြင်း | ပတ်ဝန်းကျင်ပြင်ဆင်ခြင်း၊ အခြေခံ ဆာဗာ/ကလားင့် များနှင့် ပေါင်းစပ်ခြင်း | [Read more](./03-GettingStarted/README.md) |
+| **Module 3: ပထမဆုံး ဆာဗာနှင့် ကလားင့်တည်ဆောက်ခြင်း** | | | |
+| 3.1 | ပထမဆုံး ဆာဗာ | သင်၏ပထမဆုံး MCP ဆာဗာ တည်ဆောက်ခြင်း | [Guide](./03-GettingStarted/01-first-server/README.md) |
+| 3.2 | ပထမဆုံး ကလားင့် | အခြေခံ MCP ကလားင့် တည်ဆောက်ခြင်း | [Guide](./03-GettingStarted/02-client/README.md) |
+| 3.3 | LLM ပါဝင်သော ကလားင့် | မြောက်မားသော ဘာသာစကား မော်ဒယ်များပေါင်းစပ်ခြင်း | [Guide](./03-GettingStarted/03-llm-client/README.md) |
+| 3.4 | VS Code ပေါင်းစပ်ခြင်း | VS Code တွင် MCP ဆာဗာများ ကို အသုံးပြုခြင်း | [Guide](./03-GettingStarted/04-vscode/README.md) |
+| 3.5 | stdio ဆာဗာ | stdio ပို့ဆောင်မှု အသုံးပြု၍ ဆာဗာများ တည်ဆောက်ခြင်း | [Guide](./03-GettingStarted/05-stdio-server/README.md) |
+| 3.6 | HTTP Streaming | MCP တွင် HTTP streaming ကို အကောင်အထည်ဖော်ခြင်း | [Guide](./03-GettingStarted/06-http-streaming/README.md) |
+| 3.7 | AI Toolkit | MCP နှင့် AI Toolkit အသုံးပြုခြင်း | [Guide](./03-GettingStarted/07-aitk/README.md) |
+| 3.8 | စမ်းသပ်ခြင်း | MCP ဆာဗာ အကောင်အထည်ဖော်မှု စမ်းသပ်ခြင်း | [Guide](./03-GettingStarted/08-testing/README.md) |
+| 3.9 | တပ်ဆင်ခြင်း | MCP ဆာဗာများကို ထုတ်လုပ်မှုသို့ တပ်ဆင်ခြင်း | [Guide](./03-GettingStarted/09-deployment/README.md) |
+| 3.10 | တိုးတက်သော ဆာဗာ အသုံးပြုမှု | ဖောင်ရွှင်မှုမြှင့်တင်ခြင်းနှင့် အဆောက်အအုံတိုးတက်မှုအတွက် တိုးတက်သော ဆာဗာများ အသုံးပြုခြင်း | [Guide](./03-GettingStarted/10-advanced/README.md) |
+| 3.11 | အလွယ်တကူ အတည်ပြုခြင်း | အစမှတည်ဆောက်သည့် အတည်ပြုမှုနှင့် RBAC ကိုဖော်ပြခြင်း | [Guide](./03-GettingStarted/11-simple-auth/README.md) |
+| **Module 4-5: လက်တွေ့နှင့် မြင့်မားသောအကြောင်းအရာများ** | | | |
+| 04 | လက်တွေ့ အသုံးပြုမှု | SDK များ၊ ပြင်ဆင်ခြင်း၊ စမ်းသပ်ခြင်း၊ ပြန်လည်အသုံးပြုနိုင်သော prompt templates များ | [Read more](./04-PracticalImplementation/README.md) |
+| 05 | MCP တွင် မြင့်မားသော ခေါင်းစဉ်များ | မျိုးစုံ AI, စွမ်းဆောင်ရည် တိုးတက်မှု, လုပ်ငန်းအသုံးချမှု | [Read more](./05-AdvancedTopics/README.md) |
+| 5.1 | Azure ပေါင်းစပ်ခြင်း | MCP နှင့် Azure ပေါင်းစပ်ခြင်း | [Guide](./05-AdvancedTopics/mcp-integration/README.md) |
+| 5.2 | မျိုးစုံအသုံးပြုမှု | မျိုးစုံ မော်ဒယ်များနှင့် အလုပ်လုပ်ခြင်း | [Guide](./05-AdvancedTopics/mcp-multi-modality/README.md) |
+| 5.3 | OAuth2 ပြသမှု | OAuth2 အတည်ပြုမှု အကောင်အထည်ဖော်ခြင်း | [Guide](./05-AdvancedTopics/mcp-oauth2-demo/README.md) |
+| 5.4 | Root Contexts | Root contexts နားလည်ခြင်းနှင့် အကောင်အထည်ဖော်ခြင်း | [Guide](./05-AdvancedTopics/mcp-root-contexts/README.md) |
+| 5.5 | Routing | MCP လမ်းကြောင်း မဟာဗျူဟာများ | [Guide](./05-AdvancedTopics/mcp-routing/README.md) |
+| 5.6 | Sampling | MCP တွင် Sampling နည်းလမ်းများ | [Guide](./05-AdvancedTopics/mcp-sampling/README.md) |
+| 5.7 | Scaling | MCP အကောင်အထည်ဖော်မှုများ တိုးချဲ့ခြင်း | [Guide](./05-AdvancedTopics/mcp-scaling/README.md) |
+| 5.8 | လုံခြုံရေး | မြင့်မားသော လုံခြုံရေး သရုပ်ဖော်ချက်များ | [Guide](./05-AdvancedTopics/mcp-security/README.md) |
+| 5.9 | Web ရှာဖွေရေး | ဝက်ဘ်ရှာဖွေရေး လုပ်ဆောင်ချက်များ သွင်းသုံးခြင်း | [Guide](./05-AdvancedTopics/web-search-mcp/README.md) |
+| 5.10 | အချိန်နှင့်တပြေးညီ Streaming | အချိန်နှင့်တပြေးညီ streaming လုပ်ဆောင်ချက် တည်ဆောက်ခြင်း | [Guide](./05-AdvancedTopics/mcp-realtimestreaming/README.md) |
+| 5.11 | အချိန်နှင့်တပြေးညီ ရှာဖွေရေး | အချိန်နှင့်တပြေးညီ ရှာဖွေရေး အကောင်အထည်ဖော်ခြင်း | [Guide](./05-AdvancedTopics/mcp-realtimesearch/README.md) |
+| 5.12 | Entra ID အတည်ပြုမှု | Microsoft Entra ID နှင့် အတည်ပြုမှု | [Guide](./05-AdvancedTopics/mcp-security-entra/README.md) |
+| 5.13 | Foundry ပေါင်းစပ်ခြင်း | Azure AI Foundry နှင့် ပေါင်းစပ်ခြင်း | [Guide](./05-AdvancedTopics/mcp-foundry-agent-integration/README.md) |
+| 5.14 | Context အင်ဂျင်နီယာလုပ်ခြင်း | ထိရောက်သော context အင်ဂျင်နီယာလုပ်နည်းများ | [Guide](./05-AdvancedTopics/mcp-contextengineering/README.md) |
+| 5.15 | MCP အထူးပို့ဆောင်မှု | အထူးပို့ဆောင်မှု အကောင်အထည်ဖော်မှုများ | [Guide](./05-AdvancedTopics/mcp-transport/README.md) |
+| **Module 6-10: လူမှုအသိုက်အဝန်းနှင့် အကောင်းဆုံးကျင့်သုံးမှုများ** | | | |
+| 06 | လူမှုအသိုက်အဝန်း ပံ့ပိုးမှုများ | MCP ပတ်ဝန်းကျင်တွင် ပံ့ပိုးရန် | [Guide](./06-CommunityContributions/README.md) |
+| 07 | စတင်အသုံးပြုမှု မှ နောက်ဆက်တွဲ သင်ခန်းစာများ | လက်တွေ့ အကောင်အထည်ဖော်မှု ဇာတ်ကောင်များ | [Guide](./07-LessonsFromEarlyAdoption/README.md) |
+| 08 | MCP အတွက် အကောင်းဆုံး ကျင့်သုံးမှု | စွမ်းဆောင်ရည်၊ မှားယွင်းမှုခံနိုင်မှု၊ ပြန်လည်တည်ဆောက်နိုင်မှု | [Guide](./08-BestPractices/README.md) |
+| 09 | MCP စိတ်ကြိုက်လေ့လာမှုများ | လက်တွေ့အကောင်အထည်ဖော်မှု နမူနာများ | [Guide](./09-CaseStudy/README.md) |
+| 10 | လက်တွေ့ ကုမ္ပဏီခန်း | AI Toolkit ဖြင့် MCP ဆာဗာ တည်ဆောက်ခြင်း | [Lab](./10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) |
+| **Module 11: MCP ဆာဗာ လက်တွေ့ အလုပ်ရုံ** | | | |
+| 11 | MCP ဆာဗာ ဒေတာဘေ့စ် ပေါင်းစပ်ခြင်း | PostgreSQL ပေါင်းစပ်ခြင်းအတွက် ၁၃ လက်အောက်လက်တွေ့ သင်ယူမှု လမ်းကြောင်း | [Labs](./11-MCPServerHandsOnLabs/README.md) |
+| 11.1 | မိတ်ဆက် | ဒေတာဘေ့စ် ပေါင်းစပ်မှုနှင့် လက်လည် စစ်တမ်း အသုံးပြုမှု အနှစ်ချုပ် | [Lab 00](./11-MCPServerHandsOnLabs/00-Introduction/README.md) |
+| 11.2 | အဓိက အဆောက်အအုံ | MCP ဆာဗာ အဆောက်အအုံ၊ ဒေတာ ဘေးလား့ယားနှင့် လုံခြုံရေး ပုံစံ များနားလည်ခြင်း | [Lab 01](./11-MCPServerHandsOnLabs/01-Architecture/README.md) |
+| 11.3 | လုံခြုံရေးနှင့် Multi-Tenancy | Row Level Security, အတည်ပြုမှုနှင့် Multi-Tenant ဒေတာ ဝင်ရောက်ခွင့် | [Lab 02](./11-MCPServerHandsOnLabs/02-Security/README.md) |
+| 11.4 | ပတ်ဝန်းကျင် ပြင်ဆင်မှု | ဖွံ့ဖြိုးတိုးတက်မှု ပတ်ဝန်းကျင်, Docker, Azure အရင်းအမြစ်များ | [Lab 03](./11-MCPServerHandsOnLabs/03-Setup/README.md) |
+| 11.5 | ဒေတာဘေ့စ် စီမံရေးဆွဲမှု | PostgreSQL စက်တင်, လက်လည်ပုံစံ ဖန်တီးခြင်းနှင့် နမူနာ ဒေတာ | [Lab 04](./11-MCPServerHandsOnLabs/04-Database/README.md) |
+| 11.6 | MCP ဆာဗာ အကောင်အထည်ဖော်မှု | ဒေတာဘေ့စ်ပေါင်းစပ်ပြီး FastMCP ဆာဗာ တည်ဆောက်ခြင်း | [Lab 05](./11-MCPServerHandsOnLabs/05-MCP-Server/README.md) |
+| 11.7 | ကိရိယာ ဖန်တီးခြင်း | ဒေတာဘေ့စ် မေးခွန်း ကိရိယာများနှင့် စာရင်းဇယား စစ်ဆေးခြင်း | [Lab 06](./11-MCPServerHandsOnLabs/06-Tools/README.md) |
+| 11.8 | Semantic Search | Azure OpenAI နှင့် pgvector ဖြင့် တကျော့တလည် ထည့်သွင်းခြင်း | [Lab 07](./11-MCPServerHandsOnLabs/07-Semantic-Search/README.md) |
+| 11.9 | စမ်းသပ်ခြင်းနှင့် ပြင်ဆင်ခြင်း | စမ်းသပ်ရသနည်းများ၊ ပြင်ဆင်ကိရိယာများနှင့် အတည်ပြုခြင်းနည်းလမ်းများ | [Lab 08](./11-MCPServerHandsOnLabs/08-Testing/README.md) |
+| 11.10 | VS Code ပေါင်းစပ်ခြင်း | VS Code MCP ပေါင်းစပ်ခြင်းနှင့် AI Chat အသုံးပြုမှု ပြင်ဆင်ပုံ | [Lab 09](./11-MCPServerHandsOnLabs/09-VS-Code/README.md) |
+| 11.11 | တပ်ဆင်မှု မဟာဗျူဟာများ | Docker တပ်ဆင်ခြင်း၊ Azure Container Apps နှင့် တိုးချဲ့မှုစဉ်းစားချက်များ | [Lab 10](./11-MCPServerHandsOnLabs/10-Deployment/README.md) |
+| 11.12 | စောင့်ကြည့်ခြင်း | Application Insights, မှတ်တမ်းကောက်ရန်, စွမ်းဆောင်ရည် စောင့်ကြည့်မှု | [Lab 11](./11-MCPServerHandsOnLabs/11-Monitoring/README.md) |
+| 11.13 | အကောင်းဆုံး ကျင့်သုံးမှုများ | စွမ်းဆောင်ရည် တိုးမြှင့်ခြင်း၊ လုံခြုံရေး တင်းကြပ်စေရေးနှင့် ထုတ်လုပ်မှုအတွက် အကြံပြုချက်များ | [Lab 12](./11-MCPServerHandsOnLabs/12-Best-Practices/README.md) |
 
-### 💻 Sample Code Projects
+### 💻 နမူနာ ကုဒ် ပရောဂျက်များ
 
-One of the most exciting parts of learning MCP is seeing your code skills develop progressively. We've designed our code examples to start simple and grow more sophisticated as your understanding deepens. Here's how we introduce concepts - with code that's easy to understand but demonstrates real MCP principles, you'll understand not just what this code does, but why it's structured this way and how it fits into larger MCP applications.
+MCP ကို လေ့လာရာတွင် သင်၏ကုဒ်စွမ်းရည် တိုးတက်မှုကို ထူးခြားစွာ မြင်တွေ့ရမည်။ ကုဒ်နမူနာများကို ရိုးရှင်းစတင်ပြီး နောက်ပိုင်းတွင် ပိုမိုမြင့်မားသည့် ယနေ့နှင့်အညီ ထုတ်လုပ်မှုစနစ်များသို့ တိုးမြှင့်သည်အထိ ဒီဇိုင်းမှတ်သားထားသည်။ ဤနည်းဖြင့် MCP ၏အကြောင်းအရာ များကို နားလည်လွယ်ကူစေပြီး၊ ကုဒ်မှ အခြား MCP အက်ပလီကေးရှင်းများတွင် လက်ခံအသုံးပြုခြင်း ဂရုစိုက်မှုကို ရယူနိုင်ပါသည်။
 
-#### Basic MCP Calculator Samples
-
-| Language | Description | Link |
-|----------|-------------|------|
-| C# | MCP Server Example | [View Code](./03-GettingStarted/samples/csharp/README.md) |
-| Java | MCP Calculator | [View Code](./03-GettingStarted/samples/java/calculator/README.md) |
-| JavaScript | MCP Demo | [View Code](./03-GettingStarted/samples/javascript/README.md) |
-| Python | MCP Server | [View Code](../../03-GettingStarted/samples/python/mcp_calculator_server.py) |
-| TypeScript | MCP Example | [View Code](./03-GettingStarted/samples/typescript/README.md) |
-| Rust | MCP Example | [View Code](./03-GettingStarted/samples/rust/README.md) |
-
-#### Advanced MCP Implementations
+#### အခြေခံ MCP ကိန်းဂဏန်းတွက်စက် နမူနာများ
 
 | Language | Description | Link |
 |----------|-------------|------|
-| C# | Advanced Sample | [View Code](./04-PracticalImplementation/samples/csharp/README.md) |
-| Java with Spring | Container App Example | [View Code](./04-PracticalImplementation/samples/java/containerapp/README.md) |
-| JavaScript | Advanced Sample | [View Code](./04-PracticalImplementation/samples/javascript/README.md) |
-| Python | Complex Implementation | [View Code](../../04-PracticalImplementation/samples/python/READMEmd) |
-| TypeScript | Container Sample | [View Code](./04-PracticalImplementation/samples/typescript/README.md) |
+| C# | MCP ဆာဗာ နမူနာ | [View Code](./03-GettingStarted/samples/csharp/README.md) |
+| Java | MCP ကိန်းဂဏန်းတွက်စက် | [View Code](./03-GettingStarted/samples/java/calculator/README.md) |
+| JavaScript | MCP ပြသမှု | [View Code](./03-GettingStarted/samples/javascript/README.md) |
+| Python | MCP ဆာဗာ | [View Code](../../03-GettingStarted/samples/python/mcp_calculator_server.py) |
+| TypeScript | MCP နမူနာ | [View Code](./03-GettingStarted/samples/typescript/README.md) |
+| Rust | MCP နမူနာ | [View Code](./03-GettingStarted/samples/rust/README.md) |
+
+#### မြင့်မားသော MCP အကောင်အထည်ဖော်မှုများ
+
+| Language | Description | Link |
+|----------|-------------|------|
+| C# | မြင့်မားသော နမူနာ | [View Code](./04-PracticalImplementation/samples/csharp/README.md) |
+| Java with Spring | Container App နမူနာ | [View Code](./04-PracticalImplementation/samples/java/containerapp/README.md) |
+| JavaScript | မြင့်မားသော နမူနာ | [View Code](./04-PracticalImplementation/samples/javascript/README.md) |
+| Python | ပိုမိုရှုပ်ထွေးသော အကောင်အထည်ဖော်မှု | [View Code](../../04-PracticalImplementation/samples/python/READMEmd) |
+| TypeScript | Container နမူနာ | [View Code](./04-PracticalImplementation/samples/typescript/README.md) |
 
 
-## 🎯 Prerequisites for Learning MCP
+## 🎯 MCP လေ့လာရန် လိုအပ်ချက်များ
 
-To get the most out of this curriculum, you should have:
+ဤသင်ကြားမှုကို အပြည့်အဝ ရယူရန် သင်တွင်ရှိရန်လိုအပ်သည်မှာ -
 
-- Basic knowledge of programming in at least one of the following languages: C#, Java, JavaScript, Python, or TypeScript
-- Understanding of client-server model and APIs
-- Familiarity with REST and HTTP concepts
-- (Optional) Background in AI/ML concepts
+- C#, Java, JavaScript, Python, သို့မဟုတ် TypeScript တစ်ခုအနည်းဆုံးတွင် အခြေခံ programming အသိပညာရှိခြင်း
+- Client-server ပုံစံနှင့် API များနားလည်မှု
+- REST နှင့် HTTP အကြောင်းအရာများအပေါ် နားလည်မှု
+- (ရွေးချယ်စရာ) AI/ML အကြောင်းအရာများ နောက်ခံအသိပညာ
 
-- Joining our community discussions for support
+- လူမှုအသိုက်အဝန်း ဆွေးနွေးပွဲများတွင် ပါဝင်ဆွေးနွေးခြင်း
 
-## 📚 Study Guide & Resources
+## 📚 လေ့လာရေး လမ်းညွှန်နှင့် ရင်းမြစ်များ
 
-This repository includes several resources to help you navigate and learn effectively:
+ဤ repository တွင် သင်၏ လမ်းညွှန်မှုနှင့် အကျိုးရှိစွာ သင်ယူမှုအတွက် အရင်းအမြစ်များစွာပါဝင်သည် -
 
-### Study Guide
+### လေ့လာမှု လမ်းညွှန်
 
-A comprehensive [Study Guide](./study_guide.md) is available to help you navigate this repository effectively. This visual curriculum map shows how all the topics connect and provides guidance on how to use the sample projects effectively. It's especially helpful if you're a visual learner who likes to see the big picture.
+အသေးစိတ်ပြည့်စုံသော [Study Guide](./study_guide.md) တစ်ခုပါရှိပြီး ဤ repository ကို ထိရောက်စွာ လမ်းညွှန်ပေးပါသည်။ ဤမြင်ကွင်းသွယ်မှု ဖွဲ့စည်းပုံသည် အရာအားလုံး အဆက်အတွဲကောင်းစွာ ဖော်ပြပြီး နမူနာ ပရောဂျက်များကို ထိရောက်စွာအသုံးချနိုင်ရန် ညွှန်ကြားချက်ပြု ပါသည်။ ကြည့်ရှုသူများအတွက် အထူး ကူညီသည်။
 
-The guide includes:
-- A visual curriculum map showing all topics covered
-- Detailed breakdown of each repository section
-- Guidance on how to use sample projects
-- Recommended learning paths for different skill levels
-- Additional resources to complement your learning journey
+လမ်းညွှန်တွင် ပါဝင်သည်မှာ -
+-ဖော်ပြထားသည့် စာရင်း ချိတ်ဆက်မှု များ အပြည့်အစုံ
+-Repository အပိုင်းတိုင်းကို အသေးစိတ် ခွဲခြမ်းဖော်ပြချက်
+-နမူနာ ပရောဂျက်များ အသုံးပြုနည်း ညွှန်ကြားချက်
+-အရည်အချင်းအမျိုးမျိုးအတွက် သင်ယူမှု လမ်းကြောင်းများ
+-သင်ကြားမှု ခရီးစဉ်ကို ပံ့ပိုးသည့် အပိုဆောင်း အရင်းအမြစ်များ
 
-### Changelog
+### ပြောင်းလဲမှုမှတ်တမ်း
 
-We maintain a detailed [Changelog](./changelog.md) that tracks all significant updates to the curriculum materials, so you can stay current with the latest improvements and additions.
-- New content additions
-- Structural changes
-- Feature improvements
-- Documentation updates
+သင်ယူမှု ဖုန်းရွတ်ဒေတာများအား လက်ရှိ နောက်ဆုံး အဆင့်သို့ မူလအဆင့်ပြောင်းလဲမှု [Changelog](./changelog.md) တစ်ခုဖြင့် ခြေရာခံထားပြီး၊ သင်သည် နောက်ဆုံးအဆင့် တိုးတက်မှုများ၊ အပိုဆောင်းချက်များနှင့် စာရွက်စာတမ်းပြင်ဆင်မှုများကို သိရှိနိုင်ပါသည်။
+- အသစ်ထည့်သွင်းချက်များ
+- ဖွဲ့စည်းပုံပြောင်းလဲမှုများ
+- လုပ်ဆောင်ချက်တိုးတက်မှုများ
+- စာရွက်စာတမ်းများ ပြင်ဆင်မှုများ
 
-## 🛠️ How to Use This Curriculum Effectively
+## 🛠️ ဤ သင်ကြားမှုကို ထိရောက်စွာ အသုံးချနည်း
 
-Each lesson in this guide includes:
-1. MCP ကိုယ်စားပြုแนวคิดများကို ထင်ရှားရှင်းလင်းစွာရှင်းပြပေးခြင်း  
-2. ဘာသာစကားအမျိုးမျိုးဖြင့် ကိုယ်တိုင်ကြည့်နိုင်သော ကုဒ်နမူနာများ  
-3. အမှန်တကယ် MCP အသုံးပြုကိရိယာများ ဆောက်လုပ်ရန် လေ့ကျင့်ခန်းများ  
-4. မြင့်မားသောအဆင့်သင်ယူသူများအတွက် ထပ်ဆောင်းအရင်းအမြစ်များ
+ဤလမ်းညွှန်ရှိ သင်ခန်းစာ တစ်ခုစီတွင်ပါဝင်သော အကြောင်းအရာများမှာ -
+1. MCP ကိုယ်စားလှယ် အယူအဆများကို ရှင်းပြတိကျစွာ  
+2. ဘာသာစကားများစွာဖြင့် တိုက်ရိုက်ကုဒ်နမူနာများ  
+3. အမှန်တကယ် MCP လျှောက်လွှာများ တည်ဆောက်ရန် လေ့ကျင့်ခန်းများ  
+4. ကျွမ်းကျင်သူများအတွက် အပိုအရင်းအမြစ်များ
 
-## လိုအပ်သလို ကြည့်ရှုနိုင်သော အကြောင်းအရာ
+## On Demand Content 
 
 ### [MCP Dev Days July 2025](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
 #### [➡️Watch on Demand - MCP Dev Days](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
-MCP Dev Days တွင် နည်းပညာအထူးတန်းဖြစ်မှု၊ လူမှုအသိုင်းအဝိုင်း ချိတ်ဆက်မှုနှင့် လက်တွားသင်ယူမှုတို့ကို နှစ်ရက်တာအတွင်း ခံစားနိုင်ရန် အဆင်သင့်ဖြစ်ပါစေ။ Model Context Protocol (MCP) ကို အဓိကထား၍ ကျင်းပသော ဒီ ပြင်ပ အစီအစဉ်မှာ AI မော်ဒယ်များနှင့် ၎င်းတို့၏ ရည်မှန်းထားသော ကိရိယာများကို ချိတ်ဆက်ပေးသည့် အသစ်ထွက်လာသော စံတော်ချိန်တစ်ခုဖြစ်သည်။  
-MCP Dev Days ကို https://aka.ms/mcpdevdays တွင် မှတ်ပုံတင်၍ ကြည့်ရှုနိုင်ပါသည်။
+MCP Dev Days အတွက် တစ်ရက်နှစ်ရက်ကြာ နည်းပညာပိုင်း အတွင်းအမြင်များကို ဖျော်ဖြေသည့် ပွဲတော်၊ အသိုင်းအဝိုင်းချိတ်ဆက်မှု၊ လက်တွေ့သင်ယူမှုများ အတွက် ပြင်ဆင်ပါ။ Model Context Protocol (MCP) — AI မော်ဒယ်များနှင့် ၎င်းတို့၏ သုံးစွဲမှု ကိရိယာများကြား ဆက်သွယ်မှုများစနစ်တကျ ပြုလုပ်ရန် ကိုယ်စားပြု စံပြအဖြစ် တည်ဆောက်နေသည့် MCP အတွက် ဗီြရှင်းပွဲတစ်ခုဖြစ်ပါသည်။  
+သင်သည် MCP Dev Days ကို ရှုမြင်နိုင်ရန် ကျွန်ုပ်တို့၏ ပွဲစာမျက်နှာတွင် မှတ်ပုံတင်ပါ: https://aka.ms/mcpdevdays ။ 
 
 #### [Day 1: MCP Productivity, DevTools, & Community:](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
 
-ဒီနေ့မှာ MCP ကို တည်ဆောက်သူများ workflow ထဲတွင် အသုံးပြုနိုင်ရန် အားပေးခြင်း၊ MCP လူမှုအသိုင်းအဝိုင်း ထဲမှ မိတ်ဆွေများနှင့် သမိုင်းအတိတ်တွေရဲ့ဖော်ပြချက်များရှိသည်။ Arcade, Block, Okta, နှင့် Neon ကဲ့သို့သော မိတ်ဖက်များနှင့် Microsoft တို့ ပူးပေါင်းဆောင်ရွက်မှုမှတဆင့် ဖွင့်လွှင့်နိုင်သော MCP ecosystem ကို ရေးဆွဲနေတာကို တွေ့မြင်ရမည်။  
-VS Code, Visual Studio, GitHub Copilot, လူကြိုက်များသော လူမှုစနစ်ကိရိယာများနှင့် ပတ်သက်သော ကိုယ်တိုင်သရုပ်ပြမှုများ  
-လက်တွေ့အခြေအနေများနှင့် အထူးအခြေအနေများအပေါ် အခြေခံ dev workflow များ  
-လူမှုအသိုင်းအဝိုင်းပိုင်းဆိုင်ရာ အစီအစဉ်များနှင့် အမြင်များ  
-MCP နှင့် မိတ်ဆက်တာ စပြီဖြစ် သော်လည်း ထုတ်လုပ်မှုဆိုင်ရာ တည်ဆောက်မှုများတွင်ပါ ပါဝင်နေသူများအတွက် Day 1 သည် ရည်ရွယ်ချက်နှင့် လုပ်ဆောင်ရန်နည်းလမ်းများပေးမည်ဖြစ်သည်။
+ဒီနေ့မှာ MCP ကို ၎င်း၏ developer workflow တွင် အသုံးပြု နိုင်စေရန် developer များကို စွမ်းအားပေးခြင်းနှင့် MCP အသိုင်းအဝိုင်း၏ ထူးချွန်မှုများကို ဂုဏ်ပြုခြင်းပင်ဖြစ်သည်။ Arcade, Block, Okta, နှင့် Neon ကဲ့သို့ပါတနာများနှင့် အသိုင်းအဝိုင်းအဖွဲ့ဝင်များ ချိတ်ဆက် ဆောင်ရွက်လျက် Microsoft နဲ့ ပူးပေါင်းပြီး ဖွင့်လှစ်နိုင်သော၊ ချဲ့ထွင်နိုင်သော MCP ပတ်၀န်းကျင်ကို ဖွဲ့စည်းရန် ကြိုးပမ်းနေသည်ကို တွေ့မြင်လိမ့်မည်။  
+VS Code, Visual Studio, GitHub Copilot နှင့် လူသုံးများသော အသိုင်းအဝိုင်းကိရိယာများတွင် ချက်ချင်းပြသနိုင်သော ရှိသော ပညာပြရာ  
+လက်တွေ့နှင့် စိတျအညီ developer workflow များ  
+အသိုင်းအဝိုင်းဦးဆောင်သော အစည်းအဝေးများနှင့် အတွင်းအမြင်များ  
+သင်သည် MCP ကို စတင်အသုံးပြုနေသူ ဖြစ်စေ သို့မဟုတ် ယခုအချိန်တွင် တည်ဆောက်နေသူဖြစ်စေ၊ Day 1 သည် အားပေးမှုနှင့် လုပ်ဆောင်နိုင်သော အကြံဉာဏ်များဖြင့် ဖွင့်လှစ်ပေးမည်ဖြစ်သည်။
 
 #### [Day 2: Build MCP Servers with Confidence](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
 
-MCP ဆောက်လုပ်သူများအတွက်ဖြစ်ပြီး  MCP servers များ ဖန်တီးခြင်းနှင့် MCP ကို AI workflow များတွင် ထည့်သွင်း အသုံးပြုခြင်းဆိုင်ရာ အကောင်းဆုံး နည်းဗျူဟာနှင့် အကောင်းဆုံး လေ့ကျင့်မှုများကို နက်နက်ရှိုင်းရှိုင်း ချိတ်ဆက်တယ်။
+MCP ဆောက်လုပ်သူများအတွက် ဖြစ်သည်။ MCP server များကို ဖန်တီးခြင်းနှင့် MCP ကို AI workflow များသို့ ပေါင်းစည်းခြင်းအတွက် ပြည့်စုံသော အကောင်အထည်ဖော်နည်းလမ်းများ၊ မူဝါဒများကို လေ့လာမည်။
 
-#### အကြောင်းအရာများမှာ -
+#### ခေါင်းစဉ်များမှာ -
 
-- MCP Servers ဖန်တီးခြင်းနှင့် agent အတွေ့အကြုံများထဲသို့ ထည့်သွင်းခြင်း  
-- Prompt လမ်းညွှန်ပြီး ဖွံ့ဖြိုးတိုးတက်မှု  
-- ဆာဖတ်တန်ဖိုးမြင့် လုံခြုံရေး စနစ်များ  
-- Functions, ACA နှင့် API Management ကဲ့သို့သော အဆောက်အအုံများ အသုံးပြုခြင်း  
-- Registry ကို တကျောင်းတည်း စနစ်တကျ ထိန်းညှိပေးခြင်း (1P + 3P)
+- MCP Server များ တည်ဆောက်ခြင်းနှင့် အေးဂျင့်အတွေ့အကြုံများတွင် ပေါင်းစည်းခြင်း  
+- Prompt အခြေခံ ဖန်တီးခြင်း  
+- လုံခြုံရေး ကောင်းမွန်မှုဆိုင်ရာ လုပ်ထုံးလုပ်နည်းများ  
+- Functions, ACA, နှင့် API Management တို့ကဲ့သို့ ဘလောက်များ အသုံးပြုခြင်း  
+- Registry ကို ကိုက်ညီစေရန်နှင့် ကိရိယာများ (1P + 3P)  
 
-သင်သည် Developer, Tool Builder သို့မဟုတ် AI product strategy area အတွက် ရည်မှန်းထားသူဖြစ်လျှင် ဒီနေ့ရက်မှာ scalable, secure, နှင့် အနာဂတ်မွန်ကန်သော MCP ဖြေရှင်းချက်များထုတ်လုပ်ရန် လိုအပ်သော အမြင်များနှင့် အရေးကြီးသော သတင်းအချက်အလက်များပါဝင်သည်။
+သင်သည် developer ဖြစ်ပါက၊ ကိရိယာဖန်တီးသူ ဖြစ်ပါက၊ သို့မဟုတ် AI ထုတ်ကုန် အတွေးအခေါ်ရှင် ဖြစ်ပါက ဒီနေ့မှာ သင်လိုအပ်သော စနစ်တကျ၊ လုံခြုံပြီး လူကြီးမင်း၏ MCP ဖြေရှင်းချက်များ ဖွံ့ဖြိုးနိုင်ရန် အကြံပေးချက်များ ပါဝင်သည်။
 
 ### MCP Boot Camp August 2025
-MCP servers များ ဖန်တီးနည်း၊ VS Code ဖြင့် စပ်ဆက်နည်း၊ Azure ပေါ်တွင် လေ့လာသင်ကြားမှုများအရ ပရော်ဖက်ရှင်နယ် တည်ဆောက်နည်းများကို စိတ်အားထက်သန်စွာ တက်ရောက်နိုင်ပါသည်။ MCP for Beginners သင်ခန်းစာမှ အကြောင်းအရာများအပေါ် မူတည်ပြီး အထူးပြုသော နည်းပညာနှင့်အတူ လက်တွေ့ကျွမ်းကျင်မှုများ ရရှိပါမည်။
+MCP server များ ဖန်တီးခြင်း၊ VS Code နှင့် ပေါင်းစည်းခြင်း၊ Azure ပေါ်တွင် တက်ကြွစွာ တပ်ဆင်ရာတွင် လေ့ကျင့်ခန်း များပါဝင်သော MCP for Beginners သင်ကြားချက်မှ မူတည်၍ တက်ကြွသော ဗီဒီယို အစီအစဉ်များဖြင့် သင်ယူပါ။  အထွေထွေ ကျွမ်းကျင်မှုပေးနိုင်မည့် နည်းပညာတစ်ခုကို လေ့ကျင့်မှုဖြင့် ရယူနိုင်ပါသည်။
 
 #### [➡️Watch on Demand MCP Bootcamp | English](https://developer.microsoft.com/en-us/reactor/series/s-1568/)
 #### [➡️Watch on Demand MCP Bootcamp | Brasil](https://developer.microsoft.com/en-us/reactor/series/S-1566/)
 #### [➡️Watch on Demand MCP Bootcamp | Spanish](https://developer.microsoft.com/en-us/reactor/series/S-1567/)
 
 ### Let's Learn MCP with C# - Tutorial Series
-Model Context Protocol (MCP) ကို လေ့လာရင်း AI မော်ဒယ်များနှင့် client applications များ ကြား ဆက်သွယ်မှုကို စံသတ်မှတ်ချက်တစ်ခုအဖြစ် ဖွဲ့စည်းထားသော cutting-edge framework ဖြစ်ပါသည်။ ဒီ beginner-friendly စာရင်းပိုင်းမှတဆင့် MCP ကို မိတ်ဆက်ပေးပြီး သင့်ရဲ့ ပထမဆုံး MCP server ကို ဖန်တီးပုံကို ခန့်မှန်းညွှန်ပြပေးပါမည်။  
-#### C#: [https://aka.ms/letslearnmcp-csharp](https://aka.ms/letslearnmcp-csharp)  
-#### Java: [https://aka.ms/letslearnmcp-java](https://aka.ms/letslearnmcp-java)  
-#### JavaScript: [https://aka.ms/letslearnmcp-javascript](https://aka.ms/letslearnmcp-javascript)  
+AI မော်ဒယ်များနှင့် client application များအကြား အပြန်အလှန် ဆက်သွယ်မှုများကို စံတော်ချိန်တင်ဖို့ ဒီ MCP ကို ကျွန်တော်တို့ လေ့လာကြမယ်။ ဒီလိုစတင်သူများအတွက် စိတ်လွယ်ကူသင်ခန်းစာအဖြစ် MCP ကို မိတ်ဆက်ပေးပြီး ပထမဆုံး MCP server တစ်ခုတည်ဆောက်ခြင်းကို ဦးတည်လမ်းညွှန်ပါမယ်။
+#### C#: [https://aka.ms/letslearnmcp-csharp](https://aka.ms/letslearnmcp-csharp)
+#### Java: [https://aka.ms/letslearnmcp-java](https://aka.ms/letslearnmcp-java)
+#### JavaScript: [https://aka.ms/letslearnmcp-javascript](https://aka.ms/letslearnmcp-javascript)
 #### Python: [https://aka.ms/letslearnmcp-python](https://aka.ms/letslearnmcp-python)
 
-## 🎓 သင်၏ MCP ခရီးစဉ် စတင်ပါပြီ
+## 🎓 သင့် MCP ခရီးစတင်သည်
 
-ဂုဏ်ယူပါတယ်! သင်သည် ပရိုဂရမ်မင်း ကျွမ်းကျင့်မှုများ တိုးချဲ့ရန်နှင့် AI ဖွံ့ဖြိုးတိုးတက်မှု၏ နောက်ဆုံးပန်းတိုင်များနှင့် ချိတ်ဆက်ရေးရာအတွက် စိတ်လှုပ်ရှားဖြစ်စရာ ခရီးစဉ်ကို စတင်လိုက်ပြီဖြစ်သည်။
+ဂုဏ်ပြုပါတယ်! သင့်ကိုယ်ရေးအကျိုးကျေးဇူးဖြည့်တင်း ဖွံ့ဖြိုးတိုးတက်မှု လမ်းကြောင်းတစ်ခုရဲ့ ပထမဆုံးခြေလှမ်းကို ခြေတတ်လိုက်ပြီဖြစ်သည်။ သင်၏ ဘာသာစကား ဖျတ်အစွမ်းများကို တိုးတက်အောင်နှင့် အနာဂတ် AI ဖွံ့ဖြိုးမှုနယ်ပယ်နှင့် ချိတ်ဆက်ပေးမည့် ခရီးစဉ်တစ်ခုပင် ဖြစ်သည်။
 
-### သင် ယခုထိ ပြီးမြောက်ထားသော အရာများ
+### သင့်ရဲ့ လုပ်ဆောင်ပြီးခဲ့သောအရာများ
 
-ဒီမိတ်ဆက်စာမျက်နှာကို ဖတ်ရှုခြင်းဖြင့် သင်သည် MCP အကြောင်းအသိပညာ အခြေခံ ရရှိစတင်ထားပြီး ဖြစ်သည်။ MCP ဆိုတာ ဘာလဲ၊ ဘာကြောင့် အရေးကြီးသလဲ၊ ဒီ သင်ရိုးညွှန်းမှုက သင့်တိုးတက်မှုခရီးစဉ်ကို ဘယ်လို ကူညီပေးမှာလဲ ဆိုတာကို နားလည်တတ်မြောက်ထားပါတယ်။ ဒါဟာ အရေးပါသော အောင်မြင်မှုတစ်ခု ဖြစ်ပြီး ဒီ နည်းပညာ သုံးနိုင်မှုများ အတွက် သင်၏ သိပ္ပံပညာ  အခြေခံ ဖြစ်ပါသည်။
+ဤနိဒါန်းကို ဖတ်ရှုခြင်းဖြင့် သင်သည် MCP အသိပညာအစဖြစ်ပုံကို အစပြု၍ MCP ဆိုတာဘာ, မည်သို့အရေးကြီးသည်, ဤသင်တန်းအစီအစဉ်က သင့် လေ့လာမှု ခရီးသို့ ဘယ်လိုကူညီပေးမည်ဆိုတာ နားလည်နေပါသည်။  ၎င်းမှာ သိသင့်တာတစ်ခုဖြစ်ပြီး ဒီနည်းပညာအတွက် သင်ပညာရှင်တစ်ဦးဖြစ်လာရန် မျှော်လင့်ချက်အရမ်းမြင့်ပုံတစ်ခု ဖြစ်သည်။
 
-### လျှောက်လှမ်းနည်းမော်တော်
+### အနာဂတ်ခရီး
 
-သင်သည် modules များစွာဖြတ်သန်းသွားမည်ဖြစ်ပြီး အတတ်ပညာရှင်တစ်ဦးအားလုံးက စတင်မှသာ တကျော့အလျားရှိခဲ့ကြတယ်ဆိုတာကို မေ့မထား။ အခုခေတ်မှာ ရှုပ်ထွေးစရာ များသောအကြောင်းအရာများဟာ လေ့ကျင့်မှုနှင့် အသုံးချမှုဖြင့် သဘာဝကျကျ ဖြစ်လာမယ်။ ခြေလှမ်းတိုတိုတိုင်းက သင်၏ ဖွံ့ဖြိုးတိုးတက်မှုကို အားဖြည့်ပေးမည်ဖြစ်သည်။
+မော်ဂျူးများဖြတ်သန်းသွားရာမှ သတိရပါ—ရှေ့ဆက်ပညာရှင် တစ်ယောက်ပိုင်း မှစပြီးဖြစ်သည်ဟုလည်း လူတိုင်းတွေ့ရှိခဲ့ပါသည်။ စောင့်ကြည့်ရန်ခက်ခဲသွားသည့် အယူအဆများကို ကျင့်ကြံ လေ့ကျင့် လျက်မြင့်မားလာမည့် အရည်အချင်းများဖြစ်လာမည်။ ဦးတည်ချက်လေးတိုင်းသည် သင့်ဖွံ့ဖြိုးတိုးတက်မှုအသက်တာနှင့် ကိုက်ညီသော အစွမ်းထက်စွမ်းရည်များ ပြည့်စုံစေပါသည်။
 
-### သင်၏ ထောက်ခံအားကူညီမှုကွန်ရက်
+### သင့်ထောက်ခံမှုကွန်ယက်
 
-သင်သည် MCP ကို စိတ်အားထက်သန်ပြီး အခြားသူများကို ကူညီလိုသော သင်ယူသူများနှင့် ကွပ်ကဲမှုရှိသော အဖွဲ့အစည်းရဲ့ အဖျော်ယမကာတစ်ခုပါဝင်နေသည်။ ကုဒ်ရေးသည့်ပြဿနာတစ်ခုတွင် အတားအဆီး ရှိပါက သို့မဟုတ် ရရှိသော ရလဒ်တစ်ခုကို မျှဝေလိုပါက လူမှုအသိုင်းအဝိုင်းက သင့်အား ကူညီရမည်။
+MCP နှင့် စိတ်အားထက်သန်သော သင်ယူသူများ၊ ကျွမ်းကျင်သူများဦးစွာစာကြည့်ကြလျက် သင်၏ခရီးမှာ အောင်မြင်မှုရရှိအောင် ကူညီပေးရန် ပြင်ဆင်ထားသည်။ သင့်ဆွေးနွေးချက်များသို့မဟုတ် breakthrough များကို မျှဝေလိုပါက အသိုင်းအဝိုင်းမှာရှိနေသည်။
 
-AI အက်ပ်များ ဖန်တီးရာတွင် အခက်အခဲတွေ့ပါက MCP နှင့် ပတ်သက်သော လေ့လာသူများနှင့် အတွေ့အကြုံရှိသူများ အတူတူဆွေးနွေးပါ။ ဒီကွန်ရက်သည် မေးခွန်းများအား လွတ်လပ်စွာ မေးမြန်းနိုင်ပြီး အသိပညာကို မျှဝေသည့် အဖွဲ့အစည်းတစ်ခုဖြစ်သည်။
+သင်အကူအညီလိုအပ်လျှင် သို့မဟုတ် AI အက်ပ်များ တည်ဆောက်ခြင်းနှင့်ဆိုင်သော မေးခွန်းရှိလျှင် MCP အကြောင်း လေ့လာသူများနှင့် ရှေ့နေများကို စကားပြောပွဲများတွင် ပါဝင်ဆွေးနွေးပါ။  ၎င်းမှာ မေးခွန်းများက ချီးကျူးခံစားရပြီး အသိပညာတွေ့ရှိမှုများ လွတ်လပ်စွာ မျှဝေကြသည့် အထောက်အကူပြု အသိုင်းအဝိုင်း ဖြစ်သည်။
 
 [![Microsoft Foundry Discord](https://dcbadge.limes.pink/api/server/nTYy5BXMWG)](https://discord.gg/nTYy5BXMWG)
 
-ထုတ်ကုန်တုံ့ပြန်ချက် သို့မဟုတ် ဖန်တီးစဉ် အမှားများဖြစ်ပါက အောက်ပါနေရာသို့ သွားရောက်ကြည့်ရှုပါ -
+သင်သည် ထုတ်ကုန် အသုံးပြုမှုပြန်လည်ထောက်ပြမှု သို့မဟုတ် အမှားများရှိပါက -
 
 [![Microsoft Foundry Developer Forum](https://img.shields.io/badge/GitHub-Microsoft_Foundry_Developer_Forum-blue?style=for-the-badge&logo=github&color=000000&logoColor=fff)](https://aka.ms/foundry/forum)
 
-### စတင်ရန် အသင့်ဖြစ်ပြီလား?
+### စတင်ဖို့ ပြင်ဆင်ပါပြီလား?
 
-သင်၏ MCP ခရီးစဉ်ကို ယခုစတင်လိုက်ပါ! Module 0 မှ စတင်ပြီး ပထမဆုံး MCP လက်တွေ့အတွေ့အကြုံများ ထည့်သွင်းလေ့လာပါ၊ ဒါမှမဟုတ် ပုံစံ စမ်းသပ်မှု ပစ္စည်းများကို ကြည့်ရှုပြီး ဆောက်လုပ်မည့်အရာများကို ခန့်မှန်းကြည့်ပါ။ သတိထားပါ - အတတ်ပညာရှင်တိုင်းသည် သင်ရှိနေသည့် အချက်မှ စတင်ခဲ့ပြီး သည်းခံမှုနှင့် လေ့ကျင့်မှုဖြင့် မည်သည့် အောင်မြင်မှုကိုမဆို ရောင့်ရဲရပါမည်။
+သင်၏ MCP ခရီးစလုပ်သည် ယခုမှစတင်သည်! ပထမဆုံး လက်တွေ့ MCP အတွေ့အကြုံများ အတွက် Module 0 ဖြင့် စတင်ပါ၊ သို့မဟုတ် တည်ဆောက်မည့် နမူနာပရောဂျက်များကို လေ့လာပါ။ သတိရပါ — အားလုံးသော ကျွမ်းကျင်သူများသည် သင်၏နေရာတစ်ပတ်လောက်မှာ စတင်ခဲ့ကြကာ စိတ်ရှည်နှင့် လေ့ကျင့်မှုတို့ဖြင့် မည်ဘယ်အရာကို ပြုလုပ်နိုင်သလဲဆိုတာ အံ့ဩဖွယ် ဖြစ်လာမည်ဖြစ်သည်။
 
-Model Context Protocol ဖွံ့ဖြိုးရေးကမ္ဘာသို့ ကြိုဆိုပါတယ်။ ကျွန်တော်တို့ အတူတကွ အံ့သြဖွယ်အရာတစ်ခုကို တည်ဆောက်ကြရအောင်!
+Model Context Protocol ဖွံ့ဖြိုးတိုးတက်မှုပိုင်းသို့ ဖိတ်ကြားလျက်ရှိပါသည်။ ကျွန်တော်တို့အတူတကွ အံ့ဖွယ်ရာ တည်ဆောက်ကြမယ်!
 
-## 🤝 သင်ယူမှု လူမှုအသိုင်းအဝိုင်းတွင် လှုပ်ရှားခြင်း
+## 🤝 သင်ယူမှုအသိုင်းအဝိုင်းအား တွဲဖက်ကူညီခြင်း
 
-ဒီ သင်ရိုးညွှန်းမှုကို သင်တို့လို သင်ယူသူများ၏ ထောက်ပံ့မှုဖြင့် အားကောင်းလာပါသည်။ သင်သည် တစ်လုံးတည်းစာလုံးပြင်ခြင်း၊ ပိုမိုရှင်းလင်းသေချာသောရှင်းပြချက်တစ်ခု ထပ်ထည့်ရန် သို့မဟုတ် နမူနာအသစ်တစ်ခု ထပ်တင်ရန်ဖြစ်စေ သင်၏ ထောက်ပံ့မှုများက အခြား စတင်သင်ယူသူများအထောက်အကူဖြစ်စေပါသည်။
+ဤ သင်တန်းအစီအစဉ်သည် သင်လို အခြေခံသမားများ၏ လှုပ်ရှားမှုများနှင့် တိုးတက်လာသည်! စာလုံးအမှားများ ပြင်ဆင်ခြင်း၊ ပို၍ ရှင်းလင်းသော ရှင်းပြချက်ကို အကြံပြုခြင်း၊ သို့မဟုတ် နမူနာ အသစ်တစ်ခု ထည့်သွင်းခြင်းသည် အခြေခံသူ အခြားများအောင်မြင်ရန် အထောက်အကူဖြစ်သည်။
 
-ခေတ်မီကုဒ်နမူနာများ ပံ့ပိုးပေးသူ Microsoft Valued Professional [Shivam Goyal](https://www.linkedin.com/in/shivam2003/) ကို ကျေးဇူးတင်ပါတယ်။
+Microsoft Valued Professional [Shivam Goyal](https://www.linkedin.com/in/shivam2003/) အား ကုဒ်နမူနာများ ယူဆောင်ပေးမှုအတွက် ကျေးဇူးတင်ပါသည်။
 
-ထောက်ပံ့မှုလုပ်ငန်းစဉ်ကို ကြိုဆိုပြီး အထောက်အပံ့ရရှိစေဖို့ ရေးဆွဲထားပါတယ်။ အများစုသော ထောက်ပံ့မှုများအတွက် Contributor License Agreement (CLA) လိုအပ်ပါသည်။ ဒီလိုက်နာရမည့် စနစ်ကို ကြိုးပမ်းမှုပြုလုပ်စဉ်မှာ အလိုအလျောက် အတူ သွားပါလိမ့်မည်။
+အထောက်အပံ့ဖြည့်စွမ်းခြင်းဖြစ်စဉ်သည် လက်ခံကြိုဆိုပြီး ထောက်ပံ့ဝိုင်းစနစ်ဖြစ်သည်။ အများစုသော ဝေမျှမှုများမှာ Contributor License Agreement (CLA) ကိုလိုအပ်ပါသည်၊ သို့သော် အလိုအလျောက် ကိရိယာများက သင့်အား လွယ်ကူစွာ လမ်းညွှန်ပေးလိမ့်မည်။
 
-## 📜 အခမဲ့ပေါ်လွင်သင်ယူမှု
+## 📜 Open Source Learning
 
-ဒီ လုံးဝ သင်ရိုးညွှန်းမှုကို MIT [LICENSE](../../LICENSE) ချုပ်ဆိုမှုဖြင့် ထုတ်ပြန်ထားသောကြောင့် သင်သည် အချိုးအစား ပြောင်းလဲ၊ နှင့် လွတ်လပ်စွာ မျှဝေခံနိုင်ပါသည်။ ကျွန်တော်တို့၏ ရည်ရွယ်ချက်မှာ MCP ပညာကို Developer များအားလုံး အတွက် ရရှိနိုင်စေရန်ဖြစ်သည်။
-## 🤝 ထောက်ပံ့မှု လမ်းညွှန်ချက်များ
+ဤ သင်တန်းအစီအစဉ်တစ်ခုလုံးကို MIT [LICENSE](../../LICENSE) အောက်တွင် ရရှိနိုင်ပါသဖြင့် မည်သူမဆို အခမဲ့အသုံးပြု၊ ပြင်ဆင် ပြန်ဝေဖြန့်နိုင်သည်။ ၎င်းသည် MCP အသိပညာကို စနစ်တကျဖြန့်ချိရန် ကျွန်တော်တို့၏ ရည်မှန်းချက်အား ထောက်ပံ့ပေးပါသည်။
 
-ဤပရောဂျက်သည် ထောက်ပံ့မှုများနှင့် အကြံပြုချက်များကို ကြိုဆိုပါသည်။  အများဆုံး ထောက်ပံ့မှုများအတွက် Contributor License Agreement (CLA) ဖြင့် သင်၏ ထောက်ပံ့မှုကို သုံးနိုင်မှုအခွင့်အရေး ကို မိုက်ခရိုဆိုဖ်တ် သို့တင်ပြ သောကြောင့် စီမံခန့်ခွဲမှုအတွက် သင် အသိမှတ်ပြုရပါမည်။ အသေးစိတ်အချက်အလက်များအတွက် <https://cla.opensource.microsoft.com> သို့လေ့လာပါ။
+## 🤝 Contribution Guidelines
 
-သင် pull request တင်သည့်အခါ CLA bot သည် သင် ဖြည့်စွက်ရမည့် CLA အရှိ/မရှိကို အလိုအလျောက်စာရမှတ် ပြုလုပ်ပြီး PR တွင် သင့်တော်သော အတည်ပြုချက်များ (ဉပမာ status check, comment) ကို ထည့်သွင်းပေးပါလိမ့်မည်။ ဘော့မှ ပေးသည့် လမ်းညွှန်ချက်များအတိုင်း လိုက်နာ လုပ်ဆောင်ပါ။ သင်သည် CLA နဲ့ ပတ်သက်သော အတည်ပြုချက်ကို တစ်ကြိမ်တည်းသာ ရှိသော repos အားလုံးအတွက် လိုက်နာရမှာဖြစ်သည်။
+ဤ ပရောဂျက်သည် နည်းနည်း အကြံပြုချက်များနှင့် ဝမ်းမြောက်အသုံးပြုသူ သွင်ပြင်မှုများကို ကြိုဆိုပါသည်။ များသော ဝေမျှမှုများတွင် Contributor License Agreement (CLA) ကို သဘောတူရန်လိုအပ်ပြီး သင်၏ ဝေမျှမှုကို အသုံးပြုခွင့် ပေးမည့် အခန်းကဏ္ဍတစ်ခုဖြစ်ကြောင်း သေချာကြောင်း ကြေညာရမည်။ အသေးစိတ်အတွက် <https://cla.opensource.microsoft.com> ကိုကြည့်ပါ။
 
-ဤပရောဂျက်အတွက် [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) ကို အသုံးပြုထားပြီး ဖြစ်ပါသည်။ ပိုမိုသိရှိလိုပါက [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) ကို ကြည့်ရှုပါ သို့မဟုတ် [opencode@microsoft.com](mailto:opencode@microsoft.com) ကို မေးမြန်း ဆက်သွယ်နိုင်ပါသည်။
+သင် pull request တင်သွင်းသောအခါ CLA bot သည် သင် CLA ပေးရန် လိုအပ်သည်ဟု ဆုံးဖြတ်ပေးပြီး PR ကို သီးခြား အဆင့်များဖြင့် အမှတ်အသားပေးမည် (ဥပမာ - အခြေအနေစစ်ဆေးချက်၊ မှတ်ချက်) ဖြစ်သည်။ botကရဲ့ ညွှန်ကြားချက်များကို လိုက်နာပါ။ ၎င်းကို သင်၏ အားလုံးသော repo များတွင် တစ်ကြိမ်တည်းသာ လုပ်ဆောင်ရမည်။
+
+ဤ ပရောဂျက်က Microsoft Open Source Code of Conduct ကို သဘောတူလက်ခံထားသည်။ [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) တွင် မေးမြန်းလိုပါက သို့မဟုတ် ပိုမိုသိရှိလိုပါက [opencode@microsoft.com](mailto:opencode@microsoft.com) ဆက်သွယ်နိုင်ပါသည်။
 
 ---
 
-*သင်၏ MCP ခရီးစဉ်ကို စတင်ဖို့ အသင့်ပါသလား? [Module 00 - Introduction to MCP](./00-Introduction/README.md) နှင့် စတင်ပြုလုပ်ပြီး Model Context Protocol ဖွံ့ဖြိုးရေးကမ္ဘာထဲ သို့ ပထမထပ်ကို ခြေလှမ်း ခဲ့ပါ!*
+*သင်၏ MCP ခရီးစတင်ရန် ပြင်ဆင်ပါပြီလား? [Module 00 - Introduction to MCP](./00-Introduction/README.md) ဖြင့် စတင်၍ Model Context Protocol ဖွံ့ဖြိုးတိုးတက်မှု၏ ကမ္ဘာကို သင်နေရာယူလိုက်ပါ!*
 
 
-## 🎒 အခြားသင်တန်းများ
-ကျွန်တော်တို့ အသင်းမှ အခြားသင်တန်းများကိုလည်း ထုတ်လုပ်တင်ဆက်နေသည်။ ကြည့်ရှုလိုက်ပါ -
+
+## 🎒 အခြား သင်တန်းများ
+
+ကျွန်ုပ်တို့၏ အဖွဲ့မှာ အခြားသင်တန်းများ ထုတ်လုပ်လျက်ရှိသည်။ ကြည့်ပါ - 
 
 <!-- CO-OP TRANSLATOR OTHER COURSES START -->
 ### LangChain
 [![LangChain4j for Beginners](https://img.shields.io/badge/LangChain4j%20for%20Beginners-22C55E?style=for-the-badge&&labelColor=E5E7EB&color=0553D6)](https://aka.ms/langchain4j-for-beginners)
 [![LangChain.js for Beginners](https://img.shields.io/badge/LangChain.js%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=0553D6)](https://aka.ms/langchainjs-for-beginners?WT.mc_id=m365-94501-dwahlin)
-
+[![LangChain for Beginners](https://img.shields.io/badge/LangChain%20for%20Beginners-22C55E?style=for-the-badge&labelColor=E5E7EB&color=0553D6)](https://github.com/microsoft/langchain-for-beginners?WT.mc_id=m365-94501-dwahlin)
 ---
 
 ### Azure / Edge / MCP / Agents
@@ -401,6 +404,6 @@ Model Context Protocol ဖွံ့ဖြိုးရေးကမ္ဘာသိ
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**ေၾကညာခ်က္**:
-ဤစာတမ္းကို AI ဘာသာျပန္ခြင့္ျဖင့္ [Co-op Translator](https://github.com/Azure/co-op-translator) အသံုးျပဳၿပီး ဘာသာျပန္ထားပါသည္။ တိကျမွန်ကန္ျခင္းကို ကြိဳးစားသည့္အေပၚမူတည္၍၊ အလိုအေလြ်ာက္ ဘာသာျပန္ျခင္းတြင္ အမွား သို့မဟုတ္ မမွန္ကန္ခ်က္မ်ား ပါရွိႏိုင္သည့္ အခ်က္ကို သိရွိထားေပးပါ။ မူရင္းစာတမ္းကို ေဒသခံဘာသာစကားျဖင့္ အေတာ္ေတာ္အေရးႀကီးေသာ အခ်က္အလက္အတြက္ ေအာက္ပါအတိုင္း တရားဝင္အခ်က္အလက္အေနျဖင့္ သင့္အား အသိေပးလိုပါတယ္။ အေရးႀကီးေသာ အခ်က္အလက္မ်ားအတြက္ လူ႔ဘာသာျပန္သူ တစ္ေယာက္၏ လုပ္ငန္းအတတ္ပညာ ေဖာ္ျပခ်က္ကို အသံုးျပဳရန္ ေၾကညာလိုပါသည္။ ဒီဘာသာျပန္ျခင္းကို အသံုးျပဳျခင္းသည္ ေပၚေပါက္လာတတ္ေသာ နားလည္မႈမွားခြင့္မ်ား သို႔မဟုတ္ မွားယြင္းဆက္ဆံမႈမ်ားအတြက္ တာဝန္မရွိပါကြောင်း ေၾကညာပါသည္။
+**အကြောင်းကြားချက်**  
+ဤစာတမ်းကို AI ဘာသာပြန် ဝန်ဆောင်မှုဖြစ်သည့် [Co-op Translator](https://github.com/Azure/co-op-translator) အား အသုံးပြု၍ ဘာသာပြန်ထားခြင်းဖြစ်ပါသည်။ ကျွန်ုပ်တို့သည် မှန်ကန်မှုအတွက် ကြိုးစားပေမယ့် အလိုအလျောက် ဘာသာပြန်မှုများတွင် မှားယွင်းချက်များ သို့မဟုတ် မမှန်ကန်မှုများ ပါဝင်နိုင်ကြောင်း သတိပြုပါရန် မေတ္တာရပ်ခံပါသည်။ မူရင်းစာတမ်းကို မိခင်ဘာသာဖြင့်သာ အတည်ပြုနိုင်သော အရင်းအမြစ်အနေဖြင့် တွက်ချက်သင့်ပါသည်။ အရေးကြီးသော သတင်းအချက်အလက်များအတွက် ကျွမ်းကျင်သူလူသား ဘာသာပြန်ခြင်းကို အကြံပြုပါသည်။ ဤဘာသာပြန်ချက်အသုံးပြုမှုမှ ဖြစ်ပေါ်နိုင်သော နားမလည်မှုများ သို့မဟုတ် မှားယွင်းချက်များအတွက် ကျွန်ုပ်တို့မှာ တာဝန်မရှိပါ။
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
