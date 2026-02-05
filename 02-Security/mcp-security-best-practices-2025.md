@@ -1,6 +1,12 @@
-# MCP Security Best Practices - December 2025 Update
+# MCP Security Best Practices - February 2026 Update
 
 > **Important**: This document reflects the latest [MCP Specification 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) security requirements and official [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices). Always refer to the current specification for the most up-to-date guidance.
+
+## 🏔️ Hands-On Security Training
+
+For practical implementation experience, we recommend the **[MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/)** - a comprehensive guided expedition to securing MCP servers in Azure. The workshop covers all OWASP MCP Top 10 risks through a "vulnerable → exploit → fix → validate" methodology.
+
+All practices in this document align with the **[OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)** for Azure-specific implementation guidance.
 
 ## Essential Security Practices for MCP Implementations
 
@@ -178,6 +184,11 @@ The Model Context Protocol introduces unique security challenges that extend bey
 - [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 - [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
 - [MCP Authorization Specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
+
+### **OWASP MCP Security Resources**
+- [OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/) - Comprehensive OWASP MCP Top 10 with Azure implementation
+- [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) - Official OWASP MCP security risks
+- [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) - Hands-on security training for MCP on Azure
 
 ### **Microsoft Security Solutions**
 - [Microsoft Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)

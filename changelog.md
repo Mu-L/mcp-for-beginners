@@ -2,6 +2,94 @@
 
 This document serves as a record of all significant changes made to the Model Context Protocol (MCP) for Beginners curriculum. Changes are documented in reverse chronological order (newest changes first).
 
+## February 5, 2026
+
+### MCP Specification 2025-11-25 Compliance Review
+
+#### Core Concepts Enhancement (01-CoreConcepts/)
+- **New Client Primitive - Roots**: Added comprehensive documentation on the Roots client primitive, enabling servers to understand filesystem boundaries and access permissions
+- **Tool Annotations**: Added documentation on tool behavioral annotations (`readOnlyHint`, `destructiveHint`) for better tool execution decisions
+- **Tool Calling in Sampling**: Updated Sampling documentation to include `tools` and `toolChoice` parameters for model-driven tool invocation during sampling requests
+- **URL Mode Elicitation**: Added documentation on URL-based elicitation for server-initiated external web interactions
+- **Tasks (Experimental)**: Added new section documenting the experimental Tasks feature for durable execution wrappers and deferred result retrieval
+- **Icons Support**: Noted that tools, resources, resource templates, and prompts can now include icons as additional metadata
+
+#### Documentation Updates
+- **README.md**: Added MCP Specification 2025-11-25 version reference and date-based versioning explanation
+- **study_guide.md**: Updated curriculum map to include Tasks and Tool Annotations in Core Concepts section; updated document timestamp
+
+#### Specification Compliance Verification
+- **Protocol Version**: Verified all documentation references current MCP Specification 2025-11-25
+- **Architecture Alignment**: Confirmed two-layer architecture (Data Layer + Transport Layer) documentation accuracy
+- **Primitives Documentation**: Validated server primitives (Resources, Prompts, Tools) and client primitives (Sampling, Elicitation, Logging, Roots)
+- **Transport Mechanisms**: Verified STDIO and Streamable HTTP transport documentation accuracy
+- **Security Guidance**: Confirmed alignment with current MCP Security Best Practices documentation
+
+#### Key MCP 2025-11-25 Features Documented
+- **OpenID Connect Discovery**: Auth server discovery through OIDC
+- **OAuth Client ID Metadata Documents**: Recommended client registration mechanism
+- **JSON Schema 2020-12**: Default dialect for MCP schema definitions
+- **SDK Tiering System**: Formalized requirements for SDK feature support and maintenance
+- **Governance Structure**: Formalized Working Groups and Interest Groups in MCP governance
+
+### Security Documentation Major Update (02-Security/)
+
+#### MCP Security Summit Workshop (Sherpa) Integration
+- **New Hands-On Training Resource**: Added comprehensive integration with the [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) throughout all security documentation
+- **Expedition Route Coverage**: Documented the complete camp-to-camp progression from Base Camp to Summit
+- **OWASP Alignment**: All security guidance now maps to OWASP MCP Azure Security Guide risks
+
+#### OWASP MCP Top 10 Integration
+- **New Section**: Added OWASP MCP Top 10 Security Risks table with Azure mitigations to main Security README
+- **Risk-Based Documentation**: Updated mcp-security-controls-2025.md with OWASP MCP risk references for each security domain
+- **Reference Architecture**: Linked to OWASP MCP Azure Security Guide reference architecture and implementation patterns
+
+#### Updated Security Files
+- **README.md**: Added Sherpa Workshop overview, expedition route table, OWASP MCP Top 10 risks summary, and hands-on training section
+- **mcp-security-controls-2025.md**: Updated header to February 2026, added OWASP risk references (MCP01-MCP08), fixed spec version inconsistency
+- **mcp-security-best-practices-2025.md**: Added Sherpa and OWASP resources section, updated timestamp
+- **mcp-best-practices.md**: Added hands-on training section with Sherpa and OWASP links
+- **azure-content-safety-implementation.md**: Added OWASP MCP06 reference, Sherpa Camp 3 alignment, and additional resources section
+
+#### New Resource Links Added
+- [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/)
+- [OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)
+- [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/)
+- Individual OWASP MCP risk pages (MCP01-MCP10)
+
+### Curriculum-Wide MCP Specification 2025-11-25 Alignment
+
+#### Module 03 - Getting Started
+- **SDK Documentation**: Added Go SDK to official SDK list; updated all SDK references to align with MCP Specification 2025-11-25
+- **Transport Clarification**: Updated STDIO and HTTP Streaming transport descriptions with explicit spec references
+
+#### Module 04 - Practical Implementation
+- **SDK Updates**: Added Go SDK; updated SDK list with specification version reference
+- **Authorization Spec**: Updated MCP Authorization specification link to current 2025-11-25 version
+
+#### Module 05 - Advanced Topics
+- **New Features**: Added note about new MCP Specification 2025-11-25 features (Tasks, Tool Annotations, URL Mode Elicitation, Roots)
+- **Security Resources**: Added OWASP MCP Top 10 and Sherpa workshop links to additional references
+
+#### Module 06 - Community Contributions
+- **SDK List**: Added Swift and Rust SDKs; updated specification link to 2025-11-25
+- **Spec Reference**: Updated MCP Specification link to direct specification URL
+
+#### Module 07 - Lessons from Early Adoption
+- **Resource Updates**: Added MCP Specification 2025-11-25 link and OWASP MCP Top 10 to additional resources
+
+#### Module 08 - Best Practices
+- **Spec Version**: Updated MCP Specification reference to 2025-11-25
+- **Security Resources**: Added OWASP MCP Top 10 and Sherpa workshop to additional references
+
+#### Module 10 - Streamlining AI Workflows
+- **Badge Update**: Changed MCP version badge from SDK version (1.9.3) to specification version (2025-11-25)
+- **Resource Links**: Updated MCP Specification link; added OWASP MCP Top 10
+
+#### Module 11 - MCP Server Hands-On Labs
+- **Spec Reference**: Updated MCP Specification link to 2025-11-25 version
+- **Security Resources**: Added OWASP MCP Top 10 to official resources
+
 ## December 18, 2025
 
 ### Security Documentation Update - MCP Specification 2025-11-25

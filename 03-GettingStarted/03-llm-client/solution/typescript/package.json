@@ -16,7 +16,7 @@
         "type": "^2.7.3",
         "uuid": "^11.1.0",
         "zod": "^3.24.2",
-        "openai": ""
+        "openai": "^4.95.0"
     },
     "devDependencies": {
         "@types/node": "^20.11.24",

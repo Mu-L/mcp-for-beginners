@@ -9,9 +9,10 @@ Whether you're a backend developer, AI engineer, or data architect, this guide p
 ## 🔗 Official MCP Resources
 
 - 📘 [MCP Documentation](https://modelcontextprotocol.io/) – Detailed tutorials and user guides
-- 📜 [MCP Specification](https://modelcontextprotocol.io/docs/) – Protocol architecture and technical references
+- 📜 [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Protocol architecture and technical references
 - 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) – Open-source SDKs, tools, and code samples
 - 🌐 [MCP Community](https://github.com/orgs/modelcontextprotocol/discussions) – Join discussions and contribute to the community
+- 🔒 [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – Security best practices and risk mitigations
 
 
 ## 🧭 MCP Database Integration Learning Path
