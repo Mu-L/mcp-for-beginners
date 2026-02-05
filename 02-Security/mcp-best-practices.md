@@ -178,3 +178,9 @@ This comprehensive guide outlines essential security best practices for implemen
 ---
 
 *This document reflects MCP security best practices as of December 18, 2025, based on MCP Specification 2025-11-25. Security practices should be regularly reviewed and updated as the protocol and threat landscape evolve.*
+
+## What's Next
+
+- Read: [MCP Security Best Practices 2025](./mcp-security-best-practices-2025.md)
+- Return to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)

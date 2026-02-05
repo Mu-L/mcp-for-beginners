@@ -47,6 +47,8 @@ mindmap
       (Advanced Server Usage)
       (Simple Auth)
       (Deployment Strategies)
+      (MCP Hosts Setup)
+      (MCP Inspector)
     04. Practical Implementation
       ::icon(fa fa-code)
       (Multi-Language SDKs)
@@ -54,6 +56,7 @@ mindmap
       (Prompt Templates)
       (Sample Projects)
       (Production Patterns)
+      (Pagination Strategies)
     05. Advanced Topics
       ::icon(fa fa-graduation-cap)
       (Context Engineering)
@@ -69,6 +72,7 @@ mindmap
       (Security Hardening)
       (Entra ID Integration)
       (Web Search MCP)
+      (Protocol Features Deep Dive)
       
     06. Community
       ::icon(fa fa-users)

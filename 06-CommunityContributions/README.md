@@ -839,4 +839,6 @@ async def delete_tool(tool_name: str):
 
 ---
 
+## What's Next
+
 Next: [Lessons from Early Adoption](../07-LessonsfromEarlyAdoption/README.md)

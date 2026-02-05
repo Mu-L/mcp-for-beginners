@@ -160,4 +160,7 @@ These examples collectively demonstrate that MCP is not merely a theoretical fra
 - [GitHub MCP Registry — Accelerating Agentic Integration](https://github.com/mcp)
 - [MCP Community Examples](https://github.com/microsoft/mcp)
 
-Next: Hands on Lab [Streamlining AI Workflows: Building an MCP Server with AI Toolkit](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)
+## What's Next
+
+- Previous: [Module 8: Best Practices](../08-BestPractices/README.md)
+- Next: [Module 10: Streamlining AI Workflows: Building an MCP Server with AI Toolkit](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)

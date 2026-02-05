@@ -214,3 +214,7 @@ By completing this workshop, you will achieve mastery in:
 **🚀 Ready to revolutionize your AI development workflow?**
 
 Let's build the future of intelligent applications together with MCP and AI Toolkit!
+
+## What's Next
+
+Continue to: [Module 11: MCP Server Hands-On Labs](../11-MCPServerHandsOnLabs/README.md)

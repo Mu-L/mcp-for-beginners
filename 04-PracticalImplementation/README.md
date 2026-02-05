@@ -51,6 +51,12 @@ The repository includes [sample implementations](./samples/) in the following la
 
 Each sample demonstrates key MCP concepts and implementation patterns for that specific language and ecosystem.
 
+### Practical Guides
+
+Additional guides for practical MCP implementation:
+
+- [Pagination and Large Result Sets](./pagination/README.md) - Handle cursor-based pagination for tools, resources, and large datasets
+
 ## Core Server Features
 
 MCP servers can implement any combination of these features:
@@ -268,5 +274,7 @@ Design a practical MCP workflow that addresses a real-world problem in your doma
 ## Additional Resources
 
 ---
+
+## What's Next
 
 Next: [Advanced Topics](../05-AdvancedTopics/README.md)

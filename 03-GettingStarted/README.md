@@ -28,6 +28,10 @@ This section consists of several lessons:
 
 - **11 Auth**. This chapter covers how to add simple auth, from Basic Auth to using JWT and RBAC. You're encouraged to start here and then look at Advanced Topics in Chapter 5 and perform additional security hardening via recommendations in Chapter 2, [to the lesson](./11-simple-auth/README.md)
 
+- **12 MCP Hosts**. Configure and use popular MCP host clients including Claude Desktop, Cursor, Cline, and Windsurf. Learn transport types and troubleshooting, [to the lesson](./12-mcp-hosts/README.md)
+
+- **13 MCP Inspector**. Debug and test your MCP servers interactively using the MCP Inspector tool. Learn to troubleshoot tools, resources, and protocol messages, [to the lesson](./13-mcp-inspector/README.md)
+
 The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to LLMs. Think of MCP like a USB-C port for AI applications - it provides a standardized way to connect AI models to different data sources and tools.
 
 ## Learning Objectives
@@ -95,4 +99,6 @@ We have a set of samples that complements the exercises you will see in all chap
 
 ## What's next
 
-Next: [Creating your first MCP Server](01-first-server/README.md)
+Start with the first lesson: [Creating your first MCP Server](01-first-server/README.md)
+
+Once you've completed this module, continue to: [Module 4: Practical Implementation](../04-PracticalImplementation/README.md)

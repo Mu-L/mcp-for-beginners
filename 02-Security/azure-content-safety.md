@@ -35,3 +35,9 @@ To learn more about implementing Azure Content Safety with your MCP servers, con
 7. [Best Practices for Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/best-practices) - Best practices for implementing content safety effectively.
 
 For a more in-depth implementation, see our [Azure Content Safety Implementation guide](./azure-content-safety-implementation.md).
+
+## What's Next
+
+- Read: [Azure Content Safety Implementation](./azure-content-safety-implementation.md)
+- Return to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)
