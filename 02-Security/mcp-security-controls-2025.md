@@ -440,3 +440,8 @@ Recovery Procedures:
 ---
 
 > **Important**: These security controls reflect the current MCP specification (2025-11-25). Always verify against the latest [official documentation](https://spec.modelcontextprotocol.io/) as standards continue to evolve rapidly.
+
+## What's Next
+
+- Return to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)

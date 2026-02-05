@@ -591,4 +591,8 @@ The Model Context Protocol (MCP) is rapidly shaping the future of standardized, 
 3. Research an industry not covered in the case studies and outline how MCP could address its specific challenges.
 4. Explore one of the future directions and create a concept for a new MCP extension to support it.
 
-Next: [Microsoft MCP Server](../07-LessonsfromEarlyAdoption/microsoft-mcp-servers.md)
+## What's Next
+
+Explore more: [Microsoft MCP Servers](./microsoft-mcp-servers.md)
+
+Continue to: [Module 8: Best Practices](../08-BestPractices/README.md)

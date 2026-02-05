@@ -980,3 +980,7 @@ You've hopefully learned a lot in this chapter, from no security at all, to basi
 We’ve built a solid foundation with custom JWTs, but as we scale, we’re moving toward a standards-based identity model. Adopting an IdP like Entra or Keycloak lets us offload token issuance, validation, and lifecycle management to a trusted platform — freeing us to focus on app logic and user experience.
 
 For that, we have a more [advanced chapter on Entra](../../05-AdvancedTopics/mcp-security-entra/README.md)
+
+## What's Next
+
+- Next: [Setting Up MCP Hosts](../12-mcp-hosts/README.md)

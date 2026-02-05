@@ -41,3 +41,8 @@ This provides a robust defense against:
 - [Azure Content Safety Overview](https://learn.microsoft.com/azure/ai-services/content-safety/)
 - [Prompt Shields Documentation](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)
 - [Azure AI Content Safety Quickstart](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-text)
+
+## What's Next
+
+- Return to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)

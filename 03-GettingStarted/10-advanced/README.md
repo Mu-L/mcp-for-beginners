@@ -552,3 +552,7 @@ Extend the code you've been given with a number of tools, resources and prompt a
 ## Summary
 
 In this chapter, we saw how low-level server approach worked and how that can help us create a nice architecture we can keep building on. We also discussed validation and you were shown how to work with validation libraries to create schemas for input validation.
+
+## What's Next
+
+- Next: [Simple Authentication](../11-simple-auth/README.md)

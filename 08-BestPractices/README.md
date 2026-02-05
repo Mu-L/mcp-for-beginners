@@ -2371,6 +2371,8 @@ Implement the tool schemas, error handling, and a workflow pattern that best sui
 5. Consider taking advanced courses on specific MCP topics, such as multi-modal integration or enterprise application integration.
 6. Experiment with building your own MCP tools and workflows using the principles learned through the [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)  
 
-Next: Best Practices [case studies](../09-CaseStudy/README.md)
+## What's Next
+
+Next: [Case Studies](../09-CaseStudy/README.md)
 
 

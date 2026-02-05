@@ -208,3 +208,9 @@ The Model Context Protocol introduces unique security challenges that extend bey
 ---
 
 > **Security Notice**: MCP security practices evolve rapidly. Always verify against the current [MCP specification](https://spec.modelcontextprotocol.io/) and [official security documentation](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices) before implementation.
+
+## What's Next
+
+- Read: [MCP Security Controls 2025](./mcp-security-controls-2025.md)
+- Return to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)

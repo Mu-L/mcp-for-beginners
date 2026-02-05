@@ -4,6 +4,87 @@ This document serves as a record of all significant changes made to the Model Co
 
 ## February 5, 2026
 
+### Repository-Wide Validation and Navigation Improvements
+
+#### New Curriculum Content Added
+
+**Module 03 - Getting Started**
+- **12-mcp-hosts/README.md**: New comprehensive guide for setting up MCP hosts
+  - Claude Desktop, VS Code, Cursor, Cline, Windsurf configuration examples
+  - JSON configuration templates for all major hosts
+  - Transport types comparison table (stdio, SSE/HTTP, WebSocket)
+  - Troubleshooting common connection issues
+  - Security best practices for host configuration
+
+- **13-mcp-inspector/README.md**: New debugging guide for MCP Inspector
+  - Installation methods (npx, npm global, from source)
+  - Connecting to servers via stdio and HTTP/SSE
+  - Testing tools, resources, and prompts workflows
+  - VS Code integration with MCP Inspector
+  - Common debugging scenarios with solutions
+
+**Module 04 - Practical Implementation**
+- **pagination/README.md**: New pagination implementation guide
+  - Cursor-based pagination patterns in Python, TypeScript, Java
+  - Client-side pagination handling
+  - Cursor design strategies (opaque vs. structured)
+  - Performance optimization recommendations
+
+**Module 05 - Advanced Topics**
+- **mcp-protocol-features/README.md**: New protocol features deep dive
+  - Progress notifications implementation
+  - Request cancellation patterns
+  - Resource templates with URI patterns
+  - Server lifecycle management
+  - Logging level control
+  - Error handling patterns with JSON-RPC codes
+
+#### Navigation Fixes (24+ files updated)
+
+**Main Module READMEs**
+ Now links to both first lesson AND next module
+
+**02-Security Sub-files**
+- All 5 supplementary security documents now have "What's Next" navigation:
+
+**09-CaseStudy Files**
+- All case study files now have sequential navigation:
+
+**10-StreamliningAI Labs**
+Added What's Next section to Module 10 overview and Module 11
+
+#### Code and Content Fixes
+
+**SDK and Dependency Updates**
+Fixed empty openai version to `^4.95.0`
+Updated SDK from `^1.8.0` to `>=1.26.0`
+Updated mcp version pins to `>=1.26.0`
+
+**Code Fixes**
+Fixed invalid model `gpt-4o-mini` to `gpt-4.1-mini`
+
+**Content Fixes**
+Fixed broken link `READMEmd` → `README.md`, fixed curriculum header `Module 1-3` → `Module 0-3`, fixed case-sensitive path
+Removed corrupted duplicate Case Study 5 content
+
+**Beginner Guidance Improvements**
+Added proper introduction, learning objectives, and prerequisites for beginners
+
+#### Curriculum Updates
+
+**Main README.md**
+- Added entries 3.12 (MCP Hosts), 3.13 (MCP Inspector), 4.1 (Pagination), 5.16 (Protocol Features) to curriculum table
+
+**Module READMEs**
+Added lessons 12 and 13 to lesson list
+Added Practical Guides section with pagination link
+Added lessons 5.15 (Custom Transport) and 5.16 (Protocol Features)
+
+**study_guide.md**
+- Updated mindmap with all new topics: MCP Hosts Setup, MCP Inspector, Pagination Strategies, Protocol Features Deep Dive
+
+## Jan 28, 2026
+
 ### MCP Specification 2025-11-25 Compliance Review
 
 #### Core Concepts Enhancement (01-CoreConcepts/)
