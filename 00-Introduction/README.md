@@ -73,6 +73,14 @@ MCP follows a **client-server model**, where:
 - **Prompts** – Predefined workflows for guided generation  
 - **Tools** – Executable functions like search, calculations  
 - **Sampling** – Agentic behavior via recursive interactions
+- **Elicitation** – Server-initiated requests for user input
+- **Roots** – Filesystem boundaries for server access control
+
+### **Protocol Architecture:**
+
+MCP uses a two-layer architecture:
+- **Data Layer**: JSON-RPC 2.0 based communication with lifecycle management and primitives
+- **Transport Layer**: STDIO (local) and Streamable HTTP with SSE (remote) communication channels
 
 ---
 

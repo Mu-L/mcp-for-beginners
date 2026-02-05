@@ -23,6 +23,8 @@ mindmap
       (Protocol Components)
       (Messaging Patterns)
       (Transport Mechanisms)
+      (Tasks - Experimental)
+      (Tool Annotations)
     02. Security
       ::icon(fa fa-shield)
       (AI-Specific Threats)
@@ -30,6 +32,8 @@ mindmap
       (Azure Content Safety)
       (Auth & Authorization)
       (Microsoft Prompt Shields)
+      (OWASP MCP Top 10)
+      (Sherpa Security Workshop)
     03. Getting Started
       ::icon(fa fa-rocket)
       (First Server Implementation)
@@ -329,4 +333,4 @@ This repository welcomes contributions from the community. See the Community Con
 
 ----
 
-*This study guide was updated on October 6th, 2025, and provides an overview of the repository as of that date. Repository content may be updated after this date.*
+*This study guide was last updated on February 5, 2026, reflecting the latest MCP Specification 2025-11-25 and provides an overview of the repository as of that date. Repository content may be updated after this date.*

@@ -107,6 +107,10 @@ This comprehensive guide outlines essential security best practices for implemen
 
 ## Implementation Resources & Standards
 
+### 🏔️ Hands-On Security Training
+- **[MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/)** - Comprehensive hands-on workshop for securing MCP servers in Azure
+- **[OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)** - Reference architecture and OWASP MCP Top 10 implementation guidance
+
 ### Official MCP Documentation
 - [MCP Specification 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) - Current MCP protocol specification
 - [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices) - Official security guidance

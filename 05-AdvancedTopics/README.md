@@ -39,12 +39,16 @@ By the end of this lesson, you will be able to:
 | [5.13 Azure AI Foundry Agent Integration](./mcp-foundry-agent-integration/README.md) | Azure AI Foundry Integration | Learn how to integrate Model Context Protocol servers with Azure AI Foundry agents, enabling powerful tool orchestration and enterprise AI capabilities with standardized external data source connections.|
 | [5.14 Context Engineering](./mcp-contextengineering/README.md) | Context Engineering | The future opportunity of context engineering techniques for MCP servers, including context optimization, dynamic context management, and strategies for effective prompt engineering within MCP frameworks.|
 
+> **New in MCP Specification 2025-11-25**: The specification now includes experimental support for **Tasks** (long-running operations with progress tracking), **Tool Annotations** (metadata about tool behavior for safety), **URL Mode Elicitation** (requesting specific URL content from clients), and enhanced **Roots** (for workspace context management). See the [MCP Specification changelog](https://spec.modelcontextprotocol.io/) for full details.
+
 ## Additional References
 
 For the most up-to-date information on advanced MCP topics, refer to:
 - [MCP Documentation](https://modelcontextprotocol.io/)
-- [MCP Specification](https://spec.modelcontextprotocol.io/)
+- [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 - [GitHub Repository](https://github.com/modelcontextprotocol)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - Security risks and mitigations
+- [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) - Hands-on security training
 
 ## Key Takeaways
 

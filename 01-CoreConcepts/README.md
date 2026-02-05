@@ -161,7 +161,11 @@ Generate a {{task_type}} for {{product}} targeting {{audience}} with the followi
 - **Structured I/O**: Tools accept validated parameters and return structured, typed responses
 - **Action Capabilities**: Enable models to perform real-world actions and retrieve live data
 
-Tools are defined with JSON Schema for parameter validation and discovered through `tools/list` and executed via `tools/call`:
+Tools are defined with JSON Schema for parameter validation and discovered through `tools/list` and executed via `tools/call`. Tools can also include **icons** as additional metadata for better UI presentation.
+
+**Tool Annotations**: Tools support behavioral annotations (e.g., `readOnlyHint`, `destructiveHint`) that describe whether a tool is read-only or destructive, helping clients make informed decisions about tool execution.
+
+Example tool definition:
 
 ```typescript
 server.tool(
@@ -190,8 +194,20 @@ In the Model Context Protocol (MCP), **clients** can expose primitives that enab
 - **Server-Initiated AI**: Enables servers to autonomously generate content using the client's AI model
 - **Recursive LLM Interactions**: Supports complex scenarios where servers need AI assistance for processing
 - **Dynamic Content Generation**: Allows servers to create contextual responses using the host's model
+- **Tool Calling Support**: Servers can include `tools` and `toolChoice` parameters to enable the client's model to invoke tools during sampling
 
 Sampling is initiated through the `sampling/complete` method, where servers send completion requests to clients.
+
+### Roots
+
+**Roots** provide a standardized way for clients to expose filesystem boundaries to servers, helping servers understand which directories and files they have access to:
+
+- **Filesystem Boundaries**: Define the boundaries of where servers can operate within the filesystem
+- **Access Control**: Help servers understand which directories and files they have permission to access
+- **Dynamic Updates**: Clients can notify servers when the list of roots changes
+- **URI-Based Identification**: Roots use `file://` URIs to identify accessible directories and files
+
+Roots are discovered through the `roots/list` method, with clients sending `notifications/roots/list_changed` when roots change.
 
 ### Elicitation  
 
@@ -203,6 +219,8 @@ Sampling is initiated through the `sampling/complete` method, where servers send
 - **Dynamic Parameter Collection**: Gather missing or optional parameters during tool execution
 
 Elicitation requests are made using the `elicitation/request` method to collect user input through the client's interface.
+
+**URL Mode Elicitation**: Servers can also request URL-based user interactions, allowing servers to direct users to external web pages for authentication, confirmation, or data entry.
 
 ### Logging
 
@@ -642,13 +660,25 @@ All MCP messages follow JSON-RPC 2.0 format with:
 
 This structured communication ensures reliable, traceable, and extensible interactions supporting advanced scenarios like real-time updates, tool chaining, and robust error handling.
 
+### Tasks (Experimental)
+
+**Tasks** are an experimental feature that provides durable execution wrappers enabling deferred result retrieval and status tracking for MCP requests:
+
+- **Long-Running Operations**: Track expensive computations, workflow automation, and batch processing
+- **Deferred Results**: Poll for task status and retrieve results when operations complete
+- **Status Tracking**: Monitor task progress through defined lifecycle states
+- **Multi-Step Operations**: Support complex workflows that span multiple interactions
+
+Tasks wrap standard MCP requests to enable asynchronous execution patterns for operations that cannot complete immediately.
+
 ## Key Takeaways
 
 - **Architecture**: MCP uses a client-server architecture where hosts manage multiple client connections to servers
 - **Participants**: The ecosystem includes hosts (AI applications), clients (protocol connectors), and servers (capability providers)
 - **Transport Mechanisms**: Communication supports STDIO (local) and Streamable HTTP with optional SSE (remote)
 - **Core Primitives**: Servers expose tools (executable functions), resources (data sources), and prompts (templates)
-- **Client Primitives**: Servers can request sampling (LLM completions), elicitation (user input), and logging from clients
+- **Client Primitives**: Servers can request sampling (LLM completions with tool calling support), elicitation (user input including URL mode), roots (filesystem boundaries), and logging from clients
+- **Experimental Features**: Tasks provide durable execution wrappers for long-running operations
 - **Protocol Foundation**: Built on JSON-RPC 2.0 with date-based versioning (current: 2025-11-25)
 - **Real-time Capabilities**: Supports notifications for dynamic updates and real-time synchronization
 - **Security First**: Explicit user consent, data privacy protection, and secure transport are core requirements
