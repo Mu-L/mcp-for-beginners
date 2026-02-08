@@ -1,46 +1,46 @@
-# MCP Core Concepts: Ovládnutie Model Context Protocol pre integráciu AI
+# MCP Core Concepts: Ovládnutie protokolu Model Context pre AI integráciu
 
-[![MCP Core Concepts](../../../translated_images/sk/02.8203e26c6fb5a797f38a10012061013ec66c95bb3260f6c9cfd2bf74b00860e1.png)](https://youtu.be/earDzWGtE84)
+[![MCP Core Concepts](../../../translated_images/sk/02.8203e26c6fb5a797.webp)](https://youtu.be/earDzWGtE84)
 
 _(Kliknite na obrázok vyššie pre zobrazenie videa tejto lekcie)_
 
-[Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) je výkonný, štandardizovaný rámec, ktorý optimalizuje komunikáciu medzi veľkými jazykovými modelmi (LLM) a externými nástrojmi, aplikáciami a zdrojmi dát.  
-Tento sprievodca vás prevedie základnými konceptmi MCP. Naučíte sa o jeho architektúre klient-server, základných komponentoch, mechanizmoch komunikácie a najlepších postupoch implementácie.
+[Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) je silný, štandardizovaný rámec, ktorý optimalizuje komunikáciu medzi veľkými jazykovými modelmi (LLM) a externými nástrojmi, aplikáciami a zdrojmi dát. 
+Tento návod vás prevedie základnými konceptmi MCP. Naučíte sa o jeho architektúre klient-server, podstatných komponentoch, mechanizmoch komunikácie a najlepších postupoch implementácie.
 
-- **Explicitný súhlas používateľa**: Všetky prístupy k dátam a operácie vyžadujú explicitné schválenie používateľa pred vykonaním. Používatelia musia jasne rozumieť, aké dáta budú prístupné a aké akcie budú vykonané, s detailnou kontrolou oprávnení a autorizácií.
+- **Explicitný súhlas používateľa**: Všetky prístupy k dátam a operácie vyžadujú explicitné schválenie používateľa pred vykonaním. Používatelia musia jasne rozumieť, aké dáta budú sprístupnené a aké akcie budú vykonané, s detailnou kontrolou nad oprávneniami a autorizáciou.
 
-- **Ochrana súkromia dát**: Dáta používateľa sú sprístupnené len s explicitným súhlasom a musia byť chránené robustnými kontrolami prístupu počas celého životného cyklu interakcie. Implementácie musia zabrániť neoprávnenému prenosu dát a udržiavať prísne hranice súkromia.
+- **Ochrana súkromia dát**: Dáta používateľa sú sprístupnené len s explicitným súhlasom a musia byť chránené robustnými kontrolami prístupu počas celého životného cyklu interakcie. Implementácie musí zabrániť neoprávnenej transmisií dát a udržiavať prísne hranice ochrany súkromia.
 
-- **Bezpečnosť vykonávania nástrojov**: Každé vyvolanie nástroja vyžaduje explicitný súhlas používateľa s jasným pochopením funkčnosti nástroja, parametrov a potenciálneho dopadu. Robustné bezpečnostné hranice musia zabrániť neúmyselnému, nebezpečnému alebo škodlivému vykonaniu nástroja.
+- **Bezpečnosť spustenia nástrojov**: Každé vyvolanie nástroja vyžaduje explicitný súhlas používateľa s jasným pochopením funkčnosti nástroja, parametrov a potenciálneho dopadu. Robustné bezpečnostné hranice musia zabrániť neúmyselnému, nebezpečnému alebo škodlivému spusteniu nástrojov.
 
-- **Bezpečnosť transportnej vrstvy**: Všetky komunikačné kanály by mali používať vhodné mechanizmy šifrovania a autentifikácie. Vzdialené pripojenia by mali implementovať bezpečné transportné protokoly a správu poverení.
+- **Bezpečnosť vrstvy prenosu**: Všetky komunikačné kanály by mali používať vhodné metódy šifrovania a autentifikácie. Vzdialené pripojenia by mali implementovať bezpečné transportné protokoly a správne spravovanie poverení.
 
-#### Pokyny na implementáciu:
+#### Pokyny pre implementáciu:
 
-- **Správa oprávnení**: Implementujte jemnozrnné systémy oprávnení, ktoré umožnia používateľom kontrolovať, ktoré servery, nástroje a zdroje sú prístupné  
-- **Autentifikácia a autorizácia**: Používajte bezpečné metódy autentifikácie (OAuth, API kľúče) s riadnou správou tokenov a ich expirácie  
-- **Validácia vstupov**: Validujte všetky parametre a vstupy dát podľa definovaných schém, aby ste zabránili injekčným útokom  
-- **Auditné záznamy**: Vedenie komplexných záznamov všetkých operácií pre bezpečnostné monitorovanie a súlad
+- **Správa oprávnení**: Implementujte jemnozrnné systémy oprávnení, ktoré umožňujú používateľom kontrolovať, ktoré servery, nástroje a zdroje sú prístupné
+- **Autentifikácia a autorizácia**: Používajte bezpečné metódy autentifikácie (OAuth, API kľúče) s riadnym spravovaním tokenov a ich expiráciou  
+- **Validácia vstupov**: Validujte všetky parametre a vstupné dáta podľa definovaných schém, aby ste predišli injekčným útokom
+- **Auditné logovanie**: Zaznamenávajte komplexné logy všetkých operácií pre bezpečnostný monitoring a súlad s predpismi
 
 ## Prehľad
 
-Táto lekcia skúma základnú architektúru a komponenty, ktoré tvoria ekosystém Model Context Protocol (MCP). Naučíte sa o architektúre klient-server, kľúčových komponentoch a mechanizmoch komunikácie, ktoré poháňajú interakcie MCP.
+Táto lekcia skúma základnú architektúru a komponenty, ktoré tvoria ekosystém Model Context Protocol (MCP). Dozviete sa o architektúre klient-server, hlavných komponentoch a mechanizmoch komunikácie, ktoré poháňajú interakcie MCP.
 
 ## Kľúčové vzdelávacie ciele
 
 Na konci tejto lekcie budete:
 
-- Rozumieť architektúre klient-server MCP.  
-- Identifikovať úlohy a zodpovednosti Hostiteľov, Klientov a Serverov.  
-- Analyzovať základné vlastnosti, ktoré robia MCP flexibilnou integračnou vrstvou.  
-- Naučiť sa, ako informácie prúdia v ekosystéme MCP.  
-- Získať praktické poznatky prostredníctvom príkladov kódu v .NET, Java, Python a JavaScript.
+- Rozumieť architektúre klient-server MCP.
+- Identifikovať roly a zodpovednosti Hostov, Klientov a Serverov.
+- Analyzovať základné funkcie, ktoré robia MCP flexibilnou integračnou vrstvou.
+- Naučiť sa, ako informácie prúdia v ekosystéme MCP.
+- Získať praktické poznatky cez príklady kódu v .NET, Java, Python a JavaScript.
 
 ## Architektúra MCP: Hlbší pohľad
 
-Ekosystém MCP je postavený na modeli klient-server. Táto modulárna štruktúra umožňuje AI aplikáciám efektívne komunikovať s nástrojmi, databázami, API a kontextovými zdrojmi. Rozoberme túto architektúru na jej základné komponenty.
+Ekosystém MCP je postavený na modeli klient-server. Táto modulárna štruktúra umožňuje AI aplikáciám efektívne komunikovať s nástrojmi, databázami, API a kontextuálnymi zdrojmi. Rozoberme túto architektúru na jej základné komponenty.
 
-V jadre MCP nasleduje architektúru klient-server, kde hostiteľská aplikácia môže pripojiť k viacerým serverom:
+V jadre MCP nasleduje architektúru klient-server, kde hostiteľská aplikácia sa môže pripojiť k viacerým serverom:
 
 ```mermaid
 flowchart LR
@@ -49,9 +49,9 @@ flowchart LR
         S1["MCP Server A"]
         S2["MCP Server B"]
         S3["MCP Server C"]
-        Host <-->|"MCP Protokol"| S1
-        Host <-->|"MCP Protokol"| S2
-        Host <-->|"MCP Protokol"| S3
+        Host <-->|"MCP protokol"| S1
+        Host <-->|"MCP protokol"| S2
+        Host <-->|"MCP protokol"| S3
         S1 <--> D1[("Lokálny\Zdroj dát A")]
         S2 <--> D2[("Lokálny\Zdroj dát B")]
     end
@@ -59,40 +59,40 @@ flowchart LR
         S3 <-->|"Webové API"| D3[("Vzdialené\Služby")]
     end
 ```
-- **MCP Hostitelia**: Programy ako VSCode, Claude Desktop, IDE alebo AI nástroje, ktoré chcú pristupovať k dátam cez MCP  
-- **MCP Klienti**: Protokoloví klienti, ktorí udržiavajú 1:1 spojenia so servermi  
-- **MCP Servery**: Ľahké programy, ktoré každý vystavujú špecifické schopnosti cez štandardizovaný Model Context Protocol  
-- **Lokálne zdroje dát**: Súbory, databázy a služby vášho počítača, ku ktorým môžu MCP servery bezpečne pristupovať  
-- **Vzdialené služby**: Externé systémy dostupné cez internet, ku ktorým sa MCP servery môžu pripojiť cez API.
+- **MCP Hostia**: Programy ako VSCode, Claude Desktop, IDE alebo AI nástroje, ktoré chcú pristupovať k dátam cez MCP
+- **MCP Klienti**: Protokoloví klienti, ktorí udržiavajú 1:1 spojenia so servermi
+- **MCP Servery**: Ľahké programy, ktoré vystavujú špecifické funkcie cez štandardizovaný Model Context Protocol
+- **Lokálne zdroje dát**: Súbory vášho počítača, databázy a služby, ku ktorým majú MCP servery bezpečný prístup
+- **Vzdialené služby**: Externé systémy dostupné cez internet, ku ktorým MCP servery môžu pristupovať prostredníctvom API.
 
-Protokol MCP je vyvíjajúci sa štandard používajúci dátumové verzovanie (formát RRRR-MM-DD). Aktuálna verzia protokolu je **2025-11-25**. Najnovšie aktualizácie nájdete v [špecifikácii protokolu](https://modelcontextprotocol.io/specification/2025-11-25/)
+Protokol MCP je vyvíjajúci sa štandard používajúci dátumové verzovanie (formát RRRR-MM-DD). Aktuálna verzia protokolu je **2025-11-25**. Najnovšie aktualizácie môžete vidieť v [špecifikácii protokolu](https://modelcontextprotocol.io/specification/2025-11-25/)
 
-### 1. Hostitelia
+### 1. Hostia
 
-V Model Context Protocol (MCP) sú **Hostitelia** AI aplikácie, ktoré slúžia ako primárne rozhranie, cez ktoré používatelia interagujú s protokolom. Hostitelia koordinujú a spravujú pripojenia k viacerým MCP serverom vytváraním vyhradených MCP klientov pre každé serverové pripojenie. Príklady Hostiteľov zahŕňajú:
+V Model Context Protocol (MCP) sú **Hostia** AI aplikácie, ktoré slúžia ako primárne rozhranie, cez ktoré používatelia komunikujú s protokolom. Hostia koordinujú a spravujú spojenia k viacerým MCP serverom vytváraním dedikovaných MCP klientov pre každé spojenie so serverom. Príklady Hostí zahŕňajú:
 
-- **AI aplikácie**: Claude Desktop, Visual Studio Code, Claude Code  
-- **Vývojové prostredia**: IDE a editory kódu s integráciou MCP  
-- **Vlastné aplikácie**: Účelovo vytvorení AI agenti a nástroje
+- **AI aplikácie**: Claude Desktop, Visual Studio Code, Claude Code
+- **Vývojové prostredia**: IDE a editory kódu s MCP integráciou  
+- **Vlastné aplikácie**: Účelovo vytvorené AI agenti a nástroje
 
-**Hostitelia** sú aplikácie, ktoré koordinujú interakcie s AI modelmi. Oni:
+**Hostia** sú aplikácie, ktoré koordinujú interakcie s AI modelmi. Oni:
 
-- **Orchestrujú AI modely**: Vykonávajú alebo interagujú s LLM na generovanie odpovedí a koordináciu AI pracovných tokov  
-- **Spravujú klientské pripojenia**: Vytvárajú a udržiavajú jedného MCP klienta na každé MCP serverové pripojenie  
-- **Riadiace používateľské rozhranie**: Spravujú tok konverzácie, používateľské interakcie a prezentáciu odpovedí  
-- **Vynucujú bezpečnosť**: Kontrolujú oprávnenia, bezpečnostné obmedzenia a autentifikáciu  
-- **Spravujú súhlas používateľa**: Riadia schválenie používateľa pre zdieľanie dát a vykonávanie nástrojov
+- **Orchestruju AI modely**: Vykonávajú alebo interagujú s LLM, aby generovali odpovede a riadili AI pracovné postupy
+- **Spravujú klientské spojenia**: Vytvárajú a udržiavajú jedného MCP klienta na spojenie s MCP serverom
+- **Kontrolujú používateľské rozhranie**: Riadia tok konverzácie, interakcie používateľov a prezentáciu odpovedí  
+- **Uplatňujú bezpečnosť**: Riadia oprávnenia, bezpečnostné obmedzenia a autentifikáciu
+- **Spravujú súhlas používateľa**: Riadi schvaľovanie používateľa pre zdieľanie dát a spúšťanie nástrojov
 
 ### 2. Klienti
 
-**Klienti** sú základné komponenty, ktoré udržiavajú vyhradené jedno-na-jedno spojenia medzi Hostiteľmi a MCP servermi. Každý MCP klient je vytvorený Hostiteľom na pripojenie k špecifickému MCP serveru, čím zabezpečuje organizované a bezpečné komunikačné kanály. Viac klientov umožňuje Hostiteľom pripojiť sa k viacerým serverom súčasne.
+**Klienti** sú základné komponenty, ktoré udržiavajú vyhradené jedno-na-jedno spojenia medzi Hostmi a MCP servermi. Každý MCP klient je vytvorený Hostom na pripojenie k špecifickému MCP serveru, čím zabezpečuje organizované a bezpečné komunikačné kanály. Viacerí klienti umožňujú hostom simultánne pripojenie k viacerým serverom.
 
-**Klienti** sú konektorové komponenty v rámci hostiteľskej aplikácie. Oni:
+**Klienti** sú konektorové komponenty v hostiteľskej aplikácii. Oni:
 
-- **Protokolová komunikácia**: Posielajú JSON-RPC 2.0 požiadavky serverom s promptmi a inštrukciami  
-- **Vyjednávanie schopností**: Vyjednávajú podporované funkcie a verzie protokolu so servermi počas inicializácie  
-- **Vykonávanie nástrojov**: Spravujú požiadavky na vykonanie nástrojov od modelov a spracovávajú odpovede  
-- **Aktualizácie v reálnom čase**: Spracovávajú notifikácie a aktualizácie zo serverov  
+- **Komunikácia protokolom**: Posielajú JSON-RPC 2.0 požiadavky na servery s promptmi a inštrukciami
+- **Vyjednávanie schopností**: Vyjednávajú podporované funkcie a verzie protokolu so servermi počas inicializácie
+- **Spúšťanie nástrojov**: Spravujú požiadavky na vykonávanie nástrojov zo strany modelov a spracovávajú odpovede
+- **Aktualizácie v reálnom čase**: Riadia notifikácie a aktualizácie od serverov
 - **Spracovanie odpovedí**: Spracovávajú a formátujú odpovede serverov pre zobrazenie používateľom
 
 ### 3. Servery
@@ -101,31 +101,31 @@ V Model Context Protocol (MCP) sú **Hostitelia** AI aplikácie, ktoré slúžia
 
 **Servery** sú služby, ktoré poskytujú kontext a schopnosti. Oni:
 
-- **Registrácia funkcií**: Registrujú a vystavujú dostupné primitívy (zdroje, prompty, nástroje) klientom  
-- **Spracovanie požiadaviek**: Prijímajú a vykonávajú volania nástrojov, požiadavky na zdroje a prompty od klientov  
-- **Poskytovanie kontextu**: Poskytujú kontextové informácie a dáta na zlepšenie odpovedí modelu  
-- **Správa stavu**: Udržiavajú stav relácie a spracovávajú stavové interakcie podľa potreby  
+- **Registrácia funkcií**: Zaregistrujú a sprístupnia dostupné primitíva (zdroje, prompty, nástroje) klientom
+- **Spracovanie požiadaviek**: Prijímajú a vykonávajú volania nástrojov, požiadavky na zdroje a prompty od klientov
+- **Poskytovanie kontextu**: Dodávajú kontextuálne informácie a dáta na obohatenie odpovedí modelov
+- **Správa stavu**: Udržiavajú stav relácie a spracovávajú stavové interakcie podľa potreby
 - **Notifikácie v reálnom čase**: Posielajú notifikácie o zmenách schopností a aktualizáciách pripojeným klientom
 
-Servery môžu vyvíjať ľubovoľní vývojári na rozšírenie schopností modelu špecializovanou funkcionalitou a podporujú lokálne aj vzdialené nasadenie.
+Servery môže vyvíjať ktokoľvek aby rozšíril schopnosti modelov špecializovanou funkcionalitou, a podporujú ako lokálne, tak vzdialené nasadenie.
 
-### 4. Serverové primitívy
+### 4. Serverové primitíva
 
-Servery v Model Context Protocol (MCP) poskytujú tri základné **primitívy**, ktoré definujú fundamentálne stavebné bloky pre bohaté interakcie medzi klientmi, hostiteľmi a jazykovými modelmi. Tieto primitívy špecifikujú typy kontextových informácií a akcií dostupných cez protokol.
+Servery v Model Context Protocol (MCP) poskytujú tri základné **primitíva**, ktoré definujú fundamentálne stavebné kamene pre bohaté interakcie medzi klientmi, hosťami a jazykovými modelmi. Tieto primitíva špecifikujú typy kontextuálnych informácií a akcií dostupných cez protokol.
 
-MCP servery môžu vystaviť ľubovoľnú kombináciu nasledujúcich troch základných primítív:
+MCP servery môžu sprístupniť ľubovoľnú kombináciu týchto troch základných primitív:
 
 #### Zdroje
 
-**Zdroje** sú dátové zdroje, ktoré poskytujú kontextové informácie AI aplikáciám. Reprezentujú statický alebo dynamický obsah, ktorý môže zlepšiť porozumenie modelu a rozhodovanie:
+**Zdroje** sú dátové zdroje, ktoré poskytujú kontextuálne informácie AI aplikáciám. Reprezentujú statický alebo dynamický obsah, ktorý môže zlepšiť porozumenie modelu a rozhodovanie:
 
-- **Kontextové dáta**: Štruktúrované informácie a kontext pre spotrebu AI modelom  
-- **Znalostné bázy**: Repozitáre dokumentov, články, manuály a výskumné práce  
-- **Lokálne zdroje dát**: Súbory, databázy a informácie o lokálnom systéme  
-- **Externé dáta**: Odpovede API, webové služby a dáta vzdialených systémov  
+- **Kontextové údaje**: Štruktúrované informácie a kontext pre spotrebu AI modelom
+- **Základne znalostí**: Repozitáre dokumentov, články, manuály a vedecké práce
+- **Lokálne zdroje dát**: Súbory, databázy a lokálne systémové informácie  
+- **Externé dáta**: API odpovede, webové služby a dáta vzdialených systémov
 - **Dynamický obsah**: Dáta v reálnom čase, ktoré sa aktualizujú podľa vonkajších podmienok
 
-Zdroje sú identifikované URI a podporujú vyhľadávanie cez metódy `resources/list` a získavanie cez `resources/read`:
+Zdroje sú identifikované URI a podporujú objavovanie pomocou metód `resources/list` a získavanie pomocou `resources/read`:
 
 ```text
 file://documents/project-spec.md
@@ -135,15 +135,15 @@ api://weather/current
 
 #### Prompty
 
-**Prompty** sú znovupoužiteľné šablóny, ktoré pomáhajú štruktúrovať interakcie s jazykovými modelmi. Poskytujú štandardizované vzory interakcie a šablónové pracovné toky:
+**Prompty** sú znovupoužiteľné šablóny, ktoré pomáhajú štruktúrovať interakcie s jazykovými modelmi. Poskytujú štandardizované vzory interakcií a šablónové pracovné postupy:
 
-- **Interakcie založené na šablónach**: Predštruktúrované správy a začiatky konverzácií  
-- **Šablóny pracovných tokov**: Štandardizované sekvencie pre bežné úlohy a interakcie  
-- **Príklady few-shot**: Šablóny založené na príkladoch pre inštrukcie modelu  
-- **Systémové prompty**: Základné prompty, ktoré definujú správanie a kontext modelu  
-- **Dynamické šablóny**: Parametrizované prompty, ktoré sa prispôsobujú špecifickým kontextom
+- **Šablónové interakcie**: Predštruktúrované správy a začiatky konverzácií
+- **Šablóny pracovných postupov**: Štandardizované sekvencie pre bežné úlohy a interakcie
+- **Príklady few-shot**: Šablóny založené na príkladoch pre inštrukcie modelu
+- **Systémové prompty**: Základné prompty, ktoré definujú správanie a kontext modelu
+- **Dynamické šablóny**: Parameterové prompty, ktoré sa prispôsobujú špecifickým kontextom
 
-Prompty podporujú substitúciu premenných a môžu byť vyhľadávané cez `prompts/list` a získavané cez `prompts/get`:
+Prompty podporujú substitúciu premenných a môžu byť objavené cez `prompts/list` a získané cez `prompts/get`:
 
 ```markdown
 Generate a {{task_type}} for {{product}} targeting {{audience}} with the following requirements: {{requirements}}
@@ -151,15 +151,19 @@ Generate a {{task_type}} for {{product}} targeting {{audience}} with the followi
 
 #### Nástroje
 
-**Nástroje** sú vykonateľné funkcie, ktoré môžu AI modely vyvolať na vykonanie špecifických akcií. Reprezentujú „slovesá“ ekosystému MCP, umožňujú modelom interagovať s externými systémami:
+**Nástroje** sú vykonateľné funkcie, ktoré môže AI model vyvolať na vykonanie konkrétnych akcií. Sú „slovesami“ ekosystému MCP, ktoré umožňujú modelom interagovať s externými systémami:
 
-- **Vykonateľné funkcie**: Diskrétne operácie, ktoré môžu modely vyvolať s konkrétnymi parametrami  
-- **Integrácia externých systémov**: Volania API, dotazy do databáz, operácie so súbormi, výpočty  
-- **Jedinečná identita**: Každý nástroj má jedinečný názov, popis a schému parametrov  
-- **Štruktúrovaný vstup/výstup**: Nástroje prijímajú validované parametre a vracajú štruktúrované, typované odpovede  
-- **Akčné schopnosti**: Umožňujú modelom vykonávať reálne akcie a získavať živé dáta
+- **Vykonateľné funkcie**: Diskrétne operácie, ktoré modely môžu vyvolať so špecifickými parametrami
+- **Integrácia externých systémov**: Volania API, dotazy do databázy, operácie so súbormi, výpočty
+- **Jedinečná identita**: Každý nástroj má svoj výnimočný názov, popis a schému parametrov
+- **Štruktúrovaný vstup/výstup**: Nástroje prijímajú validované parametre a vracajú štruktúrované, typované odpovede
+- **Schopnosti akcií**: Umožňujú modelom vykonávať akcie v reálnom svete a získavať aktuálne dáta
 
-Nástroje sú definované pomocou JSON schémy pre validáciu parametrov a sú vyhľadávané cez `tools/list` a vykonávané cez `tools/call`:
+Nástroje sú definované pomocou JSON Schema pre validáciu parametrov a objavujú sa cez `tools/list` a vykonávajú sa cez `tools/call`. Nástroje môžu tiež obsahovať **ikony** ako dodatočné metaúdaje pre lepšiu prezentáciu v UI.
+
+**Anotácie nástrojov**: Nástroje podporujú behaviorálne anotácie (napr. `readOnlyHint`, `destructiveHint`), ktoré popisujú, či je nástroj len na čítanie alebo deštruktívny, čím pomáhajú klientom robiť informované rozhodnutia o vykonaní nástroja.
+
+Príklad definície nástroja:
 
 ```typescript
 server.tool(
@@ -170,98 +174,113 @@ server.tool(
     max_results: z.number().default(10).describe("Maximum results to return")
   }, 
   async (params) => {
-    // Vykonajte vyhľadávanie a vráťte štruktúrované výsledky
+    // Vykonajte vyhľadávanie a vráťte strukturované výsledky
     return await productService.search(params);
   }
 );
 ```
 
-## Klientské primitívy
+## Klientove primitíva
 
-V Model Context Protocol (MCP) môžu **klienti** vystavovať primitívy, ktoré umožňujú serverom žiadať o ďalšie schopnosti od hostiteľskej aplikácie. Tieto klientské primitívy umožňujú bohatšie, interaktívnejšie implementácie serverov, ktoré môžu pristupovať k schopnostiam AI modelu a používateľským interakciám.
+V Model Context Protocol (MCP) môžu **klienti** sprístupniť primitíva, ktoré umožňujú serverom požadovať ďalšie schopnosti od hostiteľskej aplikácie. Tieto primitíva na strane klienta umožňujú bohatšie, viac interaktívne implementácie serverov, ktoré môžu pristupovať ku schopnostiam AI modelov a interakciám používateľa.
 
 ### Sampling
 
-**Sampling** umožňuje serverom žiadať dokončenia jazykového modelu z AI aplikácie klienta. Táto primitíva umožňuje serverom pristupovať k schopnostiam LLM bez potreby vkladať vlastné závislosti modelu:
+**Sampling** umožňuje serverom požiadať o doplnenie modelu jazyka z AI aplikácie klienta. Toto primitívum umožňuje serverom pristupovať k schopnostiam LLM bez vlastných závislostí na modeli:
 
-- **Nezávislý prístup k modelu**: Servery môžu žiadať dokončenia bez zahrnutia SDK LLM alebo správy prístupu k modelu  
-- **Serverom iniciovaná AI**: Umožňuje serverom autonómne generovať obsah pomocou AI modelu klienta  
-- **Rekurzívne LLM interakcie**: Podporuje zložité scenáre, kde servery potrebujú AI asistenciu na spracovanie  
-- **Dynamická generácia obsahu**: Umožňuje serverom vytvárať kontextové odpovede pomocou modelu hostiteľa
+- **Nezávislý prístup k modelu**: Servery môžu žiadať doplnenia bez nutnosti zahrňovať LLM SDK alebo spravovať prístup k modelu
+- **Serverom iniciovaná AI**: Umožňuje serverom autonómne generovať obsah pomocou AI modelu klienta
+- **Rekurzívne LLM interakcie**: Podporuje zložité scenáre, kde servery potrebujú AI asistenciu na spracovanie
+- **Dynamická tvorba obsahu**: Umožňuje serverom vytvárať kontextuálne odpovede pomocou modelu hostiteľa
+- **Podpora volania nástrojov**: Servery môžu zahrnúť parametre `tools` a `toolChoice` na umožnenie vyvolania nástrojov modelom klienta počas sampling
 
-Sampling sa iniciuje cez metódu `sampling/complete`, kde servery posielajú požiadavky na dokončenie klientom.
+Sampling sa spúšťa cez metódu `sampling/complete`, kde servery posielajú požiadavky na doplnenie klientom.
+
+### Roots
+
+**Roots** poskytujú štandardizovaný spôsob, ako môžu klienti sprístupniť hranice súborového systému serverom, čím pomáhajú serverom pochopiť, ku ktorým adresárom a súborom majú prístup:
+
+- **Hranice súborového systému**: Definujú hranice, kde môžu servery v súborovom systéme pôsobiť
+- **Kontrola prístupu**: Pomáhajú serverom pochopiť, ku ktorým adresárom a súborom majú oprávnenie prístupu
+- **Dynamické aktualizácie**: Klienti môžu notifikovať server o zmene zoznamu roots
+- **Identifikácia na základe URI**: Roots používajú URI `file://` na identifikáciu prístupných adresárov a súborov
+
+Roots sa objavujú cez metódu `roots/list` a klient odosiela notifikácie `notifications/roots/list_changed` pri zmene rootov.
 
 ### Elicitation
 
-**Elicitation** umožňuje serverom žiadať ďalšie informácie alebo potvrdenie od používateľov cez klientské rozhranie:
+**Elicitation** umožňuje serverom žiadať ďalšie informácie alebo potvrdenia od používateľov cez rozhranie klienta:
 
-- **Žiadosti o vstup používateľa**: Servery môžu žiadať ďalšie informácie, keď sú potrebné pre vykonanie nástroja  
-- **Potvrdzovacie dialógy**: Žiadať schválenie používateľa pre citlivé alebo významné operácie  
-- **Interaktívne pracovné toky**: Umožniť serverom vytvárať krok za krokom používateľské interakcie  
-- **Dynamické zhromažďovanie parametrov**: Zbierať chýbajúce alebo voliteľné parametre počas vykonávania nástroja
+- **Požiadavky na vstup používateľa**: Servery môžu žiadať ďalšie informácie, keď sú potrebné na vykonanie nástroja
+- **Potvrdzovacie dialógy**: Žiadajú súhlas používateľa pre citlivé alebo zásadné operácie
+- **Interaktívne pracovné postupy**: Umožňujú serverom vytvárať krok po kroku interakcie s používateľom
+- **Dynamické zberanie parametrov**: Zhromažďujú chýbajúce alebo voliteľné parametre počas spúšťania nástrojov
 
-Žiadosti o elicitation sa robia pomocou metódy `elicitation/request` na zber vstupu používateľa cez rozhranie klienta.
+Požiadavky elicitation sa vykonávajú pomocou metódy `elicitation/request` na zber vstupu používateľa cez rozhranie klienta.
+
+**Režim URL elicitation**: Servery môžu tiež žiadať URL-bázované interakcie s používateľom, umožňujúc serverom nasmerovať používateľov na externé webové stránky pre autentifikáciu, potvrdenie alebo zadanie dát.
 
 ### Logging
 
-**Logging** umožňuje serverom posielať štruktúrované logovacie správy klientom pre ladenie, monitorovanie a operačnú viditeľnosť:
+**Logging** umožňuje serverom posielať štruktúrované logovacie správy klientom na účely ladenia, monitorovania a prevádzkovej transparentnosti:
 
-- **Podpora ladenia**: Umožniť serverom poskytovať detailné logy vykonávania pre riešenie problémov  
-- **Operačné monitorovanie**: Posielať klientom stavové aktualizácie a metriky výkonu  
-- **Hlásenie chýb**: Poskytovať detailný kontext chýb a diagnostické informácie  
-- **Auditné stopy**: Vytvárať komplexné záznamy operácií a rozhodnutí servera
+- **Podpora ladenia**: Umožňuje serverom poskytovať detailné logy vykonávania pre riešenie problémov
+- **Prevádzkové monitorovanie**: Posiela stavové aktualizácie a výkonnostné metriky klientom
+- **Hlásenie chýb**: Poskytuje detailný kontext chýb a diagnostické informácie
+- **Auditné stopy**: Vytvára komplexné záznamy o operáciách a rozhodnutiach servera
 
-Logovacie správy sa posielajú klientom na zabezpečenie transparentnosti operácií servera a uľahčenie ladenia.
+Logovacie správy sú posielané klientom na zabezpečenie transparentnosti operácií servera a uľahčenie ladenia.
 
 ## Tok informácií v MCP
 
-Model Context Protocol (MCP) definuje štruktúrovaný tok informácií medzi hostiteľmi, klientmi, servermi a modelmi. Pochopenie tohto toku pomáha objasniť, ako sa spracovávajú požiadavky používateľov a ako sa externé nástroje a dáta integrujú do odpovedí modelu.
+Model Context Protocol (MCP) definuje štruktúrovaný tok informácií medzi hostiteľmi, klientmi, servermi a modelmi. Pochopenie tohto toku pomáha vyjasniť, ako sa spracúvajú požiadavky používateľov a ako sú externé nástroje a dáta integrované do odpovedí modelu.
 
-- **Hostiteľ iniciuje pripojenie**  
-  Hostiteľská aplikácia (napr. IDE alebo chat rozhranie) nadviaže spojenie s MCP serverom, typicky cez STDIO, WebSocket alebo iný podporovaný transport.
+- **Hostiteľ inicializuje pripojenie**  
+  Hostiteľská aplikácia (napr. IDE alebo chatové rozhranie) nadväzuje spojenie s MCP serverom, typicky cez STDIO, WebSocket alebo iný podporovaný transport.
 
 - **Vyjednávanie schopností**  
-  Klient (vložený v hostiteľovi) a server si vymieňajú informácie o podporovaných funkciách, nástrojoch, zdrojoch a verziách protokolu. To zabezpečuje, že obe strany rozumejú, aké schopnosti sú dostupné pre reláciu.
+  Klient (vložený v hostiteľovi) a server si vymieňajú informácie o podporovaných funkciách, nástrojoch, zdrojoch a verziách protokolu. To zabezpečuje, že obe strany chápu, aké schopnosti sú dostupné počas relácie.
 
 - **Používateľská požiadavka**  
-  Používateľ interaguje s hostiteľom (napr. zadá prompt alebo príkaz). Hostiteľ zhromaždí tento vstup a odovzdá ho klientovi na spracovanie.
+  Používateľ interaguje s hostiteľom (napr. zadá prompt alebo príkaz). Hostiteľ zozbiera tento vstup a odovzdá ho klientovi na spracovanie.
 
 - **Použitie zdroja alebo nástroja**  
-  - Klient môže žiadať ďalší kontext alebo zdroje zo servera (napr. súbory, záznamy v databáze alebo články zo znalostnej bázy) na obohatenie porozumenia modelu.  
-  - Ak model určí, že je potrebný nástroj (napr. na získanie dát, vykonanie výpočtu alebo volanie API), klient pošle serveru požiadavku na vyvolanie nástroja, špecifikujúc názov nástroja a parametre.
+  - Klient môže požiadať server o dodatočný kontext alebo zdroje (napr. súbory, databázové záznamy alebo články zo základne znalostí), aby obohatil porozumenie modelu.  
+  - Ak model určí, že je potrebné použiť nástroj (napr. na získanie dát, vykonanie výpočtu alebo zavolanie API), klient pošle serveru požiadavku na vyvolanie nástroja, špecifikujúc jeho názov a parametre.
 
-- **Vykonanie serverom**  
-  Server prijme požiadavku na zdroj alebo nástroj, vykoná potrebné operácie (napr. spustenie funkcie, dotaz do databázy alebo získanie súboru) a vráti výsledky klientovi v štruktúrovanom formáte.
+- **Serverové vykonanie**  
+
+Server prijme požiadavku na zdroj alebo nástroj, vykoná potrebné operácie (napríklad spustenie funkcie, dotazovanie do databázy alebo načítanie súboru) a výsledky vráti klientovi v štruktúrovanom formáte.
 
 - **Generovanie odpovede**  
-  Klient integruje odpovede servera (dáta zo zdrojov, výstupy nástrojov atď.) do prebiehajúcej interakcie s modelom. Model použije tieto informácie na vytvorenie komplexnej a kontextovo relevantnej odpovede.
+  Klient integruje odpovede servera (údaje o zdroji, výstupy nástrojov a pod.) do prebiehajúcej interakcie s modelom. Model používa tieto informácie na vytvorenie komplexnej a kontextovo relevantnej odpovede.
 
 - **Prezentácia výsledku**  
-  Hostiteľ prijme finálny výstup od klienta a zobrazí ho používateľovi, často vrátane generovaného textu modelu a výsledkov vykonaných nástrojov alebo vyhľadávania zdrojov.
+  Hostiteľ prijme finálny výstup od klienta a prezentuje ho používateľovi, často vrátane textu vygenerovaného modelom aj výsledkov z vykonaných nástrojov alebo vyhľadávania zdrojov.
 
-Tento tok umožňuje MCP podporovať pokročilé, interaktívne a kontextovo uvedomelé AI aplikácie tým, že bezproblémovo prepája modely s externými nástrojmi a zdrojmi dát.
+Tento tok umožňuje MCP podporovať pokročilé, interaktívne a kontextuálne uvedomelé AI aplikácie tým, že bezproblémovo prepája modely s externými nástrojmi a dátovými zdrojmi.
 
-## Architektúra protokolu a vrstvy
+## Architektúra a vrstvy protokolu
 
-MCP pozostáva z dvoch odlišných architektonických vrstiev, ktoré spolupracujú na poskytovaní kompletného komunikačného rámca:
+MCP pozostáva z dvoch samostatných architektonických vrstiev, ktoré spolupracujú na poskytovaní kompletného komunikačného rámca:
 
 ### Dátová vrstva
 
-**Dátová vrstva** implementuje jadro protokolu MCP pomocou **JSON-RPC 2.0** ako základ. Táto vrstva definuje štruktúru správ, sémantiku a vzory interakcie:
+**Dátová vrstva** implementuje jadro protokolu MCP založeného na **JSON-RPC 2.0**. Táto vrstva definuje štruktúru správ, sémantiku a vzory interakcií:
 
 #### Základné komponenty:
 
-- **JSON-RPC 2.0 protokol**: Všetka komunikácia používa štandardizovaný formát správ JSON-RPC 2.0 pre volania metód, odpovede a notifikácie
-- **Správa životného cyklu**: Rieši inicializáciu pripojenia, vyjednávanie schopností a ukončenie relácie medzi klientmi a servermi
-- **Serverové primitíva**: Umožňujú serverom poskytovať základnú funkcionalitu prostredníctvom nástrojov, zdrojov a výziev
-- **Klientské primitíva**: Umožňujú serverom žiadať o vzorkovanie z LLM, vyvolať vstup používateľa a odosielať logovacie správy
-- **Notifikácie v reálnom čase**: Podporuje asynchrónne notifikácie pre dynamické aktualizácie bez potreby opakovaného dotazovania
+- **Protokol JSON-RPC 2.0**: Celá komunikácia používa štandardizovaný formát správ JSON-RPC 2.0 pre volania metód, odpovede a notifikácie
+- **Správa životného cyklu**: Rieši inicializáciu pripojenia, dojednávanie schopností a ukončenie relácie medzi klientmi a servermi
+- **Serverové primitíva**: Umožňujú serverom poskytovať základné funkcie cez nástroje, zdroje a promptové šablóny
+- **Klientské primitíva**: Umožňujú serverom žiadať vzorkovanie z LLM, vyžiadať vstup používateľa a posielať logovacie správy
+- **Notifikácie v reálnom čase**: Podporujú asynchrónne notifikácie pre dynamické aktualizácie bez potreby polling-u
 
 #### Kľúčové vlastnosti:
 
-- **Vyjednávanie verzie protokolu**: Používa verziu založenú na dátume (RRRR-MM-DD) na zabezpečenie kompatibility
+- **Dojednávanie verzie protokolu**: Používa dátumovú verziu (RRRR-MM-DD) pre zabezpečenie kompatibility
 - **Objavovanie schopností**: Klienti a servery si počas inicializácie vymieňajú informácie o podporovaných funkciách
-- **Stavové relácie**: Udržiava stav pripojenia naprieč viacerými interakciami pre kontinuitu kontextu
+- **Stavové relácie**: Udržiava stav pripojenia cez viaceré interakcie pre kontinuitu kontextu
 
 ### Transportná vrstva
 
@@ -269,41 +288,41 @@ MCP pozostáva z dvoch odlišných architektonických vrstiev, ktoré spolupracu
 
 #### Podporované transportné mechanizmy:
 
-1. **STDIO transport**:
+1. **STDIO Transport**:
    - Používa štandardné vstupné/výstupné prúdy pre priamu komunikáciu procesov
-   - Optimálne pre lokálne procesy na rovnakom stroji bez sieťovej záťaže
-   - Bežne používané pre lokálne implementácie MCP serverov
+   - Optimálne pre lokálne procesy na rovnakom zariadení bez sieťových režijných nákladov
+   - Často používané pre lokálne implementácie MCP serverov
 
-2. **Streamovateľný HTTP transport**:
+2. **Streamovateľný HTTP Transport**:
    - Používa HTTP POST pre správy klient → server  
    - Voliteľné Server-Sent Events (SSE) pre streamovanie server → klient
-   - Umožňuje komunikáciu so vzdialenými servermi cez siete
+   - Umožňuje vzdialenú komunikáciu cez siete
    - Podporuje štandardnú HTTP autentifikáciu (bearer tokeny, API kľúče, vlastné hlavičky)
    - MCP odporúča OAuth pre bezpečnú autentifikáciu založenú na tokenoch
 
 #### Abstrakcia transportu:
 
-Transportná vrstva abstrahuje detaily komunikácie od dátovej vrstvy, čo umožňuje rovnaký formát správ JSON-RPC 2.0 naprieč všetkými transportnými mechanizmami. Táto abstrakcia umožňuje aplikáciám plynulo prepínať medzi lokálnymi a vzdialenými servermi.
+Transportná vrstva abstrahuje detaily komunikácie od dátovej vrstvy, vďaka čomu je rovnaký formát správ JSON-RPC 2.0 použiteľný pre všetky transportné mechanizmy. Táto abstrakcia umožňuje aplikáciám plynulo prepínať medzi lokálnymi a vzdialenými servermi.
 
 ### Bezpečnostné úvahy
 
-Implementácie MCP musia dodržiavať niekoľko kľúčových bezpečnostných princípov, aby zabezpečili bezpečné, dôveryhodné a zabezpečené interakcie vo všetkých operáciách protokolu:
+Implementácie MCP musia dodržiavať niekoľko kritických bezpečnostných princípov, aby zaistili bezpečné, dôveryhodné a zabezpečené interakcie vo všetkých operáciách protokolu:
 
-- **Súhlas a kontrola používateľa**: Používatelia musia poskytnúť výslovný súhlas pred prístupom k akýmkoľvek údajom alebo vykonaním operácií. Mali by mať jasnú kontrolu nad tým, aké údaje sa zdieľajú a ktoré akcie sú autorizované, podporené intuitívnym používateľským rozhraním na prezeranie a schvaľovanie aktivít.
+- **Súhlas a kontrola používateľa**: Používatelia musia pred sprístupnením akýchkoľvek dát alebo vykonaním operácií vyjadriť výslovný súhlas. Mali by mať jasnú kontrolu nad tým, ktoré dáta sa zdieľajú a ktoré akcie sú autorizované, pričom rozhrania by mali umožniť prehľadné preskúmanie a schválenie činností.
 
-- **Ochrana súkromia údajov**: Údaje používateľa by mali byť sprístupnené len s výslovným súhlasom a musia byť chránené vhodnými prístupovými kontrolami. Implementácie MCP musia zabrániť neoprávnenému prenosu údajov a zabezpečiť, že súkromie je zachované počas všetkých interakcií.
+- **Ochrana súkromia dát**: Dáta používateľa by mali byť sprístupnené len so súhlasom a chránené vhodnými prístupovými kontrolami. Implementácie MCP musia zabrániť neoprávnenému prenosu údajov a zabezpečiť súkromie počas celej interakcie.
 
-- **Bezpečnosť nástrojov**: Pred vyvolaním akéhokoľvek nástroja je potrebný výslovný súhlas používateľa. Používatelia by mali mať jasné pochopenie funkčnosti každého nástroja a musia byť vynútené robustné bezpečnostné hranice, aby sa zabránilo neúmyselnému alebo nebezpečnému spusteniu nástrojov.
+- **Bezpečnosť nástrojov**: Pred vyvolaním akéhokoľvek nástroja je potrebný výslovný súhlas používateľa. Používatelia by mali mať jasné informácie o funkčnosti a bezpečnostné hranice nástrojov musia byť dôsledne vymedzené, aby sa predišlo neúmyselnej alebo nebezpečnej exekúcii.
 
-Dodržiavaním týchto bezpečnostných princípov MCP zabezpečuje dôveru používateľov, ochranu súkromia a bezpečnosť vo všetkých interakciách protokolu, pričom umožňuje silné AI integrácie.
+Dodržiavaním týchto bezpečnostných princípov MCP zabezpečuje dôveru používateľov, ochranu súkromia a bezpečnosť naprieč všetkými interakciami protokolu, pričom umožňuje silné integrácie AI.
 
-## Príklady kódu: Kľúčové komponenty
+## Ukážky kódu: základné komponenty
 
-Nižšie sú uvedené príklady kódu v niekoľkých populárnych programovacích jazykoch, ktoré ilustrujú, ako implementovať kľúčové komponenty MCP servera a nástroje.
+Nižšie sú uvedené príklady kódu vo viacerých populárnych programovacích jazykoch, ktoré demonštrujú implementáciu kľúčových komponentov MCP servera a nástrojov.
 
-### Príklad .NET: Vytvorenie jednoduchého MCP servera s nástrojmi
+### Príklad v .NET: Vytvorenie jednoduchého MCP servera s nástrojmi
 
-Tu je praktický príklad kódu v .NET, ktorý demonštruje, ako implementovať jednoduchý MCP server s vlastnými nástrojmi. Tento príklad ukazuje, ako definovať a registrovať nástroje, spracovať požiadavky a pripojiť server pomocou Model Context Protocol.
+Praktický príklad .NET kódu ukazuje, ako implementovať jednoduchý MCP server so zákazníckymi nástrojmi. Tento príklad ukazuje definovanie a registráciu nástrojov, spracovanie požiadaviek a pripojenie servera pomocou Model Context Protocol.
 
 ```csharp
 using System;
@@ -362,9 +381,9 @@ public class WeatherData
 }
 ```
 
-### Príklad Java: Komponenty MCP servera
+### Príklad v Jave: Komponenty MCP servera
 
-Tento príklad demonštruje rovnaký MCP server a registráciu nástrojov ako vyššie uvedený príklad .NET, ale implementovaný v Jave.
+Tento príklad ukazuje rovnaký MCP server a registráciu nástrojov ako vyššie v .NET, ale implementovaný v Jave.
 
 ```java
 import io.modelcontextprotocol.server.McpServer;
@@ -381,7 +400,7 @@ public class WeatherMcpServer {
             .version("1.0.0")
             .build();
             
-        // Zaregistrujte nástroj počasia
+        // Zaregistrujte nástroj pre počasie
         server.registerTool(McpToolDefinition.builder("weatherTool")
             .description("Gets current weather for a location")
             .parameter("location", String.class)
@@ -391,7 +410,7 @@ public class WeatherMcpServer {
                 // Získajte údaje o počasí (zjednodušené)
                 WeatherData data = getWeatherData(location);
                 
-                // Vráťte formátovanú odpoveď
+                // Vráťte naformátovanú odpoveď
                 return ToolResponse.content(
                     String.format("Temperature: %.1f°F, Conditions: %s, Location: %s", 
                     data.getTemperature(), 
@@ -405,14 +424,14 @@ public class WeatherMcpServer {
         try (StdioServerTransport transport = new StdioServerTransport()) {
             server.connect(transport);
             System.out.println("Weather MCP Server started");
-            // Udržujte server bežiaci, kým nie je proces ukončený
+            // Udržiavajte server v prevádzke, kým nie je proces ukončený
             Thread.currentThread().join();
         }
     }
     
     private static WeatherData getWeatherData(String location) {
         // Implementácia by volala API počasia
-        // Zjednodušené pre účely príkladu
+        // Zjednodušené pre ukážkové účely
         return new WeatherData(72.5, "Sunny", location);
     }
 }
@@ -442,7 +461,7 @@ class WeatherData {
 }
 ```
 
-### Príklad Python: Vytváranie MCP servera
+### Príklad v Pythone: Budovanie MCP servera
 
 Tento príklad používa fastmcp, preto si ho najprv nainštalujte:
 
@@ -457,7 +476,7 @@ import asyncio
 from fastmcp import FastMCP
 from fastmcp.transports.stdio import serve_stdio
 
-# Vytvorte server FastMCP
+# Vytvoriť server FastMCP
 mcp = FastMCP(
     name="Weather MCP Server",
     version="1.0.0"
@@ -485,39 +504,39 @@ class WeatherTools:
             ]
         }
 
-# Zaregistrujte nástroje triedy
+# Zaregistrovať nástroje triedy
 weather_tools = WeatherTools()
 
-# Spustite server
+# Spustiť server
 if __name__ == "__main__":
     asyncio.run(serve_stdio(mcp))
 ```
 
-### Príklad JavaScript: Vytvorenie MCP servera
+### Príklad v JavaScripte: Vytvorenie MCP servera
 
-Tento príklad ukazuje vytvorenie MCP servera v JavaScripte a ako zaregistrovať dva nástroje súvisiace s počasím.
+Tento príklad ukazuje vytvorenie MCP servera v JavaScripte a registráciu dvoch nástrojov súvisiacich s počasím.
 
 ```javascript
 // Použitie oficiálneho Model Context Protocol SDK
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod"; // Pre overenie parametrov
+import { z } from "zod"; // Na overenie parametrov
 
-// Vytvorte MCP server
+// Vytvoriť MCP server
 const server = new McpServer({
   name: "Weather MCP Server",
   version: "1.0.0"
 });
 
-// Definujte nástroj počasia
+// Definovať nástroj počasia
 server.tool(
   "weatherTool",
   {
     location: z.string().describe("The location to get weather for")
   },
   async ({ location }) => {
-    // Toto by normálne volalo API počasia
-    // Zjednodušené pre demonštráciu
+    // Normálne by to volalo API počasia
+    // Zjednodušené na demonštráciu
     const weatherData = await getWeatherData(location);
     
     return {
@@ -531,7 +550,7 @@ server.tool(
   }
 );
 
-// Definujte nástroj predpovede
+// Definovať nástroj predpovede
 server.tool(
   "forecastTool",
   {
@@ -539,8 +558,8 @@ server.tool(
     days: z.number().default(3).describe("Number of days for forecast")
   },
   async ({ location, days }) => {
-    // Toto by normálne volalo API počasia
-    // Zjednodušené pre demonštráciu
+    // Normálne by to volalo API počasia
+    // Zjednodušené na demonštráciu
     const forecast = await getForecastData(location, days);
     
     return {
@@ -573,83 +592,95 @@ async function getForecastData(location, days) {
   }));
 }
 
-// Pripojte server pomocou stdio transportu
+// Pripojiť server pomocou stdio transportu
 const transport = new StdioServerTransport();
 server.connect(transport).catch(console.error);
 
 console.log("Weather MCP Server started");
 ```
 
-Tento JavaScriptový príklad demonštruje, ako vytvoriť MCP klienta, ktorý sa pripojí k serveru, odošle výzvu a spracuje odpoveď vrátane všetkých volaní nástrojov, ktoré boli vykonané.
+Tento JavaScript príklad ukazuje, ako vytvoriť MCP klienta, ktorý sa pripája k serveru, posiela prompt a spracováva odpoveď vrátane vyvolaní nástrojov.
 
 ## Bezpečnosť a autorizácia
 
 MCP obsahuje niekoľko vstavaných konceptov a mechanizmov na správu bezpečnosti a autorizácie počas celého protokolu:
 
-1. **Kontrola povolení nástrojov**:  
-  Klienti môžu špecifikovať, ktoré nástroje môže model počas relácie používať. To zabezpečuje, že sú prístupné len explicitne autorizované nástroje, čím sa znižuje riziko neúmyselných alebo nebezpečných operácií. Povolenia môžu byť konfigurované dynamicky na základe preferencií používateľa, organizačných politík alebo kontextu interakcie.
+1. **Kontrola oprávnení nástrojov**:  
+   Klienti môžu špecifikovať, ktoré nástroje môže model počas relácie používať. Zabezpečuje sa tak prístup len k explicitne povoleným nástrojom, čím sa znižuje riziko neúmyselných alebo nebezpečných operácií. Oprávnenia možno nastavovať dynamicky podľa preferencií používateľa, organizačných politík alebo kontextu interakcie.
 
 2. **Autentifikácia**:  
-  Servery môžu vyžadovať autentifikáciu pred udelením prístupu k nástrojom, zdrojom alebo citlivým operáciám. Môže ísť o API kľúče, OAuth tokeny alebo iné autentifikačné schémy. Správna autentifikácia zabezpečuje, že len dôveryhodní klienti a používatelia môžu vyvolávať schopnosti na strane servera.
+  Servery môžu vyžadovať autentifikáciu pred sprístupnením nástrojov, zdrojov alebo citlivých operácií. Môže ísť o API kľúče, OAuth tokeny alebo iné overovacie mechanizmy. Správna autentifikácia zaručuje, že len dôveryhodní klienti a používatelia môžu volať serverové funkcie.
 
 3. **Validácia**:  
-  Validácia parametrov je vynútená pre všetky volania nástrojov. Každý nástroj definuje očakávané typy, formáty a obmedzenia pre svoje parametre a server overuje prichádzajúce požiadavky podľa toho. To zabraňuje tomu, aby do implementácií nástrojov prenikol nesprávny alebo škodlivý vstup a pomáha udržiavať integritu operácií.
+  Pre všetky volania nástrojov sa vynucuje validácia parametrov. Každý nástroj definuje očakávané typy, formáty a obmedzenia svojich parametrov a server overuje prichádzajúce požiadavky podľa toho. Zabráni sa tak tomu, aby nevalidné alebo škodlivé vstupy dosiahli implementácie nástrojov a pomáha to zachovať integritu operácií.
 
-4. **Obmedzovanie rýchlosti (Rate Limiting)**:  
-  Aby sa predišlo zneužitiu a zabezpečilo spravodlivé využívanie serverových zdrojov, MCP servery môžu implementovať obmedzovanie rýchlosti pre volania nástrojov a prístup k zdrojom. Obmedzenia môžu byť aplikované na používateľa, reláciu alebo globálne a pomáhajú chrániť pred útokmi typu denial-of-service alebo nadmerným využívaním zdrojov.
+4. **Obmedzenie frekvencie (rate limiting)**:  
+  Na predchádzanie zneužitia a zaistenie férového využitia serverových zdrojov môžu servery MCP implementovať obmedzenia volaní nástrojov a prístupu k zdrojom. Obmedzenia môžu byť aplikované na používateľa, reláciu alebo globálne, čím sa chráni proti útokom typu denial-of-service alebo nadmernému využívaniu zdrojov.
 
-Kombináciou týchto mechanizmov MCP poskytuje bezpečný základ pre integráciu jazykových modelov s externými nástrojmi a zdrojmi dát, pričom používateľom a vývojárom dáva jemnozrnnú kontrolu nad prístupom a používaním.
+Kombináciou týchto mechanizmov MCP poskytuje bezpečný základ na integráciu jazykových modelov s externými nástrojmi a dátovými zdrojmi, pričom umožňuje používateľom a vývojárom jemnokontrolovaný prístup a využitie.
 
 ## Správy protokolu a tok komunikácie
 
-Komunikácia MCP používa štruktúrované správy **JSON-RPC 2.0** na uľahčenie jasných a spoľahlivých interakcií medzi hostiteľmi, klientmi a servermi. Protokol definuje špecifické vzory správ pre rôzne typy operácií:
+MCP komunikácia používa štruktúrované správy **JSON-RPC 2.0** na zabezpečenie jasných a spoľahlivých interakcií medzi hostiteľmi, klientmi a servermi. Protokol definuje konkrétne vzory správ pre rôzne typy operácií:
 
 ### Základné typy správ:
 
 #### **Inicializačné správy**
-- **`initialize` požiadavka**: Zriaďuje pripojenie a vyjednáva verziu protokolu a schopnosti
-- **`initialize` odpoveď**: Potvrdzuje podporované funkcie a informácie o serveri  
-- **`notifications/initialized`**: Signalizuje, že inicializácia je dokončená a relácia je pripravená
+- **`initialize` Žiadosť**: Zriaďuje pripojenie a dojednáva verziu protokolu a schopnosti
+- **`initialize` Odpoveď**: Potvrdzuje podporované funkcie a informácie o serveri  
+- **`notifications/initialized`**: Signalizuje dokončenie inicializácie a pripravenosť relácie
 
 #### **Objavovacie správy**
-- **`tools/list` požiadavka**: Objavuje dostupné nástroje na serveri
-- **`resources/list` požiadavka**: Zoznam dostupných zdrojov (dátových zdrojov)
-- **`prompts/list` požiadavka**: Získava dostupné šablóny výziev
+- **`tools/list` Žiadosť**: Vyhľadáva dostupné nástroje na serveri
+- **`resources/list` Žiadosť**: Zoznam dostupných zdrojov (dátových zdrojov)
+- **`prompts/list` Žiadosť**: Načíta dostupné promptové šablóny
 
 #### **Výkonné správy**  
-- **`tools/call` požiadavka**: Vykonáva konkrétny nástroj s poskytnutými parametrami
-- **`resources/read` požiadavka**: Získava obsah z konkrétneho zdroja
-- **`prompts/get` požiadavka**: Načíta šablónu výzvy s voliteľnými parametrami
+- **`tools/call` Žiadosť**: Spustí konkrétny nástroj s dodanými parametrami
+- **`resources/read` Žiadosť**: Načíta obsah z konkrétneho zdroja
+- **`prompts/get` Žiadosť**: Získa promptovú šablónu s voliteľnými parametrami
 
 #### **Správy na strane klienta**
-- **`sampling/complete` požiadavka**: Server žiada klienta o dokončenie LLM
-- **`elicitation/request`**: Server žiada používateľský vstup cez klientské rozhranie
-- **Logovacie správy**: Server odosiela štruktúrované logovacie správy klientovi
+- **`sampling/complete` Žiadosť**: Server požiada klienta o dokončenie LLM
+- **`elicitation/request`**: Server vyžiada používateľský vstup cez rozhranie klienta
+- **Logovacie správy**: Server posiela štruktúrované logy klientovi
 
 #### **Notifikačné správy**
-- **`notifications/tools/list_changed`**: Server informuje klienta o zmenách v nástrojoch
-- **`notifications/resources/list_changed`**: Server informuje klienta o zmenách v zdrojoch  
-- **`notifications/prompts/list_changed`**: Server informuje klienta o zmenách v šablónach výziev
+- **`notifications/tools/list_changed`**: Server informuje klienta o zmene zoznamu nástrojov
+- **`notifications/resources/list_changed`**: Server informuje klienta o zmene zoznamu zdrojov  
+- **`notifications/prompts/list_changed`**: Server informuje klienta o zmene promptov
 
 ### Štruktúra správ:
 
-Všetky správy MCP dodržiavajú formát JSON-RPC 2.0 s:
-- **Požiadavkové správy**: Obsahujú `id`, `method` a voliteľné `params`
-- **Odpoveďové správy**: Obsahujú `id` a buď `result` alebo `error`  
-- **Notifikačné správy**: Obsahujú `method` a voliteľné `params` (bez `id` a bez očakávanej odpovede)
+Všetky správy MCP používajú formát JSON-RPC 2.0 s:
+- **Žiadosťami**: Obsahujú `id`, `method` a voliteľné `params`
+- **Odpoveďami**: Obsahujú `id` a buď `result`, alebo `error`  
+- **Notifikáciami**: Obsahujú `method` a voliteľné `params` (nemajú `id` a nevyžadujú odpoveď)
 
-Táto štruktúrovaná komunikácia zabezpečuje spoľahlivé, sledovateľné a rozšíriteľné interakcie podporujúce pokročilé scenáre ako aktualizácie v reálnom čase, reťazenie nástrojov a robustné spracovanie chýb.
+Táto štruktúrovaná komunikácia zabezpečuje spoľahlivé, sledovateľné a rozšíriteľné interakcie, ktoré podporujú pokročilé scenáre ako aktualizácie v reálnom čase, reťazenie nástrojov a robustné spracovanie chýb.
+
+### Úlohy (experimentálne)
+
+**Úlohy** sú experimentálna funkcia poskytujúca trvácne exekučné obaly umožňujúce odložené získavanie výsledkov a sledovanie stavu MCP požiadaviek:
+
+- **Dlhodobé operácie**: Sledovanie náročných výpočtov, automatizácia pracovných tokov a dávkové spracovanie
+- **Odložené výsledky**: Pollovanie stavu úloh a vyzdvihnutie výsledkov po dokončení operácií
+- **Sledovanie stavu**: Monitorovanie pokroku úlohy cez definované životné cykly
+- **Viacstupňové operácie**: Podpora komplexných pracovných tokov prekračujúcich viacero interakcií
+
+Úlohy obalujú štandardné MCP žiadosti pre umožnenie asynchrónnych vzorov vykonávania operácií, ktoré nie je možné dokončiť okamžite.
 
 ## Kľúčové poznatky
 
-- **Architektúra**: MCP používa klient-server architektúru, kde hostitelia spravujú viacero klientskych pripojení k serverom
+- **Architektúra**: MCP používa klient-server architektúru, kde hostitelia spravujú viaceré pripojenia klientov k serverom
 - **Účastníci**: Ekosystém zahŕňa hostiteľov (AI aplikácie), klientov (protokolové konektory) a servery (poskytovatelia schopností)
-- **Transportné mechanizmy**: Komunikácia podporuje STDIO (lokálne) a streamovateľný HTTP s voliteľným SSE (vzdialené)
-- **Základné primitíva**: Servery vystavujú nástroje (vykonávateľné funkcie), zdroje (dátové zdroje) a výzvy (šablóny)
-- **Klientské primitíva**: Servery môžu žiadať vzorkovanie (LLM dokončenia), vyvolanie (vstup používateľa) a logovanie od klientov
-- **Základ protokolu**: Postavený na JSON-RPC 2.0 s verziou založenou na dátume (aktuálna: 2025-11-25)
-- **Schopnosti v reálnom čase**: Podporuje notifikácie pre dynamické aktualizácie a synchronizáciu v reálnom čase
-- **Bezpečnosť na prvom mieste**: Výslovný súhlas používateľa, ochrana súkromia údajov a bezpečný transport sú základné požiadavky
+- **Transportné mechanizmy**: Komunikácia podporuje STDIO (lokálny) a streamovateľný HTTP s voliteľným SSE (vzdialený)
+- **Jadrové primitíva**: Servery poskytujú nástroje (vykonávateľné funkcie), zdroje (dátové zdroje) a promptové šablóny
+- **Klientské primitíva**: Servery môžu žiadať vzorkovanie (LLM doplnenia s podporou volania nástrojov), vyžiadanie vstupu (vrátane URL režimu), koreňové adresáre (hranice súborového systému) a logovanie od klientov
+- **Experimentálne vlastnosti**: Úlohy poskytujú trvácne obaly na dlhodobé operácie
+- **Základ protokolu**: Postavený na JSON-RPC 2.0 s dátumovou verziou (aktuálna: 2025-11-25)
+- **Funkcie v reálnom čase**: Podpora notifikácií pre dynamické aktualizácie a synchronizáciu
+- **Bezpečnosť na prvom mieste**: Výslovný súhlas používateľa, ochrana súkromia a zabezpečený transport sú základnými požiadavkami
 
 ## Cvičenie
 
@@ -669,6 +700,6 @@ Navrhnite jednoduchý MCP nástroj, ktorý by bol užitočný vo vašej oblasti.
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Zrieknutie sa zodpovednosti**:
-Tento dokument bol preložený pomocou AI prekladateľskej služby [Co-op Translator](https://github.com/Azure/co-op-translator). Aj keď sa snažíme o presnosť, majte prosím na pamäti, že automatizované preklady môžu obsahovať chyby alebo nepresnosti. Pôvodný dokument v jeho rodnom jazyku by mal byť považovaný za autoritatívny zdroj. Pre kritické informácie sa odporúča profesionálny ľudský preklad. Nie sme zodpovední za akékoľvek nedorozumenia alebo nesprávne interpretácie vyplývajúce z použitia tohto prekladu.
+**Upozornenie**:  
+Tento dokument bol preložený pomocou AI prekladateľskej služby [Co-op Translator](https://github.com/Azure/co-op-translator). Aj keď sa snažíme o presnosť, prosím, majte na pamäti, že automatické preklady môžu obsahovať chyby alebo nepresnosti. Originálny dokument v jeho pôvodnom jazyku by mal byť považovaný za autoritatívny zdroj. Pre kritické informácie sa odporúča profesionálny ľudský preklad. Nie sme zodpovední za akékoľvek nedorozumenia alebo nesprávne výklady vyplývajúce z používania tohto prekladu.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

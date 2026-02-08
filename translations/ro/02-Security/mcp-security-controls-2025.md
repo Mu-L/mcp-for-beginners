@@ -1,68 +1,74 @@
-# MCP Security Controls - Actualizare Decembrie 2025
+# Controale de Securitate MCP - Actualizare Februarie 2026
 
-> **Standard Curent**: Acest document reflectă cerințele de securitate din [MCP Specification 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) și [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices) oficiale.
+> **Standard Curent**: Acest document reflectă cerințele de securitate din [Specificația MCP 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) și [Cele mai bune practici oficiale de securitate MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices).
 
-Model Context Protocol (MCP) a evoluat semnificativ cu controale de securitate îmbunătățite care abordează atât securitatea software tradițională, cât și amenințările specifice AI. Acest document oferă controale de securitate cuprinzătoare pentru implementări MCP sigure la data de decembrie 2025.
+Protocolul Model Context (MCP) a evoluat semnificativ cu controale de securitate îmbunătățite pentru a aborda atât securitatea software tradițională, cât și amenințările specifice AI. Acest document oferă controale de securitate cuprinzătoare pentru implementări securizate MCP aliniate cu cadrul OWASP MCP Top 10.
+
+## 🏔️ Instruire Practică de Securitate
+
+Pentru experiență practică hands-on în implementarea securității, recomandăm **[Atelierul MCP Security Summit (Sherpa)](https://azure-samples.github.io/sherpa/)** - o expediție ghidată completă pentru securizarea serverelor MCP în Azure folosind metodologia "vulnerabil → exploatare → remediere → validare".
+
+Toate controalele de securitate din acest document sunt aliniate cu **[Ghidul de securitate OWASP MCP Azure](https://microsoft.github.io/mcp-azure-security-guide/)**, care oferă arhitecturi de referință și îndrumări specifice implementării în Azure pentru riscurile OWASP MCP Top 10.
 
 ## **Cerințe Obligatorii de Securitate**
 
-### **Interdicții Critice din Specificația MCP:**
+### **Prohibiții Critice din Specificația MCP:**
 
 > **INTERZIS**: Serverele MCP **NU TREBUIE** să accepte niciun token care nu a fost emis explicit pentru serverul MCP  
 >
 > **PROHIBIT**: Serverele MCP **NU TREBUIE** să utilizeze sesiuni pentru autentificare  
 >
-> **CERUT**: Serverele MCP care implementează autorizarea **TREBUIE** să verifice TOATE cererile primite  
+> **NECESAR**: Serverele MCP care implementează autorizarea **TREBUIE** să verifice TOATE cererile primite  
 >
-> **OBLIGATORIU**: Serverele proxy MCP care folosesc ID-uri statice de client **TREBUIE** să obțină consimțământul utilizatorului pentru fiecare client înregistrat dinamic
+> **OBLIGATORIU**: Serverele proxy MCP care folosesc ID-uri client statice **TREBUIE** să obțină consimțământul utilizatorului pentru fiecare client înregistrat dinamic
 
 ---
 
-## 1. **Controale de Autentificare și Autorizare**
+## 1. **Controale de Autentificare & Autorizare**
 
-### **Integrarea Furnizorului de Identitate Extern**
+### **Integrarea unui Furnizor de Identitate Extern**
 
-**Standardul MCP Curent (2025-06-18)** permite serverelor MCP să delege autentificarea către furnizori externi de identitate, reprezentând o îmbunătățire semnificativă a securității:
+**Standardul MCP Curent (2025-11-25)** permite serverelor MCP să delege autentificarea către furnizori externi de identitate, reprezentând o îmbunătățire semnificativă de securitate:
 
-### **Integrarea Furnizorului de Identitate Extern**
-
-**Standardul MCP Curent (2025-11-25)** permite serverelor MCP să delege autentificarea către furnizori externi de identitate, reprezentând o îmbunătățire semnificativă a securității:
+**Riscuri OWASP MCP Abordate**: [MCP07 - Autentificare & Autorizare Insuficiente](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp07-authz/)
 
 **Beneficii de Securitate:**
-1. **Elimină Riscurile Autentificării Personalizate**: Reduce suprafața de vulnerabilitate evitând implementările personalizate de autentificare  
-2. **Securitate de Nivel Enterprise**: Folosește furnizori de identitate consacrați precum Microsoft Entra ID cu funcții avansate de securitate  
+1. **Eliminarea Riscurilor de Autentificare Personalizată**: Reduce suprafața de vulnerabilitate evitând implementările personalizate de autentificare  
+2. **Securitate de Clasă Enterprise**: Utilizează furnizori de identitate consacrați precum Microsoft Entra ID cu caracteristici avansate de securitate  
 3. **Management Centralizat al Identității**: Simplifică gestionarea ciclului de viață al utilizatorilor, controlul accesului și auditul conformității  
-4. **Autentificare Multi-Factor**: Moștenește capabilitățile MFA de la furnizorii enterprise de identitate  
-5. **Politici de Acces Condiționat**: Beneficiază de controale de acces bazate pe risc și autentificare adaptivă
+4. **Autentificare Multifactor (MFA)**: Moștenește capacitățile MFA de la furnizorii enterprise de identitate  
+5. **Politici de Acces Condiționat**: Beneficiază de controlul accesului bazat pe risc și autentificare adaptivă  
 
 **Cerințe de Implementare:**
-- **Validarea Audienței Tokenului**: Verifică că toate tokenurile sunt emise explicit pentru serverul MCP  
+- **Validarea Publicului Tokenului**: Verificarea că toate tokenurile sunt emise explicit pentru serverul MCP  
 - **Verificarea Emitentului**: Validarea că emitentul tokenului corespunde furnizorului de identitate așteptat  
 - **Verificarea Semnăturii**: Validare criptografică a integrității tokenului  
-- **Aplicarea Expirării**: Aplicarea strictă a limitelor de durată a tokenului  
-- **Validarea Domeniului (Scope)**: Asigură că tokenurile conțin permisiunile adecvate pentru operațiile solicitate
+- **Aplicarea Expirării**: Respectarea strictă a limitelor de durată a tokenului  
+- **Validarea Scopului**: Confirmarea că tokenurile conțin permisiunile potrivite pentru operațiile solicitate  
 
 ### **Securitatea Logicii de Autorizare**
 
 **Controale Critice:**
-- **Audituri Complete de Autorizare**: Revizuiri regulate de securitate ale tuturor punctelor de decizie de autorizare  
-- **Implicit Deny (Fail-Safe Defaults)**: Refuză accesul când logica de autorizare nu poate lua o decizie definitivă  
-- **Limite de Permisiuni**: Separare clară între diferite niveluri de privilegii și acces la resurse  
-- **Jurnalizare pentru Audit**: Înregistrare completă a tuturor deciziilor de autorizare pentru monitorizarea securității  
-- **Revizuiri Periodice ale Accesului**: Validarea periodică a permisiunilor utilizatorilor și a atribuțiilor de privilegii
+- **Audituri Cuprinzătoare de Autorizare**: Revizuiri regulate de securitate ale tuturor punctelor de decizie pentru autorizare  
+- **Valori Implicite Fail-Safe**: Refuzul accesului când logica de autorizare nu poate lua o decizie definitivă  
+- **Limite clare de Permisiuni**: Separare clară între nivele diferite de privilegii și acces la resurse  
+- **Jurnalizare pentru Audit**: Logare completă a tuturor deciziilor de autorizare pentru monitorizarea securității  
+- **Revizuiri Periodice ale Accesului**: Validarea periodică a permisiunilor și atribuțiilor de privilegii  
 
 ## 2. **Securitatea Tokenurilor & Controale Anti-Passthrough**
 
-### **Prevenirea Passthrough-ului Tokenurilor**
+**Riscuri OWASP MCP Abordate**: [MCP01 - Gestionare Greșită a Tokenurilor & Expunerea Secretelor](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp01-token-mismanagement/)
 
-**Passthrough-ul tokenurilor este explicit interzis** în Specificația de Autorizare MCP din cauza riscurilor critice de securitate:
+### **Prevenirea Passthrough-ului Tokenului**
+
+**Passthrough-ul tokenului este explicit interzis** în Specificația de Autorizare MCP din cauza riscurilor critice de securitate:
 
 **Riscuri de Securitate Abordate:**
-- **Ocolirea Controlului**: Evită controalele esențiale de securitate precum limitarea ratei, validarea cererilor și monitorizarea traficului  
-- **Lipsa Responsabilității**: Face imposibilă identificarea clientului, corupând traseele de audit și investigațiile incidentelor  
-- **Exfiltrare prin Proxy**: Permite actorilor rău intenționați să folosească serverele ca proxy-uri pentru acces neautorizat la date  
-- **Încălcări ale Limitelor de Încredere**: Rupe presupunerile serviciilor downstream despre originea tokenurilor  
-- **Mișcare Laterală**: Tokenurile compromise pe mai multe servicii permit extinderea atacului
+- **Ocolirea Controlului**: Ocolirea controalelor esențiale de securitate precum limitarea ratei, validarea cererilor și monitorizarea traficului  
+- **Lipsa Responsabilității**: Face imposibilă identificarea clientului, corupând jurnalele de audit și investigațiile incidentelor  
+- **Exfiltrare prin Proxy**: Permite actorilor malițioși să folosească serverele ca proxy pentru acces neautorizat la date  
+- **Încălcarea Graniței de Încredere**: Rupe presupunerile de încredere ale serviciilor downstream legate de originea tokenurilor  
+- **Mișcare Laterală**: Tokenurile compromise pe mai multe servicii permit extinderea atacului  
 
 **Controale de Implementare:**
 ```yaml
@@ -80,25 +86,25 @@ Token Lifecycle Management:
   replay_protection: "Implemented via nonce/timestamp"
 ```
 
-### **Modele Sigure de Management al Tokenurilor**
+### **Modele de Gestionare Securizată a Tokenurilor**
 
-**Cele Mai Bune Practici:**
+**Cele mai bune practici:**
 - **Tokenuri cu Durată Scurtă**: Minimizează fereastra de expunere prin rotație frecventă a tokenurilor  
-- **Emitere Just-in-Time**: Emite tokenuri doar când sunt necesare pentru operații specifice  
-- **Stocare Securizată**: Folosește module hardware de securitate (HSM) sau seifuri de chei securizate  
-- **Legarea Tokenurilor**: Leagă tokenurile de clienți, sesiuni sau operații specifice, acolo unde este posibil  
-- **Monitorizare și Alertare**: Detectare în timp real a utilizării abuzive a tokenurilor sau a accesului neautorizat
+- **Emitere Just-in-Time**: Emiterea tokenurilor doar când sunt necesare pentru operații specifice  
+- **Stocare Securizată**: Utilizarea modulelor hardware de securitate (HSM) sau a seifurilor de chei securizate  
+- **Legarea Tokenului**: Asocierea tokenurilor cu clienți, sesiuni sau operații specifice, unde este posibil  
+- **Monitorizare & Alertare**: Detectarea în timp real a utilizării necorespunzătoare a tokenurilor sau a accesului neautorizat  
 
-## 3. **Controale de Securitate pentru Sesiuni**
+## 3. **Controale de Securitate a Sesiunii**
 
 ### **Prevenirea Deturnării Sesiunii**
 
 **Vectori de Atac Abordați:**
-- **Injectarea de Prompturi în Deturnarea Sesiunii**: Evenimente malițioase injectate în starea sesiunii partajate  
+- **Injectarea Prompt-ului de Deturnare a Sesiunii**: Evenimente malițioase injectate în starea de sesiune partajată  
 - **Impersonarea Sesiunii**: Utilizarea neautorizată a ID-urilor de sesiune furate pentru a ocoli autentificarea  
-- **Atacuri cu Reluare a Fluxului**: Exploatarea reluării evenimentelor trimise de server pentru injectarea de conținut malițios
+- **Atacuri de Reluare a Fluxului**: Exploatarea reluării evenimentelor trimise de server pentru injectare malițioasă de conținut  
 
-**Controale Obligatorii pentru Sesiuni:**
+**Controale Obligatorii pentru Sesiune:**
 ```yaml
 Session ID Generation:
   randomness_source: "Cryptographically secure RNG"
@@ -118,26 +124,31 @@ Session Lifecycle:
   cleanup: "Automated expired session removal"
 ```
 
-**Securitatea Transportului:**
-- **Aplicarea HTTPS**: Toată comunicarea sesiunii prin TLS 1.3  
-- **Atribute Sigure pentru Cookie-uri**: HttpOnly, Secure, SameSite=Strict  
-- **Pinning-ul Certificatului**: Pentru conexiuni critice pentru a preveni atacurile MITM
+**Securitate la Transport:**
+- **Aplicarea HTTPS**: Toată comunicarea de sesiune prin TLS 1.3  
+- **Atribute Secure pentru Cookie-uri**: HttpOnly, Secure, SameSite=Strict  
+- **Pinning Certificat**: Pentru conexiuni critice pentru prevenirea atacurilor MITM  
 
 ### **Considerații Stateful vs Stateless**
 
-**Pentru Implementări Stateful:**
-- Starea sesiunii partajate necesită protecție suplimentară împotriva atacurilor de injectare  
-- Managementul sesiunii bazat pe coadă necesită verificarea integrității  
-- Mai multe instanțe de server necesită sincronizare securizată a stării sesiunii
+**Pentru implementări Stateful:**
+- Starea de sesiune partajată necesită protecție suplimentară împotriva atacurilor de injecție  
+- Managementul sesiunii pe bază de coadă necesită verificarea integrității  
+- Instanțe multiple de server necesită sincronizare securizată a stării sesiunii  
 
-**Pentru Implementări Stateless:**
-- Managementul sesiunii bazat pe JWT sau tokenuri similare  
+**Pentru implementări Stateless:**
+- Managementul sesiunii pe bază de token JWT sau similar  
 - Verificare criptografică a integrității stării sesiunii  
-- Suprafață de atac redusă, dar necesită validare robustă a tokenurilor
+- Suprafață de atac redusă, dar necesită validarea robustă a tokenului  
 
 ## 4. **Controale de Securitate Specifice AI**
 
-### **Apărarea împotriva Injectării de Prompturi**
+**Riscuri OWASP MCP Abordate**:
+- [MCP06 - Injecție de Prompt prin Payload-uri Contextuale](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp06-prompt-injection/)  
+- [MCP03 - Otrăvirea Uneltelor](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp03-tool-poisoning/)  
+- [MCP05 - Injecție și Execuție de Comenzi](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp05-command-injection/)  
+
+### **Apărarea împotriva Injecției de Prompt**
 
 **Integrarea Microsoft Prompt Shields:**
 ```yaml
@@ -158,14 +169,14 @@ Integration Points:
 ```
 
 **Controale de Implementare:**
-- **Sanitizarea Inputului**: Validare și filtrare cuprinzătoare a tuturor intrărilor utilizatorului  
+- **Sanitizarea Input-ului**: Validare și filtrare cuprinzătoare a tuturor datelor de intrare ale utilizatorului  
 - **Definirea Limitelor de Conținut**: Separare clară între instrucțiunile sistemului și conținutul utilizatorului  
-- **Ierarhia Instrucțiunilor**: Reguli corecte de precedență pentru instrucțiunile conflictuale  
-- **Monitorizarea Outputului**: Detectarea outputurilor potențial dăunătoare sau manipulate
+- **Ierarhie a Instrucțiunilor**: Reguli de precedență corecte pentru instrucțiuni conflictuale  
+- **Monitorizarea Ieșirilor**: Detectarea ieșirilor potențial dăunătoare sau manipulate  
 
 ### **Prevenirea Otrăvirii Uneltelor**
 
-**Cadrul de Securitate pentru Unelte:**
+**Cadru de Securitate pentru Unelte:**
 ```yaml
 Tool Definition Protection:
   validation:
@@ -189,15 +200,15 @@ Tool Definition Protection:
 
 **Management Dinamic al Uneltelor:**
 - **Fluxuri de Aprobare**: Consimțământ explicit al utilizatorului pentru modificările uneltelor  
-- **Capabilități de Rollback**: Posibilitatea de a reveni la versiuni anterioare ale uneltelor  
+- **Capabilități de Revocare**: Posibilitatea de a reveni la versiunile anterioare ale uneltei  
 - **Auditarea Modificărilor**: Istoric complet al modificărilor definițiilor uneltelor  
-- **Evaluarea Riscurilor**: Evaluare automată a posturii de securitate a uneltelor
+- **Evaluarea Riscurilor**: Evaluare automată a posturii de securitate a uneltelor  
 
 ## 5. **Prevenirea Atacului Confused Deputy**
 
-### **Securitatea Proxy-ului OAuth**
+### **Securitatea Proxy OAuth**
 
-**Controale pentru Prevenirea Atacului:**
+**Controale de Prevenire a Atacului:**
 ```yaml
 Client Registration:
   static_client_protection:
@@ -214,14 +225,14 @@ Client Registration:
 ```
 
 **Cerințe de Implementare:**
-- **Verificarea Consimțământului Utilizatorului**: Nu sări niciodată peste ecranele de consimțământ pentru înregistrarea dinamică a clientului  
-- **Validarea Redirect URI**: Validare strictă pe bază de listă albă a destinațiilor de redirecționare  
-- **Protecția Codului de Autorizare**: Coduri cu durată scurtă și aplicare de utilizare unică  
-- **Verificarea Identității Clientului**: Validare robustă a acreditărilor și metadatelor clientului
+- **Verificarea Consimțământului Utilizatorului**: Nu se sără peste ecranele de consimțământ pentru înregistrarea dinamică a clientului  
+- **Validarea URI-ului de Redirecționare**: Validare strictă, bazată pe whitelist, a destinațiilor de redirecționare  
+- **Protecția Codului de Autorizare**: Coduri cu durată scurtă și aplicare pentru utilizare unică  
+- **Verificarea Identității Clientului**: Validare robustă a acreditărilor și metadatelor clientului  
 
 ## 6. **Securitatea Execuției Uneltelor**
 
-### **Izolare și Sandbox**
+### **Izolare și Sandboxing**
 
 **Izolare Bazată pe Containere:**
 ```yaml
@@ -241,10 +252,10 @@ Execution Environment:
 ```
 
 **Izolarea Proceselor:**
-- **Contexturi Separate de Proces**: Fiecare execuție a uneltei în spațiu de proces izolat  
-- **Comunicare Inter-Proces (IPC)**: Mecanisme IPC securizate cu validare  
-- **Monitorizarea Proceselor**: Analiză comportamentală la runtime și detectarea anomaliilor  
-- **Aplicarea Resurselor**: Limite stricte pentru CPU, memorie și operațiuni I/O
+- **Contexturi Proces Separate**: Fiecare execuție a uneltei în spațiu de proces izolat  
+- **Comunicare Inter-Proces (IPC)**: Mecanisme IPC securizate, cu validare  
+- **Monitorizarea Procesului**: Analiza comportamentului la runtime și detectarea anomaliilor  
+- **Aplicarea Resurselor**: Limite stricte la CPU, memorie și operațiuni I/O  
 
 ### **Implementarea Principiului Celor Mai Mici Privilegii**
 
@@ -269,7 +280,9 @@ Access Control:
     - "Restricted environment variable access"
 ```
 
-## 7. **Controale de Securitate pentru Lanțul de Aprovizionare**
+## 7. **Controale de Securitate a Lanțului de Aprovizionare**
+
+**Riscuri OWASP MCP Abordate**: [MCP04 - Atacuri pe Lanțul de Aprovizionare](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp04-supply-chain/)
 
 ### **Verificarea Dependențelor**
 
@@ -304,17 +317,19 @@ AI Components:
 
 ### **Monitorizare Continuă**
 
-**Detectarea Amenințărilor în Lanțul de Aprovizionare:**
+**Detecția Amenințărilor Lanțului de Aprovizionare:**
 - **Monitorizarea Sănătății Dependențelor**: Evaluare continuă a tuturor dependențelor pentru probleme de securitate  
-- **Integrarea Informațiilor despre Amenințări**: Actualizări în timp real despre amenințările emergente din lanțul de aprovizionare  
-- **Analiză Comportamentală**: Detectarea comportamentului neobișnuit în componentele externe  
-- **Răspuns Automat**: Contenția imediată a componentelor compromise
+- **Integrarea Informațiilor despre Amenințări**: Actualizări în timp real despre amenințări emergente din lanțul de aprovizionare  
+- **Analiza Comportamentală**: Detectarea comportamentelor neobișnuite în componente externe  
+- **Răspuns Automatizat**: Conținerea imediată a componentelor compromise  
 
-## 8. **Controale de Monitorizare și Detectare**
+## 8. **Controale de Monitorizare & Detecție**
+
+**Riscuri OWASP MCP Abordate**: [MCP08 - Lipsa Auditului & Telemeteriei](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp08-telemetry/)
 
 ### **Managementul Informațiilor și Evenimentelor de Securitate (SIEM)**
 
-**Strategie Completă de Jurnalizare:**
+**Strategie Completă de Logare:**
 ```yaml
 Authentication Events:
   - "All authentication attempts (success/failure)"
@@ -335,15 +350,15 @@ Security Events:
   - "Unusual access patterns and anomalies"
 ```
 
-### **Detectarea Amenințărilor în Timp Real**
+### **Detecție a Amenințărilor în Timp Real**
 
-**Analiză Comportamentală:**
-- **Analiza Comportamentului Utilizatorului (UBA)**: Detectarea tiparelor neobișnuite de acces ale utilizatorilor  
-- **Analiza Comportamentului Entităților (EBA)**: Monitorizarea comportamentului serverului MCP și al uneltelor  
-- **Detectarea Anomaliilor prin Machine Learning**: Identificarea amenințărilor de securitate asistată de AI  
-- **Corelarea Informațiilor despre Amenințări**: Potrivirea activităților observate cu tipare cunoscute de atac
+**Analize Comportamentale:**
+- **Analiza Comportamentului Utilizatorului (UBA)**: Detectarea tiparelor neobișnuite de acces al utilizatorului  
+- **Analiza Comportamentului Entității (EBA)**: Monitorizarea comportamentului serverelor MCP și al uneltelor  
+- **Detecția Anomaliilor bazate pe Machine Learning**: Identificarea amenințărilor de securitate asistată de AI  
+- **Corelația Inteligenței de Amenințări**: Compararea activităților observate cu tipare cunoscute de atac  
 
-## 9. **Răspuns la Incidente și Recuperare**
+## 9. **Răspuns la Incidente & Recuperare**
 
 ### **Capabilități de Răspuns Automat**
 
@@ -375,55 +390,65 @@ Recovery Procedures:
 ### **Capabilități Forensice**
 
 **Suport pentru Investigații:**
-- **Păstrarea Traseului de Audit**: Jurnalizare imuabilă cu integritate criptografică  
-- **Colectarea Dovezilor**: Colectare automată a artefactelor relevante de securitate  
-- **Reconstrucția Cronologiei**: Secvență detaliată a evenimentelor care au condus la incidentele de securitate  
-- **Evaluarea Impactului**: Evaluarea amploarei compromiterii și expunerii datelor
+- **Păstrarea Urmelor de Audit**: Logare imuabilă cu integritate criptografică  
+- **Colectarea Dovezilor**: Strângerea automată a artefactelor relevante de securitate  
+- **Reconstruirea Cronologică**: Secvență detaliată a evenimentelor care au condus la incidente de securitate  
+- **Evaluarea Impactului**: Determinarea amplorii compromisului și expunerii datelor  
 
 ## **Principii Cheie ale Arhitecturii de Securitate**
 
 ### **Apărare în Profunzime**
-- **Straturi Multiple de Securitate**: Fără punct unic de eșec în arhitectura de securitate  
+- **Straturi Multiple de Securitate**: Niciun punct unic de eșec în arhitectura de securitate  
 - **Controale Redundante**: Măsuri de securitate suprapuse pentru funcții critice  
-- **Mecanisme Fail-Safe**: Setări implicite sigure când sistemele întâmpină erori sau atacuri
+- **Mecanisme Fail-Safe**: Implicit sigur când sistemele întâlnesc erori sau atacuri  
 
 ### **Implementarea Zero Trust**
-- **Niciodată Nu Aveți Încredere, Verificați Întotdeauna**: Validare continuă a tuturor entităților și cererilor  
-- **Principiul Celor Mai Mici Privilegii**: Drepturi minime de acces pentru toate componentele  
-- **Micro-Segmentare**: Controale granulare de rețea și acces
+- **Niciodată încredere, Verifică întotdeauna**: Validarea continuă a tuturor entităților și cererilor  
+- **Principiul celor mai mici privilegii**: Drepturi minime de acces pentru toate componentele  
+- **Micro-segmentare**: Control granular al rețelei și accesului  
 
 ### **Evoluția Continuă a Securității**
 - **Adaptarea la Peisajul Amenințărilor**: Actualizări regulate pentru a aborda amenințările emergente  
-- **Eficacitatea Controlului de Securitate**: Evaluare și îmbunătățire continuă a controalelor  
-- **Conformitatea cu Specificațiile**: Aliniere cu standardele MCP de securitate în evoluție
+- **Eficiența Controlului de Securitate**: Evaluare și îmbunătățire continuă a controalelor  
+- **Conformitatea cu Specificațiile**: Aliniere cu standardele MCP de securitate în evoluție  
 
 ---
 
 ## **Resurse pentru Implementare**
 
-### **Documentația Oficială MCP**
-- [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
-- [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
-- [MCP Authorization Specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
+### **Documentație Oficială MCP**
+- [Specificația MCP (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)  
+- [Cele mai bune practici de securitate MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)  
+- [Specificația de autorizare MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)  
 
-### **Soluții de Securitate Microsoft**
-- [Microsoft Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)
-- [Azure Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/)
-- [GitHub Advanced Security](https://github.com/security/advanced-security)
-- [Azure Key Vault](https://learn.microsoft.com/azure/key-vault/)
+### **Resurse OWASP MCP pentru Securitate**
+- [Ghidul de securitate OWASP MCP Azure](https://microsoft.github.io/mcp-azure-security-guide/) - OWASP MCP Top 10 cu implementare Azure  
+- [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) - Riscurile oficiale OWASP MCP  
+- [Atelier MCP Security Summit (Sherpa)](https://azure-samples.github.io/sherpa/) - Instruire practică de securitate pentru MCP pe Azure  
+
+### **Soluții de securitate Microsoft**
+- [Microsoft Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)  
+- [Azure Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/)  
+- [GitHub Advanced Security](https://github.com/security/advanced-security)  
+- [Azure Key Vault](https://learn.microsoft.com/azure/key-vault/)  
 
 ### **Standarde de Securitate**
-- [OAuth 2.0 Security Best Practices (RFC 9700)](https://datatracker.ietf.org/doc/html/rfc9700)
-- [OWASP Top 10 for Large Language Models](https://genai.owasp.org/)
-- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
+- [Cele mai bune practici pentru OAuth 2.0 Security (RFC 9700)](https://datatracker.ietf.org/doc/html/rfc9700)  
+- [OWASP Top 10 pentru Modele Mari de Limbaj](https://genai.owasp.org/)  
+- [Cadru NIST pentru Cibernetică](https://www.nist.gov/cyberframework)  
 
 ---
 
-> **Important**: Aceste controale de securitate reflectă specificația MCP curentă (2025-06-18). Verificați întotdeauna conform celei mai recente [documentații oficiale](https://spec.modelcontextprotocol.io/) deoarece standardele continuă să evolueze rapid.
+> **Important**: Aceste controale de securitate reflectă specificația curentă MCP (2025-11-25). Verificați întotdeauna conform celei mai recente [documentații oficiale](https://spec.modelcontextprotocol.io/) deoarece standardele continuă să evolueze rapid.
+
+## Ce urmează
+
+- Revenire la: [Prezentarea Modulului de Securitate](./README.md)
+- Continuați la: [Modul 3: Începerea](../03-GettingStarted/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Declinare de responsabilitate**:  
-Acest document a fost tradus folosind serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim pentru acuratețe, vă rugăm să rețineți că traducerile automate pot conține erori sau inexactități. Documentul original în limba sa nativă trebuie considerat sursa autorizată. Pentru informații critice, se recomandă traducerea profesională realizată de un specialist uman. Nu ne asumăm răspunderea pentru eventualele neînțelegeri sau interpretări greșite rezultate din utilizarea acestei traduceri.
+Acest document a fost tradus folosind serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim pentru acuratețe, vă rugăm să rețineți că traducerile automate pot conține erori sau inexactități. Documentul original, în limba sa nativă, trebuie considerat sursa autoritară. Pentru informații critice, se recomandă o traducere profesională realizată de un traducător uman. Nu ne asumăm responsabilitatea pentru eventualele neînțelegeri sau interpretări greșite care pot rezulta din utilizarea acestei traduceri.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
