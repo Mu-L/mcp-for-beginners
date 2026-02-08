@@ -1,25 +1,25 @@
-# シンプル認証
+# シンプルな認証
 
-MCP SDKはOAuth 2.1をサポートしていますが、これは認証サーバー、リソースサーバー、資格情報の送信、コードの取得、コードをベアラートークンに交換するなど、かなり複雑なプロセスを伴います。OAuthに慣れていない場合、基本的な認証から始めて徐々にセキュリティを向上させるのが良いでしょう。この章はそのために存在し、より高度な認証へとステップアップする手助けをします。
+MCP SDKはOAuth 2.1の使用をサポートしていますが、正直言ってこれは認証サーバー、リソースサーバー、資格情報の送信、コードの取得、コードをベアラートークンに交換、最終的にリソースデータの取得といった概念を含むかなり複雑なプロセスです。OAuthに慣れていない場合（これは実装するのに非常に良いものですが）、基本的なレベルの認証から始めて、より良いセキュリティへと段階的に構築していくことをお勧めします。この章が存在する理由は、より高度な認証へとあなたを導くためです。
 
-## 認証とは何を意味するのか？
+## 認証、私たちは何を意味するのか？
 
-認証（Auth）は、認証（Authentication）と認可（Authorization）の略です。これには以下の2つのプロセスが含まれます：
+認証とは、認証と認可の略です。すべきことは2つあります：
 
-- **認証（Authentication）**: これは、誰かが私たちの「家」に入る権利があるかどうかを確認するプロセスです。つまり、MCPサーバーの機能が存在するリソースサーバーへのアクセス権を持っているかどうかを確認します。
-- **認可（Authorization）**: これは、ユーザーが要求している特定のリソース（例：注文や製品）にアクセスする権利があるかどうかを確認するプロセスです。例えば、コンテンツを読むことは許可されているが削除することは許可されていない場合などです。
+- **認証**：それは、その人が私たちの家に入ることを許可するかどうかを判断するプロセスで、「ここにいる」つまりMCPサーバー機能が動作するリソースサーバーにアクセスする権利があるかどうかを判定することです。
+- **認可**：特定のユーザーが要求しているリソース、例えばこれらの注文やこれらの製品にアクセスする権利があるかどうか、あるいは読み取りは許可されているが削除は許可されていないなどを判断するプロセスです。
 
-## 資格情報：システムに自分を識別させる方法
+## 資格情報：システムに自分が誰であるかを伝える方法
 
-多くのウェブ開発者は、通常、サーバーに資格情報を提供することを考えます。これは通常、ユーザー名とパスワードをBase64でエンコードしたものや、特定のユーザーを一意に識別するAPIキーです。
+ほとんどのウェブ開発者は通常、認証のためにサーバーに資格情報を提供することを考えます。これは通常、ユーザー名とパスワードのbase64エンコード版、または特定のユーザーを一意に識別するAPIキーの形式で、サーバーに「ここにいてもよい」という秘密情報を送ることです。
 
-これを「Authorization」というヘッダーを介して送信します。以下のように：
+これは通常、"Authorization"というヘッダーを通じて送信されます：
 
 ```json
 { "Authorization": "secret123" }
 ```
-
-これは通常、基本認証（Basic Authentication）と呼ばれます。全体のフローは以下のように動作します：
+  
+これは通常ベーシック認証と呼ばれます。全体のフローは以下のように動きます：
 
 ```mermaid
 sequenceDiagram
@@ -27,13 +27,12 @@ sequenceDiagram
    participant Client
    participant Server
 
-   User->>Client: show me data
-   Client->>Server: show me data, here's my credential
-   Server-->>Client: 1a, I know you, here's your data
-   Server-->>Client: 1b, I don't know you, 401 
-```
-
-フローの観点からその仕組みを理解したところで、これをどのように実装するかを見てみましょう。ほとんどのウェブサーバーには「ミドルウェア」という概念があります。これはリクエストの一部として実行されるコードで、資格情報を検証し、有効であればリクエストを通過させます。資格情報が無効であれば、認証エラーが発生します。これをどのように実装するか見てみましょう：
+   User->>Client: データを見せて
+   Client->>Server: データを見せて、これが私の認証情報です
+   Server-->>Client: 1a、あなたを知っています、こちらがあなたのデータです
+   Server-->>Client: 1b、あなたを知りません、401 
+```  
+フローの仕組みがわかったところで、どのように実装するのでしょうか？ほとんどのウェブサーバーには「ミドルウェア」という概念があり、リクエストの一部として実行され、資格情報を検証し、有効であればリクエストを通過させます。資格情報が無効な場合は認証エラーを返します。実装例を見てみましょう。
 
 **Python**
 
@@ -53,23 +52,23 @@ class AuthMiddleware(BaseHTTPMiddleware):
         print("Valid token, proceeding...")
        
         response = await call_next(request)
-        # add any customer headers or change in the response in some way
+        # 任意のカスタマーヘッダーを追加するか、レスポンスを何らかの形で変更してください
         return response
 
 
 starlette_app.add_middleware(CustomHeaderMiddleware)
 ```
+  
+ここでは：
 
-ここでは以下を行っています：
-
-- `AuthMiddleware`というミドルウェアを作成し、その`dispatch`メソッドがウェブサーバーによって呼び出されます。
-- ミドルウェアをウェブサーバーに追加します：
+- `AuthMiddleware` というミドルウェアを作成し、その `dispatch` メソッドがウェブサーバーから呼び出されるようにしました。
+- ミドルウェアをウェブサーバーに追加しました：
 
     ```python
     starlette_app.add_middleware(AuthMiddleware)
     ```
-
-- Authorizationヘッダーが存在するか、送信された秘密が有効かどうかを確認する検証ロジックを記述します：
+  
+- Authorizationヘッダーが存在し、送信された秘密情報が有効かどうかをチェックする検証ロジックを書きました：
 
     ```python
     has_header = request.headers.get("Authorization")
@@ -81,20 +80,20 @@ starlette_app.add_middleware(CustomHeaderMiddleware)
         print("-> Invalid token!")
         return Response(status_code=403, content="Forbidden")
     ```
-
-    秘密が存在し有効であれば、`call_next`を呼び出してリクエストを通過させ、レスポンスを返します。
+  
+秘密情報が存在し有効な場合は、`call_next` を呼び出してリクエストを通過させ、レスポンスを返します。
 
     ```python
     response = await call_next(request)
-    # add any customer headers or change in the response in some way
+    # 任意のカスタマーヘッダーを追加するか、レスポンスを何らかの形で変更する
     return response
     ```
-
-この仕組みは、ウェブリクエストがサーバーに送信されるとミドルウェアが呼び出され、その実装に基づいてリクエストを通過させるか、クライアントが続行を許可されていないことを示すエラーを返すかのどちらかになります。
+  
+動作は、ウェブリクエストがサーバーに送られるとミドルウェアが呼ばれ、実装によってリクエストを通過させるか、クライアントが進むことを許可されていないというエラーを返すかのどちらかになります。
 
 **TypeScript**
 
-ここでは、人気のフレームワークExpressを使用してミドルウェアを作成し、リクエストがMCPサーバーに到達する前にインターセプトします。コードは以下の通りです：
+ここでは人気のあるExpressフレームワークでミドルウェアを作成し、リクエストがMCPサーバーに到達する前にインターセプトします。コードは以下の通りです：
 
 ```typescript
 function isValid(secret) {
@@ -102,54 +101,54 @@ function isValid(secret) {
 }
 
 app.use((req, res, next) => {
-    // 1. Authorization header present?  
+    // 1. Authorizationヘッダーは存在しますか?
     if(!req.headers["Authorization"]) {
         res.status(401).send('Unauthorized');
     }
     
     let token = req.headers["Authorization"];
 
-    // 2. Check validity.
+    // 2. 有効性を確認します。
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
     }
 
    
     console.log('Middleware executed');
-    // 3. Passes request to the next step in the request pipeline.
+    // 3. リクエストパイプラインの次のステップにリクエストを渡します。
     next();
 });
 ```
+  
+このコードでは：
 
-このコードでは以下を行っています：
-
-1. Authorizationヘッダーが存在するかどうかを確認し、存在しない場合は401エラーを送信します。
-2. 資格情報/トークンが有効かどうかを確認し、有効でない場合は403エラーを送信します。
-3. 最終的にリクエストをパイプラインに通し、要求されたリソースを返します。
+1. Authorizationヘッダーが最初に存在するかを確認し、なければ401エラーを返す。
+2. 資格情報/トークンが有効かを確認し、無効なら403エラーを返す。
+3. 最後にリクエストパイプラインにリクエストを通し、要求されたリソースを返す。
 
 ## 演習：認証を実装する
 
-これまでの知識を活用して実装してみましょう。以下が計画です：
+知識を使って実装してみましょう。計画は次の通りです：
 
 サーバー
 
 - ウェブサーバーとMCPインスタンスを作成する。
-- サーバー用のミドルウェアを実装する。
+- サーバーのミドルウェアを実装する。
 
 クライアント 
 
-- ヘッダーを介して資格情報を含むウェブリクエストを送信する。
+- ヘッダーを介して資格情報を含むウェブリクエストを送る。
 
 ### -1- ウェブサーバーとMCPインスタンスを作成する
 
-最初のステップでは、ウェブサーバーインスタンスとMCPサーバーを作成する必要があります。
+最初のステップとして、ウェブサーバーインスタンスとMCPサーバーを作成します。
 
 **Python**
 
-ここではMCPサーバーインスタンスを作成し、Starletteウェブアプリを作成し、Uvicornでホストします。
+ここではMCPサーバーのインスタンスを作成し、starletteのウェブアプリを作成し、uvicornでホストします。
 
 ```python
-# creating MCP Server
+# MCPサーバーを作成中
 
 app = FastMCP(
     name="MCP Resource Server",
@@ -159,10 +158,10 @@ app = FastMCP(
     debug=True
 )
 
-# creating starlette web app
+# starletteウェブアプリを作成中
 starlette_app = app.streamable_http_app()
 
-# serving app via uvicorn
+# uvicornでアプリを提供中
 async def run(starlette_app):
     import uvicorn
     config = uvicorn.Config(
@@ -176,16 +175,16 @@ async def run(starlette_app):
 
 run(starlette_app)
 ```
+  
+このコードは：
 
-このコードでは以下を行っています：
-
-- MCPサーバーを作成します。
-- MCPサーバーからStarletteウェブアプリを構築します（`app.streamable_http_app()`）。
-- Uvicornを使用してウェブアプリをホストし、提供します（`server.serve()`）。
+- MCPサーバーを作成し、
+- MCPサーバーからstarletteウェブアプリを構築し、`app.streamable_http_app()`。
+- uvicornを使用してウェブアプリをホストしサーバーを実行、`server.serve()`。
 
 **TypeScript**
 
-ここではMCPサーバーインスタンスを作成します。
+ここではMCPサーバーのインスタンスを作成します。
 
 ```typescript
 const server = new McpServer({
@@ -193,10 +192,10 @@ const server = new McpServer({
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... サーバーのリソース、ツール、およびプロンプトを設定します ...
 ```
-
-このMCPサーバーの作成は、POST /mcpルート定義内で行う必要があります。そのため、上記のコードを以下のように移動します：
+  
+このMCPサーバーの作成はPOST /mcpルート定義内で行う必要があるので、上記コードを以下のように移動します：
 
 ```typescript
 import express from "express";
@@ -208,33 +207,33 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
 const app = express();
 app.use(express.json());
 
-// Map to store transports by session ID
+// セッションIDごとにトランスポートを格納するマップ
 const transports: { [sessionId: string]: StreamableHTTPServerTransport } = {};
 
-// Handle POST requests for client-to-server communication
+// クライアントからサーバーへの通信のためのPOSTリクエストを処理する
 app.post('/mcp', async (req, res) => {
-  // Check for existing session ID
+  // 既存のセッションIDをチェックする
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   let transport: StreamableHTTPServerTransport;
 
   if (sessionId && transports[sessionId]) {
-    // Reuse existing transport
+    // 既存のトランスポートを再利用する
     transport = transports[sessionId];
   } else if (!sessionId && isInitializeRequest(req.body)) {
-    // New initialization request
+    // 新しい初期化リクエスト
     transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: () => randomUUID(),
       onsessioninitialized: (sessionId) => {
-        // Store the transport by session ID
+        // セッションIDごとにトランスポートを格納する
         transports[sessionId] = transport;
       },
-      // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
-      // locally, make sure to set:
+      // DNSリバインディング保護は後方互換性のためデフォルトで無効になっています。サーバーを実行している場合
+      // ローカルで実行している場合は、以下を設定してください:
       // enableDnsRebindingProtection: true,
       // allowedHosts: ['127.0.0.1'],
     });
 
-    // Clean up transport when closed
+    // トランスポートが閉じられた時にクリーンアップする
     transport.onclose = () => {
       if (transport.sessionId) {
         delete transports[transport.sessionId];
@@ -245,12 +244,12 @@ app.post('/mcp', async (req, res) => {
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... サーバーのリソース、ツール、プロンプトを設定する ...
 
-    // Connect to the MCP server
+    // MCPサーバーに接続する
     await server.connect(transport);
   } else {
-    // Invalid request
+    // 無効なリクエスト
     res.status(400).json({
       jsonrpc: '2.0',
       error: {
@@ -262,11 +261,11 @@ app.post('/mcp', async (req, res) => {
     return;
   }
 
-  // Handle the request
+  // リクエストを処理する
   await transport.handleRequest(req, res, req.body);
 });
 
-// Reusable handler for GET and DELETE requests
+// GETおよびDELETEリクエストに再利用可能なハンドラ
 const handleSessionRequest = async (req: express.Request, res: express.Response) => {
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   if (!sessionId || !transports[sessionId]) {
@@ -278,52 +277,52 @@ const handleSessionRequest = async (req: express.Request, res: express.Response)
   await transport.handleRequest(req, res);
 };
 
-// Handle GET requests for server-to-client notifications via SSE
+// SSEを介してサーバーからクライアントへの通知のためのGETリクエストを処理する
 app.get('/mcp', handleSessionRequest);
 
-// Handle DELETE requests for session termination
+// セッション終了のためのDELETEリクエストを処理する
 app.delete('/mcp', handleSessionRequest);
 
 app.listen(3000);
 ```
+  
+これで `app.post("/mcp")` 内にMCPサーバー作成処理が移動したことがわかります。
 
-これで、MCPサーバーの作成が`app.post("/mcp")`内に移動したことがわかります。
+次のステップであるミドルウェアの作成に進みましょう。これで受信した資格情報を検証できるようになります。
 
-次のステップでは、ミドルウェアを作成して、受信資格情報を検証します。
+### -2- サーバーのミドルウェアを実装する
 
-### -2- サーバー用のミドルウェアを実装する
-
-次にミドルウェア部分に進みます。ここでは、`Authorization`ヘッダー内の資格情報を探して検証するミドルウェアを作成します。資格情報が受け入れ可能であれば、リクエストは必要な処理（例：ツールのリスト表示、リソースの読み取り、またはクライアントが要求したMCP機能）を行います。
+次にミドルウェア部分を作成します。ここでは `Authorization` ヘッダーの資格情報を探し、それを検証します。許容できる場合はリクエストを続行し、必要な処理（例えばツールの一覧取得、リソースの読み取り、などクライアント要求のMCP機能）を行います。
 
 **Python**
 
-ミドルウェアを作成するには、`BaseHTTPMiddleware`を継承するクラスを作成する必要があります。興味深い部分は以下の2つです：
+ミドルウェアを作るためには `BaseHTTPMiddleware` を継承したクラスを作成します。興味深いのは以下の2つ：
 
-- リクエスト`request`：ヘッダー情報を読み取ります。
-- `call_next`：クライアントが受け入れ可能な資格情報を持っている場合に呼び出す必要があるコールバック。
+- リクエスト `request` 、ここからヘッダー情報を読み取る。
+- `call_next` 、クライアントの資格情報が許可される場合に呼び出すコールバック。
 
-まず、`Authorization`ヘッダーが欠落している場合のケースを処理する必要があります：
+最初に、`Authorization` ヘッダーがない場合の処理を行います：
 
 ```python
 has_header = request.headers.get("Authorization")
 
-# no header present, fail with 401, otherwise move on.
+# ヘッダーが存在しない場合は401で失敗し、それ以外は続行します。
 if not has_header:
     print("-> Missing Authorization header!")
     return Response(status_code=401, content="Unauthorized")
 ```
+  
+ここではクライアントが認証に失敗しているので401 unauthorizedレスポンスを返します。
 
-ここでは、クライアントが認証に失敗しているため、401未認証メッセージを送信します。
-
-次に、資格情報が送信された場合、その有効性を以下のように確認する必要があります：
+次に、資格情報が送信されている場合、その有効性を以下のようにチェックします：
 
 ```python
  if not valid_token(has_header):
     print("-> Invalid token!")
     return Response(status_code=403, content="Forbidden")
 ```
-
-上記では403禁止メッセージを送信していることに注意してください。以下に、上記で述べたすべてを実装した完全なミドルウェアを示します：
+  
+上記で403 forbiddenを返していることに注目してください。以下に、これまでのすべてを実装したフルミドルウェアコードを示します：
 
 ```python
 class AuthMiddleware(BaseHTTPMiddleware):
@@ -345,33 +344,33 @@ class AuthMiddleware(BaseHTTPMiddleware):
         return response
 
 ```
-
-素晴らしいですが、`valid_token`関数はどうでしょうか？以下に示します：
+  
+良いですね。ただ `valid_token` 関数はどうでしょう？以下です：
 
 ```python
-# DON'T use for production - improve it !!
+# 本番環境では使用しないでください - 改善してください！！
 def valid_token(token: str) -> bool:
-    # remove the "Bearer " prefix
+    # "Bearer " プレフィックスを削除してください
     if token.startswith("Bearer "):
         token = token[7:]
         return token == "secret-token"
     return False
 ```
+  
+これは明らかに改善すべきです。
 
-これは明らかに改善する必要があります。
-
-重要：コード内に秘密を含めるべきではありません。比較する値はデータソースやIDP（アイデンティティサービスプロバイダー）から取得するか、さらに良いことに、IDPに検証を任せるべきです。
+重要：このような秘密情報をコード中に持つべきではありません。理想的にはデータソースやIDP（Identity Provider）から値を取得するか、あるいはIDPに検証をさせるべきです。
 
 **TypeScript**
 
-Expressを使用してこれを実装するには、ミドルウェア関数を受け取る`use`メソッドを呼び出す必要があります。
+Expressで実装するには、ミドルウェア関数を受け取る `use` メソッドを呼び出す必要があります。
 
-以下を行う必要があります：
+以下のことを行います：
 
-- リクエスト変数と対話して`Authorization`プロパティに渡された資格情報を確認します。
-- 資格情報を検証し、有効であればリクエストを続行させ、クライアントのMCPリクエストが必要な処理を行うようにします（例：ツールのリスト表示、リソースの読み取り、またはその他のMCP関連）。
+- リクエストオブジェクトから `Authorization` プロパティを取得して資格情報をチェックする。
+- 資格情報を検証し、有効であればリクエストを続行し、クライアントのMCPリクエストに応じた処理を行う。
 
-ここでは、`Authorization`ヘッダーが存在するかどうかを確認し、存在しない場合はリクエストを停止します：
+まず、`Authorization` ヘッダーが存在するかを判定し、なければリクエストを中断します：
 
 ```typescript
 if(!req.headers["authorization"]) {
@@ -379,10 +378,10 @@ if(!req.headers["authorization"]) {
     return;
 }
 ```
+  
+ヘッダーが全く送られなければ401エラーを返します。
 
-ヘッダーが最初に送信されていない場合、401エラーが返されます。
-
-次に、資格情報が有効かどうかを確認し、有効でない場合は再びリクエストを停止しますが、少し異なるメッセージを返します：
+次に資格情報が有効かチェックし、無効ならまたリクエストを中断しますが、メッセージは少し異なります：
 
 ```typescript
 if(!isValid(token)) {
@@ -390,10 +389,10 @@ if(!isValid(token)) {
     return;
 } 
 ```
+  
+こちらは403エラーが返ります。
 
-ここでは403エラーが返されることに注意してください。
-
-以下が完全なコードです：
+以下がフルコードです：
 
 ```typescript
 app.use((req, res, next) => {
@@ -415,19 +414,19 @@ app.use((req, res, next) => {
     next();
 });
 ```
+  
+クライアントが送信してくる資格情報をチェックするミドルウェアを受け入れる形でウェブサーバーが設定されました。ではクライアントはどうすればよいでしょうか？
 
-ウェブサーバーを設定して、クライアントが送信している資格情報を確認するミドルウェアを受け入れるようにしました。では、クライアント自体はどうでしょうか？
+### -3- ヘッダーを通じて資格情報付きのウェブリクエストを送信する
 
-### -3- ヘッダーを介して資格情報を含むウェブリクエストを送信する
-
-クライアントがヘッダーを介して資格情報を渡していることを確認する必要があります。MCPクライアントを使用してこれを行う予定なので、その方法を確認する必要があります。
+クライアントから資格情報をヘッダーに入れて受け渡す必要があります。MCPクライアントを使う場合、どうすればいいか見てみましょう。
 
 **Python**
 
-クライアントでは、以下のようにヘッダーに資格情報を渡す必要があります：
+クライアントでは、このように資格情報を含むヘッダーを渡します：
 
 ```python
-# DON'T hardcode the value, have it at minimum in an environment variable or a more secure storage
+# 値をハードコードしないでください。最低でも環境変数やより安全なストレージに保存してください
 token = "secret-token"
 
 async with streamablehttp_client(
@@ -444,24 +443,24 @@ async with streamablehttp_client(
         ) as session:
             await session.initialize()
       
-            # TODO, what you want done in the client, e.g list tools, call tools etc.
+            # TODO、クライアントで行いたいこと、例えばツールのリスト化、ツールの呼び出しなど。
 ```
-
-ここでは、`headers`プロパティを以下のように設定していることに注意してください：`headers = {"Authorization": f"Bearer {token}"}`。
+  
+`headers = {"Authorization": f"Bearer {token}"}` のように `headers` プロパティを設定していることに注目してください。
 
 **TypeScript**
 
-これを2つのステップで解決できます：
+2つのステップで解決できます：
 
-1. 資格情報を含む設定オブジェクトを作成する。
-2. 設定オブジェクトをトランスポートに渡す。
+1. 設定オブジェクトに資格情報を入れる。
+2. その設定オブジェクトをトランスポート層に渡す。
 
 ```typescript
 
-// DON'T hardcode the value like shown here. At minimum have it as a env variable and use something like dotenv (in dev mode).
+// ここで示されているように値をハードコーディングしないでください。最低でも環境変数として持ち、開発モードではdotenvのようなものを使用してください。
 let token = "secret123"
 
-// define a client transport option object
+// クライアントのトランスポートオプションオブジェクトを定義する
 let options: StreamableHTTPClientTransportOptions = {
   sessionId: sessionId,
   requestInit: {
@@ -471,54 +470,54 @@ let options: StreamableHTTPClientTransportOptions = {
   }
 };
 
-// pass the options object to the transport
+// オプションオブジェクトをトランスポートに渡す
 async function main() {
    const transport = new StreamableHTTPClientTransport(
       new URL(serverUrl),
       options
    );
 ```
+  
+上記では `options` オブジェクトを作成し、ヘッダーを `requestInit` プロパティの下に配置していることがわかります。
 
-上記では、`options`オブジェクトを作成し、`requestInit`プロパティの下にヘッダーを配置する必要があることがわかります。
+重要：ここからどう改良するか？現在の実装は問題があります。まず、HTTPSがない限りこのように資格情報を送るのは危険です。それでも資格情報が盗まれる可能性があるため、トークンを取り消せる仕組みや発信元の地理的検証、過剰なリクエスト（ボットのような動作）などのチェックを追加しなければなりません。つまり、多数の懸念事項があります。
 
-重要：ここからどのように改善するか？現在の実装にはいくつかの問題があります。まず、資格情報をこのように渡すのは非常にリスクが高いです。最低でもHTTPSを使用する必要があります。それでも資格情報が盗まれる可能性があるため、トークンを簡単に取り消し、追加のチェックを行うシステムが必要です。例えば、リクエストがどこから来ているのか、リクエストが頻繁すぎるか（ボットのような動作）、つまり懸念事項は多数あります。
+とはいえ、認証無しでAPIを呼ばれたくない非常にシンプルなAPIには、ここで紹介した方法は良い出発点です。
 
-ただし、非常にシンプルなAPIの場合、認証されていない状態でAPIを呼び出させたくない場合、ここで示したものは良いスタートです。
+とは言っても、より安全にするためにJSON Web Token（JWT、または「JOT」トークン）といった標準的なフォーマットを使って強化してみましょう。
 
-それでは、JSON Web Token（JWT）または「JOT」トークンのような標準化された形式を使用してセキュリティを少し強化してみましょう。
+## JSON Web Token、JWT
 
-## JSON Web Token（JWT）
+単純な資格情報を送る方法からの改善を考えています。JWTを採用すると得られる即時的な利点は何でしょう？
 
-非常にシンプルな資格情報を送信する方法を改善しようとしています。JWTを採用することで得られる即時の改善点は何でしょうか？
+- **セキュリティ向上**。ベーシック認証ではユーザー名とパスワード（またはAPIキー）をbase64で何度も送信し、リスクが高いです。JWTはユーザー名・パスワードを送信しトークンを取得し、このトークンは期限付きで失効します。JWTはロール、スコープ、パーミッションによる細かなアクセス制御を簡単に可能にします。
+- **ステートレス性とスケーラビリティ**。JWTは自己完結型でユーザー情報を全て含むため、サーバー側のセッションストレージが不要になります。トークンはローカルで検証可能です。
+- **相互運用性とフェデレーション**。JWTはOpen ID Connectの中心であり、Entra ID、Google Identity、Auth0などの既知のIDプロバイダーで使われます。シングルサインオンなど企業向け機能も実現します。
+- **モジュール性と柔軟性**。JWTはAzure API ManagementやNGINXなどのAPIゲートウェイとも連携可能で、ユーザー認証シナリオ、サーバー間通信、代理操作や委任シナリオなどをサポートします。
+- **パフォーマンスとキャッシュ**。JWTはデコード後にキャッシュ可能で、解析の必要が減り、特に高トラフィックアプリでスループット向上と負荷軽減に繋がります。
+- **高度な機能**。イントロスペクション（サーバー側での有効性チェック）やトークンの取り消し（無効化）もサポートします。
 
-- **セキュリティの向上**。基本認証では、ユーザー名とパスワードをBase64でエンコードしたトークン（またはAPIキー）を何度も送信しますが、これによりリスクが増加します。JWTでは、ユーザー名とパスワードを送信してトークンを取得し、さらに時間制限が設けられます。JWTを使用すると、ロール、スコープ、権限を使用して細かいアクセス制御を簡単に実現できます。
-- **ステートレス性とスケーラビリティ**。JWTは自己完結型であり、すべてのユーザー情報を含んでいるため、サーバー側のセッションストレージを必要としません。また、トークンはローカルで検証することもできます。
-- **相互運用性とフェデレーション**。JWTはOpen ID Connectの中心であり、Entra ID、Google Identity、Auth0などの既知のアイデンティティプロバイダーで使用されます。また、シングルサインオンなどを可能にし、エンタープライズグレードの機能を提供します。
-- **モジュール性と柔軟性**。JWTはAzure API ManagementやNGINXなどのAPIゲートウェイと一緒に使用することもできます。また、認証シナリオやサーバー間通信（インパーソネーションやデリゲーションシナリオを含む）をサポートします。
-- **パフォーマンスとキャッシュ**。JWTはデコード後にキャッシュすることができるため、解析の必要性が減少します。これにより、特に高トラフィックアプリでスループットが向上し、選択したインフラストラクチャへの負荷が軽減されます。
-- **高度な機能**。また、イントロスペクション（サーバーでの有効性チェック）やトークンの取り消し（トークンを無効化する）をサポートします。
+これらのメリットを踏まえ、実装を次の段階へ進めましょう。
 
-これらの利点を踏まえ、実装を次のレベルに進める方法を見てみましょう。
+## ベーシック認証からJWTへの移行
 
-## 基本認証をJWTに変換する
+概観すると、必要な変更は以下です：
 
-ここで必要な変更を大まかに説明すると以下の通りです：
+- **JWTトークンを構築し**、クライアントからサーバーへ送る準備をする。
+- **JWTトークンを検証し**、有効ならクライアントにリソースを提供する。
+- **トークンの安全な保管**。このトークンをどのように保存するか。
+- **ルートの保護**。特にルートとMCPの特定機能を守る。
+- **リフレッシュトークンの追加**。有効期限が短いトークンと、期限が長いリフレッシュトークンを作成し、期限切れ時は新しいトークンを取得できるようにする。リフレッシュ用のエンドポイントと回転戦略も用意する。
 
-- **JWTトークンの構築方法を学ぶ**。クライアントからサーバーに送信する準備をします。
-- **JWTトークンを検証する**。有効であれば、クライアントにリソースを提供します。
-- **トークンの安全な保存**。トークンの保存方法を検討します。
-- **ルートの保護**。ルートを保護する必要があります。具体的には、ルートや特定のMCP機能を保護します。
-- **リフレッシュトークンの追加**。短命のトークンを作成し、長命のリフレッシュトークンを使用してトークンが期限切れになった場合に新しいトークンを取得できるようにします。また、リフレッシュエンドポイントとローテーション戦略を確立します。
+### -1- JWTトークンを構築する
 
-### -1- JWTトークンの構築
+JWTトークンは次の部分から成ります：
 
-まず、JWTトークンには以下の部分があります：
+- **ヘッダー**：使用アルゴリズムとトークンのタイプ。
+- **ペイロード**：サブジェクト（トークンが表すユーザーやエンティティ、認証シナリオでは通常ユーザーID）、有効期限（exp）、ロールなどのクレーム。
+- **署名**：秘密鍵または秘密情報で署名される。
 
-- **ヘッダー**：使用されるアルゴリズムとトークンタイプ。
-- **ペイロード**：クレーム（例：sub（トークンが表すユーザーまたはエンティティ。認証シナリオでは通常ユーザーID）、exp（有効期限）、role（ロール））。
-- **署名**：秘密鍵またはプライベートキーで署名。
-
-これを構築するために、ヘッダー、ペイロード、エンコードされたトークンを作成する必要があります。
+これらを構築してエンコードされたトークンを作成します。
 
 **Python**
 
@@ -529,7 +528,7 @@ import jwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 import datetime
 
-# Secret key used to sign the JWT
+# JWTに署名するために使用される秘密鍵
 secret_key = 'your-secret-key'
 
 header = {
@@ -537,27 +536,27 @@ header = {
     "typ": "JWT"
 }
 
-# the user info andits claims and expiry time
+# ユーザー情報とそのクレームおよび有効期限
 payload = {
-    "sub": "1234567890",               # Subject (user ID)
-    "name": "User Userson",                # Custom claim
-    "admin": True,                     # Custom claim
-    "iat": datetime.datetime.utcnow(),# Issued at
-    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # Expiry
+    "sub": "1234567890",               # サブジェクト（ユーザーID）
+    "name": "User Userson",                # カスタムクレーム
+    "admin": True,                     # カスタムクレーム
+    "iat": datetime.datetime.utcnow(),# 発行時間
+    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # 有効期限
 }
 
-# encode it
+# エンコードする
 encoded_jwt = jwt.encode(payload, secret_key, algorithm="HS256", headers=header)
 ```
+  
+上記コードでは
 
-上記のコードでは以下を行っています：
-
-- HS256をアルゴリズムとして使用し、タイプをJWTとしてヘッダーを定義しました。
-- サブジェクトまたはユーザーID、ユーザー名、ロール、発行日時、期限切れ日時を含むペイロードを構築しました。これにより、前述した時間制限の側面を実装しています。
+- HS256アルゴリズム、JWTタイプのヘッダーを定義し、
+- サブジェクトまたはユーザーID、ユーザー名、ロール、発行時刻、期限切れ時刻を含むペイロードを構築し、時間制限付きトークンを実装しています。
 
 **TypeScript**
 
-ここでは、JWTトークンを構築するための依存関係が必要です。
+JWTトークンの構築に役立つ依存パッケージが必要です。
 
 依存関係
 
@@ -566,30 +565,30 @@ encoded_jwt = jwt.encode(payload, secret_key, algorithm="HS256", headers=header)
 npm install jsonwebtoken
 npm install --save-dev @types/jsonwebtoken
 ```
-
-これを設定した後、ヘッダー、ペイロードを作成し、それを通じてエンコードされたトークンを作成します。
+  
+準備できたらヘッダー、ペイロードを作成し、それを通じてエンコード済みトークンを作成します。
 
 ```typescript
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'your-secret-key'; // Use env vars in production
+const secretKey = 'your-secret-key'; // 本番環境では環境変数を使用してください
 
-// Define the payload
+// ペイロードを定義する
 const payload = {
   sub: '1234567890',
   name: 'User usersson',
   admin: true,
-  iat: Math.floor(Date.now() / 1000), // Issued at
-  exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expires in 1 hour
+  iat: Math.floor(Date.now() / 1000), // 発行日時
+  exp: Math.floor(Date.now() / 1000) + 60 * 60 // 1時間で期限切れ
 };
 
-// Define the header (optional, jsonwebtoken sets defaults)
+// ヘッダーを定義する（オプション、jsonwebtokenはデフォルトを設定します）
 const header = {
   alg: 'HS256',
   typ: 'JWT'
 };
 
-// Create the token
+// トークンを作成する
 const token = jwt.sign(payload, secretKey, {
   algorithm: 'HS256',
   header: header
@@ -597,24 +596,24 @@ const token = jwt.sign(payload, secretKey, {
 
 console.log('JWT:', token);
 ```
+  
+このトークンは：
 
-このトークンは以下の特徴を持っています：
-
-HS256で署名
-1時間有効
-sub、name、admin、iat、expなどのクレームを含む
+HS256で署名  
+1時間有効  
+sub、name、admin、iat、expといったクレームを含みます。
 
 ### -2- トークンの検証
 
-トークンを検証する必要があります。これは、クライアントが送信しているトークンが実際に有効であることを確認するためにサーバーで行うべきです。ここでは、トークンの構造や有効性を検証する必要があります。また、ユーザーがシステム内に存在するかどうかを確認するなど、追加のチェックを行うことを推奨します。
+またトークンの検証も必要で、これはクライアントが送るものが本当に有効かどうかを確かめるサーバー側の処理です。構造の検証から有効期限の確認まで様々なチェックがあります。さらにユーザーが当社システムのメンバーか、権限を持っているかなどの追加検証も推奨されます。
 
-トークンを検証するには、デコードして読み取り、その有効性を確認する必要があります：
+トークンを検証するにはデコードし内容を読み取り、そこから検証を開始します。
 
 **Python**
 
 ```python
 
-# Decode and verify the JWT
+# JWTをデコードして検証する
 try:
     decoded = jwt.decode(token, secret_key, algorithms=["HS256"])
     print("✅ Token is valid.")
@@ -627,12 +626,12 @@ except InvalidTokenError as e:
     print(f"❌ Invalid token: {e}")
 
 ```
-
-このコードでは、トークン、秘密鍵、選択したアルゴリズムを入力として`jwt.decode`を呼び出しています。失敗した検証はエラーを引き起こすため、try-catch構造を使用していることに注意してください。
+  
+このコードでは、`jwt.decode` をトークン、秘密鍵、指定したアルゴリズムで呼び出します。検証失敗時に例外が発生するためtry-catch構文を使用しています。
 
 **TypeScript**
 
-ここでは、`jwt.verify`を呼び出してトークンのデコード版を取得し、さらに分析します。この呼び出しが失敗した場合、トークンの構造が正しくないか、もはや有効ではないことを意味します。
+ここでは `jwt.verify` を呼び出し、解析済みトークンを取得してさらに分析します。失敗するとトークンの構造が間違っているか期限切れなどが考えられます。
 
 ```typescript
 
@@ -643,18 +642,19 @@ try {
   console.error('Token verification failed:', err);
 }
 ```
+  
+注意：前述の通り、トークンがシステム内のユーザーを指し示し、ユーザーが持つ権限をチェックする追加検証を行うべきです。
+次に、RBAC（ロールベースアクセスコントロール）としても知られるロールベースアクセス制御について見ていきましょう。
 
-次に、ロールベースのアクセス制御（RBAC）について見ていきましょう。
+## ロールベースアクセス制御の追加
 
-## ロールベースのアクセス制御を追加する
+異なるロールが異なる権限を持つことを表現したいという考え方です。例えば、管理者（admin）はすべてを実行でき、通常のユーザーは読み書きができ、ゲストは読み取りのみ可能だと仮定します。したがって、以下のような権限レベルが考えられます。
 
-異なるロールが異なる権限を持つことを表現したいというアイデアです。例えば、管理者（admin）はすべての操作が可能で、通常のユーザー（user）は読み取り/書き込みが可能、ゲスト（guest）は読み取りのみ可能とします。以下は、いくつかの権限レベルの例です：
-
-- Admin.Write 
-- User.Read
+- Admin.Write  
+- User.Read  
 - Guest.Read
 
-では、ミドルウェアを使ってこのような制御を実装する方法を見てみましょう。ミドルウェアは特定のルートごとに追加することも、すべてのルートに対して追加することもできます。
+ミドルウェアでこのような制御をどのように実装できるかを見てみましょう。ミドルウェアはルートごとに追加することも全てのルートに対して追加することも可能です。
 
 **Python**
 
@@ -663,8 +663,8 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
 import jwt
 
-# DON'T have the secret in the code like, this is for demonstration purposes only. Read it from a safe place.
-SECRET_KEY = "your-secret-key" # put this in env variable
+# 秘密情報をコード内に入れないでください。これはデモ用です。安全な場所から読み取ってください。
+SECRET_KEY = "your-secret-key" # これを環境変数に入れてください
 REQUIRED_PERMISSION = "User.Read"
 
 class JWTPermissionMiddleware(BaseHTTPMiddleware):
@@ -690,41 +690,41 @@ class JWTPermissionMiddleware(BaseHTTPMiddleware):
 
 
 ```
-
-以下のように、ミドルウェアを追加する方法はいくつかあります：
+  
+ミドルウェアを追加する方法は以下のようにいくつかあります。
 
 ```python
 
-# Alt 1: add middleware while constructing starlette app
+# 代替案 1: starlette アプリを構築する際にミドルウェアを追加する
 middleware = [
     Middleware(JWTPermissionMiddleware)
 ]
 
 app = Starlette(routes=routes, middleware=middleware)
 
-# Alt 2: add middleware after starlette app is a already constructed
+# 代替案 2: starlette アプリがすでに構築された後にミドルウェアを追加する
 starlette_app.add_middleware(JWTPermissionMiddleware)
 
-# Alt 3: add middleware per route
+# 代替案 3: ルートごとにミドルウェアを追加する
 routes = [
     Route(
         "/mcp",
-        endpoint=..., # handler
+        endpoint=..., # ハンドラー
         middleware=[Middleware(JWTPermissionMiddleware)]
     )
 ]
 ```
-
+  
 **TypeScript**
 
-`app.use`を使用して、すべてのリクエストに対して実行されるミドルウェアを追加できます。
+`app.use`とすべてのリクエストに対して実行されるミドルウェアを使うことができます。
 
 ```typescript
 app.use((req, res, next) => {
     console.log('Request received:', req.method, req.url, req.headers);
     console.log('Headers:', req.headers["authorization"]);
 
-    // 1. Check if authorization header has been sent
+    // 1. 認証ヘッダーが送信されているか確認する
 
     if(!req.headers["authorization"]) {
         res.status(401).send('Unauthorized');
@@ -733,13 +733,13 @@ app.use((req, res, next) => {
     
     let token = req.headers["authorization"];
 
-    // 2. Check if token is valid
+    // 2. トークンが有効か確認する
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
         return;
     }  
 
-    // 3. Check if token user exist in our system
+    // 3. トークンのユーザーが当システムに存在するか確認する
     if(!isExistingUser(token)) {
         res.status(403).send('Forbidden');
         console.log("User does not exist");
@@ -747,7 +747,7 @@ app.use((req, res, next) => {
     }
     console.log("User exists");
 
-    // 4. Verify the token has the right permissions
+    // 4. トークンに正しい権限があるか検証する
     if(!hasScopes(token, ["User.Read"])){
         res.status(403).send('Forbidden - insufficient scopes');
     }
@@ -759,15 +759,15 @@ app.use((req, res, next) => {
 });
 
 ```
+  
+ミドルウェアにさせることができ、かつミドルウェアがすべきことは多数あります。具体的には：
 
-ミドルウェアで実行できること、そして実行すべきことは以下の通りです：
-
-1. Authorizationヘッダーが存在するか確認する
-2. トークンが有効か確認する。これは、JWTトークンの整合性と有効性をチェックするために作成した`isValid`メソッドを呼び出します。
-3. ユーザーがシステム内に存在するか確認する必要があります。
+1. 認証ヘッダーが存在するか確認する
+2. トークンが有効か確認する。`isValid`を呼び出します。これはJWTトークンの整合性と有効性をチェックするメソッドです。
+3. ユーザーがシステムに存在することを検証する。これは確認すべきです。
 
    ```typescript
-    // users in DB
+    // DB内のユーザー
    const users = [
      "user1",
      "User usersson",
@@ -776,28 +776,28 @@ app.use((req, res, next) => {
    function isExistingUser(token) {
      let decodedToken = verifyToken(token);
 
-     // TODO, check if user exists in DB
+     // TODO、ユーザーがDBに存在するか確認する
      return users.includes(decodedToken?.name || "");
    }
    ```
+  
+上記では非常にシンプルな`users`リストを作成しましたが、これは当然データベースにあるべきものです。
 
-   上記では、非常にシンプルな`users`リストを作成しましたが、これは当然データベースに保存されるべきです。
-
-4. さらに、トークンが正しい権限を持っているか確認する必要があります。
+4. さらに、トークンが正しい権限を持つかもチェックすべきです。
 
    ```typescript
    if(!hasScopes(token, ["User.Read"])){
         res.status(403).send('Forbidden - insufficient scopes');
    }
    ```
-
-   上記のミドルウェアコードでは、トークンにUser.Read権限が含まれているか確認し、含まれていない場合は403エラーを送信します。以下は`hasScopes`ヘルパーメソッドです。
+  
+上記のミドルウェアコードでは、トークンにUser.Read権限が含まれているかをチェックし、そうでなければ403エラーを返しています。以下は`hasScopes`ヘルパーメソッドです。
 
    ```typescript
    function hasScopes(scope: string, requiredScopes: string[]) {
      let decodedToken = verifyToken(scope);
     return requiredScopes.every(scope => decodedToken?.scopes.includes(scope));
-  }
+  }  
    ```
 
 Have a think which additional checks you should be doing, but these are the absolute minimum of checks you should be doing.
@@ -839,18 +839,18 @@ app.use((err, req, res, next) => {
 });
 
 ```
-
-これで、ミドルウェアが認証と認可の両方に使用できる方法を見てきましたが、MCPの場合はどうでしょうか？認証の方法が変わるのでしょうか？次のセクションで確認してみましょう。
+  
+これでミドルウェアが認証と認可の両方に使えることが分かりましたが、MCPの場合はどうでしょうか？認証のやり方が変わるでしょうか？次のセクションで見ていきます。
 
 ### -3- MCPにRBACを追加する
 
-これまでにミドルウェアを使ってRBACを追加する方法を見てきましたが、MCPでは特定のMCP機能ごとにRBACを簡単に追加する方法がありません。ではどうすればいいのでしょうか？この場合、クライアントが特定のツールを呼び出す権利を持っているかどうかを確認するコードを追加する必要があります。
+これまでミドルウェア経由でRBACを追加する方法を見てきましたが、MCPごとの機能に対してRBACを簡単に追加する方法はありません。ではどうするか？このケースではクライアントが特定のツールを呼び出す権利を持つかチェックするコードを追加するしかありません。
 
-特定の機能ごとにRBACを実現する方法はいくつかあります。以下はその例です：
+機能ごとにRBACを実現する方法はいくつかあります。例として：
 
-- ツール、リソース、プロンプトごとに権限レベルを確認するコードを追加する。
+- 権限レベルをチェックする必要のある各ツール、リソース、プロンプトのチェックを追加する。
 
-   **Python**
+   **python**
 
    ```python
    @tool()
@@ -858,10 +858,10 @@ app.use((err, req, res, next) => {
       try:
           check_permissions(role="Admin.Write", request)
       catch:
-        pass # client failed authorization, raise authorization error
+        pass # クライアントの認証に失敗しました。認証エラーを発生させます。
    ```
-
-   **TypeScript**
+  
+   **typescript**
 
    ```typescript
    server.registerTool(
@@ -875,7 +875,7 @@ app.use((err, req, res, next) => {
       
       try {
         checkPermissions("Admin.Write", request);
-        // todo, send id to productService and remote entry
+        // todo、idをproductServiceとremote entryに送ること
       } catch(Exception e) {
         console.log("Authorization error, you're not allowed");  
       }
@@ -886,9 +886,9 @@ app.use((err, req, res, next) => {
     }
    );
    ```
+  
 
-
-- 高度なサーバーアプローチとリクエストハンドラーを使用して、チェックを行う箇所を最小限に抑える。
+- 高度なサーバーアプローチとリクエストハンドラーを使い、チェックする場所を最小限に抑える。
 
    **Python**
 
@@ -900,21 +900,21 @@ app.use((err, req, res, next) => {
    }
 
    def has_permission(user_permissions, required_permissions) -> bool:
-      # user_permissions: list of permissions the user has
-      # required_permissions: list of permissions required for the tool
+      # user_permissions: ユーザーが持つ権限のリスト
+      # required_permissions: ツールに必要な権限のリスト
       return any(perm in user_permissions for perm in required_permissions)
 
    @server.call_tool()
    async def handle_call_tool(
      name: str, arguments: dict[str, str] | None
    ) -> list[types.TextContent]:
-    # Assume request.user.permissions is a list of permissions for the user
+    # request.user.permissions はユーザーの権限リストであると仮定する
      user_permissions = request.user.permissions
      required_permissions = tool_permission.get(name, [])
      if not has_permission(user_permissions, required_permissions):
-        # Raise error "You don't have permission to call tool {name}"
+        # エラーを発生させる "ツール {name} を呼び出す権限がありません"
         raise Exception(f"You don't have permission to call tool {name}")
-     # carry on and call tool
+     # 続行してツールを呼び出す
      # ...
    ```   
    
@@ -924,7 +924,7 @@ app.use((err, req, res, next) => {
    ```typescript
    function hasPermission(userPermissions: string[], requiredPermissions: string[]): boolean {
        if (!Array.isArray(userPermissions) || !Array.isArray(requiredPermissions)) return false;
-       // Return true if user has at least one required permission
+       // ユーザーが少なくとも1つの必要な権限を持っている場合はtrueを返します
        
        return requiredPermissions.some(perm => userPermissions.includes(perm));
    }
@@ -938,47 +938,53 @@ app.use((err, req, res, next) => {
          return new Error(`You don't have permission to call ${name}`);
       }
   
-      // carry on..
+      // 続けてください..
    });
    ```
-
-   注意：ミドルウェアがデコードされたトークンをリクエストのuserプロパティに割り当てることを保証する必要があります。これにより、上記のコードが簡単になります。
+  
+   注意：ミドルウェアがリクエストのuserプロパティにデコードされたトークンを割り当てることを確認しておく必要があり、上記コードがシンプルになります。
 
 ### まとめ
 
-ここまで、一般的なRBACのサポートを追加する方法と、特にMCPに対するRBACの追加方法について説明しました。これらの概念を理解したかどうかを確認するために、自分でセキュリティを実装してみましょう。
+ここまでRBACの一般的な追加方法とMCPでの追加方法を話しました。理解したことを確かめるためにセキュリティ実装に挑戦してみましょう。
 
-## 課題 1: 基本認証を使用したMCPサーバーとMCPクライアントを構築する
+## 課題1：基本認証を使ったmcpサーバーとmcpクライアントを構築する
 
-ここでは、ヘッダーを通じて資格情報を送信する方法について学んだ内容を活用します。
+ここでは、ヘッダーを通じて資格情報を送る方法を学びます。
 
-## 解決策 1
+## 解答1
 
-[解決策 1](./code/basic/README.md)
+[Solution 1](./code/basic/README.md)
 
-## 課題 2: 課題 1の解決策をJWTを使用するようにアップグレードする
+## 課題2：課題1の解決策をJWTを使うようアップグレードする
 
-最初の解決策を基に、今回はそれを改善します。
+最初の解決策を用いて、今回は改良を加えましょう。
 
-基本認証の代わりに、JWTを使用します。
+Basic Authではなく、JWTを使います。
 
-## 解決策 2
+## 解答2
 
-[解決策 2](./solution/jwt-solution/README.md)
+[Solution 2](./solution/jwt-solution/README.md)
 
 ## チャレンジ
 
-セクション「MCPにRBACを追加する」で説明したツールごとのRBACを追加してください。
+"Add RBAC to MCP" セクションで説明した機能ごとのRBACを追加してください。
 
 ## まとめ
 
-この章では、セキュリティが全くない状態から始まり、基本的なセキュリティ、JWT、そしてそれをMCPに追加する方法まで学びました。
+この章では、まったくセキュリティがない状態から基本的なセキュリティ、JWTまで学び、MCPへの追加方法も学んだはずです。
 
-カスタムJWTを使用して堅固な基盤を構築しましたが、スケールするにつれて、標準ベースのアイデンティティモデルに移行しています。EntraやKeycloakのようなIdPを採用することで、トークンの発行、検証、ライフサイクル管理を信頼できるプラットフォームに委任し、アプリのロジックやユーザー体験に集中することができます。
+カスタムJWTでしっかりした基盤を構築しましたが、規模が大きくなるにつれて標準ベースのアイデンティティモデルに向かっています。EntraやKeycloakのようなIdPを採用することで、トークンの発行、検証、ライフサイクル管理を信頼できるプラットフォームに委ねられ、アプリのロジックやユーザー体験に集中できます。
 
-そのため、より[高度なEntraに関する章](../../05-AdvancedTopics/mcp-security-entra/README.md)があります。
+そのために、より[高度なEntraに関する章](../../05-AdvancedTopics/mcp-security-entra/README.md)があります。
+
+## 次にやること
+
+- 次へ：[MCPホストの設定](../12-mcp-hosts/README.md)
 
 ---
 
-**免責事項**:  
-この文書は、AI翻訳サービス[Co-op Translator](https://github.com/Azure/co-op-translator)を使用して翻訳されています。正確性を追求しておりますが、自動翻訳には誤りや不正確な部分が含まれる可能性があることをご承知ください。元の言語で記載された文書が正式な情報源とみなされるべきです。重要な情報については、専門の人間による翻訳を推奨します。この翻訳の使用に起因する誤解や誤解釈について、当方は一切の責任を負いません。
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免責事項**：  
+本書類はAI翻訳サービス[Co-op Translator](https://github.com/Azure/co-op-translator)を使用して翻訳されました。正確性の向上に努めておりますが、自動翻訳には誤りや不正確な部分が含まれる可能性があります。原文の言語による文書が正式な情報源とみなされるべきです。重要な情報については、専門の人間翻訳をご利用いただくことをお勧めします。本翻訳の利用により生じた誤解や解釈の相違について、当方は一切の責任を負いかねますのでご了承ください。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
