@@ -1,108 +1,110 @@
-# Weather MCP Szerver
+# Weather MCP Server
 
-Ez egy Pythonban írt mintaszerver, amely időjárási eszközöket valósít meg mock válaszokkal. Használható saját MCP szerver alapjaként. Az alábbi funkciókat tartalmazza:
+Ez egy minta MCP szerver Pythonban, amely időjárás eszközöket valósít meg minta válaszokkal. Használható alapként a saját MCP szerveredhez. A következő funkciókat tartalmazza:
 
-- **Időjárási eszköz**: Egy eszköz, amely mock időjárási információkat nyújt a megadott hely alapján.
-- **Git Clone eszköz**: Egy eszköz, amely egy git repozitóriumot klónoz egy megadott mappába.
-- **VS Code Open eszköz**: Egy eszköz, amely megnyit egy mappát a VS Code vagy VS Code Insiders alkalmazásban.
-- **Kapcsolódás az Agent Builderhez**: Egy funkció, amely lehetővé teszi az MCP szerver csatlakoztatását az Agent Builderhez tesztelés és hibakeresés céljából.
+- **Weather Tool**: Egy eszköz, amely minta időjárási információkat szolgáltat a megadott hely alapján.
+- **Git Clone Tool**: Egy eszköz, amely egy git tárolót klónoz egy megadott mappába.
+- **VS Code Open Tool**: Egy eszköz, amely megnyit egy mappát a VS Code-ban vagy a VS Code Insiders-ben.
+- **Kapcsolódás az Agent Builderhez**: Egy funkció, amellyel az MCP szervert az Agent Builderhez csatlakoztathatod tesztelés és hibakeresés céljából.
 - **Hibakeresés a [MCP Inspector](https://github.com/modelcontextprotocol/inspector) segítségével**: Egy funkció, amely lehetővé teszi az MCP szerver hibakeresését az MCP Inspector használatával.
 
-## Kezdje el a Weather MCP Szerver sablonnal
+## Kezdj hozzá a Weather MCP Server sablonhoz
 
 > **Előfeltételek**
 >
-> Az MCP szerver futtatásához a helyi fejlesztői gépen szüksége lesz:
+> Az MCP szerver futtatásához a saját helyi fejlesztői gépeden szükséged lesz:
 >
 > - [Python](https://www.python.org/)
-> - [Git](https://git-scm.com/) (Szükséges a git_clone_repo eszközhöz)
-> - [VS Code](https://code.visualstudio.com/) vagy [VS Code Insiders](https://code.visualstudio.com/insiders/) (Szükséges az open_in_vscode eszközhöz)
-> - (*Opcionális - ha az uv-t preferálja*) [uv](https://github.com/astral-sh/uv)
+> - [Git](https://git-scm.com/) (szükséges a git_clone_repo eszközhöz)
+> - [VS Code](https://code.visualstudio.com/) vagy [VS Code Insiders](https://code.visualstudio.com/insiders/) (szükséges az open_in_vscode eszközhöz)
+> - (*Opcionális - ha az uv-t preferálod*) [uv](https://github.com/astral-sh/uv)
 > - [Python Debugger Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 
 ## Környezet előkészítése
 
-Két megközelítés van a projekt környezetének beállítására. Válassza ki az Önnek legmegfelelőbbet.
+Ehhez a projekthez kétféle módon állítható be a környezet. Választhatsz kedved szerint.
 
-> Megjegyzés: Indítsa újra a VSCode-t vagy a terminált, hogy biztosítsa a virtuális környezet Pythonjának használatát a virtuális környezet létrehozása után.
+> Megjegyzés: Töltsd újra a VSCode-ot vagy a terminált, hogy biztosan a virtuális környezet pythonját használja miután létrehoztad a virtuális környezetet.
 
-| Megközelítés | Lépések |
-| ------------ | ------- |
-| `uv` használata | 1. Virtuális környezet létrehozása: `uv venv` <br>2. Futtassa a VSCode parancsot "***Python: Select Interpreter***", és válassza ki a létrehozott virtuális környezet Pythonját <br>3. Függőségek telepítése (beleértve a fejlesztési függőségeket): `uv pip install -r pyproject.toml --extra dev` |
-| `pip` használata | 1. Virtuális környezet létrehozása: `python -m venv .venv` <br>2. Futtassa a VSCode parancsot "***Python: Select Interpreter***", és válassza ki a létrehozott virtuális környezet Pythonját <br>3. Függőségek telepítése (beleértve a fejlesztési függőségeket): `pip install -e .[dev]` |
+| Módszer | Lépések |
+| -------- | ----- |
+| `uv` használata | 1. Hozz létre virtuális környezetet: `uv venv` <br>2. Futtasd a VSCode parancsot "***Python: Select Interpreter***" és válaszd ki a létrehozott virtuális környezet pythonját <br>3. Telepítsd a függőségeket (beleértve a fejlesztői függőségeket): `uv pip install -r pyproject.toml --extra dev` |
+| `pip` használata | 1. Hozz létre virtuális környezetet: `python -m venv .venv` <br>2. Futtasd a VSCode parancsot "***Python: Select Interpreter***" és válaszd ki a létrehozott virtuális környezet pythonját<br>3. Telepítsd a függőségeket (beleértve a fejlesztői függőségeket): `pip install -e .[dev]` |
 
-A környezet beállítása után futtathatja a szervert a helyi fejlesztői gépen az Agent Builder segítségével MCP kliensként, hogy elkezdhesse:
-1. Nyissa meg a VS Code Debug panelt. Válassza a `Debug in Agent Builder` opciót, vagy nyomja meg az `F5` gombot az MCP szerver hibakeresésének elindításához.
-2. Használja az AI Toolkit Agent Buildert a szerver teszteléséhez [ezzel a prompttal](../../../../../../../../../../../open_prompt_builder). A szerver automatikusan csatlakozik az Agent Builderhez.
-3. Kattintson a `Run` gombra a szerver teszteléséhez a prompttal.
+A környezet beállítása után futtathatod a szervert a helyi fejlesztői gépeden az Agent Builder segítségével MCP kliensként a kezdéshez:
+1. Nyisd meg a VS Code Hibakereső panelt. Válaszd a `Debug in Agent Builder` opciót, vagy nyomd meg az `F5`-öt az MCP szerver hibakeresésének elindításához.
+2. Használd az AI Toolkit Agent Buildert a szerver teszteléséhez [ezzel a prompttal](../../../../../../../../../../../open_prompt_builder). A szerver automatikusan csatlakozik az Agent Builderhez.
+3. Kattints a `Run` gombra, hogy a prompttal teszteld a szervert.
 
-**Gratulálunk**! Sikeresen futtatta a Weather MCP szervert a helyi fejlesztői gépen az Agent Builder segítségével MCP kliensként.
+**Gratulálunk**! Sikeresen futtattad a Weather MCP Server-t a helyi fejlesztői gépeden az Agent Builderrel MCP kliensként.
 ![DebugMCP](https://raw.githubusercontent.com/microsoft/windows-ai-studio-templates/refs/heads/dev/mcpServers/mcp_debug.gif)
 
-## Mi található a sablonban?
+## Mi található a sablonban
 
-| Mappa / Fájl | Tartalom                                     |
-| ------------ | -------------------------------------------- |
-| `.vscode`    | VSCode fájlok hibakereséshez                 |
-| `.aitk`      | Konfigurációk az AI Toolkithez               |
-| `src`        | A Weather MCP szerver forráskódja            |
+| Mappa / Fájl | Tartalom                               |
+| ------------ | ------------------------------------ |
+| `.vscode`    | VSCode fájlok a hibakereséshez       |
+| `.aitk`      | Beállítások az AI Toolkithez          |
+| `src`        | Az időjárás mcp szerver forráskódja  |
 
-## Hogyan lehet hibakeresni a Weather MCP szervert?
+## Hogyan hibakeressük a Weather MCP Server-t
 
 > Megjegyzések:
-> - A [MCP Inspector](https://github.com/modelcontextprotocol/inspector) egy vizuális fejlesztői eszköz MCP szerverek teszteléséhez és hibakereséséhez.
-> - Minden hibakeresési mód támogatja a töréspontokat, így hozzáadhat töréspontokat az eszköz implementációs kódjához.
+> - A [MCP Inspector](https://github.com/modelcontextprotocol/inspector) egy vizuális fejlesztői eszköz MCP szerverek tesztelésére és hibakeresésére.
+> - Minden hibakeresési mód támogatja a töréspontokat, így töréspontokat adhatsz az eszköz implementációs kódjához.
 
 ## Elérhető eszközök
 
-### Időjárási eszköz
-A `get_weather` eszköz mock időjárási információkat nyújt egy megadott helyre.
+### Weather Tool
+A `get_weather` eszköz minta időjárási információkat szolgáltat egy megadott helyhez.
 
 | Paraméter | Típus | Leírás |
-| --------- | ----- | ------ |
-| `location` | string | A hely, amelyre az időjárást lekérdezi (pl. városnév, állam vagy koordináták) |
+| --------- | ---- | ----------- |
+| `location` | string | A hely, amelyhez az időjárást kérdezed (pl. város neve, állam, koordináták) |
 
-### Git Clone eszköz
-A `git_clone_repo` eszköz egy git repozitóriumot klónoz egy megadott mappába.
+### Git Clone Tool
+A `git_clone_repo` eszköz egy git tárolót klónoz egy megadott mappába.
 
 | Paraméter | Típus | Leírás |
-| --------- | ----- | ------ |
-| `repo_url` | string | A klónozandó git repozitórium URL-je |
-| `target_folder` | string | Az útvonal, ahová a repozitóriumot klónozni kell |
+| --------- | ---- | ----------- |
+| `repo_url` | string | A klónozni kívánt git tároló URL-je |
+| `target_folder` | string | A mappa elérési útja, ahová a tároló klónozva lesz |
+
+Az eszköz egy JSON objektumot ad vissza a következőkkel:
+- `success`: Logikai érték, amely jelzi, hogy a művelet sikeres volt-e
+- `target_folder` vagy `error`: A klónozott tároló útvonala vagy hibajelzés
+
+### VS Code Open Tool
+Az `open_in_vscode` eszköz megnyit egy mappát a VS Code vagy a VS Code Insiders alkalmazásban.
+
+| Paraméter | Típus | Leírás |
+| --------- | ---- | ----------- |
+| `folder_path` | string | A megnyitandó mappa elérési útja |
+| `use_insiders` | boolean (opcionális) | Használja-e a VS Code Insiders-t a sima VS Code helyett |
 
 Az eszköz egy JSON objektumot ad vissza:
-- `success`: Boolean, amely jelzi, hogy a művelet sikeres volt-e
-- `target_folder` vagy `error`: A klónozott repozitórium útvonala vagy egy hibaüzenet
-
-### VS Code Open eszköz
-Az `open_in_vscode` eszköz megnyit egy mappát a VS Code vagy VS Code Insiders alkalmazásban.
-
-| Paraméter | Típus | Leírás |
-| --------- | ----- | ------ |
-| `folder_path` | string | Az útvonal a megnyitandó mappához |
-| `use_insiders` | boolean (opcionális) | Megadja, hogy a VS Code Insiders-t használja-e a normál VS Code helyett |
-
-Az eszköz egy JSON objektumot ad vissza:
-- `success`: Boolean, amely jelzi, hogy a művelet sikeres volt-e
-- `message` vagy `error`: Egy megerősítő üzenet vagy egy hibaüzenet
+- `success`: Logikai érték, amely jelzi, hogy a művelet sikeres volt-e
+- `message` vagy `error`: Visszaigazoló üzenet vagy hibaüzenet
 
 | Hibakeresési mód | Leírás | Hibakeresési lépések |
-| ---------------- | ------ | -------------------- |
-| Agent Builder | Az MCP szerver hibakeresése az Agent Builderben az AI Toolkit segítségével. | 1. Nyissa meg a VS Code Debug panelt. Válassza a `Debug in Agent Builder` opciót, és nyomja meg az `F5` gombot az MCP szerver hibakeresésének elindításához.<br>2. Használja az AI Toolkit Agent Buildert a szerver teszteléséhez [ezzel a prompttal](../../../../../../../../../../../open_prompt_builder). A szerver automatikusan csatlakozik az Agent Builderhez.<br>3. Kattintson a `Run` gombra a szerver teszteléséhez a prompttal. |
-| MCP Inspector | Az MCP szerver hibakeresése az MCP Inspector segítségével. | 1. Telepítse a [Node.js](https://nodejs.org/) alkalmazást<br> 2. Állítsa be az Inspectort: `cd inspector` && `npm install` <br> 3. Nyissa meg a VS Code Debug panelt. Válassza a `Debug SSE in Inspector (Edge)` vagy `Debug SSE in Inspector (Chrome)` opciót. Nyomja meg az F5 gombot a hibakeresés elindításához.<br> 4. Amikor az MCP Inspector elindul a böngészőben, kattintson a `Connect` gombra az MCP szerver csatlakoztatásához.<br> 5. Ezután `List Tools`, válasszon egy eszközt, adja meg a paramétereket, és `Run Tool` a szerver kódjának hibakereséséhez.<br> |
+| ---------- | ----------- | --------------- |
+| Agent Builder | Az MCP szerver hibakeresése az Agent Builderben az AI Toolkit segítségével. | 1. Nyisd meg a VS Code Hibakereső panelt. Válaszd a `Debug in Agent Builder` lehetőséget, és nyomd meg az `F5`-öt az MCP szerver hibakeresésének indításához.<br>2. Használd az AI Toolkit Agent Buildert a szerver teszteléséhez [ezzel a prompttal](../../../../../../../../../../../open_prompt_builder). A szerver automatikusan csatlakozik az Agent Builderhez.<br>3. Kattints a `Run` gombra a prompt teszteléséhez. |
+| MCP Inspector | Az MCP szerver hibakeresése az MCP Inspector használatával. | 1. Telepítsd a [Node.js](https://nodejs.org/)-t<br> 2. Állítsd be az Inspectort: `cd inspector` és futtasd a `npm install` parancsot <br> 3. Nyisd meg a VS Code Hibakereső panelt. Válaszd a `Debug SSE in Inspector (Edge)` vagy a `Debug SSE in Inspector (Chrome)` lehetőséget. Nyomd meg az F5-öt a hibakeresés indításához.<br> 4. Amikor az MCP Inspector megnyílik a böngészőben, kattints a `Connect` gombra az MCP szerver csatlakoztatásához.<br> 5. Ezután használhatod a `List Tools` funkciót, választhatsz eszközt, beírhatod a paramétereket és a `Run Tool`-lal hibakeresheted a szerver kódját.<br> |
 
 ## Alapértelmezett portok és testreszabások
 
-| Hibakeresési mód | Portok | Meghatározások | Testreszabások | Megjegyzés |
-| ---------------- | ------ | -------------- | -------------- | ---------- |
-| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | Szerkessze a [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) fájlokat a portok módosításához. | N/A |
-| MCP Inspector | 3001 (Szerver); 5173 és 3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | Szerkessze a [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) fájlokat a portok módosításához. | N/A |
+| Hibakeresési mód | Portok | Definíciók | Testreszabások | Megjegyzés |
+| ---------- | ----- | ------------ | -------------- |-------------- |
+| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | Szerkeszd a [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) fájlokat a portok módosításához. | N/A |
+| MCP Inspector | 3001 (Szerver); 5173 és 3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | Szerkeszd a [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) fájlokat a portok módosításához. | N/A |
 
 ## Visszajelzés
 
-Ha bármilyen visszajelzése vagy javaslata van a sablonnal kapcsolatban, nyisson meg egy hibajegyet az [AI Toolkit GitHub repozitóriumában](https://github.com/microsoft/vscode-ai-toolkit/issues).
+Ha bármilyen visszajelzésed vagy javaslatod van ehhez a sablonhoz, kérjük nyiss egy issue-t az [AI Toolkit GitHub repository](https://github.com/microsoft/vscode-ai-toolkit/issues) oldalán.
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Felelősség kizárása**:  
-Ez a dokumentum az [Co-op Translator](https://github.com/Azure/co-op-translator) AI fordítási szolgáltatás segítségével lett lefordítva. Bár törekszünk a pontosságra, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az eredeti nyelvén tekintendő hiteles forrásnak. Kritikus információk esetén javasolt professzionális emberi fordítást igénybe venni. Nem vállalunk felelősséget semmilyen félreértésért vagy téves értelmezésért, amely a fordítás használatából eredhet.
+Ezt a dokumentumot az AI fordító szolgáltatás, a [Co-op Translator](https://github.com/Azure/co-op-translator) használatával fordítottuk. Bár igyekszünk pontosak lenni, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az anyanyelvén tekintendő hiteles forrásnak. Kritikus információk esetén professzionális, emberi fordítást javaslunk. Nem vállalunk felelősséget a fordítás használatából eredő félreértésekért vagy félreértelmezésekért.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,160 +1,163 @@
-# 🚀 MCP Server s PostgreSQL - Kompletní průvodce učením
+# 🚀 MCP Server s PostgreSQL – Kompletní výukový průvodce
 
-## 🧠 Přehled vzdělávací cesty integrace MCP databáze
+## 🧠 Přehled výukové cesty integrace databáze MCP
 
-Tento komplexní průvodce vás naučí, jak vytvořit produkčně připravené **Model Context Protocol (MCP) servery**, které se integrují s databázemi prostřednictvím praktické implementace maloobchodní analytiky. Naučíte se vzory na podnikové úrovni, včetně **Row Level Security (RLS)**, **sémantického vyhledávání**, **integrace Azure AI** a **přístupu k datům pro více nájemců**.
+Tento komplexní výukový průvodce vás naučí, jak postavit produkčně připravené **Model Context Protocol (MCP) servery**, které se integrují s databázemi prostřednictvím praktické implementace maloobchodní analytiky. Naučíte se podnikové vzory včetně **Row Level Security (RLS)**, **sémantického vyhledávání**, **integrace Azure AI** a **vícenájemnického přístupu k datům**.
 
-Ať už jste backendový vývojář, AI inženýr nebo datový architekt, tento průvodce nabízí strukturované učení s příklady z reálného světa a praktickými cvičeními, které vás provedou následujícím MCP serverem https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
+Ať už jste backendový vývojář, AI inženýr nebo datový architekt, tento průvodce nabízí strukturované učení s reálnými příklady a praktickými cvičeními, které vás provedou následujícím MCP serverem https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
 
-## 🔗 Oficiální MCP zdroje
+## 🔗 Oficiální zdroje MCP
 
-- 📘 [MCP Dokumentace](https://modelcontextprotocol.io/) – Podrobné návody a uživatelské příručky
-- 📜 [MCP Specifikace](https://modelcontextprotocol.io/docs/) – Architektura protokolu a technické reference
-- 🧑‍💻 [MCP GitHub Repozitář](https://github.com/modelcontextprotocol) – Open-source SDK, nástroje a ukázky kódu
-- 🌐 [MCP Komunita](https://github.com/orgs/modelcontextprotocol/discussions) – Připojte se k diskuzím a přispějte do komunity
+- 📘 [Dokumentace MCP](https://modelcontextprotocol.io/) – Podrobné návody a uživatelské příručky  
+- 📜 [Specifikace MCP (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Architektura protokolu a technické reference  
+- 🧑‍💻 [GitHub repozitář MCP](https://github.com/modelcontextprotocol) – Open-source SDK, nástroje a ukázky kódu  
+- 🌐 [Komunita MCP](https://github.com/orgs/modelcontextprotocol/discussions) – Připojte se k diskuzím a přispívejte komunitě  
+- 🔒 [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – Bezpečnostní osvědčené postupy a mitigace rizik  
 
-## 🧭 Vzdělávací cesta integrace MCP databáze
+## 🧭 Výuková cesta integrace databáze MCP
 
 ### 📚 Kompletní struktura učení pro https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail
 
-| Laboratoř | Téma | Popis | Odkaz |
+| Lab | Téma | Popis | Odkaz |
 |--------|-------|-------------|------|
 | **Lab 1-3: Základy** | | | |
-| 00 | [Úvod do integrace MCP databáze](./00-Introduction/README.md) | Přehled MCP s integrací databáze a případ použití maloobchodní analytiky | [Začněte zde](./00-Introduction/README.md) |
-| 01 | [Základní koncepty architektury](./01-Architecture/README.md) | Porozumění architektuře MCP serveru, databázovým vrstvám a bezpečnostním vzorům | [Učte se](./01-Architecture/README.md) |
-| 02 | [Bezpečnost a více nájemců](./02-Security/README.md) | Row Level Security, autentizace a přístup k datům pro více nájemců | [Učte se](./02-Security/README.md) |
-| 03 | [Nastavení prostředí](./03-Setup/README.md) | Nastavení vývojového prostředí, Dockeru, Azure zdrojů | [Nastavte](./03-Setup/README.md) |
-| **Lab 4-6: Budování MCP serveru** | | | |
-| 04 | [Návrh databáze a schéma](./04-Database/README.md) | Nastavení PostgreSQL, návrh maloobchodního schématu a ukázková data | [Budujte](./04-Database/README.md) |
-| 05 | [Implementace MCP serveru](./05-MCP-Server/README.md) | Vytvoření FastMCP serveru s integrací databáze | [Budujte](./05-MCP-Server/README.md) |
-| 06 | [Vývoj nástrojů](./06-Tools/README.md) | Vytvoření nástrojů pro dotazy na databázi a introspekci schématu | [Budujte](./06-Tools/README.md) |
+| 00 | [Úvod do integrace databáze MCP](./00-Introduction/README.md) | Přehled MCP s integrací databáze a případ použití maloobchodní analytiky | [Začít zde](./00-Introduction/README.md) |
+| 01 | [Základní koncepty architektury](./01-Architecture/README.md) | Porozumění architektuře MCP serveru, datovým vrstvám a bezpečnostním vzorům | [Naučit se](./01-Architecture/README.md) |
+| 02 | [Bezpečnost a vícenájemnictví](./02-Security/README.md) | Row Level Security, autentizace a vícenájemnický přístup k datům | [Naučit se](./02-Security/README.md) |
+| 03 | [Nastavení prostředí](./03-Setup/README.md) | Nastavení vývojového prostředí, Docker, Azure zdroje | [Nastavit](./03-Setup/README.md) |
+| **Lab 4-6: Stavba MCP serveru** | | | |
+| 04 | [Návrh databáze a schéma](./04-Database/README.md) | Nastavení PostgreSQL, návrh maloobchodního schématu a vzorová data | [Stavět](./04-Database/README.md) |
+| 05 | [Implementace MCP serveru](./05-MCP-Server/README.md) | Stavba FastMCP serveru s integrací databáze | [Stavět](./05-MCP-Server/README.md) |
+| 06 | [Vývoj nástrojů](./06-Tools/README.md) | Vytváření nástrojů pro dotazy do databáze a introspekce schématu | [Stavět](./06-Tools/README.md) |
 | **Lab 7-9: Pokročilé funkce** | | | |
-| 07 | [Integrace sémantického vyhledávání](./07-Semantic-Search/README.md) | Implementace vektorových embeddingů s Azure OpenAI a pgvector | [Pokročte](./07-Semantic-Search/README.md) |
-| 08 | [Testování a ladění](./08-Testing/README.md) | Strategie testování, nástroje pro ladění a přístupy k validaci | [Testujte](./08-Testing/README.md) |
-| 09 | [Integrace VS Code](./09-VS-Code/README.md) | Konfigurace integrace VS Code MCP a použití AI Chat | [Integrujte](./09-VS-Code/README.md) |
+| 07 | [Integrace sémantického vyhledávání](./07-Semantic-Search/README.md) | Implementace vektorových embedings s Azure OpenAI a pgvector | [Pokročilé](./07-Semantic-Search/README.md) |
+| 08 | [Testování a ladění](./08-Testing/README.md) | Testovací strategie, ladící nástroje a validační přístupy | [Testovat](./08-Testing/README.md) |
+| 09 | [Integrace ve VS Code](./09-VS-Code/README.md) | Konfigurace integrace MCP ve VS Code a používání AI chatu | [Integrovat](./09-VS-Code/README.md) |
 | **Lab 10-12: Produkce a osvědčené postupy** | | | |
-| 10 | [Strategie nasazení](./10-Deployment/README.md) | Nasazení pomocí Dockeru, Azure Container Apps a úvahy o škálování | [Nasazujte](./10-Deployment/README.md) |
-| 11 | [Monitoring a pozorovatelnost](./11-Monitoring/README.md) | Application Insights, logování, monitoring výkonu | [Monitorujte](./11-Monitoring/README.md) |
-| 12 | [Osvědčené postupy a optimalizace](./12-Best-Practices/README.md) | Optimalizace výkonu, zajištění bezpečnosti a tipy pro produkci | [Optimalizujte](./12-Best-Practices/README.md) |
+| 10 | [Strategie nasazení](./10-Deployment/README.md) | Nasazení v Dockeru, Azure Container Apps a škálování | [Nasadit](./10-Deployment/README.md) |
+| 11 | [Monitoring a pozorovatelnost](./11-Monitoring/README.md) | Application Insights, logování, monitorování výkonu | [Monitorovat](./11-Monitoring/README.md) |
+| 12 | [Nejlepší praktiky a optimalizace](./12-Best-Practices/README.md) | Optimalizace výkonu, zabezpečení a tipy pro produkci | [Optimalizovat](./12-Best-Practices/README.md) |
 
 ### 💻 Co vytvoříte
 
-Na konci této vzdělávací cesty vytvoříte kompletní **Zava Retail Analytics MCP Server**, který zahrnuje:
+Na konci této výukové cesty budete mít plně funkční **Zava Retail Analytics MCP Server**, který obsahuje:
 
-- **Maloobchodní databázi s více tabulkami** obsahující zákaznické objednávky, produkty a inventář
-- **Row Level Security** pro izolaci dat na úrovni obchodů
-- **Sémantické vyhledávání produktů** pomocí embeddingů Azure OpenAI
-- **Integraci VS Code AI Chat** pro dotazy v přirozeném jazyce
+- **Vícekolejovou maloobchodní databázi** s objednávkami zákazníků, produkty a skladem
+- **Row Level Security** pro izolaci dat podle prodejny
+- **Sémantické vyhledávání produktů** pomocí Azure OpenAI embedings
+- **Integraci VS Code AI Chatu** pro dotazy v přirozeném jazyce
 - **Produkčně připravené nasazení** s Dockerem a Azure
-- **Komplexní monitoring** pomocí Application Insights
+- **Komplexní monitoring** s Application Insights
 
-## 🎯 Předpoklady pro učení
+## 🎯 Požadavky pro učení
 
-Abyste z této vzdělávací cesty získali maximum, měli byste mít:
+Abyste získali co nejvíce z této výukové cesty, měli byste mít:
 
-- **Zkušenosti s programováním**: Znalost Pythonu (preferováno) nebo podobných jazyků
-- **Znalost databází**: Základní porozumění SQL a relačním databázím
-- **Koncepty API**: Porozumění REST API a HTTP konceptům
-- **Vývojové nástroje**: Zkušenosti s příkazovou řádkou, Gitem a editory kódu
-- **Základy cloudu**: (Volitelné) Základní znalost Azure nebo podobných cloudových platforem
-- **Znalost Dockeru**: (Volitelné) Porozumění konceptům kontejnerizace
+- **Zkušenosti s programováním**: Znalost Pythonu (doporučeno) nebo podobných jazyků  
+- **Znalosti databází**: Základní porozumění SQL a relačním databázím  
+- **Koncepty API**: Porozumění REST API a HTTP konceptům  
+- **Vývojové nástroje**: Zkušenosti s příkazovou řádkou, Gitem a kódovými editory  
+- **Základy cloudu**: (Volitelné) Základní znalost Azure nebo podobných cloudových platforem  
+- **Znalost Dockeru**: (Volitelné) Porozumění konceptu kontejnerizace
 
 ### Požadované nástroje
 
-- **Docker Desktop** - Pro spuštění PostgreSQL a MCP serveru
-- **Azure CLI** - Pro nasazení cloudových zdrojů
-- **VS Code** - Pro vývoj a integraci MCP
-- **Git** - Pro verzování kódu
-- **Python 3.8+** - Pro vývoj MCP serveru
+- **Docker Desktop** – Pro spuštění PostgreSQL a MCP serveru  
+- **Azure CLI** – Pro nasazení cloudových zdrojů  
+- **VS Code** – Pro vývoj a integraci MCP  
+- **Git** – Pro správu verzí  
+- **Python 3.8+** – Pro vývoj MCP serveru  
 
-## 📚 Průvodce studiem a zdroje
+## 📚 Studijní průvodce & zdroje
 
-Tato vzdělávací cesta zahrnuje komplexní zdroje, které vám pomohou efektivně se orientovat:
+Tato výuková cesta obsahuje komplexní zdroje, které vám pomohou efektivně postupovat:
 
-### Průvodce studiem
+### Studijní průvodce
 
-Každá laboratoř obsahuje:
-- **Jasné cíle učení** - Co dosáhnete
-- **Postupné instrukce** - Podrobné návody k implementaci
-- **Ukázky kódu** - Funkční příklady s vysvětlením
-- **Cvičení** - Příležitosti k praktickému procvičení
-- **Průvodce řešením problémů** - Běžné problémy a jejich řešení
-- **Další zdroje** - Další čtení a průzkum
+Každý lab obsahuje:  
+- **Jasné cíle učení** – Co se naučíte  
+- **Krok za krokem instrukce** – Podrobné návody k implementaci  
+- **Ukázky kódu** – Fungující příklady s vysvětlením  
+- **Cvičení** – Příležitosti pro praktický trénink  
+- **Průvodce řešením problémů** – Časté problémy a řešení  
+- **Další zdroje** – Další čtení a průzkum  
 
 ### Kontrola předpokladů
 
-Před zahájením každé laboratoře najdete:
-- **Požadované znalosti** - Co byste měli vědět předem
-- **Ověření nastavení** - Jak ověřit vaše prostředí
-- **Odhady času** - Očekávaná doba dokončení
-- **Výsledky učení** - Co budete vědět po dokončení
+Před začátkem každého labu naleznete:  
+- **Požadované znalosti** – Co byste měli znát předem  
+- **Ověření nastavení** – Jak ověřit své prostředí  
+- **Časové odhady** – Očekávaná doba dokončení  
+- **Výsledky učení** – Co budete umět po dokončení  
 
-### Doporučené vzdělávací cesty
+### Doporučené výukové cesty
 
 Vyberte si cestu podle své úrovně zkušeností:
 
-#### 🟢 **Cesta pro začátečníky** (Noví v MCP)
-1. Ujistěte se, že jste dokončili 0-10 z [MCP pro začátečníky](https://aka.ms/mcp-for-beginners)
-2. Dokončete laboratoře 00-03 pro posílení základů
-3. Následujte laboratoře 04-06 pro praktické budování
-4. Vyzkoušejte laboratoře 07-09 pro praktické použití
+#### 🟢 **Začátečnická cesta** (Nový v MCP)  
+1. Nejprve dokončete 0-10 z [MCP for Beginners](https://aka.ms/mcp-for-beginners)  
+2. Dokončete laby 00-03 pro posílení základů  
+3. Následujte laby 04-06 pro praktickou stavbu  
+4. Vyzkoušejte laby 07-09 pro praktické použití
 
-#### 🟡 **Cesta pro pokročilé** (Nějaké zkušenosti s MCP)
-1. Projděte laboratoře 00-01 pro koncepty specifické pro databáze
-2. Zaměřte se na laboratoře 02-06 pro implementaci
-3. Ponořte se do laboratoří 07-12 pro pokročilé funkce
+#### 🟡 **Středně pokročilá cesta** (S nějakou zkušeností s MCP)  
+1. Projděte laby 00-01 pro databázové koncepty  
+2. Zaměřte se na laby 02-06 pro implementaci  
+3. Hlouběji prozkoumejte laby 07-12 pro pokročilé funkce
 
-#### 🔴 **Cesta pro experty** (Zkušenosti s MCP)
-1. Projděte laboratoře 00-03 pro kontext
-2. Zaměřte se na laboratoře 04-09 pro integraci databáze
-3. Soustřeďte se na laboratoře 10-12 pro nasazení do produkce
+#### 🔴 **Pokročilá cesta** (Zkušený v MCP)  
+1. Prolistujte laby 00-03 pro kontext  
+2. Zaměřte se na laby 04-09 pro databázovou integraci  
+3. Soustřeďte se na laby 10-12 pro produkční nasazení  
 
-## 🛠️ Jak efektivně využít tuto vzdělávací cestu
+## 🛠️ Jak používat tuto výukovou cestu efektivně
 
 ### Sekvenční učení (doporučeno)
 
-Projděte laboratoře postupně pro komplexní porozumění:
+Projděte laby postupně pro komplexní pochopení:
 
-1. **Přečtěte si přehled** - Porozumějte tomu, co se naučíte
-2. **Zkontrolujte předpoklady** - Ujistěte se, že máte požadované znalosti
-3. **Postupujte podle návodů** - Implementujte během učení
-4. **Dokončete cvičení** - Posilněte své porozumění
-5. **Projděte klíčové poznatky** - Upevněte výsledky učení
+1. **Přečtěte si přehled** – Pochopte, co se naučíte  
+2. **Zkontrolujte předpoklady** – Ujistěte se, že máte potřebné znalosti  
+3. **Následujte návody krok za krokem** – Implementujte podle učení  
+4. **Dokončete cvičení** – Posilte své pochopení  
+5. **Zopakujte si hlavní závěry** – Upevněte výsledky učení  
 
 ### Cílené učení
 
 Pokud potřebujete konkrétní dovednosti:
 
-- **Integrace databáze**: Zaměřte se na laboratoře 04-06
-- **Implementace bezpečnosti**: Soustřeďte se na laboratoře 02, 08, 12
-- **AI/Sémantické vyhledávání**: Ponořte se do laboratoře 07
-- **Nasazení do produkce**: Studujte laboratoře 10-12
+- **Integrace databáze**: Zaměřte se na laby 04-06  
+- **Implementace bezpečnosti**: Soustřeďte se na laby 02, 08, 12  
+- **AI/sémantické vyhledávání**: Hloubkově v labu 07  
+- **Produkční nasazení**: Studujte laby 10-12  
 
-### Praktické cvičení
+### Praktický nácvik
 
-Každá laboratoř obsahuje:
-- **Funkční ukázky kódu** - Kopírujte, upravujte a experimentujte
-- **Scénáře z reálného světa** - Praktické případy použití maloobchodní analytiky
-- **Postupnou složitost** - Budování od jednoduchého k pokročilému
-- **Ověřovací kroky** - Ověřte, že vaše implementace funguje
+Každý lab obsahuje:  
+- **Fungující příklady kódu** – Kopírujte, upravujte a experimentujte  
+- **Reálné scénáře** – Praktické případy použití maloobchodní analýzy  
+- **Postupující složitost** – Stavba od jednoduchého po pokročilé  
+- **Kroky ověření** – Ověřte, že vaše implementace funguje  
 
 ## 🌟 Komunita a podpora
 
 ### Získejte pomoc
 
-- **Azure AI Discord**: [Připojte se pro odbornou podporu](https://discord.com/invite/ByRwuEEgH4)
-- **GitHub Repozitář a ukázka implementace**: [Ukázka nasazení a zdroje](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
-- **MCP Komunita**: [Připojte se k širším diskuzím o MCP](https://github.com/orgs/modelcontextprotocol/discussions)
+- **Azure AI Discord**: [Připojte se pro odbornou podporu](https://discord.com/invite/ByRwuEEgH4)  
+- **GitHub repozitář a ukázka implementace**: [Ukázková nasazení a zdroje](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)  
+- **Komunita MCP**: [Připojte se k širším diskuzím MCP](https://github.com/orgs/modelcontextprotocol/discussions)  
 
-## 🚀 Připraveni začít?
+## 🚀 Připraven začít?
 
-Začněte svou cestu s **[Lab 00: Úvod do integrace MCP databáze](./00-Introduction/README.md)**
-
----
-
-*Mistrovsky zvládněte budování produkčně připravených MCP serverů s integrací databáze prostřednictvím této komplexní, praktické vzdělávací zkušenosti.*
+Začněte svou cestu s **[Lab 00: Úvod do integrace databáze MCP](./00-Introduction/README.md)**
 
 ---
 
-**Prohlášení**:  
-Tento dokument byl přeložen pomocí služby AI pro překlady [Co-op Translator](https://github.com/Azure/co-op-translator). I když se snažíme o přesnost, mějte prosím na paměti, že automatizované překlady mohou obsahovat chyby nebo nepřesnosti. Původní dokument v jeho rodném jazyce by měl být považován za autoritativní zdroj. Pro důležité informace doporučujeme profesionální lidský překlad. Neodpovídáme za žádná nedorozumění nebo nesprávné interpretace vyplývající z použití tohoto překladu.
+*Mistrovsky postavte produkčně připravené MCP servery s integrací databáze prostřednictvím této komplexní, praktické výukové zkušenosti.*
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Prohlášení o vyloučení odpovědnosti**:  
+Tento dokument byl přeložen pomocí AI překladatelské služby [Co-op Translator](https://github.com/Azure/co-op-translator). Přestože usilujeme o přesnost, mějte na paměti, že automatické překlady mohou obsahovat chyby nebo nepřesnosti. Původní dokument v jeho mateřském jazyce by měl být považován za autoritativní zdroj. Pro důležité informace se doporučuje profesionální lidský překlad. Nejsme odpovědní za jakékoliv nedorozumění nebo chybný výklad vyplývající z použití tohoto překladu.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
