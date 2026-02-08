@@ -1,50 +1,50 @@
-# MCP Kjernebegreper: Mestre Model Context Protocol for AI-integrasjon
+# MCP Core Concepts: Mester i Model Context Protocol for AI-integrasjon
 
-[![MCP Core Concepts](../../../translated_images/no/02.8203e26c6fb5a797f38a10012061013ec66c95bb3260f6c9cfd2bf74b00860e1.png)](https://youtu.be/earDzWGtE84)
+[![MCP Core Concepts](../../../translated_images/no/02.8203e26c6fb5a797.webp)](https://youtu.be/earDzWGtE84)
 
-_(Klikk på bildet over for å se video av denne leksjonen)_
+_(Klikk på bildet ovenfor for å se video av denne leksjonen)_
 
-[Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) er et kraftig, standardisert rammeverk som optimaliserer kommunikasjonen mellom store språkmodeller (LLMs) og eksterne verktøy, applikasjoner og datakilder.  
-Denne guiden vil lede deg gjennom kjernebegrepene i MCP. Du vil lære om dens klient-server-arkitektur, essensielle komponenter, kommunikasjonsmekanismer og beste praksis for implementering.
+[Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) er en kraftfull, standardisert ramme som optimaliserer kommunikasjon mellom store språkmodeller (LLMs) og eksterne verktøy, applikasjoner og datakilder.  
+Denne guiden vil lede deg gjennom kjernebegrepene i MCP. Du vil lære om klient-server-arkitekturen, essensielle komponenter, kommunikasjonsmekanismer og beste praksis for implementering.
 
-- **Eksplisitt brukersamtykke**: All datatilgang og operasjoner krever eksplisitt godkjenning fra brukeren før utførelse. Brukere må klart forstå hvilken data som vil bli aksessert og hvilke handlinger som vil bli utført, med granulær kontroll over tillatelser og autorisasjoner.
+- **Eksplisitt Brukersamtykke**: All data-tilgang og operasjoner krever eksplisitt godkjenning fra brukeren før utførelse. Brukere må tydelig forstå hvilke data som vil bli aksessert og hvilke handlinger som vil bli utført, med detaljert kontroll over tillatelser og autorisasjoner.
 
-- **Datapersonvern**: Brukerdata eksponeres kun med eksplisitt samtykke og må beskyttes av robuste tilgangskontroller gjennom hele interaksjonslivssyklusen. Implementasjoner må forhindre uautorisert datatransmisjon og opprettholde strenge personverngrenser.
+- **Datasikkerhet og Personvern**: Brukerdata kun eksponeres med eksplisitt samtykke og må beskyttes av robuste tilgangskontroller gjennom hele interaksjonslivssyklusen. Implementeringer må forhindre uautorisert datatransmisjon og opprettholde strenge personverngrenser.
 
-- **Sikkerhet ved verktøykjøring**: Hver verktøysanrop krever eksplisitt brukersamtykke med klar forståelse av verktøyets funksjonalitet, parametere og potensiell påvirkning. Robuste sikkerhetsgrenser må forhindre utilsiktet, usikker eller ondsinnet verktøykjøring.
+- **Sikkerhet ved Verktøyutførelse**: Hver verktøyanrop krever eksplisitt brukersamtykke med klar forståelse av verktøyets funksjonalitet, parametere og potensielle konsekvenser. Robuste sikkerhetsgrenser må forhindre utilsiktet, usikker eller ondsinnet verktøyutførelse.
 
-- **Transportlagssikkerhet**: Alle kommunikasjonskanaler bør bruke passende kryptering og autentiseringsmekanismer. Fjernforbindelser bør implementere sikre transportprotokoller og korrekt håndtering av legitimasjon.
+- **Transportlagsikkerhet**: Alle kommunikasjonskanaler bør bruke passende kryptering og autentiseringsmekanismer. Eksterne tilkoblinger bør implementere sikre transportprotokoller og riktig håndtering av legitimasjon.
 
 #### Implementeringsretningslinjer:
 
-- **Tillatelsesstyring**: Implementer finmasket tillatelsessystem som lar brukere kontrollere hvilke servere, verktøy og ressurser som er tilgjengelige  
-- **Autentisering og autorisasjon**: Bruk sikre autentiseringsmetoder (OAuth, API-nøkler) med korrekt tokenhåndtering og utløp  
-- **Inndata-validering**: Valider alle parametere og data i henhold til definerte skjemaer for å forhindre injeksjonsangrep  
-- **Revisjonslogging**: Oppretthold omfattende logger over alle operasjoner for sikkerhetsovervåking og samsvar
+- **Tillatelsesstyring**: Implementer finmasket tillatelsessystem som lar brukerne kontrollere hvilke servere, verktøy og ressurser som er tilgjengelige  
+- **Autentisering og Autorisasjon**: Bruk sikre autentiseringsmetoder (OAuth, API-nøkler) med riktig token-håndtering og utløp  
+- **Inputvalidering**: Valider alle parametere og data-input i henhold til definerte skjemaer for å forhindre injeksjonsangrep  
+- **Revisjonslogg**: Oppretthold omfattende logger av alle operasjoner for sikkerhetsovervåkning og samsvar
 
 ## Oversikt
 
-Denne leksjonen utforsker den grunnleggende arkitekturen og komponentene som utgjør Model Context Protocol (MCP)-økosystemet. Du vil lære om klient-server-arkitekturen, nøkkelkomponenter og kommunikasjonsmekanismer som driver MCP-interaksjoner.
+Denne leksjonen utforsker den grunnleggende arkitekturen og komponentene som utgjør Model Context Protocol (MCP) økosystemet. Du vil lære om klient-server-arkitektur, nøkkelkomponenter og kommunikasjonsmekanismer som driver MCP-interaksjoner.
 
 ## Viktige læringsmål
 
-Ved slutten av denne leksjonen vil du:
+Etter denne leksjonen vil du:
 
-- Forstå MCP klient-server-arkitektur.  
+- Forstå MCPs klient-server-arkitektur.  
 - Identifisere roller og ansvar for Hosts, Clients og Servers.  
-- Analysere kjernefunksjonene som gjør MCP til et fleksibelt integrasjonslag.  
-- Lære hvordan informasjon flyter innen MCP-økosystemet.  
-- Få praktiske innsikter gjennom kodeeksempler i .NET, Java, Python og JavaScript.
+- Analysere kjernegenskaper som gjør MCP til et fleksibelt integrasjonslag.  
+- Lære hvordan informasjon flyter i MCP-økosystemet.  
+- Få praktiske innsikter via kodeeksempler i .NET, Java, Python og JavaScript.
 
 ## MCP-arkitektur: Et dypere blikk
 
-MCP-økosystemet er bygget på en klient-server-modell. Denne modulære strukturen lar AI-applikasjoner samhandle effektivt med verktøy, databaser, API-er og kontekstuelle ressurser. La oss bryte ned denne arkitekturen i dens kjernekomponenter.
+MCP-økosystemet er bygget på en klient-server-modell. Denne modulære strukturen gjør at AI-applikasjoner effektivt kan interagere med verktøy, databaser, APIer og kontekstuelle ressurser. La oss dele denne arkitekturen inn i kjernekomponentene.
 
-I kjernen følger MCP en klient-server-arkitektur hvor en host-applikasjon kan koble til flere servere:
+I kjernen følger MCP en klient-server-arkitektur der en vertapplikasjon kan koble til flere servere:
 
 ```mermaid
 flowchart LR
-    subgraph "Din datamaskin"
+    subgraph "Din Datamaskin"
         Host["Vert med MCP (Visual Studio, VS Code, IDEer, Verktøy)"]
         S1["MCP Server A"]
         S2["MCP Server B"]
@@ -56,76 +56,76 @@ flowchart LR
         S2 <--> D2[("Lokal\Datakilde B")]
     end
     subgraph "Internett"
-        S3 <-->|"Web-APIer"| D3[("Fjern\Tjenester")]
+        S3 <-->|"Nett API-er"| D3[("Fjern\Tjenester")]
     end
 ```
-- **MCP Hosts**: Programmer som VSCode, Claude Desktop, IDE-er eller AI-verktøy som ønsker å aksessere data gjennom MCP  
-- **MCP Clients**: Protokollklienter som opprettholder 1:1-forbindelser med servere  
-- **MCP Servers**: Lettvektsprogrammer som hver eksponerer spesifikke funksjoner gjennom den standardiserte Model Context Protocol  
-- **Lokale datakilder**: Din datamaskins filer, databaser og tjenester som MCP-servere kan aksessere sikkert  
-- **Fjern-tjenester**: Eksterne systemer tilgjengelig over internett som MCP-servere kan koble til via API-er.
+- **MCP Hosts**: Programmer som VSCode, Claude Desktop, IDEer eller AI-verktøy som ønsker å få tilgang til data gjennom MCP  
+- **MCP Clients**: Protokollklienter som opprettholder 1:1-tilkoblinger til servere  
+- **MCP Servers**: Letteviktige programmer som hver eksponerer spesifikke funksjoner gjennom den standardiserte Model Context Protocol  
+- **Lokale Datakilder**: Filene, databasene og tjenestene på din datamaskin som MCP-servere sikkert kan aksessere  
+- **Eksterne Tjenester**: Eksterne systemer tilgjengelige over internett som MCP-servere kan koble til via APIer.
 
-MCP-protokollen er en utviklende standard som bruker datobasert versjonering (YYYY-MM-DD-format). Den nåværende protokollversjonen er **2025-11-25**. Du kan se de siste oppdateringene til [protokollspesifikasjonen](https://modelcontextprotocol.io/specification/2025-11-25/)
+MCP-protokollen er en kontinuerlig utviklet standard med datobasert versjonering (YYYY-MM-DD-format). Den nåværende protokollversjonen er **2025-11-25**. Du kan se de siste oppdateringene i [protokollspesifikasjonen](https://modelcontextprotocol.io/specification/2025-11-25/)
 
 ### 1. Hosts
 
-I Model Context Protocol (MCP) er **Hosts** AI-applikasjoner som fungerer som det primære grensesnittet brukere interagerer med protokollen gjennom. Hosts koordinerer og administrerer tilkoblinger til flere MCP-servere ved å opprette dedikerte MCP-klienter for hver serverforbindelse. Eksempler på Hosts inkluderer:
+I Model Context Protocol (MCP) er **Hosts** AI-applikasjoner som fungerer som det primære grensesnittet brukerne interagerer med protokollen gjennom. Hosts koordinerer og administrerer tilkoblinger til flere MCP-servere ved å opprette dedikerte MCP-klienter for hver servertilkobling. Eksempler på Hosts inkluderer:
 
 - **AI-applikasjoner**: Claude Desktop, Visual Studio Code, Claude Code  
-- **Utviklingsmiljøer**: IDE-er og kodeeditorer med MCP-integrasjon  
-- **Egendefinerte applikasjoner**: Spesialbygde AI-agenter og verktøy
+- **Utviklingsmiljøer**: IDEer og kodeeditorer med MCP-integrasjon  
+- **Egendefinerte applikasjoner**: Formålsbygde AI-agenter og verktøy
 
 **Hosts** er applikasjoner som koordinerer AI-modellinteraksjoner. De:
 
-- **Orkestrerer AI-modeller**: Utfører eller samhandler med LLM-er for å generere svar og koordinere AI-arbeidsflyter  
-- **Administrerer klienttilkoblinger**: Oppretter og opprettholder én MCP-klient per MCP-serverforbindelse  
-- **Kontrollerer brukergrensesnitt**: Håndterer samtaleflyt, brukerinteraksjoner og presentasjon av svar  
+- **Orkestrerer AI-modeller**: Kjører eller kommuniserer med LLMer for å generere svar og koordinere AI-arbeidsflyter  
+- **Administrerer klienttilkoblinger**: Oppretter og vedlikeholder én MCP-klient per MCP-servertilkobling  
+- **Kontrollerer brukergrensesnitt**: Håndterer samtaleflyt, brukerinteraksjoner og responsvisning  
 - **Håndhever sikkerhet**: Kontrollerer tillatelser, sikkerhetsbegrensninger og autentisering  
 - **Håndterer brukersamtykke**: Administrerer brukerens godkjenning for datadeling og verktøykjøring
 
 ### 2. Clients
 
-**Clients** er essensielle komponenter som opprettholder dedikerte én-til-én-forbindelser mellom Hosts og MCP-servere. Hver MCP-klient opprettes av Host for å koble til en spesifikk MCP-server, noe som sikrer organiserte og sikre kommunikasjonskanaler. Flere klienter gjør det mulig for Hosts å koble til flere servere samtidig.
+**Clients** er essensielle komponenter som opprettholder dedikerte én-til-én-tilkoblinger mellom Hosts og MCP-servere. Hver MCP-klient initieres av Host for å koble til en spesifikk MCP-server, noe som sikrer organiserte og sikre kommunikasjonskanaler. Flere klienter gjør det mulig for Hosts å koble til flere servere samtidig.
 
-**Clients** er koblingskomponenter innen host-applikasjonen. De:
+**Clients** er koblingskomponenter innenfor vertapplikasjonen. De:
 
 - **Protokollkommunikasjon**: Sender JSON-RPC 2.0-forespørsler til servere med prompts og instruksjoner  
-- **Funksjonsforhandling**: Forhandler støttede funksjoner og protokollversjoner med servere under initialisering  
-- **Verktøykjøring**: Håndterer verktøykjøringsforespørsler fra modeller og behandler svar  
+- **Funksjonsforhandling**: Forhandler om støttede funksjoner og protokollversjoner med servere under initiering  
+- **Verktøyutførelse**: Håndterer verktøyspørringer fra modeller og prosesserer svar  
 - **Sanntidsoppdateringer**: Håndterer varsler og sanntidsoppdateringer fra servere  
-- **Svarbehandling**: Behandler og formaterer serversvar for visning til brukere
+- **Responsbehandling**: Prosesserer og formaterer serversvar for visning til brukere
 
 ### 3. Servers
 
-**Servers** er programmer som tilbyr kontekst, verktøy og funksjonalitet til MCP-klienter. De kan kjøre lokalt (på samme maskin som Host) eller eksternt (på eksterne plattformer), og er ansvarlige for å håndtere klientforespørsler og gi strukturerte svar. Servere eksponerer spesifikk funksjonalitet gjennom den standardiserte Model Context Protocol.
+**Servers** er programmer som tilbyr kontekst, verktøy og funksjonaliteter til MCP-klienter. De kan kjøres lokalt (på samme maskin som Host) eller eksternt (på eksterne plattformer) og er ansvarlige for å håndtere klientforespørsler og gi strukturerte svar. Servere eksponerer spesifikke funksjoner gjennom den standardiserte Model Context Protocol.
 
-**Servers** er tjenester som tilbyr kontekst og funksjonalitet. De:
+**Servers** er tjenester som tilbyr kontekst og kapasiteter. De:
 
-- **Funksjonsregistrering**: Registrerer og eksponerer tilgjengelige primitive (ressurser, prompts, verktøy) til klienter  
-- **Forespørselsbehandling**: Mottar og utfører verktøysanrop, ressursforespørsler og prompt-forespørsler fra klienter  
-- **Konteksttilbud**: Gir kontekstuell informasjon og data for å forbedre modelsvar  
-- **Tilstandshåndtering**: Opprettholder sesjonstilstand og håndterer tilstandsfylte interaksjoner ved behov  
-- **Sanntidsvarsler**: Sender varsler om funksjonsendringer og oppdateringer til tilkoblede klienter
+- **Funksjonsregistrering**: Registrerer og eksponerer tilgjengelige primitiv (ressurser, prompts, verktøy) til klienter  
+- **Forespørselsbehandling**: Mottar og utfører verktøy-kall, ressursforespørsler og prompt-forespørsler fra klienter  
+- **Konteksttilgangspunkt**: Gir kontekstuell informasjon og data for å forbedre modelsvar  
+- **Tilstandshåndtering**: Opprettholder sesjonstilstand og håndterer tilstandsbaserte interaksjoner ved behov  
+- **Sanntidsvarslinger**: Sender varsler om endringer i kapasiteter og oppdateringer til tilkoblede klienter
 
-Servere kan utvikles av hvem som helst for å utvide modelfunksjonalitet med spesialisert funksjonalitet, og de støtter både lokale og eksterne distribusjonsscenarier.
+Servere kan utvikles av hvem som helst for å utvide modellkapabiliteter med spesialisert funksjonalitet, og de støtter både lokale og eksterne driftsmiljøer.
 
 ### 4. Server Primitives
 
-Servere i Model Context Protocol (MCP) tilbyr tre kjerne-**primitive** som definerer de grunnleggende byggesteinene for rike interaksjoner mellom klienter, hosts og språkmodeller. Disse primitive spesifiserer typene kontekstuell informasjon og handlinger som er tilgjengelige gjennom protokollen.
+Servere i Model Context Protocol (MCP) leverer tre kjerne-**primitiver** som definerer grunnleggende byggeklosser for rike interaksjoner mellom klienter, hosts og språkmodeller. Disse primitivene spesifiserer hvilke typer kontekstuell informasjon og handlinger som er tilgjengelige gjennom protokollen.
 
-MCP-servere kan eksponere en hvilken som helst kombinasjon av følgende tre kjerneprimitive:
+MCP-servere kan eksponere en hvilken som helst kombinasjon av følgende tre kjerne-primitiver:
 
-#### Resources
+#### Ressurser 
 
 **Ressurser** er datakilder som gir kontekstuell informasjon til AI-applikasjoner. De representerer statisk eller dynamisk innhold som kan forbedre modellens forståelse og beslutningstaking:
 
 - **Kontekstuell data**: Strukturert informasjon og kontekst for AI-modellens konsum  
-- **Kunnskapsbaser**: Dokumentarkiver, artikler, manualer og forskningsartikler  
-- **Lokale datakilder**: Filer, databaser og lokal systeminformasjon  
-- **Ekstern data**: API-responser, webtjenester og fjernsystemdata  
+- **Kunnskapsbaser**: Dokumentarkiver, artikler, manualer og forskningspublikasjoner  
+- **Lokale datakilder**: Filer, databaser og lokale systeminformasjon  
+- **Eksterne data**: API-svar, webtjenester og eksterne systemdata  
 - **Dynamisk innhold**: Sanntidsdata som oppdateres basert på eksterne forhold
 
-Ressurser identifiseres med URI-er og støtter oppdagelse via `resources/list` og henting via `resources/read` metoder:
+Ressurser identifiseres via URIer og støtter oppdagelse gjennom `resources/list` og henting via `resources/read`-metoder:
 
 ```text
 file://documents/project-spec.md
@@ -139,27 +139,31 @@ api://weather/current
 
 - **Malbaserte interaksjoner**: Forhåndsstrukturerte meldinger og samtalestartere  
 - **Arbeidsflytmaler**: Standardiserte sekvenser for vanlige oppgaver og interaksjoner  
-- **Få-skudd-eksempler**: Eksempelbaserte maler for modellinstruksjon  
-- **Systemprompter**: Grunnleggende prompter som definerer modellens oppførsel og kontekst  
-- **Dynamiske maler**: Parameteriserte prompter som tilpasses spesifikke kontekster
+- **Få-skudd-eksempler**: Maler basert på eksempler for modellinstruksjon  
+- **Systemprompts**: Grunnleggende prompts som definerer modelladferd og kontekst  
+- **Dynamiske maler**: Parametriserte prompts som tilpasses spesifikk kontekst
 
-Prompter støtter variabelsubstitusjon og kan oppdages via `prompts/list` og hentes med `prompts/get`:
+Prompts støtter variabelsubstitusjon og kan oppdages via `prompts/list` og hente med `prompts/get`:
 
 ```markdown
 Generate a {{task_type}} for {{product}} targeting {{audience}} with the following requirements: {{requirements}}
 ```
 
-#### Tools
+#### Verktøy
 
-**Verktøy** er kjørbare funksjoner som AI-modeller kan påkalle for å utføre spesifikke handlinger. De representerer "verbene" i MCP-økosystemet, og gjør det mulig for modeller å samhandle med eksterne systemer:
+**Verktøy** er kjørbare funksjoner som AI-modeller kan påkalle for å utføre spesifikke handlinger. De representerer "verbene" i MCP-økosystemet, og gjør det mulig for modeller å interagere med eksterne systemer:
 
 - **Kjørbare funksjoner**: Diskrete operasjoner som modeller kan påkalle med spesifikke parametere  
 - **Integrasjon med eksterne systemer**: API-kall, databaseforespørsler, filoperasjoner, beregninger  
-- **Unik identitet**: Hvert verktøy har et distinkt navn, beskrivelse og parameterskjema  
-- **Strukturert I/O**: Verktøy aksepterer validerte parametere og returnerer strukturerte, typede svar  
-- **Handlingskapasiteter**: Gjør det mulig for modeller å utføre virkelige handlinger og hente live data
+- **Unik identitet**: Hvert verktøy har et distinkt navn, beskrivelse og parameter-skjema  
+- **Strukturert I/O**: Verktøy tar imot validerte parametere og returnerer strukturerte, typede svar  
+- **Handlingskapasitet**: Gjør det mulig for modeller å utføre virkelige handlinger og hente levende data
 
-Verktøy defineres med JSON Schema for parameter-validering og oppdages via `tools/list` og utføres via `tools/call`:
+Verktøy defineres med JSON Schema for parameter-validering og oppdages gjennom `tools/list` og utføres via `tools/call`. Verktøy kan også inkludere **ikoner** som tilleggsmmetadata for bedre UI-presentasjon.
+
+**Verktøyanmerkninger**: Verktøy støtter adferdsanmerkninger (f.eks. `readOnlyHint`, `destructiveHint`) som beskriver om et verktøy er skrivebeskyttet eller destruktivt, hvilket hjelper klienter til å ta informerte avgjørelser ved verktøyutførelse.
+
+Eksempel på verktøydefinisjon:
 
 ```typescript
 server.tool(
@@ -176,92 +180,106 @@ server.tool(
 );
 ```
 
-## Client Primitives
+## Klientprimitiver
 
-I Model Context Protocol (MCP) kan **klienter** eksponere primitive som gjør det mulig for servere å be om ekstra funksjonalitet fra host-applikasjonen. Disse klient-side primitive tillater rikere, mer interaktive serverimplementasjoner som kan aksessere AI-modellkapasiteter og brukerinteraksjoner.
+I Model Context Protocol (MCP) kan **klienter** eksponere primitiv som gjør det mulig for servere å be om tilleggskapabiliteter fra vertapplikasjonen. Disse klient-sidige primitivene gir rikere, mer interaktive serverimplementasjoner som kan aksessere AI-modellkapasiteter og brukerinteraksjoner.
 
 ### Sampling
 
-**Sampling** lar servere be om språkmodellfullføringer fra klientens AI-applikasjon. Denne primitive gjør det mulig for servere å aksessere LLM-kapasiteter uten å innebygge egne modellavhengigheter:
+**Sampling** gjør det mulig for servere å be om fullføringer fra språkmodellen i klientens AI-applikasjon. Denne primitiven åpner for at servere kan aksessere LLM-kapasitet uten å bygge inn egne modellavhengigheter:
 
-- **Modelluavhengig tilgang**: Servere kan be om fullføringer uten å inkludere LLM-SDK-er eller håndtere modelltilgang  
-- **Serverinitiert AI**: Gjør det mulig for servere å autonomt generere innhold ved bruk av klientens AI-modell  
-- **Rekursiv LLM-interaksjon**: Støtter komplekse scenarier hvor servere trenger AI-hjelp til prosessering  
-- **Dynamisk innholdsgenerering**: Lar servere lage kontekstuelle svar ved bruk av hostens modell
+- **Modelluavhengig tilgang**: Servere kan be om fullføringer uten å inkludere LLM-SDKer eller administrere modelltilgang  
+- **Serverinitiert AI**: Gjøres mulig for servere å autonomt generere innhold ved bruk av klientens AI-modell  
+- **Rekursiv LLM-interaksjon**: Støtter komplekse scenarioer der servere trenger AI-hjelp for behandling  
+- **Dynamisk innholdsgenerering**: Lar servere lage kontekstuelle svar med vertens modell  
+- **Støtte for verktøypårop**: Servere kan inkludere `tools` og `toolChoice`-parametere for å la klientens modell påkalle verktøy under sampling
 
-Sampling initieres gjennom `sampling/complete`-metoden, hvor servere sender fullføringsforespørsler til klienter.
+Sampling initieres via `sampling/complete`-metoden, der servere sender fullføringsforespørsler til klienter.
 
-### Elicitation
+### Roots
 
-**Elicitation** gjør det mulig for servere å be om tilleggsinformasjon eller bekreftelse fra brukere via klientgrensesnittet:
+**Roots** gir en standardisert måte for klienter å eksponere filsystemgrenser til servere, slik at servere kan forstå hvilke kataloger og filer de har tilgang til:
 
-- **Brukerinput-forespørsler**: Servere kan be om ekstra informasjon når det trengs for verktøykjøring  
-- **Bekreftelsesdialoger**: Be om brukerens godkjenning for sensitive eller innvirkningsfulle operasjoner  
-- **Interaktive arbeidsflyter**: Gjør det mulig for servere å lage trinnvise brukerinteraksjoner  
-- **Dynamisk parameterinnsamling**: Samle manglende eller valgfrie parametere under verktøykjøring
+- **Filsystemgrenser**: Definerer grensene for hvor servere kan operere i filsystemet  
+- **Tilgangskontroll**: Hjelper servere til å forstå hvilke kataloger og filer de har tillatelse til å aksessere  
+- **Dynamiske oppdateringer**: Klienter kan varsle servere når listen over roots endres  
+- **URI-basert identifikasjon**: Roots bruker `file://` URIer for å identifisere tilgjengelige kataloger og filer
+
+Roots oppdages gjennom `roots/list`-metoden, med klienter som sender `notifications/roots/list_changed` når roots endres.
+
+### Elicitation  
+
+**Elicitation** gjør det mulig for servere å be om tilleggsinformasjon eller brukerbekreftelse via klientgrensesnittet:
+
+- **Forespørsler om brukerinput**: Servere kan be om tilleggsinformasjon når det er nødvendig for verktøyutførelse  
+- **Bekreftelsesdialoger**: Forespør brukerens godkjenning for sensitive eller avgjørende operasjoner  
+- **Interaktive arbeidsflyter**: Gjør servere i stand til å lage steg-for-steg brukerinteraksjoner  
+- **Dynamisk parameterinnsamling**: Samler manglende eller valgfrie parametere under verktøyutførelse
 
 Elicitation-forespørsler gjøres med `elicitation/request`-metoden for å samle brukerinput via klientens grensesnitt.
 
+**URL Mode Elicitation**: Servere kan også be om URL-baserte brukerinteraksjoner, som lar servere lede brukere til eksterne nettsider for autentisering, bekreftelse eller datainnsamling.
+
 ### Logging
 
-**Logging** lar servere sende strukturerte loggmeldinger til klienter for feilsøking, overvåking og operasjonell synlighet:
+**Logging** gjør det mulig for servere å sende strukturerte loggmeldinger til klienter for feilsøking, overvåkning og operasjonell synlighet:
 
-- **Feilsøkingsstøtte**: Gjør det mulig for servere å gi detaljerte kjørelogger for problemløsning  
-- **Operasjonell overvåking**: Sender statusoppdateringer og ytelsesmetrikker til klienter  
-- **Feilrapportering**: Gir detaljert feilkontekst og diagnostisk informasjon  
-- **Revisjonsspor**: Lager omfattende logger over serveroperasjoner og beslutninger
+- **Feilsøkingsstøtte**: Gir servere mulighet til å levere detaljerte utførelseslogger for problemløsning  
+- **Driftsovervåkning**: Sender statusoppdateringer og ytelsesmetrikker til klienter  
+- **Feilmelding**: Gir detaljert feilkontekst og diagnostisk informasjon  
+- **Revisjonsspor**: Oppretter omfattende logger over serveroperasjoner og beslutninger
 
-Loggmeldinger sendes til klienter for å gi innsikt i serveroperasjoner og lette feilsøking.
+Loggmeldinger sendes til klienter for å gi åpenhet rundt serveroperasjoner og legge til rette for feilsøking.
 
 ## Informasjonsflyt i MCP
 
-Model Context Protocol (MCP) definerer en strukturert informasjonsflyt mellom hosts, clients, servers og modeller. Å forstå denne flyten hjelper med å klargjøre hvordan brukerforespørsler behandles og hvordan eksterne verktøy og data integreres i modelsvar.
+Model Context Protocol (MCP) definerer en strukturert informasjonsflyt mellom hosts, clients, servers og modeller. Å forstå denne flyten hjelper med å klargjøre hvordan brukerspørringer behandles og hvordan eksterne verktøy og data integreres i modelsvar.
 
-- **Host initierer tilkobling**  
-  Host-applikasjonen (som en IDE eller chattegrensesnitt) etablerer en tilkobling til en MCP-server, vanligvis via STDIO, WebSocket eller en annen støttet transport.
+- **Verten initierer tilkobling**  
+  Vertapplikasjonen (slik som en IDE eller chattegrensesnitt) etablerer en tilkobling til en MCP-server, vanligvis via STDIO, WebSocket eller annen støttet transport.
 
 - **Funksjonsforhandling**  
-  Klienten (innebygd i host) og serveren utveksler informasjon om sine støttede funksjoner, verktøy, ressurser og protokollversjoner. Dette sikrer at begge parter forstår hvilke kapasiteter som er tilgjengelige for økten.
+  Klienten (innebygd i verten) og serveren utveksler informasjon om hvilke funksjoner, verktøy, ressurser og protokollversjoner de støtter. Dette sikrer at begge parter forstår hvilke kapabiliteter som er tilgjengelige for økten.
 
-- **Brukerforespørsel**  
-  Brukeren interagerer med host (f.eks. skriver inn en prompt eller kommando). Host samler inn denne inputen og sender den til klienten for behandling.
+- **Brukerspørring**  
+  Brukeren interagerer med verten (f.eks. skriver inn en prompt eller kommando). Vert samler opp denne inputen og sender den videre til klienten for behandling.
 
 - **Ressurs- eller verktøybruk**  
-  - Klienten kan be om ekstra kontekst eller ressurser fra serveren (som filer, databaseoppføringer eller kunnskapsbaseartikler) for å berike modellens forståelse.  
-  - Hvis modellen avgjør at et verktøy trengs (f.eks. for å hente data, utføre en beregning eller kalle et API), sender klienten en verktøysanropsforespørsel til serveren, med spesifisering av verktøynavn og parametere.
+  - Klienten kan be om ekstra kontekst eller ressurser fra serveren (slik som filer, databaseoppføringer eller kunnskapsbaseartikler) for å berike modellens forståelse.  
+  - Hvis modellen bestemmer at et verktøy er nødvendig (f.eks. for å hente data, utføre en beregning eller kalle et API), sender klienten en verktøyinnkallingsforespørsel til serveren, med spesifisering av verktøynavn og parametere.
 
 - **Serverutførelse**  
-  Serveren mottar ressurs- eller verktøyforespørselen, utfører nødvendige operasjoner (som å kjøre en funksjon, spørre en database eller hente en fil), og returnerer resultatene til klienten i et strukturert format.
+Serveren mottar ressurs- eller verktøyforespørselen, utfører de nødvendige operasjonene (for eksempel kjører en funksjon, spør en database, eller henter en fil), og returnerer resultatene til klienten i et strukturert format.
 
-- **Svargenerering**  
-  Klienten integrerer serversvarene (ressursdata, verktøyutdata osv.) i den pågående modellinteraksjonen. Modellen bruker denne informasjonen til å generere et omfattende og kontekstuelt relevant svar.
+- **Responsgenerering**  
+  Klienten integrerer serverens responser (ressursdata, verktøyutdata osv.) i den pågående modellinteraksjonen. Modellen bruker denne informasjonen til å generere et omfattende og kontekstuelt relevant svar.
 
 - **Resultatpresentasjon**  
-  Host mottar det endelige resultatet fra klienten og presenterer det for brukeren, ofte inkludert både modellens genererte tekst og eventuelle resultater fra verktøykjøringer eller ressursoppslag.
+  Vertsmaskinen mottar det endelige resultatet fra klienten og presenterer det for brukeren, ofte inkludert både modellens genererte tekst og eventuelle resultater fra verktøykjøringer eller ressursoppslag.
 
-Denne flyten gjør det mulig for MCP å støtte avanserte, interaktive og kontekstbevisste AI-applikasjoner ved sømløst å koble modeller med eksterne verktøy og datakilder.
+Dette flyten gjør det mulig for MCP å støtte avanserte, interaktive og kontekstbevisste AI-applikasjoner ved å sømløst koble modeller med eksterne verktøy og datakilder.
 
 ## Protokollarkitektur og lag
 
-MCP består av to distinkte arkitekturlag som samarbeider for å tilby et komplett kommunikasjonsrammeverk:
+MCP består av to distinkte arkitekturlag som samarbeider for å tilby en komplett kommunikasjonsramme:
 
 ### Datalag
 
-**Datalaget** implementerer kjernen i MCP-protokollen ved å bruke **JSON-RPC 2.0** som fundament. Dette laget definerer meldingsstruktur, semantikk og interaksjonsmønstre:
+**Datalaget** implementerer kjernen i MCP-protokollen med **JSON-RPC 2.0** som grunnlag. Dette laget definerer meldingsstruktur, semantikk og interaksjonsmønstre:
 
 #### Kjernekomponenter:
 
-- **JSON-RPC 2.0-protokoll**: All kommunikasjon bruker standardisert JSON-RPC 2.0 meldingsformat for metodekall, svar og varsler
-- **Livssyklusadministrasjon**: Håndterer tilkoblingsinitialisering, kapabilitetsforhandling og sesjonsavslutning mellom klienter og servere  
-- **Serverprimitiver**: Gjør det mulig for servere å tilby kjernefunksjonalitet gjennom verktøy, ressurser og prompt  
-- **Klientprimitiver**: Gjør det mulig for servere å be om sampling fra LLM-er, hente brukerinput og sende loggmeldinger  
-- **Sanntidsvarsler**: Støtter asynkrone varsler for dynamiske oppdateringer uten polling  
+- **JSON-RPC 2.0-protokoll**: All kommunikasjon bruker standardisert JSON-RPC 2.0 meldingsformat for metodekall, svar og varsler  
+- **Livssyklushåndtering**: Håndterer tilkoblingsinitialisering, kapabilitetsforhandling og sesjonsavslutning mellom klienter og servere  
+- **Serverprimitiver**: Gjør det mulig for servere å tilby grunnleggende funksjonalitet via verktøy, ressurser og prompts  
+- **Klientprimitiver**: Gjør det mulig for servere å be om sampling fra LLM-er, innhente brukerinput og sende loggmeldinger  
+- **Sanntidsvarsler**: Støtter asynkrone varsler for dynamiske oppdateringer uten behov for polling
 
 #### Nøkkelfunksjoner:
 
-- **Protokollversjonsforhandling**: Bruker datobasert versjonering (ÅÅÅÅ-MM-DD) for å sikre kompatibilitet  
+- **Protokollversjonsforhandling**: Benytter datobasert versjonering (ÅÅÅÅ-MM-DD) for å sikre kompatibilitet  
 - **Kapabilitetsoppdagelse**: Klienter og servere utveksler informasjon om støttede funksjoner under initialisering  
-- **Tilstandsholdige sesjoner**: Opprettholder tilkoblingsstatus over flere interaksjoner for kontekstkontinuitet  
+- **Tilstandsholdende sesjoner**: Opprettholder tilkoblingsstatus over flere interaksjoner for kontekstuelt kontinuitet
 
 ### Transportlag
 
@@ -269,33 +287,33 @@ MCP består av to distinkte arkitekturlag som samarbeider for å tilby et komple
 
 #### Støttede transportmekanismer:
 
-1. **STDIO Transport**:  
-   - Bruker standard input/output-strømmer for direkte prosesskommunikasjon  
-   - Optimalt for lokale prosesser på samme maskin uten nettverkskostnader  
-   - Vanlig brukt for lokale MCP-serverimplementasjoner  
+1. **STDIO-transport**:
+   - Bruker standard inn-/ut-strømmer for direkte prosesskommunikasjon  
+   - Optimal for lokale prosesser på samme maskin uten nettverkskostnader  
+   - Vanlig brukt for lokale MCP-serverimplementasjoner
 
-2. **Streambar HTTP Transport**:  
+2. **Streambar HTTP-transport**:
    - Bruker HTTP POST for klient-til-server meldinger  
    - Valgfri Server-Sent Events (SSE) for server-til-klient streaming  
    - Muliggjør fjernserverkommunikasjon over nettverk  
    - Støtter standard HTTP-autentisering (bearer tokens, API-nøkler, egendefinerte headere)  
-   - MCP anbefaler OAuth for sikker tokenbasert autentisering  
+   - MCP anbefaler OAuth for sikker tokenbasert autentisering
 
 #### Transportabstraksjon:
 
-Transportlaget abstraherer kommunikasjonsdetaljer fra datalaget, og muliggjør samme JSON-RPC 2.0 meldingsformat på tvers av alle transportmekanismer. Denne abstraksjonen gjør det mulig for applikasjoner å bytte sømløst mellom lokale og eksterne servere.
+Transportlaget abstraherer kommunikasjonsdetaljer fra datalaget, noe som muliggjør samme JSON-RPC 2.0 meldingsformat over alle transportmekanismer. Denne abstraksjonen lar applikasjoner enkelt bytte mellom lokale og eksterne servere.
 
 ### Sikkerhetshensyn
 
-MCP-implementasjoner må følge flere kritiske sikkerhetsprinsipper for å sikre trygge, pålitelige og sikre interaksjoner i alle protokolloperasjoner:
+MCP-implementeringer må følge flere viktige sikkerhetsprinsipper for å sikre trygge, pålitelige og sikre interaksjoner i hele protokolloperasjonene:
 
-- **Brukersamtykke og kontroll**: Brukere må gi eksplisitt samtykke før data tilgås eller operasjoner utføres. De skal ha klar kontroll over hvilke data som deles og hvilke handlinger som autoriseres, støttet av intuitive brukergrensesnitt for gjennomgang og godkjenning av aktiviteter.
+- **Brukersamtykke og kontroll**: Brukere må gi eksplisitt samtykke før data tilgås eller operasjoner utføres. De bør ha klar kontroll over hvilke data som deles og hvilke handlinger som autoriseres, støttet av intuitive brukergrensesnitt for gjennomgang og godkjenning.
 
-- **Datapersonvern**: Brukerdata skal kun eksponeres med eksplisitt samtykke og må beskyttes med passende tilgangskontroller. MCP-implementasjoner må forhindre uautorisert datatransmisjon og sikre at personvern opprettholdes i alle interaksjoner.
+- **Dataprivacy**: Brukerdata skal kun eksponeres med eksplisitt samtykke og må beskyttes av passende tilgangskontroller. MCP-implementeringer må forhindre uautorisert datatransmisjon og sikre personvernet gjennom alle interaksjoner.
 
-- **Verktøysikkerhet**: Før et verktøy kalles, kreves eksplisitt brukersamtykke. Brukere skal ha klar forståelse av hvert verktøys funksjonalitet, og robuste sikkerhetsgrenser må håndheves for å forhindre utilsiktet eller usikker verktøyutførelse.
+- **Verktøysikkerhet**: Før et verktøy kalles, kreves eksplisitt brukersamtykke. Brukere skal ha god forståelse av hvert verktøys funksjonalitet, og robuste sikkerhetsbarrierer må håndheves for å forhindre utilsiktet eller usikker kjøring av verktøy.
 
-Ved å følge disse sikkerhetsprinsippene sikrer MCP brukerens tillit, personvern og sikkerhet i alle protokollinteraksjoner samtidig som kraftige AI-integrasjoner muliggjøres.
+Ved å følge disse sikkerhetsprinsippene sikrer MCP brukerens tillit, personvern og sikkerhet gjennom alle protokollinteraksjoner, samtidig som kraftige AI-integrasjoner muliggjøres.
 
 ## Kodeeksempler: Nøkkelkomponenter
 
@@ -303,7 +321,7 @@ Nedenfor er kodeeksempler i flere populære programmeringsspråk som illustrerer
 
 ### .NET-eksempel: Lage en enkel MCP-server med verktøy
 
-Her er et praktisk .NET-kodeeksempel som demonstrerer hvordan man implementerer en enkel MCP-server med egendefinerte verktøy. Eksemplet viser hvordan man definerer og registrerer verktøy, håndterer forespørsler og kobler serveren ved hjelp av Model Context Protocol.
+Her er et praktisk .NET-kodeeksempel som demonstrerer hvordan man implementerer en enkel MCP-server med tilpassede verktøy. Eksemplet viser hvordan definere og registrere verktøy, håndtere forespørsler og koble serveren med Model Context Protocol.
 
 ```csharp
 using System;
@@ -364,7 +382,7 @@ public class WeatherData
 
 ### Java-eksempel: MCP-serverkomponenter
 
-Dette eksemplet demonstrerer samme MCP-server og verktøyregistrering som .NET-eksemplet over, men implementert i Java.
+Dette eksemplet demonstrerer samme MCP-server og verktøyregistrering som .NET-eksempelet ovenfor, men implementert i Java.
 
 ```java
 import io.modelcontextprotocol.server.McpServer;
@@ -401,7 +419,7 @@ public class WeatherMcpServer {
             })
             .build());
         
-        // Koble serveren ved hjelp av stdio-transport
+        // Koble til serveren ved å bruke stdio-transport
         try (StdioServerTransport transport = new StdioServerTransport()) {
             server.connect(transport);
             System.out.println("Weather MCP Server started");
@@ -412,7 +430,7 @@ public class WeatherMcpServer {
     
     private static WeatherData getWeatherData(String location) {
         // Implementeringen ville kalle en vær-API
-        // Forenklet for eksempelets skyld
+        // Forenklet for eksempelformål
         return new WeatherData(72.5, "Sunny", location);
     }
 }
@@ -442,9 +460,9 @@ class WeatherData {
 }
 ```
 
-### Python-eksempel: Bygge en MCP-server
+### Python-eksempel: Lage en MCP-server
 
-Dette eksemplet bruker fastmcp, så sørg for å installere det først:
+Dette eksemplet bruker fastmcp, så vær sikker på at du installerer det først:
 
 ```python
 pip install fastmcp
@@ -495,13 +513,13 @@ if __name__ == "__main__":
 
 ### JavaScript-eksempel: Lage en MCP-server
 
-Dette eksemplet viser opprettelse av MCP-server i JavaScript og hvordan man registrerer to værrelaterte verktøy.
+Dette eksemplet viser MCP-serveropprettelse i JavaScript og hvordan registrere to vær-relaterte verktøy.
 
 ```javascript
 // Bruke den offisielle Model Context Protocol SDK
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod"; // For parameter validering
+import { z } from "zod"; // For parametervalidering
 
 // Opprett en MCP-server
 const server = new McpServer({
@@ -516,7 +534,7 @@ server.tool(
     location: z.string().describe("The location to get weather for")
   },
   async ({ location }) => {
-    // Dette ville normalt kalle en vær-API
+    // Dette ville vanligvis kalle en vær-API
     // Forenklet for demonstrasjon
     const weatherData = await getWeatherData(location);
     
@@ -539,7 +557,7 @@ server.tool(
     days: z.number().default(3).describe("Number of days for forecast")
   },
   async ({ location, days }) => {
-    // Dette ville normalt kalle en vær-API
+    // Dette ville vanligvis kalle en vær-API
     // Forenklet for demonstrasjon
     const forecast = await getForecastData(location, days);
     
@@ -580,89 +598,101 @@ server.connect(transport).catch(console.error);
 console.log("Weather MCP Server started");
 ```
 
-Dette JavaScript-eksemplet demonstrerer hvordan man lager en MCP-klient som kobler til en server, sender en prompt og behandler responsen inkludert eventuelle verktøykall som ble gjort.
+Dette JavaScript-eksemplet demonstrerer hvordan lage en MCP-klient som kobler til en server, sender en prompt, og behandler responsen inkludert eventuelle verktøysamtaler som ble gjort.
 
 ## Sikkerhet og autorisasjon
 
 MCP inkluderer flere innebygde konsepter og mekanismer for å håndtere sikkerhet og autorisasjon gjennom hele protokollen:
 
-1. **Verktøytillatelseskontroll**:  
-  Klienter kan spesifisere hvilke verktøy en modell har lov til å bruke under en sesjon. Dette sikrer at kun eksplisitt autoriserte verktøy er tilgjengelige, noe som reduserer risikoen for utilsiktede eller usikre operasjoner. Tillatelser kan konfigureres dynamisk basert på brukerpreferanser, organisasjonspolicyer eller konteksten for interaksjonen.
+1. **Verktøytillatelsesstyring**:  
+  Klienter kan spesifisere hvilke verktøy en modell har lov til å bruke under en økt. Dette sikrer at kun eksplisitt autoriserte verktøy er tilgjengelige, noe som reduserer risikoen for utilsiktede eller usikre operasjoner. Tillatelser kan konfigureres dynamisk basert på brukerpreferanser, organisasjonspolicyer eller konteksten for interaksjonen.
 
 2. **Autentisering**:  
-  Servere kan kreve autentisering før tilgang gis til verktøy, ressurser eller sensitive operasjoner. Dette kan innebære API-nøkler, OAuth-tokens eller andre autentiseringsordninger. Korrekt autentisering sikrer at kun betrodde klienter og brukere kan påkalle serverkapabiliteter.
+  Servere kan kreve autentisering før tilgang til verktøy, ressurser eller sensitive operasjoner gis. Dette kan innebære API-nøkler, OAuth-tokens eller andre autentiseringsmetoder. Korrekt autentisering sikrer at bare betrodde klienter og brukere kan påkalle serverside funksjonalitet.
 
 3. **Validering**:  
-  Parameter-validering håndheves for alle verktøykall. Hvert verktøy definerer forventede typer, formater og begrensninger for sine parametere, og serveren validerer innkommende forespørsler deretter. Dette forhindrer feilaktig eller ondsinnet input fra å nå verktøyimplementasjoner og bidrar til å opprettholde operasjonenes integritet.
+  Parameter-validering håndheves for alle verktøykall. Hvert verktøy definerer forventede typer, formater og begrensninger for sine parametere, og serveren validerer innkommende forespørsler deretter. Dette hindrer malformed eller ondsinnet input fra å nå verktøyimplementasjoner og opprettholder operasjonenes integritet.
 
 4. **Ratebegrensning**:  
-  For å forhindre misbruk og sikre rettferdig bruk av serverressurser kan MCP-servere implementere ratebegrensning for verktøykall og ressursaksess. Rategrenser kan anvendes per bruker, per sesjon eller globalt, og hjelper til med å beskytte mot tjenestenektangrep eller overdreven ressursbruk.
+  For å forhindre misbruk og sikre rettferdig bruk av serverressurser kan MCP-servere implementere ratebegrensning på verktøykall og ressursaksess. Grenseverdier kan settes per bruker, per økt eller globalt, og bidrar til å beskytte mot denial-of-service-angrep eller overdreven ressursbruk.
 
-Ved å kombinere disse mekanismene gir MCP et sikkert fundament for integrering av språkmodeller med eksterne verktøy og datakilder, samtidig som brukere og utviklere får detaljert kontroll over tilgang og bruk.
+Ved å kombinere disse mekanismene tilbyr MCP et sikkert grunnlag for å integrere språkmodeller med eksterne verktøy og datakilder, samtidig som brukere og utviklere får detaljert kontroll over tilgang og bruk.
 
 ## Protokollmeldinger og kommunikasjonsflyt
 
-MCP-kommunikasjon bruker strukturerte **JSON-RPC 2.0**-meldinger for å legge til rette for klare og pålitelige interaksjoner mellom verter, klienter og servere. Protokollen definerer spesifikke meldingsmønstre for ulike typer operasjoner:
+MCP-kommunikasjon bruker strukturerte **JSON-RPC 2.0** meldinger for å legge til rette for klare og pålitelige interaksjoner mellom verter, klienter og servere. Protokollen definerer spesifikke meldingsmønstre for ulike typer operasjoner:
 
-### Kjerne meldingstyper:
+### Kjernetypemeldinger:
 
 #### **Initialiseringsmeldinger**
 - **`initialize`-forespørsel**: Etablerer tilkobling og forhandler protokollversjon og kapabiliteter  
-- **`initialize`-respons**: Bekrefter støttede funksjoner og serverinformasjon  
-- **`notifications/initialized`**: Signalerer at initialisering er fullført og sesjonen er klar  
+- **`initialize`-svar**: Bekrefter støttede funksjoner og serverinformasjon  
+- **`notifications/initialized`**: Signaliserer at initialisering er fullført og sesjonen er klar
 
 #### **Oppdagelsesmeldinger**
 - **`tools/list`-forespørsel**: Oppdager tilgjengelige verktøy fra serveren  
 - **`resources/list`-forespørsel**: Lister tilgjengelige ressurser (datakilder)  
-- **`prompts/list`-forespørsel**: Henter tilgjengelige promptmaler  
+- **`prompts/list`-forespørsel**: Henter tilgjengelige promptmaler
 
-#### **Utførelsesmeldinger**  
-- **`tools/call`-forespørsel**: Utfører et spesifikt verktøy med angitte parametere  
+#### **Kjøremeldinger**  
+- **`tools/call`-forespørsel**: Utfører et spesifikt verktøy med gitte parametere  
 - **`resources/read`-forespørsel**: Henter innhold fra en spesifikk ressurs  
-- **`prompts/get`-forespørsel**: Henter en promptmal med valgfrie parametere  
+- **`prompts/get`-forespørsel**: Henter en promptmal med valgfrie parametere
 
 #### **Klientside-meldinger**
 - **`sampling/complete`-forespørsel**: Server ber om LLM-komplettering fra klient  
-- **`elicitation/request`**: Server ber om brukerinput via klientgrensesnitt  
-- **Loggmeldinger**: Server sender strukturerte loggmeldinger til klient  
+- **`elicitation/request`**: Server ber om brukerinput gjennom klientgrensesnitt  
+- **Loggmeldinger**: Server sender strukturerte loggmeldinger til klient
 
 #### **Varslingsmeldinger**
 - **`notifications/tools/list_changed`**: Server varsler klient om endringer i verktøyliste  
 - **`notifications/resources/list_changed`**: Server varsler klient om endringer i ressursliste  
-- **`notifications/prompts/list_changed`**: Server varsler klient om endringer i promptliste  
+- **`notifications/prompts/list_changed`**: Server varsler klient om endringer i promptliste
 
 ### Meldingsstruktur:
 
 Alle MCP-meldinger følger JSON-RPC 2.0-format med:  
 - **Forespørselsmeldinger**: Inkluderer `id`, `method` og valgfrie `params`  
-- **Responsmeldinger**: Inkluderer `id` og enten `result` eller `error`  
-- **Varslingsmeldinger**: Inkluderer `method` og valgfrie `params` (ingen `id` eller forventet respons)  
+- **Svarmeldinger**: Inkluderer `id` og enten `result` eller `error`  
+- **Varslingsmeldinger**: Inkluderer `method` og valgfrie `params` (ingen `id` eller forventet svar)
 
-Denne strukturerte kommunikasjonen sikrer pålitelige, sporbare og utvidbare interaksjoner som støtter avanserte scenarier som sanntidsoppdateringer, verktøykjededannelse og robust feilhåndtering.
+Denne strukturerte kommunikasjonen sikrer pålitelige, sporbare og utvidbare interaksjoner som støtter avanserte scenarier som sanntidsoppdateringer, verktøykjedning og robust feilbehandling.
+
+### Oppgaver (Eksperimentelt)
+
+**Oppgaver** er en eksperimentell funksjon som gir holdbare utførelsesinnpakninger som muliggjør utsatt resultatinnhenting og statussporing for MCP-forespørsler:
+
+- **Langvarige operasjoner**: Sporer kostbare beregninger, arbeidsflytautomatisering og batchprosessering  
+- **Utsatte resultater**: Poller for oppgavestatus og hent resultater når operasjoner er fullført  
+- **Statussporing**: Overvåk oppgaveprogresjon gjennom definerte livssyklusstadier  
+- **Flertrinnsoperasjoner**: Støtter komplekse arbeidsflyter som går over flere interaksjoner
+
+Oppgaver pakker standard MCP-forespørsler for å muliggjøre asynkrone utførelsesmønstre for operasjoner som ikke kan fullføres umiddelbart.
 
 ## Viktige punkter
 
-- **Arkitektur**: MCP bruker en klient-server-arkitektur der verter administrerer flere klienttilkoblinger til servere  
-- **Deltakere**: Økosystemet inkluderer verter (AI-applikasjoner), klienter (protokollkoblinger) og servere (kapabilitetsleverandører)  
-- **Transportmekanismer**: Kommunikasjon støtter STDIO (lokal) og Streambar HTTP med valgfri SSE (fjern)  
-- **Kjerneprimitiver**: Servere eksponerer verktøy (kjørbare funksjoner), ressurser (datakilder) og prompts (maler)  
-- **Klientprimitiver**: Servere kan be om sampling (LLM-kompletteringer), elicitation (brukerinput) og logging fra klienter  
+- **Arkitektur**: MCP bruker en klient-server-arkitektur der verter håndterer flere klientforbindelser til servere  
+- **Deltakere**: Økosystemet inkluderer verter (AI-applikasjoner), klienter (protokollkoblinger) og servere (funksjonalitetstilbydere)  
+- **Transportmekanismer**: Kommunikasjonen støtter STDIO (lokal) og streambar HTTP med valgfri SSE (fjern)  
+- **Kjerneprimitiver**: Servere eksponerer verktøy (utførbare funksjoner), ressurser (datakilder) og prompts (maler)  
+- **Klientprimitiver**: Servere kan be om sampling (LLM-kompletteringer med støtte for verktøysamtaler), elicitation (brukerinput inkludert URL-modus), roots (filsystemgrenser) og logging fra klienter  
+- **Eksperimentelle funksjoner**: Oppgaver gir holdbare innpakninger for langvarige operasjoner  
 - **Protokollgrunnlag**: Bygget på JSON-RPC 2.0 med datobasert versjonering (nåværende: 2025-11-25)  
-- **Sanntidskapabiliteter**: Støtter varsler for dynamiske oppdateringer og sanntidssynkronisering  
-- **Sikkerhet først**: Eksplisitt brukersamtykke, databeskyttelse og sikker transport er kjernekrav  
+- **Sanntidsmuligheter**: Støtter varsler for dynamiske oppdateringer og sanntidssynkronisering  
+- **Sikkerhet først**: Eksplisitt brukersamtykke, personvern, og sikker transport er kjernekrav
 
 ## Øvelse
 
-Design et enkelt MCP-verktøy som ville være nyttig i ditt domene. Definer:  
+Design et enkelt MCP-verktøy som ville være nyttig i ditt domene. Definér:  
 1. Hva verktøyet skal hete  
 2. Hvilke parametere det skal akseptere  
-3. Hvilket output det skal returnere  
-4. Hvordan en modell kan bruke dette verktøyet for å løse brukerproblemer  
+3. Hvilket resultat det skal returnere  
+4. Hvordan en modell kan bruke dette verktøyet for å løse brukerproblemer
 
 
 ---
 
-## Hva er neste
+## Hva nå
 
 Neste: [Kapittel 2: Sikkerhet](../02-Security/README.md)
 
@@ -670,5 +700,5 @@ Neste: [Kapittel 2: Sikkerhet](../02-Security/README.md)
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Ansvarsfraskrivelse**:
-Dette dokumentet er oversatt ved hjelp av AI-oversettelsestjenesten [Co-op Translator](https://github.com/Azure/co-op-translator). Selv om vi streber etter nøyaktighet, vennligst vær oppmerksom på at automatiske oversettelser kan inneholde feil eller unøyaktigheter. Det opprinnelige dokumentet på originalspråket skal anses som den autoritative kilden. For kritisk informasjon anbefales profesjonell menneskelig oversettelse. Vi er ikke ansvarlige for eventuelle misforståelser eller feiltolkninger som oppstår ved bruk av denne oversettelsen.
+Dette dokumentet er oversatt ved hjelp av AI-oversettelsestjenesten [Co-op Translator](https://github.com/Azure/co-op-translator). Selv om vi streber etter nøyaktighet, vennligst vær oppmerksom på at automatiske oversettelser kan inneholde feil eller unøyaktigheter. Det opprinnelige dokumentet på dets originalspråk skal anses som den autoritative kilden. For kritisk informasjon anbefales profesjonell menneskelig oversettelse. Vi påtar oss ikke ansvar for eventuelle misforståelser eller feiltolkninger som oppstår ved bruk av denne oversettelsen.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

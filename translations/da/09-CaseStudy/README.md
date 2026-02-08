@@ -1,166 +1,173 @@
-# MCP i Aktion: Virkelige Eksempler
+# MCP i aktion: Casestudier fra den virkelige verden
 
-[![MCP i Aktion: Virkelige Eksempler](../../../translated_images/da/10.3262cc80b4de5071fde8ba74c5c5d6738a0a9f398dcc0423f0210f632e2238b8.png)](https://youtu.be/IxshWb2Az5w)
+[![MCP i aktion: Casestudier fra den virkelige verden](../../../translated_images/da/10.3262cc80b4de5071.webp)](https://youtu.be/IxshWb2Az5w)
 
 _(Klik på billedet ovenfor for at se videoen til denne lektion)_
 
-Model Context Protocol (MCP) revolutionerer, hvordan AI-applikationer interagerer med data, værktøjer og tjenester. Denne sektion præsenterer virkelige eksempler, der viser praktiske anvendelser af MCP i forskellige virksomhedsscenarier.
+Model Context Protocol (MCP) forvandler, hvordan AI-applikationer interagerer med data, værktøjer og tjenester. Dette afsnit præsenterer virkelige casestudier, der demonstrerer praktiske anvendelser af MCP i forskellige erhvervsscenarier.
 
 ## Oversigt
 
-Denne sektion fremhæver konkrete eksempler på MCP-implementeringer og viser, hvordan organisationer udnytter protokollen til at løse komplekse forretningsudfordringer. Ved at undersøge disse eksempler får du indsigt i MCP's alsidighed, skalerbarhed og praktiske fordele i virkelige situationer.
+Dette afsnit fremviser konkrete eksempler på MCP-implementeringer og fremhæver, hvordan organisationer udnytter denne protokol til at løse komplekse forretningsudfordringer. Ved at gennemgå disse casestudier vil du få indsigt i MCP’s alsidighed, skalerbarhed og praktiske fordele i virkelige scenarier.
 
-## Centrale Læringsmål
+## Centrale læringsmål
 
-Ved at udforske disse eksempler vil du:
+Ved at gennemgå disse casestudier vil du:
 
 - Forstå, hvordan MCP kan anvendes til at løse specifikke forretningsproblemer
 - Lære om forskellige integrationsmønstre og arkitektoniske tilgange
-- Genkende bedste praksis for implementering af MCP i virksomhedsmiljøer
-- Få indsigt i de udfordringer og løsninger, der opstår i virkelige implementeringer
+- Genkende bedste praksis for implementering af MCP i erhvervsmiljøer
+- Få indsigt i udfordringer og løsninger mødt i virkelige implementeringer
 - Identificere muligheder for at anvende lignende mønstre i dine egne projekter
 
-## Udvalgte Eksempler
+## Fremhævede casestudier
 
-### 1. [Azure AI Rejseagenter – Referenceimplementering](./travelagentsample.md)
+### 1. [Azure AI Travel Agents – Referenceimplementering](./travelagentsample.md)
 
-Dette eksempel undersøger Microsofts omfattende referenceløsning, der demonstrerer, hvordan man bygger en multi-agent, AI-drevet rejseplanlægningsapplikation ved hjælp af MCP, Azure OpenAI og Azure AI Search. Projektet fremhæver:
+Dette casestudie undersøger Microsofts omfattende referenceløsning, der viser, hvordan man bygger en multi-agent, AI-drevet rejseplanlægningsapplikation ved hjælp af MCP, Azure OpenAI og Azure AI Search. Projektet demonstrerer:
 
-- Multi-agent orkestrering via MCP
-- Integration af virksomhedsdata med Azure AI Search
-- Sikker, skalerbar arkitektur ved hjælp af Azure-tjenester
-- Udvidelige værktøjer med genanvendelige MCP-komponenter
-- Konversationsbaseret brugeroplevelse drevet af Azure OpenAI
+- Multi-agent orkestrering gennem MCP
+- Enterprise data integration med Azure AI Search
+- Sikker, skalerbar arkitektur ved brug af Azure-tjenester
+- Udvideligt værktøjssæt med genanvendelige MCP-komponenter
+- Konverserende brugeroplevelse drevet af Azure OpenAI
 
-Arkitekturen og implementeringsdetaljerne giver værdifuld indsigt i opbygning af komplekse, multi-agent systemer med MCP som koordineringslag.
+Arkitekturen og implementeringsdetaljerne giver værdifuld indsigt i at bygge komplekse multi-agent systemer med MCP som koordineringslag.
 
 ### 2. [Opdatering af Azure DevOps-elementer fra YouTube-data](./UpdateADOItemsFromYT.md)
 
-Dette eksempel viser en praktisk anvendelse af MCP til automatisering af arbejdsprocesser. Det demonstrerer, hvordan MCP-værktøjer kan bruges til at:
+Dette casestudie viser en praktisk anvendelse af MCP til automatisering af arbejdsflowprocesser. Det demonstrerer, hvordan MCP-værktøjer kan anvendes til at:
 
 - Udtrække data fra onlineplatforme (YouTube)
-- Opdatere arbejdselementer i Azure DevOps-systemer
-- Skabe gentagelige automatiseringsarbejdsprocesser
+- Opdatere arbejdsopgaver i Azure DevOps-systemer
+- Oprette gentagelige automatiseringsarbejdsflow
 - Integrere data på tværs af forskellige systemer
 
 Dette eksempel illustrerer, hvordan selv relativt simple MCP-implementeringer kan give betydelige effektivitetsgevinster ved at automatisere rutineopgaver og forbedre datakonsistens på tværs af systemer.
 
 ### 3. [Dokumentationshentning i realtid med MCP](./docs-mcp/README.md)
 
-Dette eksempel guider dig gennem, hvordan du forbinder en Python-konsolklient til en Model Context Protocol (MCP)-server for at hente og logge kontekstafhængig Microsoft-dokumentation i realtid. Du lærer at:
+Dette casestudie guider dig gennem at forbinde en Python-konsolklient til en Model Context Protocol (MCP) server for at hente og logge realtids-, kontekstbevidst Microsoft-dokumentation. Du lærer at:
 
-- Forbinde til en MCP-server ved hjælp af en Python-klient og den officielle MCP SDK
-- Bruge streaming HTTP-klienter til effektiv datahentning i realtid
+- Forbinde til en MCP-server med en Python-klient og den officielle MCP SDK
+- Bruge streaming HTTP-klienter til effektiv, realtids datahentning
 - Kalde dokumentationsværktøjer på serveren og logge svar direkte til konsollen
-- Integrere opdateret Microsoft-dokumentation i din arbejdsproces uden at forlade terminalen
+- Integrere opdateret Microsoft-dokumentation i dit workflow uden at forlade terminalen
 
-Kapitlet inkluderer en praktisk opgave, en minimal fungerende kodeeksempel og links til yderligere ressourcer for dybere læring. Se den fulde gennemgang og kode i det linkede kapitel for at forstå, hvordan MCP kan transformere dokumentationsadgang og udviklerproduktivitet i konsolbaserede miljøer.
+Kapitel inkluderer en praktisk opgave, et minimalt fungerende kodeeksempel og links til yderligere ressourcer for dybere læring. Se hele gennemgangen og koden i det linkede kapitel for at forstå, hvordan MCP kan forvandle dokumentationsadgang og udviklerproduktivitet i konsolbaserede miljøer.
 
-### 4. [Interaktiv Studieplan Generator Web App med MCP](./docs-mcp/README.md)
+### 4. [Interaktiv studieplan-generator webapp med MCP](./docs-mcp/README.md)
 
-Dette eksempel viser, hvordan man bygger en interaktiv webapplikation ved hjælp af Chainlit og Model Context Protocol (MCP) til at generere personlige studieplaner for ethvert emne. Brugere kan angive et emne (såsom "AI-900 certificering") og en studielængde (f.eks. 8 uger), og appen vil give en uge-for-uge oversigt over anbefalet indhold. Chainlit muliggør en konversationsbaseret chatgrænseflade, der gør oplevelsen engagerende og tilpasselig.
+Dette casestudie viser, hvordan man bygger en interaktiv webapplikation ved brug af Chainlit og Model Context Protocol (MCP) til at generere personlige studieplaner for ethvert emne. Brugere kan angive et emne (såsom "AI-900 certificering") og en studieduration (f.eks. 8 uger), og appen vil give en uge-for-uge oversigt over anbefalet indhold. Chainlit muliggør en konverserende chatgrænseflade, der gør oplevelsen engagerende og tilpasningsdygtig.
 
-- Konversationsbaseret webapp drevet af Chainlit
-- Brugerstyrede prompts for emne og varighed
+- Konverserende webapp drevet af Chainlit
+- Brugerstyrede forespørgsler til emne og varighed
 - Uge-for-uge indholdsanbefalinger ved hjælp af MCP
 - Realtids, adaptive svar i en chatgrænseflade
 
-Projektet illustrerer, hvordan konversationsbaseret AI og MCP kan kombineres for at skabe dynamiske, brugerdrevne uddannelsesværktøjer i et moderne webmiljø.
+Projektet illustrerer, hvordan konverserende AI og MCP kan kombineres til at skabe dynamiske, brugerstyrede uddannelsesværktøjer i et moderne webmiljø.
 
-### 5. [Dokumentation i Editor med MCP Server i VS Code](./docs-mcp/README.md)
+### 5. [In-editor dokumentation med MCP-server i VS Code](./docs-mcp/README.md)
 
-Dette eksempel viser, hvordan du kan bringe Microsoft Learn Docs direkte ind i dit VS Code-miljø ved hjælp af MCP-serveren—ingen grund til at skifte browserfaner! Du vil se, hvordan du:
+Dette casestudie demonstrerer, hvordan du kan bringe Microsoft Learn Docs direkte ind i dit VS Code-miljø ved hjælp af MCP-serveren—ingen flere browserfaner! Du vil se, hvordan du kan:
 
-- Søger og læser dokumentation direkte i VS Code ved hjælp af MCP-panelet eller kommandopaletten
-- Refererer dokumentation og indsætter links direkte i dine README- eller kursus-markdownfiler
-- Bruger GitHub Copilot og MCP sammen for sømløse, AI-drevne dokumentations- og kodearbejdsprocesser
-- Validerer og forbedrer din dokumentation med realtidsfeedback og Microsoft-sourced nøjagtighed
-- Integrerer MCP med GitHub workflows for kontinuerlig dokumentationsvalidering
+- Søge og læse dokumentation øjeblikkeligt inde i VS Code via MCP-panelet eller kommandopaletten
+- Referere dokumentation og indsætte links direkte i din README eller kursusmarkdownfiler
+- Bruge GitHub Copilot og MCP sammen for sømløse, AI-drevne dokumentations- og kodeworkflows
+- Validere og forbedre din dokumentation med realtids feedback og Microsoft-kildepræcision
+- Integrere MCP med GitHub workflows til kontinuerlig dokumentationsvalidering
 
 Implementeringen inkluderer:
 
-- Eksempel på `.vscode/mcp.json` konfiguration for nem opsætning
-- Gennemgange baseret på skærmbilleder af editoroplevelsen
+- Eksempel på `.vscode/mcp.json` konfiguration til nem opsætning
+- Skærmbilledbaserede gennemgange af in-editor oplevelsen
 - Tips til at kombinere Copilot og MCP for maksimal produktivitet
 
-Dette scenarie er ideelt for kursusforfattere, dokumentationsskrivere og udviklere, der ønsker at forblive fokuserede i deres editor, mens de arbejder med dokumentation, Copilot og valideringsværktøjer—alt sammen drevet af MCP.
+Dette scenarie er ideelt for kursusforfattere, dokumentationsskribenter og udviklere, der ønsker at holde fokus i deres editor, mens de arbejder med docs, Copilot og valideringsværktøjer—alt sammen drevet af MCP.
 
-### 6. [APIM MCP Server Oprettelse](./apimsample.md)
+### 6. [APIM MCP Server-oprettelse](./apimsample.md)
 
-Dette eksempel giver en trin-for-trin guide til, hvordan man opretter en MCP-server ved hjælp af Azure API Management (APIM). Det dækker:
+Dette casestudie giver en trin-for-trin guide til, hvordan man opretter en MCP-server ved brug af Azure API Management (APIM). Det dækker:
 
 - Opsætning af en MCP-server i Azure API Management
 - Eksponering af API-operationer som MCP-værktøjer
-- Konfiguration af politikker for hastighedsbegrænsning og sikkerhed
+- Konfiguration af politikker for ratebegrænsning og sikkerhed
 - Test af MCP-serveren ved hjælp af Visual Studio Code og GitHub Copilot
 
-Dette eksempel illustrerer, hvordan man udnytter Azures kapaciteter til at skabe en robust MCP-server, der kan bruges i forskellige applikationer og forbedre integrationen af AI-systemer med virksomhedens API'er.
+Dette eksempel illustrerer, hvordan man udnytter Azures kapaciteter til at skabe en robust MCP-server, som kan bruges i forskellige applikationer og forbedre integrationen af AI-systemer med enterprise-API’er.
 
-### 7. [GitHub MCP Registry — Accelerering af Agentisk Integration](https://github.com/mcp)
+### 7. [GitHub MCP Registry — Accelererende agentisk integration](https://github.com/mcp)
 
-Dette eksempel undersøger, hvordan GitHubs MCP Registry, lanceret i september 2025, adresserer en kritisk udfordring i AI-økosystemet: den fragmenterede opdagelse og implementering af Model Context Protocol (MCP)-servere.
+Dette casestudie undersøger, hvordan GitHub's MCP Registry, lanceret i september 2025, løser en kritisk udfordring i AI-økosystemet: den fragmenterede opdagelse og udrulning af Model Context Protocol (MCP) servere.
 
 #### Oversigt
-**MCP Registry** løser problemet med spredte MCP-servere på tværs af repositories og registre, hvilket tidligere gjorde integration langsom og fejlbehæftet. Disse servere gør det muligt for AI-agenter at interagere med eksterne systemer som API'er, databaser og dokumentationskilder.
+**MCP Registry** løser voksesmerterne ved spredte MCP-servere på tværs af repositories og registre, hvilket tidligere gjorde integration langsom og fejlbehæftet. Disse servere muliggør, at AI-agenter kan interagere med eksterne systemer som API’er, databaser og dokumentationskilder.
 
 #### Problemstilling
-Udviklere, der bygger agentiske arbejdsprocesser, stod over for flere udfordringer:
-- **Dårlig opdagelighed** af MCP-servere på tværs af forskellige platforme
-- **Redundante opsætningsspørgsmål** spredt på fora og dokumentation
+Udviklere, der bygger agentiske workflows, stod over for flere udfordringer:
+- **Dårlig opdagelighed** af MCP-servere på tværs af platforme
+- **Redundant opsætningsspørgsmål** spredt på fora og dokumentation
 - **Sikkerhedsrisici** fra uverificerede og utroværdige kilder
 - **Manglende standardisering** i serverkvalitet og kompatibilitet
 
 #### Løsningsarkitektur
-GitHubs MCP Registry centraliserer betroede MCP-servere med nøglefunktioner:
-- **Én-klik installation** integration via VS Code for strømlinet opsætning
-- **Signal-over-støj sortering** baseret på stjerner, aktivitet og fællesskabsvalidering
+GitHub’s MCP Registry centraliserer betroede MCP-servere med nøglefunktioner:
+- **Én-klik-installation** via VS Code for strømlinet opsætning
+- **Signal-til-støj-sortering** efter stjerner, aktivitet og fællesskabsvalidering
 - **Direkte integration** med GitHub Copilot og andre MCP-kompatible værktøjer
-- **Åben bidragsmodel** der giver både fællesskabet og virksomhedspartnere mulighed for at bidrage
+- **Åben bidragsmodel** der muliggør både fællesskabs- og erhvervspartnerbidrag
 
-#### Forretningsmæssig Effekt
+#### Forretningsmæssig effekt
 Registret har leveret målbare forbedringer:
-- **Hurtigere onboarding** for udviklere, der bruger værktøjer som Microsoft Learn MCP Server, der streamer officiel dokumentation direkte til agenter
-- **Forbedret produktivitet** via specialiserede servere som `github-mcp-server`, der muliggør naturlig sprog GitHub-automatisering (PR-oprettelse, CI-genkørsler, kode-scanning)
-- **Stærkere økosystemtillid** gennem kuraterede lister og gennemsigtige konfigurationsstandarder
+- **Hurtigere onboarding** for udviklere ved brug af værktøjer som Microsoft Learn MCP Server, der streamer officiel dokumentation direkte ind i agenter
+- **Forbedret produktivitet** via specialiserede servere som `github-mcp-server`, der muliggør naturlig sprogautomation i GitHub (f.eks. oprettelse af PR, genkørsler af CI, kodeskanning)
+- **Styrket økosystemtillid** gennem kuraterede lister og transparente konfigurationsstandarder
 
-#### Strategisk Værdi
-For praktikere, der specialiserer sig i agentlivscyklusstyring og reproducerbare arbejdsprocesser, tilbyder MCP Registry:
-- **Modulær agentimplementering** med standardiserede komponenter
-- **Registry-understøttede evalueringspipelines** for konsistent test og validering
-- **Tværværktøjs interoperabilitet** der muliggør sømløs integration på tværs af forskellige AI-platforme
+#### Strategisk værdi
+For praktikere med speciale i agentlivscyklusstyring og reproducerbare workflows tilbyder MCP Registry:
+- **Modulær agentudrulning** med standardiserede komponenter
+- **Registre-baserede evalueringspipelines** for konsistent test og validering
+- **Tværværktøjsinteroperabilitet** der muliggør sømløs integration på tværs af AI-platforme
 
-Dette eksempel viser, at MCP Registry er mere end blot et katalog—det er en grundlæggende platform for skalerbar, virkelighedsnær modelintegration og agentisk systemimplementering.
+Dette casestudie viser, at MCP Registry er mere end bare et register—det er en grundlæggende platform for skalerbar, reel modelintegration og agentisk systemudrulning.
 
 ## Konklusion
 
-Disse syv omfattende eksempler demonstrerer den bemærkelsesværdige alsidighed og praktiske anvendelser af Model Context Protocol på tværs af forskellige virkelige scenarier. Fra komplekse multi-agent rejseplanlægningssystemer og virksomhedens API-styring til strømlinede dokumentationsarbejdsprocesser og det revolutionerende GitHub MCP Registry, viser disse eksempler, hvordan MCP giver en standardiseret, skalerbar måde at forbinde AI-systemer med de værktøjer, data og tjenester, de har brug for for at levere enestående værdi.
+Disse syv omfattende casestudier demonstrerer den bemærkelsesværdige alsidighed og praktiske anvendelser af Model Context Protocol på tværs af forskellige virkelige scenarier. Fra komplekse multi-agent rejseplanlægningssystemer og enterprise API-styring til strømlinede dokumentationsworkflows og den revolutionerende GitHub MCP Registry viser disse eksempler, hvordan MCP leverer en standardiseret, skalerbar måde at forbinde AI-systemer med de værktøjer, data og tjenester, de har brug for til at skabe fremragende værdi.
 
-Eksemplerne spænder over flere dimensioner af MCP-implementering:
-- **Virksomhedsintegration**: Azure API Management og Azure DevOps-automatisering
+Casestudierne dækker flere dimensioner af MCP-implementering:
+- **Enterprise integration**: Azure API Management og Azure DevOps-automatisering
 - **Multi-agent orkestrering**: Rejseplanlægning med koordinerede AI-agenter
-- **Udviklerproduktivitet**: VS Code-integration og dokumentationsadgang i realtid
-- **Økosystemudvikling**: GitHubs MCP Registry som en grundlæggende platform
-- **Uddannelsesapplikationer**: Interaktive studieplan generatorer og konversationsgrænseflader
+- **Udviklerproduktivitet**: VS Code-integration og realtids dokumentationsadgang
+- **Økosystemudvikling**: GitHub MCP Registry som grundlæggende platform
+- **Uddannelsesanvendelser**: Interaktive studieplan-generatorer og konverserende grænseflader
 
-Ved at studere disse implementeringer får du kritisk indsigt i:
-- **Arkitektoniske mønstre** for forskellige skalaer og anvendelser
-- **Implementeringsstrategier** der balancerer funktionalitet med vedligeholdelse
-- **Sikkerheds- og skalerbarhedsovervejelser** for produktionsimplementeringer
+Ved at studere disse implementeringer opnår du kritisk indsigt i:
+- **Arkitektoniske mønstre** til forskellige skalaer og brugstilfælde
+- **Implementeringsstrategier** der balancerer funktionalitet og vedligeholdelse
+- **Sikkerheds- og skalerbarhedsovervejelser** for produktionsudrulninger
 - **Bedste praksis** for MCP-serverudvikling og klientintegration
-- **Økosystemtænkning** for opbygning af sammenkoblede AI-drevne løsninger
+- **Økosystemtænkning** for at opbygge sammenkædede AI-drevne løsninger
 
-Disse eksempler viser samlet, at MCP ikke blot er en teoretisk ramme, men en moden, produktionsklar protokol, der muliggør praktiske løsninger på komplekse forretningsudfordringer. Uanset om du bygger simple automatiseringsværktøjer eller sofistikerede multi-agent systemer, giver de mønstre og tilgange, der er illustreret her, et solidt fundament for dine egne MCP-projekter.
+Disse eksempler demonstrerer samlet, at MCP ikke blot er en teoretisk ramme, men en moden, produktionsklar protokol, der muliggør praktiske løsninger på komplekse forretningsudfordringer. Uanset om du bygger simple automatiseringsværktøjer eller sofistikerede multi-agent systemer, giver de indlærte mønstre og tilgange her et solidt fundament for dine egne MCP-projekter.
 
-## Yderligere Ressourcer
+## Yderligere ressourcer
 
 - [Azure AI Travel Agents GitHub Repository](https://github.com/Azure-Samples/azure-ai-travel-agents)
 - [Azure DevOps MCP Tool](https://github.com/microsoft/azure-devops-mcp)
 - [Playwright MCP Tool](https://github.com/microsoft/playwright-mcp)
 - [Microsoft Docs MCP Server](https://github.com/MicrosoftDocs/mcp)
-- [GitHub MCP Registry — Accelerering af Agentisk Integration](https://github.com/mcp)
+- [GitHub MCP Registry — Accelererende agentisk integration](https://github.com/mcp)
 - [MCP Community Examples](https://github.com/microsoft/mcp)
 
-Næste: Hands on Lab [Strømlining af AI-arbejdsprocesser: Opbygning af en MCP-server med AI Toolkit](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)
+## Hvad er næste skridt
+
+- Forrige: [Modul 8: Bedste praksis](../08-BestPractices/README.md)
+- Næste: [Modul 10: Strømlining af AI-workflows: Byg en MCP-server med AI Toolkit](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Ansvarsfraskrivelse**:  
+Dette dokument er blevet oversat ved hjælp af AI-oversættelsestjenesten [Co-op Translator](https://github.com/Azure/co-op-translator). Selvom vi bestræber os på nøjagtighed, bedes du være opmærksom på, at automatiserede oversættelser kan indeholde fejl eller unøjagtigheder. Det oprindelige dokument på dets modersmål bør betragtes som den autoritative kilde. For vigtig information anbefales professionel menneskelig oversættelse. Vi påtager os intet ansvar for eventuelle misforståelser eller fejltolkninger, der opstår ved brug af denne oversættelse.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
