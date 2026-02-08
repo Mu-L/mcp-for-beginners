@@ -1,160 +1,163 @@
-# 🚀 MCP Server နှင့် PostgreSQL - လေ့လာမှုလမ်းညွှန်အပြည့်အစုံ
+# 🚀 PostgreSQL ဖြင့် MCP ဆာဗာ - အပြည့်အစုံ သင်ယူမှု လမ်းညွှန်
 
-## 🧠 MCP Database Integration Learning Path အကြောင်းအရာ
+## 🧠 MCP ဒေတာဘေ့စ် ပေါင်းစည်းမှု သင်ယူမှုလမ်းကြောင်း အနှစ်ချုပ်
 
-ဒီလမ်းညွှန်မှာ **Model Context Protocol (MCP) servers** ကို database တွေနဲ့ပေါင်းစပ်ပြီး production-ready အဆင့်အထိ တည်ဆောက်နည်းကို retail analytics အကောင်အထည်ဖော်မှုတစ်ခုအနေဖြင့် သင်ကြားပေးမှာဖြစ်ပါတယ်။ **Row Level Security (RLS)**, **semantic search**, **Azure AI integration**, **multi-tenant data access** စတဲ့ enterprise-grade patterns တွေကိုလည်း သင်ယူနိုင်ပါမယ်။
+ဤအပြည့်အစုံ သင်ယူမှုလမ်းညွှန်တွင် အသုံးပြုမှုဆိုင်ရာ လက်တွေ့က Retail အချက်အလက်သုံးသပ်မှုမှတစ်ဆင့် ဒေတာဘေ့စ်နှင့် ပေါင်းစည်းထားသော **Model Context Protocol (MCP) ဆာဗာများ**ကို ထုတ်လုပ်ရန် သင်ယူနိုင်မှာဖြစ်သည်။ သင့်အား **Row Level Security (RLS)**၊ **semantic search**၊ **Azure AI ပေါင်းစည်းမှု** နှင့် **multi-tenant data access** ကဲ့သို့ စီးပွားရေး အဆင့်မြင့်ပုံစံများကို သင်ကြားပေးမည် ဖြစ်သည်။
 
-သင် backend developer, AI engineer, ဒါမှမဟုတ် data architect ဖြစ်ပါက ဒီလမ်းညွှန်မှာ structured learning, အမှန်တကယ်အသုံးချနိုင်တဲ့ ဥပမာများနဲ့ လက်တွေ့လုပ်ဆောင်မှုများပါဝင်ပြီး MCP server https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail ကို လေ့လာနိုင်ပါမယ်။
+သင်သည် backend developer ဖြစ်စေ၊ AI engineer ဖြစ်စေ ဒါမှမဟုတ် data architect ဖြစ်စေ၊ ဤလမ်းညွှန်မှာ MCP ဆာဗာ https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail သဘောတရားများကို အစဥ်လိုက် နမူနာများနှင့် လက်တွေ့လေ့ကျင့်ခန်းများဖြင့် တကျကျ သင်ကြားပေးမည်ဖြစ်သည်။
 
-## 🔗 MCP အထောက်အကူများ
+## 🔗 MCP အတည်ပြု အရင်းအမြစ်များ
 
-- 📘 [MCP Documentation](https://modelcontextprotocol.io/) – အသေးစိတ်လမ်းညွှန်များနှင့် အသုံးပြုမှုလမ်းညွှန်များ
-- 📜 [MCP Specification](https://modelcontextprotocol.io/docs/) – Protocol architecture နှင့် technical references
-- 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) – Open-source SDKs, tools, နှင့် code samples
-- 🌐 [MCP Community](https://github.com/orgs/modelcontextprotocol/discussions) – ဆွေးနွေးမှုများတွင် ပါဝင်ပြီး community ကို အထောက်အကူပြုပါ
+- 📘 [MCP စာတမ်းများ](https://modelcontextprotocol.io/) – အသေးစိတ် သင်ခန်းစာများနှင့် အသုံးပြုသူလမ်းညွှန်များ
+- 📜 [MCP သတ်မှတ်ချက် (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Protocol ဖွဲ့စည်းပုံနှင့် နည်းပညာ ရည်ညွှန်းချက်များ
+- 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) – open-source SDK များ၊ ကိရိယာများနှင့် ကုတ်နမူနာများ
+- 🌐 [MCP အသိုင်းအဝိုင်း](https://github.com/orgs/modelcontextprotocol/discussions) – ဆွေးနွေးပွဲများသို့ ဝင်ရောက်ပါဝင်ကြည့်ရှုခြင်း
+- 🔒 [OWASP MCP ထိပ်တန်း ၁၀](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – လုံခြုံရေးအကောင်းဆုံး လုပ်ထုံးလုပ်နည်းများနှင့် ရှောင်ရှားရေးများ
 
-## 🧭 MCP Database Integration Learning Path
+## 🧭 MCP ဒေတာဘေ့စ် ပေါင်းစည်းမှု သင်ယူမှု လမ်းကြောင်း
 
-### 📚 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail အတွက် လေ့လာမှုဖွဲ့စည်းမှု
+### 📚 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail အတွက် ပြည့်စုံသင်ယူမှု ဖွဲ့စည်းပုံ
 
 | Lab | ခေါင်းစဉ် | ဖော်ပြချက် | Link |
 |--------|-------|-------------|------|
-| **Lab 1-3: Foundations** | | | |
-| 00 | [MCP Database Integration အကျဉ်းချုပ်](./00-Introduction/README.md) | MCP နှင့် database integration အကြောင်းအရာနှင့် retail analytics use case | [Start Here](./00-Introduction/README.md) |
-| 01 | [Core Architecture Concepts](./01-Architecture/README.md) | MCP server architecture, database layers, နှင့် security patterns ကိုနားလည်ခြင်း | [Learn](./01-Architecture/README.md) |
-| 02 | [Security နှင့် Multi-Tenancy](./02-Security/README.md) | Row Level Security, authentication, နှင့် multi-tenant data access | [Learn](./02-Security/README.md) |
-| 03 | [Environment Setup](./03-Setup/README.md) | Development environment, Docker, Azure resources ကိုတည်ဆောက်ခြင်း | [Setup](./03-Setup/README.md) |
-| **Lab 4-6: MCP Server တည်ဆောက်ခြင်း** | | | |
-| 04 | [Database Design နှင့် Schema](./04-Database/README.md) | PostgreSQL setup, retail schema design, နှင့် sample data | [Build](./04-Database/README.md) |
-| 05 | [MCP Server Implementation](./05-MCP-Server/README.md) | Database integration ဖြင့် FastMCP server တည်ဆောက်ခြင်း | [Build](./05-MCP-Server/README.md) |
-| 06 | [Tool Development](./06-Tools/README.md) | Database query tools နှင့် schema introspection ဖန်တီးခြင်း | [Build](./06-Tools/README.md) |
-| **Lab 7-9: အဆင့်မြင့် Features** | | | |
-| 07 | [Semantic Search Integration](./07-Semantic-Search/README.md) | Azure OpenAI နှင့် pgvector ဖြင့် vector embeddings ကို အသုံးပြုခြင်း | [Advance](./07-Semantic-Search/README.md) |
-| 08 | [Testing နှင့် Debugging](./08-Testing/README.md) | Testing strategies, debugging tools, နှင့် validation approaches | [Test](./08-Testing/README.md) |
-| 09 | [VS Code Integration](./09-VS-Code/README.md) | VS Code MCP integration နှင့် AI Chat အသုံးပြုမှုကို configure လုပ်ခြင်း | [Integrate](./09-VS-Code/README.md) |
-| **Lab 10-12: Production နှင့် Best Practices** | | | |
-| 10 | [Deployment Strategies](./10-Deployment/README.md) | Docker deployment, Azure Container Apps, နှင့် scaling considerations | [Deploy](./10-Deployment/README.md) |
-| 11 | [Monitoring နှင့် Observability](./11-Monitoring/README.md) | Application Insights, logging, performance monitoring | [Monitor](./11-Monitoring/README.md) |
-| 12 | [Best Practices နှင့် Optimization](./12-Best-Practices/README.md) | Performance optimization, security hardening, နှင့် production tips | [Optimize](./12-Best-Practices/README.md) |
+| **Lab 1-3: အခြေခံ** | | | |
+| 00 | [MCP ဒေတာဘေ့စ်ပေါင်းစည်းမှု မိတ်ဆက်](./00-Introduction/README.md) | ဒေတာဘေ့စ် ပေါင်းစည်းမှုနှင့် retail analytics အသုံးပြုပုံအနှစ်ချုပ် | [စတင်ရန်](./00-Introduction/README.md) |
+| 01 | [အခြေခံ ဖွဲ့စည်းပုံ သဘောတရားများ](./01-Architecture/README.md) | MCP ဆာဗာ ဖွဲ့စည်းပုံ၊ ဒေတာဘေ့စ် အလွှာ နှင့် လုံခြုံရေး ပုံစံများကို နားလည်ခြင်း | [သင်ယူရန်](./01-Architecture/README.md) |
+| 02 | [လုံခြုံရေးနှင့် Multi-Tenancy](./02-Security/README.md) | Row Level Security၊ သက်ဆိုင်သူ မှတ်ပုံတင်ခြင်း နှင့် multi-tenant data access | [သင်ယူရန်](./02-Security/README.md) |
+| 03 | [ပတ်ဝန်းကျင် ပြင်ဆင်ခြင်း](./03-Setup/README.md) | ဖွံ့ဖြိုးရေးပတ်ဝန်းကျင် ရေးဆွဲခြင်း၊ Docker, Azure အရင်းအမြစ်များ | [ပြင်ဆင်ရန်](./03-Setup/README.md) |
+| **Lab 4-6: MCP ဆာဗာ တည်ဆောက်ခြင်း** | | | |
+| 04 | [ဒေတာဘေ့စ် ဒီဇိုင်းနှင့် Schema](./04-Database/README.md) | PostgreSQL တပ်ဆင်ခြင်း၊ retail schema ဒီဇိုင်း၊ နမူနာဒေတာ | [တည်ဆောက်ရန်](./04-Database/README.md) |
+| 05 | [MCP ဆာဗာ အကောင်အထည်ဖော်ခြင်း](./05-MCP-Server/README.md) | ဒေတာဘေ့စ် ပေါင်းစည်းထားသော FastMCP ဆာဗာ တည်ဆောက်ခြင်း | [တည်ဆောက်ရန်](./05-MCP-Server/README.md) |
+| 06 | [ကိရိယာတီထွင်မှု](./06-Tools/README.md) | ဒေတာဘေ့စ် ရှာဖွေရေးကိရိယာများနှင့် schema introspection ဖန်တီးခြင်း | [တည်ဆောက်ရန်](./06-Tools/README.md) |
+| **Lab 7-9: တိုးတက်ပြောင်းလဲမှုများ** | | | |
+| 07 | [Semantic Search ပေါင်းစည်းမှု](./07-Semantic-Search/README.md) | Azure OpenAI နှင့် pgvector ဖြင့် vector embedding အကောင်အထည်ဖော်ခြင်း | [တိုးတက်ရန်](./07-Semantic-Search/README.md) |
+| 08 | [စမ်းသပ်ခြင်းနှင့် အမှားရှာဖွေမှု](./08-Testing/README.md) | စမ်းသပ်မှု နည်းဗျူဟာများ၊ အမှားရှာဖွေကိရိယာများနှင့် သက်သေပြ ပုံစံများ | [စမ်းသပ်ရန်](./08-Testing/README.md) |
+| 09 | [VS Code ပေါင်းစည်းမှု](./09-VS-Code/README.md) | VS Code MCP ပေါင်းစည်းမှုနှင့် AI Chat အသုံးပြုခြင်း | [ပေါင်းစည်းရန်](./09-VS-Code/README.md) |
+| **Lab 10-12: ထုတ်လုပ်မှုနှင့် အကောင်းဆုံး လုပ်ထုံးလုပ်နည်းများ** | | | |
+| 10 | [ဖြန့်ဝေခြင်း နည်းဗျူဟာများ](./10-Deployment/README.md) | Docker ဖြန့်ဝေခြင်း၊ Azure Container Apps နှင့် scaling အကြောင်းစဉ်းစားချက်များ | [ဖြန့်ဝေရန်](./10-Deployment/README.md) |
+| 11 | [စစ်ဆေးကြည့်ရှုမှုနှင့် ကြည့်ရှုနိုင်မှု](./11-Monitoring/README.md) | Application Insights, logging, လုပ်ဆောင်မှု စစ်ဆေးခြင်း | [ကြည့်ရှုရန်](./11-Monitoring/README.md) |
+| 12 | [အကောင်းဆုံးလုပ်ထုံးလုပ်နည်းများနှင့် ထိရောက်မှုတိုးတက်စေခြင်း](./12-Best-Practices/README.md) | လုပ်ဆောင်မှုတိုးတက်မှု၊ လုံခြုံရေးတိုးတက်မှု၊ ထုတ်လုပ်မှုအတွက်အကြံဥာဏ်များ | [တိုးတက်စေရန်](./12-Best-Practices/README.md) |
 
-### 💻 သင်တည်ဆောက်မည့်အရာများ
+### 💻 သင်တည်ဆောက်မည့်အရာ
 
-ဒီ learning path ကိုပြီးဆုံးတဲ့အခါ **Zava Retail Analytics MCP Server** တစ်ခုကို တည်ဆောက်ထားမည်ဖြစ်ပြီး:
+ဤသင်ယူမှုလမ်းကြောင်းအပြီးတွင် သင်သည် ပြည့်စုံပြီးသော **Zava Retail Analytics MCP Server** ကို တည်ဆောက်ထားမည်ဖြစ်ပြီးအောက်ဖော်ပြပါအချက်များပါဝင်ပါသည် -
 
-- **Multi-table retail database** (customer orders, products, inventory)
-- **Row Level Security** (store-based data isolation)
-- **Semantic product search** (Azure OpenAI embeddings)
-- **VS Code AI Chat integration** (natural language queries)
-- **Production-ready deployment** (Docker နှင့် Azure)
-- **Comprehensive monitoring** (Application Insights)
+- **Multi-table retail database** - ဖောက်သည်အော်ဒါများ၊ ကုန်ပစ္စည်းများ နှင့် ဂိုဒေါင် များပါဝင်ခြင်း
+- **Row Level Security** - ဆိုင်ခွဲအလိုက် ဒေတာကွဲထုတ်ခြင်းအတွက်
+- **Semantic product search** - Azure OpenAI embedding များအသုံးပြုခြင်း
+- **VS Code AI Chat ပေါင်းစည်းမှု** - သဘာဝဘာသာစကားစုံစမ်းရေးအတွက်
+- **ထုတ်လုပ်မှုအဆင်သင့် ဖြန့်ဝေမှု** - Docker နှင့် Azure ဖြင့်
+- **အပြည့်အစုံ ကြည့်ရှုနိုင်မှု** - Application Insights နှင့်
 
-## 🎯 လေ့လာရန်လိုအပ်ချက်များ
+## 🎯 သင်ယူရန်လိုအပ်ချက်များ
 
-ဒီ learning path ကို အကျိုးရှိရှိအသုံးချနိုင်ဖို့အတွက် သင်မှာ အောက်ပါအရာများရှိရမည်:
+ဤသင်ယူမှု လမ်းကြောင်းအတွက် အကောင်းဆုံးရရှိရန် သင့်မှာရှိသင့်သည်-
 
-- **Programming Experience**: Python (preferred) ဒါမှမဟုတ် အခြား programming language များ
-- **Database Knowledge**: SQL နှင့် relational databases အခြေခံ
-- **API Concepts**: REST APIs နှင့် HTTP concepts
-- **Development Tools**: Command line, Git, နှင့် code editors အသုံးပြုမှု
-- **Cloud Basics**: (Optional) Azure ဒါမှမဟုတ် အခြား cloud platforms အခြေခံ
-- **Docker Familiarity**: (Optional) Containerization concepts
+- **Programming အတွေ့အကြုံ** - Python (နှစ်သက်သည်) သို့မဟုတ် အခြား အတူတူဘာသာစကားများ နားလည်မှု
+- **ဒေတာဘေ့စ် နားလည်မှု** - SQL နှင့် relational database များအခြေခံသိမြင်မှု
+- **API သဘောတရားများ** - REST API များနှင့် HTTP အတတ်ပညာ
+- **ဖွံ့ဖြိုးရေးကိရိယာများ** - command line, Git, code editors အသုံးပြုနိုင်မှု
+- **Cloud အခြေခံ** - (Optional) Azure သို့မဟုတ် အခြား cloud platform များ အခြေခံနားလည်မှု
+- **Docker နားလည်မှု** - (Optional) containerization concepts နားလည်မှု
 
-### လိုအပ်သော Tools
+### လိုအပ်သောကိရိယာများ
 
-- **Docker Desktop** - PostgreSQL နှင့် MCP server ကို run လုပ်ရန်
-- **Azure CLI** - Cloud resource deployment အတွက်
-- **VS Code** - Development နှင့် MCP integration အတွက်
-- **Git** - Version control အတွက်
-- **Python 3.8+** - MCP server development အတွက်
+- **Docker Desktop** - PostgreSQL နှင့် MCP ဆာဗာ အသုံးပြုရန်
+- **Azure CLI** - cloud resource ဖြန့်ဝေရန်
+- **VS Code** - ဖွံ့ဖြိုးရေး နှင့် MCP ပေါင်းစည်းမှုအတွက်
+- **Git** - ဗားရှင်းထိန်းချုပ်မှုအတွက်
+- **Python 3.8+** - MCP ဆာဗာဖွံ့ဖြိုးရေးအတွက်
 
-## 📚 Study Guide & Resources
+## 📚 သင်ယူမှု လမ်းညွှန် & အရင်းအမြစ်များ
 
-ဒီ learning path မှာ သင်လမ်းကြောင်းကို အကျိုးရှိရှိ လေ့လာနိုင်ဖို့ comprehensive resources ပါဝင်ပါတယ်:
+ဤသင်ယူမှု လမ်းကြောင်းတွင် မိမိအတွက်ထိရောက်စွာ လမ်းညွှန်ပေးသော အရင်းအမြစ်များ ပါဝင်သည်-
 
-### Study Guide
+### သင်ယူမှု လမ်းညွှန်
 
-Lab တစ်ခုစီမှာ:
-- **Clear learning objectives** - သင်ရရှိမည့်အရာ
-- **Step-by-step instructions** - အသေးစိတ်လမ်းညွှန်
-- **Code examples** - အလုပ်လုပ်တဲ့ sample များ
-- **Exercises** - လက်တွေ့လုပ်ဆောင်မှု
-- **Troubleshooting guides** - အခက်အခဲများနှင့် ဖြေရှင်းနည်းများ
-- **Additional resources** - ထပ်မံလေ့လာရန်
+လေ့ကျင့်ခန်းတိုင်းတွင်ပါဝင်သည် -
+- **ရှင်းလင်းသော သင်ယူရည်မှန်းချက်များ** - မျှော်မှန်းထားသည့် ရလဒ်များ
+- **အဆင့်စဉ်လိုက် ညွှန်ကြားချက်များ** - အသေးစိတ် အကောင်အထည်ဖော်နည်းလမ်းများ
+- **ကုတ်နမူနာများ** - အလျှောက်စနစ်နားလည်ရန် ကုတ်နမူနာများ
+- **လက်တွေ့လေ့ကျင့်ခန်းများ** - လက်တွေ့လုပ်ဆောင်နိုင်မှု အခွင့်အလမ်းများ
+- **ပြဿနာများ ဖြေရှင်းနည်း** - အခက်အခဲများနှင့် ဖြေရှင်းနည်းများ
+- **ထပ်ဆင့် အရင်းအမြစ်များ** - နက်နဲသိရှိရန် ရင်းမြစ်များ
 
-### Prerequisites Check
+### လိုအပ်ချက် စစ်ဆေးမှု
 
-Lab တစ်ခုစီကို စတင်မီ:
-- **Required knowledge** - အကြိုသိထားရမည့်အရာ
-- **Setup validation** - Environment ကို verify လုပ်နည်း
-- **Time estimates** - လုပ်ဆောင်ရန်လိုအပ်သောအချိန်
-- **Learning outcomes** - Lab ပြီးဆုံးပြီးရရှိမည့်အရာ
+လေ့ကျင့်ခန်း စတင်မတိုင်မီဖော်ပြထားသည်-
+- **လိုအပ်သော အသိပညာ** - မတိုင်မီသိထားသင့်သော အချက်များ
+- **ပတ်ဝန်းကျင် စစ်ဆေးခြင်း** - ပတ်ဝန်းကျင်တည်ဆောက်မှု အတည်ပြုခြင်း
+- **ချိန်အချိန် ခန့်မှန်းချက်များ** - ပြီးမြောက်မှုကာလမျာ့
+- **သင်ယူပြီး ထိရောက်မှုများ** - ပြီးစီးကြောင်းနားလည်နိုင်မှု
 
-### Recommended Learning Paths
+### အကြံပြု သင်ယူမှု လမ်းကြောင်းများ
 
-သင့်အတွေ့အကြုံအပေါ်မူတည်ပြီး သင့်လမ်းကြောင်းကို ရွေးချယ်ပါ:
+သင့် အတွေ့အကြုံအရ လမ်းကြောင်း ရွေးချယ်နိုင်သည်-
 
-#### 🟢 **Beginner Path** (MCP အသစ်စ)
-1. [MCP for Beginners](https://aka.ms/mcp-for-beginners) 0-10 ကို အရင်ပြီးစီးထားပါ
-2. Lab 00-03 ကို အခြေခံများကို reinforce လုပ်ရန်
-3. Lab 04-06 ကို လက်တွေ့လုပ်ဆောင်ရန်
-4. Lab 07-09 ကို အသုံးချမှုအတွက် စမ်းသပ်ပါ
+#### 🟢 **အစပိုင်း သင်ယူသူလုပ်ထုံးလမ်းကြောင်း** (MCP အသစ်စတင်သူများ)
+1. ပထမဆုံး [MCP for Beginners](https://aka.ms/mcp-for-beginners) 0-10 ကိုပြီးမြောက်ထားပါ
+2. 00-03 labs များကိုပြီးဆုံးရန် အခြေခံများကို သန့်ရှင်းပြုလုပ်ပါ
+3. 04-06 labs များဖြင့် လက်တွေ့အပေါ် တည်ဆောက်ခြင်း လုပ်ဆောင်ပါ
+4. 07-09 labs များကို လက်တွေ့အသုံးပြုရန် စမ်းသပ်ပါ
 
-#### 🟡 **Intermediate Path** (MCP အတွေ့အကြုံအနည်းငယ်ရှိ)
-1. Lab 00-01 ကို database-specific concepts အတွက် ပြန်လည်သုံးသပ်ပါ
-2. Lab 02-06 ကို implementation အတွက် အာရုံစိုက်ပါ
-3. Lab 07-12 ကို အဆင့်မြင့် features အတွက် လေ့လာပါ
+#### 🟡 **အလယ်အလတ် သင်ယူသူလုပ်ထုံးလမ်းကြောင်း** (အချို့ MCP အတွေ့အကြုံရှိသူ)
+1. 00-01 labs များကို database အထူးပြု ဖတ်ရှုပါ
+2. 02-06 labs များကို အကောင်အထည်ဖေါ်မှု အပေါ် ဦးတည်ပါ
+3. 07-12 labs များတွင် တော်တော်များများ လေ့လာပါ
 
-#### 🔴 **Advanced Path** (MCP အတွေ့အကြုံရှိ)
-1. Lab 00-03 ကို context အတွက် skim လုပ်ပါ
-2. Lab 04-09 ကို database integration အတွက် အာရုံစိုက်ပါ
-3. Lab 10-12 ကို production deployment အတွက် အာရုံစိုက်ပါ
+#### 🔴 **အဆင့်မြင့် သင်ယူသူလုပ်ထုံးလမ်းကြောင်း** (MCP ကိုအတွေ့အကြုံရှိသူ)
+1. 00-03 labs များကို အနည်းငယ် ပြီးသွားပါ
+2. 04-09 labs များတွင် database ပေါင်းစည်းမှုကို အာရုံစိုက်ပါ
+3. 10-12 labs များကို ထုတ်လုပ်မှု ဖြန့်ဝေရး အပေါ် ဦးတည်ပါ
 
-## 🛠️ ဒီ Learning Path ကို အကျိုးရှိရှိ အသုံးချနည်း
+## 🛠️ ဤသင်ယူမှု လမ်းကြောင်းကို ထိရောက်စွာ အသုံးပြုနည်း
 
-### Sequential Learning (အကြံပြု)
+### အဆင့်လိုက် သင်ယူမှု (အကြံပြု)
 
-Lab များကို အစဉ်လိုက် လေ့လာပါ:
+လေ့ကျင့်ခန်းများကို အစဉ်လိုက် ဆောင်ရွက်ပါ-
 
-1. **Overview ကိုဖတ်ပါ** - သင်လေ့လာမည့်အရာကို နားလည်ပါ
-2. **Prerequisites ကိုစစ်ပါ** - လိုအပ်သောအရာများရှိကြောင်း သေချာပါ
-3. **Step-by-step guides ကိုလိုက်ပါ** - လေ့လာရင်း လုပ်ဆောင်ပါ
-4. **Exercises ကိုပြီးစီးပါ** - သင်ယူမှုကို reinforce လုပ်ပါ
-5. **Key takeaways ကိုပြန်လည်သုံးသပ်ပါ** - သင်ယူမှုကို ခိုင်မာစေပါ
+1. **အနှစ်ချုပ်ကိုဖတ်ပါ** - သင်မည်ကို စိတ်ဝင်စားပြီး သင်ယူမည်ကို နားလည်ပါ
+2. **လိုအပ်ချက်များကို စစ်ဆေးပါ** - နောက်ထပ် သိရှိရန် အကြောင်းအရာမြင့်စေပါ
+3. **အဆင့်လိုက်ညွှန်ကြားချက်များကို လိုက်နာပါ** - လေ့လာစဉ် အကောင်အထည်ဖော်ပါ
+4. **လက်တွေ့လေ့ကျင့်ခန်းများ ပြီးမြောက်ပါ** - နားလည်မှုကို ခိုင်မာစေပါ
+5. **အချက်အလက် သယ်ယူအတုကို ပြန်လည်သုံးသပ်ပါ** - သင်ယူမှုကို အတည်ပြုပါ
 
-### Targeted Learning
+### အထူးပြု သင်ယူမှု
 
-သင့်လိုအပ်ချက်အပေါ်မူတည်ပြီး:
+သင့်တွင် အထူးကျွမ်းကျင်မှုလိုအပ်ပါက -
 
-- **Database Integration**: Lab 04-06 ကို အာရုံစိုက်ပါ
-- **Security Implementation**: Lab 02, 08, 12 ကို အာရုံစိုက်ပါ
-- **AI/Semantic Search**: Lab 07 ကို အနက်ရှိုင်းစွာ လေ့လာပါ
-- **Production Deployment**: Lab 10-12 ကို လေ့လာပါ
+- **ဒေတာဘေ့စ် ပေါင်းစည်းမှု** - 04-06 labs များကို အာရုံစိုက်ပါ
+- **လုံခြုံရေး အကောင်အထည်ဖော်မှု** - 02, 08, 12 labs များကို ဦးတည်ပါ
+- **AI/Semantic Search** - 07 lab ကို နက်နဲစွာ လေ့လာပါ
+- **ထုတ်လုပ်မှု ဖြန့်ဝေမှု** - 10-12 labs များကို လေ့လာပါ
 
-### လက်တွေ့လုပ်ဆောင်မှု
+### လက်တွေ့ လေ့ကျင့်ခြင်း
 
-Lab တစ်ခုစီမှာ:
-- **Working code examples** - Copy, modify, နှင့် စမ်းသပ်ပါ
-- **Real-world scenarios** - Retail analytics use cases
-- **Progressive complexity** - ရိုးရှင်းမှ အဆင့်မြင့်အထိ တိုးတက်မှု
-- **Validation steps** - သင့် implementation အလုပ်လုပ်ကြောင်း verify လုပ်ပါ
+လေ့ကျင့်ခန်းတိုင်းတွင်ပါဝင်သည်-
+- **လက်တွေ့ ကုတ်နမူနာများ** - ကူးယူ ပြင်ဆင် ပြီး စမ်းသပ်နိုင်ခြင်း
+- **အမှန်တကယ် ဖြစ်စဉ်များ** - လက်တွေ့ retail analytics အသုံးပြုမှု
+- **ခက်ခဲမှု တိုးတက်မှု** - ရိုးရိုးလမ်းမှ အဆင့်မြင့်ဖြစ်စဉ်ဆီသို့
+- **အတည်ပြုခြင်းအဆင့်များ** - သင့် အကောင်အထည်အကောင်းထွက်မှုကို အတည်ပြုပါ
 
-## 🌟 Community နှင့် Support
+## 🌟 အသိုင်းအဝိုင်းနှင့် အထောက်အပံ့
 
 ### အကူအညီရယူရန်
 
-- **Azure AI Discord**: [Join for expert support](https://discord.com/invite/ByRwuEEgH4)
-- **GitHub Repo နှင့် Implementation Sample**: [Deployment Sample and Resources](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
-- **MCP Community**: [Join broader MCP discussions](https://github.com/orgs/modelcontextprotocol/discussions)
+- **Azure AI Discord**: [ကျွမ်းကျင်သူ အကူအညီအတွက် တက်ရောက်ပါ](https://discord.com/invite/ByRwuEEgH4)
+- **GitHub Repo နှင့် Implementation Sample**: [Deployment နမူနာနှင့် အရင်းအမြစ်များ](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
+- **MCP အသိုင်းအဝိုင်း**: [ကျယ်ပြန့်သော MCP ဆွေးနွေးပွဲများတွင် ပါဝင်ဆောင်ရွက်ရန်](https://github.com/orgs/modelcontextprotocol/discussions)
 
-## 🚀 စတင်ရန်အဆင်သင့်လား?
+## 🚀 စတင်ရန် အသင့်ဖြစ်ပါပြီလား?
 
-**[Lab 00: MCP Database Integration အကျဉ်းချုပ်](./00-Introduction/README.md)** ဖြင့် သင့်ခရီးကို စတင်ပါ
-
----
-
-*Database integration ဖြင့် production-ready MCP servers တည်ဆောက်ခြင်းကို လက်တွေ့လုပ်ဆောင်မှုများနှင့် အတူ လေ့လာပါ။*
+**[Lab 00: MCP ဒေတာဘေ့စ် ပေါင်းစည်းမှု မိတ်ဆက်](./00-Introduction/README.md)** ဖြင့် သင်၏ ခရီးစတင်ပါ
 
 ---
 
-**အကြောင်းကြားချက်**:  
-ဤစာရွက်စာတမ်းကို AI ဘာသာပြန်ဝန်ဆောင်မှု [Co-op Translator](https://github.com/Azure/co-op-translator) ကို အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ ကျွန်ုပ်တို့သည် တိကျမှုအတွက် ကြိုးစားနေသော်လည်း၊ အလိုအလျောက် ဘာသာပြန်ခြင်းတွင် အမှားများ သို့မဟုတ် မမှန်ကန်မှုများ ပါဝင်နိုင်သည်ကို သတိပြုပါ။ မူရင်းဘာသာစကားဖြင့် ရေးသားထားသော စာရွက်စာတမ်းကို အာဏာတရ အရင်းအမြစ်အဖြစ် သတ်မှတ်သင့်ပါသည်။ အရေးကြီးသော အချက်အလက်များအတွက် လူ့ဘာသာပြန်ပညာရှင်များမှ ဘာသာပြန်ခြင်းကို အကြံပြုပါသည်။ ဤဘာသာပြန်ကို အသုံးပြုခြင်းမှ ဖြစ်ပေါ်လာသော အလွဲအလွတ်များ သို့မဟုတ် အနားယူမှုမှားများအတွက် ကျွန်ုပ်တို့သည် တာဝန်မယူပါ။
+*ဒီအပြည့်အစုံ လက်တွေ့သင်ယူမှုမှတဆင့် ထုတ်လုပ်မှုအဆင်သင့် MCP ဆာဗာများကို ဒေတာဘေ့စ်ပေါင်းစည်းမှုဖြင့် တည်ဆောက်နည်း ကျွမ်းကျင်လာပါ။*
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**မှတ်ချက်**  
+ဤစာတမ်းကို AI ဘာသာပြန်စနစ် [Co-op Translator](https://github.com/Azure/co-op-translator) ကို အသုံးပြု၍ ဘာသာပြန်ထားပါသည်။ မှန်ကန်မှုအတွက် ကြိုးစားသော်လည်း အလိုအလျောက်ဘာသာပြန်ခြင်းအားဖြင့် အမှားများ သို့မဟုတ် မှန်ကန်မှုလွဲမှားမှုများ ဖြစ်နိုင်ခြေ ရှိသည်ကို သိရှိထားရန် လိုအပ်ပါသည်။ မူရင်းစာတမ်းကို မူလဘာသာဖြင့်သာ တရားဝင်အချက်အလက်အရင်းအမြစ်အဖြစ်ယူဆသင့်ပါသည်။ အရေးကြီးသောအချက်အလက်များအတွက် ပညာရှင်လူသားဘာသာပြန်မှုကို အကြံပြုပါသည်။ ဤဘာသာပြန်ချက်ကို သုံးစွဲခြင်းကြောင့် ဖြစ်ပေါ်လာနိုင်သော အနားယူမှားခြင်းများ သို့မဟုတ် မှားထုတ်ဖော်ခြင်းများအတွက် ကျွန်ုပ်တို့ တာဝန်မယူပါ။
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
