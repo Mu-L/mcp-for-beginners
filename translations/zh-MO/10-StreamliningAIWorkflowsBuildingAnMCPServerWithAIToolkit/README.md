@@ -1,208 +1,227 @@
-# 精簡化 AI 工作流程：使用 AI Toolkit 建立 MCP 伺服器
+# 簡化人工智能工作流程：使用 AI 工具包建立 MCP 伺服器
 
-## 🎯 概述
+[![MCP Spec](https://img.shields.io/badge/MCP%20Spec-2025--11--25-blue.svg)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+[![Python](https://img.shields.io/badge/Python-3.10+-green.svg)](https://python.org)
+[![VS Code](https://img.shields.io/badge/VS%20Code-Latest-orange.svg)](https://code.visualstudio.com/)
 
-歡迎來到 **模型上下文協議 (MCP) 工作坊**！這是一個全面的實作型工作坊，結合兩項尖端技術，徹底改變 AI 應用程式的開發方式：
+![logo](../../../translated_images/zh-MO/logo.ec93918ec338dadd.webp)
 
-- **🔗 模型上下文協議 (MCP)**：一個開放標準，用於無縫整合 AI 工具
-- **🛠️ Visual Studio Code 的 AI Toolkit (AITK)**：微軟強大的 AI 開發擴展工具
+## 🎯  概覽
 
-### 🎓 您將學到什麼
+[![Build AI Agents in VS Code: 4 Hands-On Labs with MCP and AI Toolkit](../../../translated_images/zh-MO/11.0f6db6a0fb606885.webp)](https://youtu.be/r34Csn3rkeQ)
 
-完成此工作坊後，您將掌握建立智能應用程式的技巧，能夠將 AI 模型與真實世界的工具和服務相結合。從自動化測試到自訂 API 整合，您將獲得解決複雜商業挑戰的實用技能。
+_(點擊上方圖片觀看本課程影片)_
 
-## 🏗️ 技術堆疊
+歡迎來到 **模型上下文協議 (MCP) 工作坊**！這個全面的實作工作坊結合了兩項尖端技術，徹底革新人智能應用程式開發：
+
+- **🔗 模型上下文協議 (MCP)**：無縫 AI 工具整合的開放標準
+- **🛠️ Visual Studio Code 人工智能工具包 (AITK)**：微軟強大的 AI 開發擴充套件
+
+### 🎓 你將學到什麼
+
+完成本工作坊後，你將掌握建立智慧應用程式的技巧，能夠銜接 AI 模型與現實世界工具和服務。從自動化測試到自訂 API 整合，實際學會解決複雜商業挑戰。
+
+## 🏗️ 技術棧
 
 ### 🔌 模型上下文協議 (MCP)
 
-MCP 是 AI 的 **"USB-C"**——一個通用標準，用於連接 AI 模型與外部工具和數據來源。
+MCP 就是 AI 界的 **「USB-C」** — 通用標準，將 AI 模型連結到外部工具與資料來源。
 
-**✨ 主要特性：**
+**✨ 主要特點：**
 
-- 🔄 **標準化整合**：提供 AI 工具連接的通用介面
-- 🏛️ **靈活架構**：透過 stdio/SSE 傳輸支持本地和遠端伺服器
-- 🧰 **豐富生態系統**：工具、提示和資源整合於一個協議中
-- 🔒 **企業級準備**：內建安全性和可靠性
+- 🔄 **標準化整合**：AI 與工具的通用介面
+- 🏛️ **彈性架構**：支援本地及遠端伺服器透過 stdio/SSE 傳輸
+- 🧰 **豐富生態系統**：工具、提示與資源匯聚於單一協議
+- 🔒 **企業級準備**：內建安全與可靠性
 
 **🎯 MCP 的重要性：**
-就像 USB-C 消除了線纜混亂，MCP 消除了 AI 整合的複雜性。一個協議，無限可能。
+正如 USB-C 清除了線材混亂，MCP 帶來 AI 系統整合的簡易性。一種協議，多種可能。
 
-### 🤖 Visual Studio Code 的 AI Toolkit (AITK)
+### 🤖 Visual Studio Code 人工智能工具包 (AITK)
 
-微軟的旗艦 AI 開發擴展工具，將 VS Code 轉變為 AI 開發的強大平台。
+微軟主打 AI 開發擴充，將 VS Code 轉化成人工智能利器。
 
-**🚀 核心功能：**
+**🚀 核心能力：**
 
-- 📦 **模型目錄**：存取 Azure AI、GitHub、Hugging Face、Ollama 的模型
-- ⚡ **本地推理**：支援 ONNX 優化的 CPU/GPU/NPU 執行
-- 🏗️ **代理構建器**：可視化 AI 代理開發，整合 MCP
-- 🎭 **多模態支持**：支援文本、視覺和結構化輸出
+- 📦 **模型目錄**：可存取 Azure AI、GitHub、Hugging Face、Ollama 等模型
+- ⚡ **本地推論**：ONNX 最佳化的 CPU/GPU/NPU 執行
+- 🏗️ **代理建構器**：具備 MCP 整合的視覺化 AI 代理開發
+- 🎭 **多模態支持**：文字、視覺與結構化輸出
 
-**💡 開發優勢：**
+**💡 開發效益：**
 
-- 零配置模型部署
-- 可視化提示工程
-- 即時測試操作台
-- 無縫整合 MCP 伺服器
+- 零設定模型部署
+- 直觀提示工程
+- 即時測試操場
+- 無縫 MCP 伺服器整合
 
 ## 📚 學習旅程
 
-### [🚀 模組 1：AI Toolkit 基礎](./lab1/README.md)
+### [🚀 模組 1：AI 工具包基礎](./lab1/README.md)
 
 **時長**：15 分鐘
 
-- 🛠️ 安裝並配置 AI Toolkit for VS Code
-- 🗂️ 探索模型目錄（100+ GitHub、ONNX、OpenAI、Anthropic、Google 的模型）
-- 🎮 掌握互動操作台進行即時模型測試
-- 🤖 使用代理構建器建立您的第一個 AI 代理
-- 📊 使用內建指標（F1、相關性、相似性、一致性）評估模型性能
-- ⚡ 學習批量處理和多模態支持功能
+- 🛠️ 安裝與配置 Visual Studio Code AI 工具包
+- 🗂️ 探索模型目錄（超過 100 個模型來源包括 GitHub、ONNX、OpenAI、Anthropic、Google）
+- 🎮 精通互動式操場，進行即時模型測試
+- 🤖 使用代理建構器建立你的第一個 AI 代理
+- 📊 以內建評估指標（F1、相關性、相似度、連貫性）評估模型表現
+- ⚡ 學習批次處理與多模態支持功能
 
-**🎯 學習成果**：建立一個功能性 AI 代理，全面了解 AITK 的能力
+**🎯 學習成果**：建立功能完整的 AI 代理，全面理解 AITK 功能
 
-### [🌐 模組 2：MCP 與 AI Toolkit 基礎](./lab2/README.md)
+### [🌐 模組 2：MCP 與 AI 工具包基礎](./lab2/README.md)
 
 **時長**：20 分鐘
 
-- 🧠 掌握模型上下文協議 (MCP) 的架構和概念
-- 🌐 探索微軟的 MCP 伺服器生態系統
-- 🤖 使用 Playwright MCP 伺服器建立瀏覽器自動化代理
-- 🔧 將 MCP 伺服器整合到 AI Toolkit 代理構建器中
+- 🧠 掌握模型上下文協議 (MCP) 架構與概念
+- 🌐 探索微軟 MCP 伺服器生態系
+- 🤖 利用 Playwright MCP 伺服器構建瀏覽器自動化代理
+- 🔧 將 MCP 伺服器與 AI 工具包代理建構器結合
 - 📊 配置並測試代理中的 MCP 工具
-- 🚀 將 MCP 驅動的代理導出並部署到生產環境
+- 🚀 匯出並部署以 MCP 為核心的 AI 代理於生產環境
 
-**🎯 學習成果**：部署一個通過 MCP 強化的 AI 代理，整合外部工具
+**🎯 學習成果**：部署結合外部工具的強化 AI 代理
 
-### [🔧 模組 3：使用 AI Toolkit 進行進階 MCP 開發](./lab3/README.md)
+### [🔧 模組 3：進階 MCP 開發與 AI 工具包](./lab3/README.md)
 
 **時長**：20 分鐘
 
-- 💻 使用 AI Toolkit 建立自訂 MCP 伺服器
-- 🐍 配置並使用最新的 MCP Python SDK (v1.9.3)
-- 🔍 設置並使用 MCP Inspector 進行除錯
-- 🛠️ 使用專業除錯工作流程建立天氣 MCP 伺服器
-- 🧪 在代理構建器和 Inspector 環境中除錯 MCP 伺服器
+- 💻 使用 AI 工具包打造自訂 MCP 伺服器
+- 🐍 配置與使用最新 MCP Python SDK（v1.9.3）
+- 🔍 設置並使用 MCP Inspector 進行偵錯
+- 🛠️ 建立具專業偵錯工作流程的天氣 MCP 伺服器
+- 🧪 在代理建構器與 Inspector 環境中進行 MCP 伺服器偵錯
 
-**🎯 學習成果**：使用現代工具開發並除錯自訂 MCP 伺服器
+**🎯 學習成果**：使用現代工具開發與偵錯自訂 MCP 伺服器
 
-### [🐙 模組 4：實際 MCP 開發 - 自訂 GitHub Clone 伺服器](./lab4/README.md)
+### [🐙 模組 4：實務 MCP 開發－自訂 GitHub 克隆伺服器](./lab4/README.md)
 
 **時長**：30 分鐘
 
-- 🏗️ 建立一個真實世界的 GitHub Clone MCP 伺服器，用於開發工作流程
-- 🔄 實現智能倉庫克隆，包含驗證和錯誤處理
-- 📁 建立智能目錄管理和 VS Code 整合
+- 🏗️ 打造符合實務的 GitHub 克隆 MCP 伺服器以支援開發流程
+- 🔄 實作帶驗證與錯誤處理的智能倉庫複製
+- 📁 建立智慧目錄管理並整合 VS Code
 - 🤖 使用 GitHub Copilot 代理模式搭配自訂 MCP 工具
-- 🛡️ 應用生產級可靠性和跨平台兼容性
+- 🛡️ 採用生產級可靠性與跨平台相容性
 
-**🎯 學習成果**：部署一個生產級 MCP 伺服器，簡化真實開發工作流程
+**🎯 學習成果**：部署提升實際開發效率的 MCP 伺服器
 
 ## 💡 真實世界應用與影響
 
-### 🏢 企業使用案例
+### 🏢 企業應用範例
 
 #### 🔄 DevOps 自動化
 
-使用智能自動化改造您的開發工作流程：
+用智能自動化改造你的開發流程：
 
-- **智能倉庫管理**：AI 驅動的代碼審查和合併決策
-- **智能 CI/CD**：根據代碼變更自動優化管道
-- **問題分類**：自動分類和分配錯誤
+- **智能倉庫管理**：AI 驅動的程式碼審查與合併決策
+- **智能 CI/CD**：根據程式碼變更自動優化管線
+- **問題分流**：自動分類並指派缺陷
 
-#### 🧪 品質保證革命
+#### 🧪 品質保證革新
 
-使用 AI 驅動的自動化提升測試：
+提升測試能力，導入 AI 自動化：
 
-- **智能測試生成**：自動建立全面的測試套件
-- **視覺回歸測試**：AI 驅動的 UI 變更檢測
-- **性能監控**：主動識別和解決問題
+- **智能測試產生**：自動生成完整測試套件
+- **視覺回歸測試**：AI 支援的 UI 改變偵測
+- **效能監控**：主動辨識與解決問題
 
-#### 📊 數據管道智能化
+#### 📊 資料流程智慧化
 
-建立更智能的數據處理工作流程：
+建立更聰明的資料處理工作流程：
 
-- **自適應 ETL 流程**：自我優化的數據轉換
-- **異常檢測**：即時數據品質監控
-- **智能路由**：智能數據流管理
+- **自適應 ETL 流程**：自我優化資料轉換
+- **異常偵測**：即時資料品質監控
+- **智能路由**：智慧化資料流管理
 
-#### 🎧 客戶體驗提升
+#### 🎧 客戶體驗升級
 
-創造卓越的客戶互動：
+打造卓越的客戶互動：
 
-- **上下文感知支持**：具有客戶歷史訪問能力的 AI 代理
-- **主動問題解決**：預測性客戶服務
-- **多渠道整合**：跨平台統一的 AI 體驗
+- **情境感知支援**：AI 代理可存取顧客歷史
+- **主動問題解決**：預測式客戶服務
+- **跨通路整合**：統一的 AI 使用經驗
 
-## 🛠️ 先決條件與設置
+## 🛠️ 先決條件與設定
 
 ### 💻 系統需求
 
-| 組件 | 要求 | 備註 |
-|------|------|------|
-| **操作系統** | Windows 10+、macOS 10.15+、Linux | 任意現代操作系統 |
-| **Visual Studio Code** | 最新穩定版本 | AITK 必需 |
-| **Node.js** | v18.0+ 和 npm | 用於 MCP 伺服器開發 |
-| **Python** | 3.10+ | 選擇性，用於 Python MCP 伺服器 |
-| **記憶體** | 至少 8GB RAM | 建議 16GB 用於本地模型 |
+| 元件 | 要求 | 備註 |
+|-----------|-------------|-------|
+| **作業系統** | Windows 10+、macOS 10.15+、Linux | 任一現代作業系統皆可 |
+| **Visual Studio Code** | 最新穩定版 | AITK 必須 |
+| **Node.js** | v18.0+ 與 npm | 用於 MCP 伺服器開發 |
+| **Python** | 3.10+ | Python MCP 伺服器選用 |
+| **記憶體** | 最少 8GB RAM | 本地模型建議 16GB |
 
 ### 🔧 開發環境
 
-#### 推薦的 VS Code 擴展
+#### 推薦 VS Code 擴充套件
 
-- **AI Toolkit** (ms-windows-ai-studio.windows-ai-studio)
+- **AI 工具包** (ms-windows-ai-studio.windows-ai-studio)
 - **Python** (ms-python.python)
-- **Python Debugger** (ms-python.debugpy)
-- **GitHub Copilot** (GitHub.copilot) - 選擇性但有幫助
+- **Python 偵錯器** (ms-python.debugpy)
+- **GitHub Copilot** (GitHub.copilot) - 選用但有助力
 
-#### 選擇性工具
+#### 選用工具
 
-- **uv**：現代 Python 套件管理器
-- **MCP Inspector**：MCP 伺服器的可視化除錯工具
+- **uv**：現代化 Python 套件管理器
+- **MCP Inspector**：MCP 伺服器視覺偵錯工具
 - **Playwright**：用於網頁自動化範例
 
 ## 🎖️ 學習成果與認證路徑
 
 ### 🏆 技能掌握清單
 
-完成此工作坊後，您將掌握以下技能：
+完成本工作坊，你將達成：
 
 #### 🎯 核心能力
 
-- [ ] **MCP 協議掌握**：深入了解架構和實作模式
-- [ ] **AITK 熟練度**：專家級使用 AI Toolkit 進行快速開發
-- [ ] **自訂伺服器開發**：建立、部署和維護生產級 MCP 伺服器
-- [ ] **工具整合卓越**：無縫連接 AI 與現有開發工作流程
-- [ ] **問題解決應用**：將所學技能應用於真實商業挑戰
+- [ ] **MCP 協議精通**：深入理解架構與實作模式
+- [ ] **AITK 專業應用**：達到 AI 工具包快速開發專家
+- [ ] **自訂伺服器開發**：構建、部署並維護生產 MCP 伺服器
+- [ ] **工具整合卓越**：無縫銜接 AI 與現有開發流程
+- [ ] **問題解決能力**：應用所學解決實際商業問題
 
 #### 🔧 技術技能
 
-- [ ] 設置並配置 AI Toolkit in VS Code
+- [ ] 設置與配置 VS Code 中的 AI 工具包
 - [ ] 設計並實作自訂 MCP 伺服器
 - [ ] 整合 GitHub 模型與 MCP 架構
-- [ ] 使用 Playwright 建立自動化測試工作流程
-- [ ] 部署 AI 代理到生產環境
-- [ ] 除錯並優化 MCP 伺服器性能
+- [ ] 建立 Playwright 自動化測試流程
+- [ ] 部署 AI 代理於生產環境
+- [ ] 偵錯並優化 MCP 伺服器效能
 
-#### 🚀 進階能力
+#### 🚀 高階能力
 
-- [ ] 架構企業級 AI 整合
-- [ ] 為 AI 應用實作安全性最佳實踐
+- [ ] 架構企業規模的 AI 整合方案
+- [ ] 實施 AI 應用安全最佳實踐
 - [ ] 設計可擴展的 MCP 伺服器架構
-- [ ] 為特定領域建立自訂工具鏈
-- [ ] 指導他人進行 AI 原生開發
+- [ ] 創建特定領域的自訂工具鏈
+- [ ] 指導他人投入原生 AI 開發
 
-## 📖 其他資源
+## 📖 額外資源
 
-- [MCP 規範](https://modelcontextprotocol.io/docs)
-- [AI Toolkit GitHub 儲存庫](https://github.com/microsoft/vscode-ai-toolkit)
-- [MCP 伺服器範例集合](https://github.com/modelcontextprotocol/servers)
+- [MCP 規範 (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+- [AI 工具包 GitHub 倉庫](https://github.com/microsoft/vscode-ai-toolkit)
+- [MCP 伺服器範例集](https://github.com/modelcontextprotocol/servers)
 - [最佳實踐指南](https://modelcontextprotocol.io/docs/best-practices)
+- [OWASP MCP 十大](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - 安全最佳實務
 
 ---
 
-**🚀 準備好徹底改變您的 AI 開發工作流程了嗎？**
+**🚀 準備好革新你的 AI 開發流程了嗎？**
 
-讓我們一起使用 MCP 和 AI Toolkit 建立智能應用程式的未來！
+讓我們攜手使用 MCP 與 AI 工具包，共同打造智慧應用的未來！
 
+## 下一步
+
+繼續閱讀：[模組 11：MCP 伺服器實作工作坊](../11-MCPServerHandsOnLabs/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **免責聲明**：  
-本文件使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。我們致力於提供準確的翻譯，但請注意，自動翻譯可能包含錯誤或不準確之處。應以原始語言的文件作為權威來源。對於關鍵資訊，建議尋求專業人工翻譯。我們對因使用此翻譯而引起的任何誤解或誤釋不承擔責任。
+本文件使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們力求準確，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件之母語版本應視為權威資料來源。對於重要資訊，建議採用專業人工翻譯。我們不對因使用本翻譯而引起之任何誤解或錯誤詮釋承擔責任。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

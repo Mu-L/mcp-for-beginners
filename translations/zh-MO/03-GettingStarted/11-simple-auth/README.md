@@ -1,25 +1,25 @@
-# 簡單身份驗證
+# 簡易認證
 
-MCP SDK 支援使用 OAuth 2.1，這是一個相當複雜的過程，涉及身份驗證伺服器、資源伺服器、提交憑證、獲取代碼、交換代碼以獲取持有者令牌，直到最終可以獲取資源數據。如果您不熟悉 OAuth（這是一個非常值得實現的技術），建議從基本的身份驗證開始，逐步提升安全性。因此，本章的目的是幫助您逐步掌握更高級的身份驗證技術。
+MCP SDK 支援使用 OAuth 2.1，說實話這是一個相當複雜的流程，涉及認證伺服器、資源伺服器、提交憑證、取得代碼、用代碼交換權杖，直到你終於能取得資源資料。如果你不熟悉 OAuth，這是一個很棒的實作方式，建議先從一些基本認證開始，逐步建立更好更安全的機制。這就是本章存在的原因，帶領你進入更進階的認證。
 
-## 身份驗證是什麼？
+## 認證，我們指的是什麼？
 
-身份驗證包括兩個部分：身份確認和授權。其核心思想是我們需要完成以下兩件事：
+認證是 authentication 與 authorization 的縮寫，這裡的概念是我們需要完成兩件事：
 
-- **身份確認**：這是判斷是否允許某人進入我們的「家」，即他們是否有權訪問我們的資源伺服器，該伺服器上運行著 MCP Server 的功能。
-- **授權**：這是判斷用戶是否有權訪問他們請求的特定資源，例如某些訂單或產品，或者僅允許閱讀內容但不允許刪除。
+- **Authentication**（身份驗證），辨別我們是否讓一個人進入我們的房子，確認他們有權利「在此」，也就是有權存取我們 MCP 伺服器中提供功能的資源伺服器。
+- **Authorization**（授權），確認使用者是否有權限使用他所請求的特定資源，例如是這些訂單或這些產品，或是他只能讀取內容卻無法刪除等等。
 
-## 憑證：如何告訴系統我們是誰
+## 憑證：我們如何告訴系統我們是誰
 
-大多數網頁開發者通常會想到向伺服器提供憑證，通常是一個秘密，用於表明他們是否被允許進入（身份確認）。這個憑證通常是用戶名和密碼的 base64 編碼版本，或者唯一標識特定用戶的 API 金鑰。
+大多數的網頁開發者都開始以向伺服器提供憑證的角度思考，通常是某個秘密，以判斷他們是否被允許存在於此「身分驗證」。這憑證通常是以 base64 編碼的使用者名稱與密碼，或是唯一識別特定使用者的 API 金鑰。
 
-這通常通過名為 "Authorization" 的標頭發送，如下所示：
+這會藉由一個叫做「Authorization」的標頭傳送，如下：
 
 ```json
 { "Authorization": "secret123" }
 ```
 
-這通常被稱為基本身份驗證。整體流程如下：
+這通常稱之為基本認證。整個流程如下所示運作：
 
 ```mermaid
 sequenceDiagram
@@ -27,13 +27,12 @@ sequenceDiagram
    participant Client
    participant Server
 
-   User->>Client: show me data
-   Client->>Server: show me data, here's my credential
-   Server-->>Client: 1a, I know you, here's your data
-   Server-->>Client: 1b, I don't know you, 401 
+   User->>Client: 顯示資料給我
+   Client->>Server: 顯示資料給我，這是我的憑證
+   Server-->>Client: 1a，我認識你，這是你的資料
+   Server-->>Client: 1b，我不認識你，401 
 ```
-
-現在我們了解了流程，那麼如何實現它呢？大多數網頁伺服器都有一個名為中介軟體的概念，這是一段在請求過程中運行的代碼，用於驗證憑證。如果憑證有效，請求可以通過；如果憑證無效，則會返回身份驗證錯誤。以下是實現方式：
+了解流程後，如何實作呢？大多數的網頁伺服器有個叫做中介軟體（middleware）的概念，這段程式碼會在請求流程中執行，用來驗證憑證。如果憑證有效，就讓請求繼續；若無效，就回傳認證錯誤。來看看實作範例：
 
 **Python**
 
@@ -53,23 +52,23 @@ class AuthMiddleware(BaseHTTPMiddleware):
         print("Valid token, proceeding...")
        
         response = await call_next(request)
-        # add any customer headers or change in the response in some way
+        # 新增任何客戶標頭或以某種方式更改回應內容
         return response
 
 
 starlette_app.add_middleware(CustomHeaderMiddleware)
 ```
 
-在這段代碼中，我們：
+這裡我們：
 
-- 創建了一個名為 `AuthMiddleware` 的中介軟體，其 `dispatch` 方法由網頁伺服器調用。
-- 將中介軟體添加到網頁伺服器：
+- 建立一個名為 `AuthMiddleware` 的中介軟體，其 `dispatch` 方法由伺服器呼叫。
+- 將這個 middleware 加入到網頁伺服器：
 
     ```python
     starlette_app.add_middleware(AuthMiddleware)
     ```
 
-- 編寫了驗證邏輯，檢查是否存在 Authorization 標頭以及發送的秘密是否有效：
+- 撰寫驗證邏輯，檢查是否有 Authorization 標頭，並確認密碼有效：
 
     ```python
     has_header = request.headers.get("Authorization")
@@ -82,19 +81,19 @@ starlette_app.add_middleware(CustomHeaderMiddleware)
         return Response(status_code=403, content="Forbidden")
     ```
 
-    如果秘密存在且有效，我們通過調用 `call_next` 讓請求通過並返回響應。
+    如果密碼存在且有效，就呼叫 `call_next` 讓請求繼續，並回傳回應。
 
     ```python
     response = await call_next(request)
-    # add any customer headers or change in the response in some way
+    # 在回應中加入任何客戶標頭或以某種方式更改內容
     return response
     ```
 
-其工作原理是，當向伺服器發出網頁請求時，中介軟體會被調用，根據其實現，它要麼讓請求通過，要麼返回一個錯誤，表明客戶端無法繼續。
+運作方式是當有網路請求進來時，中介軟體會被呼叫，根據實作結果，要嘛讓請求通過，要嘛回傳表示客戶端未被允許繼續的錯誤。
 
 **TypeScript**
 
-在這裡，我們使用流行的框架 Express 創建中介軟體，並在請求到達 MCP Server 之前攔截它。以下是代碼：
+使用流行的框架 Express，我們在請求抵達 MCP 伺服器前攔截請求。程式碼如下：
 
 ```typescript
 function isValid(secret) {
@@ -102,54 +101,54 @@ function isValid(secret) {
 }
 
 app.use((req, res, next) => {
-    // 1. Authorization header present?  
+    // 1. 有冇授權標頭？
     if(!req.headers["Authorization"]) {
         res.status(401).send('Unauthorized');
     }
     
     let token = req.headers["Authorization"];
 
-    // 2. Check validity.
+    // 2. 檢查有效性。
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
     }
 
    
     console.log('Middleware executed');
-    // 3. Passes request to the next step in the request pipeline.
+    // 3. 將請求傳遞到請求流程嘅下一步。
     next();
 });
 ```
 
-在這段代碼中，我們：
+此程式碼中：
 
-1. 檢查是否存在 Authorization 標頭，如果沒有，則返回 401 錯誤。
-2. 確保憑證/令牌有效，如果無效，則返回 403 錯誤。
-3. 最終讓請求通過請求管道並返回所需的資源。
+1. 確認是否存在 Authorization 標頭，若無則回傳 401 錯誤。
+2. 驗證憑證或令牌是否有效，若無效回傳 403 錯誤。
+3. 若有效，將請求繼續傳遞並回傳所請求的資源。
 
-## 練習：實現身份驗證
+## 練習：實作認證
 
-讓我們運用所學知識來嘗試實現身份驗證。以下是計劃：
+讓我們用所學試著實作。計劃如下：
 
-伺服器端
+伺服器
 
-- 創建網頁伺服器和 MCP 實例。
-- 為伺服器實現中介軟體。
+- 建立網頁伺服器與 MCP 實例。
+- 為伺服器實作中介軟體。
 
 客戶端
 
-- 通過標頭發送帶有憑證的網頁請求。
+- 透過標頭送出帶有憑證的網路請求。
 
-### -1- 創建網頁伺服器和 MCP 實例
+### -1- 建立網頁伺服器與 MCP 實例
 
-第一步，我們需要創建網頁伺服器實例和 MCP Server。
+第一步，我們需要創建網頁伺服器實例與 MCP Server。
 
 **Python**
 
-在這裡，我們創建了一個 MCP Server 實例，使用 starlette 創建網頁應用並通過 uvicorn 託管。
+這裡建立 MCP 伺服器實例，建立 starlette 網頁應用並用 uvicorn 主機托管：
 
 ```python
-# creating MCP Server
+# 建立 MCP 伺服器
 
 app = FastMCP(
     name="MCP Resource Server",
@@ -159,10 +158,10 @@ app = FastMCP(
     debug=True
 )
 
-# creating starlette web app
+# 建立 starlette 網頁應用程式
 starlette_app = app.streamable_http_app()
 
-# serving app via uvicorn
+# 使用 uvicorn 提供應用程式服務
 async def run(starlette_app):
     import uvicorn
     config = uvicorn.Config(
@@ -177,15 +176,15 @@ async def run(starlette_app):
 run(starlette_app)
 ```
 
-在這段代碼中，我們：
+此程式碼中：
 
-- 創建 MCP Server。
-- 使用 MCP Server 構建 starlette 網頁應用，`app.streamable_http_app()`。
-- 使用 uvicorn 託管並啟動網頁應用 `server.serve()`。
+- 建立 MCP Server。
+- 從 MCP Server 建構 starlette 網頁應用：`app.streamable_http_app()`。
+- 使用 uvicorn 以 `server.serve()` 主機並提供服務。
 
 **TypeScript**
 
-在這裡，我們創建了一個 MCP Server 實例。
+這裡建立 MCP 伺服器實例。
 
 ```typescript
 const server = new McpServer({
@@ -193,10 +192,10 @@ const server = new McpServer({
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... 設置伺服器資源、工具和提示 ...
 ```
 
-此 MCP Server 創建需要在 POST /mcp 路由定義中進行，因此我們將上述代碼移動如下：
+必須在 POST /mcp 路由定義中建立 MCP Server，因此我們將上述程式碼移動如下：
 
 ```typescript
 import express from "express";
@@ -208,33 +207,33 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
 const app = express();
 app.use(express.json());
 
-// Map to store transports by session ID
+// 用於按會話ID儲存傳輸的映射
 const transports: { [sessionId: string]: StreamableHTTPServerTransport } = {};
 
-// Handle POST requests for client-to-server communication
+// 處理客戶端至伺服器的POST請求
 app.post('/mcp', async (req, res) => {
-  // Check for existing session ID
+  // 檢查是否存在會話ID
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   let transport: StreamableHTTPServerTransport;
 
   if (sessionId && transports[sessionId]) {
-    // Reuse existing transport
+    // 重用現有的傳輸
     transport = transports[sessionId];
   } else if (!sessionId && isInitializeRequest(req.body)) {
-    // New initialization request
+    // 新的初始化請求
     transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: () => randomUUID(),
       onsessioninitialized: (sessionId) => {
-        // Store the transport by session ID
+        // 按會話ID儲存傳輸
         transports[sessionId] = transport;
       },
-      // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
-      // locally, make sure to set:
+      // DNS重綁定保護預設為關閉，以保持向後兼容性。如果你在本地運行此伺服器
+      // 請確保設置：
       // enableDnsRebindingProtection: true,
       // allowedHosts: ['127.0.0.1'],
     });
 
-    // Clean up transport when closed
+    // 傳輸關閉時清理資源
     transport.onclose = () => {
       if (transport.sessionId) {
         delete transports[transport.sessionId];
@@ -245,12 +244,12 @@ app.post('/mcp', async (req, res) => {
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... 設置伺服器資源、工具及提示 ...
 
-    // Connect to the MCP server
+    // 連接至MCP伺服器
     await server.connect(transport);
   } else {
-    // Invalid request
+    // 無效的請求
     res.status(400).json({
       jsonrpc: '2.0',
       error: {
@@ -262,11 +261,11 @@ app.post('/mcp', async (req, res) => {
     return;
   }
 
-  // Handle the request
+  // 處理此請求
   await transport.handleRequest(req, res, req.body);
 });
 
-// Reusable handler for GET and DELETE requests
+// 用於GET及DELETE請求的可重用處理器
 const handleSessionRequest = async (req: express.Request, res: express.Response) => {
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   if (!sessionId || !transports[sessionId]) {
@@ -278,44 +277,44 @@ const handleSessionRequest = async (req: express.Request, res: express.Response)
   await transport.handleRequest(req, res);
 };
 
-// Handle GET requests for server-to-client notifications via SSE
+// 處理透過SSE的伺服器至客戶端通知GET請求
 app.get('/mcp', handleSessionRequest);
 
-// Handle DELETE requests for session termination
+// 處理會話終止的DELETE請求
 app.delete('/mcp', handleSessionRequest);
 
 app.listen(3000);
 ```
 
-現在您可以看到 MCP Server 創建已移動到 `app.post("/mcp")` 中。
+你可以看到 MCP Server 建立被移進了 `app.post("/mcp")`。
 
-接下來，我們將創建中介軟體以驗證傳入的憑證。
+下一步是建立中介軟體來驗證傳入的憑證。
 
-### -2- 為伺服器實現中介軟體
+### -2- 為伺服器實作中介軟體
 
-接下來是中介軟體部分。在這裡，我們將創建一個中介軟體，檢查 `Authorization` 標頭中的憑證並進行驗證。如果憑證可接受，請求將繼續執行其需要的操作（例如列出工具、讀取資源或客戶端請求的其他 MCP 功能）。
+接著實作中介軟體，我們會建立一個中介軟體去查找 `Authorization` 標頭中的憑證並驗證，如果可接受，請求將繼續執行其應該執行的操作（例如列出工具、讀取資源或客戶端請求的其他 MCP 功能）。
 
 **Python**
 
-要創建中介軟體，我們需要創建一個繼承自 `BaseHTTPMiddleware` 的類。這裡有兩個重要部分：
+建立中介軟體需建立一個繼承 `BaseHTTPMiddleware` 的類別。有兩個重要變數：
 
-- 請求 `request`，我們從中讀取標頭信息。
-- `call_next`，如果客戶端提供了我們接受的憑證，我們需要調用的回調。
+- `request`，我們用它來讀取標頭資訊。
+- `call_next`，當客戶端帶有我們接受的憑證時呼叫此回調。
 
-首先，我們需要處理缺少 `Authorization` 標頭的情況：
+首先要處理 `Authorization` 標頭缺失的狀況：
 
 ```python
 has_header = request.headers.get("Authorization")
 
-# no header present, fail with 401, otherwise move on.
+# 無標頭存在，回應401失敗，否則繼續。
 if not has_header:
     print("-> Missing Authorization header!")
     return Response(status_code=401, content="Unauthorized")
 ```
 
-在這裡，我們發送 401 未授權消息，因為客戶端未通過身份驗證。
+此處回傳 401 未授權訊息，因為客戶端認證失敗。
 
-接下來，如果提交了憑證，我們需要檢查其有效性，如下所示：
+接著若有憑證送出，驗證其有效性：
 
 ```python
  if not valid_token(has_header):
@@ -323,7 +322,7 @@ if not has_header:
     return Response(status_code=403, content="Forbidden")
 ```
 
-注意我們在上面發送了 403 禁止消息。以下是實現上述所有功能的完整中介軟體：
+注意我們回傳 403 禁止存取訊息。以下是完整中介軟體範例：
 
 ```python
 class AuthMiddleware(BaseHTTPMiddleware):
@@ -346,32 +345,32 @@ class AuthMiddleware(BaseHTTPMiddleware):
 
 ```
 
-很好，但 `valid_token` 函數是什麼？以下是它的代碼：
+很好，但 `valid_token` 函式是什麼？如下：
 
 ```python
-# DON'T use for production - improve it !!
+# 唔好用喺實際生產 - 改善佢 !!
 def valid_token(token: str) -> bool:
-    # remove the "Bearer " prefix
+    # 刪除 "Bearer " 嘅前綴
     if token.startswith("Bearer "):
         token = token[7:]
         return token == "secret-token"
     return False
 ```
 
-這顯然需要改進。
+這顯然還能改進。
 
-重要提示：您絕不應該在代碼中包含這樣的秘密。理想情況下，您應該從數據源或 IDP（身份服務提供商）檢索比較值，或者更好的是，讓 IDP 進行驗證。
+重要：絕對不應將這類密鑰寫死於程式碼中。理想做法是從資料來源或身份服務提供者（IDP）取用比較值，甚至更好是讓 IDP 負責驗證。
 
 **TypeScript**
 
-要使用 Express 實現此功能，我們需要調用 `use` 方法，該方法接受中介軟體函數。
+使用 Express，我們呼叫 `use` 方法來使用中介軟體函式。
 
-我們需要：
+流程：
 
-- 與請求變量交互以檢查 `Authorization` 屬性中傳遞的憑證。
-- 驗證憑證，如果有效，則讓請求繼續執行，並讓客戶端的 MCP 請求完成其應該做的事情（例如列出工具、讀取資源或其他 MCP 相關操作）。
+- 從請求變數讀取 `Authorization` 屬性中的憑證。
+- 驗證憑證，若通過則讓請求繼續，客戶端的 MCP 請求也能正常執行。
 
-在這裡，我們檢查是否存在 `Authorization` 標頭，如果沒有，我們阻止請求通過：
+此處檢查是否存在 `Authorization` 標頭，若無則阻止請求通過：
 
 ```typescript
 if(!req.headers["authorization"]) {
@@ -380,9 +379,9 @@ if(!req.headers["authorization"]) {
 }
 ```
 
-如果標頭根本未發送，您將收到 401。
+未送出標頭時回傳 401。
 
-接下來，我們檢查憑證是否有效，如果無效，我們再次阻止請求，但消息略有不同：
+接著檢查憑證是否有效，無效就阻止且回應不同訊息：
 
 ```typescript
 if(!isValid(token)) {
@@ -391,9 +390,9 @@ if(!isValid(token)) {
 } 
 ```
 
-注意您現在收到的是 403 錯誤。
+此處會回傳 403 錯誤。
 
-以下是完整代碼：
+完整程式碼如下：
 
 ```typescript
 app.use((req, res, next) => {
@@ -416,18 +415,18 @@ app.use((req, res, next) => {
 });
 ```
 
-我們已設置網頁伺服器以接受中介軟體來檢查客戶端希望發送的憑證。那麼客戶端本身呢？
+我們設置伺服器中介軟體以檢查客戶端送出的憑證。那客戶端本身呢？
 
-### -3- 通過標頭發送帶有憑證的網頁請求
+### -3- 透過標頭送出含憑證的網路請求
 
-我們需要確保客戶端通過標頭傳遞憑證。由於我們將使用 MCP 客戶端來完成此操作，我們需要弄清楚如何實現。
+確認客戶端將憑證透過標頭送出。由於我們會使用 MCP 客戶端，需了解如何做到這點。
 
 **Python**
 
-對於客戶端，我們需要通過標頭傳遞憑證，如下所示：
+客戶端需傳送含憑證的標頭，如下：
 
 ```python
-# DON'T hardcode the value, have it at minimum in an environment variable or a more secure storage
+# 不要硬編碼此值，最少應該放在環境變量或更安全的儲存空間中
 token = "secret-token"
 
 async with streamablehttp_client(
@@ -444,24 +443,24 @@ async with streamablehttp_client(
         ) as session:
             await session.initialize()
       
-            # TODO, what you want done in the client, e.g list tools, call tools etc.
+            # 待辦事項，你想在客戶端完成的功能，例如列出工具、調用工具等。
 ```
 
-注意我們如何填充 `headers` 屬性：`headers = {"Authorization": f"Bearer {token}"}`。
+你可以看到我們如何將 `headers` 設為 `{"Authorization": f"Bearer {token}"}`。
 
 **TypeScript**
 
-我們可以通過以下兩步解決：
+這可以分兩步：
 
-1. 使用憑證填充配置對象。
-2. 將配置對象傳遞給傳輸層。
+1. 用憑證填入設定物件。
+2. 將設定物件傳給傳輸層。
 
 ```typescript
 
-// DON'T hardcode the value like shown here. At minimum have it as a env variable and use something like dotenv (in dev mode).
+// 不要像這裡顯示的那樣硬編碼值。至少將其設為環境變量，並在開發模式下使用類似 dotenv 的工具。
 let token = "secret123"
 
-// define a client transport option object
+// 定義一個客戶端傳輸選項對象
 let options: StreamableHTTPClientTransportOptions = {
   sessionId: sessionId,
   requestInit: {
@@ -471,7 +470,7 @@ let options: StreamableHTTPClientTransportOptions = {
   }
 };
 
-// pass the options object to the transport
+// 將選項對象傳遞給傳輸層
 async function main() {
    const transport = new StreamableHTTPClientTransport(
       new URL(serverUrl),
@@ -479,46 +478,46 @@ async function main() {
    );
 ```
 
-在上面，您可以看到我們如何創建 `options` 對象並將標頭放置在 `requestInit` 屬性下。
+如上範例，我們建立 `options` 物件，將標頭放在 `requestInit` 屬性下。
 
-重要提示：如何從這裡改進呢？目前的實現存在一些問題。首先，像這樣傳遞憑證風險很大，除非至少使用 HTTPS。即使如此，憑證仍可能被竊取，因此您需要一個系統，能夠輕鬆撤銷令牌並添加其他檢查，例如請求來自哪個地區、請求是否過於頻繁（類似機器人行為）。簡而言之，還有許多需要考慮的問題。
+重要：如何改進呢？目前方案有風險。首先，若沒使用 HTTPS，憑證很容易被竊取。即使有 HTTPS，也需要能輕易撤銷令牌，以及加強檢查機制，如檢查請求來源地點、是否頻繁發生（機器人行為）、總之有許多安全考量。
 
-不過，對於非常簡單的 API，如果您不希望任何人未經身份驗證就調用您的 API，那麼我們目前的實現是一個不錯的開始。
+不過對於非常簡單的 API，只想讓已認證者呼叫 API，目前方案算是不錯的起點。
 
-話雖如此，讓我們嘗試通過使用標準化格式（如 JSON Web Token，簡稱 JWT 或 "JOT" 令牌）來提高安全性。
+話說回來，我們試著透過標準格式如 JSON Web Token，即 JWT 或稱 JOT 令牌來強化安全。
 
-## JSON Web Token (JWT)
+## JSON Web Tokens，JWT
 
-那麼，我們嘗試改進從傳遞非常簡單的憑證開始。採用 JWT 的直接改進是什麼？
+我們試著改進送出非常簡單的憑證。採用 JWT 馬上帶來哪些好處？
 
-- **安全性提升**：在基本身份驗證中，您反覆發送 base64 編碼的用戶名和密碼（或 API 金鑰），這增加了風險。使用 JWT，您發送用戶名和密碼並獲得一個令牌作為回報，並且令牌是有時間限制的，意味著它會過期。JWT 允許您輕鬆使用基於角色、範圍和權限的細粒度訪問控制。
-- **無狀態性和可擴展性**：JWT 是自包含的，攜帶所有用戶信息，消除了存儲伺服器端會話存儲的需求。令牌也可以在本地驗證。
-- **互操作性和聯邦性**：JWT 是 Open ID Connect 的核心，並與知名身份提供商（如 Entra ID、Google Identity 和 Auth0）一起使用。它還使得可以使用單一登錄等功能，並使其達到企業級。
-- **模塊化和靈活性**：JWT 還可以與 API 閘道（如 Azure API Management、NGINX 等）一起使用。它支持用戶身份驗證場景和服務到服務通信，包括模擬和委派場景。
-- **性能和緩存**：JWT 解碼後可以緩存，減少解析需求。這對於高流量應用特別有幫助，因為它提高了吞吐量並減少了基礎設施的負載。
-- **高級功能**：它還支持內省（在伺服器上檢查有效性）和撤銷（使令牌無效）。
+- **安全性提升**。基本認證中，不斷重覆傳送使用者名稱與密碼（或 API 金鑰）的 base64 編碼，風險較高。JWT 會先送使用者名稱與密碼，換回一個令牌，且有時效限制會過期。JWT 允許用細粒度的存取控制，依角色、範圍與權限授予。
+- **無狀態與擴展性**。JWT 是自包含的，攜帶全部使用者資訊，省略伺服器端儲存 session。令牌可本地驗證。
+- **跨系統與聯合驗證**。JWT 是 Open ID Connect 的核心，廣泛用於已知的身份提供者如 Entra ID、Google 身分驗證與 Auth0。可實現單一登入等企業級功能。
+- **模組化與彈性**。JWT 可以配合 API Gateway 例如 Azure API 管理、NGINX 等，也支援使用者驗證情境與服務間通信，包括冒充與委派。
+- **效能與快取**。JWT 解碼後可快取，減少解析次數。這有助降低高流量應用伺服器負擔，提高吞吐量。
+- **進階功能**。包含內省（驗證令牌有效性）和撤銷（使令牌失效）。
 
-有了這些好處，讓我們看看如何將實現提升到下一個層次。
+擁有這些優勢，我們看看如何將實作帶到下一階段。
 
-## 將基本身份驗證轉換為 JWT
+## 將基本認證轉為 JWT
 
-我們需要進行的更改概述如下：
+大致上的變更為：
 
-- **學習構建 JWT 令牌**，並使其準備好從客戶端發送到伺服器。
-- **驗證 JWT 令牌**，如果有效，讓客戶端獲取資源。
-- **安全的令牌存儲**，如何存儲令牌。
-- **保護路由**，我們需要保護路由，在我們的情況下，需要保護路由和特定的 MCP 功能。
-- **添加刷新令牌**，確保我們創建的令牌是短期有效的，但刷新令牌是長期有效的，可以用於獲取新令牌（如果它們過期）。還需要確保有刷新端點和輪換策略。
+- **學會建構 JWT 令牌**，使其能從客戶端傳送到伺服器。
+- **驗證 JWT 令牌**，若有效，讓客戶端取得資源。
+- **安全儲存令牌**。我們如何存放此令牌。
+- **保護路由**。需保護路由，尤其是 MCP 特定功能。
+- **加入刷新令牌**。確保建立短期有效的存取令牌並設置長效刷新令牌可取得新令牌，此外要有刷新端點及輪替機制。
 
-### -1- 構建 JWT 令牌
+### -1- 建構 JWT 令牌
 
-首先，JWT 令牌包含以下部分：
+JWT 由以下部份組成：
 
-- **標頭**，使用的算法和令牌類型。
-- **有效負載**，聲明，例如 sub（令牌代表的用戶或實體。在身份驗證場景中，這通常是用戶 ID）、exp（過期時間）、role（角色）。
-- **簽名**，使用秘密或私鑰簽名。
+- **標頭**，使用的算法與令牌類型。
+- **有效載荷**，宣告（claims），例如 sub（此令牌代表的使用者或實體，通常是 userid）、exp（到期時間）、role（角色）。
+- **簽章**，用密鑰或私鑰簽名。
 
-為此，我們需要構建標頭、有效負載和編碼令牌。
+我們需建立標頭、載荷和編碼令牌。
 
 **Python**
 
@@ -529,7 +528,7 @@ import jwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 import datetime
 
-# Secret key used to sign the JWT
+# 用於簽署 JWT 的祕密金鑰
 secret_key = 'your-secret-key'
 
 header = {
@@ -537,29 +536,29 @@ header = {
     "typ": "JWT"
 }
 
-# the user info andits claims and expiry time
+# 用戶資訊及其權利與過期時間
 payload = {
-    "sub": "1234567890",               # Subject (user ID)
-    "name": "User Userson",                # Custom claim
-    "admin": True,                     # Custom claim
-    "iat": datetime.datetime.utcnow(),# Issued at
-    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # Expiry
+    "sub": "1234567890",               # 主旨（用戶 ID）
+    "name": "User Userson",                # 自訂聲明
+    "admin": True,                     # 自訂聲明
+    "iat": datetime.datetime.utcnow(),# 發行時間
+    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # 到期時間
 }
 
-# encode it
+# 編碼它
 encoded_jwt = jwt.encode(payload, secret_key, algorithm="HS256", headers=header)
 ```
 
-在上述代碼中，我們：
+程式碼中：
 
-- 定義了一個標頭，使用 HS256 作為算法，類型為 JWT。
-- 構建了一個有效負載，其中包含主體或用戶 ID、用戶名、角色、發出時間以及設置的過期時間，從而實現了我們之前提到的時間限制。
+- 定義標頭為 HS256 算法與 JWT 類型。
+- 建立載荷，包含主體（user id）、使用者名稱、角色、發行時間與過期時間，實現有時效性的設計。
 
 **TypeScript**
 
-在這裡，我們需要一些依賴項來幫助我們構建 JWT 令牌。
+這裡我們要用一些相依套件以建構 JWT 令牌。
 
-依賴項
+相依套件
 
 ```sh
 
@@ -567,29 +566,29 @@ npm install jsonwebtoken
 npm install --save-dev @types/jsonwebtoken
 ```
 
-現在我們已經準備好，讓我們創建標頭、有效負載，並通過它創建編碼令牌。
+安裝依賴後，建立標頭、載荷及編碼令牌。
 
 ```typescript
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'your-secret-key'; // Use env vars in production
+const secretKey = 'your-secret-key'; // 在生產環境使用環境變數
 
-// Define the payload
+// 定義載荷
 const payload = {
   sub: '1234567890',
   name: 'User usersson',
   admin: true,
-  iat: Math.floor(Date.now() / 1000), // Issued at
-  exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expires in 1 hour
+  iat: Math.floor(Date.now() / 1000), // 發行時間
+  exp: Math.floor(Date.now() / 1000) + 60 * 60 // 1小時後過期
 };
 
-// Define the header (optional, jsonwebtoken sets defaults)
+// 定義標頭（可選，jsonwebtoken 設置預設值）
 const header = {
   alg: 'HS256',
   typ: 'JWT'
 };
 
-// Create the token
+// 創建令牌
 const token = jwt.sign(payload, secretKey, {
   algorithm: 'HS256',
   header: header
@@ -600,21 +599,21 @@ console.log('JWT:', token);
 
 此令牌：
 
-使用 HS256 簽名
-有效期為 1 小時
-包含聲明，例如 sub、name、admin、iat 和 exp。
+使用 HS256 簽署
+有效期一小時
+包含子項如 sub、name、admin、iat 與 exp。
 
 ### -2- 驗證令牌
 
-我們還需要驗證令牌，這應該在伺服器端進行，以確保客戶端發送的令牌確實有效。在這裡，我們需要進行多種檢查，包括驗證其結構和有效性。建議您添加其他檢查，例如確認用戶是否在您的系統中等。
+伺服器端需驗證令牌，確認客戶端傳來的令牌有效。我們應該檢查結構與有效性，也建議再確認此令牌代表的使用者是否存在系統及其權限。
 
-要驗證令牌，我們需要解碼它以便閱讀，然後開始檢查其有效性：
+驗證先將令牌解碼，以便讀取與檢查：
 
 **Python**
 
 ```python
 
-# Decode and verify the JWT
+# 解碼並驗證 JWT
 try:
     decoded = jwt.decode(token, secret_key, algorithms=["HS256"])
     print("✅ Token is valid.")
@@ -628,11 +627,11 @@ except InvalidTokenError as e:
 
 ```
 
-在這段代碼中，我們使用令牌、秘密密鑰和選擇的算法作為輸入調用 `jwt.decode`。注意我們使用了 try-catch 結構，因為驗證失敗會引發錯誤。
+此程式中，我們呼叫 `jwt.decode`，輸入令牌、密鑰與演算法。使用 try-catch 來捕捉驗證錯誤。
 
 **TypeScript**
 
-在這裡，我們需要調用 `jwt.verify` 以獲得令牌的解碼版本，然後可以進一步分析。如果此調用失敗，則表示令牌的結構不正確或已失效。
+呼叫 `jwt.verify` 取得可分析的解碼令牌。若失敗，代表令牌格式有誤或已無效。
 
 ```typescript
 
@@ -644,18 +643,18 @@ try {
 }
 ```
 
-注意：如前所述，我們應該執行其他檢查，以確保此令牌指向我們系統中的用戶，並確保用戶擁有其聲稱的權限。
-接下來，我們來探討基於角色的存取控制（Role Based Access Control，簡稱 RBAC）。
+提醒：如前所述，我們應添加其他檢查，確保令牌指向我們系統中的使用者，且使用者擁有相符權限。
+接下來，讓我們來看看基於角色的訪問控制，也稱為 RBAC。
 
-## 新增基於角色的存取控制
+## 添加基於角色的訪問控制
 
-這個概念是要表達不同角色擁有不同的權限。例如，我們假設管理員（admin）可以執行所有操作，普通使用者（normal user）可以進行讀寫操作，而訪客（guest）只能進行讀取操作。因此，以下是一些可能的權限層級：
+這個概念是我們想表達不同角色有不同的權限。例如，我們假設管理員可以做所有事情，普通用戶可以讀寫，訪客只能讀取。因此，這裡有一些可能的權限等級：
 
-- Admin.Write 
-- User.Read
-- Guest.Read
+- Admin.Write  
+- User.Read  
+- Guest.Read  
 
-接下來，我們看看如何使用中介軟體（middleware）來實現這種控制。中介軟體可以針對特定路由添加，也可以針對所有路由添加。
+讓我們看看如何用中介軟件實現這樣的控制。中介軟件可以按路由添加，也可以對所有路由添加。
 
 **Python**
 
@@ -664,8 +663,8 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
 import jwt
 
-# DON'T have the secret in the code like, this is for demonstration purposes only. Read it from a safe place.
-SECRET_KEY = "your-secret-key" # put this in env variable
+# 唔好將秘密寫喺代碼入面，呢個只係示範用途。請從安全嘅地方讀取。
+SECRET_KEY = "your-secret-key" # 請將呢個放入環境變量中
 REQUIRED_PERMISSION = "User.Read"
 
 class JWTPermissionMiddleware(BaseHTTPMiddleware):
@@ -691,41 +690,41 @@ class JWTPermissionMiddleware(BaseHTTPMiddleware):
 
 
 ```
-
-有幾種不同的方法可以像下面這樣添加中介軟體：
+  
+有幾種不同的方法像下面這樣添加中介軟件：
 
 ```python
 
-# Alt 1: add middleware while constructing starlette app
+# 方案 1：在建立 starlette 應用時加入中介軟件
 middleware = [
     Middleware(JWTPermissionMiddleware)
 ]
 
 app = Starlette(routes=routes, middleware=middleware)
 
-# Alt 2: add middleware after starlette app is a already constructed
+# 方案 2：在 starlette 應用已建構後加入中介軟件
 starlette_app.add_middleware(JWTPermissionMiddleware)
 
-# Alt 3: add middleware per route
+# 方案 3：每條路由加入中介軟件
 routes = [
     Route(
         "/mcp",
-        endpoint=..., # handler
+        endpoint=..., # 處理程序
         middleware=[Middleware(JWTPermissionMiddleware)]
     )
 ]
 ```
-
+  
 **TypeScript**
 
-我們可以使用 `app.use` 和一個中介軟體，該中介軟體會針對所有請求執行。
+我們可以使用 `app.use` 以及一個會對所有請求執行的中介軟件。
 
 ```typescript
 app.use((req, res, next) => {
     console.log('Request received:', req.method, req.url, req.headers);
     console.log('Headers:', req.headers["authorization"]);
 
-    // 1. Check if authorization header has been sent
+    // 1. 檢查是否已送出授權標頭
 
     if(!req.headers["authorization"]) {
         res.status(401).send('Unauthorized');
@@ -734,13 +733,13 @@ app.use((req, res, next) => {
     
     let token = req.headers["authorization"];
 
-    // 2. Check if token is valid
+    // 2. 檢查令牌是否有效
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
         return;
     }  
 
-    // 3. Check if token user exist in our system
+    // 3. 檢查令牌用戶是否存在於我們系統中
     if(!isExistingUser(token)) {
         res.status(403).send('Forbidden');
         console.log("User does not exist");
@@ -748,7 +747,7 @@ app.use((req, res, next) => {
     }
     console.log("User exists");
 
-    // 4. Verify the token has the right permissions
+    // 4. 驗證令牌是否具有正確的權限
     if(!hasScopes(token, ["User.Read"])){
         res.status(403).send('Forbidden - insufficient scopes');
     }
@@ -760,15 +759,15 @@ app.use((req, res, next) => {
 });
 
 ```
+  
+中介軟件可以做很多事情，我們的中介軟件應該做的包括：
 
-中介軟體可以執行許多操作，而它應該執行的主要操作包括：
-
-1. 檢查是否存在授權標頭（authorization header）
-2. 檢查令牌是否有效，我們會調用 `isValid` 方法，這是我們編寫的一個方法，用於檢查 JWT 令牌的完整性和有效性。
-3. 驗證使用者是否存在於我們的系統中，我們應該進行此檢查。
+1. 檢查是否存在授權標頭  
+2. 檢查 token 是否有效，我們調用 `isValid` 方法來檢查 JWT token 的完整性和有效性。  
+3. 驗證用戶是否存在於我們的系統中，我們應該檢查這點。
 
    ```typescript
-    // users in DB
+    // 資料庫中的用戶
    const users = [
      "user1",
      "User usersson",
@@ -777,28 +776,28 @@ app.use((req, res, next) => {
    function isExistingUser(token) {
      let decodedToken = verifyToken(token);
 
-     // TODO, check if user exists in DB
+     // 待辦，檢查用戶是否存在於資料庫
      return users.includes(decodedToken?.name || "");
    }
    ```
+  
+   上面，我們創建了一個非常簡單的 `users` 列表，顯然應該存儲在資料庫中。
 
-   上面，我們建立了一個非常簡單的 `users` 列表，顯然這應該存儲在資料庫中。
-
-4. 此外，我們還應該檢查令牌是否具有正確的權限。
+4. 此外，我們還應該檢查 token 是否擁有正確的權限。
 
    ```typescript
    if(!hasScopes(token, ["User.Read"])){
         res.status(403).send('Forbidden - insufficient scopes');
    }
    ```
-
-   在上述中介軟體的程式碼中，我們檢查令牌是否包含 User.Read 權限，如果沒有，我們會返回 403 錯誤。以下是 `hasScopes` 的輔助方法。
+  
+   在中介軟件的代碼中，我們檢查 token 是否包含 User.Read 權限，如果沒有則回傳 403 錯誤。以下是 `hasScopes` 輔助方法。
 
    ```typescript
    function hasScopes(scope: string, requiredScopes: string[]) {
      let decodedToken = verifyToken(scope);
     return requiredScopes.every(scope => decodedToken?.scopes.includes(scope));
-  }
+  }  
    ```
 
 Have a think which additional checks you should be doing, but these are the absolute minimum of checks you should be doing.
@@ -840,18 +839,18 @@ app.use((err, req, res, next) => {
 });
 
 ```
-
-現在您已經了解了如何使用中介軟體進行身份驗證和授權，那麼 MCP 呢？它是否改變了我們進行身份驗證的方式？讓我們在下一節中找出答案。
+  
+現在你已經看到如何使用中介軟件進行身份驗證和授權，那 MCP 呢？它會改變我們的身份驗證方式嗎？讓我們在下一節中看看。
 
 ### -3- 將 RBAC 添加到 MCP
 
-到目前為止，您已經了解如何通過中介軟體添加 RBAC。然而，對於 MCP，並沒有簡單的方法可以針對每個 MCP 功能添加 RBAC，那麼我們該怎麼辦？我們只能像下面這樣添加程式碼，檢查客戶端是否有權調用特定工具：
+到目前為止，你已經看到如何通過中介軟件添加 RBAC，但對於 MCP，沒有簡單的方法可以為每個 MCP 功能添加 RBAC，那我們該怎麼辦？我們必須加入類似下面的程式碼，檢查客戶端是否有權調用特定工具：
 
-您有幾種不同的選擇來實現針對功能的 RBAC，以下是一些方法：
+你有幾種方式來完成每個功能的 RBAC，這裡列出一些：
 
-- 為每個工具、資源或提示添加檢查，以確保權限層級。
+- 對每個工具、資源、提示添加檢查，確保檢查權限等級。
 
-   **Python**
+   **python**
 
    ```python
    @tool()
@@ -859,10 +858,10 @@ app.use((err, req, res, next) => {
       try:
           check_permissions(role="Admin.Write", request)
       catch:
-        pass # client failed authorization, raise authorization error
+        pass # 客戶端授權失敗，拋出授權錯誤
    ```
-
-   **TypeScript**
+  
+   **typescript**
 
    ```typescript
    server.registerTool(
@@ -876,7 +875,7 @@ app.use((err, req, res, next) => {
       
       try {
         checkPermissions("Admin.Write", request);
-        // todo, send id to productService and remote entry
+        // 待辦，將 ID 發送到 productService 和遠端入口
       } catch(Exception e) {
         console.log("Authorization error, you're not allowed");  
       }
@@ -887,9 +886,9 @@ app.use((err, req, res, next) => {
     }
    );
    ```
+  
 
-
-- 使用進階的伺服器方法和請求處理器，以減少需要進行檢查的地方。
+- 使用進階伺服器方式和請求處理程序，減少需要檢查的地方數量。
 
    **Python**
 
@@ -901,31 +900,31 @@ app.use((err, req, res, next) => {
    }
 
    def has_permission(user_permissions, required_permissions) -> bool:
-      # user_permissions: list of permissions the user has
-      # required_permissions: list of permissions required for the tool
+      # user_permissions: 使用者擁有的權限清單
+      # required_permissions: 工具所需的權限清單
       return any(perm in user_permissions for perm in required_permissions)
 
    @server.call_tool()
    async def handle_call_tool(
      name: str, arguments: dict[str, str] | None
    ) -> list[types.TextContent]:
-    # Assume request.user.permissions is a list of permissions for the user
+    # 假設 request.user.permissions 是使用者的權限清單
      user_permissions = request.user.permissions
      required_permissions = tool_permission.get(name, [])
      if not has_permission(user_permissions, required_permissions):
-        # Raise error "You don't have permission to call tool {name}"
+        # 拋出錯誤「你沒有權限呼叫工具 {name}」
         raise Exception(f"You don't have permission to call tool {name}")
-     # carry on and call tool
+     # 繼續並呼叫工具
      # ...
    ```   
-   
+      
 
    **TypeScript**
 
    ```typescript
    function hasPermission(userPermissions: string[], requiredPermissions: string[]): boolean {
        if (!Array.isArray(userPermissions) || !Array.isArray(requiredPermissions)) return false;
-       // Return true if user has at least one required permission
+       // 如果用戶擁有至少一個必需的權限，則返回真
        
        return requiredPermissions.some(perm => userPermissions.includes(perm));
    }
@@ -939,47 +938,53 @@ app.use((err, req, res, next) => {
          return new Error(`You don't have permission to call ${name}`);
       }
   
-      // carry on..
+      // 繼續..
    });
    ```
+  
+   注意，你需要確保你的中介軟件為請求的 user 屬性分配了解碼後的 token，這樣上面的代碼才簡單。
 
-   注意，您需要確保您的中介軟體將解碼後的令牌分配到請求的 user 屬性中，這樣上述程式碼才能簡化。
+### 小結
 
-### 總結
+現在我們已經討論了如何一般性地為 RBAC 添加支持，特別是對 MCP，該是你自己嘗試實作安全機制的時候，確保你理解介紹給你的概念。
 
-現在我們已經討論了如何添加對 RBAC 的支援，以及如何特別針對 MCP 添加支援，接下來是您自己嘗試實現安全性，以確保您理解了所介紹的概念。
+## 作業 1：使用基礎驗證構建 MCP 伺服器和 MCP 客戶端
 
-## 作業 1：使用基本身份驗證建立 MCP 伺服器和 MCP 客戶端
-
-在這裡，您將運用所學的知識，通過標頭傳遞憑證。
+這裡你會學到如何通過標頭傳送憑證。
 
 ## 解決方案 1
 
-[解決方案 1](./code/basic/README.md)
+[Solution 1](./code/basic/README.md)
 
 ## 作業 2：將作業 1 的解決方案升級為使用 JWT
 
-以第一個解決方案為基礎，但這次我們進行改進。
+採用第一個方案，但這一次，我們來改進它。
 
-改用 JWT，而不是使用基本身份驗證。
+不再使用 Basic Auth，而是使用 JWT。
 
 ## 解決方案 2
 
-[解決方案 2](./solution/jwt-solution/README.md)
+[Solution 2](./solution/jwt-solution/README.md)
 
 ## 挑戰
 
-針對工具添加我們在「將 RBAC 添加到 MCP」一節中描述的 RBAC。
+為我們在「將 RBAC 添加到 MCP」一節描述的每個工具增加 RBAC。
 
 ## 總結
 
-希望您在本章中學到了很多內容，從完全沒有安全性，到基本安全性，再到 JWT 以及如何將其添加到 MCP。
+希望你在本章學到了很多，從完全沒有安全，到基本安全，再到 JWT 以及它如何被添加到 MCP。
 
-我們已經建立了一個基於自訂 JWT 的穩固基礎，但隨著系統的擴展，我們正逐步轉向基於標準的身份模型。採用像 Entra 或 Keycloak 這樣的身份提供者（IdP），可以將令牌的發行、驗證和生命週期管理交給可信的平台處理，讓我們能專注於應用程式邏輯和使用者體驗。
+我們搭建了使用自訂 JWT 的堅實基礎，但隨著規模擴大，我們正朝著標準化的身份模型前進。採用像 Entra 或 Keycloak 這樣的身分提供者( IdP )，讓我們可以將 token 發行、驗證和生命週期管理委託給可信的平台，專注於應用邏輯和用戶體驗。
 
-為此，我們有一個更[進階的章節關於 Entra](../../05-AdvancedTopics/mcp-security-entra/README.md)。
+對此，我們有一個更[進階的 Entra 章節](../../05-AdvancedTopics/mcp-security-entra/README.md)
+
+## 接下來
+
+- 下一步：[設定 MCP 主機](../12-mcp-hosts/README.md)
 
 ---
 
-**免責聲明**：  
-本文件已使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。儘管我們致力於提供準確的翻譯，請注意自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於關鍵資訊，建議使用專業人工翻譯。我們對因使用此翻譯而引起的任何誤解或誤釋不承擔責任。
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免責聲明**：
+本文件乃使用人工智能翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 翻譯而成。儘管我們力求準確，但請注意自動翻譯可能包含錯誤或不準確之處。原始文件之母語版本應視為權威來源。對於重要資訊，建議採用專業人工翻譯。我們不對因使用本翻譯而引致的任何誤解或誤釋承擔責任。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

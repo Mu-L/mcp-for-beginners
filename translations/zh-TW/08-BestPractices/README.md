@@ -1,72 +1,89 @@
 # MCP 開發最佳實踐
 
-[![MCP 開發最佳實踐](../../../translated_images/zh-TW/09.d0f6d86c9d72134ccf5a8d8c8650a0557e519936661fc894cad72d73522227cb.png)](https://youtu.be/W56H9W7x-ao)
+[![MCP Development Best Practices](../../../translated_images/zh-TW/09.d0f6d86c9d72134c.webp)](https://youtu.be/W56H9W7x-ao)
 
-_（點擊上方圖片觀看本課程的影片）_
+_(點擊上方圖片觀看本課程影片)_
 
 ## 概述
 
-本課程專注於在生產環境中開發、測試和部署 MCP 伺服器及功能的高級最佳實踐。隨著 MCP 生態系統的複雜性和重要性不斷增長，遵循既定模式能確保可靠性、可維護性和互操作性。本課程整合了從實際 MCP 實施中獲得的實用經驗，指導您創建穩健、高效的伺服器，並有效利用資源、提示和工具。
+本課程聚焦於在生產環境中開發、測試與部署 MCP 伺服器及功能的進階最佳實踐。隨著 MCP 生態系統日益複雜與重要，遵循既定模式確保可靠性、可維護性與互操作性。本課程彙整來自實際 MCP 實作的實務智慧，指導您打造健壯高效的伺服器，並配合有效的資源、提示與工具。
 
 ## 學習目標
 
 完成本課程後，您將能夠：
 
-- 在 MCP 伺服器和功能設計中應用行業最佳實踐
-- 為 MCP 伺服器制定全面的測試策略
-- 為複雜的 MCP 應用設計高效、可重用的工作流程模式
-- 在 MCP 伺服器中實施正確的錯誤處理、日誌記錄和可觀測性
-- 優化 MCP 實施以提升性能、安全性和可維護性
+- 應用產業最佳實踐於 MCP 伺服器與功能設計
+- 建立完整的 MCP 伺服器測試策略
+- 設計高效且可重用的 MCP 複雜應用工作流程模式
+- 實作適當的錯誤處理、記錄與可觀察性於 MCP 伺服器
+- 優化 MCP 實作以提升效能、安全性與可維護性
 
 ## MCP 核心原則
 
-在深入探討具體的實施方法之前，了解指導有效 MCP 開發的核心原則至關重要：
+在深入特定實作慣例前，理解指引有效 MCP 開發的核心原則十分重要：
 
-1. **標準化通信**：MCP 基於 JSON-RPC 2.0，提供一致的請求、響應和錯誤處理格式，適用於所有實施。
-2. **以用戶為中心的設計**：始終優先考慮用戶的同意、控制和透明度。
-3. **安全至上**：實施強大的安全措施，包括身份驗證、授權、驗證和速率限制。
-4. **模組化架構**：以模組化方式設計 MCP 伺服器，每個工具和資源都有明確且專注的用途。
-5. **有狀態連接**：利用 MCP 能夠在多次請求中保持狀態的能力，實現更連貫且具上下文感知的交互。
+1. **標準化溝通**：MCP 以 JSON-RPC 2.0 為基礎，為請求、回應及錯誤處理提供一致格式。
+
+2. **以使用者為中心的設計**：始終優先考量使用者同意、控制權及透明度。
+
+3. **安全優先**：實施包括認證、授權、驗證及速率限制的強健安全措施。
+
+4. **模組化架構**：以模組化思維設計 MCP 伺服器，每個工具與資源皆有明確且專注的作用。
+
+5. **有狀態連線**：利用 MCP 能跨多次請求維持狀態，促成更具連貫性與上下文感知的互動。
 
 ## 官方 MCP 最佳實踐
 
-以下最佳實踐來自官方 Model Context Protocol 文檔：
+以下最佳實踐源自官方 Model Context Protocol 文件：
 
 ### 安全最佳實踐
 
-1. **用戶同意與控制**：在訪問數據或執行操作之前，始終要求用戶明確同意。提供清晰的控制，讓用戶決定共享哪些數據以及授權哪些操作。
-2. **數據隱私**：僅在用戶明確同意的情況下暴露數據，並通過適當的訪問控制保護數據。防止未授權的數據傳輸。
-3. **工具安全性**：在調用任何工具之前，要求用戶明確同意。確保用戶了解每個工具的功能，並強化安全邊界。
-4. **工具權限控制**：配置模型在會話期間允許使用的工具，確保僅可訪問明確授權的工具。
-5. **身份驗證**：在使用 API 密鑰、OAuth 令牌或其他安全身份驗證方法授予工具、資源或敏感操作的訪問權限之前，要求進行正確的身份驗證。
-6. **參數驗證**：對所有工具調用強制執行驗證，防止格式錯誤或惡意輸入到達工具實現。
-7. **速率限制**：實施速率限制以防止濫用並確保伺服器資源的公平使用。
+1. **使用者同意與控制**：存取資料或執行操作前，始終要求明確使用者同意，並提供清楚控制對象資料及授權行為。
 
-### 實施最佳實踐
+2. **資料隱私**：僅在明確同意下揭露使用者資料，並使用適當存取控管防止未授權資料傳輸。
 
-1. **能力協商**：在連接設置期間，交換有關支持的功能、協議版本、可用工具和資源的信息。
-2. **工具設計**：創建專注的工具，專注於做好一件事，而不是設計處理多個問題的單一工具。
-3. **錯誤處理**：實施標準化的錯誤消息和代碼，以幫助診斷問題、優雅地處理故障並提供可操作的反饋。
-4. **日誌記錄**：配置結構化日誌以審計、調試和監控協議交互。
-5. **進度跟蹤**：對於長時間運行的操作，報告進度更新以支持響應式用戶界面。
-6. **請求取消**：允許客戶端取消不再需要或耗時過長的進行中請求。
+3. **工具安全**：調用任一工具前必須取得使用者明確同意，確保使用者理解各工具功能並強制實施嚴謹安全邊界。
 
-## 其他參考資料
+4. **工具權限控管**：配置模型於會話中可使用之工具，確保僅能存取明確授權工具。
 
-有關 MCP 最佳實踐的最新信息，請參考：
+5. **認證**：取得 API 金鑰、OAuth 權杖或其他安全認證方法，於授予工具、資源或敏感操作存取權限前進行正式認證。
 
-- [MCP 文檔](https://modelcontextprotocol.io/)
-- [MCP 規範](https://spec.modelcontextprotocol.io/)
-- [GitHub 儲存庫](https://github.com/modelcontextprotocol)
+6. **參數驗證**：強制所有工具的呼叫參數驗證，防止錯誤或惡意輸入。
+
+7. **速率限制**：實施速率限制以防止濫用並確保系統資源公平使用。
+
+### 實作最佳實踐
+
+1. **能力協商**：連線建立時，交換支援特性、協定版本、可用工具與資源等資訊。
+
+2. **工具設計**：打造專注且擅長特定任務的工具，避免一體式巨量複合工具。
+
+3. **錯誤處理**：實作標準化錯誤訊息與代碼，協助診斷問題、優雅處理失敗，並提供可執行回饋。
+
+4. **記錄**：配置結構化日誌以供稽核、除錯及監控協定互動。
+
+5. **進度追蹤**：針對長時執行操作報告進度更新，以提升使用者介面回應性。
+
+6. **請求取消**：允許客戶端取消已送出的請求，尤其是不再需要或耗時過久之請求。
+
+## 額外參考資料
+
+欲取得 MCP 最新最佳實踐資訊，請參考：
+
+- [MCP 文件](https://modelcontextprotocol.io/)
+- [MCP 規範 (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+- [GitHub 倉庫](https://github.com/modelcontextprotocol)
 - [安全最佳實踐](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - 安全風險與緩解措施
+- [MCP 安全高峰會工作坊 (Sherpa)](https://azure-samples.github.io/sherpa/) - 實務安全訓練
 
-## 實際實施範例
+## 實務實作範例
 
 ### 工具設計最佳實踐
 
 #### 1. 單一職責原則
 
-每個 MCP 工具應有明確且專注的用途。與其創建試圖處理多個問題的單一工具，不如開發專注於特定任務的專業工具。
+每個 MCP 工具應具備明確且專注的用途。避免創建試圖兼顧多重責任的一體式工具，應發展專用工具以擅長特定任務。
 
 ```csharp
 // A focused tool that does one thing well
@@ -126,12 +143,12 @@ public class WeatherForecastTool : ITool
 }
 ```
 
-#### 2. 一致的錯誤處理
+#### 2. 一致錯誤處理
 
-實施穩健的錯誤處理，提供信息豐富的錯誤消息和適當的恢復機制。
+實作完整且具資訊豐富的錯誤處理機制，並提供適切的復原方式。
 
 ```python
-# Python example with comprehensive error handling
+# Python 範例帶有完善的錯誤處理
 class DataQueryTool:
     def get_name(self):
         return "dataQuery"
@@ -141,19 +158,19 @@ class DataQueryTool:
     
     async def execute(self, parameters):
         try:
-            # Parameter validation
+            # 參數驗證
             if "query" not in parameters:
                 raise ToolParameterError("Missing required parameter: query")
                 
             query = parameters["query"]
             
-            # Security validation
+            # 安全性驗證
             if self._contains_unsafe_sql(query):
                 raise ToolSecurityError("Query contains potentially unsafe SQL")
             
             try:
-                # Database operation with timeout
-                async with timeout(10):  # 10 second timeout
+                # 帶有逾時的資料庫操作
+                async with timeout(10):  # 10 秒逾時
                     result = await self._database.execute_query(query)
                     
                 return ToolResponse(
@@ -162,37 +179,37 @@ class DataQueryTool:
             except asyncio.TimeoutError:
                 raise ToolExecutionError("Database query timed out after 10 seconds")
             except DatabaseConnectionError as e:
-                # Connection errors might be transient
+                # 連線錯誤可能是暫時性的
                 self._log_error("Database connection error", e)
                 raise ToolExecutionError(f"Database connection error: {str(e)}")
             except DatabaseQueryError as e:
-                # Query errors are likely client errors
+                # 查詢錯誤很可能是用戶端錯誤
                 self._log_error("Database query error", e)
                 raise ToolExecutionError(f"Invalid query: {str(e)}")
                 
         except ToolError:
-            # Let tool-specific errors pass through
+            # 允許工具特定錯誤通過
             raise
         except Exception as e:
-            # Catch-all for unexpected errors
+            # 捕捉所有意外錯誤
             self._log_error("Unexpected error in DataQueryTool", e)
             raise ToolExecutionError(f"An unexpected error occurred: {str(e)}")
     
     def _contains_unsafe_sql(self, query):
-        # Implementation of SQL injection detection
+        # SQL 注入偵測的實作
         pass
         
     def _log_error(self, message, error):
-        # Implementation of error logging
+        # 錯誤記錄的實作
         pass
 ```
 
 #### 3. 參數驗證
 
-始終徹底驗證參數，以防止格式錯誤或惡意輸入。
+始終完整驗證參數，防止格式錯誤或惡意輸入。
 
 ```javascript
-// JavaScript/TypeScript example with detailed parameter validation
+// JavaScript/TypeScript 範例，包含詳細的參數驗證
 class FileOperationTool {
   getName() {
     return "fileOperation";
@@ -227,7 +244,7 @@ class FileOperationTool {
   }
   
   async execute(parameters) {
-    // 1. Validate parameter presence
+    // 1. 驗證參數是否存在
     if (!parameters.operation) {
       throw new ToolError("Missing required parameter: operation");
     }
@@ -236,7 +253,7 @@ class FileOperationTool {
       throw new ToolError("Missing required parameter: path");
     }
     
-    // 2. Validate parameter types
+    // 2. 驗證參數類型
     if (typeof parameters.operation !== "string") {
       throw new ToolError("Parameter 'operation' must be a string");
     }
@@ -245,45 +262,45 @@ class FileOperationTool {
       throw new ToolError("Parameter 'path' must be a string");
     }
     
-    // 3. Validate parameter values
+    // 3. 驗證參數值
     const validOperations = ["read", "write", "delete"];
     if (!validOperations.includes(parameters.operation)) {
       throw new ToolError(`Invalid operation. Must be one of: ${validOperations.join(", ")}`);
     }
     
-    // 4. Validate content presence for write operation
+    // 4. 驗證寫入操作時內容是否存在
     if (parameters.operation === "write" && !parameters.content) {
       throw new ToolError("Content parameter is required for write operation");
     }
     
-    // 5. Path safety validation
+    // 5. 路徑安全性驗證
     if (!this.isPathWithinAllowedDirectories(parameters.path)) {
       throw new ToolError("Access denied: path is outside of allowed directories");
     }
     
-    // Implementation based on validated parameters
+    // 基於已驗證參數的實現
     // ...
   }
   
   isPathWithinAllowedDirectories(path) {
-    // Implementation of path safety check
+    // 路徑安全性檢查的實現
     // ...
   }
 }
 ```
 
-### 安全實施範例
+### 安全實作範例
 
-#### 1. 身份驗證與授權
+#### 1. 認證與授權
 
 ```java
-// Java example with authentication and authorization
+// Java 範例，包含身份驗證和授權
 public class SecureDataAccessTool implements Tool {
     private final AuthenticationService authService;
     private final AuthorizationService authzService;
     private final DataService dataService;
     
-    // Dependency injection
+    // 依賴注入
     public SecureDataAccessTool(
             AuthenticationService authService,
             AuthorizationService authzService,
@@ -300,10 +317,10 @@ public class SecureDataAccessTool implements Tool {
     
     @Override
     public ToolResponse execute(ToolRequest request) {
-        // 1. Extract authentication context
+        // 1. 擷取身份驗證上下文
         String authToken = request.getContext().getAuthToken();
         
-        // 2. Authenticate user
+        // 2. 驗證使用者身份
         UserIdentity user;
         try {
             user = authService.validateToken(authToken);
@@ -311,7 +328,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Authentication failed: " + e.getMessage());
         }
         
-        // 3. Check authorization for the specific operation
+        // 3. 檢查特定操作的授權
         String dataId = request.getParameters().get("dataId").getAsString();
         String operation = request.getParameters().get("operation").getAsString();
         
@@ -320,7 +337,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Access denied: Insufficient permissions for this operation");
         }
         
-        // 4. Proceed with authorized operation
+        // 4. 執行已授權的操作
         try {
             switch (operation) {
                 case "read":
@@ -418,28 +435,28 @@ public class RateLimitingMiddleware
 
 ## 測試最佳實踐
 
-### 1. MCP 工具的單元測試
+### 1. MCP 工具單元測試
 
-始終在隔離環境中測試工具，模擬外部依賴：
+總是隔離測試工具，模擬外部依賴：
 
 ```typescript
-// TypeScript example of a tool unit test
+// TypeScript 工具單元測試範例
 describe('WeatherForecastTool', () => {
   let tool: WeatherForecastTool;
   let mockWeatherService: jest.Mocked<IWeatherService>;
   
   beforeEach(() => {
-    // Create a mock weather service
+    // 建立一個模擬氣象服務
     mockWeatherService = {
       getForecasts: jest.fn()
     } as any;
     
-    // Create the tool with the mock dependency
+    // 使用模擬依賴建立工具
     tool = new WeatherForecastTool(mockWeatherService);
   });
   
   it('should return weather forecast for a location', async () => {
-    // Arrange
+    // Arrange（準備）
     const mockForecast = {
       location: 'Seattle',
       forecasts: [
@@ -451,23 +468,23 @@ describe('WeatherForecastTool', () => {
     
     mockWeatherService.getForecasts.mockResolvedValue(mockForecast);
     
-    // Act
+    // Act（執行）
     const response = await tool.execute({
       location: 'Seattle',
       days: 3
     });
     
-    // Assert
+    // Assert（斷言）
     expect(mockWeatherService.getForecasts).toHaveBeenCalledWith('Seattle', 3);
     expect(response.content[0].text).toContain('Seattle');
     expect(response.content[0].text).toContain('Sunny');
   });
   
   it('should handle errors from the weather service', async () => {
-    // Arrange
+    // Arrange（準備）
     mockWeatherService.getForecasts.mockRejectedValue(new Error('Service unavailable'));
     
-    // Act & Assert
+    // Act & Assert（執行並斷言）
     await expect(tool.execute({
       location: 'Seattle',
       days: 3
@@ -476,40 +493,40 @@ describe('WeatherForecastTool', () => {
 });
 ```
 
-### 2. 集成測試
+### 2. 整合測試
 
-測試從客戶端請求到伺服器響應的完整流程：
+測試從客戶端請求至伺服器回應的完整流程：
 
 ```python
-# Python integration test example
+# Python 整合測試範例
 @pytest.mark.asyncio
 async def test_mcp_server_integration():
-    # Start a test server
+    # 啟動測試伺服器
     server = McpServer()
     server.register_tool(WeatherForecastTool(MockWeatherService()))
     await server.start(port=5000)
     
     try:
-        # Create a client
+        # 建立用戶端
         client = McpClient("http://localhost:5000")
         
-        # Test tool discovery
+        # 測試工具發現
         tools = await client.discover_tools()
         assert "weatherForecast" in [t.name for t in tools]
         
-        # Test tool execution
+        # 測試工具執行
         response = await client.execute_tool("weatherForecast", {
             "location": "Seattle",
             "days": 3
         })
         
-        # Verify response
+        # 驗證回應
         assert response.status_code == 200
         assert "Seattle" in response.content[0].text
         assert len(json.loads(response.content[0].text)["forecasts"]) == 3
         
     finally:
-        # Clean up
+        # 清理工作
         await server.stop()
 ```
 
@@ -517,7 +534,7 @@ async def test_mcp_server_integration():
 
 ### 1. 快取策略
 
-實施適當的快取以減少延遲和資源使用：
+實施適當快取以降低延遲與資源用量：
 
 ```csharp
 // C# example with caching
@@ -588,16 +605,16 @@ public class CachedWeatherTool : ITool
 
 #### 2. 依賴注入與可測試性
 
-設計工具以透過構造函數注入接收其依賴項，使其可測試且可配置：
+設計工具以建構子注入依賴，使其具可測試性與可配置性：
 
 ```java
-// Java example with dependency injection
+// Java 範例使用依賴注入
 public class CurrencyConversionTool implements Tool {
     private final ExchangeRateService exchangeService;
     private final CacheService cacheService;
     private final Logger logger;
     
-    // Dependencies injected through constructor
+    // 透過建構子注入依賴
     public CurrencyConversionTool(
             ExchangeRateService exchangeService,
             CacheService cacheService,
@@ -607,51 +624,51 @@ public class CurrencyConversionTool implements Tool {
         this.logger = logger;
     }
     
-    // Tool implementation
+    // 工具實作
     // ...
 }
 ```
 
 #### 3. 可組合工具
 
-設計工具以便可以組合在一起，創建更複雜的工作流程：
+設計可互相組合以構建更複雜工作流程的工具：
 
 ```python
-# Python example showing composable tools
+# Python 範例顯示可組合的工具
 class DataFetchTool(Tool):
     def get_name(self):
         return "dataFetch"
     
-    # Implementation...
+    # 實作...
 
 class DataAnalysisTool(Tool):
     def get_name(self):
         return "dataAnalysis"
     
-    # This tool can use results from the dataFetch tool
+    # 此工具可以使用來自 dataFetch 工具的結果
     async def execute_async(self, request):
-        # Implementation...
+        # 實作...
         pass
 
 class DataVisualizationTool(Tool):
     def get_name(self):
         return "dataVisualize"
     
-    # This tool can use results from the dataAnalysis tool
+    # 此工具可以使用來自 dataAnalysis 工具的結果
     async def execute_async(self, request):
-        # Implementation...
+        # 實作...
         pass
 
-# These tools can be used independently or as part of a workflow
+# 這些工具可以獨立使用，也可以作為工作流程的一部分
 ```
 
 ### 架構設計最佳實踐
 
-架構是模型與工具之間的契約。良好的架構設計能提升工具的可用性。
+架構是模型與工具間的契約。良好設計的架構提升工具可用性。
 
-#### 1. 清晰的參數描述
+#### 1. 清楚參數說明
 
-始終為每個參數提供描述性信息：
+為每個參數提供描述性資訊：
 
 ```csharp
 public object GetSchema()
@@ -688,9 +705,9 @@ public object GetSchema()
 }
 ```
 
-#### 2. 驗證約束
+#### 2. 驗證約束條件
 
-包含驗證約束以防止無效輸入：
+包含驗證約束，防止輸入無效：
 
 ```java
 Map<String, Object> getSchema() {
@@ -699,20 +716,20 @@ Map<String, Object> getSchema() {
     
     Map<String, Object> properties = new HashMap<>();
     
-    // Email property with format validation
+    // 電子郵件屬性，包含格式驗證
     Map<String, Object> email = new HashMap<>();
     email.put("type", "string");
     email.put("format", "email");
     email.put("description", "User email address");
     
-    // Age property with numeric constraints
+    // 年齡屬性，包含數字限制
     Map<String, Object> age = new HashMap<>();
     age.put("type", "integer");
     age.put("minimum", 13);
     age.put("maximum", 120);
     age.put("description", "User age in years");
     
-    // Enumerated property
+    // 列舉型屬性
     Map<String, Object> subscription = new HashMap<>();
     subscription.put("type", "string");
     subscription.put("enum", Arrays.asList("free", "basic", "premium"));
@@ -730,17 +747,17 @@ Map<String, Object> getSchema() {
 }
 ```
 
-#### 3. 一致的返回結構
+#### 3. 一致回傳結構
 
-保持響應結構的一致性，使模型更容易解釋結果：
+維持回應結構一致，使模型易於解釋結果：
 
 ```python
 async def execute_async(self, request):
     try:
-        # Process request
+        # 處理請求
         results = await self._search_database(request.parameters["query"])
         
-        # Always return a consistent structure
+        # 始終返回一致的結構
         return ToolResponse(
             result={
                 "matches": [self._format_item(item) for item in results],
@@ -773,11 +790,11 @@ def _format_item(self, item):
 
 ### 錯誤處理
 
-穩健的錯誤處理對於 MCP 工具保持可靠性至關重要。
+完善錯誤處理對 MCP 工具穩定性至關重要。
 
-#### 1. 優雅的錯誤處理
+#### 1. 優雅錯誤處理
 
-在適當的層級處理錯誤並提供信息豐富的消息：
+於適當層級處理錯誤並提供資訊豐富的訊息：
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -819,15 +836,15 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 }
 ```
 
-#### 2. 結構化錯誤響應
+#### 2. 結構化錯誤回應
 
-盡可能返回結構化的錯誤信息：
+盡可能回傳結構化錯誤資訊：
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
     try {
-        // Implementation
+        // 實作
     } catch (Exception ex) {
         Map<String, Object> errorResult = new HashMap<>();
         
@@ -845,37 +862,37 @@ public ToolResponse execute(ToolRequest request) {
                 .build();
         }
         
-        // Re-throw other exceptions as ToolExecutionException
+        // 將其他例外重新拋出為 ToolExecutionException
         throw new ToolExecutionException("Tool execution failed: " + ex.getMessage(), ex);
     }
 }
 ```
 
-#### 3. 重試邏輯
+#### 3. 重試機制
 
-對於暫時性故障實施適當的重試邏輯：
+為暫時性失敗實作合適的重試邏輯：
 
 ```python
 async def execute_async(self, request):
     max_retries = 3
     retry_count = 0
-    base_delay = 1  # seconds
+    base_delay = 1  # 秒
     
     while retry_count < max_retries:
         try:
-            # Call external API
+            # 呼叫外部 API
             return await self._call_api(request.parameters)
         except TransientError as e:
             retry_count += 1
             if retry_count >= max_retries:
                 raise ToolExecutionException(f"Operation failed after {max_retries} attempts: {str(e)}")
                 
-            # Exponential backoff
+            # 指數回退
             delay = base_delay * (2 ** (retry_count - 1))
             logging.warning(f"Transient error, retrying in {delay}s: {str(e)}")
             await asyncio.sleep(delay)
         except Exception as e:
-            # Non-transient error, don't retry
+            # 非暫時性錯誤，不要重試
             raise ToolExecutionException(f"Operation failed: {str(e)}")
 ```
 
@@ -883,7 +900,7 @@ async def execute_async(self, request):
 
 #### 1. 快取
 
-對耗時操作實施快取：
+為高成本操作實施快取：
 
 ```csharp
 public class CachedDataTool : IMcpTool
@@ -931,7 +948,7 @@ public class CachedDataTool : IMcpTool
 
 #### 2. 非同步處理
 
-對於 I/O 密集型操作使用非同步編程模式：
+針對 I/O 受限操作使用非同步程式設計模式：
 
 ```java
 public class AsyncDocumentProcessingTool implements Tool {
@@ -942,23 +959,23 @@ public class AsyncDocumentProcessingTool implements Tool {
     public ToolResponse execute(ToolRequest request) {
         String documentId = request.getParameters().get("documentId").asText();
         
-        // For long-running operations, return a processing ID immediately
+        // 對於長時間運行的操作，立即返回處理 ID
         String processId = UUID.randomUUID().toString();
         
-        // Start async processing
+        // 開始非同步處理
         CompletableFuture.runAsync(() -> {
             try {
-                // Perform long-running operation
+                // 執行長時間運行的操作
                 documentService.processDocument(documentId);
                 
-                // Update status (would typically be stored in a database)
+                // 更新狀態（通常會儲存在資料庫中）
                 processStatusRepository.updateStatus(processId, "completed");
             } catch (Exception ex) {
                 processStatusRepository.updateStatus(processId, "failed", ex.getMessage());
             }
         }, executorService);
         
-        // Return immediate response with process ID
+        // 返回包含處理 ID 的立即回應
         Map<String, Object> result = new HashMap<>();
         result.put("processId", processId);
         result.put("status", "processing");
@@ -967,7 +984,7 @@ public class AsyncDocumentProcessingTool implements Tool {
         return new ToolResponse.Builder().setResult(result).build();
     }
     
-    // Companion status check tool
+    // 附屬狀態檢查工具
     public class ProcessStatusTool implements Tool {
         @Override
         public ToolResponse execute(ToolRequest request) {
@@ -982,33 +999,33 @@ public class AsyncDocumentProcessingTool implements Tool {
 
 #### 3. 資源節流
 
-實施資源節流以防止過載：
+實施資源節流避免系統過載：
 
 ```python
 class ThrottledApiTool(Tool):
     def __init__(self):
         self.rate_limiter = TokenBucketRateLimiter(
-            tokens_per_second=5,  # Allow 5 requests per second
-            bucket_size=10        # Allow bursts up to 10 requests
+            tokens_per_second=5,  # 允許每秒 5 次請求
+            bucket_size=10        # 允許突發請求最高達 10 次
         )
     
     async def execute_async(self, request):
-        # Check if we can proceed or need to wait
+        # 檢查是否可以繼續或需要等待
         delay = self.rate_limiter.get_delay_time()
         
         if delay > 0:
-            if delay > 2.0:  # If wait is too long
+            if delay > 2.0:  # 如果等待時間太長
                 raise ToolExecutionException(
                     f"Rate limit exceeded. Please try again in {delay:.1f} seconds."
                 )
             else:
-                # Wait for the appropriate delay time
+                # 等待適當的延遲時間
                 await asyncio.sleep(delay)
         
-        # Consume a token and proceed with the request
+        # 消耗一個令牌並繼續請求
         self.rate_limiter.consume()
         
-        # Call API
+        # 呼叫 API
         result = await self._call_api(request.parameters)
         return ToolResponse(result=result)
 
@@ -1026,7 +1043,7 @@ class TokenBucketRateLimiter:
             if self.tokens >= 1:
                 return 0
             
-            # Calculate time until next token available
+            # 計算下一個令牌可用的時間
             return (1 - self.tokens) / self.tokens_per_second
     
     async def consume(self):
@@ -1038,7 +1055,7 @@ class TokenBucketRateLimiter:
         now = time.time()
         elapsed = now - self.last_refill
         
-        # Add new tokens based on elapsed time
+        # 根據經過的時間新增令牌
         new_tokens = elapsed * self.tokens_per_second
         self.tokens = min(self.bucket_size, self.tokens + new_tokens)
         self.last_refill = now
@@ -1048,7 +1065,7 @@ class TokenBucketRateLimiter:
 
 #### 1. 輸入驗證
 
-始終徹底驗證輸入參數：
+徹底驗證輸入參數：
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -1091,33 +1108,33 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 
 #### 2. 授權檢查
 
-實施正確的授權檢查：
+實作妥當的授權檢查：
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
-    // Get user context from request
+    // 從請求中取得使用者上下文
     UserContext user = request.getContext().getUserContext();
     
-    // Check if user has required permissions
+    // 檢查使用者是否具有必要的權限
     if (!authorizationService.hasPermission(user, "documents:read")) {
         throw new ToolExecutionException("User does not have permission to access documents");
     }
     
-    // For specific resources, check access to that resource
+    // 對於特定資源，檢查對該資源的存取權限
     String documentId = request.getParameters().get("documentId").asText();
     if (!documentService.canUserAccess(user.getId(), documentId)) {
         throw new ToolExecutionException("Access denied to the requested document");
     }
     
-    // Proceed with tool execution
+    // 繼續執行工具
     // ...
 }
 ```
 
-#### 3. 敏感數據處理
+#### 3. 敏感資料處理
 
-謹慎處理敏感數據：
+妥善處理敏感資料：
 
 ```python
 class SecureDataTool(Tool):
@@ -1135,46 +1152,46 @@ class SecureDataTool(Tool):
         user_id = request.parameters["userId"]
         include_sensitive = request.parameters.get("includeSensitiveData", False)
         
-        # Get user data
+        # 獲取用戶資料
         user_data = await self.user_service.get_user_data(user_id)
         
-        # Filter sensitive fields unless explicitly requested AND authorized
+        # 過濾敏感欄位，除非有明確請求且獲得授權
         if not include_sensitive or not self._is_authorized_for_sensitive_data(request):
             user_data = self._redact_sensitive_fields(user_data)
         
         return ToolResponse(result=user_data)
     
     def _is_authorized_for_sensitive_data(self, request):
-        # Check authorization level in request context
+        # 檢查請求上下文中的授權等級
         auth_level = request.context.get("authorizationLevel")
         return auth_level == "admin"
     
     def _redact_sensitive_fields(self, user_data):
-        # Create a copy to avoid modifying the original
+        # 建立副本以避免修改原始資料
         redacted = user_data.copy()
         
-        # Redact specific sensitive fields
+        # 塗黑特定的敏感欄位
         sensitive_fields = ["ssn", "creditCardNumber", "password"]
         for field in sensitive_fields:
             if field in redacted:
                 redacted[field] = "REDACTED"
         
-        # Redact nested sensitive data
+        # 塗黑巢狀的敏感資料
         if "financialInfo" in redacted:
             redacted["financialInfo"] = {"available": True, "accessRestricted": True}
         
         return redacted
 ```
 
-## MCP 工具的測試最佳實踐
+## MCP 工具測試最佳實踐
 
-全面的測試能確保 MCP 工具正常運行，處理邊界情況，並與系統其他部分正確集成。
+完整測試確保 MCP 工具正確運作、邊界狀況能被妥善處理，並能順利整合至系統。
 
 ### 單元測試
 
-#### 1. 單獨測試每個工具
+#### 1. 隔離測試各個工具
 
-為每個工具的功能創建專注的測試：
+為每個工具功能撰寫專注測試：
 
 ```csharp
 [Fact]
@@ -1236,25 +1253,25 @@ public async Task WeatherTool_InvalidLocation_ThrowsToolExecutionException()
 
 #### 2. 架構驗證測試
 
-測試架構是否有效並正確執行約束：
+測試架構正確，並正確強制約束條件：
 
 ```java
 @Test
 public void testSchemaValidation() {
-    // Create tool instance
+    // 建立工具實例
     SearchTool searchTool = new SearchTool();
     
-    // Get schema
+    // 取得結構
     Object schema = searchTool.getSchema();
     
-    // Convert schema to JSON for validation
+    // 將結構轉換為 JSON 以便驗證
     String schemaJson = objectMapper.writeValueAsString(schema);
     
-    // Validate schema is valid JSONSchema
+    // 驗證結構是否為有效的 JSONSchema
     JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
     JsonSchema jsonSchema = factory.getJsonSchema(schemaJson);
     
-    // Test valid parameters
+    // 測試有效參數
     JsonNode validParams = objectMapper.createObjectNode()
         .put("query", "test query")
         .put("limit", 5);
@@ -1262,14 +1279,14 @@ public void testSchemaValidation() {
     ProcessingReport validReport = jsonSchema.validate(validParams);
     assertTrue(validReport.isSuccess());
     
-    // Test missing required parameter
+    // 測試缺少必需參數
     JsonNode missingRequired = objectMapper.createObjectNode()
         .put("limit", 5);
         
     ProcessingReport missingReport = jsonSchema.validate(missingRequired);
     assertFalse(missingReport.isSuccess());
     
-    // Test invalid parameter type
+    // 測試無效的參數類型
     JsonNode invalidType = objectMapper.createObjectNode()
         .put("query", "test")
         .put("limit", "not-a-number");
@@ -1281,19 +1298,19 @@ public void testSchemaValidation() {
 
 #### 3. 錯誤處理測試
 
-為錯誤情況創建特定測試：
+為錯誤情境建立專門測試：
 
 ```python
 @pytest.mark.asyncio
 async def test_api_tool_handles_timeout():
-    # Arrange
-    tool = ApiTool(timeout=0.1)  # Very short timeout
+    # 安排
+    tool = ApiTool(timeout=0.1)  # 非常短的超時時間
     
-    # Mock a request that will time out
+    # 模擬一個將會逾時的請求
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
-            callback=lambda *args, **kwargs: asyncio.sleep(0.5)  # Longer than timeout
+            callback=lambda *args, **kwargs: asyncio.sleep(0.5)  # 比超時時間更長
         )
         
         request = ToolRequest(
@@ -1301,19 +1318,19 @@ async def test_api_tool_handles_timeout():
             parameters={"url": "https://api.example.com/data"}
         )
         
-        # Act & Assert
+        # 執行與斷言
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception message
+        # 驗證例外訊息
         assert "timed out" in str(exc_info.value).lower()
 
 @pytest.mark.asyncio
 async def test_api_tool_handles_rate_limiting():
-    # Arrange
+    # 安排
     tool = ApiTool()
     
-    # Mock a rate-limited response
+    # 模擬一個受限頻率的回應
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
@@ -1327,21 +1344,21 @@ async def test_api_tool_handles_rate_limiting():
             parameters={"url": "https://api.example.com/data"}
         )
         
-        # Act & Assert
+        # 執行與斷言
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception contains rate limit information
+        # 驗證例外包含頻率限制資訊
         error_msg = str(exc_info.value).lower()
         assert "rate limit" in error_msg
         assert "try again" in error_msg
 ```
 
-### 集成測試
+### 整合測試
 
 #### 1. 工具鏈測試
 
-測試工具在預期組合中的協同工作：
+測試工具預期組合下的協同運作：
 
 ```csharp
 [Fact]
@@ -1382,7 +1399,7 @@ public async Task DataProcessingWorkflow_CompletesSuccessfully()
 
 #### 2. MCP 伺服器測試
 
-測試 MCP 伺服器的完整工具註冊和執行：
+測試含完整工具註冊及執行的 MCP 伺服器：
 
 ```java
 @SpringBootTest
@@ -1397,7 +1414,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolDiscovery() throws Exception {
-        // Test the discovery endpoint
+        // 測試探索端點
         mockMvc.perform(get("/mcp/tools"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.tools").isArray())
@@ -1408,7 +1425,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolExecution() throws Exception {
-        // Create tool request
+        // 建立工具請求
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
@@ -1418,7 +1435,7 @@ public class McpServerIntegrationTest {
         parameters.put("b", 7);
         request.put("parameters", parameters);
         
-        // Send request and verify response
+        // 發送請求並驗證回應
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1428,17 +1445,17 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolValidation() throws Exception {
-        // Create invalid tool request
+        // 建立無效的工具請求
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("operation", "divide");
         parameters.put("a", 10);
-        // Missing parameter "b"
+        // 缺少參數「b」
         request.put("parameters", parameters);
         
-        // Send request and verify error response
+        // 發送請求並驗證錯誤回應
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1448,17 +1465,17 @@ public class McpServerIntegrationTest {
 }
 ```
 
-#### 3. 端到端測試
+#### 3. 端對端測試
 
 測試從模型提示到工具執行的完整工作流程：
 
 ```python
 @pytest.mark.asyncio
 async def test_model_interaction_with_tool():
-    # Arrange - Set up MCP client and mock model
+    # 安排 - 設定 MCP 用戶端與模擬模型
     mcp_client = McpClient(server_url="http://localhost:5000")
     
-    # Mock model responses
+    # 模擬模型回應
     mock_model = MockLanguageModel([
         MockResponse(
             "What's the weather in Seattle?",
@@ -1473,7 +1490,7 @@ async def test_model_interaction_with_tool():
         )
     ])
     
-    # Mock weather tool response
+    # 模擬天氣工具回應
     with aioresponses() as mocked:
         mocked.post(
             "http://localhost:5000/mcp/execute",
@@ -1489,14 +1506,14 @@ async def test_model_interaction_with_tool():
             }
         )
         
-        # Act
+        # 行動
         response = await mcp_client.send_prompt(
             "What's the weather in Seattle?",
             model=mock_model,
             allowed_tools=["weatherForecast"]
         )
         
-        # Assert
+        # 斷言
         assert "Seattle" in response.generated_text
         assert "65" in response.generated_text
         assert "Sunny" in response.generated_text
@@ -1509,7 +1526,7 @@ async def test_model_interaction_with_tool():
 
 #### 1. 負載測試
 
-測試 MCP 伺服器能處理的並發請求數量：
+測試 MCP 伺服器可處理的並發請求數：
 
 ```csharp
 [Fact]
@@ -1544,7 +1561,7 @@ public async Task McpServer_HandlesHighConcurrency()
 
 #### 2. 壓力測試
 
-在極端負載下測試系統：
+在極端負載下對系統進行測試：
 
 ```java
 @Test
@@ -1553,13 +1570,13 @@ public void testServerUnderStress() {
     int rampUpTimeSeconds = 60;
     int testDurationSeconds = 300;
     
-    // Set up JMeter for stress testing
+    // 設定 JMeter 進行壓力測試
     StandardJMeterEngine jmeter = new StandardJMeterEngine();
     
-    // Configure JMeter test plan
+    // 配置 JMeter 測試計劃
     HashTree testPlanTree = new HashTree();
     
-    // Create test plan, thread group, samplers, etc.
+    // 建立測試計劃、執行緒組、取樣器等
     TestPlan testPlan = new TestPlan("MCP Server Stress Test");
     testPlanTree.add(testPlan);
     
@@ -1571,7 +1588,7 @@ public void testServerUnderStress() {
     
     testPlanTree.add(threadGroup);
     
-    // Add HTTP sampler for tool execution
+    // 新增執行工具的 HTTP 取樣器
     HTTPSampler toolExecutionSampler = new HTTPSampler();
     toolExecutionSampler.setDomain("localhost");
     toolExecutionSampler.setPort(5000);
@@ -1582,29 +1599,29 @@ public void testServerUnderStress() {
     
     threadGroup.add(toolExecutionSampler);
     
-    // Add listeners
+    // 新增監聽器
     SummaryReport summaryReport = new SummaryReport();
     threadGroup.add(summaryReport);
     
-    // Run test
+    // 執行測試
     jmeter.configure(testPlanTree);
     jmeter.run();
     
-    // Validate results
+    // 驗證結果
     assertEquals(0, summaryReport.getErrorCount());
-    assertTrue(summaryReport.getAverage() < 200); // Average response time < 200ms
-    assertTrue(summaryReport.getPercentile(90.0) < 500); // 90th percentile < 500ms
+    assertTrue(summaryReport.getAverage() < 200); // 平均回應時間 < 200ms
+    assertTrue(summaryReport.getPercentile(90.0) < 500); // 第90百分位數 < 500ms
 }
 ```
 
 #### 3. 監控與分析
 
-設置監控以進行長期性能分析：
+建立監控以進行長期效能分析：
 
 ```python
-# Configure monitoring for an MCP server
+# 配置 MCP 伺服器的監控
 def configure_monitoring(server):
-    # Set up Prometheus metrics
+    # 設置 Prometheus 指標
     prometheus_metrics = {
         "request_count": Counter("mcp_requests_total", "Total MCP requests"),
         "request_latency": Histogram(
@@ -1630,10 +1647,10 @@ def configure_monitoring(server):
         )
     }
     
-    # Add middleware for timing and recording metrics
+    # 新增用於計時和記錄指標的中介軟體
     server.add_middleware(PrometheusMiddleware(prometheus_metrics))
     
-    # Expose metrics endpoint
+    # 開放指標端點
     @server.router.get("/metrics")
     async def metrics():
         return generate_latest()
@@ -1643,27 +1660,27 @@ def configure_monitoring(server):
 
 ## MCP 工作流程設計模式
 
-良好的 MCP 工作流程設計能提升效率、可靠性和可維護性。以下是關鍵模式：
+良好設計的 MCP 工作流程提升效率、穩定性與可維護性。以下為關鍵模式：
 
 ### 1. 工具鏈模式
 
-將多個工具連接成序列，每個工具的輸出成為下一個工具的輸入：
+將多個工具串聯，前一工具的輸出成為下一工具的輸入：
 
 ```python
-# Python Chain of Tools implementation
+# Python 工具鏈實作
 class ChainWorkflow:
     def __init__(self, tools_chain):
-        self.tools_chain = tools_chain  # List of tool names to execute in sequence
+        self.tools_chain = tools_chain  # 要依序執行的工具名稱列表
     
     async def execute(self, mcp_client, initial_input):
         current_result = initial_input
         all_results = {"input": initial_input}
         
         for tool_name in self.tools_chain:
-            # Execute each tool in the chain, passing previous result
+            # 執行鏈中的每個工具，傳入前一結果
             response = await mcp_client.execute_tool(tool_name, current_result)
             
-            # Store result and use as input for next tool
+            # 儲存結果並用作下一工具的輸入
             all_results[tool_name] = response.result
             current_result = response.result
         
@@ -1672,7 +1689,7 @@ class ChainWorkflow:
             "all_results": all_results
         }
 
-# Example usage
+# 範例用法
 data_processing_chain = ChainWorkflow([
     "dataFetch",
     "dataCleaner",
@@ -1688,7 +1705,7 @@ result = await data_processing_chain.execute(
 
 ### 2. 分派器模式
 
-使用中央工具根據輸入分派到專業工具：
+使用中央工具根據輸入分派至專門工具：
 
 ```csharp
 public class ContentDispatcherTool : IMcpTool
@@ -1768,7 +1785,7 @@ public class ContentDispatcherTool : IMcpTool
 }
 ```
 
-### 3. 並行處理模式
+### 3. 平行處理模式
 
 同時執行多個工具以提高效率：
 
@@ -1781,11 +1798,11 @@ public class ParallelDataProcessingWorkflow {
     }
     
     public WorkflowResult execute(String datasetId) {
-        // Step 1: Fetch dataset metadata (synchronous)
+        // 第一步：取得資料集描述資料（同步）
         ToolResponse metadataResponse = mcpClient.executeTool("datasetMetadata", 
             Map.of("datasetId", datasetId));
         
-        // Step 2: Launch multiple analyses in parallel
+        // 第二步：同時啟動多個分析
         CompletableFuture<ToolResponse> statisticalAnalysis = CompletableFuture.supplyAsync(() ->
             mcpClient.executeTool("statisticalAnalysis", Map.of(
                 "datasetId", datasetId,
@@ -1807,25 +1824,25 @@ public class ParallelDataProcessingWorkflow {
             ))
         );
         
-        // Wait for all parallel tasks to complete
+        // 等待所有平行任務完成
         CompletableFuture<Void> allAnalyses = CompletableFuture.allOf(
             statisticalAnalysis, correlationAnalysis, outlierDetection
         );
         
-        allAnalyses.join();  // Wait for completion
+        allAnalyses.join();  // 等待完成
         
-        // Step 3: Combine results
+        // 第三步：合併結果
         Map<String, Object> combinedResults = new HashMap<>();
         combinedResults.put("metadata", metadataResponse.getResult());
         combinedResults.put("statistics", statisticalAnalysis.join().getResult());
         combinedResults.put("correlations", correlationAnalysis.join().getResult());
         combinedResults.put("outliers", outlierDetection.join().getResult());
         
-        // Step 4: Generate summary report
+        // 第四步：產生摘要報告
         ToolResponse summaryResponse = mcpClient.executeTool("reportGenerator", 
             Map.of("analysisResults", combinedResults));
         
-        // Return complete workflow result
+        // 回傳完整工作流程結果
         WorkflowResult result = new WorkflowResult();
         result.setDatasetId(datasetId);
         result.setAnalysisResults(combinedResults);
@@ -1836,9 +1853,9 @@ public class ParallelDataProcessingWorkflow {
 }
 ```
 
-### 4. 錯誤恢復模式
+### 4. 錯誤復原模式
 
-為工具故障實施優雅的回退機制：
+為工具失敗實作優雅回退機制：
 
 ```python
 class ResilientWorkflow:
@@ -1847,7 +1864,7 @@ class ResilientWorkflow:
     
     async def execute_with_fallback(self, primary_tool, fallback_tool, parameters):
         try:
-            # Try primary tool first
+            # 先嘗試主要工具
             response = await self.client.execute_tool(primary_tool, parameters)
             return {
                 "result": response.result,
@@ -1855,12 +1872,12 @@ class ResilientWorkflow:
                 "tool": primary_tool
             }
         except ToolExecutionException as e:
-            # Log the failure
+            # 記錄失敗情況
             logging.warning(f"Primary tool '{primary_tool}' failed: {str(e)}")
             
-            # Fall back to secondary tool
+            # 回退到次要工具
             try:
-                # Might need to transform parameters for fallback tool
+                # 可能需要為回退工具轉換參數
                 fallback_params = self._adapt_parameters(parameters, primary_tool, fallback_tool)
                 
                 response = await self.client.execute_tool(fallback_tool, fallback_params)
@@ -1871,7 +1888,7 @@ class ResilientWorkflow:
                     "primaryError": str(e)
                 }
             except ToolExecutionException as fallback_error:
-                # Both tools failed
+                # 兩個工具皆失敗
                 logging.error(f"Both primary and fallback tools failed. Fallback error: {str(fallback_error)}")
                 raise WorkflowExecutionException(
                     f"Workflow failed: primary error: {str(e)}; fallback error: {str(fallback_error)}"
@@ -1879,22 +1896,22 @@ class ResilientWorkflow:
     
     def _adapt_parameters(self, params, from_tool, to_tool):
         """Adapt parameters between different tools if needed"""
-        # This implementation would depend on the specific tools
-        # For this example, we'll just return the original parameters
+        # 此實作將取決於具體的工具
+        # 在此範例中，我們只會返回原始參數
         return params
 
-# Example usage
+# 範例用法
 async def get_weather(workflow, location):
     return await workflow.execute_with_fallback(
-        "premiumWeatherService",  # Primary (paid) weather API
-        "basicWeatherService",    # Fallback (free) weather API
+        "premiumWeatherService",  # 主要（付費）天氣 API
+        "basicWeatherService",    # 回退（免費）天氣 API
         {"location": location}
     )
 ```
 
 ### 5. 工作流程組合模式
 
-通過組合簡單工作流程構建複雜工作流程：
+透過組合較簡單的工作流程構建複雜流程：
 
 ```csharp
 public class CompositeWorkflow : IWorkflow
@@ -1941,35 +1958,35 @@ var result = await documentWorkflow.ExecuteAsync(new WorkflowContext {
 });
 ```
 
-# 測試 MCP 伺服器：最佳實踐與重要提示
+# 測試 MCP 伺服器：最佳實踐與頂級建議
 
 ## 概述
 
-測試是開發可靠、高品質 MCP 伺服器的重要環節。本指南提供全面的最佳實踐和提示，幫助您在開發生命周期中測試 MCP 伺服器，包括單元測試、集成測試和端到端驗證。
+測試是開發可靠、高品質 MCP 伺服器的關鍵。本指南提供全面的最佳實踐與要點，涵蓋從單元測試、整合測試至端對端驗證的整個開發週期。
 
-## 為什麼 MCP 伺服器的測試至關重要
+## 為何測試對 MCP 伺服器重要
 
-MCP 伺服器是 AI 模型與客戶端應用之間的重要中介。全面的測試能確保：
+MCP 伺服器作為 AI 模型與客戶端應用間重要中介。徹底測試確保：
 
-- 生產環境中的可靠性
-- 正確處理請求和響應
-- 正確實施 MCP 規範
-- 抵禦故障和邊界情況的能力
-- 在不同負載下的穩定性能
+- 生產環境的可靠性
+- 請求與回應的正確處理
+- MCP 規範的正確實作
+- 抗失敗性與邊界條件的耐受性
+- 不同負載下的穩定效能
 
-## MCP 伺服器的單元測試
+## MCP 伺服器單元測試
 
-### 單元測試（基礎層）
+### 單元測試（基礎）
 
-單元測試在隔離環境中驗證 MCP 伺服器的各個組件。
+單元測試用以獨立驗證 MCP 伺服器的單一元件。
 
 #### 測試內容
 
 1. **資源處理器**：獨立測試每個資源處理器的邏輯
-2. **工具實現**：使用各種輸入驗證工具行為
+2. **工具實作**：以各種輸入驗證工具行為
 3. **提示模板**：確保提示模板正確渲染
 4. **架構驗證**：測試參數驗證邏輯
-5. **錯誤處理**：驗證對無效輸入的錯誤響應
+5. **錯誤處理**：驗證無效輸入的錯誤回應
 
 #### 單元測試最佳實踐
 
@@ -1997,9 +2014,9 @@ public async Task CalculatorTool_Add_ReturnsCorrectSum()
 ```
 
 ```python
-# Example unit test for a calculator tool in Python
+# Python 計算器工具的範例單元測試
 def test_calculator_tool_add():
-    # Arrange
+    # 安排
     calculator = CalculatorTool()
     parameters = {
         "operation": "add",
@@ -2007,27 +2024,27 @@ def test_calculator_tool_add():
         "b": 7
     }
     
-    # Act
+    # 執行
     response = calculator.execute(parameters)
     result = json.loads(response.content[0].text)
     
-    # Assert
+    # 斷言
     assert result["value"] == 12
 ```
 
-### 集成測試（中間層）
+### 整合測試（中層）
 
-集成測試驗證 MCP 伺服器各組件之間的交互。
+整合測試驗證 MCP 伺服器元件間交互整合。
 
 #### 測試內容
 
-1. **伺服器初始化**：測試伺服器在不同配置下的啟動
+1. **伺服器啟動**：測試不同設定下的伺服器啟動
 2. **路由註冊**：驗證所有端點是否正確註冊
-3. **請求處理**：測試完整的請求-響應周期
-4. **錯誤傳播**：確保錯誤在各組件間正確處理
-5. **身份驗證與授權**：測試安全機制
+3. **請求處理**：測試完整請求-回應週期
+4. **錯誤傳播**：確保錯誤在元件間正確處理
+5. **認證與授權**：測試安全機制運作
 
-#### 集成測試最佳實踐
+#### 整合測試最佳實踐
 
 ```csharp
 // Example integration test for MCP server in C#
@@ -2063,27 +2080,27 @@ public async Task Server_ProcessToolRequest_ReturnsValidResponse()
 }
 ```
 
-### 端到端測試（頂層）
+### 端對端測試（頂層）
 
-端到端測試驗證從客戶端到伺服器的完整系統行為。
+端對端測試驗證從客戶端至伺服器的完整系統行為。
 
 #### 測試內容
 
-1. **客戶端-伺服器通信**：測試完整的請求-響應周期
-2. **真實客戶端 SDK**：使用實際客戶端實現進行測試
-3. **負載下的性能**：驗證多個並發請求的行為
-4. **錯誤恢復**：測試系統從故障中恢復的能力
-5. **長時間運行的操作**：驗證流式和長時間操作的處理
+1. **客戶端-伺服器通訊**：測試完整請求與回應循環
+2. **實際客戶端 SDK**：使用真實客戶端實作測試
+3. **負載下效能**：驗證多併發請求行為
+4. **錯誤復原**：測試系統從失敗復原能力
+5. **長執行操作**：驗證串流與長時間操作的處理
 
-#### 端到端測試最佳實踐
+#### 端對端測試最佳實踐
 
 ```typescript
-// Example E2E test with a client in TypeScript
+// 使用 TypeScript 的客戶端範例端對端測試
 describe('MCP Server E2E Tests', () => {
   let client: McpClient;
   
   beforeAll(async () => {
-    // Start server in test environment
+    // 在測試環境啟動伺服器
     await startTestServer();
     client = new McpClient('http://localhost:5000');
   });
@@ -2093,14 +2110,14 @@ describe('MCP Server E2E Tests', () => {
   });
   
   test('Client can invoke calculator tool and get correct result', async () => {
-    // Act
+    // 執行動作
     const response = await client.invokeToolAsync('calculator', {
       operation: 'divide',
       a: 20,
       b: 4
     });
     
-    // Assert
+    // 斷言
     expect(response.statusCode).toBe(200);
     expect(response.content[0].text).toContain('5');
   });
@@ -2109,16 +2126,16 @@ describe('MCP Server E2E Tests', () => {
 
 ## MCP 測試的模擬策略
 
-模擬是隔離測試組件的關鍵。
+模擬有助於測試時隔離元件。
 
-### 模擬的組件
+### 需模擬的元件
 
-1. **外部 AI 模型**：模擬模型響應以進行可預測的測試
+1. **外部 AI 模型**：模擬模型回應以確保測試可預測
 2. **外部服務**：模擬 API 依賴（資料庫、第三方服務）
-3. **身份驗證服務**：模擬身份提供者
-4. **資源提供者**：模擬昂貴的資源處理器
+3. **認證服務**：模擬身份驗證提供者
+4. **資源提供者**：模擬高成本資源處理器
 
-### 範例：模擬 AI 模型響應
+### 範例：模擬 AI 模型回應
 
 ```csharp
 // C# example with Moq
@@ -2136,48 +2153,48 @@ var server = new McpServer(modelClient: mockModel.Object);
 ```
 
 ```python
-# Python example with unittest.mock
+# 使用 unittest.mock 的 Python 範例
 @patch('mcp_server.models.OpenAIModel')
 def test_with_mock_model(mock_model):
-    # Configure mock
+    # 設定模擬物件
     mock_model.return_value.generate_response.return_value = {
         "text": "Mocked model response",
         "finish_reason": "completed"
     }
     
-    # Use mock in test
+    # 在測試中使用模擬物件
     server = McpServer(model_client=mock_model)
-    # Continue with test
+    # 繼續進行測試
 ```
 
 ## 性能測試
 
-性能測試對於生產 MCP 伺服器至關重要。
+性能測試對生產 MCP 伺服器至關重要。
 
-### 測試內容
+### 測量項目
 
-1. **延遲**：請求的響應時間
-2. **吞吐量**：每秒處理的請求數量
-3. **資源使用**：CPU、記憶體、網路使用情況
-4. **並發處理能力**：在並行請求下的行為
-5. **擴展特性**：隨著負載增加的性能表現
+1. **延遲**：請求回應時間
+2. **吞吐量**：每秒處理請求數
+3. **資源利用率**：CPU、記憶體、網路使用率
+4. **併發處理**：多請求同時處理表現
+5. **擴展特性**：隨負載增加的效能狀況
 
 ### 性能測試工具
 
 - **k6**：開源負載測試工具
-- **JMeter**：全面的性能測試工具
+- **JMeter**：全面性能測試工具
 - **Locust**：基於 Python 的負載測試工具
-- **Azure Load Testing**：基於雲的性能測試工具
+- **Azure Load Testing**：雲端性能測試服務
 
 ### 範例：使用 k6 進行基本負載測試
 
 ```javascript
-// k6 script for load testing MCP server
+// 用於負載測試MCP伺服器的k6腳本
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 10,  // 10 virtual users
+  vus: 10,  // 10個虛擬使用者
   duration: '30s',
 };
 
@@ -2209,18 +2226,17 @@ export default function () {
 }
 ```
 
-## MCP 伺服器的測試自動化
+## MCP 伺服器測試自動化
 
-自動化測試能確保一致的質量並加快反饋周期。
+自動化測試可確保持續品質與更快的回饋迴圈。
 
-### CI/CD 集成
+### CI/CD 整合
+1. **在拉取請求上執行單元測試**：確保程式碼變更不會破壞現有功能  
+2. **在預備環境執行整合測試**：在預生產環境中執行整合測試  
+3. **性能基準**：維護性能基準以捕捉迴歸問題  
+4. **安全掃描**：將安全測試自動化作為流程的一部分  
 
-1. **在拉取請求上運行單元測試**：確保代碼更改不破壞現有功能
-2. **在預生產環境中進行集成測試**：運行集成測試以驗證系統
-3. **效能基準**：維持效能基準以捕捉回歸問題  
-4. **安全掃描**：將安全測試自動化，作為管道的一部分  
-
-### 範例 CI 管道 (GitHub Actions)
+### 範例 CI 流程 (GitHub Actions)
 
 ```yaml
 name: MCP Server Tests
@@ -2258,20 +2274,20 @@ jobs:
     - name: Performance Tests
       run: dotnet run --project tests/PerformanceTests/PerformanceTests.csproj
 ```
+  
+## MCP 規格相容性測試  
 
-## 測試 MCP 規範的合規性  
+驗證您的伺服器是否正確實作 MCP 規格。  
 
-確認您的伺服器正確實現 MCP 規範。  
+### 主要相容性範疇  
 
-### 關鍵合規領域  
+1. **API 端點**：測試必要端點（/resources、/tools 等）  
+2. **請求/回應格式**：驗證規範相容性  
+3. **錯誤代碼**：驗證各種情境的正確狀態碼  
+4. **內容類型**：測試不同內容類型的處理  
+5. **認證流程**：驗證規格相符的驗證機制  
 
-1. **API 端點**：測試必要的端點 (/resources, /tools 等)  
-2. **請求/回應格式**：驗證符合架構規範  
-3. **錯誤代碼**：確認各種情境下的正確狀態代碼  
-4. **內容類型**：測試對不同內容類型的處理  
-5. **身份驗證流程**：驗證符合規範的身份驗證機制  
-
-### 合規測試套件  
+### 相容性測試套件  
 
 ```csharp
 [Fact]
@@ -2297,63 +2313,69 @@ public async Task Server_ResourceEndpoint_ReturnsCorrectSchema()
     });
 }
 ```
-
+  
 ## 有效 MCP 伺服器測試的十大技巧  
 
-1. **分開測試工具定義**：獨立驗證架構定義，而非工具邏輯  
-2. **使用參數化測試**：使用多種輸入（包括邊界情況）測試工具  
-3. **檢查錯誤回應**：驗證所有可能錯誤情況的正確錯誤處理  
-4. **測試授權邏輯**：確保不同用戶角色的正確訪問控制  
-5. **監控測試覆蓋率**：目標是關鍵路徑代碼的高覆蓋率  
-6. **測試串流回應**：驗證對串流內容的正確處理  
-7. **模擬網絡問題**：測試在網絡狀況不佳時的行為  
-8. **測試資源限制**：驗證在達到配額或速率限制時的行為  
-9. **自動化回歸測試**：建立在每次代碼變更時運行的測試套件  
-10. **記錄測試案例**：維護清晰的測試場景文檔  
+1. **獨立測試工具定義**：獨立驗證結構定義，與工具邏輯分開  
+2. **使用參數化測試**：用各種輸入（含邊界條件）測試工具  
+3. **檢查錯誤響應**：驗證所有可能錯誤情況的正確錯誤處理  
+4. **測試授權邏輯**：確保不同使用者角色有適當的存取控制  
+5. **監控測試覆蓋率**：目標為關鍵路徑程式碼的高覆蓋率  
+6. **測試串流回應**：驗證串流內容的正確處理  
+7. **模擬網路問題**：測試在網路不佳狀況下的行為  
+8. **測試資源限制**：驗證達到配額或速率限制時的行為  
+9. **自動化迴歸測試**：建立每次程式碼變更都會執行的測試集  
+10. **文件化測試案例**：保持清晰的測試場景文件  
 
 ## 常見測試陷阱  
 
-- **過度依賴順利路徑測試**：確保徹底測試錯誤情況  
-- **忽視效能測試**：在影響生產之前識別瓶頸  
-- **僅進行孤立測試**：結合單元測試、整合測試和端到端測試  
-- **API 覆蓋不完整**：確保所有端點和功能都被測試  
-- **不一致的測試環境**：使用容器確保一致的測試環境  
+- **過度依賴順利路徑測試**：務必徹底測試錯誤情況  
+- **忽略效能測試**：提前找出瓶頸，避免影響生產環境  
+- **僅在隔離環境測試**：結合單元、整合與端對端測試  
+- **不完整的 API 覆蓋**：確保所有端點及功能皆有測試  
+- **測試環境不一致**：使用容器確保測試環境一致性  
 
 ## 結論  
 
-全面的測試策略對於開發可靠、高品質的 MCP 伺服器至關重要。通過實施本指南中概述的最佳實踐和技巧，您可以確保您的 MCP 實現達到最高的品質、可靠性和效能標準。  
+全面的測試策略是開發可靠且高品質 MCP 伺服器的關鍵。透過本指南中提出的最佳實踐與技巧，您可以確保 MCP 實作達到最高的品質、可靠度與效能標準。  
 
-## 關鍵要點  
+## 重要重點  
 
-1. **工具設計**：遵循單一職責原則，使用依賴注入，並設計為可組合性  
-2. **架構設計**：創建清晰、文件齊全的架構，並具有適當的驗證約束  
-3. **錯誤處理**：實現優雅的錯誤處理、結構化的錯誤回應和重試邏輯  
-4. **效能**：使用快取、非同步處理和資源節流  
-5. **安全性**：進行徹底的輸入驗證、授權檢查和敏感數據處理  
-6. **測試**：創建全面的單元測試、整合測試和端到端測試  
-7. **工作流程模式**：應用已建立的模式，如鏈式、分派器和並行處理  
+1. **工具設計**：遵循單一職責原則，使用依賴注入，設計具組合性  
+2. **結構設計**：建立清楚且具備適當驗證約束的結構定義  
+3. **錯誤處理**：實作優雅的錯誤處理、結構化錯誤回應與重試邏輯  
+4. **效能**：使用快取、非同步處理與資源節流  
+5. **安全**：執行完善的輸入驗證、授權檢查與敏感資料處理  
+6. **測試**：建立全面的單元、整合與端對端測試  
+7. **工作流程模式**：運用已建立的模式，如串鏈、分派器和平行處理  
 
 ## 練習  
 
-設計一個 MCP 工具和工作流程，用於文件處理系統：  
+設計一款 MCP 工具和工作流程，用於文件處理系統，該系統需要：  
 
-1. 接收多種格式的文件 (PDF, DOCX, TXT)  
-2. 從文件中提取文本和關鍵信息  
-3. 按類型和內容對文件進行分類  
-4. 為每個文件生成摘要  
+1. 接受多種格式文件（PDF、DOCX、TXT）  
+2. 從文件中抽取文字和關鍵資訊  
+3. 依類型與內容對文件分類  
+4. 產生每份文件的摘要  
 
-實現工具架構、錯誤處理以及最適合此場景的工作流程模式。考慮如何測試此實現。  
+實作工具結構、錯誤處理，並設計最適合該場景的工作流程模式。考慮如何測試此實作。  
 
 ## 資源  
 
-1. 加入 [Azure AI Foundry Discord 社群](https://aka.ms/foundrydevs)，隨時了解最新進展  
-2. 為開源 [MCP 專案](https://github.com/modelcontextprotocol) 做出貢獻  
-3. 在您自己的組織的 AI 計劃中應用 MCP 原則  
-4. 探索針對您行業的專門 MCP 實現  
-5. 考慮參加進階課程，學習特定 MCP 主題，例如多模態整合或企業應用整合  
-6. 通過 [實作實驗室](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) 所學的原則，嘗試構建您自己的 MCP 工具和工作流程  
+1. 加入 [Azure AI Foundry Discord 社群](https://aka.ms/foundrydevs)，掌握最新發展  
+2. 為開源 [MCP 專案](https://github.com/modelcontextprotocol) 貢獻力量  
+3. 在您組織的 AI 計劃中應用 MCP 原則  
+4. 探索專門針對您產業的 MCP 實作  
+5. 考慮參加進階課程，如多模態整合或企業應用整合  
+6. 利用 [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) 所學原則，嘗試自行構建 MCP 工具與工作流程  
 
-下一步：最佳實踐 [案例研究](../09-CaseStudy/README.md)  
+## 下一步  
 
+下一篇：[案例研究](../09-CaseStudy/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **免責聲明**：  
-本文件使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。儘管我們努力確保翻譯的準確性，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於關鍵資訊，建議使用專業人工翻譯。我們對因使用此翻譯而引起的任何誤解或錯誤解釋不承擔責任。
+本文件係使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 所翻譯。雖然我們致力於確保準確性，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於重要資訊，建議尋求專業人工翻譯。我們不對因使用本翻譯而產生的任何誤解或誤譯負責。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

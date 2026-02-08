@@ -1,28 +1,28 @@
-# 案例研究：使用 MCP 從 YouTube 資料更新 Azure DevOps 項目
+# 個案研究：使用 MCP 從 YouTube 數據更新 Azure DevOps 項目
 
-> **Disclaimer:** 市面上已有工具和報告能自動化將 YouTube 等平台的資料更新至 Azure DevOps 項目。以下情境僅作為示範，說明如何運用 MCP 工具進行自動化與整合。
+> **免責聲明：** 市面上已有現成的線上工具和報告，可以自動化地使用像 YouTube 這樣的平台數據更新 Azure DevOps 項目。以下場景純粹作為示範用例，說明如何應用 MCP 工具進行自動化和整合任務。
 
 ## 概述
 
-本案例展示如何利用 Model Context Protocol (MCP) 及其工具，自動化將線上平台（如 YouTube）上的資訊更新至 Azure DevOps (ADO) 工作項目。此情境僅為這些工具廣泛應用能力的一個範例，能靈活調整以符合其他類似的自動化需求。
+本個案研究示範如何使用模型上下文協議（MCP）及其工具，自動化從線上平台如 YouTube 擷取資訊並更新 Azure DevOps（ADO）工作項目的流程。所描述的場景僅是這些工具廣泛功能的一個例子，這些工具能被調整運用於類似的自動化需求。
 
-在此範例中，一位 Advocate 使用 ADO 項目追蹤線上會議，每個項目包含 YouTube 影片的 URL。透過 MCP 工具，Advocate 能以可重複且自動化的方式，將最新的影片觀看次數等指標更新至 ADO 項目。此方法同樣適用於其他需要將線上資料整合至 ADO 或其他系統的情境。
+在此範例中，一位倡導者使用 ADO 項目追蹤線上會議，每項目包含 YouTube 影片 URL。透過 MCP 工具，倡導者可以以可重複且自動的方式，將最新的影片指標（如觀看次數）更新至 ADO 項目。此方法可推廣至其他需要將線上資訊整合至 ADO 或其他系統的案例。
 
-## 情境說明
+## 場景
 
-Advocate 負責追蹤線上會議及社群互動的影響力。每場會議皆以 ADO 工作項目記錄於 'DevRel' 專案中，且工作項目包含 YouTube 影片 URL 欄位。為了準確報告會議的觸及範圍，Advocate 需將當前的影片觀看數及資料擷取日期更新至 ADO 項目。
+一位倡導者負責追蹤線上會議和社群互動的影響力。每場會議皆記錄為 'DevRel' 專案中的 ADO 工作項目，此工作項目含有 YouTube 影片 URL 欄位。為正確報告會議的傳播範圍，倡導者需將 ADO 項目更新為最新的影片觀看數與資訊擷取日期。
 
 ## 使用工具
 
-- [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp)：透過 MCP 程式化存取並更新 ADO 工作項目。
-- [Playwright MCP](https://github.com/microsoft/playwright-mcp)：自動化瀏覽器操作，擷取網頁（如 YouTube 影片統計資料）上的即時數據。
+- [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp)：透過 MCP 實現對 ADO 工作項目的程式化存取與更新。
+- [Playwright MCP](https://github.com/microsoft/playwright-mcp)：自動化瀏覽器操作，擷取網頁（如 YouTube 影片統計）的即時資料。
 
 ## 逐步工作流程
 
-1. **識別 ADO 項目**：從 'DevRel' 專案中取得 ADO 工作項目 ID（例如 1234）。
-2. **擷取 YouTube URL**：使用 Azure DevOps MCP 工具從該工作項目取得 YouTube 影片 URL。
-3. **擷取影片觀看數**：利用 Playwright MCP 工具前往該 YouTube URL，擷取目前的觀看次數。
-4. **更新 ADO 項目**：使用 Azure DevOps MCP 工具，將最新觀看數及擷取日期寫入 ADO 工作項目的「Impact and Learnings」區塊。
+1. **識別 ADO 項目**：從 'DevRel' 專案的 ADO 工作項目 ID（例如 1234）開始。
+2. **擷取 YouTube URL**：使用 Azure DevOps MCP 工具從工作項目取得 YouTube URL。
+3. **擷取觀看次數**：使用 Playwright MCP 工具瀏覽 YouTube URL，擷取影片當前觀看數。
+4. **更新 ADO 項目**：使用 Azure DevOps MCP 工具，將最新觀看數和擷取日期寫入 ADO 工作項目的「影響與學習」區段。
 
 ## 範例提示
 
@@ -38,29 +38,37 @@ Advocate 負責追蹤線上會議及社群互動的影響力。每場會議皆�
 
 ```mermaid
 flowchart TD
-    A[Start: Advocate identifies ADO Item ID] --> B[Get YouTube URL from ADO Item using Azure DevOps MCP]
-    B --> C[Extract current video views using Playwright MCP]
-    C --> D[Update ADO Item's Impact and Learnings section with view count and date]
-    D --> E[End]
+    A[開始：倡議者識別ADO項目ID] --> B[使用Azure DevOps MCP從ADO項目獲取YouTube URL]
+    B --> C[使用Playwright MCP提取當前影片觀看次數]
+    C --> D[使用觀看次數和日期更新ADO項目中的影響和學習部分]
+    D --> E[結束]
 ```
-
 ## 技術實作
 
-- **MCP 編排**：由 MCP 伺服器負責協調 Azure DevOps MCP 與 Playwright MCP 工具的使用。
-- **自動化**：流程可手動觸發，或排程定期執行，確保 ADO 項目資料持續更新。
-- **擴充性**：同樣模式可延伸至更新其他線上指標（如按讚數、留言數）或其他平台的資料。
+- **MCP 協調**：此工作流程由 MCP 伺服器協調，整合 Azure DevOps MCP 與 Playwright MCP 工具的使用。
+- **自動化**：流程可手動觸發，也可排定定期執行，以保持 ADO 項目資料最新。
+- **可擴充性**：相同模式可擴展用以更新 ADO 項目其他線上指標（如點讚、評論）或其他平台數據。
 
 ## 成果與影響
 
-- **效率提升**：自動擷取與更新影片指標，減少 Advocate 的手動工作量。
-- **資料準確**：確保 ADO 項目反映最新的線上資料。
-- **可重複使用**：提供可複製的工作流程，適用於其他資料來源或指標的類似情境。
+- **效率**：減少倡導者的手動操作，自動擷取並更新影片指標。
+- **準確性**：確保 ADO 項目反映線上來源的最新資料。
+- **可重複性**：提供類似場景下，可重複使用的工作流程以整合其他數據來源或指標。
 
-## 參考資料
+## 相關連結
 
 - [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp)
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp)
-- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
+- [模型上下文協議（MCP）](https://modelcontextprotocol.io/)
 
-**免責聲明**：  
-本文件係使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們力求準確，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應視為權威來源。對於重要資訊，建議採用專業人工翻譯。我們不對因使用本翻譯而產生的任何誤解或誤釋負責。
+## 接下來的步驟
+
+- 返回：[個案研究總覽](./README.md)
+- 下一步：[使用 MCP 的即時文件擷取](./docs-mcp/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免責聲明**：
+本文件使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們力求準確，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於重要資訊，建議採用專業人工翻譯。我們不對因使用此翻譯導致的任何誤解或誤釋負責。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
