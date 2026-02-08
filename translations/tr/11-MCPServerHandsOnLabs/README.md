@@ -1,160 +1,163 @@
-# 🚀 PostgreSQL ile MCP Sunucusu - Tam Öğrenme Kılavuzu
+# 🚀 MCP Sunucusu ile PostgreSQL - Tam Öğrenme Rehberi
 
-## 🧠 MCP Veritabanı Entegrasyonu Öğrenme Yolunun Genel Bakışı
+## 🧠 MCP Veritabanı Entegrasyonu Öğrenme Yolunun Genel Görünümü
 
-Bu kapsamlı öğrenme kılavuzu, veritabanlarıyla entegre olan üretime hazır **Model Context Protocol (MCP) sunucuları** oluşturmayı, pratik bir perakende analitiği uygulaması üzerinden öğretir. **Satır Düzeyinde Güvenlik (RLS)**, **anlamsal arama**, **Azure AI entegrasyonu** ve **çok kiracılı veri erişimi** gibi kurumsal düzeydeki kalıpları öğreneceksiniz.
+Bu kapsamlı öğrenme rehberi, perakende analitiği uygulaması ile veritabanlarıyla entegre edilen üretime hazır **Model Context Protocol (MCP) sunucuları** nasıl oluşturulacağını öğretir. **Satır Seviyesi Güvenlik (RLS)**, **anlamsal arama**, **Azure AI entegrasyonu** ve **çok kiracılı veri erişimi** gibi kurumsal düzeyde desenleri öğreneceksiniz.
 
-İster bir backend geliştirici, ister bir AI mühendisi veya veri mimarı olun, bu kılavuz, gerçek dünya örnekleri ve uygulamalı alıştırmalarla yapılandırılmış bir öğrenme deneyimi sunar. MCP sunucusunu adım adım öğrenmek için şu bağlantıyı takip edebilirsiniz: https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
+Arka uç geliştiricisi, yapay zeka mühendisi veya veri mimarı olun, bu rehber gerçek dünya örnekleri ve uygulamalı alıştırmalarla yapılandırılmış öğrenme sağlar; aşağıdaki MCP sunucusu https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail üzerinden adım adım ilerlersiniz.
 
 ## 🔗 Resmi MCP Kaynakları
 
-- 📘 [MCP Belgeleri](https://modelcontextprotocol.io/) – Ayrıntılı eğitimler ve kullanıcı kılavuzları
-- 📜 [MCP Spesifikasyonu](https://modelcontextprotocol.io/docs/) – Protokol mimarisi ve teknik referanslar
-- 🧑‍💻 [MCP GitHub Deposu](https://github.com/modelcontextprotocol) – Açık kaynak SDK'lar, araçlar ve kod örnekleri
-- 🌐 [MCP Topluluğu](https://github.com/orgs/modelcontextprotocol/discussions) – Tartışmalara katılın ve topluluğa katkıda bulunun
+- 📘 [MCP Dokümantasyonu](https://modelcontextprotocol.io/) – Detaylı öğreticiler ve kullanıcı kılavuzları  
+- 📜 [MCP Spesifikasyonu (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Protokol mimarisi ve teknik referanslar  
+- 🧑‍💻 [MCP GitHub Deposu](https://github.com/modelcontextprotocol) – Açık kaynak SDK'lar, araçlar ve kod örnekleri  
+- 🌐 [MCP Topluluğu](https://github.com/orgs/modelcontextprotocol/discussions) – Tartışmalara katılın ve topluluğa katkıda bulunun  
+- 🔒 [OWASP MCP İlk 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – Güvenlik en iyi uygulamaları ve risk azaltma  
 
 ## 🧭 MCP Veritabanı Entegrasyonu Öğrenme Yolu
 
-### 📚 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail için Tam Öğrenme Yapısı
+### 📚 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail İçin Tam Öğrenme Yapısı
 
-| Lab | Konu | Açıklama | Bağlantı |
+| Laboratuvar | Konu | Açıklama | Bağlantı |
 |--------|-------|-------------|------|
 | **Lab 1-3: Temeller** | | | |
-| 00 | [MCP Veritabanı Entegrasyonuna Giriş](./00-Introduction/README.md) | MCP'nin veritabanı entegrasyonu ve perakende analitiği kullanım senaryosuna genel bakış | [Buradan Başlayın](./00-Introduction/README.md) |
-| 01 | [Temel Mimari Kavramlar](./01-Architecture/README.md) | MCP sunucu mimarisi, veritabanı katmanları ve güvenlik kalıplarını anlama | [Öğren](./01-Architecture/README.md) |
-| 02 | [Güvenlik ve Çok Kiracılılık](./02-Security/README.md) | Satır Düzeyinde Güvenlik, kimlik doğrulama ve çok kiracılı veri erişimi | [Öğren](./02-Security/README.md) |
-| 03 | [Ortam Kurulumu](./03-Setup/README.md) | Geliştirme ortamı, Docker, Azure kaynaklarının kurulumu | [Kurulum](./03-Setup/README.md) |
-| **Lab 4-6: MCP Sunucusunu İnşa Etme** | | | |
-| 04 | [Veritabanı Tasarımı ve Şeması](./04-Database/README.md) | PostgreSQL kurulumu, perakende şema tasarımı ve örnek veri | [İnşa Et](./04-Database/README.md) |
-| 05 | [MCP Sunucu Uygulaması](./05-MCP-Server/README.md) | Veritabanı entegrasyonu ile FastMCP sunucusunu oluşturma | [İnşa Et](./05-MCP-Server/README.md) |
-| 06 | [Araç Geliştirme](./06-Tools/README.md) | Veritabanı sorgu araçları ve şema inceleme araçları oluşturma | [İnşa Et](./06-Tools/README.md) |
-| **Lab 7-9: Gelişmiş Özellikler** | | | |
-| 07 | [Anlamsal Arama Entegrasyonu](./07-Semantic-Search/README.md) | Azure OpenAI ve pgvector ile vektör gömme uygulaması | [Geliştir](./07-Semantic-Search/README.md) |
-| 08 | [Test ve Hata Ayıklama](./08-Testing/README.md) | Test stratejileri, hata ayıklama araçları ve doğrulama yaklaşımları | [Test Et](./08-Testing/README.md) |
-| 09 | [VS Code Entegrasyonu](./09-VS-Code/README.md) | VS Code MCP entegrasyonu ve AI Chat kullanımı yapılandırma | [Entegre Et](./09-VS-Code/README.md) |
-| **Lab 10-12: Üretim ve En İyi Uygulamalar** | | | |
-| 10 | [Dağıtım Stratejileri](./10-Deployment/README.md) | Docker dağıtımı, Azure Container Apps ve ölçeklendirme dikkate alınması gerekenler | [Dağıt](./10-Deployment/README.md) |
+| 00 | [MCP Veritabanı Entegrasyonuna Giriş](./00-Introduction/README.md) | Veritabanı entegrasyonu ve perakende analitiği kullanım durumu ile MCP genel bakış | [Buradan Başlayın](./00-Introduction/README.md) |
+| 01 | [Temel Mimari Kavramlar](./01-Architecture/README.md) | MCP sunucu mimarisi, veritabanı katmanları ve güvenlik desenlerini anlamak | [Öğren](./01-Architecture/README.md) |
+| 02 | [Güvenlik ve Çok Kiracılık](./02-Security/README.md) | Satır Seviyesi Güvenlik, kimlik doğrulama ve çok kiracılı veri erişimi | [Öğren](./02-Security/README.md) |
+| 03 | [Ortam Kurulumu](./03-Setup/README.md) | Geliştirme ortamının kurulumu, Docker, Azure kaynakları | [Kurulum](./03-Setup/README.md) |
+| **Lab 4-6: MCP Sunucusunu Oluşturma** | | | |
+| 04 | [Veritabanı Tasarımı ve Şeması](./04-Database/README.md) | PostgreSQL kurulumu, perakende şema tasarımı ve örnek veriler | [Oluştur](./04-Database/README.md) |
+| 05 | [MCP Sunucu Uygulaması](./05-MCP-Server/README.md) | Veritabanı entegrasyonlu FastMCP sunucusu oluşturma | [Oluştur](./05-MCP-Server/README.md) |
+| 06 | [Araç Geliştirme](./06-Tools/README.md) | Veritabanı sorgu araçları ve şema incelemesi oluşturma | [Oluştur](./06-Tools/README.md) |
+| **Lab 7-9: İleri Özellikler** | | | |
+| 07 | [Anlamsal Arama Entegrasyonu](./07-Semantic-Search/README.md) | Azure OpenAI ve pgvector ile vektör gömme uygulaması | [İleri](./07-Semantic-Search/README.md) |
+| 08 | [Test ve Hata Ayıklama](./08-Testing/README.md) | Test stratejileri, hata ayıklama araçları ve doğrulama yöntemleri | [Test Et](./08-Testing/README.md) |
+| 09 | [VS Code Entegrasyonu](./09-VS-Code/README.md) | VS Code MCP entegrasyonu ve AI Sohbet kullanımı yapılandırması | [Entegre Et](./09-VS-Code/README.md) |
+| **Lab 10-12: Prodüksiyon ve En İyi Uygulamalar** | | | |
+| 10 | [Dağıtım Stratejileri](./10-Deployment/README.md) | Docker dağıtımı, Azure Container Apps ve ölçeklendirme dikkate alınması | [Dağıt](./10-Deployment/README.md) |
 | 11 | [İzleme ve Gözlemlenebilirlik](./11-Monitoring/README.md) | Application Insights, günlük kaydı, performans izleme | [İzle](./11-Monitoring/README.md) |
-| 12 | [En İyi Uygulamalar ve Optimizasyon](./12-Best-Practices/README.md) | Performans optimizasyonu, güvenlik güçlendirme ve üretim ipuçları | [Optimize Et](./12-Best-Practices/README.md) |
+| 12 | [En İyi Uygulamalar ve Optimizasyon](./12-Best-Practices/README.md) | Performans optimizasyonu, güvenlik sertleştirme ve üretim ipuçları | [Optimize Et](./12-Best-Practices/README.md) |
 
-### 💻 Neler İnşa Edeceksiniz?
+### 💻 Neler Oluşturacaksınız
 
-Bu öğrenme yolunun sonunda, aşağıdaki özelliklere sahip tam bir **Zava Perakende Analitiği MCP Sunucusu** oluşturmuş olacaksınız:
+Bu öğrenme yolunun sonunda tam özellikli bir **Zava Perakende Analitiği MCP Sunucusu** inşa etmiş olacaksınız:
 
-- **Çok tablolalı perakende veritabanı**: müşteri siparişleri, ürünler ve envanter
-- **Satır Düzeyinde Güvenlik**: mağaza bazlı veri izolasyonu
-- **Anlamsal ürün arama**: Azure OpenAI gömmeleri kullanarak
-- **VS Code AI Chat entegrasyonu**: doğal dil sorguları için
-- **Üretime hazır dağıtım**: Docker ve Azure ile
-- **Kapsamlı izleme**: Application Insights ile
+- **Müşteri siparişleri, ürünler ve envanter içeren çok tablolu perakende veritabanı**  
+- Mağaza bazlı veri izolasyonu için **Satır Seviyesi Güvenlik**  
+- Azure OpenAI gömmeleri kullanan **anlamsal ürün araması**  
+- Doğal dil sorguları için **VS Code AI Sohbet entegrasyonu**  
+- Docker ve Azure ile **üretime hazır dağıtım**  
+- Application Insights ile **kapsamlı izleme**  
 
-## 🎯 Öğrenme İçin Ön Koşullar
+## 🎯 Öğrenme Önkoşulları
 
-Bu öğrenme yolundan en iyi şekilde faydalanmak için aşağıdaki bilgilere sahip olmalısınız:
+Bu öğrenme yolundan en iyi şekilde faydalanmak için:
 
-- **Programlama Deneyimi**: Python (tercih edilen) veya benzer dillerde temel bilgi
-- **Veritabanı Bilgisi**: SQL ve ilişkisel veritabanları hakkında temel bilgi
-- **API Kavramları**: REST API'ler ve HTTP kavramlarını anlama
-- **Geliştirme Araçları**: Komut satırı, Git ve kod editörleri ile deneyim
-- **Bulut Temelleri**: (Opsiyonel) Azure veya benzer bulut platformları hakkında temel bilgi
-- **Docker Bilgisi**: (Opsiyonel) Konteynerleştirme kavramlarını anlama
+- **Programlama Deneyimi**: Tercihen Python veya benzeri dillerde aşinalık  
+- **Veritabanı Bilgisi**: SQL ve ilişkisel veritabanlarına temel anlayış  
+- **API Kavramları**: REST API'leri ve HTTP kavramlarına hakimiyet  
+- **Geliştirme Araçları**: Komut satırı, Git ve kod editörleri deneyimi  
+- **Bulut Temelleri**: (Opsiyonel) Azure veya benzeri bulut platformlarında temel bilgi  
+- **Docker Aşinalığı**: (Opsiyonel) Konteynerleştirme kavramları bilgisi  
 
 ### Gerekli Araçlar
 
-- **Docker Desktop** - PostgreSQL ve MCP sunucusunu çalıştırmak için
-- **Azure CLI** - Bulut kaynaklarını dağıtmak için
-- **VS Code** - Geliştirme ve MCP entegrasyonu için
-- **Git** - Versiyon kontrolü için
-- **Python 3.8+** - MCP sunucusu geliştirme için
+- **Docker Desktop** - PostgreSQL ve MCP sunucusunu çalıştırmak için  
+- **Azure CLI** - Bulut kaynaklarının dağıtımı için  
+- **VS Code** - Geliştirme ve MCP entegrasyonu için  
+- **Git** - Versiyon kontrol için  
+- **Python 3.8+** - MCP sunucu geliştirme için  
 
-## 📚 Çalışma Kılavuzu ve Kaynaklar
+## 📚 Çalışma Rehberi & Kaynaklar
 
-Bu öğrenme yolu, etkili bir şekilde gezinmenize yardımcı olacak kapsamlı kaynaklar içerir:
+Bu öğrenme yolu sizi etkin bir şekilde yönlendirmek için kapsamlı kaynaklar içerir:
 
-### Çalışma Kılavuzu
+### Çalışma Rehberi
 
-Her laboratuvar şunları içerir:
-- **Açık öğrenme hedefleri** - Neler başaracağınızı öğrenin
-- **Adım adım talimatlar** - Ayrıntılı uygulama kılavuzları
-- **Kod örnekleri** - Açıklamalı çalışan örnekler
-- **Alıştırmalar** - Uygulamalı pratik fırsatları
-- **Sorun giderme kılavuzları** - Yaygın sorunlar ve çözümleri
-- **Ek kaynaklar** - Daha fazla okuma ve keşif
+Her laboratuvar şunları içerir:  
+- **Açık öğrenme hedefleri** - Neler başaracaksınız  
+- **Adım adım talimatlar** - Detaylı uygulama rehberleri  
+- **Kod örnekleri** - Çalışan örnekler ve açıklamalar  
+- **Alıştırmalar** - Uygulamalı pratik imkanı  
+- **Sorun giderme rehberleri** - Yaygın problemler ve çözümleri  
+- **Ek kaynaklar** - İleri okuma ve keşif  
 
-### Ön Koşul Kontrolü
+### Önkoşullar Kontrolü
 
-Her laboratuvara başlamadan önce şunları bulacaksınız:
-- **Gerekli bilgiler** - Önceden bilmeniz gerekenler
-- **Kurulum doğrulama** - Ortamınızı nasıl doğrulayacağınız
-- **Zaman tahminleri** - Tamamlama için beklenen süre
-- **Öğrenme çıktıları** - Tamamladıktan sonra neler öğreneceğiniz
+Her laboratuvara başlamadan önce:  
+- **Gerekli bilgiler** - Önceden bilmeniz gerekenler  
+- **Ortam doğrulama** - Ortamınızın doğrulanması  
+- **Zaman tahminleri** - Tamamlama süresi tahminleri  
+- **Öğrenme çıktıları** - Bitirdiğinizde neler bileceksiniz  
 
 ### Önerilen Öğrenme Yolları
 
 Deneyim seviyenize göre yolunuzu seçin:
 
-#### 🟢 **Başlangıç Yolu** (MCP'ye Yeni Başlayanlar)
-1. Öncelikle [MCP for Beginners](https://aka.ms/mcp-for-beginners) 0-10'u tamamlayın
-2. Temelleri pekiştirmek için 00-03 laboratuvarlarını tamamlayın
-3. 04-06 laboratuvarlarını uygulamalı olarak takip edin
-4. 07-09 laboratuvarlarını pratik kullanım için deneyin
+#### 🟢 **Başlangıç Seviyesi Yolu** (MCP’ye yeni başlayanlar)  
+1. Öncelikle [MCP for Beginners](https://aka.ms/mcp-for-beginners) 0-10'u tamamlayın  
+2. Temellerinizi pekiştirmek için 00-03 laboratuvarlarını bitirin  
+3. Uygulama için 04-06 laboratuvarlarını takip edin  
+4. Pratik kullanım için 07-09 laboratuvarlarını deneyin  
 
-#### 🟡 **Orta Seviye Yolu** (Biraz MCP Deneyimi)
-1. Veritabanı ile ilgili kavramlar için 00-01 laboratuvarlarını gözden geçirin
-2. Uygulama için 02-06 laboratuvarlarına odaklanın
-3. Gelişmiş özellikler için 07-12 laboratuvarlarına derinlemesine dalın
+#### 🟡 **Orta Seviye Yolu** (Biraz MCP deneyimi olanlar)  
+1. Veritabanı özel kavramlar için 00-01 laboratuvarlarını gözden geçirin  
+2. Uygulama için 02-06 laboratuvarlarına odaklanın  
+3. İleri özellikler için 07-12 laboratuvarlarında derinleşin  
 
-#### 🔴 **İleri Seviye Yolu** (MCP'de Deneyimli)
-1. Bağlam için 00-03 laboratuvarlarını hızlıca gözden geçirin
-2. Veritabanı entegrasyonu için 04-09 laboratuvarlarına odaklanın
-3. Üretim dağıtımı için 10-12 laboratuvarlarına yoğunlaşın
+#### 🔴 **İleri Seviye Yolu** (MCP'de deneyimli olanlar)  
+1. Bağlam için 00-03 laboratuvarlarını hızlıca inceleyin  
+2. Veritabanı entegrasyonu için 04-09 laboratuvarlarına odaklanın  
+3. Prodüksiyon dağıtımı için 10-12 laboratuvarlarına yoğunlaşın  
 
 ## 🛠️ Bu Öğrenme Yolunu Etkili Kullanma
 
 ### Sıralı Öğrenme (Önerilen)
 
-Kapsamlı bir anlayış için laboratuvarları sırayla çalışın:
+Kapsamlı anlayış için laboratuvarları sırayla yapın:
 
-1. **Genel bakışı okuyun** - Neler öğreneceğinizi anlayın
-2. **Ön koşulları kontrol edin** - Gerekli bilgilere sahip olduğunuzdan emin olun
-3. **Adım adım kılavuzları takip edin** - Öğrenirken uygulayın
-4. **Alıştırmaları tamamlayın** - Anlamanızı pekiştirin
-5. **Ana noktaları gözden geçirin** - Öğrenme çıktılarınızı sağlamlaştırın
+1. **Genel bakışı okuyun** - Neler öğreneceğinizi anlayın  
+2. **Önkoşulları kontrol edin** - Gerekli bilgiye sahip olun  
+3. **Adım adım rehberleri takip edin** - Öğrendikçe uygulayın  
+4. **Alıştırmaları tamamlayın** - Anlayışınızı pekiştirin  
+5. **Önemli noktaları gözden geçirin** - Öğrenme çıktılarını sağlamlaştırın  
 
 ### Hedefe Yönelik Öğrenme
 
-Belirli becerilere ihtiyacınız varsa:
+Belirli becerilere ihtiyaç duyuyorsanız:
 
-- **Veritabanı Entegrasyonu**: 04-06 laboratuvarlarına odaklanın
-- **Güvenlik Uygulaması**: 02, 08, 12 laboratuvarlarına yoğunlaşın
-- **AI/Anlamsal Arama**: 07 laboratuvarına derinlemesine dalın
-- **Üretim Dağıtımı**: 10-12 laboratuvarlarını inceleyin
+- **Veritabanı Entegrasyonu**: 04-06 laboratuvarlarına odaklanın  
+- **Güvenlik Uygulaması**: 02, 08, 12 laboratuvarlarına yoğunlaşın  
+- **Yapay Zeka / Anlamsal Arama**: 07 laboratuvarında derinleşin  
+- **Prodüksiyon Dağıtımı**: 10-12 laboratuvarlarını çalışın  
 
 ### Uygulamalı Pratik
 
-Her laboratuvar şunları içerir:
-- **Çalışan kod örnekleri** - Kopyalayın, değiştirin ve deneyin
-- **Gerçek dünya senaryoları** - Pratik perakende analitiği kullanım senaryoları
-- **Aşamalı karmaşıklık** - Basitten karmaşığa doğru inşa etme
-- **Doğrulama adımları** - Uygulamanızın çalıştığını doğrulayın
+Her laboratuvarda:  
+- **Çalışan kod örnekleri** - Kopyalayın, değiştirin ve deneyin  
+- **Gerçek dünya senaryoları** - Pratik perakende analitiği kullanım durumları  
+- **Sürekli artan zorluk** - Basitten ileri seviyeye inşa  
+- **Doğrulama adımları** - Uygulamanızın çalıştığını kontrol edin  
 
 ## 🌟 Topluluk ve Destek
 
 ### Yardım Alın
 
-- **Azure AI Discord**: [Uzman desteği için katılın](https://discord.com/invite/ByRwuEEgH4)
-- **GitHub Deposu ve Uygulama Örneği**: [Dağıtım Örneği ve Kaynaklar](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
-- **MCP Topluluğu**: [Daha geniş MCP tartışmalarına katılın](https://github.com/orgs/modelcontextprotocol/discussions)
+- **Azure AI Discord**: [Uzman desteği için katılın](https://discord.com/invite/ByRwuEEgH4)  
+- **GitHub Deposu ve Uygulama Örneği**: [Dağıtım Örneği ve Kaynaklar](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)  
+- **MCP Topluluğu**: [Geniş MCP tartışmalarına katılın](https://github.com/orgs/modelcontextprotocol/discussions)  
 
 ## 🚀 Başlamaya Hazır mısınız?
 
-**[Lab 00: MCP Veritabanı Entegrasyonuna Giriş](./00-Introduction/README.md)** ile yolculuğunuza başlayın.
+Yolculuğunuza **[Lab 00: MCP Veritabanı Entegrasyonuna Giriş](./00-Introduction/README.md)** ile başlayın
 
 ---
 
-*Bu kapsamlı, uygulamalı öğrenme deneyimi ile veritabanı entegrasyonu içeren üretime hazır MCP sunucuları oluşturmayı öğrenin.*
+*Bu kapsamlı ve uygulamalı öğrenme deneyimiyle veritabanı entegrasyonlu üretime hazır MCP sunucularını ustalıkla oluşturun.*
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Feragatname**:  
-Bu belge, AI çeviri hizmeti [Co-op Translator](https://github.com/Azure/co-op-translator) kullanılarak çevrilmiştir. Doğruluk için çaba göstersek de, otomatik çevirilerin hata veya yanlışlıklar içerebileceğini lütfen unutmayın. Belgenin orijinal dili, yetkili kaynak olarak kabul edilmelidir. Kritik bilgiler için profesyonel insan çevirisi önerilir. Bu çevirinin kullanımından kaynaklanan yanlış anlamalar veya yanlış yorumlamalar için sorumluluk kabul etmiyoruz.
+Bu belge, AI çeviri servisi [Co-op Translator](https://github.com/Azure/co-op-translator) kullanılarak çevrilmiştir. Doğruluk için çaba göstersek de, otomatik çevirilerin hatalar veya yanlışlıklar içerebileceğini lütfen unutmayınız. Orijinal belge, kendi dilinde yetkili kaynak olarak kabul edilmelidir. Kritik bilgiler için profesyonel insan çevirisi önerilir. Bu çevirinin kullanımı sonucu ortaya çıkabilecek herhangi bir yanlış anlama veya yanlış yorumlama nedeniyle sorumluluk kabul edilmemektedir.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
