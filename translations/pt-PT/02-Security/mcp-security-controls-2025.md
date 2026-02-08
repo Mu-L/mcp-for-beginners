@@ -1,68 +1,74 @@
-# Controlo de Segurança MCP - Atualização de Dezembro de 2025
+# Controlo de Segurança MCP - Atualização de Fevereiro 2026
 
-> **Padrão Atual**: Este documento reflete os requisitos de segurança da [Especificação MCP 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) e as [Melhores Práticas de Segurança MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices) oficiais.
+> **Padrão Atual**: Este documento reflete os requisitos de segurança da [Especificação MCP 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) e as oficiais [Práticas de Segurança MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices).
 
-O Protocolo de Contexto de Modelo (MCP) amadureceu significativamente com controlos de segurança aprimorados que abordam tanto a segurança tradicional de software como as ameaças específicas de IA. Este documento fornece controlos de segurança abrangentes para implementações seguras do MCP a partir de dezembro de 2025.
+O Protocolo de Contexto do Modelo (MCP) amadureceu significativamente com controlos de segurança reforçados que abordam tanto a segurança tradicional do software como ameaças específicas da IA. Este documento fornece controlos de segurança abrangentes para implementações MCP seguras alinhadas com o quadro de referência OWASP MCP Top 10.
+
+## 🏔️ Formação Prática em Segurança
+
+Para uma experiência prática na implementação de segurança, recomendamos o **[Workshop MCP Security Summit (Sherpa)](https://azure-samples.github.io/sherpa/)** - uma expedição guiada completa para assegurar servidores MCP na Azure usando uma metodologia de "vulnerável → explorar → corrigir → validar".
+
+Todos os controlos de segurança neste documento estão alinhados com o **[Guia de Segurança Azure OWASP MCP](https://microsoft.github.io/mcp-azure-security-guide/)**, que fornece arquiteturas de referência e orientações específicas para a implementação Azure dos riscos OWASP MCP Top 10.
 
 ## **Requisitos de Segurança OBRIGATÓRIOS**
 
 ### **Proibições Críticas da Especificação MCP:**
 
-> **PROIBIDO**: Os servidores MCP **NÃO DEVEM** aceitar quaisquer tokens que não tenham sido explicitamente emitidos para o servidor MCP  
+> **PROIBIDO**: Servidores MCP **NÃO DEVEM** aceitar quaisquer tokens que não tenham sido explicitamente emitidos para o servidor MCP  
 >
-> **PROIBIDO**: Os servidores MCP **NÃO DEVEM** usar sessões para autenticação  
+> **PROIBIDO**: Servidores MCP **NÃO DEVEM** usar sessões para autenticação  
 >
-> **OBRIGATÓRIO**: Os servidores MCP que implementam autorização **DEVEM** verificar TODAS as solicitações recebidas  
+> **OBRIGATÓRIO**: Servidores MCP que implementem autorização **DEVEM** verificar TODAS as requisições recebidas  
 >
-> **MANDATÓRIO**: Os servidores proxy MCP que usam IDs de cliente estáticos **DEVEM** obter consentimento do utilizador para cada cliente registado dinamicamente
+> **MANDATÓRIO**: Servidores proxy MCP que usam IDs de cliente estáticos **DEVEM** obter consentimento do utilizador para cada cliente registado dinamicamente
 
 ---
 
-## 1. **Controlos de Autenticação e Autorização**
+## 1. **Controlos de Autenticação & Autorização**
 
-### **Integração com Provedor de Identidade Externo**
+### **Integração com Provedor Externo de Identidade**
 
-**Padrão MCP Atual (2025-06-18)** permite que servidores MCP deleguem a autenticação a provedores de identidade externos, representando uma melhoria significativa na segurança:
+O **Padrão Atual MCP (2025-11-25)** permite aos servidores MCP delegar autenticação a provedores externos de identidade, representando uma melhoria significativa na segurança:
 
-### **Integração com Provedor de Identidade Externo**
-
-**Padrão MCP Atual (2025-11-25)** permite que servidores MCP deleguem a autenticação a provedores de identidade externos, representando uma melhoria significativa na segurança:
+**Risco OWASP MCP Abordado**: [MCP07 - Autenticação e Autorização Insuficientes](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp07-authz/)
 
 **Benefícios de Segurança:**
-1. **Elimina Riscos de Autenticação Personalizada**: Reduz a superfície de vulnerabilidade ao evitar implementações personalizadas de autenticação  
-2. **Segurança de Nível Empresarial**: Aproveita provedores de identidade estabelecidos como Microsoft Entra ID com funcionalidades avançadas de segurança  
-3. **Gestão Centralizada de Identidade**: Simplifica o ciclo de vida do utilizador, controlo de acesso e auditoria de conformidade  
-4. **Autenticação Multifator**: Herda capacidades MFA dos provedores de identidade empresariais  
+1. **Elimina Riscos de Autenticação Customizada**: Reduz a superfície de vulnerabilidade evitando implementações personalizadas de autenticação
+2. **Segurança de Nível Empresarial**: Apoia-se em provedores de identidade estabelecidos, como Microsoft Entra ID, com funcionalidades avançadas de segurança
+3. **Gestão Centralizada de Identidade**: Simplifica o ciclo de vida do utilizador, controle de acesso e auditorias de conformidade
+4. **Autenticação Multifator**: Herda capacidades MFA dos provedores de identidade empresariais
 5. **Políticas de Acesso Condicional**: Beneficia de controlos de acesso baseados em risco e autenticação adaptativa
 
 **Requisitos de Implementação:**
-- **Validação do Público do Token**: Verificar que todos os tokens são explicitamente emitidos para o servidor MCP  
-- **Verificação do Emissor**: Validar que o emissor do token corresponde ao provedor de identidade esperado  
-- **Verificação da Assinatura**: Validação criptográfica da integridade do token  
-- **Cumprimento do Prazo de Validade**: Aplicação rigorosa dos limites de tempo de vida do token  
-- **Validação do Escopo**: Garantir que os tokens contêm permissões apropriadas para as operações solicitadas
+- **Validação do Público do Token**: Verificar que todos os tokens são explicitamente emitidos para o servidor MCP
+- **Verificação do Emissor**: Validar que o emissor do token corresponde ao provedor de identidade esperado
+- **Verificação da Assinatura**: Validação criptográfica da integridade do token
+- **Cumprimento do Prazo de Validade**: Aplicação rigorosa dos limites de vida útil dos tokens
+- **Validação do Escopo**: Garantir que os tokens contenham permissões apropriadas para as operações solicitadas
 
 ### **Segurança da Lógica de Autorização**
 
 **Controlos Críticos:**
-- **Auditorias Abrangentes de Autorização**: Revisões regulares de segurança de todos os pontos de decisão de autorização  
-- **Padrões Fail-Safe**: Negar acesso quando a lógica de autorização não pode tomar uma decisão definitiva  
-- **Limites de Permissão**: Separação clara entre diferentes níveis de privilégio e acesso a recursos  
-- **Registo de Auditoria**: Registo completo de todas as decisões de autorização para monitorização de segurança  
-- **Revisões Regulares de Acesso**: Validação periódica das permissões dos utilizadores e atribuições de privilégios
+- **Auditorias Abrangentes de Autorização**: Revisões regulares de segurança em todos os pontos de decisão de autorização
+- **Padrões Fail-Safe**: Negar acesso quando a lógica de autorização não conseguir tomar uma decisão definitiva
+- **Limites de Permissão**: Separação clara entre diferentes níveis de privilégio e acesso a recursos
+- **Registo de Auditoria**: Registo completo de todas as decisões de autorização para monitorização de segurança
+- **Revisões Regulares de Acesso**: Validação periódica das permissões e atribuições de privilégios dos utilizadores
 
-## 2. **Segurança de Tokens e Controlos Anti-Passthrough**
+## 2. **Segurança de Tokens & Controlos Anti-Passthrough**
+
+**Risco OWASP MCP Abordado**: [MCP01 - Má Gestão de Tokens & Exposição de Segredos](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp01-token-mismanagement/)
 
 ### **Prevenção de Passthrough de Token**
 
 **O passthrough de token é explicitamente proibido** na Especificação de Autorização MCP devido a riscos críticos de segurança:
 
 **Riscos de Segurança Abordados:**
-- **Circunvenção de Controlo**: Ignora controlos essenciais de segurança como limitação de taxa, validação de pedidos e monitorização de tráfego  
-- **Quebra de Responsabilidade**: Torna impossível a identificação do cliente, corrompendo trilhas de auditoria e investigação de incidentes  
-- **Exfiltração Baseada em Proxy**: Permite que atores maliciosos usem servidores como proxies para acesso não autorizado a dados  
-- **Violações de Limites de Confiança**: Quebra as suposições de confiança dos serviços a jusante sobre a origem dos tokens  
-- **Movimento Lateral**: Tokens comprometidos em múltiplos serviços permitem expansão mais ampla do ataque
+- **Circunvenção de Controlos**: Evita controlos essenciais como limitação de taxa, validação de requisições e monitorização de tráfego
+- **Ruptura da Responsabilização**: Tornar impossível a identificação do cliente, corrompendo trilhos de auditoria e investigação de incidentes
+- **Exfiltração Baseada em Proxy**: Permite que agentes maliciosos usem servidores como proxies para acesso não autorizado a dados
+- **Violações da Fronteira de Confiança**: Quebra as assunções de confiança dos serviços downstream sobre a origem dos tokens
+- **Movimentação Lateral**: Tokens comprometidos em múltiplos serviços permitem uma expansão mais ampla do ataque
 
 **Controlos de Implementação:**
 ```yaml
@@ -80,23 +86,23 @@ Token Lifecycle Management:
   replay_protection: "Implemented via nonce/timestamp"
 ```
 
-### **Padrões Seguros de Gestão de Tokens**
+### **Padrões de Gestão Segura de Tokens**
 
 **Melhores Práticas:**
-- **Tokens de Curta Duração**: Minimizar a janela de exposição com rotação frequente de tokens  
-- **Emissão Just-in-Time**: Emitir tokens apenas quando necessários para operações específicas  
-- **Armazenamento Seguro**: Usar módulos de segurança de hardware (HSMs) ou cofres de chaves seguros  
-- **Vinculação de Tokens**: Vincular tokens a clientes, sessões ou operações específicas sempre que possível  
-- **Monitorização e Alertas**: Detecção em tempo real de uso indevido de tokens ou padrões de acesso não autorizados
+- **Tokens de Curta Duração**: Minimizar a janela de exposição com rotações frequentes de tokens
+- **Emissão Just-in-Time**: Emitir tokens apenas quando necessários para operações específicas
+- **Armazenamento Seguro**: Utilizar módulos de segurança de hardware (HSM) ou cofres seguros de chaves
+- **Vinculação de Token**: Associar tokens a clientes específicos, sessões ou operações quando possível
+- **Monitorização e Alertas**: Detecção em tempo real de uso indevido ou padrões de acesso não autorizados
 
-## 3. **Controlos de Segurança de Sessão**
+## 3. **Controlos de Segurança de Sessões**
 
 ### **Prevenção de Sequestro de Sessão**
 
 **Vetores de Ataque Abordados:**
-- **Injeção de Prompt de Sequestro de Sessão**: Eventos maliciosos injetados no estado de sessão partilhado  
-- **Impersonação de Sessão**: Uso não autorizado de IDs de sessão roubados para contornar autenticação  
-- **Ataques de Retoma de Stream**: Exploração da retoma de eventos enviados pelo servidor para injeção de conteúdo malicioso
+- **Injeção de Prompt em Sequestro de Sessão**: Eventos maliciosos injetados no estado de sessão partilhado
+- **Impostação de Sessão**: Uso não autorizado de IDs de sessão roubados para contornar autenticação
+- **Ataques de Reanimação de Stream**: Exploração da retomada de eventos enviados pelo servidor para injeção de conteúdo malicioso
 
 **Controlos Obrigatórios de Sessão:**
 ```yaml
@@ -118,28 +124,33 @@ Session Lifecycle:
   cleanup: "Automated expired session removal"
 ```
 
-**Segurança de Transporte:**
-- **Aplicação de HTTPS**: Toda a comunicação de sessão sobre TLS 1.3  
-- **Atributos Seguros de Cookie**: HttpOnly, Secure, SameSite=Strict  
-- **Fixação de Certificado**: Para conexões críticas para prevenir ataques MITM
+**Segurança no Transporte:**
+- **Aplicação de HTTPS**: Toda comunicação da sessão via TLS 1.3
+- **Atributos Seguros de Cookie**: HttpOnly, Secure, SameSite=Strict
+- **Pinagem de Certificados**: Para conexões críticas para prevenir ataques MITM
 
 ### **Considerações Stateful vs Stateless**
 
 **Para Implementações Stateful:**
-- O estado de sessão partilhado requer proteção adicional contra ataques de injeção  
-- A gestão de sessão baseada em filas necessita de verificação de integridade  
+- Estado de sessão partilhado requer proteção adicional contra ataques de injeção
+- Gestão de sessões baseada em filas precisa de verificação de integridade
 - Múltiplas instâncias de servidor requerem sincronização segura do estado da sessão
 
 **Para Implementações Stateless:**
-- Gestão de sessão baseada em JWT ou tokens similares  
-- Verificação criptográfica da integridade do estado da sessão  
-- Superfície de ataque reduzida, mas requer validação robusta de tokens
+- Gestão de sessão baseada em JWT ou tokens semelhantes
+- Verificação criptográfica da integridade do estado da sessão
+- Superfície de ataque reduzida mas requer validação rigorosa do token
 
 ## 4. **Controlos de Segurança Específicos para IA**
 
-### **Defesa contra Injeção de Prompt**
+**Riscos OWASP MCP Abordados**:  
+- [MCP06 - Injeção de Prompt via Payloads Contextuais](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp06-prompt-injection/)  
+- [MCP03 - Envenenamento de Ferramentas](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp03-tool-poisoning/)  
+- [MCP05 - Injeção e Execução de Comandos](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp05-command-injection/)
 
-**Integração Microsoft Prompt Shields:**
+### **Defesa Contra Injeção de Prompt**
+
+**Integração Microsoft Prompt Shields:**  
 ```yaml
 Detection Mechanisms:
   - "Advanced ML-based instruction detection"
@@ -156,16 +167,16 @@ Integration Points:
   - "Real-time content filtering"
   - "Threat intelligence updates"
 ```
-
+  
 **Controlos de Implementação:**
-- **Sanitização de Entrada**: Validação e filtragem abrangente de todas as entradas do utilizador  
-- **Definição de Limites de Conteúdo**: Separação clara entre instruções do sistema e conteúdo do utilizador  
-- **Hierarquia de Instruções**: Regras de precedência adequadas para instruções conflitantes  
+- **Sanitização de Entrada**: Validação e filtragem abrangente de todas as entradas do utilizador
+- **Definição de Fronteira de Conteúdo**: Separação clara entre instruções do sistema e conteúdos do utilizador
+- **Hierarquia de Instruções**: Regras de precedência apropriadas para instruções conflitantes
 - **Monitorização de Saída**: Detecção de saídas potencialmente prejudiciais ou manipuladas
 
 ### **Prevenção de Envenenamento de Ferramentas**
 
-**Estrutura de Segurança de Ferramentas:**
+**Framework de Segurança de Ferramentas:**  
 ```yaml
 Tool Definition Protection:
   validation:
@@ -186,18 +197,18 @@ Tool Definition Protection:
     - "Anomaly detection for execution patterns"
     - "Automated alerting for suspicious modifications"
 ```
-
+  
 **Gestão Dinâmica de Ferramentas:**
-- **Fluxos de Aprovação**: Consentimento explícito do utilizador para modificações de ferramentas  
-- **Capacidades de Reversão**: Capacidade de reverter para versões anteriores da ferramenta  
-- **Auditoria de Alterações**: Histórico completo das modificações da definição da ferramenta  
-- **Avaliação de Risco**: Avaliação automatizada da postura de segurança da ferramenta
+- **Fluxos de Aprovação**: Consentimento explícito do utilizador para modificações de ferramentas
+- **Capacidade de Reversão**: Possibilidade de reverter para versões anteriores da ferramenta
+- **Auditoria de Alterações**: Histórico completo das modificações de definições das ferramentas
+- **Avaliação de Risco**: Avaliação automatizada do posicionamento de segurança da ferramenta
 
-## 5. **Prevenção de Ataques Confused Deputy**
+## 5. **Prevenção de Ataque Confused Deputy**
 
-### **Segurança de Proxy OAuth**
+### **Segurança em Proxy OAuth**
 
-**Controlos de Prevenção de Ataques:**
+**Controlos de Prevenção de Ataque:**  
 ```yaml
 Client Registration:
   static_client_protection:
@@ -212,18 +223,18 @@ Client Registration:
     - "Authorization code binding"
     - "Nonce verification for ID tokens"
 ```
-
+  
 **Requisitos de Implementação:**
-- **Verificação de Consentimento do Utilizador**: Nunca omitir ecrãs de consentimento para registo dinâmico de clientes  
-- **Validação de URI de Redirecionamento**: Validação rigorosa baseada em lista branca dos destinos de redirecionamento  
-- **Proteção do Código de Autorização**: Códigos de curta duração com aplicação de uso único  
-- **Verificação de Identidade do Cliente**: Validação robusta das credenciais e metadados do cliente
+- **Verificação de Consentimento do Utilizador**: Nunca omitir ecrãs de consentimento para registo dinâmico de clientes
+- **Validação de URI de Redirecionamento**: Validação rigorosa com listas brancas dos destinos de redirecionamento
+- **Proteção de Código de Autorização**: Códigos de curta duração com aplicação de uso único
+- **Verificação da Identidade do Cliente**: Validação robusta de credenciais e metadados do cliente
 
 ## 6. **Segurança na Execução de Ferramentas**
 
-### **Sandboxing e Isolamento**
+### **Sandboxing & Isolamento**
 
-**Isolamento Baseado em Contêineres:**
+**Isolamento Baseado em Contêineres:**  
 ```yaml
 Execution Environment:
   containerization: "Docker/Podman with security profiles"
@@ -239,16 +250,16 @@ Execution Environment:
     syscall_filtering: "Seccomp profiles for syscall restriction"
     filesystem: "Read-only root with minimal writable areas"
 ```
-
+  
 **Isolamento de Processos:**
-- **Contextos de Processo Separados**: Cada execução de ferramenta em espaço de processo isolado  
-- **Comunicação Interprocessos**: Mecanismos seguros de IPC com validação  
-- **Monitorização de Processos**: Análise de comportamento em tempo de execução e deteção de anomalias  
+- **Contextos de Processo Separados**: Cada execução de ferramenta em espaço de processo isolado
+- **Comunicação Interprocessos**: Mecanismos IPC seguros com validação
+- **Monitorização de Processo**: Análise de comportamento em tempo real e deteção de anomalias
 - **Aplicação de Recursos**: Limites rígidos em CPU, memória e operações de I/O
 
-### **Implementação do Princípio do Menor Privilégio**
+### **Implementação do Privilégio Mínimo**
 
-**Gestão de Permissões:**
+**Gestão de Permissões:**  
 ```yaml
 Access Control:
   file_system:
@@ -268,12 +279,14 @@ Access Control:
     - "No hardware device access"
     - "Restricted environment variable access"
 ```
-
+  
 ## 7. **Controlos de Segurança da Cadeia de Abastecimento**
+
+**Risco OWASP MCP Abordado**: [MCP04 - Ataques à Cadeia de Abastecimento](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp04-supply-chain/)
 
 ### **Verificação de Dependências**
 
-**Segurança Abrangente de Componentes:**
+**Segurança Abrangente de Componentes:**  
 ```yaml
 Software Dependencies:
   scanning: 
@@ -301,20 +314,22 @@ AI Components:
     - "Data handling compliance verification"
     - "Incident response capability evaluation"
 ```
-
+  
 ### **Monitorização Contínua**
 
-**Deteção de Ameaças na Cadeia de Abastecimento:**
-- **Monitorização da Saúde das Dependências**: Avaliação contínua de todas as dependências para questões de segurança  
-- **Integração de Inteligência de Ameaças**: Atualizações em tempo real sobre ameaças emergentes na cadeia de abastecimento  
-- **Análise Comportamental**: Deteção de comportamentos invulgares em componentes externos  
+**Deteção de Ameaças da Cadeia de Abastecimento:**
+- **Monitorização de Estado das Dependências**: Avaliação contínua de todas as dependências para problemas de segurança
+- **Integração de Inteligência de Ameaças**: Atualizações em tempo real sobre ameaças emergentes na cadeia de abastecimento
+- **Análise Comportamental**: Deteção de comportamento invulgar em componentes externos
 - **Resposta Automatizada**: Contenção imediata de componentes comprometidos
 
-## 8. **Controlos de Monitorização e Deteção**
+## 8. **Controlos de Monitorização & Deteção**
 
-### **Gestão de Informação e Eventos de Segurança (SIEM)**
+**Risco OWASP MCP Abordado**: [MCP08 - Falta de Auditoria & Telemetria](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp08-telemetry/)
 
-**Estratégia Abrangente de Registo:**
+### **Gestão de Informações e Eventos de Segurança (SIEM)**
+
+**Estratégia Abrangente de Registos:**  
 ```yaml
 Authentication Events:
   - "All authentication attempts (success/failure)"
@@ -334,20 +349,20 @@ Security Events:
   - "Session hijacking indicators"
   - "Unusual access patterns and anomalies"
 ```
+  
+### **Deteção em Tempo Real de Ameaças**
 
-### **Deteção de Ameaças em Tempo Real**
+**Análises Comportamentais:**
+- **Análise de Comportamento do Utilizador (UBA)**: Deteção de padrões invulgares de acesso de utilizadores
+- **Análise de Comportamento de Entidades (EBA)**: Monitorização do comportamento do servidor MCP e ferramentas
+- **Deteção de Anomalias por Aprendizagem Automática**: Identificação assistida por IA das ameaças de segurança
+- **Correlação de Inteligência de Ameaças**: Confronto das atividades observadas com padrões de ataque conhecidos
 
-**Análise Comportamental:**
-- **Análise de Comportamento do Utilizador (UBA)**: Deteção de padrões invulgares de acesso do utilizador  
-- **Análise de Comportamento de Entidades (EBA)**: Monitorização do comportamento do servidor MCP e ferramentas  
-- **Deteção de Anomalias com Aprendizagem Automática**: Identificação de ameaças de segurança com IA  
-- **Correlação de Inteligência de Ameaças**: Correspondência de atividades observadas com padrões de ataque conhecidos
-
-## 9. **Resposta a Incidentes e Recuperação**
+## 9. **Resposta a Incidentes & Recuperação**
 
 ### **Capacidades de Resposta Automatizada**
 
-**Ações de Resposta Imediata:**
+**Ações de Resposta Imediata:**  
 ```yaml
 Threat Containment:
   session_management:
@@ -371,31 +386,31 @@ Recovery Procedures:
     - "Configuration rollback"
     - "Service restart procedures"
 ```
-
+  
 ### **Capacidades Forenses**
 
 **Suporte à Investigação:**
-- **Preservação da Trilha de Auditoria**: Registo imutável com integridade criptográfica  
-- **Recolha de Evidências**: Recolha automatizada de artefactos de segurança relevantes  
-- **Reconstrução da Linha Temporal**: Sequência detalhada de eventos que levaram a incidentes de segurança  
-- **Avaliação de Impacto**: Avaliação do âmbito do comprometimento e exposição de dados
+- **Preservação de Trilhos de Auditoria**: Registos imutáveis com integridade criptográfica
+- **Recolha de Evidências**: Recolha automatizada de artefactos de segurança relevantes
+- **Reconstrução de Linha Temporal**: sequência detalhada de eventos que conduziram a incidentes de segurança
+- **Avaliação do Impacto**: Avaliação do âmbito do compromisso e exposição de dados
 
 ## **Princípios-Chave da Arquitetura de Segurança**
 
 ### **Defesa em Profundidade**
-- **Múltiplas Camadas de Segurança**: Nenhum ponto único de falha na arquitetura de segurança  
-- **Controlos Redundantes**: Medidas de segurança sobrepostas para funções críticas  
-- **Mecanismos Fail-Safe**: Padrões seguros quando sistemas enfrentam erros ou ataques
+- **Múltiplas Camadas de Segurança**: Nenhum ponto único de falha na arquitetura de segurança
+- **Controlos Redundantes**: Medidas de segurança sobrepostas para funcionalidades críticas
+- **Mecanismos Fail-Safe**: Definições seguras por omissão quando sistemas enfrentam erros ou ataques
 
 ### **Implementação Zero Trust**
-- **Nunca Confiar, Sempre Verificar**: Validação contínua de todas as entidades e pedidos  
-- **Princípio do Menor Privilégio**: Direitos de acesso mínimos para todos os componentes  
+- **Nunca Confiar, Sempre Verificar**: Validação contínua de todas as entidades e requisições
+- **Princípio do Privilégio Mínimo**: Direitos de acesso mínimos para todos os componentes
 - **Microsegmentação**: Controlos granulares de rede e acesso
 
 ### **Evolução Contínua da Segurança**
-- **Adaptação ao Cenário de Ameaças**: Atualizações regulares para abordar ameaças emergentes  
-- **Eficácia dos Controlos de Segurança**: Avaliação e melhoria contínua dos controlos  
-- **Conformidade com a Especificação**: Alinhamento com os padrões de segurança MCP em evolução
+- **Adaptação ao Cenário de Ameaças**: Atualizações regulares para abordar ameaças emergentes
+- **Eficácia dos Controlos de Segurança**: Avaliação contínua e melhoria dos controlos
+- **Conformidade com Especificações**: Alinhamento com os padrões MCP de segurança em evolução
 
 ---
 
@@ -403,8 +418,13 @@ Recovery Procedures:
 
 ### **Documentação Oficial MCP**
 - [Especificação MCP (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
-- [Melhores Práticas de Segurança MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
+- [Práticas de Segurança MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
 - [Especificação de Autorização MCP](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
+
+### **Recursos de Segurança OWASP MCP**
+- [Guia de Segurança Azure OWASP MCP](https://microsoft.github.io/mcp-azure-security-guide/) - OWASP MCP Top 10 completo com implementação Azure
+- [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) - Riscos oficiais de segurança OWASP MCP
+- [Workshop MCP Security Summit (Sherpa)](https://azure-samples.github.io/sherpa/) - Formação prática em segurança para MCP na Azure
 
 ### **Soluções de Segurança Microsoft**
 - [Microsoft Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)
@@ -413,17 +433,22 @@ Recovery Procedures:
 - [Azure Key Vault](https://learn.microsoft.com/azure/key-vault/)
 
 ### **Normas de Segurança**
-- [Melhores Práticas de Segurança OAuth 2.0 (RFC 9700)](https://datatracker.ietf.org/doc/html/rfc9700)
-- [OWASP Top 10 para Modelos de Linguagem Grande](https://genai.owasp.org/)
-- [Framework de Cibersegurança NIST](https://www.nist.gov/cyberframework)
+- [Práticas de Segurança OAuth 2.0 (RFC 9700)](https://datatracker.ietf.org/doc/html/rfc9700)
+- [OWASP Top 10 para Modelos de Linguagem Extensa](https://genai.owasp.org/)
+- [Estrutura de Cibersegurança NIST](https://www.nist.gov/cyberframework)
 
 ---
 
-> **Importante**: Estes controlos de segurança refletem a especificação MCP atual (2025-06-18). Verifique sempre a [documentação oficial](https://spec.modelcontextprotocol.io/) mais recente, pois os padrões continuam a evoluir rapidamente.
+> **Importante**: Estes controlos de segurança refletem a especificação MCP atual (2025-11-25). Verifique sempre contra a [documentação oficial](https://spec.modelcontextprotocol.io/) mais recente, pois os padrões continuam a evoluir rapidamente.
+
+## O que Vem a Seguir
+
+- Retornar para: [Visão Geral do Módulo de Segurança](./README.md)
+- Continuar para: [Módulo 3: Primeiros Passos](../03-GettingStarted/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Aviso Legal**:
-Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos para garantir a precisão, por favor tenha em conta que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se a tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações erradas decorrentes do uso desta tradução.
+Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos por garantir a precisão, esteja ciente de que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se a tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas decorrentes da utilização desta tradução.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

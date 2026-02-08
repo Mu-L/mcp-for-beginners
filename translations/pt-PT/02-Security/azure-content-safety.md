@@ -1,24 +1,26 @@
 # Segurança Avançada MCP com Azure Content Safety
 
-O Azure Content Safety oferece várias ferramentas poderosas que podem melhorar a segurança das suas implementações MCP:
+> **Risco MCP da OWASP Abordado**: [MCP06 - Injeção de Prompt via Payloads Contextuais](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp06-prompt-injection/)
 
-## Prompt Shields
+O Azure Content Safety oferece várias ferramentas poderosas que podem melhorar a segurança das suas implementações MCP. Para uma experiência prática de implementação, consulte [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) Camp 3: Segurança I/O.
 
-Os AI Prompt Shields da Microsoft fornecem uma proteção robusta contra ataques de injeção de prompt, tanto diretos como indiretos, através de:
+## Escudos de Prompt
 
-1. **Deteção Avançada**: Utiliza machine learning para identificar instruções maliciosas incorporadas no conteúdo.
-2. **Destaque**: Transforma o texto de entrada para ajudar os sistemas de IA a distinguir entre instruções válidas e entradas externas.
-3. **Delimitadores e Marcação de Dados**: Marca os limites entre dados confiáveis e não confiáveis.
+Os Escudos de Prompt da Microsoft AI fornecem proteção robusta contra ataques de injeção de prompt diretos e indiretos através de:
+
+1. **Deteção Avançada**: Utiliza machine learning para identificar instruções maliciosas embutidas no conteúdo.
+2. **Iluminação**: Transforma o texto de entrada para ajudar os sistemas de IA a distinguir entre instruções válidas e entradas externas.
+3. **Delimitadores e Marcação de Dados**: Assinala os limites entre dados confiáveis e não confiáveis.
 4. **Integração com Content Safety**: Funciona com o Azure AI Content Safety para detetar tentativas de jailbreak e conteúdos prejudiciais.
 5. **Atualizações Contínuas**: A Microsoft atualiza regularmente os mecanismos de proteção contra ameaças emergentes.
 
 ## Implementação do Azure Content Safety com MCP
 
-Esta abordagem oferece proteção em múltiplas camadas:
-- Análise das entradas antes do processamento
-- Validação das saídas antes de serem devolvidas
-- Utilização de listas de bloqueio para padrões conhecidos como prejudiciais
-- Aproveitamento dos modelos de content safety do Azure, continuamente atualizados
+Esta abordagem fornece proteção em múltiplas camadas:
+- Analisar entradas antes do processamento
+- Validar saídas antes de as devolver
+- Utilizar listas de bloqueio para padrões reconhecidos como prejudiciais
+- Aproveitar os modelos de segurança de conteúdo atualizados continuamente pela Azure
 
 ## Recursos do Azure Content Safety
 
@@ -28,11 +30,21 @@ Para saber mais sobre como implementar o Azure Content Safety nos seus servidore
 2. [Documentação do Prompt Shield](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/prompt-shield) - Saiba como prevenir ataques de injeção de prompt.
 3. [Referência da API Content Safety](https://learn.microsoft.com/rest/api/contentsafety/) - Referência detalhada da API para implementar Content Safety.
 4. [Início Rápido: Azure Content Safety com C#](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-csharp) - Guia rápido de implementação usando C#.
-5. [Bibliotecas Cliente Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-client-libraries-rest-api) - Bibliotecas cliente para várias linguagens de programação.
-6. [Detetar Tentativas de Jailbreak](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection) - Orientações específicas para detetar e prevenir tentativas de jailbreak.
-7. [Melhores Práticas para Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/best-practices) - Melhores práticas para implementar content safety de forma eficaz.
+5. [Bibliotecas Cliente do Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-client-libraries-rest-api) - Bibliotecas cliente para várias linguagens de programação.
+6. [Detectar Tentativas de Jailbreak](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection) - Orientações específicas para detetar e prevenir tentativas de jailbreak.
+7. [Melhores Práticas para Content Safety](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/best-practices) - Melhores práticas para implementar a segurança de conteúdo eficazmente.
 
-Para uma implementação mais detalhada, consulte o nosso [guia de implementação do Azure Content Safety](./azure-content-safety-implementation.md).
+Para uma implementação mais aprofundada, consulte o nosso [Guia de Implementação do Azure Content Safety](./azure-content-safety-implementation.md).
 
+## Próximos Passos
+
+- Ler: [Implementação do Azure Content Safety](./azure-content-safety-implementation.md)
+- Voltar para: [Visão Geral do Módulo de Segurança](./README.md)
+- Continuar para: [Módulo 3: Primeiros Passos](../03-GettingStarted/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Aviso Legal**:  
-Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos pela precisão, por favor tenha em conta que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações erradas decorrentes da utilização desta tradução.
+Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos por garantir a precisão, por favor tenha em consideração que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se a tradução profissional realizada por um ser humano. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas resultantes da utilização desta tradução.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

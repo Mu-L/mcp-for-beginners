@@ -1,52 +1,52 @@
 # Estudo de Caso: Ligação ao Servidor Microsoft Learn Docs MCP a partir de um Cliente
 
-Alguma vez se viu a alternar entre sites de documentação, Stack Overflow e inúmeras abas do motor de busca, tudo enquanto tenta resolver um problema no seu código? Talvez tenha um segundo monitor só para a documentação, ou esteja constantemente a alternar entre o seu IDE e um navegador. Não seria melhor se pudesse trazer a documentação diretamente para o seu fluxo de trabalho — integrada nas suas aplicações, no seu IDE, ou até nas suas próprias ferramentas personalizadas? Neste estudo de caso, vamos explorar exatamente como fazer isso, ligando-se diretamente ao servidor Microsoft Learn Docs MCP a partir da sua própria aplicação cliente.
+Alguma vez se encontrou a alternar entre sites de documentação, Stack Overflow e abas intermináveis do motor de busca, tudo enquanto tenta resolver um problema no seu código? Talvez tenha um segundo monitor só para documentação, ou esteja constantemente a alternar entre o seu IDE e um navegador. Não seria melhor se pudesse trazer a documentação diretamente para o seu fluxo de trabalho—integrado nas suas aplicações, no seu IDE, ou até nas suas próprias ferramentas personalizadas? Neste estudo de caso, iremos explorar exatamente como fazer isso ligando-se diretamente ao servidor Microsoft Learn Docs MCP a partir da sua própria aplicação cliente.
 
 ## Visão Geral
 
-O desenvolvimento moderno é mais do que apenas escrever código — trata-se de encontrar a informação certa no momento certo. A documentação está por todo o lado, mas raramente onde mais precisa: dentro das suas ferramentas e fluxos de trabalho. Ao integrar a obtenção de documentação diretamente nas suas aplicações, pode poupar tempo, reduzir a troca de contexto e aumentar a produtividade. Nesta secção, vamos mostrar-lhe como ligar um cliente ao servidor Microsoft Learn Docs MCP, para que possa aceder a documentação em tempo real e contextualizada sem sair da sua aplicação.
+O desenvolvimento moderno é mais do que apenas escrever código—trata-se de encontrar a informação correta no momento certo. A documentação está em todo lado, mas raramente onde mais precisa: dentro das suas ferramentas e fluxos de trabalho. Ao integrar a obtenção de documentação diretamente nas suas aplicações, pode poupar tempo, reduzir a troca de contexto e aumentar a produtividade. Nesta secção, mostramos como ligar um cliente ao servidor Microsoft Learn Docs MCP, para que possa aceder a documentação em tempo real, contextualizada, sem sair da sua aplicação.
 
-Vamos percorrer o processo de estabelecer uma ligação, enviar um pedido e tratar respostas em streaming de forma eficiente. Esta abordagem não só simplifica o seu fluxo de trabalho, como também abre a porta para construir ferramentas de desenvolvimento mais inteligentes e úteis.
+Iremos orientar o processo de estabelecimento da ligação, envio de um pedido, e gestão eficiente das respostas em streaming. Esta abordagem não só simplifica o seu fluxo de trabalho como também abre a porta à criação de ferramentas para desenvolvedores mais inteligentes e úteis.
 
 ## Objetivos de Aprendizagem
 
-Porque é que estamos a fazer isto? Porque as melhores experiências para programadores são aquelas que eliminam obstáculos. Imagine um mundo onde o seu editor de código, chatbot ou aplicação web pode responder às suas dúvidas de documentação instantaneamente, usando o conteúdo mais recente do Microsoft Learn. No final deste capítulo, saberá como:
+Porque é que estamos a fazer isto? Porque as melhores experiências para desenvolvedores são aquelas que eliminam atritos. Imagine um mundo onde o seu editor de código, chatbot, ou aplicação web pode responder instantaneamente às suas perguntas de documentação, utilizando o conteúdo mais recente do Microsoft Learn. No final deste capítulo, saberá como:
 
-- Compreender os fundamentos da comunicação cliente-servidor MCP para documentação
-- Implementar uma aplicação de consola ou web para ligar ao servidor Microsoft Learn Docs MCP
-- Usar clientes HTTP em streaming para obter documentação em tempo real
-- Registar e interpretar as respostas de documentação na sua aplicação
+- Compreender os fundamentos da comunicação servidor-cliente MCP para documentação
+- Implementar uma aplicação de consola ou web para ligar-se ao servidor Microsoft Learn Docs MCP
+- Usar clientes HTTP com streaming para obtenção de documentação em tempo real
+- Registar e interpretar respostas de documentação na sua aplicação
 
-Vai perceber como estas competências o podem ajudar a criar ferramentas que não são apenas reativas, mas verdadeiramente interativas e conscientes do contexto.
+Verá como estas competências o podem ajudar a construir ferramentas que não são apenas reativas, mas verdadeiramente interativas e conscientes do contexto.
 
 ## Cenário 1 - Obtenção de Documentação em Tempo Real com MCP
 
-Neste cenário, vamos mostrar-lhe como ligar um cliente ao servidor Microsoft Learn Docs MCP, para que possa aceder a documentação em tempo real e contextualizada sem sair da sua aplicação.
+Neste cenário, mostramos como ligar um cliente ao servidor Microsoft Learn Docs MCP, para que possa aceder a documentação em tempo real, contextualizada, sem sair da sua aplicação.
 
 Vamos pôr isto em prática. A sua tarefa é escrever uma aplicação que se ligue ao servidor Microsoft Learn Docs MCP, invoque a ferramenta `microsoft_docs_search` e registe a resposta em streaming na consola.
 
 ### Porque esta abordagem?
-Porque é a base para construir integrações mais avançadas — quer queira alimentar um chatbot, uma extensão de IDE ou um painel web.
+Porque é a base para construir integrações mais avançadas—seja para alimentar um chatbot, uma extensão do IDE, ou um painel web.
 
-Vai encontrar o código e as instruções para este cenário na pasta [`solution`](./solution/README.md) dentro deste estudo de caso. Os passos vão guiá-lo na configuração da ligação:
-- Usar o SDK oficial MCP e um cliente HTTP com suporte a streaming para a ligação
+Encontrará o código e as instruções para este cenário na pasta [`solution`](./solution/README.md) dentro deste estudo de caso. Os passos irão guiar-no na configuração da ligação:
+- Usar o SDK oficial MCP e cliente HTTP com streaming para a ligação
 - Chamar a ferramenta `microsoft_docs_search` com um parâmetro de consulta para obter documentação
 - Implementar registo adequado e tratamento de erros
-- Criar uma interface de consola interativa para permitir que os utilizadores façam múltiplas pesquisas
+- Criar uma interface interactiva na consola para permitir aos utilizadores inserir múltiplas consultas de pesquisa
 
 Este cenário demonstra como:
 - Ligar ao servidor Docs MCP
 - Enviar uma consulta
-- Analisar e imprimir os resultados
+- Interpretar e imprimir os resultados
 
-Aqui está um exemplo de como executar a solução pode parecer:
+Aqui está uma ideia de como executar a solução poderá ser:
 
 ```
 Prompt> What is Azure Key Vault?
 Answer> Azure Key Vault is a cloud service for securely storing and accessing secrets. ...
 ```
 
-Abaixo está uma solução mínima de exemplo. O código completo e detalhes estão disponíveis na pasta da solução.
+Abaixo está uma solução de exemplo mínima. O código completo e detalhes estão disponíveis na pasta da solução.
 
 <details>
 <summary>Python</summary>
@@ -71,16 +71,17 @@ if __name__ == "__main__":
 - Para instruções de instalação e uso, consulte o ficheiro [`README.md`](./solution/python/README.md) na mesma pasta.
 </details>
 
-## Cenário 2 - Aplicação Web Interativa para Gerar Plano de Estudo com MCP
 
-Neste cenário, vai aprender a integrar o Docs MCP num projeto de desenvolvimento web. O objetivo é permitir que os utilizadores pesquisem a documentação do Microsoft Learn diretamente a partir de uma interface web, tornando a documentação instantaneamente acessível dentro da sua aplicação ou site.
+## Cenário 2 - Aplicação Web Interativa de Gerador de Plano de Estudo com MCP
 
-Vai ver como:
+Neste cenário, aprenderá a integrar o Docs MCP num projeto de desenvolvimento web. O objetivo é permitir que os utilizadores pesquisem na documentação Microsoft Learn diretamente a partir de uma interface web, tornando a documentação instantaneamente acessível dentro da sua aplicação ou site.
+
+Verá como:
 - Configurar uma aplicação web
-- Ligar ao servidor Docs MCP
-- Tratar a entrada do utilizador e mostrar os resultados
+- Ligar-se ao servidor Docs MCP
+- Tratar a entrada do utilizador e mostrar resultados
 
-Aqui está um exemplo de como executar a solução pode parecer:
+Aqui está uma ideia de como executar a solução poderá ser:
 
 ```
 User> I want to learn about AI102 - so suggest the roadmap to get it started from learn for 6 weeks
@@ -99,14 +100,14 @@ Assistant> Here’s a detailed 6-week roadmap to start your preparation for the 
 Let me know if you want module-specific recommendations or need more customized weekly tasks!
 ```
 
-Abaixo está uma solução mínima de exemplo. O código completo e detalhes estão disponíveis na pasta da solução.
+Abaixo está uma solução de exemplo mínima. O código completo e detalhes estão disponíveis na pasta da solução.
 
-![Visão Geral do Cenário 2](../../../../translated_images/pt-PT/scenario2.0c92726d5cd81f68238e5ba65f839a0b300d5b74b8ca7db28bc8f900c3e7d037.png)
+![Visão Geral do Cenário 2](../../../../translated_images/pt-PT/scenario2.0c92726d5cd81f68.webp)
 
 <details>
 <summary>Python (Chainlit)</summary>
 
-Chainlit é um framework para construir aplicações web de IA conversacional. Facilita a criação de chatbots interativos e assistentes que podem chamar ferramentas MCP e mostrar resultados em tempo real. É ideal para prototipagem rápida e interfaces amigáveis.
+Chainlit é um framework para construir aplicações web de IA conversacional. Facilita a criação de chatbots interativos e assistentes que podem chamar ferramentas MCP e mostrar resultados em tempo real. É ideal para prototipagem rápida e interfaces amigáveis para o utilizador.
 
 ```python
 import chainlit as cl
@@ -129,18 +130,19 @@ def handle_message(message):
 - Para instruções de configuração e execução, consulte o [`README.md`](./solution/python/README.md).
 </details>
 
-## Cenário 3: Documentação no Editor com o Servidor MCP no VS Code
 
-Se quiser ter o Microsoft Learn Docs diretamente dentro do seu VS Code (em vez de alternar entre abas do navegador), pode usar o servidor MCP no seu editor. Isto permite-lhe:
+## Cenário 3: Documentação no Editor com Servidor MCP no VS Code
+
+Se desejar obter os Microsoft Learn Docs diretamente dentro do seu VS Code (em vez de alternar entre abas do navegador), pode usar o servidor MCP no seu editor. Isto permite:
 - Pesquisar e ler documentação no VS Code sem sair do seu ambiente de codificação.
-- Referenciar documentação e inserir links diretamente nos seus ficheiros README ou de curso.
-- Aproveitar o GitHub Copilot e o MCP em conjunto para um fluxo de trabalho de documentação alimentado por IA, fluido.
+- Referenciar documentação e inserir ligações diretamente nos seus ficheiros README ou de curso.
+- Aproveitar o GitHub Copilot e MCP juntos para um fluxo de trabalho de documentação alimentado por IA, sem descontinuidades.
 
-**Vai aprender a:**
-- Adicionar um ficheiro válido `.vscode/mcp.json` na raiz do seu workspace (veja o exemplo abaixo).
+**Verá como:**
+- Adicionar um ficheiro `.vscode/mcp.json` válido na raiz do seu espaço de trabalho (veja o exemplo abaixo).
 - Abrir o painel MCP ou usar a paleta de comandos no VS Code para pesquisar e inserir documentação.
 - Referenciar documentação diretamente nos seus ficheiros markdown enquanto trabalha.
-- Combinar este fluxo de trabalho com o GitHub Copilot para ainda mais produtividade.
+- Combinar este fluxo de trabalho com o GitHub Copilot para ainda maior produtividade.
 
 Aqui está um exemplo de como configurar o servidor MCP no VS Code:
 
@@ -156,31 +158,40 @@ Aqui está um exemplo de como configurar o servidor MCP no VS Code:
 
 </details>
 
-> Para um guia detalhado com capturas de ecrã e passo a passo, consulte [`README.md`](./solution/scenario3/README.md).
+> Para um guia detalhado com capturas de ecrã e instruções passo a passo, consulte [`README.md`](./solution/scenario3/README.md).
 
-![Visão Geral do Cenário 3](../../../../translated_images/pt-PT/step4-prompt-chat.12187bb001605efc5077992b621f0fcd1df12023c5dce0464f8eb8f3d595218f.png)
+![Visão Geral do Cenário 3](../../../../translated_images/pt-PT/step4-prompt-chat.12187bb001605efc.webp)
 
-Esta abordagem é ideal para quem cria cursos técnicos, escreve documentação ou desenvolve código com necessidades frequentes de referência.
+Esta abordagem é ideal para quem constrói cursos técnicos, escreve documentação, ou desenvolve código com necessidades frequentes de referência.
 
 ## Principais Conclusões
 
-Integrar a documentação diretamente nas suas ferramentas não é apenas uma comodidade — é uma revolução para a produtividade. Ao ligar-se ao servidor Microsoft Learn Docs MCP a partir do seu cliente, pode:
+Integrar documentação diretamente nas suas ferramentas não é apenas uma comodidade—é uma revolução na produtividade. Ao ligar-se ao servidor Microsoft Learn Docs MCP a partir do seu cliente, pode:
 
 - Eliminar a troca de contexto entre o seu código e a documentação
 - Obter documentação atualizada e contextualizada em tempo real
-- Construir ferramentas de desenvolvimento mais inteligentes e interativas
+- Construir ferramentas para desenvolvedores mais inteligentes e interativas
 
-Estas competências vão ajudá-lo a criar soluções que são não só eficientes, mas também agradáveis de usar.
+Estas competências irão ajudá-lo a criar soluções não só eficientes, mas também agradáveis de usar.
 
 ## Recursos Adicionais
 
-Para aprofundar o seu conhecimento, explore estes recursos oficiais:
+Para aprofundar a sua compreensão, explore estes recursos oficiais:
 
 - [Microsoft Learn Docs MCP Server (GitHub)](https://github.com/MicrosoftDocs/mcp)
 - [Começar com o Azure MCP Server (mcp-python)](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/get-started#create-the-python-app)
 - [O que é o Azure MCP Server?](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/)
 - [Introdução ao Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
-- [Adicionar plugins a partir de um MCP Server (Python)](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-mcp-plugins)
+- [Adicionar plugins de um MCP Server (Python)](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-mcp-plugins)
 
+## O Que Segue
+
+- Voltar para: [Visão Geral dos Estudos de Caso](../README.md)
+- Continuar para: [Módulo 10: Otimização de Fluxos de Trabalho com IA com o AI Toolkit](../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Aviso Legal**:  
-Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos pela precisão, por favor tenha em conta que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas decorrentes da utilização desta tradução.
+Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos pela precisão, pedimos que tenha em conta que traduções automáticas podem conter erros ou imprecisões. O documento original, na sua língua nativa, deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se a tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas decorrentes da utilização desta tradução.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

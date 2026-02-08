@@ -1,49 +1,49 @@
 {
   "00-Introduction/README.md": {
-    "original_hash": "9678e0c6945b8e0c23586869b0e26783",
-    "translation_date": "2025-10-06T10:58:28+00:00",
+    "original_hash": "588d386126af00e97debce8e38cf87da",
+    "translation_date": "2026-02-08T17:36:42+00:00",
     "source_file": "00-Introduction/README.md",
     "language_code": "pa"
   },
   "01-CoreConcepts/README.md": {
-    "original_hash": "9ad93d2074502828b8139d5aba7bafab",
-    "translation_date": "2025-12-19T10:54:12+00:00",
+    "original_hash": "c086558619027d889d1d870fba16d02e",
+    "translation_date": "2026-02-08T17:28:34+00:00",
     "source_file": "01-CoreConcepts/README.md",
     "language_code": "pa"
   },
   "02-Security/README.md": {
-    "original_hash": "cf48858182f366e9d3f080fb0d3bfc37",
-    "translation_date": "2025-12-19T11:01:33+00:00",
+    "original_hash": "af06ead89d1af282d9898a2531a57842",
+    "translation_date": "2026-02-08T17:49:41+00:00",
     "source_file": "02-Security/README.md",
     "language_code": "pa"
   },
   "02-Security/azure-content-safety-implementation.md": {
-    "original_hash": "1b6c746d9e190deba4d8765267ffb94e",
-    "translation_date": "2025-07-17T02:01:13+00:00",
+    "original_hash": "83015d26c7efa6f0b982e01f90e2ef1c",
+    "translation_date": "2026-02-08T17:47:08+00:00",
     "source_file": "02-Security/azure-content-safety-implementation.md",
     "language_code": "pa"
   },
   "02-Security/azure-content-safety.md": {
-    "original_hash": "f5300fd1b5e84520d500b2a8f568a1d8",
-    "translation_date": "2025-07-17T01:59:32+00:00",
+    "original_hash": "51c5134333a072ebf647acad9a43b3e0",
+    "translation_date": "2026-02-08T17:46:52+00:00",
     "source_file": "02-Security/azure-content-safety.md",
     "language_code": "pa"
   },
   "02-Security/mcp-best-practices.md": {
-    "original_hash": "5061d7e2ae9eea9cbaae77c1a020b318",
-    "translation_date": "2025-12-19T11:00:17+00:00",
+    "original_hash": "27778a74451603fa5398790cbc9d402f",
+    "translation_date": "2026-02-08T17:46:34+00:00",
     "source_file": "02-Security/mcp-best-practices.md",
     "language_code": "pa"
   },
   "02-Security/mcp-security-best-practices-2025.md": {
-    "original_hash": "e30aaf6b178137fa6668efc1b20851d5",
-    "translation_date": "2025-12-19T10:57:56+00:00",
+    "original_hash": "606558c3e83fcb10f685e2f42062c6b4",
+    "translation_date": "2026-02-08T17:45:27+00:00",
     "source_file": "02-Security/mcp-security-best-practices-2025.md",
     "language_code": "pa"
   },
   "02-Security/mcp-security-controls-2025.md": {
-    "original_hash": "9351493ad29390d37f64bc6d84a03db5",
-    "translation_date": "2025-12-19T11:05:13+00:00",
+    "original_hash": "9b2c76b3456098efc83a6fc167d54e2f",
+    "translation_date": "2026-02-08T17:50:41+00:00",
     "source_file": "02-Security/mcp-security-controls-2025.md",
     "language_code": "pa"
   },
@@ -138,8 +138,8 @@
     "language_code": "pa"
   },
   "03-GettingStarted/03-llm-client/README.md": {
-    "original_hash": "75638575f993c152965ae2271c4da938",
-    "translation_date": "2025-12-19T11:06:18+00:00",
+    "original_hash": "d894db80647b3c8faea5a2c23c5b66b2",
+    "translation_date": "2026-02-08T17:57:14+00:00",
     "source_file": "03-GettingStarted/03-llm-client/README.md",
     "language_code": "pa"
   },
@@ -276,14 +276,14 @@
     "language_code": "pa"
   },
   "03-GettingStarted/09-deployment/README.md": {
-    "original_hash": "1d9dc83260576b76f272d330ed93c51f",
-    "translation_date": "2025-07-13T22:07:56+00:00",
+    "original_hash": "8d7e4a2fd7d62125674895617b9aca32",
+    "translation_date": "2026-02-08T17:55:30+00:00",
     "source_file": "03-GettingStarted/09-deployment/README.md",
     "language_code": "pa"
   },
   "03-GettingStarted/10-advanced/README.md": {
-    "original_hash": "1de8367745088b9fcd4746ea4cc5a161",
-    "translation_date": "2025-10-06T15:45:27+00:00",
+    "original_hash": "2fd2194a33b43b4ce07e192670ef163d",
+    "translation_date": "2026-02-08T17:53:14+00:00",
     "source_file": "03-GettingStarted/10-advanced/README.md",
     "language_code": "pa"
   },
@@ -306,8 +306,8 @@
     "language_code": "pa"
   },
   "03-GettingStarted/11-simple-auth/README.md": {
-    "original_hash": "5b00b8a8971a07d2d8803be4c9f138f8",
-    "translation_date": "2025-10-07T00:44:54+00:00",
+    "original_hash": "ff04655687067b58258a40a2a697c5c2",
+    "translation_date": "2026-02-08T17:55:13+00:00",
     "source_file": "03-GettingStarted/11-simple-auth/README.md",
     "language_code": "pa"
   },
@@ -359,9 +359,21 @@
     "source_file": "03-GettingStarted/11-simple-auth/solution/typescript/README.md",
     "language_code": "pa"
   },
+  "03-GettingStarted/12-mcp-hosts/README.md": {
+    "original_hash": "b599855566b62f05f1911dff44a95d45",
+    "translation_date": "2026-02-08T18:42:38+00:00",
+    "source_file": "03-GettingStarted/12-mcp-hosts/README.md",
+    "language_code": "pa"
+  },
+  "03-GettingStarted/13-mcp-inspector/README.md": {
+    "original_hash": "05b26e71d6c1f69bad8d96fef17b9804",
+    "translation_date": "2026-02-08T18:41:05+00:00",
+    "source_file": "03-GettingStarted/13-mcp-inspector/README.md",
+    "language_code": "pa"
+  },
   "03-GettingStarted/README.md": {
-    "original_hash": "f400d87053221363769113c24f117248",
-    "translation_date": "2025-10-06T22:48:58+00:00",
+    "original_hash": "9011c971791f0929aea7b53f3c2e7b92",
+    "translation_date": "2026-02-08T17:31:41+00:00",
     "source_file": "03-GettingStarted/README.md",
     "language_code": "pa"
   },
@@ -402,9 +414,15 @@
     "language_code": "pa"
   },
   "04-PracticalImplementation/README.md": {
-    "original_hash": "83efa75a69bc831277263a6f1ae53669",
-    "translation_date": "2025-08-18T16:33:14+00:00",
+    "original_hash": "07f05f8b2180c8aca8d19fc942a165de",
+    "translation_date": "2026-02-08T17:37:40+00:00",
     "source_file": "04-PracticalImplementation/README.md",
+    "language_code": "pa"
+  },
+  "04-PracticalImplementation/pagination/README.md": {
+    "original_hash": "a80a17cc4ae59dee36ecd37658f4369f",
+    "translation_date": "2026-02-08T18:46:36+00:00",
+    "source_file": "04-PracticalImplementation/pagination/README.md",
     "language_code": "pa"
   },
   "04-PracticalImplementation/samples/csharp/README.md": {
@@ -444,8 +462,8 @@
     "language_code": "pa"
   },
   "05-AdvancedTopics/README.md": {
-    "original_hash": "d204bc94ea6027d06a703b21b711ca57",
-    "translation_date": "2025-08-18T16:36:00+00:00",
+    "original_hash": "e057797775564477be2359e65cafd115",
+    "translation_date": "2026-02-08T17:35:32+00:00",
     "source_file": "05-AdvancedTopics/README.md",
     "language_code": "pa"
   },
@@ -474,8 +492,8 @@
     "language_code": "pa"
   },
   "05-AdvancedTopics/mcp-oauth2-demo/README.md": {
-    "original_hash": "0a7083e660ca0d85fd6a947514c61993",
-    "translation_date": "2025-07-14T00:41:15+00:00",
+    "original_hash": "2194a9b3b0c56e07a7acfe8f7ab1792c",
+    "translation_date": "2026-02-08T17:57:37+00:00",
     "source_file": "05-AdvancedTopics/mcp-oauth2-demo/README.md",
     "language_code": "pa"
   },
@@ -483,6 +501,12 @@
     "original_hash": "32c9a4263be08f9050c8044bb26267c4",
     "translation_date": "2025-07-14T00:25:36+00:00",
     "source_file": "05-AdvancedTopics/mcp-oauth2-demo/apimoauth.md",
+    "language_code": "pa"
+  },
+  "05-AdvancedTopics/mcp-protocol-features/README.md": {
+    "original_hash": "f52288bba5076c60be03f0b0bffd82f9",
+    "translation_date": "2026-02-08T18:44:23+00:00",
+    "source_file": "05-AdvancedTopics/mcp-protocol-features/README.md",
     "language_code": "pa"
   },
   "05-AdvancedTopics/mcp-realtimesearch/README.md": {
@@ -546,14 +570,14 @@
     "language_code": "pa"
   },
   "06-CommunityContributions/README.md": {
-    "original_hash": "fcf1e12b62102bf7d16b78deb2b163b7",
-    "translation_date": "2025-08-18T16:57:55+00:00",
+    "original_hash": "0fdbf2c12b4a71a29bd2c82617772c8b",
+    "translation_date": "2026-02-08T17:31:06+00:00",
     "source_file": "06-CommunityContributions/README.md",
     "language_code": "pa"
   },
   "07-LessonsfromEarlyAdoption/README.md": {
-    "original_hash": "41f16dac486d2086a53bc644a01cbe42",
-    "translation_date": "2025-08-18T16:31:00+00:00",
+    "original_hash": "1f1a3ea30f183812f7fd7319e794b6da",
+    "translation_date": "2026-02-08T17:42:03+00:00",
     "source_file": "07-LessonsfromEarlyAdoption/README.md",
     "language_code": "pa"
   },
@@ -564,32 +588,32 @@
     "language_code": "pa"
   },
   "08-BestPractices/README.md": {
-    "original_hash": "b62150e27d4b7b5797ee41146d176e6b",
-    "translation_date": "2025-08-18T16:34:57+00:00",
+    "original_hash": "d36abb0ebf2567a2950cce1f1d45c524",
+    "translation_date": "2026-02-08T17:40:17+00:00",
     "source_file": "08-BestPractices/README.md",
     "language_code": "pa"
   },
   "09-CaseStudy/README.md": {
-    "original_hash": "1611dc5f6a2a35a789fc4c95fc5bfbe8",
-    "translation_date": "2025-09-26T18:13:20+00:00",
+    "original_hash": "b3537be55d599dbfdca7bda72eef7741",
+    "translation_date": "2026-02-08T17:44:33+00:00",
     "source_file": "09-CaseStudy/README.md",
     "language_code": "pa"
   },
   "09-CaseStudy/UpdateADOItemsFromYT.md": {
-    "original_hash": "14a2dfbea55ef735660a06bd6bdfe5f3",
-    "translation_date": "2025-07-14T06:11:13+00:00",
+    "original_hash": "9f75ae7898161d39308fb1744a537ead",
+    "translation_date": "2026-02-08T17:43:45+00:00",
     "source_file": "09-CaseStudy/UpdateADOItemsFromYT.md",
     "language_code": "pa"
   },
   "09-CaseStudy/apimsample.md": {
-    "original_hash": "2228721599c0c8673de83496b4d7d7a9",
-    "translation_date": "2025-08-18T16:26:08+00:00",
+    "original_hash": "b0027ab7fc24fa80b1561e2406a88b28",
+    "translation_date": "2026-02-08T17:42:42+00:00",
     "source_file": "09-CaseStudy/apimsample.md",
     "language_code": "pa"
   },
   "09-CaseStudy/docs-mcp/README.md": {
-    "original_hash": "4319d291c9d124ecafea52b3d04bfa0e",
-    "translation_date": "2025-07-14T06:22:00+00:00",
+    "original_hash": "398caee74c8ce870afc054426aa862ca",
+    "translation_date": "2026-02-08T17:58:10+00:00",
     "source_file": "09-CaseStudy/docs-mcp/README.md",
     "language_code": "pa"
   },
@@ -612,14 +636,14 @@
     "language_code": "pa"
   },
   "09-CaseStudy/travelagentsample.md": {
-    "original_hash": "4d3415b9d2bf58bc69be07f945a69e07",
-    "translation_date": "2025-07-14T05:58:34+00:00",
+    "original_hash": "931353e1f351e3cc760ae28eed7bee01",
+    "translation_date": "2026-02-08T17:43:20+00:00",
     "source_file": "09-CaseStudy/travelagentsample.md",
     "language_code": "pa"
   },
   "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md": {
-    "original_hash": "1b000fd6e1b04c047578bfc5d07d54eb",
-    "translation_date": "2025-08-18T16:57:01+00:00",
+    "original_hash": "875a03de12b1173cba8abbf69ebc4303",
+    "translation_date": "2026-02-08T17:30:02+00:00",
     "source_file": "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md",
     "language_code": "pa"
   },
@@ -642,20 +666,20 @@
     "language_code": "pa"
   },
   "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/README.md": {
-    "original_hash": "999c5e7623c1e2d5e5a07c2feb39eb67",
-    "translation_date": "2025-07-14T08:26:36+00:00",
+    "original_hash": "36560cdff958db93957d572b7256e196",
+    "translation_date": "2026-02-08T17:52:12+00:00",
     "source_file": "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/README.md",
     "language_code": "pa"
   },
   "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/README.md": {
-    "original_hash": "f83bc722dc758efffd68667d6a1db470",
-    "translation_date": "2025-07-14T08:40:15+00:00",
+    "original_hash": "d738f17f991e4060fa8244417cde037c",
+    "translation_date": "2026-02-08T17:51:16+00:00",
     "source_file": "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/README.md",
     "language_code": "pa"
   },
   "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/README.md": {
-    "original_hash": "9a6a4d3497921d2f6d9699f0a6a1890c",
-    "translation_date": "2025-09-09T21:44:00+00:00",
+    "original_hash": "f2db2c0d33c96cd9139c3e5fab86ecf0",
+    "translation_date": "2026-02-08T17:51:47+00:00",
     "source_file": "10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/README.md",
     "language_code": "pa"
   },
@@ -738,8 +762,8 @@
     "language_code": "pa"
   },
   "11-MCPServerHandsOnLabs/README.md": {
-    "original_hash": "83d32e5c5dd838d4b87a730cab88db77",
-    "translation_date": "2025-09-30T16:24:48+00:00",
+    "original_hash": "8347ef1970813e6c9581733a1f825bd3",
+    "translation_date": "2026-02-08T17:29:16+00:00",
     "source_file": "11-MCPServerHandsOnLabs/README.md",
     "language_code": "pa"
   },
@@ -756,8 +780,8 @@
     "language_code": "pa"
   },
   "README.md": {
-    "original_hash": "e81166c4ee23f3fe8b4b9c4faeb98644",
-    "translation_date": "2026-02-02T20:05:42+00:00",
+    "original_hash": "a8daafd240ee3e26a8507d5104987c58",
+    "translation_date": "2026-02-08T17:23:33+00:00",
     "source_file": "README.md",
     "language_code": "pa"
   },
@@ -774,14 +798,14 @@
     "language_code": "pa"
   },
   "changelog.md": {
-    "original_hash": "e8bbc7982284fe177dd4be5e7f2b3357",
-    "translation_date": "2025-12-19T10:52:02+00:00",
+    "original_hash": "a67a5e6e614ac5383c708c8eb869b706",
+    "translation_date": "2026-02-08T17:26:15+00:00",
     "source_file": "changelog.md",
     "language_code": "pa"
   },
   "study_guide.md": {
-    "original_hash": "af27b0acfae6caa134d9701453884df8",
-    "translation_date": "2025-10-06T22:48:28+00:00",
+    "original_hash": "0afa28229391c5908c1380afb3eee3e1",
+    "translation_date": "2026-02-08T17:21:01+00:00",
     "source_file": "study_guide.md",
     "language_code": "pa"
   }

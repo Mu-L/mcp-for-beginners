@@ -1,35 +1,35 @@
 # Comunidade e Contribuições
 
-[![Como Contribuir para MCP: Ferramentas, Documentação, Código e Mais](../../../translated_images/pt-PT/07.1179f6de46ff196eb3cc13c3510e01c37807a13f3bb9be3c779105ce26737c67.png)](https://youtu.be/v1pvCYAWpRE)
+[![Como Contribuir para o MCP: Ferramentas, Documentação, Código e Mais](../../../translated_images/pt-PT/07.1179f6de46ff196e.webp)](https://youtu.be/v1pvCYAWpRE)
 
-_(Clique na imagem acima para assistir ao vídeo desta lição)_
+_(Clique na imagem acima para ver o vídeo desta lição)_
 
 ## Visão Geral
 
-Esta lição aborda como se envolver com a comunidade MCP, contribuir para o ecossistema MCP e seguir as melhores práticas para desenvolvimento colaborativo. Compreender como participar de projetos MCP de código aberto é essencial para quem deseja moldar o futuro desta tecnologia.
+Esta lição foca-se em como envolver-se com a comunidade MCP, contribuir para o ecossistema MCP e seguir as melhores práticas para o desenvolvimento colaborativo. Compreender como participar em projetos MCP open-source é essencial para quem pretende moldar o futuro desta tecnologia.
 
 ## Objetivos de Aprendizagem
 
-Ao final desta lição, você será capaz de:
+No final desta lição, será capaz de:
 
 - Compreender a estrutura da comunidade e do ecossistema MCP
-- Participar de forma eficaz em fóruns e discussões da comunidade MCP
-- Contribuir para repositórios de código aberto MCP
-- Criar e compartilhar ferramentas e servidores MCP personalizados
-- Seguir as melhores práticas para desenvolvimento e colaboração MCP
-- Descobrir recursos e frameworks da comunidade para desenvolvimento MCP
+- Participar eficazmente em fóruns e discussões da comunidade MCP
+- Contribuir para repositórios open-source MCP
+- Criar e partilhar ferramentas e servidores MCP personalizados
+- Seguir as melhores práticas para o desenvolvimento e colaboração MCP
+- Descobrir recursos da comunidade e frameworks para desenvolvimento MCP
 
 ## O Ecossistema da Comunidade MCP
 
 O ecossistema MCP consiste em vários componentes e participantes que trabalham juntos para avançar o protocolo.
 
-### Principais Componentes da Comunidade
+### Componentes-Chave da Comunidade
 
-1. **Mantenedores do Protocolo Principal**: A organização oficial [Model Context Protocol no GitHub](https://github.com/modelcontextprotocol) mantém as especificações principais do MCP e implementações de referência.
-2. **Desenvolvedores de Ferramentas**: Indivíduos e equipes que criam ferramentas e servidores MCP.
-3. **Provedores de Integração**: Empresas que integram MCP em seus produtos e serviços.
-4. **Utilizadores Finais**: Desenvolvedores e organizações que utilizam MCP em suas aplicações.
-5. **Contribuidores**: Membros da comunidade que contribuem com código, documentação ou outros recursos.
+1. **Mantenedores do Protocolo Core**: A organização oficial [Model Context Protocol GitHub](https://github.com/modelcontextprotocol) mantém as especificações core do MCP e implementações de referência
+2. **Desenvolvedores de Ferramentas**: Individuais e equipas que criam ferramentas e servidores MCP
+3. **Fornecedores de Integração**: Empresas que integram o MCP nos seus produtos e serviços
+4. **Utilizadores Finais**: Desenvolvedores e organizações que usam o MCP nas suas aplicações
+5. **Contribuintes**: Membros da comunidade que contribuem com código, documentação ou outros recursos
 
 ### Recursos da Comunidade
 
@@ -37,103 +37,103 @@ O ecossistema MCP consiste em vários componentes e participantes que trabalham 
 
 - [Organização MCP no GitHub](https://github.com/modelcontextprotocol)
 - [Documentação MCP](https://modelcontextprotocol.io/)
-- [Especificação MCP](https://modelcontextprotocol.io/docs/specification)
+- [Especificação MCP](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 - [Discussões no GitHub](https://github.com/orgs/modelcontextprotocol/discussions)
-- [Repositório de Exemplos e Servidores MCP](https://github.com/modelcontextprotocol/servers)
+- [Repositório de Exemplos & Servidores MCP](https://github.com/modelcontextprotocol/servers)
 
-#### Recursos Criados pela Comunidade
+#### Recursos Geridos pela Comunidade
 
-- [Clientes MCP](https://modelcontextprotocol.io/clients) - Lista de clientes que suportam integrações MCP.
-- [Servidores MCP da Comunidade](https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#-community-servers) - Lista crescente de servidores MCP desenvolvidos pela comunidade.
-- [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers) - Lista curada de servidores MCP.
-- [PulseMCP](https://www.pulsemcp.com/) - Hub da comunidade e newsletter para descobrir recursos MCP.
-- [Servidor Discord](https://discord.gg/jHEGxQu2a5) - Conecte-se com desenvolvedores MCP.
-- Implementações de SDK específicas para linguagens.
-- Posts em blogs e tutoriais.
+- [Clientes MCP](https://modelcontextprotocol.io/clients) – Lista de clientes que suportam integrações MCP
+- [Servidores MCP da Comunidade](https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#-community-servers) – Lista crescente de servidores MCP desenvolvidos pela comunidade
+- [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers) – Lista curada de servidores MCP
+- [PulseMCP](https://www.pulsemcp.com/) – Centro comunitário & boletim informativo para descobrir recursos MCP
+- [Servidor Discord](https://discord.gg/jHEGxQu2a5) – Conecte-se com desenvolvedores MCP
+- Implementações SDK específicas de linguagem
+- Posts em blogs e tutoriais
 
-## Contribuindo para MCP
+## Contribuindo para o MCP
 
-### Tipos de Contribuições
+### Tipos de Contribuição
 
-O ecossistema MCP acolhe diversos tipos de contribuições:
+O ecossistema MCP aceita vários tipos de contribuições:
 
 1. **Contribuições de Código**:
-   - Melhorias no protocolo principal.
-   - Correções de bugs.
-   - Implementações de ferramentas e servidores.
-   - Bibliotecas cliente/servidor em diferentes linguagens.
+   - Melhorias no protocolo core
+   - Correções de bugs
+   - Implementações de ferramentas e servidores
+   - Bibliotecas cliente/servidor em linguagens diferentes
 
 2. **Documentação**:
-   - Melhorar a documentação existente.
-   - Criar tutoriais e guias.
-   - Traduzir documentação.
-   - Criar exemplos e aplicações de demonstração.
+   - Melhorar documentação existente
+   - Criar tutoriais e guias
+   - Traduzir documentação
+   - Criar exemplos e aplicações de amostra
 
 3. **Suporte à Comunidade**:
-   - Responder perguntas em fóruns e discussões.
-   - Testar e relatar problemas.
-   - Organizar eventos comunitários.
-   - Mentorar novos contribuidores.
+   - Responder a perguntas em fóruns e discussões
+   - Testar e reportar problemas
+   - Organizar eventos comunitários
+   - Orientar novos contribuintes
 
-### Processo de Contribuição: Protocolo Principal
+### Processo de Contribuição: Protocolo Core
 
-Para contribuir com o protocolo principal MCP ou implementações oficiais, siga estes princípios das [diretrizes oficiais de contribuição](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/CONTRIBUTING.md):
+Para contribuir para o protocolo base MCP ou implementações oficiais, siga estes princípios das [diretrizes oficiais de contribuição](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/CONTRIBUTING.md):
 
-1. **Simplicidade e Minimalismo**: A especificação MCP mantém um alto padrão para adicionar novos conceitos. É mais fácil adicionar algo a uma especificação do que removê-lo.
+1. **Simplicidade e Minimalismo**: A especificação MCP mantém um padrão elevado para adicionar novos conceitos. É mais fácil adicionar coisas a uma especificação do que removê-las.
 
-2. **Abordagem Concreta**: Alterações na especificação devem ser baseadas em desafios específicos de implementação, não em ideias especulativas.
+2. **Abordagem Concreta**: Alterações na especificação devem basear-se em desafios de implementação específicos, não em ideias especulativas.
 
-3. **Etapas de uma Proposta**:
-   - Definir: Explorar o problema, validar que outros utilizadores MCP enfrentam um problema semelhante.
-   - Prototipar: Construir uma solução de exemplo e demonstrar sua aplicação prática.
-   - Escrever: Com base no protótipo, redigir uma proposta de especificação.
+3. **Fases de uma Proposta**:
+   - Definir: Explorar o problema, validar que outros utilizadores MCP enfrentam problema semelhante
+   - Prototipar: Construir uma solução de exemplo e demonstrar a utilização prática
+   - Escrever: Com base no protótipo, escrever uma proposta de especificação
 
 ### Configuração do Ambiente de Desenvolvimento
 
 ```bash
-# Fork the repository
+# Criar um fork do repositório
 git clone https://github.com/YOUR-USERNAME/modelcontextprotocol.git
 cd modelcontextprotocol
 
-# Install dependencies
+# Instalar dependências
 npm install
 
-# For schema changes, validate and generate schema.json:
+# Para alterações no esquema, validar e gerar schema.json:
 npm run check:schema:ts
 npm run generate:schema
 
-# For documentation changes
+# Para alterações na documentação
 npm run check:docs
 npm run format
 
-# Preview documentation locally (optional):
+# Pré-visualizar a documentação localmente (opcional):
 npm run serve:docs
 ```
 
 ### Exemplo: Contribuindo com uma Correção de Bug
 
 ```javascript
-// Original code with bug in the typescript-sdk
+// Código original com erro no typescript-sdk
 export function validateResource(resource: unknown): resource is MCPResource {
   if (!resource || typeof resource !== 'object') {
     return false;
   }
   
-  // Bug: Missing property validation
-  // Current implementation:
+  // Erro: Falta de validação da propriedade
+  // Implementação atual:
   const hasName = 'name' in resource;
   const hasSchema = 'schema' in resource;
   
   return hasName && hasSchema;
 }
 
-// Fixed implementation in a contribution
+// Implementação corrigida numa contribuição
 export function validateResource(resource: unknown): resource is MCPResource {
   if (!resource || typeof resource !== 'object') {
     return false;
   }
   
-  // Improved validation
+  // Validação melhorada
   const hasName = 'name' in resource && typeof (resource as MCPResource).name === 'string';
   const hasSchema = 'schema' in resource && typeof (resource as MCPResource).schema === 'object';
   const hasDescription = !('description' in resource) || typeof (resource as MCPResource).description === 'string';
@@ -142,10 +142,10 @@ export function validateResource(resource: unknown): resource is MCPResource {
 }
 ```
 
-### Exemplo: Contribuindo com uma Nova Ferramenta para a Biblioteca Padrão
+### Exemplo: Contribuindo uma Nova Ferramenta para a Biblioteca Padrão
 
 ```python
-# Example contribution: A CSV data processing tool for the MCP standard library
+# Exemplo de contribuição: Uma ferramenta de processamento de dados CSV para a biblioteca padrão MCP
 
 from mcp_tools import Tool, ToolRequest, ToolResponse, ToolExecutionException
 import pandas as pd
@@ -207,14 +207,14 @@ class CsvProcessingTool(Tool):
     
     async def execute_async(self, request: ToolRequest) -> ToolResponse:
         try:
-            # Extract parameters
+            # Extrair parâmetros
             operation = request.parameters.get("operation")
             output_format = request.parameters.get("outputFormat", "json")
             
-            # Get CSV data from either direct data or URL
+            # Obter dados CSV a partir de dados diretos ou URL
             df = await self._get_dataframe(request)
             
-            # Process based on requested operation
+            # Processar com base na operação solicitada
             result = {}
             
             if operation == "summary":
@@ -275,7 +275,7 @@ class CsvProcessingTool(Tool):
     
     def _transform_data(self, df: pd.DataFrame, params: Dict[str, Any]) -> Dict[str, Any]:
         """Transforms the data based on parameters"""
-        # Implementation would include various transformations
+        # A implementação incluiria várias transformações
         return {
             "status": "success",
             "message": "Transformation applied"
@@ -302,68 +302,70 @@ class CsvProcessingTool(Tool):
             raise ToolExecutionException(f"Unsupported output format: {format}")
 ```
 
-### Diretrizes de Contribuição
+### Diretrizes para Contribuições
 
-Para fazer uma contribuição bem-sucedida aos projetos MCP:
+Para fazer uma contribuição bem-sucedida a projetos MCP:
 
-1. **Comece Pequeno**: Inicie com documentação, correções de bugs ou pequenas melhorias.
-2. **Siga o Guia de Estilo**: Adote o estilo de codificação e convenções do projeto.
-3. **Escreva Testes**: Inclua testes unitários para suas contribuições de código.
-4. **Documente Seu Trabalho**: Adicione documentação clara para novos recursos ou alterações.
-5. **Envie PRs Focados**: Mantenha os pull requests focados em um único problema ou recurso.
-6. **Interaja com o Feedback**: Seja receptivo ao feedback sobre suas contribuições.
+1. **Comece Pequeno**: Inicie com documentação, correções de bugs ou pequenas melhorias
+2. **Siga o Guia de Estilo**: Adira ao estilo de codificação e convenções do projeto
+3. **Escreva Testes**: Inclua testes unitários nas suas contribuições
+4. **Documente o Seu Trabalho**: Adicione documentação clara para novas funcionalidades ou alterações
+5. **Submeta PRs Alvo**: Mantenha os pull requests focados num único problema ou funcionalidade
+6. **Interaja com o Feedback**: Seja responsivo ao feedback sobre as suas contribuições
 
-### Fluxo de Trabalho de Contribuição: Exemplo
+### Exemplo de Workflow de Contribuição
 
 ```bash
-# Clone the repository
+# Clona o repositório
 git clone https://github.com/modelcontextprotocol/typescript-sdk.git
 cd typescript-sdk
 
-# Create a new branch for your contribution
+# Cria uma nova branch para a tua contribuição
 git checkout -b feature/my-contribution
 
-# Make your changes
+# Faz as tuas alterações
 # ...
 
-# Run tests to ensure your changes don't break existing functionality
+# Executa testes para garantir que as tuas alterações não comprometem a funcionalidade existente
 npm test
 
-# Commit your changes with a descriptive message
+# Faz commit das tuas alterações com uma mensagem descritiva
 git commit -am "Fix validation in resource handler"
 
-# Push your branch to your fork
+# Envia a tua branch para o teu fork
 git push origin feature/my-contribution
 
-# Create a pull request from your branch to the main repository
-# Then engage with feedback and iterate on your PR as needed
+# Cria um pull request da tua branch para o repositório principal
+# Depois, interage com o feedback e itera sobre o teu PR conforme necessário
 ```
 
-## Criando e Compartilhando Servidores MCP
+## Criar e Partilhar Servidores MCP
 
-Uma das formas mais valiosas de contribuir para o ecossistema MCP é criar e compartilhar servidores MCP personalizados. A comunidade já desenvolveu centenas de servidores para diversos serviços e casos de uso.
+Uma das formas mais valiosas de contribuir para o ecossistema MCP é criar e partilhar servidores MCP personalizados. A comunidade já desenvolveu centenas de servidores para vários serviços e casos de uso.
 
 ### Frameworks de Desenvolvimento de Servidores MCP
 
-Vários frameworks estão disponíveis para simplificar o desenvolvimento de servidores MCP:
+Estão disponíveis vários frameworks para simplificar o desenvolvimento de servidores MCP:
 
-1. **SDKs Oficiais**:
+1. **SDKs Oficiais** (de acordo com a [Especificação MCP 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/)):
    - [SDK TypeScript](https://github.com/modelcontextprotocol/typescript-sdk)
    - [SDK Python](https://github.com/modelcontextprotocol/python-sdk)
    - [SDK C#](https://github.com/modelcontextprotocol/csharp-sdk)
    - [SDK Go](https://github.com/modelcontextprotocol/go-sdk)
    - [SDK Java](https://github.com/modelcontextprotocol/java-sdk)
    - [SDK Kotlin](https://github.com/modelcontextprotocol/kotlin-sdk)
+   - [SDK Swift](https://github.com/modelcontextprotocol/swift-sdk)
+   - [SDK Rust](https://github.com/modelcontextprotocol/rust-sdk)
 
 2. **Frameworks da Comunidade**:
-   - [MCP-Framework](https://mcp-framework.com/) - Construa servidores MCP com elegância e rapidez em TypeScript.
-   - [MCP Declarative Java SDK](https://github.com/codeboyzhou/mcp-declarative-java-sdk) - Servidores MCP baseados em anotações com Java.
-   - [Quarkus MCP Server SDK](https://github.com/quarkiverse/quarkus-mcp-server) - Framework Java para servidores MCP.
-   - [Template de Servidor MCP para Next.js](https://github.com/vercel-labs/mcp-for-next.js) - Projeto inicial para servidores MCP em Next.js.
+   - [MCP-Framework](https://mcp-framework.com/) – Crie servidores MCP com elegância e rapidez em TypeScript
+   - [MCP Declarative Java SDK](https://github.com/codeboyzhou/mcp-declarative-java-sdk) – Servidores MCP orientados por anotações em Java
+   - [Quarkus MCP Server SDK](https://github.com/quarkiverse/quarkus-mcp-server) – Framework Java para servidores MCP
+   - [Next.js MCP Server Template](https://github.com/vercel-labs/mcp-for-next.js) – Projeto inicial Next.js para servidores MCP
 
-### Desenvolvendo Ferramentas Compartilháveis
+### Desenvolvimento de Ferramentas Partilháveis
 
-#### Exemplo .NET: Criando um Pacote de Ferramentas Compartilhável
+#### Exemplo .NET: Criar um Pacote de Ferramentas Partilhável
 
 ```csharp
 // Create a new .NET library project
@@ -469,10 +471,10 @@ namespace McpFinanceTools
 // dotnet nuget push bin/Release/McpFinanceTools.1.0.0.nupkg -s https://api.nuget.org/v3/index.json -k YOUR_API_KEY
 ```
 
-#### Exemplo Java: Criando um Pacote Maven para Ferramentas
+#### Exemplo Java: Criar um Pacote Maven para Ferramentas
 
 ```java
-// pom.xml configuration for a shareable MCP tool package
+// configuração pom.xml para um pacote de ferramentas MCP partilhável
 <!-- 
 <project>
     <groupId>com.example</groupId>
@@ -533,7 +535,7 @@ public class WeatherForecastTool implements Tool {
     @Override
     public Object getSchema() {
         Map<String, Object> schema = new HashMap<>();
-        // Schema definition...
+        // Definição do esquema...
         return schema;
     }
     
@@ -544,10 +546,10 @@ public class WeatherForecastTool implements Tool {
             int days = request.getParameters().has("days") ? 
                 request.getParameters().get("days").asInt() : 3;
             
-            // Call weather API
+            // Chamar API do tempo
             Map<String, Object> forecast = getForecast(location, days);
             
-            // Build response
+            // Construir resposta
             return new ToolResponse.Builder()
                 .setResult(forecast)
                 .build();
@@ -557,23 +559,23 @@ public class WeatherForecastTool implements Tool {
     }
     
     private Map<String, Object> getForecast(String location, int days) {
-        // Implementation would call weather API
-        // Simplified example
+        // A implementação chamaria a API do tempo
+        // Exemplo simplificado
         Map<String, Object> result = new HashMap<>();
-        // Add forecast data...
+        // Adicionar dados de previsão...
         return result;
     }
 }
 
-// Build and publish using Maven
+// Construir e publicar usando Maven
 // mvn clean package
 // mvn deploy
 ```
 
-#### Exemplo Python: Publicando um Pacote PyPI
+#### Exemplo Python: Publicar um Pacote PyPI
 
 ```python
-# Directory structure for a PyPI package:
+# Estrutura de diretórios para um pacote PyPI:
 # mcp_nlp_tools/
 # ├── LICENSE
 # ├── README.md
@@ -583,7 +585,7 @@ public class WeatherForecastTool implements Tool {
 # │   ├── sentiment_tool.py
 # │   └── translation_tool.py
 
-# Example setup.py
+# Exemplo de setup.py
 """
 from setuptools import setup, find_packages
 
@@ -611,7 +613,7 @@ setup(
 )
 """
 
-# Example NLP tool implementation (sentiment_tool.py)
+# Exemplo de implementação de ferramenta NLP (sentiment_tool.py)
 from mcp_tools import Tool, ToolRequest, ToolResponse, ToolExecutionException
 from transformers import pipeline
 import torch
@@ -620,7 +622,7 @@ class SentimentAnalysisTool(Tool):
     """MCP tool for sentiment analysis of text"""
     
     def __init__(self, model_name="distilbert-base-uncased-finetuned-sst-2-english"):
-        # Load the sentiment analysis model
+        # Carregar o modelo de análise de sentimento
         self.sentiment_analyzer = pipeline("sentiment-analysis", model=model_name)
     
     def get_name(self):
@@ -648,14 +650,14 @@ class SentimentAnalysisTool(Tool):
     
     async def execute_async(self, request: ToolRequest) -> ToolResponse:
         try:
-            # Extract parameters
+            # Extrair parâmetros
             text = request.parameters.get("text")
             include_score = request.parameters.get("includeScore", True)
             
-            # Analyze sentiment
+            # Analisar sentimento
             sentiment_result = self.sentiment_analyzer(text)[0]
             
-            # Format result
+            # Format o resultado
             result = {
                 "sentiment": sentiment_result["label"],
                 "text": text
@@ -664,82 +666,82 @@ class SentimentAnalysisTool(Tool):
             if include_score:
                 result["score"] = sentiment_result["score"]
             
-            # Return result
+            # Retornar resultado
             return ToolResponse(result=result)
             
         except Exception as e:
             raise ToolExecutionException(f"Sentiment analysis failed: {str(e)}")
 
-# To publish:
+# Para publicar:
 # python setup.py sdist bdist_wheel
 # python -m twine upload dist/*
 ```
 
-### Compartilhando Melhores Práticas
+### Partilha de Melhores Práticas
 
-Ao compartilhar ferramentas MCP com a comunidade:
+Ao partilhar ferramentas MCP com a comunidade:
 
 1. **Documentação Completa**:
-   - Documente propósito, uso e exemplos.
-   - Explique parâmetros e valores de retorno.
-   - Documente quaisquer dependências externas.
+   - Documente o propósito, utilização e exemplos
+   - Explique parâmetros e valores de retorno
+   - Documente quaisquer dependências externas
 
 2. **Tratamento de Erros**:
-   - Implemente tratamento de erros robusto.
-   - Forneça mensagens de erro úteis.
-   - Lide com casos extremos de forma elegante.
+   - Implemente tratamento robusto de erros
+   - Forneça mensagens de erro úteis
+   - Trate casos limite de forma elegante
 
-3. **Considerações de Desempenho**:
-   - Otimize para velocidade e uso de recursos.
-   - Implemente caching quando apropriado.
-   - Considere escalabilidade.
+3. **Considerações de Performance**:
+   - Otimize para velocidade e uso de recursos
+   - Implemente cache quando apropriado
+   - Considere escalabilidade
 
 4. **Segurança**:
-   - Utilize chaves de API e autenticação seguras.
-   - Valide e sanitize entradas.
-   - Implemente limitação de taxa para chamadas de API externas.
+   - Use chaves API e autenticação seguras
+   - Valide e sanitiza entradas
+   - Implemente limitação de taxa para chamadas API externas
 
 5. **Testes**:
-   - Inclua cobertura de testes abrangente.
-   - Teste com diferentes tipos de entrada e casos extremos.
-   - Documente os procedimentos de teste.
+   - Inclua cobertura abrangente de testes
+   - Teste com diferentes tipos de dados e casos limite
+   - Documente procedimentos de teste
 
 ## Colaboração Comunitária e Melhores Práticas
 
-A colaboração eficaz é essencial para um ecossistema MCP próspero.
+A colaboração eficaz é chave para um ecossistema MCP próspero.
 
 ### Canais de Comunicação
 
-- Issues e Discussões no GitHub.
-- Microsoft Tech Community.
-- Canais no Discord e Slack.
-- Stack Overflow (tags: `model-context-protocol` ou `mcp`).
+- Issues e Discussões no GitHub
+- Microsoft Tech Community
+- Canais Discord e Slack
+- Stack Overflow (tag: `model-context-protocol` ou `mcp`)
 
 ### Revisões de Código
 
-Ao revisar contribuições MCP:
+Ao rever contribuições MCP:
 
-1. **Clareza**: O código é claro e bem documentado?
-2. **Corretude**: Funciona como esperado?
+1. **Clareza**: O código está claro e bem documentado?
+2. **Correcção**: Funciona conforme esperado?
 3. **Consistência**: Segue as convenções do projeto?
 4. **Completude**: Inclui testes e documentação?
-5. **Segurança**: Há preocupações de segurança?
+5. **Segurança**: Existem preocupações de segurança?
 
-### Compatibilidade de Versões
+### Compatibilidade de Versão
 
 Ao desenvolver para MCP:
 
-1. **Versionamento do Protocolo**: Adote a versão do protocolo MCP que sua ferramenta suporta.
-2. **Compatibilidade com Clientes**: Considere compatibilidade retroativa.
-3. **Compatibilidade com Servidores**: Siga as diretrizes de implementação de servidores.
-4. **Alterações Significativas**: Documente claramente quaisquer alterações significativas.
+1. **Versionamento do Protocolo**: Siga a versão do protocolo MCP suportada pela sua ferramenta
+2. **Compatibilidade do Cliente**: Considere compatibilidade retroativa
+3. **Compatibilidade do Servidor**: Siga as diretrizes de implementação do servidor
+4. **Mudanças Quebradoras**: Documente claramente quaisquer mudanças incompatíveis
 
-## Projeto Comunitário Exemplo: Registro de Ferramentas MCP
+## Exemplo de Projeto Comunitário: Registro de Ferramentas MCP
 
-Uma contribuição comunitária importante poderia ser desenvolver um registro público para ferramentas MCP.
+Uma contribuição importante para a comunidade pode ser desenvolver um registo público para ferramentas MCP.
 
 ```python
-# Example schema for a community tool registry API
+# Exemplo de esquema para uma API de registo de ferramentas comunitárias
 
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel, Field, HttpUrl
@@ -747,7 +749,7 @@ from typing import List, Optional
 import datetime
 import uuid
 
-# Models for the tool registry
+# Modelos para o registo de ferramentas
 class ToolSchema(BaseModel):
     """JSON Schema for a tool"""
     type: str
@@ -776,10 +778,10 @@ class Tool(ToolRegistration):
     rating: float = Field(default=0.0)
     ratings_count: int = Field(default=0)
 
-# FastAPI application for the registry
+# Aplicação FastAPI para o registo
 app = FastAPI(title="MCP Tool Registry")
 
-# In-memory database for this example
+# Base de dados em memória para este exemplo
 tools_db = {}
 
 @app.post("/tools", response_model=Tool)
@@ -815,29 +817,35 @@ async def delete_tool(tool_name: str):
     return {"message": f"Tool '{tool_name}' deleted"}
 ```
 
-## Principais Pontos
+## Principais Conclusões
 
-- A comunidade MCP é diversa e acolhe vários tipos de contribuições.
-- Contribuir para MCP pode variar de melhorias no protocolo principal a ferramentas personalizadas.
-- Seguir as diretrizes de contribuição aumenta as chances de seu PR ser aceito.
-- Criar e compartilhar ferramentas MCP é uma forma valiosa de melhorar o ecossistema.
-- A colaboração comunitária é essencial para o crescimento e aprimoramento do MCP.
+- A comunidade MCP é diversa e acolhe vários tipos de contribuições
+- Contribuir para o MCP pode ir desde melhorias no protocolo core a ferramentas personalizadas
+- Seguir as diretrizes de contribuição aumenta as hipóteses de aceitação do seu PR
+- Criar e partilhar ferramentas MCP é uma forma valiosa de reforçar o ecossistema
+- A colaboração comunitária é essencial para o crescimento e melhoria do MCP
 
 ## Exercício
 
-1. Identifique uma área no ecossistema MCP onde você poderia contribuir com base em suas habilidades e interesses.
-2. Faça um fork do repositório MCP e configure um ambiente de desenvolvimento local.
-3. Crie uma pequena melhoria, correção de bug ou ferramenta que beneficie a comunidade.
-4. Documente sua contribuição com testes e documentação adequados.
-5. Envie um pull request para o repositório apropriado.
+1. Identifique uma área no ecossistema MCP onde possa contribuir com base nas suas habilidades e interesses
+2. Faça um fork do repositório MCP e configure um ambiente de desenvolvimento local
+3. Crie uma pequena melhoria, correção de bug ou ferramenta que beneficie a comunidade
+4. Documente a sua contribuição com testes e documentação apropriados
+5. Submeta um pull request para o repositório apropriado
 
 ## Recursos Adicionais
 
-- [Projetos da Comunidade MCP](https://github.com/topics/model-context-protocol)
+- [Projetos Comunitários MCP](https://github.com/topics/model-context-protocol)
 
 ---
 
-Próximo: [Lições da Adoção Inicial](../07-LessonsfromEarlyAdoption/README.md)
+## O que vem a seguir
 
-**Aviso Legal**:  
-Este documento foi traduzido utilizando o serviço de tradução por IA [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos para garantir a precisão, é importante notar que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autoritária. Para informações críticas, recomenda-se a tradução profissional realizada por humanos. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas decorrentes do uso desta tradução.
+Seguinte: [Lições da Adoção Inicial](../07-LessonsfromEarlyAdoption/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Aviso Legal**:
+Este documento foi traduzido utilizando o serviço de tradução automática [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos por garantir a precisão, tenha em atenção que traduções automáticas podem conter erros ou imprecisões. O documento original na sua língua nativa deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se a tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas decorrentes do uso desta tradução.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
