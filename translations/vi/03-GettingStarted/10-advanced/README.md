@@ -1,20 +1,20 @@
 # Sử dụng máy chủ nâng cao
 
-Có hai loại máy chủ khác nhau được cung cấp trong MCP SDK: máy chủ thông thường và máy chủ cấp thấp. Thông thường, bạn sẽ sử dụng máy chủ thông thường để thêm các tính năng vào nó. Tuy nhiên, trong một số trường hợp, bạn có thể muốn dựa vào máy chủ cấp thấp, chẳng hạn như:
+Có hai loại máy chủ khác nhau được cung cấp trong MCP SDK, máy chủ thông thường và máy chủ cấp thấp. Thông thường, bạn sẽ sử dụng máy chủ thông thường để thêm các tính năng vào đó. Tuy nhiên, trong một số trường hợp, bạn muốn dựa vào máy chủ cấp thấp như:
 
-- Kiến trúc tốt hơn. Có thể tạo một kiến trúc sạch với cả máy chủ thông thường và máy chủ cấp thấp, nhưng có thể cho rằng việc này dễ dàng hơn một chút với máy chủ cấp thấp.
-- Khả năng sử dụng tính năng. Một số tính năng nâng cao chỉ có thể được sử dụng với máy chủ cấp thấp. Bạn sẽ thấy điều này trong các chương sau khi chúng ta thêm tính năng lấy mẫu và gợi ý.
+- Kiến trúc tốt hơn. Có thể tạo một kiến trúc sạch với cả máy chủ thông thường và máy chủ cấp thấp nhưng có thể tranh luận rằng nó dễ dàng hơn một chút với máy chủ cấp thấp.
+- Tính năng khả dụng. Một số tính năng nâng cao chỉ có thể sử dụng với máy chủ cấp thấp. Bạn sẽ thấy điều này trong các chương sau khi chúng ta thêm sampling và elicitation.
 
-## Máy chủ thông thường vs máy chủ cấp thấp
+## Máy chủ thông thường so với máy chủ cấp thấp
 
-Dưới đây là cách tạo một MCP Server với máy chủ thông thường:
+Đây là cách tạo một MCP Server với máy chủ thông thường
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# Thêm một công cụ cộng
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// Thêm một công cụ cộng thêm
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,18 +42,18 @@ server.registerTool("add",
 );
 ```
 
-Điểm mấu chốt là bạn cần thêm rõ ràng từng công cụ, tài nguyên hoặc gợi ý mà bạn muốn máy chủ có. Không có gì sai với cách này.
+Ý chính là bạn thêm rõ ràng từng công cụ, tài nguyên hoặc prompt mà bạn muốn máy chủ có. Không có gì sai với cách đó.
 
-### Cách tiếp cận máy chủ cấp thấp
+### Phương pháp máy chủ cấp thấp
 
-Tuy nhiên, khi bạn sử dụng cách tiếp cận máy chủ cấp thấp, bạn cần suy nghĩ khác đi, cụ thể là thay vì đăng ký từng công cụ, bạn sẽ tạo hai trình xử lý cho mỗi loại tính năng (công cụ, tài nguyên hoặc gợi ý). Ví dụ, đối với công cụ, chỉ cần có hai hàm như sau:
+Tuy nhiên, khi bạn sử dụng phương pháp máy chủ cấp thấp, bạn cần suy nghĩ khác đi, cụ thể thay vì đăng ký từng công cụ, bạn thay vào đó tạo hai hàm xử lý cho mỗi loại tính năng (công cụ, tài nguyên hoặc prompt). Ví dụ công cụ thì chỉ có hai hàm như sau:
 
-- Liệt kê tất cả các công cụ. Một hàm sẽ chịu trách nhiệm cho tất cả các lần cố gắng liệt kê công cụ.
-- Xử lý việc gọi tất cả các công cụ. Tương tự, chỉ có một hàm xử lý các yêu cầu gọi công cụ.
+- Liệt kê tất cả công cụ. Một hàm sẽ chịu trách nhiệm cho tất cả các lần cố gắng liệt kê công cụ.
+- Xử lý gọi tất cả các công cụ. Ở đây cũng chỉ có một hàm xử lý các cuộc gọi tới công cụ.
 
-Nghe có vẻ ít công việc hơn đúng không? Thay vì đăng ký từng công cụ, tôi chỉ cần đảm bảo rằng công cụ được liệt kê khi tôi liệt kê tất cả các công cụ và được gọi khi có yêu cầu gọi công cụ.
+Nghe có vẻ ít công việc hơn đúng không? Vậy thay vì đăng ký một công cụ, tôi chỉ cần đảm bảo công cụ được liệt kê khi tôi liệt kê tất cả các công cụ và được gọi khi có yêu cầu gọi công cụ đến.
 
-Hãy xem cách mã trông như thế nào:
+Hãy xem đoạn mã bây giờ trông như thế nào:
 
 **Python**
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Trả về danh sách các công cụ đã đăng ký
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Ở đây, chúng ta có một hàm trả về danh sách các tính năng. Mỗi mục trong danh sách công cụ hiện có các trường như `name`, `description` và `inputSchema` để tuân theo kiểu trả về. Điều này cho phép chúng ta đặt định nghĩa công cụ và tính năng ở nơi khác. Chúng ta có thể tạo tất cả các công cụ trong một thư mục công cụ và làm tương tự với tất cả các tính năng của bạn, vì vậy dự án của bạn có thể được tổ chức như sau:
+Ở đây bây giờ chúng ta có một hàm trả về danh sách các tính năng. Mỗi mục trong danh sách công cụ có các trường như `name`, `description` và `inputSchema` để tuân theo kiểu trả về. Điều này cho phép chúng ta đặt công cụ và định nghĩa tính năng ở nơi khác. Giờ chúng ta có thể tạo tất cả các công cụ trong thư mục tools và tương tự với tất cả các tính năng của bạn để dự án của bạn đột nhiên có thể được tổ chức như sau:
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-Thật tuyệt, kiến trúc của chúng ta có thể được làm cho trông khá sạch sẽ.
+Thật tuyệt, kiến trúc của chúng ta có thể được làm cho rõ ràng khá tốt.
 
-Còn việc gọi công cụ thì sao, có phải cũng là ý tưởng tương tự, một trình xử lý để gọi một công cụ bất kỳ? Đúng vậy, chính xác, đây là mã cho việc đó:
+Còn việc gọi công cụ thì sao, có phải cũng cùng ý tưởng, một trình xử lý gọi công cụ, bất kỳ công cụ nào? Đúng vậy, chính xác, đây là đoạn mã cho việc đó:
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools là một từ điển với tên công cụ làm khóa
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO gọi công cụ,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-Như bạn thấy từ mã trên, chúng ta cần phân tích công cụ để gọi, và với các tham số nào, sau đó tiến hành gọi công cụ.
+Như bạn có thể thấy từ đoạn mã trên, chúng ta cần phân tích công cụ để gọi, và với những tham số gì, sau đó chúng ta cần tiến hành gọi công cụ đó.
 
-## Cải thiện cách tiếp cận với xác thực
+## Cải thiện phương pháp với xác thực
 
-Cho đến nay, bạn đã thấy cách tất cả các đăng ký để thêm công cụ, tài nguyên và gợi ý có thể được thay thế bằng hai trình xử lý này cho mỗi loại tính năng. Còn điều gì khác chúng ta cần làm? Chúng ta nên thêm một hình thức xác thực để đảm bảo rằng công cụ được gọi với các tham số đúng. Mỗi runtime có giải pháp riêng cho việc này, ví dụ Python sử dụng Pydantic và TypeScript sử dụng Zod. Ý tưởng là chúng ta làm như sau:
+Cho đến nay, bạn đã thấy cách tất cả các đăng ký công cụ, tài nguyên và prompt có thể được thay thế bằng hai trình xử lý cho mỗi loại tính năng. Vậy còn cần làm gì nữa? Chúng ta nên thêm một hình thức xác thực để đảm bảo rằng công cụ được gọi với các tham số đúng. Mỗi runtime có giải pháp riêng của mình cho việc này, ví dụ Python sử dụng Pydantic và TypeScript sử dụng Zod. Ý tưởng là chúng ta làm như sau:
 
-- Di chuyển logic tạo tính năng (công cụ, tài nguyên hoặc gợi ý) vào thư mục chuyên dụng của nó.
-- Thêm cách xác thực yêu cầu đến, chẳng hạn yêu cầu gọi một công cụ.
+- Di chuyển logic tạo tính năng (công cụ, tài nguyên hoặc prompt) vào thư mục riêng của nó.
+- Thêm cách để xác thực một yêu cầu đến, ví dụ như gọi một công cụ.
 
 ### Tạo một tính năng
 
-Để tạo một tính năng, chúng ta cần tạo một tệp cho tính năng đó và đảm bảo rằng nó có các trường bắt buộc của tính năng đó. Các trường này khác nhau một chút giữa công cụ, tài nguyên và gợi ý.
+Để tạo một tính năng, chúng ta cần tạo một file cho tính năng đó và đảm bảo nó có các trường bắt buộc dành cho tính năng đó. Các trường này hơi khác nhau giữa công cụ, tài nguyên và prompt.
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Xác thực đầu vào sử dụng mô hình Pydantic
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: thêm Pydantic, để chúng ta có thể tạo AddInputModel và xác thực các đối số
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,21 +213,21 @@ tool_add = {
 }
 ```
 
-Ở đây bạn có thể thấy cách chúng ta thực hiện:
+ở đây bạn có thể thấy cách chúng ta làm như sau:
 
-- Tạo một schema sử dụng Pydantic `AddInputModel` với các trường `a` và `b` trong tệp *schema.py*.
-- Cố gắng phân tích yêu cầu đến để có kiểu `AddInputModel`, nếu có sự không khớp trong các tham số, điều này sẽ gây lỗi:
+- Tạo một schema bằng Pydantic `AddInputModel` với các trường `a` và `b` trong file *schema.py*.
+- Cố gắng phân tích yêu cầu đến thành kiểu `AddInputModel`, nếu có sự không khớp tham số thì sẽ gây lỗi:
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Xác thực đầu vào sử dụng mô hình Pydantic
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-Bạn có thể chọn đặt logic phân tích này trong chính hàm gọi công cụ hoặc trong hàm trình xử lý.
+Bạn có thể chọn đặt logic phân tích này trong chính cuộc gọi công cụ hoặc trong hàm xử lý.
 
 **TypeScript**
 
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- Trong trình xử lý xử lý tất cả các lần gọi công cụ, chúng ta cố gắng phân tích yêu cầu đến thành schema được định nghĩa của công cụ:
+- Trong trình xử lý xử lý tất cả các cuộc gọi công cụ, giờ chúng ta cố gắng phân tích yêu cầu đến thành schema được định nghĩa của công cụ:
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    nếu điều đó thành công, chúng ta tiếp tục gọi công cụ thực tế:
+    nếu điều đó thành công thì ta tiến hành gọi công cụ thực tế:
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-Như bạn thấy, cách tiếp cận này tạo ra một kiến trúc tuyệt vời vì mọi thứ đều có vị trí của nó, tệp *server.ts* rất nhỏ chỉ để kết nối các trình xử lý yêu cầu và mỗi tính năng nằm trong thư mục tương ứng của nó, ví dụ tools/, resources/ hoặc /prompts.
+Như bạn thấy, phương pháp này tạo ra một kiến trúc tuyệt vời vì mọi thứ đều có chỗ của nó, file *server.ts* rất nhỏ chỉ để liên kết các trình xử lý yêu cầu và mỗi tính năng nằm trong thư mục tương ứng của chúng, ví dụ tools/, resources/ hoặc prompts/.
 
 Tuyệt vời, hãy thử xây dựng điều này tiếp theo.
 
 ## Bài tập: Tạo một máy chủ cấp thấp
 
-Trong bài tập này, chúng ta sẽ thực hiện:
+Trong bài tập này, chúng ta sẽ làm như sau:
 
-1. Tạo một máy chủ cấp thấp xử lý việc liệt kê công cụ và gọi công cụ.
-1. Triển khai một kiến trúc bạn có thể xây dựng thêm.
-1. Thêm xác thực để đảm bảo các lần gọi công cụ của bạn được xác thực đúng.
+1. Tạo một máy chủ cấp thấp xử lý liệt kê công cụ và gọi công cụ.
+2. Triển khai kiến trúc bạn có thể xây dựng tiếp.
+3. Thêm xác thực để đảm bảo các cuộc gọi công cụ được kiểm tra đúng.
 
-### -1- Tạo một kiến trúc
+### -1- Tạo kiến trúc
 
-Điều đầu tiên chúng ta cần giải quyết là một kiến trúc giúp chúng ta mở rộng khi thêm nhiều tính năng hơn, đây là cách nó trông như thế nào:
+Điều đầu tiên chúng ta cần giải quyết là một kiến trúc giúp mở rộng khi ta thêm nhiều tính năng hơn, nó trông như sau:
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-Bây giờ chúng ta đã thiết lập một kiến trúc đảm bảo rằng chúng ta có thể dễ dàng thêm các công cụ mới vào thư mục công cụ. Hãy thoải mái làm theo điều này để thêm các thư mục con cho tài nguyên và gợi ý.
+Bây giờ chúng ta đã thiết lập một kiến trúc đảm bảo ta có thể dễ dàng thêm công cụ mới trong thư mục tools. Bạn có thể thêm các thư mục con cho resources và prompts.
 
 ### -2- Tạo một công cụ
 
-Hãy xem việc tạo một công cụ trông như thế nào tiếp theo. Đầu tiên, nó cần được tạo trong thư mục con *tool* như sau:
+Hãy xem tạo một công cụ như thế nào tiếp theo. Đầu tiên, nó cần được tạo trong thư mục con *tool* như sau:
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Xác thực đầu vào sử dụng mô hình Pydantic
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: thêm Pydantic, để chúng ta có thể tạo một AddInputModel và xác thực các đối số
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-Ở đây chúng ta thấy cách định nghĩa tên, mô tả, một schema đầu vào sử dụng Pydantic và một trình xử lý sẽ được gọi khi công cụ này được gọi. Cuối cùng, chúng ta cung cấp `tool_add` là một từ điển chứa tất cả các thuộc tính này.
+Ở đây chúng ta thấy cách định nghĩa tên, mô tả, một schema đầu vào sử dụng Pydantic và một hàm xử lý sẽ được gọi khi công cụ này được gọi. Cuối cùng, chúng ta khai báo `tool_add` là một dictionary chứa tất cả các thuộc tính này.
 
-Cũng có *schema.py* được sử dụng để định nghĩa schema đầu vào được sử dụng bởi công cụ của chúng ta:
+Ngoài ra còn có *schema.py* dùng để định nghĩa schema đầu vào của công cụ:
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Chúng ta cũng cần điền *__init__.py* để đảm bảo thư mục công cụ được coi là một module. Ngoài ra, chúng ta cần cung cấp các module bên trong nó như sau:
+Chúng ta cũng cần điền vào *__init__.py* để đảm bảo thư mục tools được coi là một module. Thêm vào đó chúng ta cần khai báo các module trong nó như sau:
 
 ```python
 from .add import tool_add
@@ -393,7 +393,7 @@ tools = {
 }
 ```
 
-Chúng ta có thể tiếp tục thêm vào tệp này khi thêm nhiều công cụ hơn.
+Chúng ta có thể tiếp tục thêm vào file này khi thêm nhiều công cụ hơn.
 
 **TypeScript**
 
@@ -414,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-Ở đây chúng ta tạo một từ điển gồm các thuộc tính:
+Ở đây chúng ta tạo một dictionary gồm các thuộc tính:
 
-- name, đây là tên của công cụ.
-- rawSchema, đây là schema Zod, nó sẽ được sử dụng để xác thực các yêu cầu đến để gọi công cụ này.
-- inputSchema, schema này sẽ được sử dụng bởi trình xử lý.
-- callback, được sử dụng để gọi công cụ.
+- name, đây là tên công cụ.
+- rawSchema, đây là schema Zod, sẽ dùng để xác thực các yêu cầu gọi công cụ này.
+- inputSchema, schema này sẽ được trình xử lý sử dụng.
+- callback, dùng để gọi công cụ.
 
-Cũng có `Tool` được sử dụng để chuyển đổi từ điển này thành kiểu mà trình xử lý máy chủ MCP có thể chấp nhận và nó trông như sau:
+Ngoài ra còn có `Tool` dùng để chuyển dictionary này thành kiểu mà trình xử lý của mcp server có thể chấp nhận, trông như sau:
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-Và có *schema.ts* nơi chúng ta lưu trữ các schema đầu vào cho mỗi công cụ, trông như sau với chỉ một schema hiện tại nhưng khi thêm công cụ, chúng ta có thể thêm nhiều mục hơn:
+Và có file *schema.ts* chứa các schema đầu vào cho mỗi công cụ như sau, hiện chỉ có một schema nhưng khi thêm công cụ ta có thể thêm nhiều mục hơn:
 
 ```typescript
 import { z } from 'zod';
@@ -442,16 +442,16 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Tuyệt vời, hãy tiếp tục xử lý việc liệt kê các công cụ tiếp theo.
+Tuyệt vời, hãy tiếp tục xử lý việc liệt kê công cụ tiếp theo.
 
-### -3- Xử lý việc liệt kê công cụ
+### -3- Xử lý liệt kê công cụ
 
-Tiếp theo, để xử lý việc liệt kê các công cụ, chúng ta cần thiết lập một trình xử lý yêu cầu cho việc đó. Đây là những gì chúng ta cần thêm vào tệp máy chủ:
+Tiếp theo, để xử lý liệt kê công cụ, ta cần thiết lập một trình xử lý yêu cầu cho điều đó. Đây là những gì ta cần thêm vào tập tin server của mình:
 
 **Python**
 
 ```python
-# code omitted for brevity
+# mã đã bị loại bỏ để rút gọn
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-Ở đây chúng ta thêm decorator `@server.list_tools` và hàm thực hiện `handle_list_tools`. Trong hàm này, chúng ta cần tạo danh sách các công cụ. Lưu ý rằng mỗi công cụ cần có tên, mô tả và inputSchema.
+Ở đây ta thêm decorator `@server.list_tools` và hàm triển khai `handle_list_tools`. Trong hàm này, ta cần tạo danh sách các công cụ. Chú ý mỗi công cụ cần có tên, mô tả và inputSchema.
 
 **TypeScript**
 
-Để thiết lập trình xử lý yêu cầu cho việc liệt kê công cụ, chúng ta cần gọi `setRequestHandler` trên máy chủ với một schema phù hợp với những gì chúng ta đang cố gắng làm, trong trường hợp này là `ListToolsRequestSchema`.
+Để thiết lập trình xử lý yêu cầu liệt kê công cụ, ta cần gọi `setRequestHandler` trên server với một schema phù hợp với việc ta muốn làm, trong trường hợp này là `ListToolsRequestSchema`.
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// mã đã bị bỏ qua cho ngắn gọn
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Trả về danh sách các công cụ đã đăng ký
   return {
     tools: tools
   };
 });
 ```
 
-Tuyệt vời, bây giờ chúng ta đã giải quyết phần liệt kê công cụ, hãy xem cách chúng ta có thể gọi công cụ tiếp theo.
+Tuyệt vời, giờ ta đã giải quyết xong phần liệt kê công cụ, hãy xem cách ta gọi công cụ tiếp theo.
 
-### -4- Xử lý việc gọi một công cụ
+### -4- Xử lý gọi công cụ
 
-Để gọi một công cụ, chúng ta cần thiết lập một trình xử lý yêu cầu khác, lần này tập trung vào xử lý yêu cầu chỉ định tính năng nào để gọi và với các tham số nào.
+Để gọi một công cụ, ta cần thiết lập một trình xử lý yêu cầu nữa, lần này tập trung vào xử lý yêu cầu xác định tính năng nào được gọi và với những tham số nào.
 
 **Python**
 
-Hãy sử dụng decorator `@server.call_tool` và thực hiện nó với một hàm như `handle_call_tool`. Trong hàm đó, chúng ta cần phân tích tên công cụ, các tham số của nó và đảm bảo rằng các tham số hợp lệ cho công cụ được chỉ định. Chúng ta có thể xác thực các tham số trong hàm này hoặc ở phần sau trong chính công cụ.
+Hãy sử dụng decorator `@server.call_tool` và triển khai nó với một hàm như `handle_call_tool`. Trong hàm đó, ta cần phân tích tên công cụ, tham số của nó và đảm bảo tham số hợp lệ với công cụ được gọi. Ta có thể xác thực tham số trong hàm này hoặc trong chính công cụ.
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools là một từ điển với tên công cụ làm khóa
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # gọi công cụ
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -535,25 +535,31 @@ async def handle_call_tool(
 
 Đây là những gì diễn ra:
 
-- Tên công cụ của chúng ta đã có sẵn dưới dạng tham số đầu vào `name`, điều này cũng đúng với các tham số dưới dạng từ điển `arguments`.
+- Tên công cụ đã có sẵn là tham số đầu vào `name` và tham số truyền vào ở dạng dictionary `arguments`.
 
-- Công cụ được gọi với `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Việc xác thực các tham số diễn ra trong thuộc tính `handler` trỏ đến một hàm, nếu thất bại, nó sẽ gây ra ngoại lệ.
+- Công cụ được gọi với `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Việc xác thực tham số diễn ra trong thuộc tính `handler` trỏ tới một hàm, nếu không hợp lệ, sẽ ném ngoại lệ.
 
-Vậy là chúng ta đã hiểu đầy đủ về việc liệt kê và gọi công cụ sử dụng máy chủ cấp thấp.
+Vậy là, giờ chúng ta đã hiểu đầy đủ về cách liệt kê và gọi công cụ sử dụng máy chủ cấp thấp.
 
-Xem [ví dụ đầy đủ](./code/README.md) tại đây.
+Xem [ví dụ đầy đủ](./code/README.md) ở đây
 
 ## Bài tập
 
-Mở rộng mã bạn đã được cung cấp với một số công cụ, tài nguyên và gợi ý, và suy ngẫm về việc bạn chỉ cần thêm tệp vào thư mục công cụ mà không cần thay đổi ở nơi khác.
+Mở rộng mã code đã được cung cấp với một số công cụ, tài nguyên và prompt và suy ngẫm về việc bạn chỉ cần thêm các file trong thư mục tools mà không cần nơi nào khác.
 
-*Không có giải pháp được cung cấp*
+*Không có giải pháp*
 
 ## Tóm tắt
 
-Trong chương này, chúng ta đã thấy cách tiếp cận máy chủ cấp thấp hoạt động và cách nó có thể giúp chúng ta tạo một kiến trúc tốt để tiếp tục xây dựng. Chúng ta cũng đã thảo luận về xác thực và bạn đã được hướng dẫn cách làm việc với các thư viện xác thực để tạo schema cho việc xác thực đầu vào.
+Trong chương này, chúng ta đã thấy cách hoạt động của phương pháp máy chủ cấp thấp và cách nó giúp tạo ra một kiến trúc đẹp mà ta có thể tiếp tục xây dựng. Chúng ta cũng đã thảo luận về xác thực và bạn được hướng dẫn cách sử dụng các thư viện xác thực để tạo schema cho việc kiểm tra đầu vào.
+
+## Tiếp theo
+
+- Tiếp theo: [Xác thực đơn giản](../11-simple-auth/README.md)
 
 ---
 
-**Tuyên bố miễn trừ trách nhiệm**:  
-Tài liệu này đã được dịch bằng dịch vụ dịch thuật AI [Co-op Translator](https://github.com/Azure/co-op-translator). Mặc dù chúng tôi cố gắng đảm bảo độ chính xác, xin lưu ý rằng các bản dịch tự động có thể chứa lỗi hoặc không chính xác. Tài liệu gốc bằng ngôn ngữ bản địa nên được coi là nguồn thông tin chính thức. Đối với các thông tin quan trọng, khuyến nghị sử dụng dịch vụ dịch thuật chuyên nghiệp bởi con người. Chúng tôi không chịu trách nhiệm cho bất kỳ sự hiểu lầm hoặc diễn giải sai nào phát sinh từ việc sử dụng bản dịch này.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Tuyên bố từ chối trách nhiệm**:  
+Tài liệu này đã được dịch bằng dịch vụ dịch thuật AI [Co-op Translator](https://github.com/Azure/co-op-translator). Mặc dù chúng tôi cố gắng đảm bảo độ chính xác, xin lưu ý rằng bản dịch tự động có thể chứa lỗi hoặc không chính xác. Tài liệu gốc bằng ngôn ngữ gốc được coi là nguồn chính xác và đáng tin cậy. Đối với các thông tin quan trọng, khuyến nghị sử dụng dịch vụ dịch thuật chuyên nghiệp do con người thực hiện. Chúng tôi không chịu trách nhiệm về bất kỳ sự hiểu lầm hoặc giải thích sai nào phát sinh từ việc sử dụng bản dịch này.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
