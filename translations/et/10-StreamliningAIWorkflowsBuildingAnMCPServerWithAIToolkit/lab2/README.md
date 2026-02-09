@@ -193,7 +193,7 @@ Lisaks Microsofti serveritele sisaldab MCP ökosüsteem:
    - **Nimi**: `BrowserAgent`
    - **Mudel**: Vali GPT-4o 
 
-![BrowserAgent](../../../../translated_images/et/BrowserAgent.09c1adde5e136573b64ab1baecd830049830e295eac66cb18bebb85fb386e00a.png)
+![BrowserAgent](../../../../translated_images/et/BrowserAgent.09c1adde5e136573.webp)
 
 ### 🔧 Faas 2: MCP integratsiooni töövoog
 
@@ -202,7 +202,7 @@ Lisaks Microsofti serveritele sisaldab MCP ökosüsteem:
 2. **Klõpsa "Lisa tööriist"**, et avada integratsioonimenüü
 3. **Vali "MCP Server"** saadaolevate valikute hulgast
 
-![AddMCP](../../../../translated_images/et/AddMCP.afe3308ac20aa94469a5717b632d77b2197b9838a438b05d39aeb2db3ec47ef1.png)
+![AddMCP](../../../../translated_images/et/AddMCP.afe3308ac20aa944.webp)
 
 **🔍 Tööriistade tüüpide mõistmine:**
 - **Sisseehitatud tööriistad**: Eelkonfigureeritud AI Toolkiti funktsioonid
@@ -212,10 +212,10 @@ Lisaks Microsofti serveritele sisaldab MCP ökosüsteem:
 
 #### Samm 4: MCP serveri valik
 1. **Vali "MCP Server"**, et jätkata
-![AddMCPServer](../../../../translated_images/et/AddMCPServer.69b911ccef872cbd0d0c0c2e6a00806916e1673e543b902a23dee23e6ff54b4c.png)
+![AddMCPServer](../../../../translated_images/et/AddMCPServer.69b911ccef872cbd.webp)
 
 2. **Sirvi MCP kataloogi**, et uurida saadaolevaid integratsioone
-![MCPCatalog](../../../../translated_images/et/MCPCatalog.a817d053145699006264f5a475f2b48fbd744e43633f656b6453c15a09ba5130.png)
+![MCPCatalog](../../../../translated_images/et/MCPCatalog.a817d05314569900.webp)
 
 ### 🎮 Faas 3: Playwright MCP konfigureerimine
 
@@ -224,12 +224,12 @@ Lisaks Microsofti serveritele sisaldab MCP ökosüsteem:
 2. **Vali "Playwright"** esiletõstetud nimekirjast
 3. **Aktsepteeri vaikimisi MCP ID** või kohanda vastavalt oma keskkonnale
 
-![MCPID](../../../../translated_images/et/MCPID.67d446052979e819c945ff7b6430196ef587f5217daadd3ca52fa9659c1245c9.png)
+![MCPID](../../../../translated_images/et/MCPID.67d446052979e819.webp)
 
 #### Samm 6: Playwrighti võimekuste lubamine
 **🔑 Oluline samm**: Vali **KÕIK** saadaolevad Playwrighti meetodid maksimaalse funktsionaalsuse jaoks
 
-![Tools](../../../../translated_images/et/Tools.3ea23c447b4d9feccbd7101e6dcf9e27cb0e5273f351995fde62c5abf9a78b4c.png)
+![Tools](../../../../translated_images/et/Tools.3ea23c447b4d9fec.webp)
 
 **🛠️ Olulised Playwrighti tööriistad:**
 - **Navigeerimine**: `goto`, `goBack`, `goForward`, `reload`
@@ -245,7 +245,7 @@ Lisaks Microsofti serveritele sisaldab MCP ökosüsteem:
 - Integratsioonipaneelil ei ole veateateid
 - Playwrighti serveri staatus näitab "Ühendatud"
 
-![AgentTools](../../../../translated_images/et/AgentTools.053cfb96a17e02199dcc6563010d2b324d4fc3ebdd24889657a6950647a52f63.png)
+![AgentTools](../../../../translated_images/et/AgentTools.053cfb96a17e0219.webp)
 
 **🔧 Levinud probleemide lahendamine:**
 - **Ühendus ebaõnnestus**: Kontrolli internetiühendust ja tulemüüri seadeid
@@ -311,7 +311,7 @@ Navigate to github.com/kinfey and provide a comprehensive analysis including:
 Include screenshots at key steps and provide actionable insights.
 ```
 
-![Prompt](../../../../translated_images/et/Prompt.bfc846605db4999f4d9c1b09c710ef63cae7b3057444e68bf07240fb142d9f8f.png)
+![Prompt](../../../../translated_images/et/Prompt.bfc846605db4999f.webp)
 
 ### 🚀 Faas 5: Käivitamine ja testimine
 
@@ -323,19 +323,19 @@ Include screenshots at key steps and provide actionable insights.
    - Ekraanipildid salvestavad iga suurema sammu
    - Analüüsi tulemused voogesitatakse reaalajas
 
-![Browser](../../../../translated_images/et/Browser.ec011d0bd64d0d112c8a29bd8cc44c76d0bbfd0b019cb2983ef679328435ce5d.png)
+![Browser](../../../../translated_images/et/Browser.ec011d0bd64d0d11.webp)
 
 #### Samm 11: Tulemuste ja ülevaadete analüüs
 Vaata põhjalikku analüüsi Agent Builderi liideses:
 
-![Result](../../../../translated_images/et/Result.8638f2b6703e9ea6d58d4e4475e39456b6a51d4c787f9bf481bae694d370a69a.png)
+![Result](../../../../translated_images/et/Result.8638f2b6703e9ea6.webp)
 
 ### 🌟 Faas 6: Täiustatud võimekused ja juurutamine
 
 #### Samm 12: Eksport ja tootmiskeskkonna juurutamine
 Agent Builder toetab mitmeid juurutamisvõimalusi:
 
-![Code](../../../../translated_images/et/Code.d9eeeead0b96db0ca19c5b10ad64cfea8c1d0d1736584262970a4d43e1403d13.png)
+![Code](../../../../translated_images/et/Code.d9eeeead0b96db0c.webp)
 
 ## 🎓 Moodul 2 kokkuvõte ja järgmised sammud
 

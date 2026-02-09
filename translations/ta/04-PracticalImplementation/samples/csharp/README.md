@@ -17,7 +17,7 @@
 
 1. ஒரு வலை உலாவி .NET Aspire டாஷ்போர்டை திறக்கும்போது, `http` URL-ஐ கவனிக்கவும். இது `http://localhost:5058/` போன்றதாக இருக்க வேண்டும்.
 
-   ![.NET Aspire டாஷ்போர்டு](../../../../../translated_images/ta/dotnet-aspire-dashboard.0a7095710e9301e90df2efd867e1b675b3b9bc2ccd7feb1ebddc0751522bc37c.png)
+   ![.NET Aspire டாஷ்போர்டு](../../../../../translated_images/ta/dotnet-aspire-dashboard.0a7095710e9301e9.webp)
 
 ## MCP Inspector உடன் Streamable HTTP-ஐ சோதிக்கவும்
 
@@ -29,7 +29,7 @@
 npx @modelcontextprotocol/inspector http://localhost:5058
 ```
 
-![MCP Inspector](../../../../../translated_images/ta/mcp-inspector.c223422b9b494fb4a518a3b3911b3e708e6a5715069470f9163ee2ee8d5f1ba9.png)
+![MCP Inspector](../../../../../translated_images/ta/mcp-inspector.c223422b9b494fb4.webp)
 
 - `Streamable HTTP` என்பதை போக்குவரத்து வகையாகத் தேர்ந்தெடுக்கவும்.
 - URL புலத்தில், முந்தைய URL-ஐ உள்ளீடு செய்து `/mcp` சேர்க்கவும். இது `http` (அல்லது `https` அல்ல) போன்றதாக இருக்க வேண்டும்: `http://localhost:5058/mcp`.
@@ -74,7 +74,7 @@ azd up
 
 வெளியீடு முடிந்தவுடன், நீங்கள் கீழே உள்ள செய்தியைப் பார்க்க வேண்டும்:
 
-![Azd deployment வெற்றி](../../../../../translated_images/ta/azd-deployment-success.bd42940493f1b834a5ce6251a6f88966546009b350df59d0cc4a8caabe94a4f1.png)
+![Azd deployment வெற்றி](../../../../../translated_images/ta/azd-deployment-success.bd42940493f1b834.webp)
 
 URL-ஐ எடுத்துக்கொண்டு MCP Inspector மற்றும் GitHub Copilot Chat-இல் பயன்படுத்தவும்.
 

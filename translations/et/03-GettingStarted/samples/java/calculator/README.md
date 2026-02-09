@@ -192,7 +192,7 @@ MCP Inspector on kasulik tööriist MCP teenustega suhtlemiseks. Selle kalkulaat
    - Klõpsake "List Tools", et näha saadaolevaid kalkulaatori operatsioone
    - Valige tööriist ja klõpsake "Run Tool", et operatsiooni käivitada
 
-![MCP Inspectori ekraanipilt](../../../../../../translated_images/et/tool.c75a0b2380efcf1a47a8478f54380a36ddcca7943b98f56dabbac8b07e15c3bb.png)
+![MCP Inspectori ekraanipilt](../../../../../../translated_images/et/tool.c75a0b2380efcf1a.webp)
 
 ### Dockeri kasutamine
 
