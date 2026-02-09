@@ -1,71 +1,73 @@
-# Ilma MCP Server
+# Weather MCP Server
 
-See on näidis MCP server Pythonis, mis rakendab ilmatööriistu koos näidisvastustega. Seda saab kasutada oma MCP serveri alusena. See sisaldab järgmisi funktsioone:
+See on näidismudel MCP serverist Pythonis, mis rakendab ilma tööriistu koos näidisdomeenidega. Seda saab kasutada oma MCP serveri alusena. See sisaldab järgmisi funktsioone:
 
-- **Ilmatööriist**: Tööriist, mis pakub näidisena ilmainfot vastavalt antud asukohale.
-- **Ühendus Agent Builderiga**: Funktsioon, mis võimaldab MCP serveri ühendada Agent Builderiga testimiseks ja silumiseks.
-- **Silumine [MCP Inspectoris](https://github.com/modelcontextprotocol/inspector)**: Funktsioon, mis võimaldab MCP serverit siluda MCP Inspectoriga.
+- **Ilmatööriist**: tööriist, mis annab näidisdomeenidel põhinevat ilma infot vastavalt antud asukohale.
+- **Ühenda Agent Builderiga**: funktsioon, mis võimaldab ühendada MCP server Agent Builderiga testimiseks ja silumiseks.
+- **Silumine [MCP Inspectoriga](https://github.com/modelcontextprotocol/inspector)**: funktsioon, mis võimaldab MCP serverit siluda kasutades MCP Inspectori.
 
-## Alustamine Ilma MCP Serveri malliga
+## Alustamine Weather MCP Serveri malliga
 
 > **Eeltingimused**
 >
-> MCP serveri käivitamiseks oma kohalikus arendusmasinas on vaja:
+> Selleks, et MCP serverit käivitada oma lokaalsel arendusmasinal, vajad:
 >
 > - [Python](https://www.python.org/)
-> - (*Valikuline - kui eelistate uv-d*) [uv](https://github.com/astral-sh/uv)
+> - (*Valikuline - kui eelistad uv-d*) [uv](https://github.com/astral-sh/uv)
 > - [Python Debugger Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 
 ## Keskkonna ettevalmistamine
 
-Selle projekti keskkonna seadistamiseks on kaks lähenemisviisi. Valige endale sobivaim.
+Selle projekti keskkonna seadistamiseks on kaks lähenemist. Võid valida endale sobivaima.
 
-> Märkus: Taaskäivitage VSCode või terminal, et veenduda, et virtuaalse keskkonna Python on kasutusel pärast selle loomist.
+> Märkus: Taaskäivita VSCode või terminal, et pärast virtuaalkeskkonna loomist kasutataks virtuaalset Pythoni.
 
 | Lähenemine | Sammud |
-| ---------- | ------ |
-| Kasutades `uv` | 1. Loo virtuaalne keskkond: `uv venv` <br>2. Käivitage VSCode käsk "***Python: Select Interpreter***" ja valige loodud virtuaalse keskkonna Python <br>3. Installige sõltuvused (sh arendussõltuvused): `uv pip install -r pyproject.toml --extra dev` |
-| Kasutades `pip` | 1. Loo virtuaalne keskkond: `python -m venv .venv` <br>2. Käivitage VSCode käsk "***Python: Select Interpreter***" ja valige loodud virtuaalse keskkonna Python<br>3. Installige sõltuvused (sh arendussõltuvused): `pip install -e .[dev]` |
+| --------- | ------- |
+| `uv` kasutamine | 1. Loo virtuaalkeskkond: `uv venv` <br>2. Käivita VSCode käsk "***Python: Select Interpreter***" ja vali loodud virtuaalkeskkonna Python <br>3. Paigalda sõltuvused (sealhulgas arendusvõimalused): `uv pip install -r pyproject.toml --extra dev` |
+| `pip` kasutamine | 1. Loo virtuaalkeskkond: `python -m venv .venv` <br>2. Käivita VSCode käsk "***Python: Select Interpreter***" ja vali loodud virtuaalkeskkonna Python<br>3. Paigalda sõltuvused (sealhulgas arendusvõimalused): `pip install -e .[dev]` |
 
-Pärast keskkonna seadistamist saate serveri oma kohalikus arendusmasinas käivitada, kasutades Agent Builderit MCP kliendina alustamiseks:
-1. Avage VS Code silumispaneel. Valige `Debug in Agent Builder` või vajutage `F5`, et alustada MCP serveri silumist.
-2. Kasutage AI Toolkit Agent Builderit, et testida serverit [selle käsuga](../../../../../../../../../../../open_prompt_builder). Server ühendatakse automaatselt Agent Builderiga.
-3. Klõpsake `Run`, et testida serverit käsuga.
+Keskkonna seadistamise järel saad serveri oma lokaalsel arendusmasinal käivitada Agent Builderi kaudu MCP kliendina, et alustada:
+1. Ava VS Code silumise paneel. Vali `Debug in Agent Builder` või vajuta `F5`, et alustada MCP serveri silumist.
+2. Kasuta AI Toolkit Agent Builderit, et serverit testida [selle promptiga](../../../../../../../../../../../open_prompt_builder). Server ühendub Agent Builderiga automaatselt.
+3. Klõpsa `Run`, et testida serverit promptiga.
 
-**Palju õnne**! Olete edukalt käivitanud Ilma MCP Serveri oma kohalikus arendusmasinas, kasutades Agent Builderit MCP kliendina.
+**Palju õnne**! Sul õnnestus edukalt käivitada Weather MCP Server oma lokaalsel arendusmasinal Agent Builderi kaudu MCP kliendina.
 ![DebugMCP](https://raw.githubusercontent.com/microsoft/windows-ai-studio-templates/refs/heads/dev/mcpServers/mcp_debug.gif)
 
-## Mis on mallis kaasas
+## Mida mall sisaldab
 
-| Kaust / Fail | Sisu                                      |
-| ------------ | ----------------------------------------- |
-| `.vscode`    | VSCode failid silumiseks                  |
-| `.aitk`      | AI Toolkiti konfiguratsioonid             |
-| `src`        | Ilma MCP serveri lähtekood                |
+| Kaust / Fail | Sisu                                               |
+| ------------ | ------------------------------------------------- |
+| `.vscode`    | VSCode failid silumiseks                           |
+| `.aitk`      | Konfiguratsioonid AI Toolkituks                    |
+| `src`        | Ilma MCP serveri lähtekood                         |
 
-## Kuidas siluda Ilma MCP Serverit
+## Kuidas siluda Weather MCP Serverit
 
 > Märkused:
 > - [MCP Inspector](https://github.com/modelcontextprotocol/inspector) on visuaalne arendustööriist MCP serverite testimiseks ja silumiseks.
-> - Kõik silumisrežiimid toetavad murdepunkte, nii et saate lisada murdepunkte tööriista rakenduskoodi.
+> - Kõik silumismeetodid toetavad murdepunkte, nii et saad lisada murdepunkte tööriista rakendus koodi.
 
-| Silumisrežiim | Kirjeldus | Silumise sammud |
-| ------------- | --------- | --------------- |
-| Agent Builder | Siluge MCP serverit Agent Builderis AI Toolkiti kaudu. | 1. Avage VS Code silumispaneel. Valige `Debug in Agent Builder` ja vajutage `F5`, et alustada MCP serveri silumist.<br>2. Kasutage AI Toolkit Agent Builderit, et testida serverit [selle käsuga](../../../../../../../../../../../open_prompt_builder). Server ühendatakse automaatselt Agent Builderiga.<br>3. Klõpsake `Run`, et testida serverit käsuga. |
-| MCP Inspector | Siluge MCP serverit MCP Inspectoriga. | 1. Installige [Node.js](https://nodejs.org/)<br> 2. Seadistage Inspector: `cd inspector` && `npm install` <br> 3. Avage VS Code silumispaneel. Valige `Debug SSE in Inspector (Edge)` või `Debug SSE in Inspector (Chrome)`. Vajutage F5, et alustada silumist.<br> 4. Kui MCP Inspector avaneb brauseris, klõpsake `Connect` nuppu, et ühendada see MCP server.<br> 5. Seejärel saate `List Tools`, valida tööriista, sisestada parameetrid ja `Run Tool`, et siluda oma serverikoodi.<br> |
+| Silumise režiim | Kirjeldus | Silumise sammud |
+| --------------- | --------- | --------------- |
+| Agent Builder | Silu MCP serverit Agent Builderis AI Toolkit kaudu. | 1. Ava VS Code silumise paneel. Vali `Debug in Agent Builder` ja vajuta `F5`, et alustada MCP serveri silumist.<br>2. Kasuta AI Toolkit Agent Builderit, et testida serverit [selle promptiga](../../../../../../../../../../../open_prompt_builder). Server ühendub automaatselt Agent Builderiga.<br>3. Klõpsa `Run`, et testida serverit promptiga. |
+| MCP Inspector | Silu MCP serverit kasutades MCP Inspectorit. | 1. Paigalda [Node.js](https://nodejs.org/)<br>2. Sea Inspector üles: `cd inspector` ja `npm install`<br>3. Ava VS Code silumise paneel. Vali `Debug SSE in Inspector (Edge)` või `Debug SSE in Inspector (Chrome)`. Vajuta `F5` silumise alustamiseks.<br>4. Kui MCP Inspector avaneb brauseris, klõpsa `Connect` nupule, et ühendada see MCP server.<br>5. Seejärel saad `List Tools` klõpsata, valida tööriista, sisestada parameetrid ja `Run Tool`, et oma serveri koodi siluda.<br> |
 
-## Vaikimisi pordid ja kohandused
+## Vaikesadistused ja kohandused
 
-| Silumisrežiim | Pordid | Definitsioonid | Kohandused | Märkus |
-| ------------- | ------ | -------------- | ---------- | ------ |
-| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json) | Muutke [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.aitk/mcp.json), et muuta ülaltoodud porte. | N/A |
-| MCP Inspector | 3001 (Server); 5173 ja 3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json) | Muutke [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.aitk/mcp.json), et muuta ülaltoodud porte. | N/A |
+| Silumise režiim | Pordid | Definitsioonid | Kohandused | Märkus |
+| --------------- | ------ | -------------- | ---------- | ------ |
+| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json) | Muuda [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.aitk/mcp.json), et muuta eespool mainitud porte. | Pole |
+| MCP Inspector | 3001 (Server); 5173 ja 3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json) | Muuda [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab3/code/weather_mcp/.aitk/mcp.json), et muuta eespool mainitud porte. | Pole |
 
 ## Tagasiside
 
-Kui teil on selle malli kohta tagasisidet või ettepanekuid, avage palun probleem [AI Toolkiti GitHubi repositooriumis](https://github.com/microsoft/vscode-ai-toolkit/issues).
+Kui sul on selle malli kohta tagasisidet või ettepanekuid, palun loo teema [AI Toolkit GitHubi hoidlas](https://github.com/microsoft/vscode-ai-toolkit/issues)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:
+See dokument on tõlgitud kasutades tehisintellektil põhinevat tõlketeenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüame täpsust, palun arvestage, et automatiseeritud tõlgetes võib esineda vigu või ebatäpsusi. Originaaldokument selle emakeeles tuleks pidada autoriteetseks allikaks. Olulise informatsiooni puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlkega seotud arusaamatuste ega moonutuste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

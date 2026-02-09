@@ -1,220 +1,227 @@
-# AI-töövoogude optimeerimine: MCP-serveri loomine AI Toolkitiga
+# AI töövoogude sujuvamaks muutmine: MCP-serveri ehitamine AI tööriistakomplektiga
 
-[![MCP Versioon](https://img.shields.io/badge/MCP-1.9.3-blue.svg)](https://modelcontextprotocol.io/)
+[![MCP Spec](https://img.shields.io/badge/MCP%20Spec-2025--11--25-blue.svg)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 [![Python](https://img.shields.io/badge/Python-3.10+-green.svg)](https://python.org)
 [![VS Code](https://img.shields.io/badge/VS%20Code-Latest-orange.svg)](https://code.visualstudio.com/)
 
-![logo](../../../translated_images/et/logo.ec93918ec338dadde1715c8aaf118079e0ed0502e9efdfcc84d6a0f4a9a70ae8.png)
+![logo](../../../translated_images/et/logo.ec93918ec338dadd.webp)
 
 ## 🎯 Ülevaade
 
-[![Ehita AI-agente VS Code'is: 4 praktilist laborit MCP ja AI Toolkitiga](../../../translated_images/et/11.0f6db6a0fb6068856d0468590a120ffe35dbccc49b93dc88b2003f306c81493a.png)](https://youtu.be/r34Csn3rkeQ)
+[![Ehita AI agente VS Code’is: 4 praktilist laborit MCP ja AI tööriistakomplektiga](../../../translated_images/et/11.0f6db6a0fb606885.webp)](https://youtu.be/r34Csn3rkeQ)
 
-_(Klõpsa ülaloleval pildil, et vaadata selle õppetunni videot)_
+_(Klõpsa ülaltoodud pildil, et vaadata selle tunni videot)_
 
-Tere tulemast **Model Context Protocol (MCP) töötoale**! See põhjalik praktiline töötuba ühendab kaks tipptasemel tehnoloogiat, et viia AI-rakenduste arendus uuele tasemele:
+Tere tulemast **Model Context Protocol (MCP) töötuppa**! See põhjalik praktiline tööklass ühendab kaks tipptasemel tehnoloogiat, mis muudavad AI rakenduste arenduse revolutsiooniliseks:
 
-- **🔗 Model Context Protocol (MCP)**: Avatud standard AI-tööriistade sujuvaks integreerimiseks
-- **🛠️ AI Toolkit Visual Studio Code'ile (AITK)**: Microsofti võimas AI-arenduse laiendus
+- **🔗 Model Context Protocol (MCP)**: Avatud standard sujuvaks AI-tööriistade integreerimiseks
+- **🛠️ AI tööriistakomplekt Visual Studio Code’ile (AITK)**: Microsofti võimas AI arenduslisa
 
-### 🎓 Mida õpid
+### 🎓 Mida sa õpid
 
-Töötoa lõpuks oled omandanud oskused luua intelligentseid rakendusi, mis ühendavad AI-mudelid reaalmaailma tööriistade ja teenustega. Alates automatiseeritud testimisest kuni kohandatud API-integratsioonideni saad praktilisi oskusi keeruliste äriprobleemide lahendamiseks.
+Selle töötoa lõpuks valdad nutikate rakenduste loomise oskuse, mis ühendavad AI mudelid reaalsete tööriistade ja teenustega. Alates automatiseeritud testimisest kuni kohandatud API integratsioonideni - saad praktilised oskused keerukate äriprobleemide lahendamiseks.
 
-## 🏗️ Tehnoloogiline virn
+## 🏗️ Tehnoloogiapinu
 
 ### 🔌 Model Context Protocol (MCP)
 
-MCP on **"USB-C AI jaoks"** – universaalne standard, mis ühendab AI-mudelid väliste tööriistade ja andmeallikatega.
+MCP on **"USB-C AI-le"** – universaalne standard, mis ühendab AI mudelid väliste tööriistade ja andmeallikatega.
 
-**✨ Põhifunktsioonid:**
+**✨ Peamised omadused:**
 
-- 🔄 **Standardiseeritud integratsioon**: Universaalne liides AI-tööriistade ühendamiseks
-- 🏛️ **Paindlik arhitektuur**: Kohalikud ja kaugserverid stdio/SSE transpordi kaudu
-- 🧰 **Rikas ökosüsteem**: Tööriistad, juhendid ja ressursid ühes protokollis
-- 🔒 **Ettevõttevalmidus**: Sisseehitatud turvalisus ja töökindlus
+- 🔄 **Standardiseeritud integreerimine**: Universaalne liides AI-tööriistade ühendamiseks
+- 🏛️ **Paindlik arhitektuur**: Kohalikud ja kaugel asuvad serverid stdio/SSE transpordi kaudu
+- 🧰 **Rikas ökosüsteem**: Tööriistad, käsud ja ressursid ühes protokollis
+- 🔒 **Ettevõttevalmidus**: Sisseehitatud turvalisus ja usaldusväärsus
 
 **🎯 Miks MCP on oluline:**
-Nii nagu USB-C kõrvaldas kaablite kaose, kõrvaldab MCP AI-integratsioonide keerukuse. Üks protokoll, lõputud võimalused.
+Nii nagu USB-C kaotas kaablite segaduse, nii ka MCP kaotab AI integratsioonide keerukuse. Üks protokoll, piiritud võimalused.
 
-### 🤖 AI Toolkit Visual Studio Code'ile (AITK)
+### 🤖 AI tööriistakomplekt Visual Studio Code’ile (AITK)
 
-Microsofti lipulaev AI-arenduse laienduste seas, mis muudab VS Code'i AI-tööriistade keskuseks.
+Microsofti lipulaeva AI arenduslisa, mis muudab VS Code’i AI võimsuskeskuseks.
 
-**🚀 Põhivõimalused:**
+**🚀 Peamised võimekused:**
 
-- 📦 **Mudelikataloog**: Juurdepääs mudelitele Azure AI-st, GitHubist, Hugging Face'ist, Ollamast
-- ⚡ **Kohalik järeldamine**: ONNX-optimeeritud CPU/GPU/NPU täitmine
-- 🏗️ **Agendi ehitaja**: Visuaalne AI-agentide arendus MCP integratsiooniga
-- 🎭 **Mitme modaalne**: Teksti, visiooni ja struktureeritud väljundi tugi
+- 📦 **Mudelite kataloog**: Juhtmudelid Azure AI-st, GitHubist, Hugging Face’ist, Ollamast
+- ⚡ **Kohalik tuletamine**: ONNX-optimeeritud CPU/GPU/NPU täideviimine
+- 🏗️ **Agendi ehitaja**: Visuaalne AI agendi arendus MCP integratsiooniga
+- 🎭 **Mitme meediumi tugi**: Tekst, pilt ja struktureeritud väljund
 
-**💡 Arenduse eelised:**
+**💡 Arendusmugavused:**
 
-- Nullkonfiguratsiooniga mudelite juurutamine
-- Visuaalne juhendite loomine
-- Reaalajas testimise mänguväljak
-- Sujuv MCP-serveri integreerimine
+- Null-konfiguratsiooniga mudelite kasutuselevõtt
+- Visuaalne käsuinsener
+- Reaalaegne testimisplatvorm
+- Sujuv MCP serverite integratsioon
 
-## 📚 Õppereis
+## 📚 Õppeprogramm
 
-### [🚀 Moodul 1: AI Toolkiti alused](./lab1/README.md)
+### [🚀 Moodul 1: AI tööriistakomplekti alused](./lab1/README.md)
 
 **Kestus**: 15 minutit
 
-- 🛠️ AI Toolkiti installimine ja seadistamine VS Code'is
-- 🗂️ Mudelikataloogi uurimine (100+ mudelit GitHubist, ONNXist, OpenAI-st, Anthropicust, Google'ist)
-- 🎮 Reaalajas mudelite testimise interaktiivse mänguväljaku valdamine
-- 🤖 Esimese AI-agendi loomine Agendi ehitajaga
-- 📊 Mudelite jõudluse hindamine sisseehitatud mõõdikutega (F1, asjakohasus, sarnasus, sidusus)
-- ⚡ Partii töötlemise ja mitme modaalsuse tugi
+- 🛠️ AI tööriistakomplekti paigaldamine ja seadistamine VS Code’is
+- 🗂️ Mudelite kataloogi uurimine (üle 100 mudeli GitHubist, ONNX-ist, OpenAI-st, Anthropic-ist, Google’ilt)
+- 🎮 Interaktiivse katseplatvormi valdamine mudelite reaalaegseks testimiseks
+- 🤖 Esimese AI agendi ehitamine Agent Builderiga
+- 📊 Mudelite jõudluse hindamine sisseehitatud mõõdikute abil (F1, asjakohasus, sarnasus, sidusus)
+- ⚡ Grupitöötluse ja mitme meediumi toe õppimine
 
-**🎯 Õpitulemus**: Funktsionaalse AI-agendi loomine ja AITK võimaluste põhjalik mõistmine
+**🎯 Õpitulemus**: Loo funktsionaalne AI agent pikaulatusliku AITK võimekuse mõistmisega
 
-### [🌐 Moodul 2: MCP ja AI Toolkiti alused](./lab2/README.md)
-
-**Kestus**: 20 minutit
-
-- 🧠 Model Context Protocol (MCP) arhitektuuri ja kontseptsioonide valdamine
-- 🌐 Microsofti MCP-serveri ökosüsteemi uurimine
-- 🤖 Brauseri automatiseerimisagendi loomine Playwright MCP-serveri abil
-- 🔧 MCP-serverite integreerimine AI Toolkiti Agendi ehitajaga
-- 📊 MCP-tööriistade konfigureerimine ja testimine oma agentides
-- 🚀 MCP-toega agentide eksportimine ja juurutamine tootmiskeskkonda
-
-**🎯 Õpitulemus**: AI-agendi juurutamine, mis on täiustatud väliste tööriistadega MCP kaudu
-
-### [🔧 Moodul 3: Edasijõudnud MCP arendus AI Toolkitiga](./lab3/README.md)
+### [🌐 Moodul 2: MCP AI tööriistakomplektiga](./lab2/README.md)
 
 **Kestus**: 20 minutit
 
-- 💻 Kohandatud MCP-serverite loomine AI Toolkiti abil
-- 🐍 Uusima MCP Python SDK (v1.9.3) konfigureerimine ja kasutamine
+- 🧠 Model Context Protocoli (MCP) arhitektuuri ja mõistete valdamine
+- 🌐 Microsofti MCP serveri ökosüsteemi uurimine
+- 🤖 Brauseriautomaatika agendi loomine Playwright MCP serveri abil
+- 🔧 MCP serverite integratsioon AI tööriistakomplekti Agent Builderiga
+- 📊 MCP tööriistade seadistamine ja testimine agentides
+- 🚀 MCP-põhiste agentide eksport ja tootmiskasutusse viimine
+
+**🎯 Õpitulemus**: Käivita AI agent, mis on võimendatud väliste tööriistade abil MCP kaudu
+
+### [🔧 Moodul 3: Täiustatud MCP arendus AI tööriistakomplektiga](./lab3/README.md)
+
+**Kestus**: 20 minutit
+
+- 💻 Kohandatud MCP serverite loomine AI tööriistakomplekti abil
+- 🐍 Uusima MCP Python SDK (v1.9.3) seadistamine ja kasutamine
 - 🔍 MCP Inspectori seadistamine ja kasutamine silumiseks
-- 🛠️ Ilmateate MCP-serveri loomine professionaalsete silumisvoogudega
-- 🧪 MCP-serverite silumine nii Agendi ehitajas kui ka Inspectori keskkonnas
+- 🛠️ Ilmateate MCP serveri ehitamine professionaalsete silumisvoogudega
+- 🧪 MCP serverite silumine Agent Builderi ja Inspectori keskkondades
 
-**🎯 Õpitulemus**: Kohandatud MCP-serverite arendamine ja silumine kaasaegsete tööriistadega
+**🎯 Õpitulemus**: Arenda ja silu kohandatud MCP servereid kaasaegsete tööriistadega
 
-### [🐙 Moodul 4: Praktiline MCP arendus - kohandatud GitHubi klooniserver](./lab4/README.md)
+### [🐙 Moodul 4: Praktiline MCP arendus – Kohandatud GitHub klooni server](./lab4/README.md)
 
 **Kestus**: 30 minutit
 
-- 🏗️ Reaalmaailma GitHubi klooniserveri loomine arendustöövoogude jaoks
-- 🔄 Nutika repositooriumi kloonimise rakendamine valideerimise ja veakäsitlusega
-- 📁 Intelligente kataloogihaldus ja VS Code'i integreerimine
-- 🤖 GitHub Copilot Agendi režiimi kasutamine kohandatud MCP-tööriistadega
-- 🛡️ Tootmiskindluse ja platvormideülese ühilduvuse rakendamine
+- 🏗️ Tööstusliku GitHub Clone MCP serveri loomine arendusprotsesside jaoks
+- 🔄 Nutika hoidla kloonimise rakendamine valideerimise ja veahaldusega
+- 📁 Intelligente kataloogihalduse ja VS Code’i integratsiooni loomine
+- 🤖 GitHub Copilot agendi režiimi kasutamine kohandatud MCP tööriistadega
+- 🛡️ Tootmisvalmiduse usaldusväärsus ja platvormidevaheline ühilduvus
 
-**🎯 Õpitulemus**: Tootmiskõlbuliku MCP-serveri juurutamine, mis optimeerib arendustöövooge
+**🎯 Õpitulemus**: Kasuta tootmisvalmis MCP serverit, mis sujuvdab tegelikke arendusprotsesse
 
-## 💡 Reaalmaailma rakendused ja mõju
+## 💡 Reaalse maailma rakendused ja mõju
 
-### 🏢 Ettevõtte kasutusjuhtumid
+### 🏢 Ettevõtete kasutusjuhtumid
 
-#### 🔄 DevOps automatiseerimine
+#### 🔄 DevOpsi automatiseerimine
 
-Muutke oma arendustöövoog intelligentse automatiseerimise abil:
+Muuda oma arendusprotsess nutikaks automatiseerimisega:
 
-- **Nutikas repositooriumihaldus**: AI-põhine koodide ülevaatus ja liitmisotsused
-- **Intelligentne CI/CD**: Automaatne torujuhtme optimeerimine koodimuudatuste põhjal
-- **Probleemide sorteerimine**: Automaatne vigade klassifitseerimine ja määramine
+- **Nutikas hoidlahaldus**: AI-põhine koodi ülevaatus ja liitmise otsused
+- **Tark CI/CD**: Automaatne torujuhtme optimeerimine koodimuudatuste põhjal
+- **Probleemide triage**: Veaparanduste automaatne klassifitseerimine ja määramine
 
-#### 🧪 Kvaliteedi tagamise revolutsioon
+#### 🧪 Kvaliteedikontrolli revolutsioon
 
-Tõstke testimist AI-põhise automatiseerimisega:
+Tõsta testimine AI-põhise automatiseerimisega uuele tasemele:
 
-- **Intelligentne testide genereerimine**: Looge automaatselt põhjalikud testikomplektid
-- **Visuaalne regressioonitestimine**: AI-põhine kasutajaliidese muudatuste tuvastamine
-- **Jõudluse jälgimine**: Proaktiivne probleemide tuvastamine ja lahendamine
+- **Nutikas testide genereerimine**: Kattuvate testikomplektide loomine automaatselt
+- **Visuaalne regressioonitestimine**: AI toetatud kasutajaliidese muutuste tuvastamine
+- **Jõudluse jälgimine**: Probleemide ennetav tuvastamine ja lahendamine
 
-#### 📊 Andmetöötluse intelligentsus
+#### 📊 Andmevoogude intelligentsus
 
-Looge nutikamaid andmetöötlusvooge:
+Ehita nutikamaid andmetöötlusvooge:
 
-- **Kohanduvad ETL-protsessid**: Iseoptimeeruvad andmete teisendused
-- **Anomaaliate tuvastamine**: Reaalajas andmekvaliteedi jälgimine
-- **Intelligentne suunamine**: Nutikas andmevoo haldamine
+- **Kohanduvad ETL-protsessid**: Eneseoptimeeruvad andmemuutused
+- **Anomaaliate tuvastus**: Reaalaegne andmekvaliteedi monitooring
+- **Nutikas marsruutimine**: Tark andmevoo juhtimine
 
-#### 🎧 Kliendikogemuse täiustamine
+#### 🎧 Kliendikogemuse parandamine
 
-Looge erakordseid kliendikogemusi:
+Loo erakordseid kliendisuhtlusi:
 
-- **Kontekstiteadlik tugi**: AI-agendid, kellel on juurdepääs kliendi ajaloole
-- **Proaktiivne probleemide lahendamine**: Ennustav klienditeenindus
-- **Mitmekanaliline integreerimine**: Ühtne AI-kogemus erinevatel platvormidel
+- **Kontekstiteadlik tugi**: AI agendid kliendi ajaloo juurdepääsuga
+- **Proaktiivne probleemilahendus**: Prognoositav klienditeenindus
+- **Mitme kanali integratsioon**: Ühtne AI-kogemus platvormide vahel
 
-## 🛠️ Eeltingimused ja seadistamine
+## 🛠️ Nõuded ja seadistamine
 
 ### 💻 Süsteeminõuded
 
-| Komponent | Nõue | Märkused |
-|-----------|-------------|-------|
-| **Operatsioonisüsteem** | Windows 10+, macOS 10.15+, Linux | Kaasaegne OS |
+| Komponent | Nõue | Märkmed |
+|-----------|-------|---------|
+| **Operatsioonisüsteem** | Windows 10+, macOS 10.15+, Linux | Ükskõik milline moodsama aja OS |
 | **Visual Studio Code** | Viimane stabiilne versioon | Vajalik AITK jaoks |
-| **Node.js** | v18.0+ ja npm | MCP-serveri arenduseks |
-| **Python** | 3.10+ | Valikuline Python MCP-serverite jaoks |
-| **Mälu** | Minimaalselt 8GB RAM | 16GB soovitatav kohalike mudelite jaoks |
+| **Node.js** | v18.0+ ja npm | MCP serveri arenduseks |
+| **Python** | 3.10+ | Valikuline Python MCP serverite jaoks |
+| **Mälu** | Vähemalt 8GB RAM | Soovitatav 16GB kohalikeks mudeliteks |
 
 ### 🔧 Arenduskeskkond
 
-#### Soovitatavad VS Code'i laiendused
+#### Soovitatud VS Code’i lisad
 
-- **AI Toolkit** (ms-windows-ai-studio.windows-ai-studio)
+- **AI tööriistakomplekt** (ms-windows-ai-studio.windows-ai-studio)
 - **Python** (ms-python.python)
-- **Python Debugger** (ms-python.debugpy)
+- **Python silur** (ms-python.debugpy)
 - **GitHub Copilot** (GitHub.copilot) - Valikuline, kuid kasulik
 
 #### Valikulised tööriistad
 
-- **uv**: Kaasaegne Python pakettide haldur
-- **MCP Inspector**: Visuaalne silumistööriist MCP-serverite jaoks
-- **Playwright**: Veebiautomaatika näidete jaoks
+- **uv**: Moodne Python paketihaldur
+- **MCP Inspector**: Vaatleja MCP serverite silumiseks
+- **Playwright**: Veebiautomaatika näideteks
 
-## 🎖️ Õpitulemused ja sertifitseerimise tee
+## 🎖️ Õpitulemused ja sertifitseerimisrada
 
-### 🏆 Oskuste omandamise kontrollnimekiri
+### 🏆 Oskuste valdamise kontrollnimekiri
 
-Töötoa läbimisega saavutad meisterlikkuse järgmistes valdkondades:
+Selle töötoa lõpetamisega saavutad valduse järgmistes valdkondades:
 
-#### 🎯 Põhipädevused
+#### 🎯 Põhioskused
 
 - [ ] **MCP protokolli valdamine**: Sügav arusaam arhitektuurist ja rakendusmustritest
-- [ ] **AITK oskuslik kasutamine**: Ekspertide tasemel AI Toolkiti kasutamine kiireks arenduseks
-- [ ] **Kohandatud serverite arendus**: MCP-serverite loomine, juurutamine ja hooldamine
-- [ ] **Tööriistade integreerimise meisterlikkus**: AI sujuv ühendamine olemasolevate arendustöövoogudega
-- [ ] **Probleemide lahendamise rakendamine**: Õpitud oskuste rakendamine reaalsetes äriprobleemides
+- [ ] **AITK oskus**: Eksperditase AI tööriistakomplekti kasutamisel kiireks arenduseks
+- [ ] **Kohandatud serveri arendus**: Tootmisvalmis MCP serverite ehitamine, kasutuselevõtt ja haldus
+- [ ] **Tööriistade integreerimise oskus**: AI sujuv ühendamine olemasolevate arendusvoogudega
+- [ ] **Probleemilahenduse rakendamine**: Õpitud oskuste mõistlik kasutamine äriprobleemide lahendamisel
 
 #### 🔧 Tehnilised oskused
 
-- [ ] AI Toolkiti seadistamine ja konfigureerimine VS Code'is
-- [ ] Kohandatud MCP-serverite kujundamine ja rakendamine
-- [ ] GitHubi mudelite integreerimine MCP arhitektuuriga
+- [ ] AI tööriistakomplekti seadistamine ja konfigureerimine VS Code’is
+- [ ] Kohandatud MCP serverite disain ja realiseerimine
+- [ ] GitHub mudelite integreerimine MCP arhitektuuriga
 - [ ] Automatiseeritud testimisvoogude loomine Playwrightiga
-- [ ] AI-agentide juurutamine tootmiskeskkonda
-- [ ] MCP-serverite jõudluse silumine ja optimeerimine
+- [ ] AI agentide juurutamine tootmises
+- [ ] MCP serveri jõudluse silumine ja optimeerimine
 
-#### 🚀 Edasijõudnud võimed
+#### 🚀 Täiustatud võimed
 
-- [ ] Ettevõtte tasemel AI-integratsioonide arhitektuur
-- [ ] AI-rakenduste turvaparimate tavade rakendamine
-- [ ] Skaleeritavate MCP-serveri arhitektuuride kujundamine
-- [ ] Kohandatud tööriistakettide loomine spetsiifilistele valdkondadele
+- [ ] Ettevõtteskaala AI integratsioonide arhitektuur
+- [ ] AI rakenduste turvalisuse parimate tavade rakendamine
+- [ ] Skaleeritavate MCP serverite disain
+- [ ] Spetsiifiliste valdkondade jaoks kohandatud tööriistakettide loomine
 - [ ] Teiste juhendamine AI-põhises arenduses
 
 ## 📖 Lisamaterjalid
 
-- [MCP spetsifikatsioon](https://modelcontextprotocol.io/docs)
-- [AI Toolkiti GitHubi repositoorium](https://github.com/microsoft/vscode-ai-toolkit)
-- [Näidete MCP-serverite kogu](https://github.com/modelcontextprotocol/servers)
+- [MCP spetsifikatsioon (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+- [AI tööriistakomplekti GitHubi hoidla](https://github.com/microsoft/vscode-ai-toolkit)
+- [MCP näidisserverite kogu](https://github.com/modelcontextprotocol/servers)
 - [Parimate tavade juhend](https://modelcontextprotocol.io/docs/best-practices)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - Turvalisuse parimad praktikad
 
 ---
 
-**🚀 Valmis oma AI-arenduse töövoogu revolutsioneerima?**
+**🚀 Oled valmis revolutsioneerima oma AI arendusvoogu?**
 
-Loome koos MCP ja AI Toolkiti abil intelligentsete rakenduste tuleviku!
+Loome koos MCP ja AI tööriistakomplektiga nutikate rakenduste tuleviku!
+
+## Mis järgmiseks
+
+Jätka: [Moodul 11: MCP serveri praktilised töötoad](../11-MCPServerHandsOnLabs/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:  
+See dokument on tõlgitud tehisintellekti tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame täpsust, tuleb arvestada, et automatiseeritud tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument oma emakeeles tuleks pidada autoriteetseks allikaks. Olulise info puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tingitud väärarusaamade või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

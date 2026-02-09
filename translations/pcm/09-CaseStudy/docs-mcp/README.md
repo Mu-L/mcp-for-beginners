@@ -1,52 +1,52 @@
 # Case Study: How to Connect to Microsoft Learn Docs MCP Server from Client
 
-You don ever dey waka waka between documentation sites, Stack Overflow, and plenty search engine tabs, dey try solve problem for your code? Maybe you dey use second monitor just for docs, or you dey always dey press alt-tab between your IDE and browser. No be better thing if you fit carry documentation enter your workflow—make e dey inside your apps, your IDE, or even your own custom tools? For dis case study, we go show how you fit do am by connecting directly to Microsoft Learn Docs MCP server from your own client application.
+You don tire dey waka between documentation sites, Stack Overflow, plus plenti tabs for search engine, all dis while you dey try fix problem for your code? Maybe you get another monitor just for docs, or you dey dey fast fast dey switch between your IDE and browser. E no go beta if you fit carry the documentation enter your workflow—join am inside your apps, your IDE, or even your own custom tools? For dis case study, we go show how to do am by connecting directly to Microsoft Learn Docs MCP server from your own client app.
 
 ## Overview
 
-Modern development no be just to dey write code—e dey involve how to find correct information at the right time. Documentation dey everywhere, but e no dey where you need am pass: inside your tools and workflows. If you fit put documentation retrieval directly inside your applications, e go save time, reduce how you dey switch between things, and make you more productive. For dis section, we go show how you fit connect client to Microsoft Learn Docs MCP server, so you fit access real-time, context-aware documentation without leaving your app.
+Modern development no be just to write code—e mean say you go find correct info when you need am. Documentation dey everywhere, but e no dey where you need am most: inside your tools and workflows. If you join documentation retrieval direct inside your apps, you fit save time, reduce change of context, and improve productivity. For dis part, we go show you how to connect client to Microsoft Learn Docs MCP server, so you fit get real-time, context-aware documentation without leave your app.
 
-We go explain how to set up connection, send request, and handle streaming responses well. Dis method no just go make your workflow smooth, e go also open door to build smarter, more helpful developer tools.
+We go waka you through how to establish connection, send request, and handle streaming response well well. Dis way no go only make your workflow smooth but also open road to build better developer tools.
 
 ## Learning Objectives
 
-Why we dey do dis? Because the best developer experience na the one wey no get wahala. Imagine say your code editor, chatbot, or web app fit answer your documentation questions sharp sharp, using the latest content from Microsoft Learn. By the time you finish dis chapter, you go sabi how to:
+Why we dey do dis? Na because the best developer experience na dem wey no dey cause wahala. Imagine say your code editor, chatbot, or web app fit answer your documentation questions sharp sharp, using the latest content from Microsoft Learn. By the time you finish this chapter, you go sabi how to:
 
-- Understand the basics of MCP server-client communication for documentation
-- Build console or web application wey go connect to Microsoft Learn Docs MCP server
-- Use streaming HTTP clients to get real-time documentation
-- Log and understand documentation responses inside your application
+- Understand basics of MCP server-client communication for documentation
+- Build console or web app to connect to Microsoft Learn Docs MCP server
+- Use streaming HTTP client for real-time documentation retrieval
+- Log and understand documentation responses for your app
 
-You go see how dis skills fit help you build tools wey no just dey react, but dey interactive and dey understand context.
+You go see how these skills fit help you build tools wey no be just reactive, but truly interactive and context-aware.
 
 ## Scenario 1 - Real-Time Documentation Retrieval with MCP
 
-For dis scenario, we go show how you fit connect client to Microsoft Learn Docs MCP server, so you fit access real-time, context-aware documentation without leaving your app.
+For dis scenario, we go show you how to connect client to Microsoft Learn Docs MCP server, so you fit get real-time, context-aware documentation without leave your app.
 
-Make we try am. Your work na to write app wey go connect to Microsoft Learn Docs MCP server, use `microsoft_docs_search` tool, and log the streaming response for console.
+Make we try do am. Your work na to write app wey go connect to Microsoft Learn Docs MCP server, call `microsoft_docs_search` tool, and log streaming response for console.
 
-### Why dis method?
-Because na the foundation to build more advanced integrations—whether you wan power chatbot, IDE extension, or web dashboard.
+### Why dis approach?
+Because na the base to build advanced integration—whether you want power chatbot, IDE extension, or web dashboard.
 
-You go find the code and instructions for dis scenario inside [`solution`](./solution/README.md) folder for dis case study. The steps go guide you how to set up the connection:
-- Use the official MCP SDK and streamable HTTP client to connect
-- Call the `microsoft_docs_search` tool with query parameter to get documentation
-- Do proper logging and error handling
-- Create interactive console interface wey go allow users enter plenty search queries
+You go find code and instructions for dis scenario inside [`solution`](./solution/README.md) folder for this case study. The steps go guide you for connection setup:
+- Use official MCP SDK plus streamable HTTP client connect
+- Call `microsoft_docs_search` tool with query parameter to get documentation
+- Do correct logging and error handling
+- Build interactive console interface wey allow users put multiple search queries
 
-Dis scenario go show how to:
+Dis scenario show how to:
 - Connect to Docs MCP server
 - Send query
-- Parse and print the results
+- Parse and print results
 
-See how the solution go look like when you run am:
+See how running the solution fit look:
 
 ```
 Prompt> What is Azure Key Vault?
 Answer> Azure Key Vault is a cloud service for securely storing and accessing secrets. ...
 ```
 
-Below na small sample solution. The full code and details dey available for the solution folder.
+Below na minimal sample solution. Full code and detail dey for solution folder.
 
 <details>
 <summary>Python</summary>
@@ -67,20 +67,21 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-- For the full implementation and logging, check [`scenario1.py`](../../../../09-CaseStudy/docs-mcp/solution/python/scenario1.py).
-- For installation and usage instructions, check the [`README.md`](./solution/python/README.md) file for the same folder.
+- For full implementation and logging, check [`scenario1.py`](../../../../09-CaseStudy/docs-mcp/solution/python/scenario1.py).
+- For installation and usage instructions, see [`README.md`](./solution/python/README.md) for same folder.
 </details>
+
 
 ## Scenario 2 - Interactive Study Plan Generator Web App with MCP
 
-For dis scenario, you go learn how to put Docs MCP inside web development project. The goal na to make users fit search Microsoft Learn documentation directly from web interface, so documentation go dey available sharp sharp inside your app or site.
+For dis scenario, you go learn how to join Docs MCP inside web development project. The aim na to make users fit search Microsoft Learn documentation directly from web interface, so documentation go dey quick reach inside your app or site.
 
-You go learn how to:
-- Set up web app
+You go see how to:
+- Setup web app
 - Connect to Docs MCP server
 - Handle user input and show results
 
-See how the solution go look like when you run am:
+See how solution fit look:
 
 ```
 User> I want to learn about AI102 - so suggest the roadmap to get it started from learn for 6 weeks
@@ -99,14 +100,14 @@ Assistant> Here’s a detailed 6-week roadmap to start your preparation for the 
 Let me know if you want module-specific recommendations or need more customized weekly tasks!
 ```
 
-Below na small sample solution. The full code and details dey available for the solution folder.
+Below na minimal sample solution. Full code and detail dey for solution folder.
 
 ![Scenario 2 Overview](../../../../translated_images/pcm/scenario2.0c92726d5cd81f68.webp)
 
 <details>
 <summary>Python (Chainlit)</summary>
 
-Chainlit na framework wey dey help build conversational AI web apps. E dey make am easy to create interactive chatbots and assistants wey fit call MCP tools and show results in real time. E dey good for quick prototyping and user-friendly interfaces.
+Chainlit na framework for building conversational AI web apps. E make am easy to build interactive chatbots and assistants wey fit call MCP tools and show results real time. E good for quick prototype and user-friendly interfaces.
 
 ```python
 import chainlit as cl
@@ -125,24 +126,25 @@ def handle_message(message):
         cl.Message(content="Error: " + response.text).send()
 ```
 
-- For the full implementation, check [`scenario2.py`](../../../../09-CaseStudy/docs-mcp/solution/python/scenario2.py).
-- For setup and running instructions, check the [`README.md`](./solution/python/README.md).
+- For full implementation, check [`scenario2.py`](../../../../09-CaseStudy/docs-mcp/solution/python/scenario2.py).
+- For setup and running instructions, see [`README.md`](./solution/python/README.md).
 </details>
+
 
 ## Scenario 3: In-Editor Docs with MCP Server in VS Code
 
-If you wan get Microsoft Learn Docs directly inside your VS Code (instead of dey switch browser tabs), you fit use MCP server inside your editor. Dis one go allow you:
-- Search and read docs inside VS Code without leaving your coding environment.
+If you want make Microsoft Learn Docs dey directly inside your VS Code (instead of dey switch browser tabs), you fit use MCP server for your editor. Dis one allow you:
+- Search and read docs inside VS Code without leave your coding environment.
 - Reference documentation and put links directly inside your README or course files.
-- Use GitHub Copilot and MCP together for smooth, AI-powered documentation workflow.
+- Use GitHub Copilot and MCP together to get smooth AI-powered documentation workflow.
 
 **You go learn how to:**
-- Add valid `.vscode/mcp.json` file to your workspace root (see example below).
-- Open MCP panel or use command palette for VS Code to search and insert docs.
-- Reference documentation directly inside your markdown files as you dey work.
-- Combine dis workflow with GitHub Copilot to make you more productive.
+- Add valid `.vscode/mcp.json` file to your workspace root (check example below).
+- Open MCP panel or use command palette inside VS Code to search and put docs.
+- Reference documentation direct inside markdown files as you dey work.
+- Combine this workflow with GitHub Copilot to boost productivity more.
 
-See example of how to set up MCP server inside VS Code:
+Here na example on how to setup MCP server inside VS Code:
 
 ```json
 {
@@ -156,35 +158,40 @@ See example of how to set up MCP server inside VS Code:
 
 </details>
 
-> For detailed walkthrough with screenshots and step-by-step guide, check [`README.md`](./solution/scenario3/README.md).
+> For detailed walkthrough with screenshots and step-by-step guide, see [`README.md`](./solution/scenario3/README.md).
 
 ![Scenario 3 Overview](../../../../translated_images/pcm/step4-prompt-chat.12187bb001605efc.webp)
 
-Dis method dey good for anybody wey dey build technical courses, dey write documentation, or dey develop code wey need reference often.
+Dis one good for people wey dey build technical courses, write documentation, or develop code wey need plenty referencing.
 
 ## Key Takeaways
 
-To put documentation directly inside your tools no be just convenience—e dey change the game for productivity. By connecting to Microsoft Learn Docs MCP server from your client, you fit:
+To integrate documentation direct inside your tools no be just convenience—it dey boost productivity well well. By connecting to Microsoft Learn Docs MCP server from your client, you fit:
 
-- Stop to dey switch between your code and documentation
-- Get up-to-date, context-aware docs in real time
+- Stop dey change between your code and documentation
+- Get up-to-date, context-aware docs for real time
 - Build smarter, more interactive developer tools
 
-Dis skills go help you create solutions wey no just dey efficient, but dey sweet to use.
+These skills go help you create solutions wey no only efficient, but also sweet to use.
 
 ## Additional Resources
 
-To learn more, check dis official resources:
+To sabi well well, explore these official resources:
 
 - [Microsoft Learn Docs MCP Server (GitHub)](https://github.com/MicrosoftDocs/mcp)
 - [Get started with Azure MCP Server (mcp-python)](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/get-started#create-the-python-app)
-- [What is the Azure MCP Server?](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/)
+- [Wetin be Azure MCP Server?](https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/)
 - [Model Context Protocol (MCP) Introduction](https://modelcontextprotocol.io/introduction)
-- [Add plugins from a MCP Server (Python)](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-mcp-plugins)
+- [Add plugins from MCP Server (Python)](https://learn.microsoft.com/en-us/semantic-kernel/concepts/plugins/adding-mcp-plugins)
+
+## What's Next
+
+- Go back to: [Case Studies Overview](../README.md)
+- Continue to: [Module 10: Streamlining AI Workflows with AI Toolkit](../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis dokyument don use AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) take translate am. Even though we dey try make sure say e correct, abeg sabi say automatic translation fit get mistake or no too accurate. Di original dokyument for im native language na di main correct source. For important information, e go beta make professional human translator check am. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translation.
+**Disclaimer**:
+Dis document na AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) wey translate am. Even though we dey try make e correct, abeg sabi say automated translation fit get errors or mistakes. The original document wey e dey for im own language na im be the correct source. If na important information, e better make human professional translate am. We no go responsible if pesin misunderstand or use this translation wrong.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

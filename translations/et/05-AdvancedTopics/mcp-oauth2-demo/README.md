@@ -1,25 +1,49 @@
 # MCP OAuth2 Demo
 
-See projekt on **minimalistlik Spring Boot rakendus**, mis toimib nii:
+## Sissejuhatus
 
-* **Spring Authorization Serverina** (väljastab JWT ligipääsutokenid `client_credentials` voo kaudu) kui ka  
-* **Resource Serverina** (kaitseb oma `/hello` lõpp-punkti).
+OAuth2 on tööstusharu standardprotokoll autoriseerimiseks, võimaldades turvalist ligipääsu ressurssidele ilma mandaate jagamata. MCP (Model Context Protocol) rakendustes pakub OAuth2 tugeva viisi klientide (näiteks tehisintellekti agentide) autentimiseks ja autoriseerimiseks MCP serverite ja nende tööriistade juurde pääsemiseks.
 
-See peegeldab seadistust, mis on näidatud [Springi blogipostituses (2. aprill 2025)](https://spring.io/blog/2025/04/02/mcp-server-oauth2).
+See õppetund demonstreerib, kuidas rakendada OAuth2 autentimist MCP serverite jaoks, kasutades Spring Booti, mis on tavaline muster ettevõtete ja tootmiskeskkondade juurutamiseks.
+
+## Õpieesmärgid
+
+Selle õppetunni lõpuks:
+- Mõistate, kuidas OAuth2 integreerub MCP serveritega
+- Rakendate Spring Authorization Serveri tokeni väljastamiseks
+- Kaitsete MCP lõpp-punkte JWT-põhise autentimisega
+- Konfigureerite kliendi mandaadivoogu masinatevaheliseks suhtluseks
+
+## Eeltingimused
+
+- Põhilised teadmised Java ja Spring Booti kohta
+- Tutvumine MCP kontseptsioonidega eelmistest moodulitest
+- Installitud Maven või Gradle
 
 ---
 
-## Kiire alustamine (kohalik)
+## Projekti ülevaade
+
+See projekt on **minimaalne Spring Boot rakendus**, mis toimib nii:
+
+* **Spring Authorization Serverina** (väljastades JWT ligipääsutokenid `client_credentials` voo kaudu), kui ka  
+* **Ressurserverina** (kaitstes oma `/hello` lõpp-punkti).
+
+See peegeldab seadistust, mis on näidatud [Spring blogipostituses (2. aprill 2025)](https://spring.io/blog/2025/04/02/mcp-server-oauth2).
+
+---
+
+## Kiire algus (kohalik)
 
 ```bash
-# build & run
+# ehita ja käivita
 ./mvnw spring-boot:run
 
-# obtain a token
+# saada token
 curl -u mcp-client:secret -d grant_type=client_credentials \
      http://localhost:8081/oauth2/token | jq -r .access_token > token.txt
 
-# call the protected endpoint
+# kutsu kaitstud lõpp-punkti
 curl -H "Authorization: Bearer $(cat token.txt)" http://localhost:8081/hello
 ```
 
@@ -27,48 +51,48 @@ curl -H "Authorization: Bearer $(cat token.txt)" http://localhost:8081/hello
 
 ## OAuth2 konfiguratsiooni testimine
 
-Saate testida OAuth2 turvakonfiguratsiooni järgmiste sammudega:
+OAuth2 turbekonfiguratsiooni saate testida järgmistel sammudel:
 
-### 1. Kontrollige, kas server töötab ja on kaitstud
+### 1. Kontrollige, et server töötab ja on kaitstud
 
 ```bash
-# This should return 401 Unauthorized, confirming OAuth2 security is active
+# See peaks tagastama 401 Unauthorized, kinnitades, et OAuth2 turvalisus on aktiivne
 curl -v http://localhost:8081/
 ```
 
-### 2. Hankige ligipääsutoken, kasutades kliendi mandaate
+### 2. Hankige ligipääsutoken kliendi mandaadiga
 
 ```bash
-# Get and extract the full token response
+# Hangi ja eralda täielik tokeni vastus
 curl -v -X POST http://localhost:8081/oauth2/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -H "Authorization: Basic bWNwLWNsaWVudDpzZWNyZXQ=" \
   -d "grant_type=client_credentials&scope=mcp.access"
 
-# Or to extract just the token (requires jq)
+# Või eralda ainult token (nõuab jq)
 curl -s -X POST http://localhost:8081/oauth2/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -H "Authorization: Basic bWNwLWNsaWVudDpzZWNyZXQ=" \
   -d "grant_type=client_credentials&scope=mcp.access" | jq -r .access_token > token.txt
 ```
 
-Märkus: Basic Authentication päis (`bWNwLWNsaWVudDpzZWNyZXQ=`) on Base64 kodeering `mcp-client:secret`.
+Märkus: Basic Authentication päis (`bWNwLWNsaWVudDpzZWNyZXQ=`) on `mcp-client:secret` Base64 kodeering.
 
-### 3. Juurdepääs kaitstud lõpp-punktile, kasutades tokenit
+### 3. Pääsege kaitstud lõpp-punktile ligi tokeni abil
 
 ```bash
-# Using the saved token
+# Salvestatud tokeni kasutamine
 curl -H "Authorization: Bearer $(cat token.txt)" http://localhost:8081/hello
 
-# Or directly with the token value
+# Või otse tokeni väärtusega
 curl -H "Authorization: Bearer eyJra...token_value...xyz" http://localhost:8081/hello
 ```
 
-Edukas vastus "Hello from MCP OAuth2 Demo!" kinnitab, et OAuth2 konfiguratsioon töötab õigesti.
+Õnnestunud vastus tekstiga "Hello from MCP OAuth2 Demo!" kinnitab, et OAuth2 konfiguratsioon töötab korrektselt.
 
 ---
 
-## Konteineri ehitamine
+## Kasti ehitamine
 
 ```bash
 docker build -t mcp-oauth2-demo .
@@ -77,7 +101,7 @@ docker run -p 8081:8081 mcp-oauth2-demo
 
 ---
 
-## Paigaldamine **Azure Container Apps**-i
+## Paigaldamine **Azure Container Apps** keskkonda
 
 ```bash
 az containerapp up -n mcp-oauth2 \
@@ -86,14 +110,14 @@ az containerapp up -n mcp-oauth2 \
   --ingress external --target-port 8081
 ```
 
-Ingress FQDN-st saab teie **issuer** (`https://<fqdn>`).  
-Azure pakub automaatselt usaldusväärse TLS-sertifikaadi `*.azurecontainerapps.io` jaoks.
+Ingressi täielik domeeninimi saab teie **väljastajaks** (`https://<fqdn>`).  
+Azure pakub automaatselt usaldusväärset TLS-sertifikaati aadressile `*.azurecontainerapps.io`.
 
 ---
 
-## Ühendamine **Azure API Management**-iga
+## Sidumine **Azure API Managementiga**
 
-Lisage see sissetulev poliitika oma API-le:
+Lisage see sissetulev reegel oma API-le:
 
 ```xml
 <inbound>
@@ -107,15 +131,17 @@ Lisage see sissetulev poliitika oma API-le:
 </inbound>
 ```
 
-APIM hangib JWKS-i ja valideerib iga päringu.
+APIM hangib JWKS ja valideerib iga päringu.
 
 ---
 
-## Mis edasi
+## Mis järgmine
 
-- [5.4 Juurekontekstid](../mcp-root-contexts/README.md)
+- [5.4 Juurekontekstide rühm](../mcp-root-contexts/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Lahtiütlus**:
+See dokument on tõlgitud tehisintellekti tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi me püüame tagada täpsust, palun pidage meeles, et automatiseeritud tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument oma emakeeles tuleks pidada autoriteetseks allikaks. Kriitilise tähtsusega teabe jaoks on soovitatav kasutada professionaalse inimese tõlget. Me ei vastuta selle tõlke kasutamisest tingitud arusaamatuste või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

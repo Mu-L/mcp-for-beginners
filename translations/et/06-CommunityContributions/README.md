@@ -1,139 +1,139 @@
-# Kogukond ja panustamine
+# Kogukond ja panused
 
-[![Kuidas panustada MCP-sse: tööriistad, dokumendid, kood ja palju muud](../../../translated_images/et/07.1179f6de46ff196eb3cc13c3510e01c37807a13f3bb9be3c779105ce26737c67.png)](https://youtu.be/v1pvCYAWpRE)
+[![Kuidas panustada MCP-sse: tööriistad, dokumendid, kood ja muu](../../../translated_images/et/07.1179f6de46ff196e.webp)](https://youtu.be/v1pvCYAWpRE)
 
-_(Klõpsa ülaloleval pildil, et vaadata selle õppetunni videot)_
+_(Klõpsa ülaloleval pildil, et vaadata selle tunni videot)_
 
 ## Ülevaade
 
-See õppetund keskendub sellele, kuidas osaleda MCP kogukonnas, panustada MCP ökosüsteemi ja järgida parimaid tavasid koostööl põhinevas arenduses. Avatud lähtekoodiga MCP projektides osalemise mõistmine on oluline neile, kes soovivad kujundada selle tehnoloogia tulevikku.
+Selles tunnis keskendutakse MCP kogukonnaga suhtlemisele, panustamisele MCP ökosüsteemi ning parimatele tavadele koostöö arendamisel. Mõistmine, kuidas osaleda avatud lähtekoodiga MCP projektides, on oluline neile, kes soovivad kujundada selle tehnoloogia tulevikku.
 
-## Õppeeesmärgid
+## Õpieesmärgid
 
-Selle õppetunni lõpuks oskad:
+Selle tunni lõpuks oskad:
 
 - Mõista MCP kogukonna ja ökosüsteemi struktuuri
-- Tõhusalt osaleda MCP kogukonna foorumites ja aruteludes
-- Panustada MCP avatud lähtekoodiga repositooriumidesse
+- Osaleda tõhusalt MCP kogukonna foorumites ja aruteludes
+- Panustada MCP avatud lähtekoodiga hoidlatesse
 - Luua ja jagada kohandatud MCP tööriistu ja servereid
-- Järgida MCP arenduse ja koostöö parimaid tavasid
-- Avastada kogukonna ressursse ja raamistikke MCP arenduseks
+- Järgida MCP arendamise ja koostöö parimaid tavasid
+- Leida kogukonna ressursse ja raamistikke MCP arenduseks
 
 ## MCP kogukonna ökosüsteem
 
-MCP ökosüsteem koosneb erinevatest komponentidest ja osalejatest, kes töötavad koos protokolli arendamise nimel.
+MCP ökosüsteem koosneb erinevatest komponentidest ja osalejatest, kes teevad koostööd protokolli arendamiseks.
 
-### Kogukonna põhikomponendid
+### Peamised kogukonna komponendid
 
-1. **Põhiprotokolli hooldajad**: Ametlik [Model Context Protocol GitHubi organisatsioon](https://github.com/modelcontextprotocol) haldab MCP põhispetsifikatsioone ja viiteimplementatsioone.
-2. **Tööriistade arendajad**: Isikud ja meeskonnad, kes loovad MCP tööriistu ja servereid.
-3. **Integratsioonipakkujad**: Ettevõtted, kes integreerivad MCP oma toodetesse ja teenustesse.
-4. **Lõppkasutajad**: Arendajad ja organisatsioonid, kes kasutavad MCP-d oma rakendustes.
-5. **Panustajad**: Kogukonna liikmed, kes panustavad koodi, dokumentatsiooni või muude ressurssidega.
+1. **Põhiprotokolli hooldajad**: ametlik [Model Context Protocol GitHub organisatsioon](https://github.com/modelcontextprotocol) hooldab MCP põhispetsifikatsioone ja viite-implementatsioone
+2. **Tööriistade arendajad**: üksikisikud ja meeskonnad, kes loovad MCP tööriistu ja servereid
+3. **Integratsiooni pakkujad**: ettevõtted, kes integreerivad MCP oma toodetesse ja teenustesse
+4. **Lõppkasutajad**: arendajad ja organisatsioonid, kes kasutavad MCP-d oma rakendustes
+5. **Panustajad**: kogukonna liikmed, kes panustavad koodi, dokumentatsiooni või muid ressursse
 
 ### Kogukonna ressursid
 
 #### Ametlikud kanalid
 
-- [MCP GitHubi organisatsioon](https://github.com/modelcontextprotocol)
+- [MCP GitHub organisatsioon](https://github.com/modelcontextprotocol)
 - [MCP dokumentatsioon](https://modelcontextprotocol.io/)
-- [MCP spetsifikatsioon](https://modelcontextprotocol.io/docs/specification)
-- [GitHubi arutelud](https://github.com/orgs/modelcontextprotocol/discussions)
-- [MCP näited ja serverite repositoorium](https://github.com/modelcontextprotocol/servers)
+- [MCP spetsifikatsioon](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+- [GitHub arutelud](https://github.com/orgs/modelcontextprotocol/discussions)
+- [MCP näidiste ja serverite hoidla](https://github.com/modelcontextprotocol/servers)
 
-#### Kogukonna juhitud ressursid
+#### Kogukonna loodud ressursid
 
-- [MCP kliendid](https://modelcontextprotocol.io/clients) - Nimekiri klientidest, mis toetavad MCP integratsioone.
-- [Kogukonna MCP serverid](https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#-community-servers) - Kasvav nimekiri kogukonna arendatud MCP serveritest.
-- [Awesome MCP Servers](https://github.com/wong2/awesome-mcp-servers) - Kuraatorite nimekiri MCP serveritest.
-- [PulseMCP](https://www.pulsemcp.com/) - Kogukonna keskus ja uudiskiri MCP ressursside avastamiseks.
-- [Discordi server](https://discord.gg/jHEGxQu2a5) - Ühenda MCP arendajatega.
-- Keelepõhised SDK implementatsioonid.
-- Blogipostitused ja juhendid.
+- [MCP kliendid](https://modelcontextprotocol.io/clients) – MCP integratsioone toetavate klientide nimekiri
+- [Kogukonna MCP serverid](https://github.com/modelcontextprotocol/servers?tab=readme-ov-file#-community-servers) – kasvav kogukonna poolt arendatud MCP serverite nimekiri
+- [Awesome MCP serverid](https://github.com/wong2/awesome-mcp-servers) – kureeritud nimekiri MCP serveritest
+- [PulseMCP](https://www.pulsemcp.com/) – kogukonna keskpunkt ja uudiskiri MCP ressursside avastamiseks
+- [Discordi server](https://discord.gg/jHEGxQu2a5) – ühendus MCP arendajatega
+- Keelespetsiifilised SDK implementatsioonid
+- Blogipostitused ja juhendid
 
 ## Panustamine MCP-sse
 
-### Panustamise tüübid
+### Panustamise liigid
 
-MCP ökosüsteem tervitab erinevaid panustamisviise:
+MCP ökosüsteem tervitab erinevat tüüpi panuseid:
 
 1. **Koodipanused**:
    - Põhiprotokolli täiustused
    - Vigade parandused
    - Tööriistade ja serverite implementatsioonid
-   - Klient/serveri teegid erinevates keeltes
+   - Kliendi/serveri raamatukogud erinevates keeltes
 
 2. **Dokumentatsioon**:
-   - Olemasoleva dokumentatsiooni täiustamine
+   - Oleva dokumentatsiooni parandamine
    - Juhendite ja õpetuste loomine
    - Dokumentatsiooni tõlkimine
-   - Näidete ja näidisrakenduste loomine
+   - Näidete ja proovirakenduste loomine
 
 3. **Kogukonna tugi**:
-   - Küsimustele vastamine foorumites ja aruteludes
-   - Testimine ja probleemide raporteerimine
+   - Küsitlustele vastamine foorumites ja aruteludes
+   - Testimine ja probleemide teatamine
    - Kogukonna ürituste korraldamine
    - Uute panustajate juhendamine
 
-### Panustamise protsess: Põhiprotokoll
+### Panustamise protsess: põhiprotokoll
 
-Põhiprotokolli või ametlike implementatsioonide panustamiseks järgi [ametlikke panustamise juhiseid](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/CONTRIBUTING.md):
+Et panustada MCP põhiprotokolli või ametlikesse implementatsioonidesse, järgi neid põhimõtteid [ametlikust panustamise juhendist](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/CONTRIBUTING.md):
 
-1. **Lihtsus ja minimalism**: MCP spetsifikatsioon seab kõrge lati uute kontseptsioonide lisamiseks. Spetsifikatsiooni on lihtsam asju lisada kui eemaldada.
+1. **Lihtsus ja minimalistlikkus**: MCP spetsifikatsioon seab kõrge lati uute mõistete lisamiseks. Asju on lihtsam spetsifikatsioonist lisada kui eemaldada.
 
-2. **Konkreetne lähenemine**: Spetsifikatsiooni muudatused peaksid põhinema konkreetsetel implementatsiooniprobleemidel, mitte spekulatiivsetel ideedel.
+2. **Konkreetne lähenemine**: Spetsifikatsiooni muudatused peaksid põhinema kindlatel elluviimise väljakutsetel, mitte spekulatiivsetel ideedel.
 
-3. **Ettepaneku etapid**:
-   - Defineeri: Uuri probleemiruumi, kinnita, et teised MCP kasutajad seisavad silmitsi sarnase probleemiga.
-   - Prototüüp: Loo näidislahendus ja demonstreeri selle praktilist rakendust.
-   - Kirjuta: Prototüübi põhjal kirjuta spetsifikatsiooni ettepanek.
+3. **Pakkumise etapid**:
+   - Määratle: Uuri probleemiruumi, veendu, et teistel MCP kasutajatel on sarnane probleem
+   - Prototüüp: Ehita näidis lahendus ja näita selle praktilist rakendust
+   - Kirjuta: Prototüübi põhjal kirjuta spetsifikatsiooni ettepanek
 
-### Arenduskeskkonna seadistamine
+### Arenduskeskkonna seadistus
 
 ```bash
-# Fork the repository
+# Tee koopia hoidlast
 git clone https://github.com/YOUR-USERNAME/modelcontextprotocol.git
 cd modelcontextprotocol
 
-# Install dependencies
+# Paigalda sõltuvused
 npm install
 
-# For schema changes, validate and generate schema.json:
+# Shema muudatuste korral, valideeri ja genereeri schema.json:
 npm run check:schema:ts
 npm run generate:schema
 
-# For documentation changes
+# Dokumentatsiooni muudatuste jaoks
 npm run check:docs
 npm run format
 
-# Preview documentation locally (optional):
+# Eelvaata dokumentatsiooni lokaalselt (valikuline):
 npm run serve:docs
 ```
 
-### Näide: Vigade paranduse panustamine
+### Näide: vigade paranduse panustamine
 
 ```javascript
-// Original code with bug in the typescript-sdk
+// Originaalkood tüübiskript-moodulis veaga
 export function validateResource(resource: unknown): resource is MCPResource {
   if (!resource || typeof resource !== 'object') {
     return false;
   }
   
-  // Bug: Missing property validation
-  // Current implementation:
+  // Viga: Puuduv atribuudi valideerimine
+  // Praegune rakendus:
   const hasName = 'name' in resource;
   const hasSchema = 'schema' in resource;
   
   return hasName && hasSchema;
 }
 
-// Fixed implementation in a contribution
+// Parandatud rakendus panuses
 export function validateResource(resource: unknown): resource is MCPResource {
   if (!resource || typeof resource !== 'object') {
     return false;
   }
   
-  // Improved validation
+  // Parendatud valideerimine
   const hasName = 'name' in resource && typeof (resource as MCPResource).name === 'string';
   const hasSchema = 'schema' in resource && typeof (resource as MCPResource).schema === 'object';
   const hasDescription = !('description' in resource) || typeof (resource as MCPResource).description === 'string';
@@ -142,10 +142,10 @@ export function validateResource(resource: unknown): resource is MCPResource {
 }
 ```
 
-### Näide: Uue tööriista lisamine standardteeki
+### Näide: uue tööriista lisamine standardteeki
 
 ```python
-# Example contribution: A CSV data processing tool for the MCP standard library
+# Näidiskontribuut: CSV andmetöötlustööriist MCP standardraamatukogule
 
 from mcp_tools import Tool, ToolRequest, ToolResponse, ToolExecutionException
 import pandas as pd
@@ -207,14 +207,14 @@ class CsvProcessingTool(Tool):
     
     async def execute_async(self, request: ToolRequest) -> ToolResponse:
         try:
-            # Extract parameters
+            # Parameetrite väljavõtmine
             operation = request.parameters.get("operation")
             output_format = request.parameters.get("outputFormat", "json")
             
-            # Get CSV data from either direct data or URL
+            # Hangi CSV andmed kas otsesest andmest või URL-ilt
             df = await self._get_dataframe(request)
             
-            # Process based on requested operation
+            # Töötle vastavalt nõutud operatsioonile
             result = {}
             
             if operation == "summary":
@@ -275,7 +275,7 @@ class CsvProcessingTool(Tool):
     
     def _transform_data(self, df: pd.DataFrame, params: Dict[str, Any]) -> Dict[str, Any]:
         """Transforms the data based on parameters"""
-        # Implementation would include various transformations
+        # Rakendus hõlmaks erinevaid teisendusi
         return {
             "status": "success",
             "message": "Transformation applied"
@@ -304,66 +304,68 @@ class CsvProcessingTool(Tool):
 
 ### Panustamise juhised
 
-Eduka panuse tegemiseks MCP projektidesse:
+Eduka panuse tegemiseks MCP projektides:
 
-1. **Alusta väikselt**: Alusta dokumentatsioonist, vigade parandustest või väikestest täiustustest.
-2. **Järgi stiilijuhendit**: Järgi projekti koodistiili ja konventsioone.
-3. **Kirjuta teste**: Lisa oma koodipanustele ühiktestid.
-4. **Dokumenteeri oma töö**: Lisa selge dokumentatsioon uute funktsioonide või muudatuste kohta.
-5. **Esita sihitud PR-id**: Hoia pull requestid keskendunud ühele probleemile või funktsioonile.
-6. **Vasta tagasisidele**: Ole vastuvõtlik tagasisidele oma panuste kohta.
+1. **Alusta väikesest**: Alusta dokumentatsioonist, vigade parandustest või väikestest täiustustest
+2. **Järgi stiilijuhendit**: Järgi projekti koodistiili ja konventsioone
+3. **Kirjuta testid**: Lisa oma koodipanustele üksustestid
+4. **Dokumenteeri oma töö**: Lisa uutele omadustele või muudatustele selge dokumentatsioon
+5. **Esita sihitud PR-id**: Hoia pull request'id keskendunud ühele probleemile või funktsioonile
+6. **Tee koostööd tagasisidega**: Ole vastuvõtlik oma panustele tulnud tagasisidele
 
-### Näide panustamise töövoost
+### Näidispanuse töövoog
 
 ```bash
-# Clone the repository
+# Kopeeri hoidla
 git clone https://github.com/modelcontextprotocol/typescript-sdk.git
 cd typescript-sdk
 
-# Create a new branch for your contribution
+# Loo uus haru oma panuse jaoks
 git checkout -b feature/my-contribution
 
-# Make your changes
+# Tee oma muudatused
 # ...
 
-# Run tests to ensure your changes don't break existing functionality
+# Käivita testid, et veenduda, et sinu muudatused ei riku olemasolevat funktsionaalsust
 npm test
 
-# Commit your changes with a descriptive message
+# Tee muudatuste commit kirjeldava sõnumiga
 git commit -am "Fix validation in resource handler"
 
-# Push your branch to your fork
+# Lükka oma haru oma fork'i
 git push origin feature/my-contribution
 
-# Create a pull request from your branch to the main repository
-# Then engage with feedback and iterate on your PR as needed
+# Tee oma harust pull request pea hoidlasse
+# Seejärel võta vastu tagasisidet ja korda vajadusel oma PR-i
 ```
 
 ## MCP serverite loomine ja jagamine
 
 Üks väärtuslikumaid viise MCP ökosüsteemi panustamiseks on kohandatud MCP serverite loomine ja jagamine. Kogukond on juba arendanud sadu servereid erinevate teenuste ja kasutusjuhtude jaoks.
 
-### MCP serverite arendamise raamistikud
+### MCP serveri arendusraamistikud
 
-MCP serverite arendamise lihtsustamiseks on saadaval mitmeid raamistikke:
+Mitmed raamistikud aitavad lihtsustada MCP serverite arendust:
 
-1. **Ametlikud SDK-d**:
+1. **Ametlikud SDK-d** (vastavad [MCP spetsifikatsioonile 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/)):
    - [TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)
    - [Python SDK](https://github.com/modelcontextprotocol/python-sdk)
    - [C# SDK](https://github.com/modelcontextprotocol/csharp-sdk)
    - [Go SDK](https://github.com/modelcontextprotocol/go-sdk)
    - [Java SDK](https://github.com/modelcontextprotocol/java-sdk)
    - [Kotlin SDK](https://github.com/modelcontextprotocol/kotlin-sdk)
+   - [Swift SDK](https://github.com/modelcontextprotocol/swift-sdk)
+   - [Rust SDK](https://github.com/modelcontextprotocol/rust-sdk)
 
 2. **Kogukonna raamistikud**:
-   - [MCP-Framework](https://mcp-framework.com/) - Ehita MCP servereid elegantselt ja kiiresti TypeScriptis.
-   - [MCP Declarative Java SDK](https://github.com/codeboyzhou/mcp-declarative-java-sdk) - Annotatsioonipõhised MCP serverid Java keeles.
-   - [Quarkus MCP Server SDK](https://github.com/quarkiverse/quarkus-mcp-server) - Java raamistik MCP serverite jaoks.
-   - [Next.js MCP Server Template](https://github.com/vercel-labs/mcp-for-next.js) - Starter Next.js projekt MCP serverite jaoks.
+   - [MCP-Framework](https://mcp-framework.com/) – ehita MCP servereid elegantselt ja kiiresti TypeScriptis
+   - [MCP deklaratiivne Java SDK](https://github.com/codeboyzhou/mcp-declarative-java-sdk) – annotatsioonipõhised MCP serverid Java abil
+   - [Quarkus MCP Server SDK](https://github.com/quarkiverse/quarkus-mcp-server) – Java raamistik MCP serveritele
+   - [Next.js MCP Server Template](https://github.com/vercel-labs/mcp-for-next.js) – stardiprojekt MCP serveritele Next.js-i jaoks
 
-### Jagatavate tööriistade arendamine
+### Jagatavate tööriistade arendus
 
-#### .NET näide: Jagatava tööriistapaketi loomine
+#### .NET näide: jagatava tööriistapaketi loomine
 
 ```csharp
 // Create a new .NET library project
@@ -469,10 +471,10 @@ namespace McpFinanceTools
 // dotnet nuget push bin/Release/McpFinanceTools.1.0.0.nupkg -s https://api.nuget.org/v3/index.json -k YOUR_API_KEY
 ```
 
-#### Java näide: Maven paketi loomine tööriistade jaoks
+#### Java näide: Maven-paketi loomine tööriistadele
 
 ```java
-// pom.xml configuration for a shareable MCP tool package
+// pom.xml konfiguratsioon jagatava MCP tööriistapaketi jaoks
 <!-- 
 <project>
     <groupId>com.example</groupId>
@@ -491,7 +493,7 @@ namespace McpFinanceTools
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/username/mcp-weather-tools</url>
+            <url>https://maven.pkg.github.com/kasutajanimi/mcp-weather-tools</url>
         </repository>
     </distributionManagement>
 </project>
@@ -533,7 +535,7 @@ public class WeatherForecastTool implements Tool {
     @Override
     public Object getSchema() {
         Map<String, Object> schema = new HashMap<>();
-        // Schema definition...
+        // Skeemi definitsioon...
         return schema;
     }
     
@@ -544,10 +546,10 @@ public class WeatherForecastTool implements Tool {
             int days = request.getParameters().has("days") ? 
                 request.getParameters().get("days").asInt() : 3;
             
-            // Call weather API
+            // Kutsuge ilm API-d
             Map<String, Object> forecast = getForecast(location, days);
             
-            // Build response
+            // Koosta vastus
             return new ToolResponse.Builder()
                 .setResult(forecast)
                 .build();
@@ -557,15 +559,15 @@ public class WeatherForecastTool implements Tool {
     }
     
     private Map<String, Object> getForecast(String location, int days) {
-        // Implementation would call weather API
-        // Simplified example
+        // Rakendus kutsuks ilm API-d
+        // Lihtsustatud näide
         Map<String, Object> result = new HashMap<>();
-        // Add forecast data...
+        // Lisa ilmaprognoosi andmed...
         return result;
     }
 }
 
-// Build and publish using Maven
+// Koosta ja avalda kasutades Maveni
 // mvn clean package
 // mvn deploy
 ```
@@ -573,7 +575,7 @@ public class WeatherForecastTool implements Tool {
 #### Python näide: PyPI paketi avaldamine
 
 ```python
-# Directory structure for a PyPI package:
+# PyPI paketi kaustastruktuur:
 # mcp_nlp_tools/
 # ├── LICENSE
 # ├── README.md
@@ -583,7 +585,7 @@ public class WeatherForecastTool implements Tool {
 # │   ├── sentiment_tool.py
 # │   └── translation_tool.py
 
-# Example setup.py
+# Näide setup.py-st
 """
 from setuptools import setup, find_packages
 
@@ -611,7 +613,7 @@ setup(
 )
 """
 
-# Example NLP tool implementation (sentiment_tool.py)
+# Näide NLP tööriista rakendusest (sentiment_tool.py)
 from mcp_tools import Tool, ToolRequest, ToolResponse, ToolExecutionException
 from transformers import pipeline
 import torch
@@ -620,7 +622,7 @@ class SentimentAnalysisTool(Tool):
     """MCP tool for sentiment analysis of text"""
     
     def __init__(self, model_name="distilbert-base-uncased-finetuned-sst-2-english"):
-        # Load the sentiment analysis model
+        # Laadi sentimentanalüüsi mudel
         self.sentiment_analyzer = pipeline("sentiment-analysis", model=model_name)
     
     def get_name(self):
@@ -648,14 +650,14 @@ class SentimentAnalysisTool(Tool):
     
     async def execute_async(self, request: ToolRequest) -> ToolResponse:
         try:
-            # Extract parameters
+            # Eemalda parameetrid
             text = request.parameters.get("text")
             include_score = request.parameters.get("includeScore", True)
             
-            # Analyze sentiment
+            # Analüüsi sentimenti
             sentiment_result = self.sentiment_analyzer(text)[0]
             
-            # Format result
+            # Vorminda tulemus
             result = {
                 "sentiment": sentiment_result["label"],
                 "text": text
@@ -664,13 +666,13 @@ class SentimentAnalysisTool(Tool):
             if include_score:
                 result["score"] = sentiment_result["score"]
             
-            # Return result
+            # Tagasta tulemus
             return ToolResponse(result=result)
             
         except Exception as e:
             raise ToolExecutionException(f"Sentiment analysis failed: {str(e)}")
 
-# To publish:
+# Avaldamiseks:
 # python setup.py sdist bdist_wheel
 # python -m twine upload dist/*
 ```
@@ -680,40 +682,40 @@ class SentimentAnalysisTool(Tool):
 MCP tööriistade jagamisel kogukonnaga:
 
 1. **Täielik dokumentatsioon**:
-   - Dokumenteeri eesmärk, kasutus ja näited.
-   - Selgita parameetreid ja tagastusväärtusi.
-   - Dokumenteeri kõik välised sõltuvused.
+   - Kirjelda eesmärki, kasutust ja näiteid
+   - Selgita parameetreid ja tagastatavaid väärtusi
+   - Dokumenteeri kõik välised sõltuvused
 
 2. **Vigade käsitlemine**:
-   - Rakenda tugev vigade käsitlemine.
-   - Paku kasulikke veateateid.
-   - Käsitle äärejuhtumeid elegantselt.
+   - Rakenda tugev vigade käsitlemine
+   - Paku kasulikke veateateid
+   - Käsitle äärmusjuhtumeid hoolikalt
 
 3. **Jõudluse kaalutlused**:
-   - Optimeeri nii kiiruse kui ka ressursikasutuse jaoks.
-   - Rakenda vahemällu salvestamist, kui see on asjakohane.
-   - Mõtle skaleeritavusele.
+   - Optimeeri nii kiiruse kui ressursside kasutuse osas
+   - Rakenda vajadusel vahemällu salvestamist
+   - Mõtle skaleeritavusele
 
 4. **Turvalisus**:
-   - Kasuta turvalisi API võtmeid ja autentimist.
-   - Kontrolli ja puhasta sisendeid.
-   - Rakenda väliste API-kõnede jaoks kiirusepiiranguid.
+   - Kasuta turvalisi API võtmeid ja autentimist
+   - Kontrolli ja puhasta sisendeid
+   - Rakenda väliste API kõnede kiirusepiirangut
 
 5. **Testimine**:
-   - Lisa ulatuslik testkatvus.
-   - Testi erinevate sisenditüüpide ja äärejuhtumitega.
-   - Dokumenteeri testimisprotseduurid.
+   - Lisa põhjalik testide katvus
+   - Testi erinevate sisendite ja äärepuhuste korral
+   - Dokumenteeri testide käigus toimuv
 
 ## Kogukonna koostöö ja parimad tavad
 
-Tõhus koostöö on MCP ökosüsteemi elujõulisuse võti.
+Tõhus koostöö on olulise tähtsusega MCP ökosüsteemi eduks.
 
-### Kommunikatsioonikanalid
+### Suhtluskanalid
 
-- GitHubi probleemid ja arutelud
+- GitHubi Issue'd ja arutelud
 - Microsoft Tech Community
 - Discordi ja Slacki kanalid
-- Stack Overflow (märksõna: `model-context-protocol` või `mcp`)
+- Stack Overflow (silt: `model-context-protocol` või `mcp`)
 
 ### Koodikontrollid
 
@@ -722,24 +724,24 @@ MCP panuste ülevaatamisel:
 1. **Selgus**: Kas kood on selge ja hästi dokumenteeritud?
 2. **Õigsus**: Kas see töötab ootuspäraselt?
 3. **Järjepidevus**: Kas see järgib projekti konventsioone?
-4. **Täielikkus**: Kas testid ja dokumentatsioon on lisatud?
-5. **Turvalisus**: Kas on mingeid turvalisuse probleeme?
+4. **Täielikkus**: Kas testid ja dokumentatsioon on kaasatud?
+5. **Turvalisus**: Kas esineb turvalisusega seotud muresid?
 
 ### Versioonide ühilduvus
 
 MCP jaoks arendamisel:
 
-1. **Protokolli versioonimine**: Järgi MCP protokolli versiooni, mida sinu tööriist toetab.
-2. **Kliendi ühilduvus**: Mõtle tagasiühilduvusele.
-3. **Serveri ühilduvus**: Järgi serveri implementatsiooni juhiseid.
-4. **Murdvad muudatused**: Dokumenteeri selgelt kõik murdvad muudatused.
+1. **Protokolli versioonimine**: Järgi MCP protokolli versiooni, mida su tööriist toetab
+2. **Kliendi ühilduvus**: Mõtle tagurpidi ühilduvusele
+3. **Serveri ühilduvus**: Järgi serveri implementatsiooni juhiseid
+4. **Katkestavad muudatused**: Dokumenteeri selgelt kõik katkestavad muudatused
 
 ## Näide kogukonna projektist: MCP tööriistade register
 
-Oluline kogukonna panus võiks olla avaliku registri arendamine MCP tööriistade jaoks.
+Oluline kogukonna panus võiks olla avaliku MCP tööriistade registri arendamine.
 
 ```python
-# Example schema for a community tool registry API
+# Näidisskeem kogukonna tööriistaregistri API jaoks
 
 from fastapi import FastAPI, HTTPException, Depends
 from pydantic import BaseModel, Field, HttpUrl
@@ -747,7 +749,7 @@ from typing import List, Optional
 import datetime
 import uuid
 
-# Models for the tool registry
+# Tööriistaregistri mudelid
 class ToolSchema(BaseModel):
     """JSON Schema for a tool"""
     type: str
@@ -776,10 +778,10 @@ class Tool(ToolRegistration):
     rating: float = Field(default=0.0)
     ratings_count: int = Field(default=0)
 
-# FastAPI application for the registry
+# Registeri FastAPI rakendus
 app = FastAPI(title="MCP Tool Registry")
 
-# In-memory database for this example
+# Selle näite jaoks mälu-põhine andmebaas
 tools_db = {}
 
 @app.post("/tools", response_model=Tool)
@@ -815,31 +817,35 @@ async def delete_tool(tool_name: str):
     return {"message": f"Tool '{tool_name}' deleted"}
 ```
 
-## Peamised punktid
+## Peamised järeldused
 
-- MCP kogukond on mitmekesine ja tervitab erinevaid panustamisviise.
-- MCP-sse panustamine võib ulatuda põhiprotokolli täiustustest kohandatud tööriistadeni.
-- Panustamise juhiste järgimine suurendab PR-i vastuvõtmise tõenäosust.
-- MCP tööriistade loomine ja jagamine on väärtuslik viis ökosüsteemi täiustamiseks.
-- Kogukonna koostöö on MCP kasvu ja täiustamise jaoks hädavajalik.
+- MCP kogukond on mitmekesine ja tervitab erinevat tüüpi panuseid
+- Panustamine MCP-sse võib olla nii põhiprotokolli täiustused kui ka kohandatud tööriistad
+- Panustamise juhiste järgimine suurendab PR aktsepteerimise tõenäosust
+- MCP tööriistade loomine ja jagamine on väärtuslik viis ökosüsteemi rikastamiseks
+- Kogukonna koostöö on MCP kasvu ja arengu jaoks hädavajalik
 
 ## Harjutus
 
-1. Määra MCP ökosüsteemis valdkond, kuhu saaksid oma oskuste ja huvide põhjal panustada.
-2. Forki MCP repositoorium ja seadista kohalik arenduskeskkond.
-3. Loo väike täiustus, vigade parandus või tööriist, mis kogukonnale kasuks tuleks.
-4. Dokumenteeri oma panus koos sobivate testide ja dokumentatsiooniga.
-5. Esita pull request sobivasse repositooriumisse.
+1. Tuvasta MCP ökosüsteemis valdkond, kuhu sa saaksid oma oskuste ja huvide põhjal panustada
+2. Hajuta MCP hoidla ja sea üles kohalik arenduskeskkond
+3. Loo väike täiustus, vigade parandus või tööriist, mis tooks kasu kogukonnale
+4. Dokumenteeri oma panus koos vajalike testide ja dokumentatsiooniga
+5. Esita sobivasse hoidlas pull request
 
-## Lisamaterjalid
+## Täiendavad ressursid
 
-- [MCP kogukonna projektid](https://github.com/topics/model-context-protocol)
+- [MCP kogukonnaprojektid](https://github.com/topics/model-context-protocol)
 
 ---
+
+## Mis järgmiseks
 
 Järgmine: [Õppetunnid varajasest kasutuselevõtust](../07-LessonsfromEarlyAdoption/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:
+See dokument on tõlgitud kasutades tehisintellektil põhinevat tõlke teenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüdleme täpsuse poole, palun pidage meeles, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle emakeeles tuleks pidada usaldusväärseks allikaks. Tähtsa teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tekkida võivate arusaamatuste või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

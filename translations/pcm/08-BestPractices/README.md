@@ -2,78 +2,80 @@
 
 [![MCP Development Best Practices](../../../translated_images/pcm/09.d0f6d86c9d72134c.webp)](https://youtu.be/W56H9W7x-ao)
 
-_(Click di image wey dey up to watch di video for dis lesson)_
+_(Click di pikshua wey dey up yan watch dis lesson vidio)_
 
 ## Overview
 
-Dis lesson dey talk about di advanced best practices wey go help you develop, test, and deploy MCP servers and di features for production environments. As MCP ecosystems dey grow dey complex and important, e good make you follow di correct way so dat e go dey reliable, easy to maintain, and go fit work well with other systems. Dis lesson go show you di practical things wey people don learn from real MCP implementations so you fit create strong, efficient servers wey get correct resources, prompts, and tools.
+Dis lesson dey focus on advanced beta beta way to develop, test, and deploy MCP servers and features for production environment. As MCP systems dey grow well-well in complexity and importance, to follow well-known patterns go make sure sey everything stable, easy to manage, and fit work together well-well. Dis lesson gather correct sabi wey dem don get from how MCP dey work for real life to help you create strong, fast servers wey get better resources, prompts, and tools.
 
 ## Learning Objectives
 
-By di end of dis lesson, you go sabi:
+By the time you finish dis lesson, you go fit:
 
-- Use di industry best practices for MCP server and feature design
-- Create better testing plans for MCP servers
-- Design workflows wey dey efficient and fit reuse for complex MCP applications
-- Handle errors well, log events, and make MCP servers dey easy to monitor
-- Make MCP implementations dey fast, secure, and easy to maintain
+- Use industry beta beta way for MCP server and feature design
+- Create strong test plans for MCP servers
+- Design sharp, reusable workflow patterns for complex MCP apps
+- Implement correct error handling, logging, and observability inside MCP servers
+- Optimize MCP make e better for how e go perform, security, and to maintain
 
 ## MCP Core Principles
 
-Before we go enter di specific ways to implement MCP, e good make you understand di main principles wey dey guide MCP development:
+Before you start to implement specific ways, e strong make you sabi the main principles wey guide correct MCP development:
 
-1. **Standardized Communication**: MCP dey use JSON-RPC 2.0 as di base, e dey provide one consistent format for requests, responses, and error handling for all implementations.
+1. **Standardized Communication**: MCP dey use JSON-RPC 2.0 as ground work, to give one kain format for requests, responses, and how e go handle error for all implementations.
 
-2. **User-Centric Design**: Always make sure say user dey in control, dey give consent, and understand wetin dey happen for your MCP implementations.
+2. **User-Centric Design**: Always put user consent, control, and transparency for front for your MCP implementations.
 
-3. **Security First**: Put strong security measures like authentication, authorization, validation, and rate limiting.
+3. **Security First**: Make sure say you put strong security measures including authentication, authorization, validation, and rate limiting.
 
-4. **Modular Architecture**: Design your MCP servers in a way wey each tool and resource get one clear purpose.
+4. **Modular Architecture**: Design your MCP servers with modular mindset where every tool and resource get clear and focused purpose.
 
-5. **Stateful Connections**: Use MCP ability to keep state across multiple requests so interactions go dey more coherent and dey make sense.
+5. **Stateful Connections**: Use MCP to keep state across many requests so interactions go dey more clear and make sense.
 
 ## Official MCP Best Practices
 
-Di following best practices na from di official Model Context Protocol documentation:
+These beta beta practices dem come from official Model Context Protocol documentation:
 
 ### Security Best Practices
 
-1. **User Consent and Control**: Always make sure say user gree before you access data or do any operation. Give dem clear control over di data wey dem dey share and di actions wey dem authorize.
+1. **User Consent and Control**: Always make sure say user give clear permission before you access data or perform any work. Give clear control on wetin data dem dey share and wetin actions dem allow.
 
-2. **Data Privacy**: No expose user data unless dem gree, and protect am with correct access controls. Make sure say unauthorized data no dey transmit.
+2. **Data Privacy**: Only expose user data if user don give permission wella and protect am with correct access controls. Stop bad people from dey move data without permission.
 
-3. **Tool Safety**: Make sure user gree before you use any tool. Explain di tool functionality well and put strong security boundaries.
+3. **Tool Safety**: Make sure say user give permission before you activate any tool. Make sure users sabi how every tool dey work and keep strong security boundary.
 
-4. **Tool Permission Control**: Set di tools wey model fit use for session, make sure say only di tools wey dem authorize dey accessible.
+4. **Tool Permission Control**: Arrange which tools model fit use during session so sey only tools wey dem authorize dey accessible.
 
-5. **Authentication**: Make sure say authentication dey before you allow access to tools, resources, or sensitive operations. Use API keys, OAuth tokens, or other secure methods.
+5. **Authentication**: Make people authenticate well before dem fit access tools, resources, or sensitive work using API keys, OAuth tokens, or other strong ways.
 
-6. **Parameter Validation**: Check all tool inputs well to stop bad or harmful input from reaching di tool.
+6. **Parameter Validation**: Make sure every tool activation get correct validation to stop bad or wrong input from reach tool.
 
-7. **Rate Limiting**: Use rate limiting to stop abuse and make sure server resources dey share well.
+7. **Rate Limiting**: Put rate limiting to prevent misuse and make sure server resources dey fairly used.
 
 ### Implementation Best Practices
 
-1. **Capability Negotiation**: When connection dey setup, exchange information about di features wey dey available, protocol versions, tools, and resources.
+1. **Capability Negotiation**: When connection dey set up, make una exchange information about the features dem support, protocol versions, tools, and resources wey dey available.
 
-2. **Tool Design**: Create tools wey dey focus on one thing and dey do am well, no create tools wey dey try handle many things at once.
+2. **Tool Design**: Build focused tools wey dey do one thing well instead of one big tool wey dey do many things.
 
-3. **Error Handling**: Use standardized error messages and codes to help diagnose problems, handle failures well, and give feedback wey people fit use.
+3. **Error Handling**: Implement standard error messages and codes to help find wahala, handle failures well, and give useful feedback.
 
-4. **Logging**: Set up structured logs for auditing, debugging, and monitoring protocol interactions.
+4. **Logging**: Arrange structured logs for auditing, debugging, and monitoring protocol action.
 
-5. **Progress Tracking**: For operations wey dey take time, dey report progress updates so user interfaces go dey responsive.
+5. **Progress Tracking**: For work wey go take time, report progress to help make user interface responsive.
 
-6. **Request Cancellation**: Allow clients to cancel requests wey dem no need again or wey dey take too much time.
+6. **Request Cancellation**: Allow clients to cancel requests wey dem no need again or wey don too slow.
 
 ## Additional References
 
-For di latest information on MCP best practices, check:
+For di latest info on MCP beta beta way, check:
 
 - [MCP Documentation](https://modelcontextprotocol.io/)
-- [MCP Specification](https://spec.modelcontextprotocol.io/)
+- [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 - [GitHub Repository](https://github.com/modelcontextprotocol)
 - [Security Best Practices](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - Security risks and how to manage am
+- [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) - Hands-on security training
 
 ## Practical Implementation Examples
 
@@ -81,7 +83,7 @@ For di latest information on MCP best practices, check:
 
 #### 1. Single Responsibility Principle
 
-Each MCP tool suppose get one clear purpose. No create tools wey dey try do many things at once, instead make tools wey dey specialize for one task.
+Every MCP tool suppose get clear and focused purpose. No create big tools wey dey try do too many things, make special tools wey sabi their work well.
 
 ```csharp
 // A focused tool that does one thing well
@@ -143,10 +145,10 @@ public class WeatherForecastTool : ITool
 
 #### 2. Consistent Error Handling
 
-Make sure say error handling dey strong, dey give clear error messages, and dey provide ways to recover.
+Build beta beta error handling with clear error messages and correct recovery ways.
 
 ```python
-# Python example with comprehensive error handling
+# Python example wit full error handling
 class DataQueryTool:
     def get_name(self):
         return "dataQuery"
@@ -156,18 +158,18 @@ class DataQueryTool:
     
     async def execute(self, parameters):
         try:
-            # Parameter validation
+            # Parameter check
             if "query" not in parameters:
                 raise ToolParameterError("Missing required parameter: query")
                 
             query = parameters["query"]
             
-            # Security validation
+            # Security check
             if self._contains_unsafe_sql(query):
                 raise ToolSecurityError("Query contains potentially unsafe SQL")
             
             try:
-                # Database operation with timeout
+                # Database work wit timeout
                 async with timeout(10):  # 10 second timeout
                     result = await self._database.execute_query(query)
                     
@@ -177,37 +179,37 @@ class DataQueryTool:
             except asyncio.TimeoutError:
                 raise ToolExecutionError("Database query timed out after 10 seconds")
             except DatabaseConnectionError as e:
-                # Connection errors might be transient
+                # Connection yawa fit be temporary
                 self._log_error("Database connection error", e)
                 raise ToolExecutionError(f"Database connection error: {str(e)}")
             except DatabaseQueryError as e:
-                # Query errors are likely client errors
+                # Query yawa fit be client yawa
                 self._log_error("Database query error", e)
                 raise ToolExecutionError(f"Invalid query: {str(e)}")
                 
         except ToolError:
-            # Let tool-specific errors pass through
+            # Make tool-specific yawa pass through
             raise
         except Exception as e:
-            # Catch-all for unexpected errors
+            # Catch-all for unexpected yawa
             self._log_error("Unexpected error in DataQueryTool", e)
             raise ToolExecutionError(f"An unexpected error occurred: {str(e)}")
     
     def _contains_unsafe_sql(self, query):
-        # Implementation of SQL injection detection
+        # How to sabi SQL injection
         pass
         
     def _log_error(self, message, error):
-        # Implementation of error logging
+        # How to do error logging
         pass
 ```
 
 #### 3. Parameter Validation
 
-Always check di parameters well to stop bad or harmful input.
+Always check parameters strong strong to stop bad or wrong input.
 
 ```javascript
-// JavaScript/TypeScript example with detailed parameter validation
+// JavaScript/TypeScript example wit detailed parameter check
 class FileOperationTool {
   getName() {
     return "fileOperation";
@@ -242,7 +244,7 @@ class FileOperationTool {
   }
   
   async execute(parameters) {
-    // 1. Validate parameter presence
+    // 1. Check say parameter dey
     if (!parameters.operation) {
       throw new ToolError("Missing required parameter: operation");
     }
@@ -251,7 +253,7 @@ class FileOperationTool {
       throw new ToolError("Missing required parameter: path");
     }
     
-    // 2. Validate parameter types
+    // 2. Check parameter type dem
     if (typeof parameters.operation !== "string") {
       throw new ToolError("Parameter 'operation' must be a string");
     }
@@ -260,28 +262,28 @@ class FileOperationTool {
       throw new ToolError("Parameter 'path' must be a string");
     }
     
-    // 3. Validate parameter values
+    // 3. Check parameter value dem
     const validOperations = ["read", "write", "delete"];
     if (!validOperations.includes(parameters.operation)) {
       throw new ToolError(`Invalid operation. Must be one of: ${validOperations.join(", ")}`);
     }
     
-    // 4. Validate content presence for write operation
+    // 4. Check say content dey if you wan write
     if (parameters.operation === "write" && !parameters.content) {
       throw new ToolError("Content parameter is required for write operation");
     }
     
-    // 5. Path safety validation
+    // 5. Check path say e safe
     if (!this.isPathWithinAllowedDirectories(parameters.path)) {
       throw new ToolError("Access denied: path is outside of allowed directories");
     }
     
-    // Implementation based on validated parameters
+    // How e go dey work based on wetin we check for parameters
     // ...
   }
   
   isPathWithinAllowedDirectories(path) {
-    // Implementation of path safety check
+    // How to check say path safe
     // ...
   }
 }
@@ -292,7 +294,7 @@ class FileOperationTool {
 #### 1. Authentication and Authorization
 
 ```java
-// Java example with authentication and authorization
+// Java example wit authentication and authorization
 public class SecureDataAccessTool implements Tool {
     private final AuthenticationService authService;
     private final AuthorizationService authzService;
@@ -315,10 +317,10 @@ public class SecureDataAccessTool implements Tool {
     
     @Override
     public ToolResponse execute(ToolRequest request) {
-        // 1. Extract authentication context
+        // 1. Comot authentication context
         String authToken = request.getContext().getAuthToken();
         
-        // 2. Authenticate user
+        // 2. Check user authentication
         UserIdentity user;
         try {
             user = authService.validateToken(authToken);
@@ -326,7 +328,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Authentication failed: " + e.getMessage());
         }
         
-        // 3. Check authorization for the specific operation
+        // 3. Check authorization for the correct operation
         String dataId = request.getParameters().get("dataId").getAsString();
         String operation = request.getParameters().get("operation").getAsString();
         
@@ -335,7 +337,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Access denied: Insufficient permissions for this operation");
         }
         
-        // 4. Proceed with authorized operation
+        // 4. Continue wit authorized operation
         try {
             switch (operation) {
                 case "read":
@@ -435,7 +437,7 @@ public class RateLimitingMiddleware
 
 ### 1. Unit Testing MCP Tools
 
-Always test your tools one by one, mock di external dependencies:
+Always test your tools alone, use mocks for things outside:
 
 ```typescript
 // TypeScript example of a tool unit test
@@ -444,12 +446,12 @@ describe('WeatherForecastTool', () => {
   let mockWeatherService: jest.Mocked<IWeatherService>;
   
   beforeEach(() => {
-    // Create a mock weather service
+    // Make one fake weather service
     mockWeatherService = {
       getForecasts: jest.fn()
     } as any;
     
-    // Create the tool with the mock dependency
+    // Make the tool with the fake dependency
     tool = new WeatherForecastTool(mockWeatherService);
   });
   
@@ -493,38 +495,38 @@ describe('WeatherForecastTool', () => {
 
 ### 2. Integration Testing
 
-Test di full flow from client requests to server responses:
+Test full flow from client request to server response:
 
 ```python
 # Python integration test example
 @pytest.mark.asyncio
 async def test_mcp_server_integration():
-    # Start a test server
+    # Start one test server
     server = McpServer()
     server.register_tool(WeatherForecastTool(MockWeatherService()))
     await server.start(port=5000)
     
     try:
-        # Create a client
+        # Create one client
         client = McpClient("http://localhost:5000")
         
-        # Test tool discovery
+        # Test how we fit find tool
         tools = await client.discover_tools()
         assert "weatherForecast" in [t.name for t in tools]
         
-        # Test tool execution
+        # Test how tool dey work
         response = await client.execute_tool("weatherForecast", {
             "location": "Seattle",
             "days": 3
         })
         
-        # Verify response
+        # Check response
         assert response.status_code == 200
         assert "Seattle" in response.content[0].text
         assert len(json.loads(response.content[0].text)["forecasts"]) == 3
         
     finally:
-        # Clean up
+        # Clean up everywhere
         await server.stop()
 ```
 
@@ -532,7 +534,7 @@ async def test_mcp_server_integration():
 
 ### 1. Caching Strategies
 
-Use caching well to reduce latency and resource usage:
+Put correct caching to reduce wait time and resource use:
 
 ```csharp
 // C# example with caching
@@ -603,16 +605,16 @@ public class CachedWeatherTool : ITool
 
 #### 2. Dependency Injection and Testability
 
-Design tools wey go receive their dependencies through constructor injection, so dem go dey testable and configurable:
+Design tools to receive their dependencies with constructor injection, this one go make dem testable and configurable:
 
 ```java
-// Java example with dependency injection
+// Java example wit dependency injection
 public class CurrencyConversionTool implements Tool {
     private final ExchangeRateService exchangeService;
     private final CacheService cacheService;
     private final Logger logger;
     
-    // Dependencies injected through constructor
+    // Dependencies dem inject through constructor
     public CurrencyConversionTool(
             ExchangeRateService exchangeService,
             CacheService cacheService,
@@ -622,51 +624,51 @@ public class CurrencyConversionTool implements Tool {
         this.logger = logger;
     }
     
-    // Tool implementation
+    // Tool implementashen
     // ...
 }
 ```
 
 #### 3. Composable Tools
 
-Design tools wey fit work together to create more complex workflows:
+Design tools wey fit join together to make more complex workflows:
 
 ```python
-# Python example showing composable tools
+# Python example wey dey show how tools fit join together
 class DataFetchTool(Tool):
     def get_name(self):
         return "dataFetch"
     
-    # Implementation...
+    # How e take dey done...
 
 class DataAnalysisTool(Tool):
     def get_name(self):
         return "dataAnalysis"
     
-    # This tool can use results from the dataFetch tool
+    # Dis tool fit use results wey dataFetch tool carry come
     async def execute_async(self, request):
-        # Implementation...
+        # How e take dey done...
         pass
 
 class DataVisualizationTool(Tool):
     def get_name(self):
         return "dataVisualize"
     
-    # This tool can use results from the dataAnalysis tool
+    # Dis tool fit use results wey dataAnalysis tool carry come
     async def execute_async(self, request):
-        # Implementation...
+        # How e take dey done...
         pass
 
-# These tools can be used independently or as part of a workflow
+# Dem fit use these tools separate or join am as part of workflow
 ```
 
 ### Schema Design Best Practices
 
-Di schema na di contract between di model and your tool. If you design di schema well, e go make di tool easy to use.
+Schema na the contract between model and your tool. Well designed schema dey help tools work better.
 
 #### 1. Clear Parameter Descriptions
 
-Always put clear description for each parameter:
+Always put correct description for every parameter:
 
 ```csharp
 public object GetSchema()
@@ -705,7 +707,7 @@ public object GetSchema()
 
 #### 2. Validation Constraints
 
-Add validation constraints to stop invalid inputs:
+Put validation limits to stop wrong inputs:
 
 ```java
 Map<String, Object> getSchema() {
@@ -714,13 +716,13 @@ Map<String, Object> getSchema() {
     
     Map<String, Object> properties = new HashMap<>();
     
-    // Email property with format validation
+    // Email property wey get format validation
     Map<String, Object> email = new HashMap<>();
     email.put("type", "string");
     email.put("format", "email");
     email.put("description", "User email address");
     
-    // Age property with numeric constraints
+    // Age property wey get numeric constraints
     Map<String, Object> age = new HashMap<>();
     age.put("type", "integer");
     age.put("minimum", 13);
@@ -747,15 +749,15 @@ Map<String, Object> getSchema() {
 
 #### 3. Consistent Return Structures
 
-Make sure say your response structures dey consistent so models go fit understand di results well:
+Make sure response structures dey consistent to help models understand results better:
 
 ```python
 async def execute_async(self, request):
     try:
-        # Process request
+        # Process di request
         results = await self._search_database(request.parameters["query"])
         
-        # Always return a consistent structure
+        # Always return one kind structure wey no dey change
         return ToolResponse(
             result={
                 "matches": [self._format_item(item) for item in results],
@@ -788,11 +790,11 @@ def _format_item(self, item):
 
 ### Error Handling
 
-Strong error handling dey important for MCP tools to dey reliable.
+Strong error handling important for MCP tools to remain reliable.
 
 #### 1. Graceful Error Handling
 
-Handle errors well and give clear messages:
+Handle errors at correct levels and give clear messages:
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -836,7 +838,7 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 
 #### 2. Structured Error Responses
 
-Return error information wey dey structured if e dey possible:
+Return error information wey structured when possible:
 
 ```java
 @Override
@@ -860,7 +862,7 @@ public ToolResponse execute(ToolRequest request) {
                 .build();
         }
         
-        // Re-throw other exceptions as ToolExecutionException
+        // Comot other wahala dem come throw am sef as ToolExecutionException
         throw new ToolExecutionException("Tool execution failed: " + ex.getMessage(), ex);
     }
 }
@@ -868,7 +870,7 @@ public ToolResponse execute(ToolRequest request) {
 
 #### 3. Retry Logic
 
-Add retry logic for failures wey fit happen sometimes:
+Put correct retry logic for temporary failures:
 
 ```python
 async def execute_async(self, request):
@@ -890,7 +892,7 @@ async def execute_async(self, request):
             logging.warning(f"Transient error, retrying in {delay}s: {str(e)}")
             await asyncio.sleep(delay)
         except Exception as e:
-            # Non-transient error, don't retry
+            # Non-transient error, no try again
             raise ToolExecutionException(f"Operation failed: {str(e)}")
 ```
 
@@ -946,7 +948,7 @@ public class CachedDataTool : IMcpTool
 
 #### 2. Asynchronous Processing
 
-Use asynchronous programming for operations wey dey depend on I/O:
+Use asynchronous programming style for I/O-bound tasks:
 
 ```java
 public class AsyncDocumentProcessingTool implements Tool {
@@ -957,16 +959,16 @@ public class AsyncDocumentProcessingTool implements Tool {
     public ToolResponse execute(ToolRequest request) {
         String documentId = request.getParameters().get("documentId").asText();
         
-        // For long-running operations, return a processing ID immediately
+        // For operations wey go run long, make you return processing ID sharp sharp
         String processId = UUID.randomUUID().toString();
         
-        // Start async processing
+        // Begin async processing
         CompletableFuture.runAsync(() -> {
             try {
-                // Perform long-running operation
+                // Do long-running operation
                 documentService.processDocument(documentId);
                 
-                // Update status (would typically be stored in a database)
+                // Update status (e dey normal make e dey stored for database)
                 processStatusRepository.updateStatus(processId, "completed");
             } catch (Exception ex) {
                 processStatusRepository.updateStatus(processId, "failed", ex.getMessage());
@@ -982,7 +984,7 @@ public class AsyncDocumentProcessingTool implements Tool {
         return new ToolResponse.Builder().setResult(result).build();
     }
     
-    // Companion status check tool
+    // Tool for check companion status
     public class ProcessStatusTool implements Tool {
         @Override
         public ToolResponse execute(ToolRequest request) {
@@ -997,33 +999,33 @@ public class AsyncDocumentProcessingTool implements Tool {
 
 #### 3. Resource Throttling
 
-Use resource throttling to stop overload:
+Put resource throttling to stop overload:
 
 ```python
 class ThrottledApiTool(Tool):
     def __init__(self):
         self.rate_limiter = TokenBucketRateLimiter(
-            tokens_per_second=5,  # Allow 5 requests per second
-            bucket_size=10        # Allow bursts up to 10 requests
+            tokens_per_second=5,  # Make e dey allow 5 requests every second
+            bucket_size=10        # Make e fit allow burst reach 10 requests
         )
     
     async def execute_async(self, request):
-        # Check if we can proceed or need to wait
+        # Check if we fit continue or if we need wait
         delay = self.rate_limiter.get_delay_time()
         
         if delay > 0:
-            if delay > 2.0:  # If wait is too long
+            if delay > 2.0:  # If the wait time long well well
                 raise ToolExecutionException(
                     f"Rate limit exceeded. Please try again in {delay:.1f} seconds."
                 )
             else:
-                # Wait for the appropriate delay time
+                # Make you wait for correct delay time
                 await asyncio.sleep(delay)
         
-        # Consume a token and proceed with the request
+        # Use one token and continue with the request
         self.rate_limiter.consume()
         
-        # Call API
+        # Call the API
         result = await self._call_api(request.parameters)
         return ToolResponse(result=result)
 
@@ -1041,7 +1043,7 @@ class TokenBucketRateLimiter:
             if self.tokens >= 1:
                 return 0
             
-            # Calculate time until next token available
+            # Calculate time till next token go dey available
             return (1 - self.tokens) / self.tokens_per_second
     
     async def consume(self):
@@ -1053,7 +1055,7 @@ class TokenBucketRateLimiter:
         now = time.time()
         elapsed = now - self.last_refill
         
-        # Add new tokens based on elapsed time
+        # Add new tokens based on how time don pass
         new_tokens = elapsed * self.tokens_per_second
         self.tokens = min(self.bucket_size, self.tokens + new_tokens)
         self.last_refill = now
@@ -1063,7 +1065,7 @@ class TokenBucketRateLimiter:
 
 #### 1. Input Validation
 
-Always check input parameters well:
+Always check input parameters strong strong:
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -1106,26 +1108,26 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 
 #### 2. Authorization Checks
 
-Make sure say authorization checks dey:
+Put correct authorization checks:
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
-    // Get user context from request
+    // Comot user context from request
     UserContext user = request.getContext().getUserContext();
     
-    // Check if user has required permissions
+    // Check if user get di correct permissions
     if (!authorizationService.hasPermission(user, "documents:read")) {
         throw new ToolExecutionException("User does not have permission to access documents");
     }
     
-    // For specific resources, check access to that resource
+    // For certain resources, check if dem fit access am
     String documentId = request.getParameters().get("documentId").asText();
     if (!documentService.canUserAccess(user.getId(), documentId)) {
         throw new ToolExecutionException("Access denied to the requested document");
     }
     
-    // Proceed with tool execution
+    // Continue to run di tool
     // ...
 }
 ```
@@ -1150,31 +1152,31 @@ class SecureDataTool(Tool):
         user_id = request.parameters["userId"]
         include_sensitive = request.parameters.get("includeSensitiveData", False)
         
-        # Get user data
+        # Make we comot user data
         user_data = await self.user_service.get_user_data(user_id)
         
-        # Filter sensitive fields unless explicitly requested AND authorized
+        # Comot sensitive fields unless person ask and dem get permission
         if not include_sensitive or not self._is_authorized_for_sensitive_data(request):
             user_data = self._redact_sensitive_fields(user_data)
         
         return ToolResponse(result=user_data)
     
     def _is_authorized_for_sensitive_data(self, request):
-        # Check authorization level in request context
+        # Check level of permission for request context
         auth_level = request.context.get("authorizationLevel")
         return auth_level == "admin"
     
     def _redact_sensitive_fields(self, user_data):
-        # Create a copy to avoid modifying the original
+        # Make one copy to no change the og one
         redacted = user_data.copy()
         
-        # Redact specific sensitive fields
+        # Hide special sensitive fields
         sensitive_fields = ["ssn", "creditCardNumber", "password"]
         for field in sensitive_fields:
             if field in redacted:
                 redacted[field] = "REDACTED"
         
-        # Redact nested sensitive data
+        # Hide inside sensitive data wey dey inside
         if "financialInfo" in redacted:
             redacted["financialInfo"] = {"available": True, "accessRestricted": True}
         
@@ -1183,13 +1185,13 @@ class SecureDataTool(Tool):
 
 ## Testing Best Practices for MCP Tools
 
-Testing well go make sure say MCP tools dey work correctly, dey handle edge cases, and dey fit work well with di rest of di system.
+Well done testing go make sure MCP tools dey work correctly, fit handle edge cases, and join well with system.
 
 ### Unit Testing
 
 #### 1. Test Each Tool in Isolation
 
-Create tests wey dey focus on each tool functionality:
+Make focused tests for every tool’s work:
 
 ```csharp
 [Fact]
@@ -1251,25 +1253,25 @@ public async Task WeatherTool_InvalidLocation_ThrowsToolExecutionException()
 
 #### 2. Schema Validation Testing
 
-Test say schemas dey valid and dey enforce constraints well:
+Test if schemas dey valid and dey enforce constraints correct:
 
 ```java
 @Test
 public void testSchemaValidation() {
-    // Create tool instance
+    // Make tool instance
     SearchTool searchTool = new SearchTool();
     
     // Get schema
     Object schema = searchTool.getSchema();
     
-    // Convert schema to JSON for validation
+    // Change schema go JSON so e fit validate
     String schemaJson = objectMapper.writeValueAsString(schema);
     
-    // Validate schema is valid JSONSchema
+    // Check say schema be correct JSONSchema
     JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
     JsonSchema jsonSchema = factory.getJsonSchema(schemaJson);
     
-    // Test valid parameters
+    // Test correct parameters
     JsonNode validParams = objectMapper.createObjectNode()
         .put("query", "test query")
         .put("limit", 5);
@@ -1277,14 +1279,14 @@ public void testSchemaValidation() {
     ProcessingReport validReport = jsonSchema.validate(validParams);
     assertTrue(validReport.isSuccess());
     
-    // Test missing required parameter
+    // Test wen required parameter no dey
     JsonNode missingRequired = objectMapper.createObjectNode()
         .put("limit", 5);
         
     ProcessingReport missingReport = jsonSchema.validate(missingRequired);
     assertFalse(missingReport.isSuccess());
     
-    // Test invalid parameter type
+    // Test wrong parameter type
     JsonNode invalidType = objectMapper.createObjectNode()
         .put("query", "test")
         .put("limit", "not-a-number");
@@ -1296,7 +1298,7 @@ public void testSchemaValidation() {
 
 #### 3. Error Handling Tests
 
-Create tests wey dey focus on error conditions:
+Make specific tests for error situations:
 
 ```python
 @pytest.mark.asyncio
@@ -1304,7 +1306,7 @@ async def test_api_tool_handles_timeout():
     # Arrange
     tool = ApiTool(timeout=0.1)  # Very short timeout
     
-    # Mock a request that will time out
+    # Mock wan request wey go time out
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
@@ -1328,7 +1330,7 @@ async def test_api_tool_handles_rate_limiting():
     # Arrange
     tool = ApiTool()
     
-    # Mock a rate-limited response
+    # Mock wan rate-limited response
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
@@ -1346,7 +1348,7 @@ async def test_api_tool_handles_rate_limiting():
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception contains rate limit information
+        # Verify exception get rate limit information
         error_msg = str(exc_info.value).lower()
         assert "rate limit" in error_msg
         assert "try again" in error_msg
@@ -1356,7 +1358,7 @@ async def test_api_tool_handles_rate_limiting():
 
 #### 1. Tool Chain Testing
 
-Test tools wey dey work together in di way wey you expect:
+Test if tools fit work together in expected ways:
 
 ```csharp
 [Fact]
@@ -1397,7 +1399,7 @@ public async Task DataProcessingWorkflow_CompletesSuccessfully()
 
 #### 2. MCP Server Testing
 
-Test di MCP server with full tool registration and execution:
+Test MCP server with full tool registration and execution:
 
 ```java
 @SpringBootTest
@@ -1412,7 +1414,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolDiscovery() throws Exception {
-        // Test the discovery endpoint
+        // Test di discovery endpoint
         mockMvc.perform(get("/mcp/tools"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.tools").isArray())
@@ -1433,7 +1435,7 @@ public class McpServerIntegrationTest {
         parameters.put("b", 7);
         request.put("parameters", parameters);
         
-        // Send request and verify response
+        // Send request and check di response
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1443,17 +1445,17 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolValidation() throws Exception {
-        // Create invalid tool request
+        // Create wrong tool request
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("operation", "divide");
         parameters.put("a", 10);
-        // Missing parameter "b"
+        // Parameter "b" no dey
         request.put("parameters", parameters);
         
-        // Send request and verify error response
+        // Send request and check error response
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1465,15 +1467,15 @@ public class McpServerIntegrationTest {
 
 #### 3. End-to-End Testing
 
-Test di complete workflows from model prompt to tool execution:
+Test full workflows from model prompt to tool execution:
 
 ```python
 @pytest.mark.asyncio
 async def test_model_interaction_with_tool():
-    # Arrange - Set up MCP client and mock model
+    # Arrange - Setup MCP client an put for mock model
     mcp_client = McpClient(server_url="http://localhost:5000")
     
-    # Mock model responses
+    # Mock model response dem
     mock_model = MockLanguageModel([
         MockResponse(
             "What's the weather in Seattle?",
@@ -1524,7 +1526,7 @@ async def test_model_interaction_with_tool():
 
 #### 1. Load Testing
 
-Test how many requests your MCP server fit handle at di same time:
+Test how many concurrent requests your MCP server fit handle:
 
 ```csharp
 [Fact]
@@ -1559,7 +1561,7 @@ public async Task McpServer_HandlesHighConcurrency()
 
 #### 2. Stress Testing
 
-Test di system when e dey under heavy load:
+Test system under heavy load:
 
 ```java
 @Test
@@ -1568,13 +1570,13 @@ public void testServerUnderStress() {
     int rampUpTimeSeconds = 60;
     int testDurationSeconds = 300;
     
-    // Set up JMeter for stress testing
+    // Arrange JMeter for stress test
     StandardJMeterEngine jmeter = new StandardJMeterEngine();
     
-    // Configure JMeter test plan
+    // Set JMeter test plan
     HashTree testPlanTree = new HashTree();
     
-    // Create test plan, thread group, samplers, etc.
+    // Make test plan, thread group, samplers, etc.
     TestPlan testPlan = new TestPlan("MCP Server Stress Test");
     testPlanTree.add(testPlan);
     
@@ -1586,7 +1588,7 @@ public void testServerUnderStress() {
     
     testPlanTree.add(threadGroup);
     
-    // Add HTTP sampler for tool execution
+    // Add HTTP sampler for tool run
     HTTPSampler toolExecutionSampler = new HTTPSampler();
     toolExecutionSampler.setDomain("localhost");
     toolExecutionSampler.setPort(5000);
@@ -1605,7 +1607,7 @@ public void testServerUnderStress() {
     jmeter.configure(testPlanTree);
     jmeter.run();
     
-    // Validate results
+    // Check results
     assertEquals(0, summaryReport.getErrorCount());
     assertTrue(summaryReport.getAverage() < 200); // Average response time < 200ms
     assertTrue(summaryReport.getPercentile(90.0) < 500); // 90th percentile < 500ms
@@ -1614,12 +1616,12 @@ public void testServerUnderStress() {
 
 #### 3. Monitoring and Profiling
 
-Set up monitoring to check performance over time:
+Setup monitoring for long-term performance check:
 
 ```python
-# Configure monitoring for an MCP server
+# Set monitoring for one MCP server
 def configure_monitoring(server):
-    # Set up Prometheus metrics
+    # Arrange Prometheus metrics
     prometheus_metrics = {
         "request_count": Counter("mcp_requests_total", "Total MCP requests"),
         "request_latency": Histogram(
@@ -1645,10 +1647,10 @@ def configure_monitoring(server):
         )
     }
     
-    # Add middleware for timing and recording metrics
+    # Add middleware wey go time and record metrics
     server.add_middleware(PrometheusMiddleware(prometheus_metrics))
     
-    # Expose metrics endpoint
+    # Make metrics endpoint open
     @server.router.get("/metrics")
     async def metrics():
         return generate_latest()
@@ -1658,27 +1660,27 @@ def configure_monitoring(server):
 
 ## MCP Workflow Design Patterns
 
-Good MCP workflows go make things dey efficient, reliable, and easy to maintain. Here be di key patterns wey you fit follow:
+Well design MCP workflow dey improve efficiency, reliability, and maintainability. Here are main patterns to follow:
 
 ### 1. Chain of Tools Pattern
 
-Connect tools one after di other, where di output of one tool go be di input for di next:
+Join many tools in sequence where output of one tool go become input for next:
 
 ```python
 # Python Chain of Tools implementation
 class ChainWorkflow:
     def __init__(self, tools_chain):
-        self.tools_chain = tools_chain  # List of tool names to execute in sequence
+        self.tools_chain = tools_chain  # List of tool names we go run one by one
     
     async def execute(self, mcp_client, initial_input):
         current_result = initial_input
         all_results = {"input": initial_input}
         
         for tool_name in self.tools_chain:
-            # Execute each tool in the chain, passing previous result
+            # Run every tool for the chain, carry the previous result give am
             response = await mcp_client.execute_tool(tool_name, current_result)
             
-            # Store result and use as input for next tool
+            # Keep result and make am input for the next tool
             all_results[tool_name] = response.result
             current_result = response.result
         
@@ -1687,7 +1689,7 @@ class ChainWorkflow:
             "all_results": all_results
         }
 
-# Example usage
+# Example wey person fit use
 data_processing_chain = ChainWorkflow([
     "dataFetch",
     "dataCleaner",
@@ -1703,7 +1705,7 @@ result = await data_processing_chain.execute(
 
 ### 2. Dispatcher Pattern
 
-Use one central tool wey go send work to di correct specialized tools based on di input:
+Use central tool wey dey dispatch to special tools based on input:
 
 ```csharp
 public class ContentDispatcherTool : IMcpTool
@@ -1785,7 +1787,7 @@ public class ContentDispatcherTool : IMcpTool
 
 ### 3. Parallel Processing Pattern
 
-Run multiple tools at di same time to save time:
+Run many tools at once for better performance:
 
 ```java
 public class ParallelDataProcessingWorkflow {
@@ -1796,11 +1798,11 @@ public class ParallelDataProcessingWorkflow {
     }
     
     public WorkflowResult execute(String datasetId) {
-        // Step 1: Fetch dataset metadata (synchronous)
+        // Step 1: Comot dataset metadata (synchronous)
         ToolResponse metadataResponse = mcpClient.executeTool("datasetMetadata", 
             Map.of("datasetId", datasetId));
         
-        // Step 2: Launch multiple analyses in parallel
+        // Step 2: Run plenty analysis dem for same time
         CompletableFuture<ToolResponse> statisticalAnalysis = CompletableFuture.supplyAsync(() ->
             mcpClient.executeTool("statisticalAnalysis", Map.of(
                 "datasetId", datasetId,
@@ -1822,25 +1824,25 @@ public class ParallelDataProcessingWorkflow {
             ))
         );
         
-        // Wait for all parallel tasks to complete
+        // Wait make all di parallel work dem finish
         CompletableFuture<Void> allAnalyses = CompletableFuture.allOf(
             statisticalAnalysis, correlationAnalysis, outlierDetection
         );
         
-        allAnalyses.join();  // Wait for completion
+        allAnalyses.join();  // Wait till e finish
         
-        // Step 3: Combine results
+        // Step 3: Join all di result dem together
         Map<String, Object> combinedResults = new HashMap<>();
         combinedResults.put("metadata", metadataResponse.getResult());
         combinedResults.put("statistics", statisticalAnalysis.join().getResult());
         combinedResults.put("correlations", correlationAnalysis.join().getResult());
         combinedResults.put("outliers", outlierDetection.join().getResult());
         
-        // Step 4: Generate summary report
+        // Step 4: Make summary report
         ToolResponse summaryResponse = mcpClient.executeTool("reportGenerator", 
             Map.of("analysisResults", combinedResults));
         
-        // Return complete workflow result
+        // Return di whole workflow result
         WorkflowResult result = new WorkflowResult();
         result.setDatasetId(datasetId);
         result.setAnalysisResults(combinedResults);
@@ -1853,7 +1855,7 @@ public class ParallelDataProcessingWorkflow {
 
 ### 4. Error Recovery Pattern
 
-Add ways to recover well if tool fail:
+Put graceful fallback for tool failure:
 
 ```python
 class ResilientWorkflow:
@@ -1862,7 +1864,7 @@ class ResilientWorkflow:
     
     async def execute_with_fallback(self, primary_tool, fallback_tool, parameters):
         try:
-            # Try primary tool first
+            # Try di main tool first
             response = await self.client.execute_tool(primary_tool, parameters)
             return {
                 "result": response.result,
@@ -1870,12 +1872,12 @@ class ResilientWorkflow:
                 "tool": primary_tool
             }
         except ToolExecutionException as e:
-            # Log the failure
+            # Write down di failure
             logging.warning(f"Primary tool '{primary_tool}' failed: {str(e)}")
             
-            # Fall back to secondary tool
+            # Use di secondary tool
             try:
-                # Might need to transform parameters for fallback tool
+                # Fit need change parameters for fallback tool
                 fallback_params = self._adapt_parameters(parameters, primary_tool, fallback_tool)
                 
                 response = await self.client.execute_tool(fallback_tool, fallback_params)
@@ -1886,7 +1888,7 @@ class ResilientWorkflow:
                     "primaryError": str(e)
                 }
             except ToolExecutionException as fallback_error:
-                # Both tools failed
+                # Both tools no work
                 logging.error(f"Both primary and fallback tools failed. Fallback error: {str(fallback_error)}")
                 raise WorkflowExecutionException(
                     f"Workflow failed: primary error: {str(e)}; fallback error: {str(fallback_error)}"
@@ -1894,11 +1896,11 @@ class ResilientWorkflow:
     
     def _adapt_parameters(self, params, from_tool, to_tool):
         """Adapt parameters between different tools if needed"""
-        # This implementation would depend on the specific tools
-        # For this example, we'll just return the original parameters
+        # Dis implementation go depend on di correct tools
+        # For dis example, we go just return di original parameters
         return params
 
-# Example usage
+# Example how to use am
 async def get_weather(workflow, location):
     return await workflow.execute_with_fallback(
         "premiumWeatherService",  # Primary (paid) weather API
@@ -1909,7 +1911,7 @@ async def get_weather(workflow, location):
 
 ### 5. Workflow Composition Pattern
 
-Create complex workflows by joining simpler ones together:
+Build complex workflows by joining smaller ones:
 
 ```csharp
 public class CompositeWorkflow : IWorkflow
@@ -1960,31 +1962,31 @@ var result = await documentWorkflow.ExecuteAsync(new WorkflowContext {
 
 ## Overview
 
-Testing na one important part of developing MCP servers wey dey reliable and high-quality. Dis guide go show you di best practices and tips for testing your MCP servers from di beginning to di end, including unit tests, integration tests, and end-to-end validation.
+Testing na very important part to build reliable, high-quality MCP servers. This guide get beta beta practices and tips to test your MCP servers during development, from unit tests to integration tests and end-to-end validation.
 
 ## Why Testing Matters for MCP Servers
 
-MCP servers dey act as di middleman between AI models and client applications. Testing well go make sure say:
+MCP servers dey serve as important middle layer between AI models and client apps. Complete testing go ensure:
 
-- E dey reliable for production environments
-- E dey handle requests and responses correctly
-- E dey follow MCP specifications well
-- E fit handle failures and edge cases
-- E dey perform well under different loads
+- Reliability for production environment
+- Correct handling of requests and responses
+- Proper MCP specifications implementation
+- Resilience against failures and edge cases
+- Consistent performance under different loads
 
 ## Unit Testing for MCP Servers
 
 ### Unit Testing (Foundation)
 
-Unit tests dey check di individual parts of your MCP server one by one.
+Unit tests dey check individual parts of your MCP server alone.
 
 #### Wetin to Test
 
-1. **Resource Handlers**: Test di logic for each resource handler separately
-2. **Tool Implementations**: Check how tools dey behave with different inputs
-3. **Prompt Templates**: Make sure say prompt templates dey render well
-4. **Schema Validation**: Test di logic wey dey validate parameters
-5. **Error Handling**: Check di error responses for bad inputs
+1. **Resource Handlers**: Test each resource handler logics on top their own
+2. **Tool Implementations**: Confirm tool behavior with different inputs
+3. **Prompt Templates**: Make sure prompt templates dey render well
+4. **Schema Validation**: Test parameter validation logic
+5. **Error Handling**: Confirm error response for wrong inputs
 
 #### Best Practices for Unit Testing
 
@@ -2012,7 +2014,7 @@ public async Task CalculatorTool_Add_ReturnsCorrectSum()
 ```
 
 ```python
-# Example unit test for a calculator tool in Python
+# Example unit test for calculator tool for Python
 def test_calculator_tool_add():
     # Arrange
     calculator = CalculatorTool()
@@ -2032,15 +2034,15 @@ def test_calculator_tool_add():
 
 ### Integration Testing (Middle Layer)
 
-Integration tests dey check how di parts of your MCP server dey work together.
+Integration tests dey check how components of your MCP server dey interact.
 
 #### Wetin to Test
 
-1. **Server Initialization**: Test di server startup with different settings
-2. **Route Registration**: Make sure say all endpoints dey register well
-3. **Request Processing**: Test di full request-response cycle
-4. **Error Propagation**: Make sure say errors dey handle well across di parts
-5. **Authentication & Authorization**: Test di security features
+1. **Server Initialization**: Test server start-up with different settings
+2. **Route Registration**: Confirm all endpoints registered well
+3. **Request Processing**: Test full request-response cycle
+4. **Error Propagation**: Make sure errors dey handled right across components
+5. **Authentication & Authorization**: Test security mekansims
 
 #### Best Practices for Integration Testing
 
@@ -2080,25 +2082,25 @@ public async Task Server_ProcessToolRequest_ReturnsValidResponse()
 
 ### End-to-End Testing (Top Layer)
 
-End-to-end tests dey check di whole system from client to server.
+End-to-end tests check the whole system behavior from client to server.
 
 #### Wetin to Test
 
-1. **Client-Server Communication**: Test di full request-response cycle
-2. **Real Client SDKs**: Test with di actual client implementations
-3. **Performance Under Load**: Check how e dey behave with many requests at di same time
-4. **Error Recovery**: Test how e dey recover from failures
-5. **Long-Running Operations**: Check how e dey handle streaming and operations wey dey take time
+1. **Client-Server Communication**: Test full request-response flows
+2. **Real Client SDKs**: Test with real client implementations
+3. **Performance Under Load**: Check how e go behave with many concurrent requests
+4. **Error Recovery**: Test system ability to recover from failures
+5. **Long-Running Operations**: Confirm handling of streaming and long work
 
 #### Best Practices for E2E Testing
 
 ```typescript
-// Example E2E test with a client in TypeScript
+// Example E2E test wit client for TypeScript
 describe('MCP Server E2E Tests', () => {
   let client: McpClient;
   
   beforeAll(async () => {
-    // Start server in test environment
+    // Start server for test environment
     await startTestServer();
     client = new McpClient('http://localhost:5000');
   });
@@ -2108,14 +2110,14 @@ describe('MCP Server E2E Tests', () => {
   });
   
   test('Client can invoke calculator tool and get correct result', async () => {
-    // Act
+    // Do am
     const response = await client.invokeToolAsync('calculator', {
       operation: 'divide',
       a: 20,
       b: 4
     });
     
-    // Assert
+    // Check am
     expect(response.statusCode).toBe(200);
     expect(response.content[0].text).toContain('5');
   });
@@ -2124,14 +2126,14 @@ describe('MCP Server E2E Tests', () => {
 
 ## Mocking Strategies for MCP Testing
 
-Mocking dey important to separate di parts during testing.
+Mocking important to isolate parts during testing.
 
-### Wetin to Mock
+### Parts to Mock
 
-1. **External AI Models**: Mock di model responses for predictable testing
-2. **External Services**: Mock API dependencies like databases or third-party services
+1. **External AI Models**: Mock model responses to get predictable testing
+2. **External Services**: Mock API dependencies (databases, third-party services)
 3. **Authentication Services**: Mock identity providers
-4. **Resource Providers**: Mock resource handlers wey dey expensive
+4. **Resource Providers**: Mock expensive resource handlers
 
 ### Example: Mocking an AI Model Response
 
@@ -2151,48 +2153,48 @@ var server = new McpServer(modelClient: mockModel.Object);
 ```
 
 ```python
-# Python example with unittest.mock
+# Python example wit unittest.mock
 @patch('mcp_server.models.OpenAIModel')
 def test_with_mock_model(mock_model):
-    # Configure mock
+    # Arrange mock
     mock_model.return_value.generate_response.return_value = {
         "text": "Mocked model response",
         "finish_reason": "completed"
     }
     
-    # Use mock in test
+    # Use mock for test
     server = McpServer(model_client=mock_model)
-    # Continue with test
+    # Carry go with test
 ```
 
 ## Performance Testing
 
-Performance testing dey important for MCP servers wey dey production.
+Performance testing na very important for production MCP servers.
 
 ### Wetin to Measure
 
-1. **Latency**: Di time wey e dey take to respond to requests
-2. **Throughput**: Di number of requests wey e dey handle per second
-3. **Resource Utilization**: Di CPU, memory, and network usage
-4. **Concurrency Handling**: How e dey behave when many requests dey come at di same time
-5. **Scaling Characteristics**: How e dey perform as di load dey increase
+1. **Latency**: Time of response for requests
+2. **Throughput**: Requests handled per second
+3. **Resource Utilization**: CPU, memory, network usage
+4. **Concurrency Handling**: Behavior under parallel requests
+5. **Scaling Characteristics**: Performance as load dey increase
 
 ### Tools for Performance Testing
 
-- **k6**: Open-source tool for load testing
-- **JMeter**: Tool for performance testing
-- **Locust**: Python-based tool for load testing
-- **Azure Load Testing**: Cloud-based tool for performance testing
+- **k6**: Open-source load testing tool
+- **JMeter**: Complete performance testing
+- **Locust**: Python based load testing
+- **Azure Load Testing**: Cloud-based performance testing
 
 ### Example: Basic Load Test with k6
 
 ```javascript
-// k6 script for load testing MCP server
+// k6 skript for load test MCP server
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 10,  // 10 virtual users
+  vus: 10,  // 10 virtul yuserr dem
   duration: '30s',
 };
 
@@ -2226,16 +2228,16 @@ export default function () {
 
 ## Test Automation for MCP Servers
 
-Automating your tests go make sure say quality dey consistent and feedback dey fast.
+Automating your tests go ensure say quality steady and feedback quick.
 
 ### CI/CD Integration
-
-1. **Run Unit Tests on Pull Requests**: Make sure say code changes no go spoil di existing functionality
-2. **Integration Tests in Staging**: Run integration tests for pre-production environments
-3. **Performance Baselines**: Keep performance benchmarks to catch regressions
-4. **Security Scans**: Automate security testing as part of di pipeline
+1. **Run Unit Tests on Pull Requests**: Make sure say code changes no go spoil how tins dey work before.
+2. **Integration Tests in Staging**: Run integration tests inside pre-production environment dem.
+3. **Performance Baselines**: Keep performance benchmark dem to catch any wahala.
+4. **Security Scans**: Make security testing automatic as part of the pipeline.
 
 ### Example CI Pipeline (GitHub Actions)
+
 ```yaml
 name: MCP Server Tests
 
@@ -2273,17 +2275,17 @@ jobs:
       run: dotnet run --project tests/PerformanceTests/PerformanceTests.csproj
 ```
 
-## How to Test Say MCP Specification Dey Work Well
+## Testing for Compliance with MCP Specification
 
-Make sure say your server dey follow MCP specification correct.
+Make sure your server dey correctly implement the MCP specification.
 
-### Important Compliance Areas
+### Key Compliance Areas
 
-1. **API Endpoints**: Test di endpoints wey dem need (/resources, /tools, etc.)
-2. **Request/Response Format**: Check say schema dey follow di rules
-3. **Error Codes**: Make sure say di status codes dey correct for different situations
-4. **Content Types**: Test how e dey handle different content types
-5. **Authentication Flow**: Confirm say di auth mechanism dey follow di spec
+1. **API Endpoints**: Test the required endpoints (/resources, /tools, etc.)
+2. **Request/Response Format**: Check schema compliance
+3. **Error Codes**: Make sure say status codes dey correct for different wahala dem
+4. **Content Types**: Test how different content types dey handled
+5. **Authentication Flow**: Check spec-compliant authentication ways
 
 ### Compliance Test Suite
 
@@ -2312,66 +2314,68 @@ public async Task Server_ResourceEndpoint_ReturnsCorrectSchema()
 }
 ```
 
-## Top 10 Tips to Test MCP Server Well Well
+## Top 10 Tips for Effective MCP Server Testing
 
-1. **Test Tool Definitions One by One**: Check schema definitions separate from di tool logic
-2. **Use Parameterized Tests**: Test di tools with different inputs, even di ones wey dey hard
-3. **Check Error Responses**: Make sure say e dey handle errors well for all di possible error conditions
-4. **Test Authorization Logic**: Confirm say e dey control access well for different user roles
-5. **Monitor Test Coverage**: Try make di critical path code get high coverage
-6. **Test Streaming Responses**: Make sure say e dey handle streaming content well
-7. **Simulate Network Wahala**: Test how e go behave if network no dey good
-8. **Test Resource Limits**: Check how e go behave if e reach quota or rate limits
-9. **Automate Regression Tests**: Create tests wey go run anytime code change
-10. **Document Test Cases**: Keep clear documentation for di test scenarios
+1. **Test Tool Definitions Separately**: Verify schema definitions independently from the tool logic
+2. **Use Parameterized Tests**: Test tools with different kinds of inputs, even edge cases
+3. **Check Error Responses**: Make sure error handling dey correct for all kind error situations
+4. **Test Authorization Logic**: Ensure access control correct for different user roles
+5. **Monitor Test Coverage**: Aim to cover plenty critical path code
+6. **Test Streaming Responses**: Check say streaming content dey handled properly
+7. **Simulate Network Issues**: Test how e go be under bad network conditions
+8. **Test Resource Limits**: Verify how e behave when e reach quotas or rate limits
+9. **Automate Regression Tests**: Build suite wey go run everytime code change happen
+10. **Document Test Cases**: Keep correct documentation of test scenarios
 
-## Common Testing Mistakes
+## Common Testing Pitfalls
 
-- **Too much happy path testing**: Make sure say you test di error cases well
-- **Forget performance testing**: Find di bottlenecks before dem go affect production
-- **Testing alone**: Combine unit, integration, and E2E tests
-- **Incomplete API coverage**: Test all di endpoints and features
-- **Inconsistent test environments**: Use containers to make sure test environments dey consistent
+- **Over-reliance on happy path testing**: Make sure say you test error cases well well
+- **Ignoring performance testing**: Find bottlenecks before e spoil production
+- **Testing in isolation only**: Combine unit, integration, and E2E tests together
+- **Incomplete API coverage**: Make sure all endpoints and features dey tested
+- **Inconsistent test environments**: Use containers to keep test environments consistent
 
 ## Conclusion
 
-If you wan build MCP servers wey dey reliable and high-quality, you need better testing strategy. Follow di best practices and tips wey dey this guide to make sure say your MCP implementations dey meet di highest standards for quality, reliability, and performance.
+Comprehensive testing strategy na important for developing reliable, high-quality MCP servers. If you follow the best practices and tips wey this guide provide, you fit make sure say your MCP implementation meet the highest quality, reliability, and performance level.
 
-## Key Points to Remember
+## Key Takeaways
 
-1. **Tool Design**: Follow single responsibility principle, use dependency injection, and design am make e fit work with other tools
-2. **Schema Design**: Create schemas wey clear, well-documented, and get proper validation constraints
-3. **Error Handling**: Make sure say e dey handle errors well, get structured error responses, and retry logic
+1. **Tool Design**: Follow single responsibility principle, use dependency injection, and design for composability
+2. **Schema Design**: Create clear, well-documented schemas with proper validation constraints
+3. **Error Handling**: Implement smooth error handling, structured error responses, and retry logic
 4. **Performance**: Use caching, asynchronous processing, and resource throttling
-5. **Security**: Do thorough input validation, authorization checks, and handle sensitive data well
-6. **Testing**: Create unit, integration, and end-to-end tests wey complete
-7. **Workflow Patterns**: Use patterns like chains, dispatchers, and parallel processing
+5. **Security**: Apply thorough input validation, authorization checks, and sensitive data handling
+6. **Testing**: Create thorough unit, integration, and end-to-end tests
+7. **Workflow Patterns**: Use established patterns like chains, dispatchers, and parallel processing
 
 ## Exercise
 
-Design MCP tool and workflow for document processing system wey go:
+Design one MCP tool and workflow for document processing system wey:
 
-1. Accept documents for different formats (PDF, DOCX, TXT)
-2. Extract text and key information from di documents
-3. Classify di documents by type and content
+1. Accept documents for multiple formats (PDF, DOCX, TXT)
+2. Extract text and key information from the documents
+3. Classify documents by type and content
 4. Generate summary for each document
 
-Create di tool schemas, error handling, and workflow pattern wey go fit this scenario. Think about how you go test di implementation.
+Implement the tool schemas, error handling, and workflow pattern wey fit this scenario well well. Think about how you for test this implementation.
 
 ## Resources 
 
-1. Join di MCP community for [Azure AI Foundry Discord Community](https://aka.ms/foundrydevs) to dey follow di latest updates 
+1. Join the MCP community for [Azure AI Foundry Discord Community](https://aka.ms/foundrydevs) so you fit dey updated on the latest developments 
 2. Contribute to open-source [MCP projects](https://github.com/modelcontextprotocol)
-3. Use MCP principles for your organization AI work
-4. Check di MCP implementations wey dey special for your industry. 
-5. Try take advanced courses for MCP topics like multi-modal integration or enterprise application integration.
-6. Try build your own MCP tools and workflows with di principles wey you learn for [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)  
+3. Apply MCP principles for your own organization AI initiatives
+4. Explore special MCP implementations for your industry
+5. Consider advanced courses on specific MCP topics, like multi-modal integration or enterprise application integration.
+6. Experiment with building your own MCP tools and workflows using the principles wey you learn from the [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)  
 
-Next: Best Practices [case studies](../09-CaseStudy/README.md)
+## What's Next
+
+Next: [Case Studies](../09-CaseStudy/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis dokyument don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am accurate, abeg make you sabi say machine translation fit get mistake or no dey correct well. Di original dokyument for im native language na di main source wey you go trust. For important information, e good make professional human translation dey use. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translation.
+**Disclaimer**:
+Dis document na so AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) take translate am. Even though we dey try make everything correct, abeg understand say automated translation fit get some errors or mistakes. Di original document wey e dey for im own language na di correct one. If na serious info, e better say person wey sabi translation make am. We no go dey responsible if person no understand well or if dem misinterpret anything because of this translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

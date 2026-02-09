@@ -1,67 +1,68 @@
-# Case Study: Show REST API for API Management as MCP Server
+# Case Study: Show REST API for API Management as MCP server
 
-Azure API Management na service wey dey provide Gateway on top your API Endpoints. How e dey work be say Azure API Management go act like proxy wey go dey front of your APIs and e fit decide wetin to do with requests wey dey come.
+Azure API Management, na service wey dey provide Gateway ontop your API Endpoints. How e dey work be say Azure API Management dey act like proxy ontop your APIs and fit decide wetin e go do with incoming requests.
 
-If you use am, you go fit add plenty features like:
+If you use am, e go add plenti features like:
 
-- **Security**, you fit use anything from API keys, JWT to managed identity.
-- **Rate limiting**, one better feature be say you fit decide how many calls go pass for one certain time. This one go help make sure say all users go enjoy and your service no go too full with requests.
-- **Scaling & Load balancing**. You fit set up plenty endpoints to balance the load and you fit decide how you wan "load balance".
-- **AI features like semantic caching**, token limit and token monitoring and more. These features dey improve how fast e go respond and e go help you manage your token spending. [Read more here](https://learn.microsoft.com/en-us/azure/api-management/genai-gateway-capabilities).
+- **Security**, you fit use everything from API keys, JWT to managed identity.
+- **Rate limiting**, beta feature na to fit decide how many calls go pass per certain time. E dey help make sure say all users get beta experience and also say your service no too full with requests.
+- **Scaling & Load balancing**. You fit set some endpoints wey go share the load and you fit also decide how to "load balance".
+- **AI features like semantic caching**, token limit and token monitoring plus more. These features beta well well wey go beta responsiveness and also help you dey control your token spending. [Read more here](https://learn.microsoft.com/en-us/azure/api-management/genai-gateway-capabilities).
 
 ## Why MCP + Azure API Management?
 
-Model Context Protocol dey quick turn to standard for agentic AI apps and how to show tools and data in one consistent way. Azure API Management na better choice if you wan "manage" APIs. MCP Servers dey usually join with other APIs to solve requests to one tool for example. So to combine Azure API Management and MCP make plenty sense.
+Model Context Protocol dey fast become standard for agentic AI apps and how to show tools and data for one consistent way. Azure API Management na natural choice when you need to "manage" APIs. MCP Servers dey often join with other APIs to resolve requests to one tool for example. So to join Azure API Management and MCP make plenty sense.
 
 ## Overview
 
-For this use case, we go learn how to show API endpoints as MCP Server. If we do am like this, we fit make these endpoints part of one agentic app and still enjoy the features wey Azure API Management get.
+For this specific case, we go learn how to show API endpoints as MCP Server. By doing this, we fit easily make these endpoints be part of agentic app and also use beta features from Azure API Management.
 
 ## Key Features
 
-- You go fit choose the endpoint methods wey you wan show as tools.
-- The extra features wey you go get go depend on wetin you configure for the policy section for your API. But for here, we go show you how you fit add rate limiting.
+- You go select the endpoint methods wey you want show as tools.
+- The extra features wey you go get depend on how you set policy section for your API. But here we go show you how to add rate limiting.
 
-## Pre-step: Import API
+## Pre-step: import API
 
-If you don already get API for Azure API Management, e good, you fit skip this step. If you no get, check this link, [importing an API to Azure API Management](https://learn.microsoft.com/en-us/azure/api-management/import-and-publish#import-and-publish-a-backend-api).
+If you already get API for Azure API Management, e good, you fit skip this step. If no, check this link, [importing an API to Azure API Management](https://learn.microsoft.com/en-us/azure/api-management/import-and-publish#import-and-publish-a-backend-api).
 
 ## Show API as MCP Server
 
-To show the API endpoints, make we follow these steps:
+To show API endpoints, make we follow these steps:
 
-1. Go Azure Portal for this address <https://portal.azure.com/?Microsoft_Azure_ApiManagement=mcp>  
+1. Go Azure Portal and open <https://portal.azure.com/?Microsoft_Azure_ApiManagement=mcp>  
 Go your API Management instance.
 
-1. For the left menu, select APIs > MCP Servers > + Create new MCP Server.
+1. For left menu, select APIs > MCP Servers > + Create new MCP Server.
 
-1. For API, choose REST API wey you wan show as MCP server.
+1. For API, select REST API wey you wan show as MCP server.
 
-1. Choose one or more API Operations wey you wan show as tools. You fit choose all operations or only the ones wey you want.
+1. Select one or more API Operations wey you want show as tools. You fit select all operations or only some specific operations.
 
     ![Select methods to expose](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/create-mcp-server-small.png)
 
+
 1. Select **Create**.
 
-1. Go the menu option **APIs** and **MCP Servers**, you suppose see this:
+1. Go menu option **APIs** and **MCP Servers**, you go see like this:
 
     ![See the MCP Server in the main pane](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/mcp-server-list.png)
 
-    The MCP server don create and the API operations don show as tools. The MCP server go dey listed for the MCP Servers pane. The URL column go show the endpoint of the MCP server wey you fit call for testing or inside one client application.
+    MCP server don create and API operations don show as tools. MCP server dey for MCP Servers pane. URL column dey show endpoint of MCP server wey you fit call for testing or for client app.
 
-## Optional: Configure Policies
+## Optional: Configure policies
 
-Azure API Management get one core concept of policies wey you fit use set different rules for your endpoints like rate limiting or semantic caching. These policies dey use XML.
+Azure API Management get core concept of policies wey you fit set different rules for your endpoints like rate limiting or semantic caching. These policies dem dey write for XML.
 
-Here’s how you fit set policy to rate limit your MCP Server:
+Here how you fit set policy to rate limit your MCP Server:
 
-1. For the portal, under APIs, select **MCP Servers**.
+1. For portal, under APIs, select **MCP Servers**.
 
-1. Select the MCP server wey you create.
+1. Select MCP server wey you create.
 
-1. For the left menu, under MCP, select **Policies**.
+1. For left menu, under MCP, select **Policies**.
 
-1. For the policy editor, add or edit the policies wey you wan apply to the MCP server tools. The policies dey defined for XML format. For example, you fit add policy to limit calls to the MCP server tools (for this example, 5 calls per 30 seconds per client IP address). Here’s XML wey go make am rate limit:
+1. For policy editor, add or change policies wey you want use for MCP server's tools. Policies dem dey in XML format. For example, you fit add policy to limit calls to MCP server's tools (this example na 5 calls per 30 seconds per client IP). Dis XML go do rate limit:
 
     ```xml
      <rate-limit-by-key calls="5" 
@@ -71,29 +72,29 @@ Here’s how you fit set policy to rate limit your MCP Server:
     />
     ```
 
-    Here’s one image of the policy editor:
+    This one na image of policy editor:
 
     ![Policy editor](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/mcp-server-policies-small.png)
+ 
+## Try am
 
-## Try am out
+Make we confirm say MCP Server dey work well.
 
-Make we confirm say our MCP Server dey work as e suppose.
+For this one, we go use Visual Studio Code and GitHub Copilot plus Agent mode. We go add MCP server to *mcp.json* file. By doing so, Visual Studio Code go behave like client with agentic powers and end users fit enter prompt and interact with the server.
 
-For this one, we go use Visual Studio Code and GitHub Copilot and its Agent mode. We go add the MCP server to one *mcp.json* file. If we do am like this, Visual Studio Code go act like client with agentic capabilities and end users go fit type prompt and interact with the server.
+Make we see how, to add MCP server inside Visual Studio Code:
 
-Make we see how to add the MCP server for Visual Studio Code:
+1. Use MCP: **Add Server command for Command Palette**.
 
-1. Use the MCP: **Add Server command from the Command Palette**.
+1. When e ask, select server type: **HTTP (HTTP or Server Sent Events)**.
 
-1. When dem ask, choose the server type: **HTTP (HTTP or Server Sent Events)**.
+1. Enter URL of MCP server for API Management. Example: **https://<apim-service-name>.azure-api.net/<api-name>-mcp/sse** (for SSE endpoint) or **https://<apim-service-name>.azure-api.net/<api-name>-mcp/mcp** (for MCP endpoint), note say difference between transport na `/sse` or `/mcp`.
 
-1. Enter the URL of the MCP server for API Management. Example: **https://<apim-service-name>.azure-api.net/<api-name>-mcp/sse** (for SSE endpoint) or **https://<apim-service-name>.azure-api.net/<api-name>-mcp/mcp** (for MCP endpoint), note the difference between the transports na `/sse` or `/mcp`.
+1. Enter server ID wey you like. E no too important but e go help you remember which server instance be this.
 
-1. Enter one server ID wey you like. This value no too matter but e go help you remember wetin this server instance be.
+1. Select whether to save configuration to workspace settings or user settings.
 
-1. Choose whether to save the configuration to your workspace settings or user settings.
-
-  - **Workspace settings** - The server configuration go save to one .vscode/mcp.json file wey dey only available for the current workspace.
+  - **Workspace settings** - Server config go save for .vscode/mcp.json file wey dey only inside current workspace.
 
     *mcp.json*
 
@@ -106,7 +107,7 @@ Make we see how to add the MCP server for Visual Studio Code:
     }
     ```
 
-    or if you choose streaming HTTP as transport, e go small different:
+    or if you choose streaming HTTP as transport e go be small different:
 
     ```json
     "servers": {
@@ -117,17 +118,17 @@ Make we see how to add the MCP server for Visual Studio Code:
     }
     ```
 
-  - **User settings** - The server configuration go dey added to your global *settings.json* file and e go dey available for all workspaces. The configuration go look like this:
+  - **User settings** - Server config go add to your global *settings.json* file and e go dey available for all workspaces. Config look like this:
 
     ![User setting](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/mcp-servers-visual-studio-code.png)
 
-1. You go still need to add configuration, one header to make sure say e dey authenticate well with Azure API Management. E dey use one header wey dem call **Ocp-Apim-Subscription-Key*. 
+1. You also need add config, a header to make sure e authenticate well to Azure API Management. E use header called **Ocp-Apim-Subscription-Key*. 
 
-    - Here’s how you fit add am to settings:
+    - How to add to settings:
 
-    ![Adding header for authentication](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/mcp-server-with-header-visual-studio-code.png), this one go make prompt show to ask you for the API key value wey you fit find for Azure Portal for your Azure API Management instance.
+    ![Adding header for authentication](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/mcp-server-with-header-visual-studio-code.png), dis one go cause prompt to ask for API key value wey you fit find for Azure Portal for your Azure API Management instance.
 
-   - To add am to *mcp.json* instead, you fit add am like this:
+   - To add am to *mcp.json* instead, you fit add am like dis:
 
     ```json
     "inputs": [
@@ -149,33 +150,34 @@ Make we see how to add the MCP server for Visual Studio Code:
     }
     ```
 
-### Use Agent Mode
+### Use Agent mode
 
-Now we don set everything for either settings or for *.vscode/mcp.json*. Make we try am.
+Now we don set all, for either settings or *.vscode/mcp.json*. Make we try am.
 
-You suppose see one Tools icon like this, where the tools wey your server show go dey listed:
+You suppose see Tools icon like dis, wey go list exposed tools from your server:
 
 ![Tools from the server](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/tools-button-visual-studio-code.png)
 
-1. Click the tools icon and you suppose see list of tools like this:
+1. Click tools icon you go see list of tools like dis:
 
     ![Tools](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/select-tools-visual-studio-code.png)
 
-1. Enter one prompt for the chat to use the tool. For example, if you choose one tool to get information about one order, you fit ask the agent about the order. Here’s one example prompt:
+1. Enter prompt for chat to invoke tool. For example, if you select tool to get order info, you fit ask agent about order. Example prompt be dis:
 
     ```text
     get information from order 2
     ```
 
-    You go see one tools icon wey go ask you to continue call the tool. Select to continue run the tool, you suppose see output like this:
+    You go see tools icon ask if you wan continue call tool. Select to continue run the tool, you suppose see output like dis:
 
     ![Result from prompt](https://learn.microsoft.com/en-us/azure/api-management/media/export-rest-mcp-server/chat-results-visual-studio-code.png)
 
-    **wetin you go see for above go depend on the tools wey you set up, but the idea na say you go get one text response like above**
+    **wetin you see depend on tools wey you set, but idea be say you go get textual response like this one**
+
 
 ## References
 
-Here’s how you fit learn more:
+How you fit learn more:
 
 - [Tutorial on Azure API Management and MCP](https://learn.microsoft.com/en-us/azure/api-management/export-rest-mcp-server)
 - [Python sample: Secure remote MCP servers using Azure API Management (experimental)](https://github.com/Azure-Samples/remote-mcp-apim-functions-python)
@@ -185,12 +187,17 @@ Here’s how you fit learn more:
 - [Use the Azure API Management extension for VS Code to import and manage APIs](https://learn.microsoft.com/en-us/azure/api-management/visual-studio-code-tutorial)
 
 - [Register and discover remote MCP servers in Azure API Center](https://learn.microsoft.com/en-us/azure/api-center/register-discover-mcp-server)
-- [AI Gateway](https://github.com/Azure-Samples/AI-Gateway) Better repo wey show many AI capabilities with Azure API Management
-- [AI Gateway workshops](https://azure-samples.github.io/AI-Gateway/)  E get workshops wey dey use Azure Portal, wey be better way to start evaluate AI capabilities.
+- [AI Gateway](https://github.com/Azure-Samples/AI-Gateway) Beta repo wey show plenty AI capabilities with Azure API Management
+- [AI Gateway workshops](https://azure-samples.github.io/AI-Gateway/) Get workshops wey dey use Azure Portal, beta way to start to test AI capabilities.
+
+## What's Next
+
+- Back to: [Case Studies Overview](./README.md)
+- Next: [Azure AI Travel Agents](./travelagentsample.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Disclaimer**:  
-Dis dokyument don use AI transle-shon service [Co-op Translator](https://github.com/Azure/co-op-translator) do di transle-shon. Even as we dey try make am correct, abeg make you sabi say transle-shon wey machine do fit get mistake or no dey accurate well. Di original dokyument for di language wey dem take write am first na di one wey you go take as di correct one. For important mata, e good make you use professional human transle-shon. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis transle-shon.
+Dis document dem don translate am wit AI translation service wey dem dey call [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am correct, abeg sabi say automated translation fit get error or no too clear. Di original document wey dey im own language na di real correct one. If na serious matter, better make person wey sabi human translation do am. We no go take any blame if person no understand well or if person miss the real meaning because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
