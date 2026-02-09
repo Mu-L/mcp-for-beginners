@@ -147,7 +147,7 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 এখানে এর একটি স্ক্রিনশট:
 
-![MCP Inspector server connection](../../../../translated_images/bn/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/bn/connected.73d1e042c24075d3.webp)
 
 ## সাধারণ সেটআপ সমস্যা এবং সমাধান
 
@@ -1293,7 +1293,7 @@ inspector ওয়েব ইন্টারফেসে:
 2. URL সেট করুন: `http://localhost:8080/sse`
 3. "Connect" ক্লিক করুন
 
-![Connect](../../../../translated_images/bn/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/bn/tool.163d33e3ee307e20.webp)
 
 **আপনি এখন সার্ভারের সাথে সংযুক্ত**
 **Java সার্ভার টেস্টিং সেকশন এখন সম্পন্ন হয়েছে**
@@ -1302,18 +1302,18 @@ inspector ওয়েব ইন্টারফেসে:
 
 আপনি নিম্নলিখিত ইউজার ইন্টারফেস দেখতে পাবেন:
 
-![Connect](../../../../translated_images/bn/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/bn/connect.141db0b2bd05f096.webp)
 
 1. Connect বাটন নির্বাচন করে সার্ভারের সাথে সংযুক্ত হন
   সংযুক্ত হওয়ার পর, আপনি নিম্নলিখিত দেখতে পাবেন:
 
-  ![Connected](../../../../translated_images/bn/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/bn/connected.73d1e042c24075d3.webp)
 
 1. "Tools" এবং "listTools" নির্বাচন করুন, আপনি "Add" দেখতে পাবেন, "Add" নির্বাচন করুন এবং প্যারামিটার মান পূরণ করুন।
 
   আপনি নিম্নলিখিত প্রতিক্রিয়া দেখতে পাবেন, অর্থাৎ "add" টুল থেকে একটি ফলাফল:
 
-  ![Result of running add](../../../../translated_images/bn/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/bn/ran-tool.a5a6ee878c1369ec.webp)
 
 অভিনন্দন, আপনি আপনার প্রথম সার্ভার তৈরি এবং চালাতে সক্ষম হয়েছেন!
 
