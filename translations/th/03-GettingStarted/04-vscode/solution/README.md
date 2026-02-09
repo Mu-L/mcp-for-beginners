@@ -14,7 +14,7 @@
 
     คุณจะเห็นเครื่องมือแสดงขึ้นเหนือกล่องข้อความแชท เพื่อให้คุณเลือกใช้งานเครื่องมือนั้นตามภาพนี้:
 
-    ![VS Code indicating it wanting to run a tool](../../../../../translated_images/th/vscode-agent.d5a0e0b897331060518fe3f13907677ef52b879db98c64d68a38338608f3751e.png)
+    ![VS Code indicating it wanting to run a tool](../../../../../translated_images/th/vscode-agent.d5a0e0b897331060.webp)
 
     การเลือกเครื่องมือจะได้ผลลัพธ์เป็นตัวเลขแสดงว่า "23" หากคำสั่งของคุณเหมือนตัวอย่างที่กล่าวมา
 
