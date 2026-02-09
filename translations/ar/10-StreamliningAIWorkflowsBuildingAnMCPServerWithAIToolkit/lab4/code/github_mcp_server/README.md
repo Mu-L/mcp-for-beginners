@@ -1,86 +1,86 @@
-# خادم الطقس MCP
+# خادم MCP للطقس
 
-هذا نموذج لخادم MCP مكتوب بلغة بايثون، يطبق أدوات الطقس مع ردود وهمية. يمكن استخدامه كقاعدة لبناء خادم MCP الخاص بك. يتضمن الميزات التالية:
+هذا نموذج لخادم MCP بلغة بايثون ينفذ أدوات الطقس مع استجابات وهمية. يمكن استخدامه كأساس لخادم MCP الخاص بك. يتضمن الميزات التالية:
 
-- **أداة الطقس**: أداة تقدم معلومات الطقس الوهمية بناءً على الموقع المحدد.
+- **أداة الطقس**: أداة توفر معلومات الطقس الوهمية بناءً على الموقع المعطى.
 - **أداة استنساخ Git**: أداة تستنسخ مستودع Git إلى مجلد محدد.
-- **أداة فتح VS Code**: أداة تفتح مجلدًا في VS Code أو VS Code Insiders.
-- **الاتصال بـ Agent Builder**: ميزة تتيح لك ربط خادم MCP بـ Agent Builder للاختبار وتصحيح الأخطاء.
-- **تصحيح الأخطاء باستخدام [MCP Inspector](https://github.com/modelcontextprotocol/inspector)**: ميزة تتيح لك تصحيح أخطاء خادم MCP باستخدام MCP Inspector.
+- **أداة فتح VS Code**: أداة تفتح مجلداً في VS Code أو VS Code Insiders.
+- **الاتصال بمنشئ الوكلاء**: ميزة تتيح لك ربط خادم MCP بمنشئ الوكلاء للاختبار وتصحيح الأخطاء.
+- **التصحيح في [MCP Inspector](https://github.com/modelcontextprotocol/inspector)**: ميزة تتيح لك تصحيح خادم MCP باستخدام MCP Inspector.
 
-## البدء باستخدام قالب خادم الطقس MCP
+## البدء مع قالب خادم MCP للطقس
 
-> **المتطلبات الأساسية**
+> **المتطلبات المسبقة**
 >
 > لتشغيل خادم MCP على جهاز التطوير المحلي الخاص بك، ستحتاج إلى:
 >
-> - [Python](https://www.python.org/)
+> - [بايثون](https://www.python.org/)
 > - [Git](https://git-scm.com/) (مطلوب لأداة git_clone_repo)
 > - [VS Code](https://code.visualstudio.com/) أو [VS Code Insiders](https://code.visualstudio.com/insiders/) (مطلوب لأداة open_in_vscode)
 > - (*اختياري - إذا كنت تفضل uv*) [uv](https://github.com/astral-sh/uv)
-> - [إضافة تصحيح الأخطاء لبايثون](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
+> - [إضافة مصحح بايثون](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 
 ## إعداد البيئة
 
 هناك طريقتان لإعداد البيئة لهذا المشروع. يمكنك اختيار أي منهما بناءً على تفضيلاتك.
 
-> ملاحظة: قم بإعادة تحميل VSCode أو الطرفية للتأكد من استخدام بايثون الخاص بالبيئة الافتراضية بعد إنشائها.
+> ملاحظة: قم بإعادة تحميل VSCode أو الطرفية للتأكد من استخدام Python للبيئة الافتراضية بعد إنشاء البيئة الافتراضية.
 
 | الطريقة | الخطوات |
 | -------- | ----- |
-| باستخدام `uv` | 1. إنشاء بيئة افتراضية: `uv venv` <br>2. تشغيل أمر VSCode "***Python: Select Interpreter***" واختيار بايثون من البيئة الافتراضية التي تم إنشاؤها <br>3. تثبيت التبعيات (بما في ذلك تبعيات التطوير): `uv pip install -r pyproject.toml --extra dev` |
-| باستخدام `pip` | 1. إنشاء بيئة افتراضية: `python -m venv .venv` <br>2. تشغيل أمر VSCode "***Python: Select Interpreter***" واختيار بايثون من البيئة الافتراضية التي تم إنشاؤها <br>3. تثبيت التبعيات (بما في ذلك تبعيات التطوير): `pip install -e .[dev]` |
+| باستخدام `uv` | 1. أنشئ البيئة الافتراضية: `uv venv` <br>2. نفّذ أمر VSCode "***Python: Select Interpreter***" واختر بايثون من البيئة الافتراضية التي أنشأتها <br>3. ثبّت التبعيات (بما في ذلك تبعيات التطوير): `uv pip install -r pyproject.toml --extra dev` |
+| باستخدام `pip` | 1. أنشئ البيئة الافتراضية: `python -m venv .venv` <br>2. نفّذ أمر VSCode "***Python: Select Interpreter***" واختر بايثون من البيئة الافتراضية التي أنشأتها<br>3. ثبّت التبعيات (بما في ذلك تبعيات التطوير): `pip install -e .[dev]` | 
 
-بعد إعداد البيئة، يمكنك تشغيل الخادم على جهاز التطوير المحلي الخاص بك عبر Agent Builder كمستخدم MCP للبدء:
-1. افتح لوحة تصحيح الأخطاء في VS Code. اختر `Debug in Agent Builder` أو اضغط على `F5` لبدء تصحيح أخطاء خادم MCP.
-2. استخدم AI Toolkit Agent Builder لاختبار الخادم باستخدام [هذا النص](../../../../../../../../../../../open_prompt_builder). سيتم ربط الخادم تلقائيًا بـ Agent Builder.
-3. اضغط على `Run` لاختبار الخادم باستخدام النص.
+بعد إعداد البيئة، يمكنك تشغيل الخادم على جهاز التطوير المحلي عبر منشئ الوكلاء كعميل MCP للبدء:
+1. افتح لوحة التصحيح في VS Code. اختر `Debug in Agent Builder` أو اضغط على `F5` لبدء تصحيح خادم MCP.
+2. استخدم منشئ الوكلاء AI Toolkit لاختبار الخادم باستخدام [هذا الطلب](../../../../../../../../../../../open_prompt_builder). سيتم ربط الخادم تلقائياً بمنشئ الوكلاء.
+3. انقر على `Run` لاختبار الخادم باستخدام الطلب.
 
-**تهانينا**! لقد نجحت في تشغيل خادم الطقس MCP على جهاز التطوير المحلي الخاص بك عبر Agent Builder كمستخدم MCP.
+**تهانينا**! لقد نجحت في تشغيل خادم MCP للطقس على جهاز التطوير المحلي الخاص بك عبر منشئ الوكلاء كعميل MCP.
 ![DebugMCP](https://raw.githubusercontent.com/microsoft/windows-ai-studio-templates/refs/heads/dev/mcpServers/mcp_debug.gif)
 
-## ما الذي يتضمنه القالب
+## ما يتضمنه القالب
 
-| المجلد / الملف | المحتويات                                     |
+| المجلد / الملف| المحتويات                                   |
 | ------------ | -------------------------------------------- |
-| `.vscode`    | ملفات VSCode لتصحيح الأخطاء                   |
-| `.aitk`      | إعدادات AI Toolkit                            |
-| `src`        | الشيفرة المصدرية لخادم الطقس MCP              |
+| `.vscode`    | ملفات VSCode للتصحيح                         |
+| `.aitk`      | إعدادات AI Toolkit                           |
+| `src`        | الشيفرة المصدرية لخادم MCP للطقس             |
 
-## كيفية تصحيح أخطاء خادم الطقس MCP
+## كيفية تصحيح خادم MCP للطقس
 
 > ملاحظات:
-> - [MCP Inspector](https://github.com/modelcontextprotocol/inspector) هو أداة تطوير مرئية لاختبار وتصحيح أخطاء خوادم MCP.
-> - جميع أوضاع التصحيح تدعم نقاط التوقف، لذا يمكنك إضافة نقاط توقف إلى شيفرة تنفيذ الأدوات.
+> - [MCP Inspector](https://github.com/modelcontextprotocol/inspector) هو أداة مطور بصرية لاختبار وتصحيح خوادم MCP.
+> - تدعم جميع أوضاع التصحيح نقاط التوقف، لذا يمكنك إضافة نقاط توقف إلى كود تنفيذ الأداة.
 
 ## الأدوات المتاحة
 
 ### أداة الطقس
-أداة `get_weather` تقدم معلومات الطقس الوهمية لموقع محدد.
+توفر أداة `get_weather` معلومات طقس وهمية لموقع محدد.
 
-| المعامل | النوع | الوصف |
+| المتغير | النوع | الوصف |
 | --------- | ---- | ----------- |
-| `location` | string | الموقع للحصول على الطقس (مثل اسم المدينة، الولاية، أو الإحداثيات) |
+| `location` | string | الموقع المطلوب الحصول على الطقس له (مثل اسم المدينة، الولاية، أو الإحداثيات) |
 
 ### أداة استنساخ Git
-أداة `git_clone_repo` تستنسخ مستودع Git إلى مجلد محدد.
+تقوم أداة `git_clone_repo` باستنساخ مستودع Git إلى مجلد محدد.
 
-| المعامل | النوع | الوصف |
+| المتغير | النوع | الوصف |
 | --------- | ---- | ----------- |
-| `repo_url` | string | رابط مستودع Git للاستنساخ |
-| `target_folder` | string | المسار إلى المجلد الذي يجب أن يتم استنساخ المستودع فيه |
+| `repo_url` | string | عنوان URL لمستودع git لاستنساخه |
+| `target_folder` | string | مسار المجلد الذي سيُستنسخ إليه المستودع |
 
 تعيد الأداة كائن JSON يحتوي على:
 - `success`: قيمة منطقية تشير إلى نجاح العملية
-- `target_folder` أو `error`: مسار المستودع المستنسخ أو رسالة خطأ
+- `target_folder` أو `error`: مسار المستودع المستنسخ أو رسالة الخطأ
 
 ### أداة فتح VS Code
-أداة `open_in_vscode` تفتح مجلدًا في تطبيق VS Code أو VS Code Insiders.
+تقوم أداة `open_in_vscode` بفتح مجلد في تطبيق VS Code أو VS Code Insiders.
 
-| المعامل | النوع | الوصف |
+| المتغير | النوع | الوصف |
 | --------- | ---- | ----------- |
-| `folder_path` | string | المسار إلى المجلد الذي سيتم فتحه |
-| `use_insiders` | boolean (اختياري) | ما إذا كان سيتم استخدام VS Code Insiders بدلاً من VS Code العادي |
+| `folder_path` | string | مسار المجلد المراد فتحه |
+| `use_insiders` | boolean (اختياري) | هل تستخدم VS Code Insiders بدلاً من VS Code العادي |
 
 تعيد الأداة كائن JSON يحتوي على:
 - `success`: قيمة منطقية تشير إلى نجاح العملية
@@ -88,21 +88,23 @@
 
 | وضع التصحيح | الوصف | خطوات التصحيح |
 | ---------- | ----------- | --------------- |
-| Agent Builder | تصحيح أخطاء خادم MCP في Agent Builder عبر AI Toolkit. | 1. افتح لوحة تصحيح الأخطاء في VS Code. اختر `Debug in Agent Builder` واضغط على `F5` لبدء تصحيح أخطاء خادم MCP.<br>2. استخدم AI Toolkit Agent Builder لاختبار الخادم باستخدام [هذا النص](../../../../../../../../../../../open_prompt_builder). سيتم ربط الخادم تلقائيًا بـ Agent Builder.<br>3. اضغط على `Run` لاختبار الخادم باستخدام النص. |
-| MCP Inspector | تصحيح أخطاء خادم MCP باستخدام MCP Inspector. | 1. تثبيت [Node.js](https://nodejs.org/)<br> 2. إعداد Inspector: `cd inspector` && `npm install` <br> 3. افتح لوحة تصحيح الأخطاء في VS Code. اختر `Debug SSE in Inspector (Edge)` أو `Debug SSE in Inspector (Chrome)`. اضغط F5 لبدء التصحيح.<br> 4. عندما يتم تشغيل MCP Inspector في المتصفح، اضغط على زر `Connect` لربط هذا الخادم MCP.<br> 5. بعد ذلك يمكنك `List Tools`، اختيار أداة، إدخال المعاملات، و`Run Tool` لتصحيح شيفرة الخادم. |
+| منشئ الوكلاء | تصحيح خادم MCP في منشئ الوكلاء عبر AI Toolkit. | 1. افتح لوحة التصحيح في VS Code. اختر `Debug in Agent Builder` واضغط على `F5` لبدء التصحيح.<br>2. استخدم منشئ الوكلاء AI Toolkit لاختبار الخادم باستخدام [هذا الطلب](../../../../../../../../../../../open_prompt_builder). سيتم ربط الخادم تلقائياً بمنشئ الوكلاء.<br>3. انقر على `Run` لاختبار الخادم باستخدام الطلب. |
+| MCP Inspector | تصحيح خادم MCP باستخدام MCP Inspector. | 1. ثبّت [Node.js](https://nodejs.org/)<br> 2. إعداد Inspector: `cd inspector` && `npm install` <br> 3. افتح لوحة التصحيح في VS Code. اختر `Debug SSE in Inspector (Edge)` أو `Debug SSE in Inspector (Chrome)`. اضغط F5 لبدء التصحيح.<br> 4. عند إطلاق MCP Inspector في المتصفح، انقر على زر `Connect` لربط هذا الخادم.<br> 5. بعدها يمكنك `List Tools`، اختيار أداة، إدخال المتغيرات، و`Run Tool` لتصحيح كود خادمك.<br> |
 
 ## المنافذ الافتراضية والتخصيصات
 
 | وضع التصحيح | المنافذ | التعريفات | التخصيصات | ملاحظة |
 | ---------- | ----- | ------------ | -------------- |-------------- |
-| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | تعديل [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json)، [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json)، [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py)، [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) لتغيير المنافذ المذكورة أعلاه. | N/A |
-| MCP Inspector | 3001 (الخادم); 5173 و3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | تعديل [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json)، [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json)، [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py)، [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) لتغيير المنافذ المذكورة أعلاه. | N/A |
+| منشئ الوكلاء | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | حرّر [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) لتغيير المنافذ أعلاه. | لا يوجد |
+| MCP Inspector | 3001 (الخادم); 5173 و3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | حرّر [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) لتغيير المنافذ أعلاه.| لا يوجد |
 
 ## الملاحظات
 
-إذا كان لديك أي ملاحظات أو اقتراحات لهذا القالب، يرجى فتح قضية على [مستودع GitHub الخاص بـ AI Toolkit](https://github.com/microsoft/vscode-ai-toolkit/issues).
+إذا كان لديك أي ملاحظات أو اقتراحات حول هذا القالب، يرجى فتح تقرير مشكلة على [مستودع AI Toolkit على GitHub](https://github.com/microsoft/vscode-ai-toolkit/issues)
 
 ---
 
-**إخلاء المسؤولية**:  
-تم ترجمة هذا المستند باستخدام خدمة الترجمة بالذكاء الاصطناعي [Co-op Translator](https://github.com/Azure/co-op-translator). بينما نسعى لتحقيق الدقة، يرجى العلم أن الترجمات الآلية قد تحتوي على أخطاء أو معلومات غير دقيقة. يجب اعتبار المستند الأصلي بلغته الأصلية المصدر الرسمي. للحصول على معلومات حاسمة، يُوصى بالاستعانة بترجمة بشرية احترافية. نحن غير مسؤولين عن أي سوء فهم أو تفسيرات خاطئة تنشأ عن استخدام هذه الترجمة.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**إخلاء المسؤولية**:
+تمت ترجمة هذا المستند باستخدام خدمة الترجمة الآلية [Co-op Translator](https://github.com/Azure/co-op-translator). بينما نسعى لتحقيق الدقة، يُرجى العلم بأن الترجمات الآلية قد تحتوي على أخطاء أو عدم دقة. يجب اعتبار المستند الأصلي بلغته الأصلية المصدر الرسمي والمعتمد. بالنسبة للمعلومات الهامة، يُوصى بالاستعانة بترجمة بشرية محترفة. نحن غير مسؤولين عن أي سوء فهم أو تفسير خاطئ ناتج عن استخدام هذه الترجمة.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
