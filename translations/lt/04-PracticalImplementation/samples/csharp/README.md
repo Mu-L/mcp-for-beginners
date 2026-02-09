@@ -15,7 +15,7 @@ Kiti projektai yra iš [.NET Aspire](https://learn.microsoft.com/dotnet/aspire/g
 
 1. Kai interneto naršyklėje atsidarys .NET Aspire prietaisų skydelis, atkreipkite dėmesį į `http` URL. Jis turėtų būti panašus į `http://localhost:5058/`.
 
-   ![.NET Aspire prietaisų skydelis](../../../../../translated_images/lt/dotnet-aspire-dashboard.0a7095710e9301e90df2efd867e1b675b3b9bc2ccd7feb1ebddc0751522bc37c.png)
+   ![.NET Aspire prietaisų skydelis](../../../../../translated_images/lt/dotnet-aspire-dashboard.0a7095710e9301e9.webp)
 
 ## Testuokite Streamable HTTP su MCP Inspector
 
@@ -27,7 +27,7 @@ Paleiskite serverį ir terminale vykdykite šią komandą:
 npx @modelcontextprotocol/inspector http://localhost:5058
 ```
 
-![MCP Inspector](../../../../../translated_images/lt/mcp-inspector.c223422b9b494fb4a518a3b3911b3e708e6a5715069470f9163ee2ee8d5f1ba9.png)
+![MCP Inspector](../../../../../translated_images/lt/mcp-inspector.c223422b9b494fb4.webp)
 
 - Pasirinkite `Streamable HTTP` kaip transporto tipą.
 - Laukelyje Url įveskite anksčiau užfiksuotą serverio URL ir pridėkite `/mcp`. Jis turėtų būti `http` (ne `https`), kažkas panašaus į `http://localhost:5058/mcp`.
@@ -72,7 +72,7 @@ azd up
 
 Kai diegimas bus baigtas, turėtumėte pamatyti tokį pranešimą:
 
-![Azd diegimo sėkmė](../../../../../translated_images/lt/azd-deployment-success.bd42940493f1b834a5ce6251a6f88966546009b350df59d0cc4a8caabe94a4f1.png)
+![Azd diegimo sėkmė](../../../../../translated_images/lt/azd-deployment-success.bd42940493f1b834.webp)
 
 Paimkite URL ir naudokite jį MCP Inspector bei GitHub Copilot Chat.
 

@@ -2,7 +2,7 @@
 
 ဒီပရောဂျက်မှာ Model Context Protocol (MCP) ကို အသုံးပြုပြီး အသုံးပြုသူရဲ့ prompt ကို calculator service ဆီ ပို့မယ့်အရင်မှာ content safety စစ်ဆေးမှုလုပ်တဲ့ web application ကို ပြသထားပါတယ်။
 
-![System Architecture Diagram](../../../../../../translated_images/my/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![System Architecture Diagram](../../../../../../translated_images/my/plant.b079fed84e945b7c.webp)
 
 ### လုပ်ဆောင်ပုံ
 

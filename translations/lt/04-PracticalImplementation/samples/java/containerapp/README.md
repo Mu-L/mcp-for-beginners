@@ -2,7 +2,7 @@
 
 Šis projektas demonstruoja internetinę programą, kuri tikrina turinio saugumą prieš perduodant vartotojo užklausas skaičiuoklės paslaugai per Model Context Protocol (MCP).
 
-![Sistemos architektūros diagrama](../../../../../../translated_images/lt/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![Sistemos architektūros diagrama](../../../../../../translated_images/lt/plant.b079fed84e945b7c.webp)
 
 ### Kaip tai veikia
 
