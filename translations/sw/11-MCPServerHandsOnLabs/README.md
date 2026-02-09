@@ -1,160 +1,164 @@
-# 🚀 Seva ya MCP na PostgreSQL - Mwongozo Kamili wa Kujifunza
+# 🚀 Serveri ya MCP na PostgreSQL - Mwongozo Kamili wa Kujifunza
 
-## 🧠 Muhtasari wa Njia ya Kujifunza Muunganisho wa Hifadhidata ya MCP
+## 🧠 Muhtasari wa Njia ya Kujifunza Uunganishaji wa Hifadhidata ya MCP
 
-Mwongozo huu wa kina unakufundisha jinsi ya kujenga seva za **Model Context Protocol (MCP)** zinazofaa kwa uzalishaji, zinazounganishwa na hifadhidata kupitia utekelezaji wa uchanganuzi wa rejareja kwa vitendo. Utajifunza mifumo ya kiwango cha biashara ikiwa ni pamoja na **Usalama wa Kiwango cha Safu (RLS)**, **tafutaji wa semantiki**, **muunganisho wa Azure AI**, na **ufikiaji wa data wa wateja wengi**.
+Mwongozo huu wa kina wa kujifunza unakufundisha jinsi ya kujenga **serveri za Model Context Protocol (MCP)** tayari kwa uzalishaji zinazojumuisha hifadhidata kupitia utekelezaji halisi wa uchambuzi wa rejareja. Utajifunza mifumo ya kiwango cha biashara ikiwemo **Usalama wa Kiwango cha Mstari (RLS)**, **utafutaji wa maana**, **ujumuishaji wa Azure AI**, na **upatikanaji wa data kwa wamiliki wengi**.
 
-Ikiwa wewe ni msanidi wa nyuma, mhandisi wa AI, au mbunifu wa data, mwongozo huu unatoa njia ya kujifunza iliyopangwa na mifano ya ulimwengu halisi na mazoezi ya vitendo ambayo yatakutembeza kupitia seva ya MCP https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
+Iwapo wewe ni mtaalamu wa nyuma ya programu, mhandisi wa AI, au mbunifu wa data, mwongozo huu unatoa mfululizo wa kujifunza kwa kutumia mifano halisi na mazoezi ya vitendo yanayokupeleka kupitia serveri ya MCP https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
 
 ## 🔗 Rasilimali Rasmi za MCP
 
-- 📘 [Nyaraka za MCP](https://modelcontextprotocol.io/) – Mafunzo ya kina na miongozo ya watumiaji
-- 📜 [Vipimo vya MCP](https://modelcontextprotocol.io/docs/) – Usanifu wa itifaki na marejeleo ya kiufundi
-- 🧑‍💻 [Hifadhi ya GitHub ya MCP](https://github.com/modelcontextprotocol) – SDK za chanzo wazi, zana, na sampuli za msimbo
-- 🌐 [Jumuiya ya MCP](https://github.com/orgs/modelcontextprotocol/discussions) – Jiunge na mijadala na changia kwa jumuiya
+- 📘 [Nyaraka za MCP](https://modelcontextprotocol.io/) – Mafunzo ya kina na mwongozo wa mtumiaji
+- 📜 [Maelezo ya MCP (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Muundo wa itifaki na marejeleo ya kiufundi
+- 🧑‍💻 [Hifadhidata ya MCP GitHub](https://github.com/modelcontextprotocol) – SDK zilizopatikana wazi, zana, na mifano ya msimbo
+- 🌐 [Jumuiya ya MCP](https://github.com/orgs/modelcontextprotocol/discussions) – Jiunge na mijadala naichangie jumuiya
+- 🔒 [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – Mazoea bora ya usalama na njia za kupunguza hatari
 
-## 🧭 Njia ya Kujifunza Muunganisho wa Hifadhidata ya MCP
+
+## 🧭 Njia ya Kujifunza Uunganishaji wa Hifadhidata ya MCP
 
 ### 📚 Muundo Kamili wa Kujifunza kwa https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail
 
-| Maabara | Mada | Maelezo | Kiungo |
+| Kiwanda | Mada | Maelezo | Kiungo |
 |--------|-------|-------------|------|
-| **Maabara 1-3: Misingi** | | | |
-| 00 | [Utangulizi wa Muunganisho wa Hifadhidata ya MCP](./00-Introduction/README.md) | Muhtasari wa MCP na muunganisho wa hifadhidata na kesi ya matumizi ya uchanganuzi wa rejareja | [Anza Hapa](./00-Introduction/README.md) |
-| 01 | [Misingi ya Usanifu wa Seva](./01-Architecture/README.md) | Kuelewa usanifu wa seva ya MCP, tabaka za hifadhidata, na mifumo ya usalama | [Jifunze](./01-Architecture/README.md) |
-| 02 | [Usalama na Wateja Wengi](./02-Security/README.md) | Usalama wa Kiwango cha Safu, uthibitishaji, na ufikiaji wa data wa wateja wengi | [Jifunze](./02-Security/README.md) |
-| 03 | [Usanidi wa Mazingira](./03-Setup/README.md) | Kuweka mazingira ya maendeleo, Docker, rasilimali za Azure | [Sanidi](./03-Setup/README.md) |
-| **Maabara 4-6: Kujenga Seva ya MCP** | | | |
-| 04 | [Muundo wa Hifadhidata na Schema](./04-Database/README.md) | Usanidi wa PostgreSQL, muundo wa schema ya rejareja, na data ya sampuli | [Jenga](./04-Database/README.md) |
-| 05 | [Utekelezaji wa Seva ya MCP](./05-MCP-Server/README.md) | Kujenga seva ya FastMCP na muunganisho wa hifadhidata | [Jenga](./05-MCP-Server/README.md) |
-| 06 | [Uundaji wa Zana](./06-Tools/README.md) | Kuunda zana za maswali ya hifadhidata na uchunguzi wa schema | [Jenga](./06-Tools/README.md) |
-| **Maabara 7-9: Vipengele vya Juu** | | | |
-| 07 | [Muunganisho wa Tafutaji wa Semantiki](./07-Semantic-Search/README.md) | Kutekeleza embeddings za vector na Azure OpenAI na pgvector | [Endelea](./07-Semantic-Search/README.md) |
-| 08 | [Upimaji na Urekebishaji Hitilafu](./08-Testing/README.md) | Mikakati ya upimaji, zana za kurekebisha hitilafu, na mbinu za uthibitishaji | [Pima](./08-Testing/README.md) |
-| 09 | [Muunganisho wa VS Code](./09-VS-Code/README.md) | Kuseti muunganisho wa VS Code MCP na matumizi ya AI Chat | [Unganisha](./09-VS-Code/README.md) |
-| **Maabara 10-12: Uzalishaji na Mifumo Bora** | | | |
-| 10 | [Mikakati ya Utekelezaji](./10-Deployment/README.md) | Utekelezaji wa Docker, Azure Container Apps, na masuala ya upanuzi | [Tekeleza](./10-Deployment/README.md) |
-| 11 | [Ufuatiliaji na Uangalizi](./11-Monitoring/README.md) | Application Insights, ufuatiliaji wa utendaji, na kumbukumbu | [Fuatilia](./11-Monitoring/README.md) |
-| 12 | [Mifumo Bora na Uboreshaji](./12-Best-Practices/README.md) | Uboreshaji wa utendaji, kuimarisha usalama, na vidokezo vya uzalishaji | [Boresha](./12-Best-Practices/README.md) |
+| **Kiwanda 1-3: Misingi** | | | |
+| 00 | [Utangulizi wa Uunganishaji wa Hifadhidata ya MCP](./00-Introduction/README.md) | Muhtasari wa MCP na uunganishaji wa hifadhidata na mfano wa uchambuzi wa rejareja | [Anza Hapa](./00-Introduction/README.md) |
+| 01 | [Misingi ya Muundo wa Mfumo](./01-Architecture/README.md) | Kuelewa usanifu wa serveri ya MCP, tabaka za hifadhidata, na mifumo ya usalama | [Jifunze](./01-Architecture/README.md) |
+| 02 | [Usalama na Wamiliki Wengi](./02-Security/README.md) | Usalama wa Kiwango cha Mstari, uthibitishaji, na upatikanaji wa data kwa wamiliki wengi | [Jifunze](./02-Security/README.md) |
+| 03 | [Uingizaji Mazingira](./03-Setup/README.md) | Kuandaa mazingira ya maendeleo, Docker, rasilimali za Azure | [Sanidi](./03-Setup/README.md) |
+| **Kiwanda 4-6: Kujenga Serveri ya MCP** | | | |
+| 04 | [Ubunifu wa Hifadhidata na Mchoro](./04-Database/README.md) | Usanidi wa PostgreSQL, muundo wa rejareja, na data za mfano | [Jenga](./04-Database/README.md) |
+| 05 | [Utekelezaji wa Serveri ya MCP](./05-MCP-Server/README.md) | Kujenga serveri FastMCP yenye uunganishaji wa hifadhidata | [Jenga](./05-MCP-Server/README.md) |
+| 06 | [Maendeleo ya Zana](./06-Tools/README.md) | Kuunda zana za kuchujua hifadhidata na uchunguzi wa muundo | [Jenga](./06-Tools/README.md) |
+| **Kiwanda 7-9: Vipengele vya Juu** | | | |
+| 07 | [Ujumuishaji wa Utafutaji wa Maana](./07-Semantic-Search/README.md) | Kutekeleza vector embeddings kwa kutumia Azure OpenAI na pgvector | [Endelea](./07-Semantic-Search/README.md) |
+| 08 | [Upimaji na Urekebishaji Makosa](./08-Testing/README.md) | Mikakati ya upimaji, zana za kurekebisha makosa, na njia za uthibitishaji | [Jaribu](./08-Testing/README.md) |
+| 09 | [Ujumuishaji wa VS Code](./09-VS-Code/README.md) | Kusanidi ujumuishaji wa MCP katika VS Code na matumizi ya AI Chat | [Jumuisha](./09-VS-Code/README.md) |
+| **Kiwanda 10-12: Uzalishaji na Mazoea Bora** | | | |
+| 10 | [Mikakati ya Utekelezaji](./10-Deployment/README.md) | Utekelezaji kwa Docker, Azure Container Apps, na mambo ya kupanua | [Weka](./10-Deployment/README.md) |
+| 11 | [Ufuatiliaji na Uwezo wa Kuona](./11-Monitoring/README.md) | Application Insights, uandikishaji, ufuatiliaji wa utendakazi | [Fuata](./11-Monitoring/README.md) |
+| 12 | [Mazoea Bora na Uboreshaji](./12-Best-Practices/README.md) | Uboreshaji wa utendakazi, kuimarisha usalama, na vidokezo vya uzalishaji | [Boresha](./12-Best-Practices/README.md) |
 
-### 💻 Kile Utakachojenga
+### 💻 Utajenga Nini
 
-Mwisho wa njia hii ya kujifunza, utakuwa umejenga **Seva ya Zava Retail Analytics MCP** kamili yenye:
+Mwisho wa njia hii ya kujifunza, utakuwa umejenga **Serveri ya MCP ya Zava Retail Analytics** kamili yenye:
 
-- **Hifadhidata ya rejareja yenye meza nyingi** ikiwa na maagizo ya wateja, bidhaa, na hesabu
-- **Usalama wa Kiwango cha Safu** kwa kutenganisha data ya maduka
-- **Tafutaji wa semantiki wa bidhaa** kwa kutumia embeddings za Azure OpenAI
-- **Muunganisho wa AI Chat wa VS Code** kwa maswali ya lugha asilia
-- **Utekelezaji wa uzalishaji ulio tayari** kwa Docker na Azure
-- **Ufuatiliaji wa kina** kwa Application Insights
+- **Hifadhidata ya rejareja yenye meza nyingi** zinazojumuisha maagizo ya wateja, bidhaa, na hesabu
+- **Usalama wa Kiwango cha Mstari** kwa kutenga data za vituo vya rejareja
+- **Utafutaji wa bidhaa wa maana** kwa kutumia Azure OpenAI embeddings
+- **Ujumuishaji wa VS Code AI Chat** kwa maswali ya lugha asilia
+- **Utekelezaji tayari kwa uzalishaji** kwa kutumia Docker na Azure
+- **Ufuatiliaji kamili** kwa kutumia Application Insights
 
-## 🎯 Mahitaji ya Kujifunza
+## 🎯 Masharti ya Awali kwa Kujifunza
 
-Ili kupata manufaa zaidi kutoka kwa njia hii ya kujifunza, unapaswa kuwa na:
+Ili kufaidika zaidi na njia hii ya kujifunza, unapaswa kuwa na:
 
-- **Uzoefu wa Programu**: Uzoefu na Python (unapendekezwa) au lugha zinazofanana
-- **Maarifa ya Hifadhidata**: Uelewa wa msingi wa SQL na hifadhidata za uhusiano
-- **Mafunzo ya API**: Uelewa wa API za REST na dhana za HTTP
-- **Zana za Maendeleo**: Uzoefu na mstari wa amri, Git, na wahariri wa msimbo
-- **Maarifa ya Wingu**: (Hiari) Uelewa wa msingi wa Azure au majukwaa ya wingu yanayofanana
-- **Uzoefu wa Docker**: (Hiari) Uelewa wa dhana za kontena
+- **Uzoefu wa Uprogramu**: Uelewa wa Python (unaopendekezwa) au lugha zinazofanana
+- **Maarifa ya Hifadhidata**: Uelewa wa msingi wa SQL na hifadhidata za mahusiano
+- **Madhumuni ya API**: Uelewa wa REST APIs na dhana za HTTP
+- **Zana za Maendeleo**: Uzoefu wa mstari wa amri, Git, na wahariri wa msimbo
+- **Msingi wa Cloud**: (Hiari) Maarifa ya msingi ya Azure au huduma zingine za wingu
+- **Uelewa wa Docker**: (Hiari) Uelewa wa dhana za containerization
 
 ### Zana Zinazohitajika
 
-- **Docker Desktop** - Kwa kuendesha PostgreSQL na seva ya MCP
+- **Docker Desktop** - Kwa kuendesha PostgreSQL na serveri ya MCP
 - **Azure CLI** - Kwa utekelezaji wa rasilimali za wingu
-- **VS Code** - Kwa maendeleo na muunganisho wa MCP
-- **Git** - Kwa udhibiti wa toleo
-- **Python 3.8+** - Kwa maendeleo ya seva ya MCP
+- **VS Code** - Kwa maendeleo na ujumuishaji wa MCP
+- **Git** - Kwa usimamizi wa toleo la msimbo
+- **Python 3.8+** - Kwa maendeleo ya serveri ya MCP
 
-## 📚 Mwongozo wa Kujifunza na Rasilimali
+## 📚 Mwongozo wa Masomo & Rasilimali
 
-Njia hii ya kujifunza inajumuisha rasilimali za kina kukusaidia kuvinjari kwa ufanisi:
+Njia hii ya kujifunza inajumuisha rasilimali kamili za kusaidia kwa ufanisi:
 
-### Mwongozo wa Kujifunza
+### Mwongozo wa Masomo
 
-Kila maabara inajumuisha:
-- **Malengo ya kujifunza yaliyo wazi** - Kile utakachofanikisha
-- **Maelekezo ya hatua kwa hatua** - Miongozo ya utekelezaji wa kina
-- **Mifano ya msimbo** - Sampuli zinazofanya kazi na maelezo
+Kila kiwanda kina:
+- **Malengo yaliyo wazi ya kujifunza** - Kitu utakachofanikisha
+- **Maelekezo ya hatua kwa hatua** - Mwongozo wa utekelezaji wa kina
+- **Mifano ya msimbo** - Sampuli za kazi zenye maelezo
 - **Mazoezi** - Fursa za mazoezi ya vitendo
-- **Miongozo ya kutatua matatizo** - Masuala ya kawaida na suluhisho
-- **Rasilimali za ziada** - Usomaji zaidi na uchunguzi
+- **Mwongozo wa utatuzi wa matatizo** - Masuala ya kawaida na suluhisho
+- **Rasilimali za ziada** - Kusoma zaidi na kuchunguza
 
-### Ukaguzi wa Mahitaji
+### Ukaguzi wa Masharti ya Awali
 
-Kabla ya kuanza kila maabara, utapata:
-- **Maarifa yanayohitajika** - Kile unachopaswa kujua kabla
-- **Uthibitishaji wa usanidi** - Jinsi ya kuthibitisha mazingira yako
-- **Makadirio ya muda** - Muda unaotarajiwa wa kukamilisha
-- **Matokeo ya kujifunza** - Kile utakachojua baada ya kukamilisha
+Kabla ya kuanza kila kiwanda, utapata:
+- **Maarifa yanayohitajika** - Kitu unachopaswa kujua kabla
+- **Uthibitisho wa usanidi** - Jinsi ya kuthibitisha mazingira yako
+- **Makadirio ya muda** - Muda unaotarajiwa kumaliza
+- **Matokeo ya kujifunza** - Kitu utakachojua baada ya kumaliza
 
-### Njia Zinazopendekezwa za Kujifunza
+### Njia za Kujifunza Zinazopendekezwa
 
 Chagua njia yako kulingana na kiwango chako cha uzoefu:
 
-#### 🟢 **Njia ya Kuanza** (Mpya kwa MCP)
-1. Hakikisha umekamilisha 0-10 ya [MCP kwa Anayeanza](https://aka.ms/mcp-for-beginners) kwanza
-2. Kamilisha maabara 00-03 ili kuimarisha misingi yako
-3. Fuata maabara 04-06 kwa kujifunza kwa vitendo
-4. Jaribu maabara 07-09 kwa matumizi ya vitendo
+#### 🟢 **Njia ya Mshangao** (Mpya kwa MCP)
+1. Hakikisha umemaliza 0-10 wa [MCP kwa Waanzilishi](https://aka.ms/mcp-for-beginners) kwanza
+2. Maliza viwanda 00-03 ili kuthibitisha misingi yako
+3. Fuata viwanda 04-06 kwa kujenga kwa vitendo
+4. Jaribu viwanda 07-09 kwa matumizi halisi
 
-#### 🟡 **Njia ya Kati** (Uzoefu Kidogo na MCP)
-1. Pitia maabara 00-01 kwa dhana maalum za hifadhidata
-2. Zingatia maabara 02-06 kwa utekelezaji
-3. Zama kwa kina katika maabara 07-12 kwa vipengele vya juu
+#### 🟡 **Njia ya Kati** (Uzoefu wa MCP Kidogo)
+1. Pitia viwanda 00-01 kwa dhana za hifadhidata maalum
+2. Lenga viwanda 02-06 kwa utekelezaji
+3. Ingia kwa kina viwanda 07-12 kwa vipengele vya juu
 
-#### 🔴 **Njia ya Juu** (Uzoefu na MCP)
-1. Pitia haraka maabara 00-03 kwa muktadha
-2. Zingatia maabara 04-09 kwa muunganisho wa hifadhidata
-3. Zingatia maabara 10-12 kwa utekelezaji wa uzalishaji
+#### 🔴 **Njia ya Juu** (Mzoefu na MCP)
+1. Pitia kwa haraka viwanda 00-03 kwa muktadha
+2. Lenga viwanda 04-09 kwa uunganishaji wa hifadhidata
+3. Zingatia viwanda 10-12 kwa utekelezaji wa uzalishaji
 
-## 🛠️ Jinsi ya Kutumia Njia Hii ya Kujifunza kwa Ufanisi
+## 🛠️ Jinsi ya Kutumia Njia hii ya Kujifunza kwa Ufanisi
 
-### Kujifunza kwa Mpangilio (Inapendekezwa)
+### Kujifunza Mfululizo (Inapendekezwa)
 
-Fanya kazi kupitia maabara kwa mpangilio kwa uelewa wa kina:
+Fanya kazi kupitia viwanda kwa mpangilio kwa kuelewa kwa kina:
 
-1. **Soma muhtasari** - Elewa kile utakachojifunza
-2. **Angalia mahitaji** - Hakikisha una maarifa yanayohitajika
-3. **Fuata miongozo ya hatua kwa hatua** - Tekeleza unavyosoma
-4. **Kamilisha mazoezi** - Imarisha uelewa wako
-5. **Pitia mambo muhimu** - Imarisha matokeo ya kujifunza
+1. **Soma muhtasari** - Elewa utakachojifunza
+2. **Angalia masharti ya awali** - Hakikisha unayo maarifa yanayohitajika
+3. **Fuata mwongozo wa hatua kwa hatua** - Tekeleza unapoendelea kujifunza
+4. **Maliza mazoezi** - Thibitisha uelewa wako
+5. **Kagua mambo muhimu** - Imarisha matokeo ya kujifunza
 
-### Kujifunza kwa Lengo
+### Kujifunza kwa Lengo Mahususi
 
-Ikiwa unahitaji ujuzi maalum:
+Iwapo unahitaji ujuzi maalum:
 
-- **Muunganisho wa Hifadhidata**: Zingatia maabara 04-06
-- **Utekelezaji wa Usalama**: Zingatia maabara 02, 08, 12
-- **AI/Tafutaji wa Semantiki**: Zama kwa kina katika maabara 07
-- **Utekelezaji wa Uzalishaji**: Soma maabara 10-12
+- **Uunganishaji wa Hifadhidata**: Lenga viwanda 04-06
+- **Utekelezaji wa Usalama**: Lenga viwanda 02, 08, 12
+- **Utafutaji wa AI/Maana**: Ingia kwa kina kiwanda 07
+- **Utekelezaji wa Uzalishaji**: Jifunze viwanda 10-12
 
 ### Mazoezi ya Vitendo
 
-Kila maabara inajumuisha:
-- **Mifano ya msimbo inayofanya kazi** - Nakili, rekebisha, na jaribu
-- **Matukio ya ulimwengu halisi** - Kesi za matumizi ya uchanganuzi wa rejareja
-- **Ugumu unaoendelea** - Kujenga kutoka rahisi hadi ngumu
+Kila kiwanda kina:
+- **Mifano ya msimbo inayofanya kazi** - Nakili, badilisha, na jaribu
+- **Mazingira halisi ya dunia** - Matumizi halisi ya uchambuzi wa rejareja
+- **Ugumu unaoongezeka pole pole** - Kujenga kutoka rahisi hadi juu
 - **Hatua za uthibitishaji** - Hakikisha utekelezaji wako unafanya kazi
 
-## 🌟 Jumuiya na Usaidizi
+## 🌟 Jumuiya na Msaada
 
 ### Pata Msaada
 
-- **Azure AI Discord**: [Jiunge kwa msaada wa wataalam](https://discord.com/invite/ByRwuEEgH4)
-- **Hifadhi ya GitHub na Sampuli ya Utekelezaji**: [Sampuli ya Utekelezaji na Rasilimali](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
-- **Jumuiya ya MCP**: [Jiunge na mijadala ya MCP kwa ujumla](https://github.com/orgs/modelcontextprotocol/discussions)
+- **Azure AI Discord**: [Jiunge kwa msaada wa wataalamu](https://discord.com/invite/ByRwuEEgH4)
+- **Hifadhidata ya GitHub na Mfano wa Utekelezaji**: [Mfano wa Utekelezaji na Rasilimali](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
+- **Jumuiya ya MCP**: [Jiunge na mijadala pana ya MCP](https://github.com/orgs/modelcontextprotocol/discussions)
 
-## 🚀 Tayari Kuanza?
+## 🚀 Tayari Kuanzia?
 
-Anza safari yako na **[Maabara 00: Utangulizi wa Muunganisho wa Hifadhidata ya MCP](./00-Introduction/README.md)**
-
----
-
-*Jifunze kujenga seva za MCP zinazofaa kwa uzalishaji na muunganisho wa hifadhidata kupitia uzoefu huu wa kina na wa vitendo.*
+Anza safari yako na **[Kiwanda 00: Utangulizi wa Uunganishaji wa Hifadhidata ya MCP](./00-Introduction/README.md)**
 
 ---
 
-**Kanusho**:  
-Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kuhakikisha usahihi, tafadhali fahamu kuwa tafsiri za kiotomatiki zinaweza kuwa na makosa au kutokuwa sahihi. Hati ya asili katika lugha yake ya awali inapaswa kuzingatiwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu ya binadamu inapendekezwa. Hatutawajibika kwa kutoelewana au tafsiri zisizo sahihi zinazotokana na matumizi ya tafsiri hii.
+*Jifunze kujenga serveri za MCP tayari kwa uzalishaji zenye uunganishaji wa hifadhidata kupitia uzoefu huu wa kujifunza wa vitendo na kamili.*
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Kiamsha moto cha maelezo**:
+Hati hii imetafsiriwa kwa kutumia huduma ya tafsiri ya AI [Co-op Translator](https://github.com/Azure/co-op-translator). Ingawa tunajitahidi kwa usahihi, tafadhali fahamu kuwa tafsiri za kiotomatiki zinaweza kuwa na makosa au ukosefu wa usahihi. Hati ya asili katika lugha yake ya asili inapaswa kuchukuliwa kama chanzo cha mamlaka. Kwa taarifa muhimu, tafsiri ya kitaalamu ya binadamu inashauriwa. Hatuna wajibu kwa kutokuelewana au tafsiri potofu zinazotokana na matumizi ya tafsiri hii.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

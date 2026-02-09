@@ -1,108 +1,110 @@
 # Weather MCP Server
 
-ਇਹ ਪਾਇਥਨ ਵਿੱਚ ਇੱਕ ਨਮੂਨਾ MCP ਸਰਵਰ ਹੈ ਜੋ ਮੌਸਮ ਦੇ ਟੂਲਾਂ ਨੂੰ ਮੌਕ ਜਵਾਬਾਂ ਨਾਲ ਲਾਗੂ ਕਰਦਾ ਹੈ। ਇਹ ਤੁਹਾਡੇ ਆਪਣੇ MCP ਸਰਵਰ ਲਈ ਇੱਕ ਢਾਂਚੇ ਵਜੋਂ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ। ਇਸ ਵਿੱਚ ਹੇਠ ਲਿਖੇ ਫੀਚਰ ਸ਼ਾਮਲ ਹਨ:
+ਇਹ Python ਵਿੱਚ ਇੱਕ ਨਮੂਨਾ MCP ਸਰਵਰ ਹੈ ਜੋ ਮੌਸਮ ਦੇ ਸੰਦਾਂ ਨੂੰ ਮੌਕ ਜਵਾਬ ਦੇਣ ਨਾਲ ਲਾਗੂ ਕਰਦਾ ਹੈ। ਇਹ ਤੁਹਾਡੇ ਆਪਣੇ MCP ਸਰਵਰ ਲਈ ਇਕ ਫਰੇਮਵਰਕ ਵਜੋਂ ਵਰਤੀ ਜਾ ਸਕਦੀ ਹੈ। ਇਸ ਵਿੱਚ ਹੇਠਾਂ ਦਿੱਤੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਸ਼ਾਮਲ ਹਨ:
 
-- **Weather Tool**: ਇੱਕ ਟੂਲ ਜੋ ਦਿੱਤੇ ਗਏ ਸਥਾਨ ਦੇ ਅਧਾਰ 'ਤੇ ਮੌਕ ਮੌਸਮ ਜਾਣਕਾਰੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।
-- **Git Clone Tool**: ਇੱਕ ਟੂਲ ਜੋ ਇੱਕ ਗਿਟ ਰਿਪੋਜ਼ਟਰੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਫੋਲਡਰ ਵਿੱਚ ਕਲੋਨ ਕਰਦਾ ਹੈ।
-- **VS Code Open Tool**: ਇੱਕ ਟੂਲ ਜੋ VS Code ਜਾਂ VS Code Insiders ਵਿੱਚ ਫੋਲਡਰ ਖੋਲ੍ਹਦਾ ਹੈ।
-- **Agent Builder ਨਾਲ ਕਨੈਕਟ ਕਰੋ**: ਇੱਕ ਫੀਚਰ ਜੋ MCP ਸਰਵਰ ਨੂੰ Agent Builder ਨਾਲ ਟੈਸਟ ਅਤੇ ਡੀਬੱਗ ਕਰਨ ਲਈ ਕਨੈਕਟ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ।
-- **[MCP Inspector](https://github.com/modelcontextprotocol/inspector) ਵਿੱਚ ਡੀਬੱਗ ਕਰੋ**: ਇੱਕ ਫੀਚਰ ਜੋ MCP ਸਰਵਰ ਨੂੰ MCP Inspector ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਡੀਬੱਗ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ।
+- **ਮੌਸਮ ਟੂਲ**: ਇੱਕ ਟੂਲ ਜੋ ਦਿੱਤੇ ਗਏ ਸਥਾਨ ਅਧਾਰਿਤ ਮੌਸਮ ਦੀ ਮੌਕ ਜਾਣਕਾਰੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।
+- **Git ਕਲੋਨ ਟੂਲ**: ਇੱਕ ਟੂਲ ਜੋ ਕਿਸੇ git ਰਿਪੋਜਿਟਰੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਫੋਲਡਰ ਵਿੱਚ ਕਲੋਨ ਕਰਦਾ ਹੈ।
+- **VS ਕੋਡ ਖੋਲ੍ਹਣ ਵਾਲਾ ਟੂਲ**: ਇੱਕ ਟੂਲ ਜੋ ਕਿਸੇ ਫੋਲਡਰ ਨੂੰ VS ਕੋਡ ਜਾਂ VS ਕੋਡ ਇੰਸਾਈਡਰਜ਼ ਵਿੱਚ ਖੋਲਦਾ ਹੈ।
+- **ਏਜੰਟ ਬਿਲਡਰ ਨਾਲ ਕਨੈਕਟ ਕਰੋ**: ਇੱਕ ਫੀਚਰ ਜੋ ਤੁਹਾਨੂੰ MCP ਸਰਵਰ ਨੂੰ ਟੈਸਟਿੰਗ ਅਤੇ ਡਿਬੱਗਿੰਗ ਲਈ ਏਜੰਟ ਬਿਲਡਰ ਨਾਲ ਜੋੜਨ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ।
+- **[MCP ਇੰਸਪੈਕਟਰ](https://github.com/modelcontextprotocol/inspector) ਵਿੱਚ ਡਿਬੱਗ ਕਰੋ**: ਇੱਕ ਫੀਚਰ ਜੋ MCP ਇੰਸਪੈਕਟਰ ਦੀ ਵਰਤੋਂ ਕਰਕੇ MCP ਸਰਵਰ ਨੂੰ ਡਿਬੱਗ ਕਰਨ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ।
 
 ## Weather MCP Server ਟੈਂਪਲੇਟ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ
 
-> **Prerequisites**
+> **ਜ਼ਰੂਰੀਆਂ चीज਼ਾਂ**
 >
-> ਆਪਣੇ ਲੋਕਲ ਡਿਵ ਮਸ਼ੀਨ 'ਤੇ MCP ਸਰਵਰ ਚਲਾਉਣ ਲਈ, ਤੁਹਾਨੂੰ ਲੋੜ ਹੋਵੇਗੀ:
+> ਆਪਣੇ ਲੋਕਲ ਡੈਵ ਮਸ਼ੀਨ ਤੇ MCP ਸਰਵਰ ਚਲਾਉਣ ਲਈ ਤੁਹਾਨੂੰ ਲੋੜ ਹੋਵੇਗੀ:
 >
 > - [Python](https://www.python.org/)
-> - [Git](https://git-scm.com/) (git_clone_repo ਟੂਲ ਲਈ ਲਾਜ਼ਮੀ)
-> - [VS Code](https://code.visualstudio.com/) ਜਾਂ [VS Code Insiders](https://code.visualstudio.com/insiders/) (open_in_vscode ਟੂਲ ਲਈ ਲਾਜ਼ਮੀ)
-> - (*ਵਿਕਲਪਿਕ - ਜੇ ਤੁਸੀਂ uv ਨੂੰ ਤਰਜੀਹ ਦਿੰਦੇ ਹੋ*) [uv](https://github.com/astral-sh/uv)
-> - [Python Debugger Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
+> - [Git](https://git-scm.com/) (git_clone_repo ਟੂਲ ਲਈ ਜਰੂਰੀ)
+> - [VS Code](https://code.visualstudio.com/) ਜਾਂ [VS Code Insiders](https://code.visualstudio.com/insiders/) (open_in_vscode ਟੂਲ ਲਈ ਜਰੂਰੀ)
+> - (*ਵੈਕਲਪਿਕ - ਜੇ ਤੁਸੀਂ uv ਪਸੰਦ ਕਰਦੇ ਹੋ*) [uv](https://github.com/astral-sh/uv)
+> - [Python ਡਿਬੱਗਰ ਐਕਸਟੈਂਸ਼ਨ](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 
-## ਵਾਤਾਵਰਣ ਤਿਆਰ ਕਰੋ
+## ਵਾਤਾਵਰਨ ਤਿਆਰ ਕਰੋ
 
-ਇਸ ਪ੍ਰੋਜੈਕਟ ਲਈ ਵਾਤਾਵਰਣ ਸੈਟਅਪ ਕਰਨ ਦੇ ਦੋ ਤਰੀਕੇ ਹਨ। ਤੁਸੀਂ ਆਪਣੀ ਪਸੰਦ ਦੇ ਅਨੁਸਾਰ ਕੋਈ ਵੀ ਚੁਣ ਸਕਦੇ ਹੋ।
+ਇਸ ਪ੍ਰਾਜੈਕਟ ਲਈ ਵਾਤਾਵਰਨ ਸੈਟਅਪ ਕਰਨ ਲਈ ਦੋ ਤਰੀਕੇ ਹਨ। ਤੁਸੀਂ ਆਪਣੀ ਪਸੰਦ ਦੇ ਅਧਾਰ 'ਤੇ ਕੋਈ ਵੀ ਤਰੀਕਾ ਚੁਣ ਸਕਦੇ ਹੋ।
 
-> ਨੋਟ: ਵਰਚੁਅਲ ਵਾਤਾਵਰਣ ਬਣਾਉਣ ਤੋਂ ਬਾਅਦ, ਇਹ ਯਕੀਨੀ ਬਣਾਓ ਕਿ ਵਰਚੁਅਲ ਵਾਤਾਵਰਣ ਪਾਇਥਨ ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ, VSCode ਜਾਂ ਟਰਮੀਨਲ ਨੂੰ ਰੀਲੋਡ ਕਰੋ।
+> ਨੋਟ: ਵਿਰਚੁਅਲ ਵਾਤਾਵਰਨ ਬਣਾਉਣ ਤੋਂ ਬਾਦ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ VSCode ਜਾਂ ਟਰਮੀਨਲ ਨੂੰ ਰੀਲੋਡ ਕਰੋ ਕਿ ਵਿਰਚੁਅਲ ਵਾਤਾਵਰਨ ਦਾ Python ਵਰਤਿਆ ਜਾ ਰਿਹਾ ਹੈ।
 
 | ਤਰੀਕਾ | ਕਦਮ |
 | -------- | ----- |
-| `uv` ਦੀ ਵਰਤੋਂ | 1. ਵਰਚੁਅਲ ਵਾਤਾਵਰਣ ਬਣਾਓ: `uv venv` <br>2. VSCode ਕਮਾਂਡ "***Python: Select Interpreter***" ਚਲਾਓ ਅਤੇ ਬਣਾਏ ਗਏ ਵਰਚੁਅਲ ਵਾਤਾਵਰਣ ਤੋਂ ਪਾਇਥਨ ਚੁਣੋ <br>3. Dependencies (dev dependencies ਸਮੇਤ) ਇੰਸਟਾਲ ਕਰੋ: `uv pip install -r pyproject.toml --extra dev` |
-| `pip` ਦੀ ਵਰਤੋਂ | 1. ਵਰਚੁਅਲ ਵਾਤਾਵਰਣ ਬਣਾਓ: `python -m venv .venv` <br>2. VSCode ਕਮਾਂਡ "***Python: Select Interpreter***" ਚਲਾਓ ਅਤੇ ਬਣਾਏ ਗਏ ਵਰਚੁਅਲ ਵਾਤਾਵਰਣ ਤੋਂ ਪਾਇਥਨ ਚੁਣੋ <br>3. Dependencies (dev dependencies ਸਮੇਤ) ਇੰਸਟਾਲ ਕਰੋ: `pip install -e .[dev]` |
+| `uv` ਦੀ ਵਰਤੋਂ | 1. ਵਿਰਚੁਅਲ ਵਾਤਾਵਰਨ ਬਣਾਓ: `uv venv` <br>2. VSCode ਕਮਾਂਡ "***Python: Select Interpreter***" ਚਲਾਓ ਅਤੇ ਬਣਾਏ ਗਏ ਵਿਰਚੁਅਲ ਵਾਤਾਵਰਨ ਤੋਂ ਪਾਇਥਨ ਚੁਣੋ <br>3. ਡਿਪੈਂਡੇਨਸੀਆਂ ਇੰਸਟਾਲ ਕਰੋ (ਦੇਵ ਡਿਪੈਂਡੇਨਸੀਆਂ ਸਮੇਤ): `uv pip install -r pyproject.toml --extra dev` |
+| `pip` ਦੀ ਵਰਤੋਂ | 1. ਵਿਰਚੁਅਲ ਵਾਤਾਵਰਨ ਬਣਾਓ: `python -m venv .venv` <br>2. VSCode ਕਮਾਂਡ "***Python: Select Interpreter***" ਚਲਾਓ ਅਤੇ ਬਣਾਏ ਗਏ ਵਿਰਚੁਅਲ ਵਾਤਾਵਰਨ ਤੋਂ ਪਾਇਥਨ ਚੁਣੋ<br>3. ਡਿਪੈਂਡੇਨਸੀਆਂ ਇੰਸਟਾਲ ਕਰੋ (ਦੇਵ ਡਿਪੈਂਡੇਨਸੀਆਂ ਸਮੇਤ): `pip install -e .[dev]` | 
 
-ਵਾਤਾਵਰਣ ਸੈਟਅਪ ਕਰਨ ਤੋਂ ਬਾਅਦ, ਤੁਸੀਂ ਆਪਣੇ ਲੋਕਲ ਡਿਵ ਮਸ਼ੀਨ 'ਤੇ Agent Builder ਦੇ ਜ਼ਰੀਏ MCP Client ਵਜੋਂ ਸਰਵਰ ਚਲਾ ਸਕਦੇ ਹੋ:
-1. VS Code ਡੀਬੱਗ ਪੈਨਲ ਖੋਲ੍ਹੋ। `Debug in Agent Builder` ਚੁਣੋ ਜਾਂ `F5` ਦਬਾਓ MCP ਸਰਵਰ ਨੂੰ ਡੀਬੱਗ ਕਰਨ ਲਈ।
-2. AI Toolkit Agent Builder ਦੀ ਵਰਤੋਂ ਕਰਕੇ [ਇਸ ਪ੍ਰੋਮਪਟ](../../../../../../../../../../../open_prompt_builder) ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰੋ। ਸਰਵਰ ਆਟੋ-ਕਨੈਕਟ ਹੋ ਜਾਵੇਗਾ Agent Builder ਨਾਲ।
-3. `Run` 'ਤੇ ਕਲਿਕ ਕਰੋ ਪ੍ਰੋਮਪਟ ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰਨ ਲਈ।
+ਵਾਤਾਵਰਨ ਤਿਆਰ ਕਰਨ ਤੋਂ ਬਾਅਦ, ਤੁਸੀਂ Agent Builder ਨੂੰ MCP ਕਲੀਐਂਟ ਵਜੋਂ ਵਰਤ ਕੇ ਆਪਣੇ ਲੋਕਲ ਡੈਵ ਮਸ਼ੀਨ ਵਿੱਚ ਸੇਰਵਰ ਚਲਾ ਸਕਦੇ ਹੋ:
+1. VS Code ਡਿਬੱਗ ਪੈਨਲ ਖੋਲ੍ਹੋ। `Debug in Agent Builder` ਚੁਣੋ ਜਾਂ MCP ਸਰਵਰ ਡਿਬੱਗ ਕਰਨ ਲਈ `F5` ਦਬਾਓ।
+2. AI Toolkit Agent Builder ਵਰਤ ਕੇ [ਇਸ ਪ੍ਰੌਂਪਟ](../../../../../../../../../../../open_prompt_builder) ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰੋ। ਸਰਵਰ ਆਪਣੇ ਆਪ Agent Builder ਨਾਲ ਜੁੜ ਜਾਵੇਗਾ।
+3. ਪ੍ਰੌਂਪਟ ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰਨ ਲਈ `Run` 'ਤੇ ਕਲਿੱਕ ਕਰੋ।
 
-**ਮੁਬਾਰਕਾਂ**! ਤੁਸੀਂ ਸਫਲਤਾਪੂਰਵਕ Weather MCP Server ਨੂੰ ਆਪਣੇ ਲੋਕਲ ਡਿਵ ਮਸ਼ੀਨ 'ਤੇ Agent Builder ਦੇ ਜ਼ਰੀਏ MCP Client ਵਜੋਂ ਚਲਾ ਲਿਆ ਹੈ।
+**ਵਧਾਈਆਂ**! ਤੁਸੀਂ ਕਾਰਗਰਤਾ ਨਾਲ Weather MCP Server ਆਪਣੇ ਲੋਕਲ ਡੈਵ ਮਸ਼ੀਨ ਵਿੱਚ Agent Builder ਨੂੰ MCP ਕਲੀਐਂਟ ਵਜੋਂ ਵਰਤ ਕੇ ਚਲਾਇਆ ਹੈ।
 ![DebugMCP](https://raw.githubusercontent.com/microsoft/windows-ai-studio-templates/refs/heads/dev/mcpServers/mcp_debug.gif)
 
 ## ਟੈਂਪਲੇਟ ਵਿੱਚ ਕੀ ਸ਼ਾਮਲ ਹੈ
 
-| ਫੋਲਡਰ / ਫਾਈਲ | ਸਮੱਗਰੀ |
-| ------------ | -------------------------------------------- |
-| `.vscode`    | VSCode ਫਾਈਲਾਂ ਡੀਬੱਗਿੰਗ ਲਈ |
-| `.aitk`      | AI Toolkit ਲਈ ਕਨਫਿਗਰੇਸ਼ਨ |
-| `src`        | Weather MCP Server ਲਈ ਸਰੋਤ ਕੋਡ |
+| ਫੋਲਡਰ / ਫਾਇਲ | ਸਮੱਗਰੀ                                    |
+| -------------- | ----------------------------------------- |
+| `.vscode`      | ਡਿਬੱਗਿੰਗ ਲਈ VSCode ਫਾਇਲਾਂ                |
+| `.aitk`        | AI Toolkit ਲਈ ਕনਫ਼ਿਗਰੇਸ਼ਨ                   |
+| `src`          | ਮੌਸਮ mcp ਸਰਵਰ ਲਈ ਸੋర్స్ ਕੋਡ                |
 
-## Weather MCP Server ਨੂੰ ਡੀਬੱਗ ਕਰਨ ਦਾ ਤਰੀਕਾ
+## Weather MCP Server ਨੂੰ ਕਿਵੇਂ ਡਿਬੱਗ ਕਰੀਏ
 
-> ਨੋਟ:
-> - [MCP Inspector](https://github.com/modelcontextprotocol/inspector) ਇੱਕ ਵਿਜ਼ੂਅਲ ਡਿਵੈਲਪਰ ਟੂਲ ਹੈ MCP ਸਰਵਰਾਂ ਨੂੰ ਟੈਸਟ ਅਤੇ ਡੀਬੱਗ ਕਰਨ ਲਈ।
-> - ਸਾਰੇ ਡੀਬੱਗ ਮੋਡ ਬ੍ਰੇਕਪੋਇੰਟਸ ਨੂੰ ਸਪੋਰਟ ਕਰਦੇ ਹਨ, ਇਸ ਲਈ ਤੁਸੀਂ ਟੂਲ ਇੰਪਲੀਮੈਂਟੇਸ਼ਨ ਕੋਡ ਵਿੱਚ ਬ੍ਰੇਕਪੋਇੰਟਸ ਸ਼ਾਮਲ ਕਰ ਸਕਦੇ ਹੋ।
+> ਨੋਟਸ:
+> - [MCP ਇੰਸਪੈਕਟਰ](https://github.com/modelcontextprotocol/inspector) MCP ਸਰਵਰਾਂ ਦੀ ਟੈਸਟਿੰਗ ਅਤੇ ਡਿਬੱਗਿੰਗ ਲਈ ਇੱਕ ਵਿਜ਼ੂਅਲ ਡਿਵੈਲਪਰ ਟੂਲ ਹੈ।
+> - ਸਾਰੇ ਡਿਬੱਗਿੰਗ ਮੋਡ ਬ੍ਰੇਕਪੌਇੰਟ ਸੰਭਾਵਿਤ ਕਰਦੇ ਹਨ, ਤਾਂ ਤੁਸੀਂ ਟੂਲ ਇੰਪਲੀਮੇਂਟੇਸ਼ਨ ਕੋਡ ਵਿੱਚ ਬ੍ਰੇਕਪੌਇੰਟ ਐਡ ਕਰ ਸਕਦੇ ਹੋ।
 
-## ਉਪਲਬਧ ਟੂਲ
+## ਉਪਲੱਬਧ ਟੂਲ
 
-### Weather Tool
+### ਮੌਸਮ ਟੂਲ
 `get_weather` ਟੂਲ ਦਿੱਤੇ ਗਏ ਸਥਾਨ ਲਈ ਮੌਕ ਮੌਸਮ ਜਾਣਕਾਰੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।
 
-| ਪੈਰਾਮੀਟਰ | ਕਿਸਮ | ਵੇਰਵਾ |
-| --------- | ---- | ----------- |
-| `location` | string | ਮੌਸਮ ਜਾਣਨ ਲਈ ਸਥਾਨ (ਜਿਵੇਂ ਸ਼ਹਿਰ ਦਾ ਨਾਮ, ਰਾਜ, ਜਾਂ ਕੋਆਰਡੀਨੇਟਸ) |
+| ਪੈਰਾਮੀਟਰ | ਕਿਸਮ | ਵਰਣਨ |
+| --------- | ---- | ------ |
+| `location` | ਸਤਰ | ਮੌਸਮ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਸਥਾਨ (ਜਿਵੇਂ ਸ਼ਹਿਰ ਦਾ ਨਾਮ, ਸੂਬਾ ਜਾਂ ਕੋਆਰਡੀਨੇਟ) |
 
-### Git Clone Tool
-`git_clone_repo` ਟੂਲ ਇੱਕ ਗਿਟ ਰਿਪੋਜ਼ਟਰੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਫੋਲਡਰ ਵਿੱਚ ਕਲੋਨ ਕਰਦਾ ਹੈ।
+### Git ਕਲੋਨ ਟੂਲ
+`git_clone_repo` ਟੂਲ ਇੱਕ git ਰਿਪੋਜਿਟਰੀ ਨੂੰ ਨਿਰਧਾਰਿਤ ਫੋਲਡਰ ਵਿੱਚ ਕਲੋਨ ਕਰਦਾ ਹੈ।
 
-| ਪੈਰਾਮੀਟਰ | ਕਿਸਮ | ਵੇਰਵਾ |
-| --------- | ---- | ----------- |
-| `repo_url` | string | ਕਲੋਨ ਕਰਨ ਲਈ ਗਿਟ ਰਿਪੋਜ਼ਟਰੀ ਦਾ URL |
-| `target_folder` | string | ਫੋਲਡਰ ਦਾ ਪਾਥ ਜਿੱਥੇ ਰਿਪੋਜ਼ਟਰੀ ਕਲੋਨ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ |
+| ਪੈਰਾਮੀਟਰ | ਕਿਸਮ | ਵਰਣਨ |
+| --------- | ---- | ------ |
+| `repo_url` | ਸਤਰ | ਕਲੋਨ ਕਰਨ ਲਈ git ਰਿਪੋਜਿਟਰੀ ਦਾ URL |
+| `target_folder` | ਸਤਰ | ਫੋਲਡਰ ਦਾ ਰਸਤਾ ਜਿੱਥੇ ਰਿਪੋਜਿਟਰੀ ਕਲੋਨ ਕੀਤਾ ਜਾਣਾ ਹੈ |
 
-ਟੂਲ ਇੱਕ JSON ਆਬਜੈਕਟ ਵਾਪਸ ਕਰਦਾ ਹੈ:
-- `success`: Boolean ਜੋ ਦੱਸਦਾ ਹੈ ਕਿ ਕਾਰਵਾਈ ਸਫਲ ਹੋਈ ਜਾਂ ਨਹੀਂ
-- `target_folder` ਜਾਂ `error`: ਕਲੋਨ ਕੀਤੇ ਗਏ ਰਿਪੋਜ਼ਟਰੀ ਦਾ ਪਾਥ ਜਾਂ ਇੱਕ ਗਲਤੀ ਸੁਨੇਹਾ
+ਇਹ ਟੂਲ ਇੱਕ JSON ਆਬਜੈਕਟ ਵਾਪਸ ਕਰਦਾ ਹੈ:
+- `success`: ਬੂਲੀਅਨ ਜੋ ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਕਾਰਵਾਈ ਸਫਲ ਰਹੀ
+- `target_folder` ਜਾਂ `error`: ਕਲੋਨ ਕੀਤੇ ਗਏ ਰਿਪੋਜਿਟਰੀ ਦਾ ਰਸਤਾ ਜਾਂ ਗਲਤੀ ਦਾ ਸੁਨੇਹਾ
 
-### VS Code Open Tool
-`open_in_vscode` ਟੂਲ VS Code ਜਾਂ VS Code Insiders ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ ਫੋਲਡਰ ਖੋਲ੍ਹਦਾ ਹੈ।
+### VS ਕੋਡ ਖੋਲ੍ਹਣ ਵਾਲਾ ਟੂਲ
+`open_in_vscode` ਟੂਲ ਇੱਕ ਫੋਲਡਰ ਨੂੰ VS ਕੋਡ ਜਾਂ VS ਕੋਡ ਇੰਸਾਈਡਰਜ਼ ਐਪਲੀਕੇਸ਼ਨ ਵਿੱਚ ਖੋਲ੍ਹਦਾ ਹੈ।
 
-| ਪੈਰਾਮੀਟਰ | ਕਿਸਮ | ਵੇਰਵਾ |
-| --------- | ---- | ----------- |
-| `folder_path` | string | ਫੋਲਡਰ ਦਾ ਪਾਥ ਜੋ ਖੋਲ੍ਹਣਾ ਹੈ |
-| `use_insiders` | boolean (ਵਿਕਲਪਿਕ) | ਕੀ ਰੈਗੂਲਰ VS Code ਦੀ ਬਜਾਏ VS Code Insiders ਦੀ ਵਰਤੋਂ ਕਰਨੀ ਹੈ |
+| ਪੈਰਾਮੀਟਰ | ਕਿਸਮ | ਵਰਣਨ |
+| --------- | ---- | ------ |
+| `folder_path` | ਸਤਰ | ਖੋਲ੍ਹਣ ਲਈ ਫੋਲਡਰ ਦਾ ਰਸਤਾ |
+| `use_insiders` | ਬੂਲੀਅਨ (ਵੈਕਲਪਿਕ) | ਸਕੀਮਤ VS ਕੋਡ ਦੀ ਥਾਂ VS ਕੋਡ ਇੰਸਾਈਡਰਜ਼ ਵਰਤਣਾ ਹੈ ਜਾਂ ਨਹੀਂ |
 
-ਟੂਲ ਇੱਕ JSON ਆਬਜੈਕਟ ਵਾਪਸ ਕਰਦਾ ਹੈ:
-- `success`: Boolean ਜੋ ਦੱਸਦਾ ਹੈ ਕਿ ਕਾਰਵਾਈ ਸਫਲ ਹੋਈ ਜਾਂ ਨਹੀਂ
-- `message` ਜਾਂ `error`: ਪੁਸ਼ਟੀ ਸੁਨੇਹਾ ਜਾਂ ਇੱਕ ਗਲਤੀ ਸੁਨੇਹਾ
+ਇਹ ਟੂਲ ਇੱਕ JSON ਆਬਜੈਕਟ ਵਾਪਸ ਕਰਦਾ ਹੈ:
+- `success`: ਬੂਲੀਅਨ ਜੋ ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਕਾਰਵਾਈ ਸਫਲ ਰਹੀ
+- `message` ਜਾਂ `error`: ਪੁਸ਼ਟੀ ਸੁਨੇਹਾ ਜਾਂ ਗਲਤੀ ਦਾ ਸੁਨੇਹਾ
 
-| ਡੀਬੱਗ ਮੋਡ | ਵੇਰਵਾ | ਡੀਬੱਗ ਕਰਨ ਦੇ ਕਦਮ |
+| ਡਿਬੱਗ ਮੋਡ | ਵਰਣਨ | ਡਿਬੱਗ ਕਰਨ ਦੇ ਕਦਮ |
 | ---------- | ----------- | --------------- |
-| Agent Builder | AI Toolkit ਦੇ ਜ਼ਰੀਏ Agent Builder ਵਿੱਚ MCP ਸਰਵਰ ਨੂੰ ਡੀਬੱਗ ਕਰੋ। | 1. VS Code ਡੀਬੱਗ ਪੈਨਲ ਖੋਲ੍ਹੋ। `Debug in Agent Builder` ਚੁਣੋ ਅਤੇ `F5` ਦਬਾਓ MCP ਸਰਵਰ ਨੂੰ ਡੀਬੱਗ ਕਰਨ ਲਈ।<br>2. AI Toolkit Agent Builder ਦੀ ਵਰਤੋਂ ਕਰਕੇ [ਇਸ ਪ੍ਰੋਮਪਟ](../../../../../../../../../../../open_prompt_builder) ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰੋ। ਸਰਵਰ ਆਟੋ-ਕਨੈਕਟ ਹੋ ਜਾਵੇਗਾ Agent Builder ਨਾਲ।<br>3. `Run` 'ਤੇ ਕਲਿਕ ਕਰੋ ਪ੍ਰੋਮਪਟ ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰਨ ਲਈ। |
-| MCP Inspector | MCP Inspector ਦੀ ਵਰਤੋਂ ਕਰਕੇ MCP ਸਰਵਰ ਨੂੰ ਡੀਬੱਗ ਕਰੋ। | 1. [Node.js](https://nodejs.org/) ਇੰਸਟਾਲ ਕਰੋ<br> 2. Inspector ਸੈਟਅਪ ਕਰੋ: `cd inspector` && `npm install` <br> 3. VS Code ਡੀਬੱਗ ਪੈਨਲ ਖੋਲ੍ਹੋ। `Debug SSE in Inspector (Edge)` ਜਾਂ `Debug SSE in Inspector (Chrome)` ਚੁਣੋ। F5 ਦਬਾਓ ਡੀਬੱਗ ਕਰਨ ਲਈ।<br> 4. ਜਦੋਂ MCP Inspector ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਲਾਂਚ ਹੁੰਦਾ ਹੈ, `Connect` ਬਟਨ 'ਤੇ ਕਲਿਕ ਕਰੋ ਇਸ MCP ਸਰਵਰ ਨੂੰ ਕਨੈਕਟ ਕਰਨ ਲਈ।<br> 5. ਫਿਰ ਤੁਸੀਂ `List Tools`, ਟੂਲ ਚੁਣੋ, ਪੈਰਾਮੀਟਰ ਇਨਪੁਟ ਕਰੋ, ਅਤੇ `Run Tool` 'ਤੇ ਕਲਿਕ ਕਰੋ ਆਪਣੇ ਸਰਵਰ ਕੋਡ ਨੂੰ ਡੀਬੱਗ ਕਰਨ ਲਈ।<br> |
+| Agent Builder | AI Toolkit ਰਾਹੀਂ Agent Builder ਵਿੱਚ MCP ਸਰਵਰ ਨੂੰ ਡਿਬੱਗ ਕਰੋ। | 1. VS Code ਡਿਬੱਗ ਪੈਨਲ ਖੋਲ੍ਹੋ। `Debug in Agent Builder` ਚੁਣੋ ਅਤੇ MCP ਸਰਵਰ ਡਿਬੱਗ ਕਰਨ ਲਈ `F5` ਦਬਾਓ।<br>2. AI Toolkit Agent Builder ਵਰਤ ਕੇ [ਇਸ ਪ੍ਰੌਂਪਟ](../../../../../../../../../../../open_prompt_builder) ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰੋ। ਸਰਵਰ ਆਪਣੇ ਆਪ Agent Builder ਨਾਲ ਜੁੜ ਜਾਵੇਗਾ।<br>3. ਪ੍ਰੌਂਪਟ ਨਾਲ ਸਰਵਰ ਟੈਸਟ ਕਰਨ ਲਈ `Run` 'ਤੇ ਕਲਿੱਕ ਕਰੋ। |
+| MCP ਇੰਸਪੈਕਟਰ | MCP ਇੰਸਪੈਕਟਰ ਦੀ ਵਰਤੋਂ ਕਰਕੇ MCP ਸਰਵਰ ਨੂੰ ਡਿਬੱਗ ਕਰੋ। | 1. [Node.js](https://nodejs.org/) ਇੰਸਟਾਲ ਕਰੋ<br>2. ਇੰਸਪੈਕਟਰ ਸੈਟਅਪ ਕਰੋ: `cd inspector` && `npm install` <br>3. VS Code ਡਿਬੱਗ ਪੈਨਲ ਖੋਲ੍ਹੋ। `Debug SSE in Inspector (Edge)` ਜਾਂ `Debug SSE in Inspector (Chrome)` ਚੁਣੋ। ਡਿਬੱਗ ਸ਼ੁਰੂ ਕਰਨ ਲਈ `F5` ਦਬਾਓ।<br>4. ਜਦ MCP ਇੰਸਪੈਕਟਰ ਬਰਾਊਜ਼ਰ ਵਿੱਚ ਖੁਲਦਾ ਹੈ, `Connect` ਬਟਨ 'ਤੇ ਕਲਿੱਕ ਕਰਕੇ ਇਸ MCP ਸਰਵਰ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।<br>5. ਫਿਰ ਤੁਸੀਂ `List Tools` ਕਰ ਸਕਦੇ ਹੋ, ਟੂਲ ਚੁਣ ਸਕਦੇ ਹੋ, ਪੈਰਾਮੀਟਰ ਦਾਖਲ ਕਰਕੇ `Run Tool` ਨਾਲ ਸਰਵਰ ਕੋਡ ਡਿਬੱਗ ਕਰ ਸਕਦੇ ਹੋ।<br> |
 
-## ਡੀਫਾਲਟ ਪੋਰਟਸ ਅਤੇ ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ
+## ਡਿਫ਼ੌਲਟ ਪੋਰਟ ਅਤੇ ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ
 
-| ਡੀਬੱਗ ਮੋਡ | ਪੋਰਟਸ | ਪਰਿਭਾਸ਼ਾਵਾਂ | ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ | ਨੋਟ |
+| ਡਿਬੱਗ ਮੋਡ | ਪੋਰਟ | ਪਰਿਭਾਸ਼ਾ | ਕਸਟਮਾਈਜ਼ੇਸ਼ਨ | ਨੋਟ |
 | ---------- | ----- | ------------ | -------------- |-------------- |
-| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) ਨੂੰ ਸੋਧੋ ਉਪਰੋਕਤ ਪੋਰਟਸ ਨੂੰ ਬਦਲਣ ਲਈ। | N/A |
-| MCP Inspector | 3001 (Server); 5173 ਅਤੇ 3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) ਨੂੰ ਸੋਧੋ ਉਪਰੋਕਤ ਪੋਰਟਸ ਨੂੰ ਬਦਲਣ ਲਈ।| N/A |
+| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | ਉਪਰੋਕਤ ਪੋਰਟ ਬਦਲਣ ਲਈ [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) ਸੰਪਾਦਿਤ ਕਰੋ। | ਲਾਗੂ ਨਹੀਂ |
+| MCP ਇੰਸਪੈਕਟਰ | 3001 (ਸਰਵਰ); 5173 ਅਤੇ 3000 (ਇੰਸਪੈਕਟਰ) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | ਉਪਰੋਕਤ ਪੋਰਟ ਬਦਲਣ ਲਈ [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json), [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json), [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py), [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) ਸੰਪਾਦਿਤ ਕਰੋ। | ਲਾਗੂ ਨਹੀਂ |
 
 ## ਫੀਡਬੈਕ
 
-ਜੇ ਤੁਹਾਡੇ ਕੋਲ ਇਸ ਟੈਂਪਲੇਟ ਲਈ ਕੋਈ ਫੀਡਬੈਕ ਜਾਂ ਸੁਝਾਅ ਹਨ, ਤਾਂ [AI Toolkit GitHub ਰਿਪੋਜ਼ਟਰੀ](https://github.com/microsoft/vscode-ai-toolkit/issues) 'ਤੇ ਇੱਕ ਇਸ਼ੂ ਖੋਲ੍ਹੋ।
+ਜੇ ਤੁਹਾਡੇ ਕੋਲ ਇਸ ਟੈਂਪਲੇਟ ਲਈ ਕੋਈ ਫੀਡਬੈਕ ਜਾਂ ਸੁਝਾਵ ਹਨ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ [AI Toolkit GitHub ਰਿਪੋਜਿਟਰੀ](https://github.com/microsoft/vscode-ai-toolkit/issues) 'ਤੇ ਇੱਕ ਇਸ਼ੂ ਖੋਲ੍ਹੋ।
 
 ---
 
-**ਅਸਵੀਕਾਰਨਾ**:  
-ਇਹ ਦਸਤਾਵੇਜ਼ AI ਅਨੁਵਾਦ ਸੇਵਾ [Co-op Translator](https://github.com/Azure/co-op-translator) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਅਨੁਵਾਦ ਕੀਤਾ ਗਿਆ ਹੈ। ਜਦੋਂ ਕਿ ਅਸੀਂ ਸਹੀ ਹੋਣ ਦਾ ਯਤਨ ਕਰਦੇ ਹਾਂ, ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਦਿਓ ਕਿ ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦਾਂ ਵਿੱਚ ਗਲਤੀਆਂ ਜਾਂ ਅਸੁਚਨਾਵਾਂ ਹੋ ਸਕਦੀਆਂ ਹਨ। ਮੂਲ ਦਸਤਾਵੇਜ਼, ਜੋ ਇਸਦੀ ਮੂਲ ਭਾਸ਼ਾ ਵਿੱਚ ਹੈ, ਨੂੰ ਅਧਿਕਾਰਤ ਸਰੋਤ ਮੰਨਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਮਹੱਤਵਪੂਰਨ ਜਾਣਕਾਰੀ ਲਈ, ਪੇਸ਼ੇਵਰ ਮਨੁੱਖੀ ਅਨੁਵਾਦ ਦੀ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਇਸ ਅਨੁਵਾਦ ਦੀ ਵਰਤੋਂ ਤੋਂ ਪੈਦਾ ਹੋਣ ਵਾਲੇ ਕਿਸੇ ਵੀ ਗਲਤਫਹਿਮੀ ਜਾਂ ਗਲਤ ਵਿਆਖਿਆ ਲਈ ਅਸੀਂ ਜ਼ਿੰਮੇਵਾਰ ਨਹੀਂ ਹਾਂ।
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**ਇਲਾਨ**:  
+ਇਹ ਦਸਤਾਵੇਜ਼ AI ਅਨੁਵਾਦ ਸੇਵਾ [Co-op Translator](https://github.com/Azure/co-op-translator) ਦੀ ਵਰਤੋਂ ਨਾਲ ਅਨੁਵਾਦ ਕੀਤਾ ਗਿਆ ਹੈ। ਜਦੋਂ ਕਿ ਅਸੀਂ ਸਹੀਤਾ ਲਈ ਯਤਨਸ਼ੀਲ ਹਾਂ, ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਰੱਖੋ ਕਿ ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦਾਂ ਵਿੱਚ ਗਲਤੀਆਂ ਜਾਂ ਅਸਮਰੱਥਤਾਵਾਂ ਹੋ ਸਕਦੀਆਂ ਹਨ। ਮੂਲ ਦਸਤਾਵੇਜ਼ ਆਪਣੇ ਮੂਲ ਭਾਸ਼ਾ ਵਿੱਚ ਹੀ ਪ੍ਰਮਾਣਿਕ ਸਰੋਤ ਸਮਝਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਅਹੰਕਾਰਪੂਰਣ ਜਾਣਕਾਰੀ ਲਈ, ਪੇਸ਼ੇਵਰ ਮਨੁੱਖੀ ਅਨੁਵਾਦ ਦੀ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਇਸ ਅਨੁਵਾਦ ਦੀ ਵਰਤੋਂ ਨਾਲ ਹੋਣ ਵਾਲੇ ਕਿਸੇ ਵੀ ਗਲਤਫਹਿਮੀਆਂ ਜਾਂ ਭ੍ਰਮਾਂ ਲਈ ਅਸੀਂ ਜ਼ਿੰਮੇਵਾਰ ਨਹੀਂ ਹਾਂ।
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

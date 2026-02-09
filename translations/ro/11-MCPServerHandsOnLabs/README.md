@@ -1,160 +1,163 @@
-# 🚀 MCP Server cu PostgreSQL - Ghid Complet de Învățare
+# 🚀 Server MCP cu PostgreSQL - Ghid complet de învățare
 
-## 🧠 Prezentare Generală a Căii de Învățare pentru Integrarea Bazei de Date MCP
+## 🧠 Prezentare generală a traseului de învățare pentru integrarea bazei de date MCP
 
-Acest ghid de învățare cuprinzător te învață cum să construiești **servere Model Context Protocol (MCP)** pregătite pentru producție, care se integrează cu baze de date printr-o implementare practică de analiză retail. Vei învăța modele de nivel enterprise, inclusiv **Row Level Security (RLS)**, **căutare semantică**, **integrare Azure AI** și **acces multi-tenant la date**.
+Acest ghid de învățare cuprinzător vă învață cum să construiți servere **Model Context Protocol (MCP)** pregătite pentru producție, care se integrează cu baze de date printr-o implementare practică de analiză retail. Veți învăța modele de nivel enterprise, inclusiv **Row Level Security (RLS)**, **căutare semantică**, **integrare Azure AI** și **acces multi-chiriaș la date**.
 
-Indiferent dacă ești dezvoltator backend, inginer AI sau arhitect de date, acest ghid oferă o învățare structurată cu exemple din lumea reală și exerciții practice, care te vor ghida prin următorul server MCP https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
+Indiferent dacă sunteți dezvoltator backend, inginer AI sau arhitect de date, acest ghid oferă învățare structurată cu exemple din lumea reală și exerciții practice care vă ghidează prin următorul server MCP https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
 
-## 🔗 Resurse Oficiale MCP
+## 🔗 Resurse oficiale MCP
 
-- 📘 [Documentație MCP](https://modelcontextprotocol.io/) – Tutoriale detaliate și ghiduri pentru utilizatori
-- 📜 [Specificație MCP](https://modelcontextprotocol.io/docs/) – Arhitectura protocolului și referințe tehnice
-- 🧑‍💻 [Repository GitHub MCP](https://github.com/modelcontextprotocol) – SDK-uri open-source, instrumente și exemple de cod
-- 🌐 [Comunitatea MCP](https://github.com/orgs/modelcontextprotocol/discussions) – Alătură-te discuțiilor și contribuie la comunitate
+- 📘 [Documentația MCP](https://modelcontextprotocol.io/) – Tutoriale detaliate și ghiduri pentru utilizatori  
+- 📜 [Specificația MCP (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Arhitectura protocolului și referințe tehnice  
+- 🧑‍💻 [Depozitul GitHub MCP](https://github.com/modelcontextprotocol) – SDK-uri open-source, unelte și exemple de cod  
+- 🌐 [Comunitatea MCP](https://github.com/orgs/modelcontextprotocol/discussions) – Alăturați-vă discuțiilor și contribuiți la comunitate  
+- 🔒 [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – Practici de securitate și mitigări de risc  
 
-## 🧭 Calea de Învățare pentru Integrarea Bazei de Date MCP
+## 🧭 Traseul de învățare pentru integrarea bazei de date MCP
 
-### 📚 Structura Completă de Învățare pentru https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail
+### 📚 Structura completă de învățare pentru https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail
 
-| Lab | Subiect | Descriere | Link |
+| Laborator | Subiect | Descriere | Link |
 |--------|-------|-------------|------|
-| **Lab 1-3: Fundamente** | | | |
-| 00 | [Introducere în Integrarea Bazei de Date MCP](./00-Introduction/README.md) | Prezentare generală a MCP cu integrarea bazei de date și cazul de utilizare pentru analiza retail | [Începe aici](./00-Introduction/README.md) |
-| 01 | [Concepte de Arhitectură de Bază](./01-Architecture/README.md) | Înțelegerea arhitecturii serverului MCP, straturile bazei de date și modelele de securitate | [Învață](./01-Architecture/README.md) |
-| 02 | [Securitate și Multi-Tenancy](./02-Security/README.md) | Row Level Security, autentificare și acces multi-tenant la date | [Învață](./02-Security/README.md) |
-| 03 | [Configurarea Mediului](./03-Setup/README.md) | Configurarea mediului de dezvoltare, Docker, resurse Azure | [Configurează](./03-Setup/README.md) |
-| **Lab 4-6: Construirea Serverului MCP** | | | |
-| 04 | [Designul și Schema Bazei de Date](./04-Database/README.md) | Configurarea PostgreSQL, designul schemei retail și datele de exemplu | [Construiește](./04-Database/README.md) |
-| 05 | [Implementarea Serverului MCP](./05-MCP-Server/README.md) | Construirea serverului FastMCP cu integrarea bazei de date | [Construiește](./05-MCP-Server/README.md) |
-| 06 | [Dezvoltarea Instrumentelor](./06-Tools/README.md) | Crearea instrumentelor de interogare a bazei de date și introspecția schemei | [Construiește](./06-Tools/README.md) |
-| **Lab 7-9: Funcționalități Avansate** | | | |
-| 07 | [Integrarea Căutării Semantice](./07-Semantic-Search/README.md) | Implementarea vectorilor de încorporare cu Azure OpenAI și pgvector | [Avansează](./07-Semantic-Search/README.md) |
-| 08 | [Testare și Debugging](./08-Testing/README.md) | Strategii de testare, instrumente de debugging și abordări de validare | [Testează](./08-Testing/README.md) |
-| 09 | [Integrarea VS Code](./09-VS-Code/README.md) | Configurarea integrării MCP în VS Code și utilizarea AI Chat | [Integrează](./09-VS-Code/README.md) |
-| **Lab 10-12: Producție și Cele Mai Bune Practici** | | | |
-| 10 | [Strategii de Implementare](./10-Deployment/README.md) | Implementare Docker, Azure Container Apps și considerații de scalare | [Implementează](./10-Deployment/README.md) |
-| 11 | [Monitorizare și Observabilitate](./11-Monitoring/README.md) | Application Insights, logare, monitorizarea performanței | [Monitorizează](./11-Monitoring/README.md) |
-| 12 | [Cele Mai Bune Practici și Optimizare](./12-Best-Practices/README.md) | Optimizarea performanței, întărirea securității și sfaturi pentru producție | [Optimizează](./12-Best-Practices/README.md) |
+| **Laboratoarele 1-3: Fundamente** | | | |
+| 00 | [Introducere în integrarea bazei de date MCP](./00-Introduction/README.md) | Prezentare generală MCP cu integrarea bazei de date și caz de utilizare analiză retail | [Începeți aici](./00-Introduction/README.md) |
+| 01 | [Concepte de bază ale arhitecturii](./01-Architecture/README.md) | Înțelegerea arhitecturii serverului MCP, straturi de bază de date și modele de securitate | [Învățați](./01-Architecture/README.md) |
+| 02 | [Securitate și multi-chiriaș](./02-Security/README.md) | Row Level Security, autentificare și acces multi-chiriaș la date | [Învățați](./02-Security/README.md) |
+| 03 | [Configurare mediu](./03-Setup/README.md) | Setarea mediului de dezvoltare, Docker, resurse Azure | [Configurare](./03-Setup/README.md) |
+| **Laboratoarele 4-6: Construirea serverului MCP** | | | |
+| 04 | [Designul bazei de date și schema](./04-Database/README.md) | Configurare PostgreSQL, design schema retail și date exemplu | [Construiește](./04-Database/README.md) |
+| 05 | [Implementarea serverului MCP](./05-MCP-Server/README.md) | Construirea serverului FastMCP cu integrare bazei de date | [Construiește](./05-MCP-Server/README.md) |
+| 06 | [Dezvoltarea uneltelor](./06-Tools/README.md) | Crearea de unelte pentru interogări baze de date și introspecție schemă | [Construiește](./06-Tools/README.md) |
+| **Laboratoarele 7-9: Funcționalități avansate** | | | |
+| 07 | [Integrare căutare semantică](./07-Semantic-Search/README.md) | Implementarea vector embeddings cu Azure OpenAI și pgvector | [Avansați](./07-Semantic-Search/README.md) |
+| 08 | [Testare și depanare](./08-Testing/README.md) | Strategii de testare, unelte de depanare și metode de validare | [Testează](./08-Testing/README.md) |
+| 09 | [Integrare VS Code](./09-VS-Code/README.md) | Configurare integrare MCP și utilizare chat AI în VS Code | [Integrare](./09-VS-Code/README.md) |
+| **Laboratoarele 10-12: Producție și bune practici** | | | |
+| 10 | [Strategii de implementare](./10-Deployment/README.md) | Implementare cu Docker, Azure Container Apps și considerente de scalare | [Implementare](./10-Deployment/README.md) |
+| 11 | [Monitorizare și observabilitate](./11-Monitoring/README.md) | Application Insights, jurnalizare, monitorizarea performanței | [Monitorizează](./11-Monitoring/README.md) |
+| 12 | [Bune practici și optimizare](./12-Best-Practices/README.md) | Optimizarea performanței, hardening securitate și sfaturi pentru producție | [Optimizează](./12-Best-Practices/README.md) |
 
-### 💻 Ce Vei Construi
+### 💻 Ce vei construi
 
-La finalul acestei căi de învățare, vei fi construit un **Server MCP Zava Retail Analytics** complet, care include:
+La finalul acestui traseu de învățare, vei fi construit un server complet **Zava Retail Analytics MCP Server** care include:
 
-- **Bază de date retail multi-tabel** cu comenzi ale clienților, produse și inventar
-- **Row Level Security** pentru izolarea datelor pe baza magazinului
-- **Căutare semantică a produselor** folosind încorporări Azure OpenAI
-- **Integrare AI Chat în VS Code** pentru interogări în limbaj natural
-- **Implementare pregătită pentru producție** cu Docker și Azure
-- **Monitorizare cuprinzătoare** folosind Application Insights
+- **Bază de date retail multi-tabel** cu comenzi clienți, produse și inventar  
+- **Row Level Security** pentru izolare date pe bază de magazin  
+- **Căutare semantică a produselor** folosind embeddings Azure OpenAI  
+- **Integrare chat AI în VS Code** pentru interogări în limbaj natural  
+- **Implementare pregătită pentru producție** cu Docker și Azure  
+- **Monitorizare cuprinzătoare** prin Application Insights  
 
-## 🎯 Cerințe Prealabile pentru Învățare
+## 🎯 Cerințe prealabile pentru învățare
 
-Pentru a beneficia la maximum de această cale de învățare, ar trebui să ai:
+Pentru a profita la maximum de acest traseu de învățare, ar trebui să ai:
 
-- **Experiență în Programare**: Familiaritate cu Python (preferat) sau limbaje similare
-- **Cunoștințe despre Baze de Date**: Înțelegere de bază a SQL și bazelor de date relaționale
-- **Concepte API**: Înțelegerea API-urilor REST și a conceptelor HTTP
-- **Instrumente de Dezvoltare**: Experiență cu linia de comandă, Git și editoare de cod
-- **Bazele Cloud**: (Opțional) Cunoștințe de bază despre Azure sau platforme cloud similare
-- **Familiaritate cu Docker**: (Opțional) Înțelegerea conceptelor de containerizare
+- **Experiență în programare**: Familiaritate cu Python (preferat) sau limbaje similare  
+- **Cunoștințe de baze de date**: Înțelegere de bază a SQL și baze de date relaționale  
+- **Concepte API**: Cunoștințe de bază despre API-uri REST și concepte HTTP  
+- **Unelte de dezvoltare**: Experiență cu linia de comandă, Git și editoare de cod  
+- **Bazele cloud-ului**: (Opțional) Cunoștințe de bază despre Azure sau platforme similare  
+- **Familiaritate cu Docker**: (Opțional) Înțelegerea conceptelor de containerizare  
 
-### Instrumente Necesare
+### Unelte necesare
 
-- **Docker Desktop** - Pentru rularea PostgreSQL și serverului MCP
-- **Azure CLI** - Pentru implementarea resurselor cloud
-- **VS Code** - Pentru dezvoltare și integrarea MCP
-- **Git** - Pentru controlul versiunilor
-- **Python 3.8+** - Pentru dezvoltarea serverului MCP
+- **Docker Desktop** - Pentru rularea PostgreSQL și server MCP  
+- **Azure CLI** - Pentru implementarea resurselor cloud  
+- **VS Code** - Pentru dezvoltare și integrare MCP  
+- **Git** - Pentru controlul versiunilor  
+- **Python 3.8+** - Pentru dezvoltarea serverului MCP  
 
-## 📚 Ghid de Studiu & Resurse
+## 📚 Ghid de studiu & Resurse
 
-Această cale de învățare include resurse cuprinzătoare pentru a te ajuta să navighezi eficient:
+Acest traseu de învățare include resurse cuprinzătoare pentru a vă ajuta să navigați eficient:
 
-### Ghid de Studiu
+### Ghid de studiu
 
-Fiecare lab include:
-- **Obiective clare de învățare** - Ce vei realiza
-- **Instrucțiuni pas cu pas** - Ghiduri detaliate de implementare
-- **Exemple de cod** - Mostre funcționale cu explicații
-- **Exerciții** - Oportunități de practică
-- **Ghiduri de depanare** - Probleme comune și soluții
-- **Resurse suplimentare** - Lecturi și explorări ulterioare
+Fiecare laborator include:  
+- **Obiective clare de învățare** - Ce vei realiza  
+- **Instrucțiuni pas cu pas** - Ghiduri detaliate de implementare  
+- **Exemple de cod** - Mostre funcționale cu explicații  
+- **Exerciții** - Oportunități practice  
+- **Ghiduri de depanare** - Probleme comune și soluții  
+- **Resurse adiționale** - Lecturi suplimentare și explorare  
 
-### Verificarea Cerințelor Prealabile
+### Verificare cerințe prealabile
 
-Înainte de a începe fiecare lab, vei găsi:
-- **Cunoștințe necesare** - Ce ar trebui să știi înainte
-- **Validarea configurării** - Cum să verifici mediul tău
-- **Estimări de timp** - Timpul necesar pentru finalizare
-- **Rezultate ale învățării** - Ce vei ști după finalizare
+Înainte de fiecare laborator vei găsi:  
+- **Cunoștințe necesare** - Ce trebuie să știi înainte  
+- **Validare configurare** - Cum să verifici mediul  
+- **Estimări de timp** - Durata aproximativă de finalizare  
+- **Rezultate de învățare** - Ce vei ști după finalizare  
 
-### Căi de Învățare Recomandate
+### Trasee recomandate de învățare
 
-Alege calea în funcție de nivelul tău de experiență:
+Alege traseul potrivit nivelului tău de experiență:
 
-#### 🟢 **Calea pentru Începători** (Nou în MCP)
-1. Asigură-te că ai finalizat 0-10 din [MCP pentru Începători](https://aka.ms/mcp-for-beginners) mai întâi
-2. Completează lab-urile 00-03 pentru a consolida fundamentele
-3. Urmează lab-urile 04-06 pentru construcție practică
-4. Încearcă lab-urile 07-09 pentru utilizare practică
+#### 🟢 **Traseu pentru începători** (Nou în MCP)  
+1. Asigură-te că ai finalizat mai întâi 0-10 din [MCP pentru Începători](https://aka.ms/mcp-for-beginners)  
+2. Parcurge laboratoarele 00-03 pentru a-ți consolida fundamentele  
+3. Urmează laboratoarele 04-06 pentru construire practică  
+4. Încearcă laboratoarele 07-09 pentru utilizare practică  
 
-#### 🟡 **Calea Intermediară** (Experiență parțială cu MCP)
-1. Revizuiește lab-urile 00-01 pentru concepte specifice bazei de date
-2. Concentrează-te pe lab-urile 02-06 pentru implementare
-3. Explorează în detaliu lab-urile 07-12 pentru funcționalități avansate
+#### 🟡 **Traseu intermediar** (Cu experiență MCP)  
+1. Recapitulează laboratoarele 00-01 pentru concepte specifice bazei de date  
+2. Concentrează-te pe laboratoarele 02-06 pentru implementare  
+3. Aprofundează laboratoarele 07-12 pentru funcționalități avansate  
 
-#### 🔴 **Calea Avansată** (Experiență avansată cu MCP)
-1. Parcurge rapid lab-urile 00-03 pentru context
-2. Concentrează-te pe lab-urile 04-09 pentru integrarea bazei de date
-3. Concentrează-te pe lab-urile 10-12 pentru implementare în producție
+#### 🔴 **Traseu avansat** (Experimentat MCP)  
+1. Parcurge sumar laboratoarele 00-03 pentru context  
+2. Concentrează-te pe laboratoarele 04-09 pentru integrare bază de date  
+3. Dedica-te laboratoarelor 10-12 pentru implementare în producție  
 
-## 🛠️ Cum să Utilizezi Eficient Această Cale de Învățare
+## 🛠️ Cum să folosești eficient acest traseu de învățare
 
-### Învățare Secvențială (Recomandată)
+### Învățare secvențială (recomandată)
 
-Parcurge lab-urile în ordine pentru o înțelegere cuprinzătoare:
+Parcurge laboratoarele în ordine pentru o înțelegere completă:
 
-1. **Citește prezentarea generală** - Înțelege ce vei învăța
-2. **Verifică cerințele prealabile** - Asigură-te că ai cunoștințele necesare
-3. **Urmează ghidurile pas cu pas** - Implementează pe măsură ce înveți
-4. **Completează exercițiile** - Consolidează-ți înțelegerea
-5. **Revizuiește concluziile cheie** - Fixează rezultatele învățării
+1. **Citește prezentarea generală** - Înțelege ce vei învăța  
+2. **Verifică cerințele prealabile** - Asigură-te că ai cunoștințele necesare  
+3. **Urmează ghidurile pas cu pas** - Implementează pe măsură ce înveți  
+4. **Finalizează exercițiile** - Consolidează-ți înțelegerea  
+5. **Revizuiește punctele cheie** - Solidifică rezultatele învățării  
 
-### Învățare Direcționată
+### Învățare țintită
 
 Dacă ai nevoie de abilități specifice:
 
-- **Integrarea Bazei de Date**: Concentrează-te pe lab-urile 04-06
-- **Implementarea Securității**: Concentrează-te pe lab-urile 02, 08, 12
-- **AI/Căutare Semantică**: Explorează în detaliu lab-ul 07
-- **Implementare în Producție**: Studiază lab-urile 10-12
+- **Integrare bază de date**: Concentrează-te pe laboratoarele 04-06  
+- **Implementare securitate**: Acordă atenție laboratoarelor 02, 08, 12  
+- **AI / Căutare semantică**: Aprofundează laboratorul 07  
+- **Implementare în producție**: Studiază laboratoarele 10-12  
 
-### Practică Practică
+### Practică hands-on
 
-Fiecare lab include:
-- **Exemple de cod funcționale** - Copiază, modifică și experimentează
-- **Scenarii din lumea reală** - Cazuri practice de utilizare în analiza retail
-- **Complexitate progresivă** - Construiește de la simplu la avansat
-- **Pași de validare** - Verifică dacă implementarea ta funcționează
+Fiecare laborator include:  
+- **Exemple funcționale de cod** - Copiază, modifică și experimentează  
+- **Scenarii reale** - Cazuri practice de analiză retail  
+- **Complexitate progresivă** - Construire de la simplu la avansat  
+- **Pași de validare** - Verifică dacă implementarea funcționează  
 
-## 🌟 Comunitate și Suport
+## 🌟 Comunitate și suport
 
-### Obține Ajutor
+### Obține ajutor
 
-- **Discord Azure AI**: [Alătură-te pentru suport de la experți](https://discord.com/invite/ByRwuEEgH4)
-- **Repo GitHub și Exemplu de Implementare**: [Exemplu de Implementare și Resurse](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
-- **Comunitatea MCP**: [Alătură-te discuțiilor MCP mai largi](https://github.com/orgs/modelcontextprotocol/discussions)
+- **Azure AI Discord**: [Alătură-te pentru suport expert](https://discord.com/invite/ByRwuEEgH4)  
+- **Repo GitHub și exemplu implementare**: [Exemplu implementare și resurse](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)  
+- **Comunitatea MCP**: [Alătură-te discuțiilor MCP mai largi](https://github.com/orgs/modelcontextprotocol/discussions)  
 
-## 🚀 Pregătit să Începi?
+## 🚀 Gata de început?
 
-Începe călătoria ta cu **[Lab 00: Introducere în Integrarea Bazei de Date MCP](./00-Introduction/README.md)**
-
----
-
-*Stăpânește construirea serverelor MCP pregătite pentru producție cu integrarea bazei de date prin această experiență cuprinzătoare și practică.*
+Începe-ți călătoria cu **[Laborator 00: Introducere în integrarea bazei de date MCP](./00-Introduction/README.md)**
 
 ---
 
+*Stăpânește construirea serverelor MCP pregătite pentru producție cu integrarea bazelor de date prin această experiență completă, practică de învățare.*
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Declinare de responsabilitate**:  
-Acest document a fost tradus folosind serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim să asigurăm acuratețea, vă rugăm să fiți conștienți că traducerile automate pot conține erori sau inexactități. Documentul original în limba sa natală ar trebui considerat sursa autoritară. Pentru informații critice, se recomandă traducerea profesională realizată de un specialist uman. Nu ne asumăm responsabilitatea pentru eventualele neînțelegeri sau interpretări greșite care pot apărea din utilizarea acestei traduceri.
+Acest document a fost tradus utilizând serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim pentru acuratețe, vă rugăm să fiți conștienți că traducerile automate pot conține erori sau inexactități. Documentul original în limba sa nativă trebuie considerat sursa autorizată. Pentru informații critice, se recomandă traducerea profesională realizată de oameni. Nu ne asumăm responsabilitatea pentru orice neînțelegeri sau interpretări greșite care pot apărea în urma utilizării acestei traduceri.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

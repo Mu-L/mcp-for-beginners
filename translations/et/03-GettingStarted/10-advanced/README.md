@@ -1,20 +1,20 @@
 # Täiustatud serveri kasutamine
 
-MCP SDK-s on kaks erinevat tüüpi servereid: tavaline server ja madala taseme server. Tavaliselt kasutatakse tavalist serverit funktsioonide lisamiseks. Kuid mõnel juhul võib olla kasulik tugineda madala taseme serverile, näiteks:
+MCP SDK-s on kaks erinevat serveri tüüpi, tavaline server ja madala taseme server. Tavaliselt kasutaksite tavalist serverit funktsioonide lisamiseks. Mõnel juhul aga soovite tugineda madala taseme serverile, näiteks:
 
-- Parem arhitektuur. Kuigi puhta arhitektuuri loomine on võimalik nii tavalise kui ka madala taseme serveriga, võib väita, et madala taseme serveriga on see veidi lihtsam.
-- Funktsioonide kättesaadavus. Mõned täiustatud funktsioonid on saadaval ainult madala taseme serveriga. Näete seda hilisemates peatükkides, kui lisame proovivõtmise ja küsimuste esitamise.
+- Parem arhitektuur. Puhas arhitektuur on võimalik luua nii tavalise serveri kui ka madala taseme serveriga, kuid võib väita, et madala taseme serveriga on see veidi lihtsam.
+- Funktsioonide saadavus. Mõnda täiustatud funktsiooni saab kasutada ainult madala taseme serveriga. Seda näete hilisemas peatükis, kui lisame võtmist ja küsitlemist.
 
 ## Tavaline server vs madala taseme server
 
-Siin on näide MCP serveri loomisest tavalise serveriga:
+Nii näeb välja MCP serveri loomine tavalise serveriga
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# Lisa liitmisseade
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// Lisa liitmiste tööriist
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,16 +42,16 @@ server.registerTool("add",
 );
 ```
 
-Põhimõte on see, et lisate selgesõnaliselt iga tööriista, ressursi või küsimuse, mida soovite serveris kasutada. See on täiesti okei.
+Oluline on see, et te lisate selgesõnaliselt iga tööriista, ressursi või käsu, mida soovite serverile lisada. Sellega pole midagi valesti.
 
 ### Madala taseme serveri lähenemine
 
-Kui kasutate madala taseme serveri lähenemist, peate mõtlema veidi teisiti. Selle asemel, et registreerida iga tööriist, loote iga funktsiooni tüübi (tööriistad, ressursid või küsimused) jaoks kaks käsitlejat. Näiteks tööriistade puhul on ainult kaks funktsiooni:
+Kui aga kasutate madala taseme serveri lähenemist, peate mõtlema teisiti, nimelt selle asemel, et registreerida iga tööriist, loote iga funktsiooni tüübi (tööriistad, ressursid või käsud) jaoks kaks käsitlejat. Näiteks tööriistadel on siis ainult kaks funktsiooni:
 
-- Kõigi tööriistade loetlemine. Üks funktsioon vastutab kõigi tööriistade loetlemise katsete eest.
-- Kõigi tööriistade kasutamise käsitlemine. Siin on samuti ainult üks funktsioon, mis käsitleb tööriista kasutamise taotlusi.
+- Kõigi tööriistade loetelu. Üks funktsioon vastutab kõigi tööriistade loendamise katsete eest.
+- Kõigi tööriistade kutsumise käsitlemine. Siin on samuti ainult üks funktsioon, mis käsitleb tööriista kutsumisi.
 
-See kõlab nagu vähem tööd, eks? Selle asemel, et registreerida tööriist, pean lihtsalt tagama, et tööriist oleks loetletud, kui loetletakse kõik tööriistad, ja et seda kutsutakse, kui saabub taotlus tööriista kasutamiseks.
+See kõlab nagu vähem tööd, eks? Nii et tööriista registreerimise asemel pean lihtsalt tagama, et tööriist oleks loendis, kui loendan kõiki tööriistu, ning et see kutsutakse, kui saabub päring tööriista kutsumiseks.
 
 Vaatame, kuidas kood nüüd välja näeb:
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Tagastage registreeritud tööriistade nimekiri
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Siin on meil funktsioon, mis tagastab funktsioonide loendi. Iga kirje tööriistade loendis sisaldab välju nagu `name`, `description` ja `inputSchema`, et vastata tagastustüübile. See võimaldab meil paigutada oma tööriistad ja funktsioonide määratlused mujale. Nüüd saame luua kõik oma tööriistad eraldi kausta ja sama kehtib ka kõigi funktsioonide kohta, nii et projekt võib olla organiseeritud järgmiselt:
+Siin on meil nüüd funktsioon, mis tagastab omaduste nimekirja. Iga tööriista kirjelduse välja nagu `name`, `description` ja `inputSchema` on nüüd olemas tagastustüübi järgimiseks. See võimaldab meil panna oma tööriistad ja omaduste definitsioonid mujale. Nüüd saame kõik tööriistad luua tööriistade kaustas ning sama kehtib ka kõigi teie omaduste kohta, nii et teie projekt võib korraga olla selline:
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-See on suurepärane, meie arhitektuur võib olla üsna puhas.
+See on suurepärane, meie arhitektuur saab üsna puhtaks.
 
-Aga tööriistade kasutamine, kas see on sama idee – üks käsitleja tööriista kasutamiseks, ükskõik millist tööriista? Jah, täpselt, siin on selle koodi näide:
+Mis saab tööriistade kutsumisest, kas see on sama idee — üks käsitleja kutsumiseks, ükskõik milline tööriist? Jah, täpselt, siin on selle kood:
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tööriistad on sõnastik, kus võtmeteks on tööriistade nimed
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO kutsuda tööriist,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-Nagu ülaltoodud koodist näha, peame välja selgitama, millist tööriista kasutada ja milliste argumentidega, ning seejärel jätkama tööriista kasutamist.
+Nagu ülaltoodud koodist näete, peame tuvastama, millist tööriista kutsutakse ja milliste argumentidega ning seejärel peame jätkama tööriista kutsumisega.
 
-## Lähenemise täiustamine valideerimisega
+## Lähenemise parendamine valideerimisega
 
-Siiani olete näinud, kuidas kõik tööriistade, ressursside ja küsimuste lisamise registreerimised saab asendada nende kahe käsitlejaga iga funktsiooni tüübi jaoks. Mida veel peaksime tegema? Peaksime lisama mingi valideerimise, et tagada tööriista kasutamine õige argumentidega. Igal käitusajal on oma lahendus selleks, näiteks Python kasutab Pydanticut ja TypeScript Zodi. Idee on järgmine:
+Siiani olete näinud, kuidas kõik teie tööriistade, ressursside ja käskude registreerimised saab asendada nende kahe käsitlejaga iga funktsiooni tüübi kohta. Mida veel peame tegema? Peame lisama mingisuguse valideerimise, et tagada, et tööriist kutsutakse õigete argumentidega. Igal käivitamisel on selleks oma lahendus, näiteks Python kasutab Pydantic'ut ja TypeScript kasutab Zodi. Idee on järgmine:
 
-- Viia funktsiooni (tööriista, ressursi või küsimuse) loomise loogika selle pühendatud kausta.
-- Lisada viis sissetuleva taotluse valideerimiseks, näiteks tööriista kasutamise taotluse puhul.
+- Viia funktsiooni (tööriist, ressurss või käsk) loomise loogika selle pühendatud kausta.
+- Lisada viis valideerida sissetulev päring, mis palub näiteks tööriista kutsuda.
 
 ### Funktsiooni loomine
 
-Funktsiooni loomiseks peame looma selle funktsiooni jaoks faili ja tagama, et see sisaldab kohustuslikke välju, mis on vajalikud selle funktsiooni jaoks. Kohustuslikud väljad erinevad tööriistade, ressursside ja küsimuste puhul.
+Funktsiooni loomiseks peame looma selle funktsiooni faili ja veenduma, et selles on selle funktsiooni jaoks vajalikud nõutavad väljad. Millised väljad on olenevalt tööriistadest, ressurssidest ja käskudest veidi erinevad.
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Sisendi valideerimine Pydantic mudeli abil
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: lisa Pydantic, et saaksime luua AddInputModeli ja valideerida argumente
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,21 +213,21 @@ tool_add = {
 }
 ```
 
-Siin näete, kuidas me teeme järgmist:
+Siin näete, kuidas teeme järgmist:
 
-- Loome skeemi, kasutades Pydanticut `AddInputModel` väljadega `a` ja `b` failis *schema.py*.
-- Püüame sissetulevat taotlust parsida tüübiks `AddInputModel`. Kui parameetrites on lahknevus, siis see ebaõnnestub:
+- Loome skeemi Pydanticu `AddInputModel` abil, milles on väljad `a` ja `b` failis *schema.py*.
+- Püüame sissetuleva päringu analüüsida kui `AddInputModel` tüüpi; kui parameetrites on vastuolu, kukub see kokku:
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Sisendi valideerimine Pydantic mudeli abil
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-Saate valida, kas panna see parsimisloogika tööriista kasutamise funktsiooni või käsitleja funktsiooni.
+Võite valida, kas panna see analüüsi loogika tööriista kutsesse või käsitleja funktsiooni.
 
 **TypeScript**
 
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- Käsitlejas, mis tegeleb kõigi tööriistade kasutamisega, püüame parsida sissetulevat taotlust tööriista määratletud skeemiks:
+- Käsitlejas, mis tegeleb kõigi tööriistakutsetega, proovime nüüd analüüsida sissetuleva päringu tööriistale määratud skeemi järgi:
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    Kui see õnnestub, siis jätkame tööriista tegeliku kasutamisega:
+    kui see töötab, jätkame tegeliku tööriista kutsumisega:
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-Nagu näete, loob see lähenemine suurepärase arhitektuuri, kus kõik on omal kohal. *server.ts* on väga väike fail, mis ainult ühendab taotluste käsitlejad, ja iga funktsioon on oma vastavas kaustas, näiteks tools/, resources/ või prompts/.
+Nagu näha, loob see lähenemine suurepärase arhitektuuri, kuna kõigil on oma koht, *server.ts* on väga väike fail, mis lihtsalt ühendab päringukäsitlejad, ja iga funktsioon on oma kaustas, näiteks tools/, resources/ või /prompts.
 
 Suurepärane, proovime seda nüüd ehitada.
 
 ## Harjutus: Madala taseme serveri loomine
 
-Selles harjutuses teeme järgmist:
+Selles harjutuses teeme järgmised sammud:
 
-1. Loome madala taseme serveri, mis käsitleb tööriistade loetlemist ja kasutamist.
-1. Rakendame arhitektuuri, millele saab ehitada.
-1. Lisame valideerimise, et tagada tööriista kasutamise korrektne valideerimine.
+1. Loome madala taseme serveri, mis haldab tööriistade loendamist ja kutset.
+2. Rakendame arhitektuuri, millele saab ehitada edasi.
+3. Lisame valideerimise, et tagada teie tööriistakutsed on korrektselt valideeritud.
 
-### -1- Arhitektuuri loomine
+### -1- Loome arhitektuuri
 
-Esimene asi, mida peame lahendama, on arhitektuur, mis aitab meil skaleerida, kui lisame rohkem funktsioone. Siin on, kuidas see välja näeb:
+Esmalt peame looma arhitektuuri, mis aitab meil skaleerida, kui lisame rohkem funktsioone, see välja näeb järgmine:
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-Nüüd oleme loonud arhitektuuri, mis tagab, et saame hõlpsasti lisada uusi tööriistu eraldi kausta. Võite järgida seda, et lisada alamkatalooge ressursside ja küsimuste jaoks.
+Nüüd oleme seadistanud arhitektuuri, mis tagab, et saame hõlpsasti lisada uusi tööriistu tools-kaustas. Julgelt lisage alamkaustad ressursside ja käskude jaoks.
 
 ### -2- Tööriista loomine
 
-Vaatame, kuidas tööriista loomine välja näeb. Esiteks tuleb see luua oma *tool* alamkataloogis, näiteks:
+Vaatame, milline näeb tööriista loomine välja. Esiteks peab see olema loodud oma *tool* alamkaustas nii:
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Kontrolli sisendit Pydantic mudeli abil
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: lisa Pydantic, et saaksime luua AddInputModeli ja kontrollida argumente
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-Siin näeme, kuidas määratleme nime, kirjelduse, sisendskeemi, kasutades Pydanticut, ja käsitleja, mida kutsutakse, kui seda tööriista kasutatakse. Lõpuks ekspordime `tool_add`, mis on sõnastik, mis sisaldab kõiki neid omadusi.
+Siin näeme, kuidas määratleme nime, kirjelduse, sisendskeemi Pydanticuga ja käsitleja, mida kutsutakse, kui tööriista kutsutakse. Lõpuks ekspordime `tool_add`, mis on sõnastik, mis sisaldab neid kõiki omadusi.
 
-Samuti on olemas *schema.py*, mida kasutatakse tööriista sisendskeemi määratlemiseks:
+Samuti on olemas *schema.py*, mis määratleb tööriista kasutatava sisendskeemi:
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Peame täitma ka *__init__.py*, et tagada tööriistade kataloogi käsitlemine moodulina. Lisaks peame ekspordima selles olevad moodulid järgmiselt:
+Peame täiendama ka *__init__.py*, et tagada tools-kausta käsitlemine moodulina. Lisaks peame sellest moodulid väljapoole ekspordima nii:
 
 ```python
 from .add import tool_add
@@ -393,7 +393,7 @@ tools = {
 }
 ```
 
-Saame seda faili täiendada, kui lisame rohkem tööriistu.
+Seda faili võime täiendavalt laiendada, kui lisame rohkem tööriistu.
 
 **TypeScript**
 
@@ -414,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-Siin loome sõnastiku, mis koosneb omadustest:
+Siin loome sõnastiku, mis sisaldab omadusi:
 
-- name, see on tööriista nimi.
-- rawSchema, see on Zodi skeem, mida kasutatakse sissetulevate taotluste valideerimiseks.
+- name, tööriista nimi.
+- rawSchema, see on Zodi skeem, mida kasutatakse saabuvate tööriistakutsete valideerimiseks.
 - inputSchema, seda skeemi kasutab käsitleja.
-- callback, seda kasutatakse tööriista kutsumiseks.
+- callback, mida kasutatakse tööriista kutsumiseks.
 
-Samuti on olemas `Tool`, mida kasutatakse selle sõnastiku teisendamiseks tüübiks, mida MCP serveri käsitleja saab aktsepteerida, ja see näeb välja järgmiselt:
+Samuti on olemas `Tool`, mida kasutatakse selle sõnastiku teisendamiseks tüübiks, mida MCP serveri käsitleja saab vastu võtta, see näeb välja nii:
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-Ja on olemas *schema.ts*, kuhu salvestame iga tööriista sisendskeemid. Praegu on seal ainult üks skeem, kuid tööriistade lisamisel saame lisada rohkem kirjeid:
+Ja on olemas *schema.ts*, kus hoitakse iga tööriista sisendskeeme, mis näeb välja nii; hetkel on vaid üks skeem, kuid uute tööriistade lisamisel saab lisada rohkem kirjeid:
 
 ```typescript
 import { z } from 'zod';
@@ -442,16 +442,16 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Suurepärane, liigume edasi tööriistade loetlemise käsitlemise juurde.
+Suurepärane, liigume edasi tööriistade loendamise käsitlemise juurde.
 
-### -3- Tööriistade loetlemise käsitlemine
+### -3- Tööriistade loendamise käsitlemine
 
-Järgmiseks, et käsitleda tööriistade loetlemist, peame seadistama taotluste käsitleja selleks. Siin on, mida peame lisama oma serveri faili:
+Järgmiseks, tööriistade loendamise käsitlemiseks peame seadistama päringukäsitleja. Siin on, mida lisada serverifaili:
 
 **Python**
 
 ```python
-# code omitted for brevity
+# kood on lühendatud
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-Siin lisame dekoratsiooni `@server.list_tools` ja rakendame funktsiooni `handle_list_tools`. Viimases peame koostama tööriistade loendi. Pange tähele, et igal tööriistal peab olema nimi, kirjeldus ja sisendskeem.
+Siin lisame dekoratsiooni `@server.list_tools` ja rakendava funktsiooni `handle_list_tools`. Viimases peame tootma tööriistade nimekirja. Pange tähele, et igal tööriistal peab olema nimi, kirjeldus ja inputSchema.
 
 **TypeScript**
 
-Tööriistade loetlemise taotluste käsitleja seadistamiseks peame kutsuma `setRequestHandler` serveris skeemiga, mis sobib sellega, mida üritame teha, antud juhul `ListToolsRequestSchema`.
+Tööriistade loendamise päringukäsitleja seadistamiseks kutsume serveril välja `setRequestHandler` skeemiga, mis sobib tehtava ülesandega, antud juhul `ListToolsRequestSchema`.
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// Kood on lühiduse mõttes välja jäetud
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Tagastab registreeritud tööriistade nimekirja
   return {
     tools: tools
   };
 });
 ```
 
-Suurepärane, nüüd oleme lahendanud tööriistade loetlemise osa, vaatame, kuidas tööriistu kasutada.
+Suurepärane, nüüd on meil tööriistade loendamise osa lahendatud, vaatame, kuidas tööriistu kutsuda.
 
-### -4- Tööriista kasutamise käsitlemine
+### -4- Tööriista kutsumise käsitlemine
 
-Tööriista kasutamiseks peame seadistama teise taotluste käsitleja, mis keskendub taotlusele, mis määrab, millist funktsiooni kasutada ja milliste argumentidega.
+Tööriista kutsumiseks peame seadistama teise päringukäsitleja, mis keskendub sellele, millist funktsiooni kutsutakse ja milliste argumentidega.
 
 **Python**
 
-Kasutame dekoratsiooni `@server.call_tool` ja rakendame seda funktsiooniga nagu `handle_call_tool`. Selles funktsioonis peame välja selgitama tööriista nime, selle argumendid ja tagama, et argumendid sobivad konkreetse tööriistaga. Argumentide valideerimise saame teha kas selles funktsioonis või tööriista sees.
+Kasutame dekoratsiooni `@server.call_tool` ja rakendame selle funktsiooniga `handle_call_tool`. Selle funktsiooni sees peame välja lugema tööriista nime, selle argumendi ja tagama, et argumendid on tööriista jaoks kehtivad. Võime kas valideerida argumendid selles funktsioonis või edasi tööriistas.
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tööriistad on sõnastik tööriistade nimedega võtmetena
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # kutsu tööriist esile
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -533,27 +533,33 @@ async def handle_call_tool(
     ] 
 ```
 
-Siin toimub järgmist:
+Siin toimub järgnev:
 
-- Tööriista nimi on juba olemas sisendparameetrina `name`, mis kehtib ka argumentide kohta `arguments` sõnastikus.
+- Meie tööriista nimi on sisendsuparametrina juba olemas kui `name`, ja argumendid on `arguments` sõnastikus.
 
-- Tööriista kutsutakse `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Argumentide valideerimine toimub `handler` omaduses, mis osutab funktsioonile. Kui see ebaõnnestub, visatakse erand.
+- Tööriista kutsutakse `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Argumentide valideerimine toimub `handler` omaduses oleva funktsiooni sees, kui see ebaõnnestub, viskab vea.
 
-Nüüd on meil täielik arusaam tööriistade loetlemisest ja kasutamisest madala taseme serveri abil.
+Nüüd on meil täielik ülevaade tööriistade loendamisest ja kutsumisest madala taseme serveri kaudu.
 
-Vaata [täielikku näidet](./code/README.md) siit.
+Vaata [täielikku näidet](./code/README.md)
 
-## Ülesanne
+## Kodutöö
 
-Laienda antud koodi mitmete tööriistade, ressursside ja küsimustega ning mõtle, kuidas märkad, et pead lisama faile ainult tööriistade kataloogi ja mitte mujale.
+Laiendage teile antud koodi mitme tööriista, ressursi ja käsuga ning mõelge sellele, kuidas märkate, et peate kolmanda faile lisama ainult tööriistade kausta, mitte kusagile mujale.
 
-*Lahendust ei anta*
+*Mingit lahendust ei anta*
 
 ## Kokkuvõte
 
-Selles peatükis nägime, kuidas madala taseme serveri lähenemine töötab ja kuidas see aitab meil luua kena arhitektuuri, millele saab edasi ehitada. Arutasime ka valideerimist ja nägime, kuidas kasutada valideerimisraamatukogusid sisendskeemide loomiseks.
+Selles peatükis nägime, kuidas madala taseme serveri lähenemine toimib ja kuidas see aitab luua kena arhitektuuri, millele saab edasi ehitada. Arutasime ka valideerimist ja teile näidati, kuidas kasutada valideerimisteeke sisendi valideerimiseks skeemide loomiseks.
+
+## Mis järgmiseks
+
+- Järgmiseks: [Lihtne autentimine](../11-simple-auth/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:
+See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame täpsust, palun arvestage, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument oma emakeeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tingitud arusaamatuste või valesti tõlgendamise eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,25 +1,25 @@
-# ਸਧਾਰਨ ਔਥ
+# Simple auth
 
-MCP SDKs OAuth 2.1 ਦੀ ਵਰਤੋਂ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ, ਜੋ ਕਿ ਸੱਚਮੁੱਚ ਇੱਕ ਕਾਫ਼ੀ ਜਟਿਲ ਪ੍ਰਕਿਰਿਆ ਹੈ ਜਿਸ ਵਿੱਚ ਔਥ ਸਰਵਰ, ਰਿਸੋਰਸ ਸਰਵਰ, ਪ੍ਰਮਾਣ ਪੱਤਰ ਭੇਜਣ, ਕੋਡ ਪ੍ਰਾਪਤ ਕਰਨ, ਬੇਅਰਰ ਟੋਕਨ ਲਈ ਕੋਡ ਦਾ ਅਦਲ-ਬਦਲ ਕਰਨ ਅਤੇ ਆਖਿਰਕਾਰ ਆਪਣੇ ਰਿਸੋਰਸ ਡਾਟਾ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਵਰਗੇ ਧਾਰਨਾਵਾਂ ਸ਼ਾਮਲ ਹਨ। ਜੇ ਤੁਸੀਂ OAuth ਨਾਲ ਅਣਜਾਣ ਹੋ, ਜੋ ਲਾਗੂ ਕਰਨ ਲਈ ਇੱਕ ਸ਼ਾਨਦਾਰ ਚੀਜ਼ ਹੈ, ਤਾਂ ਸਧਾਰਨ ਔਥ ਨਾਲ ਸ਼ੁਰੂ ਕਰਨਾ ਅਤੇ ਬਿਹਤਰ ਸੁਰੱਖਿਆ ਵੱਲ ਅੱਗੇ ਵਧਣਾ ਇੱਕ ਵਧੀਆ ਵਿਚਾਰ ਹੈ। ਇਸੇ ਲਈ ਇਹ ਅਧਿਆਇ ਮੌਜੂਦ ਹੈ, ਤੁਹਾਨੂੰ ਉੱਚਤਮ ਔਥ ਤੱਕ ਪਹੁੰਚਾਉਣ ਲਈ।
+MCP SDKs OAuth 2.1 ਦੀ ਵਰਤੋਂ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ ਜੋ ਕਿ ਇਕ ਕਾਫੀ ਜਟਿਲ ਪ੍ਰਕਿਰਿਆ ਹੈ ਜਿਸ ਵਿੱਚ auth ਸਰਵਰ, resource ਸਰਵਰ, credentials ਪੋਸਟ ਕਰਨਾ, ਕੋਡ ਪ੍ਰਾਪਤ ਕਰਨਾ, ਤੇ ਕੋਡ ਨੂੰ bearer ਟੋਕਨ ਵਾਸਤੇ ਬਦਲਣਾ ਸ਼ਾਮਿਲ ਹੈ ਜਦੋਂ ਕਿ ਤੁਸੀਂ ਆਖ਼ਿਰਕਾਰ ਆਪਣਾ resource ਡਾਟਾ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ। ਜੇ ਤੁਸੀਂ OAuth ਦੇ ਆਦਤ ਨਹੀਂ ਹੋ ਜੋ ਲਾਗੂ ਕਰਨ ਲਈ ਇੱਕ ਵਧੀਆ ਚੀਜ਼ ਹੈ, ਤਾਂ ਇਹ ਇਕ ਵਧੀਆ ਵਿਚਾਰ ਹੈ ਕਿ ਤੁਸੀਂ ਕਿਸੇ ਬੁਨਿਆਦੀ ਪੱਧਰ ਦੇ auth ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ ਅਤੇ ਫਿਰ ਵਧੀਆ ਅਤੇ ਵਧੀਆ ਸੁਰੱਖਿਆ ਵੱਲ ਬ ਧੋ। ਇਸੇ ਕਰਕੇ ਇਹ ਅਧਿਆਇ ਮੌਜੂਦ ਹੈ, ਤਾਂ ਜੋ ਤੁਹਾਨੂੰ ਵਧੇਰੇ ਅਡਵਾਂਸ ਆਥ ਵਿੱਚ ਤਿਆਰ ਕੀਤਾ ਜਾ ਸਕੇ।
 
-## ਔਥ, ਅਸੀਂ ਕੀ ਮਤਲਬ ਲੈਂਦੇ ਹਾਂ?
+## Auth, ਅਸੀਂ ਕੀ ਮਤਲਬ ਲੈਂਦੇ ਹਾਂ?
 
-ਔਥ ਦਾ ਅਰਥ ਹੈ ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਅਧਿਕਾਰ। ਇਸ ਵਿਚਾਰ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਸਾਨੂੰ ਦੋ ਚੀਜ਼ਾਂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ:
+Auth ਦੇ ਲਿਫਾਫੇ ਵਿੱਚ authentication ਅਤੇ authorization ਸ਼ਾਮਿਲ ਹੁੰਦੇ ਹਨ। ਵਿਚਾਰ ਇਹ ਹੈ ਕਿ ਸਾਨੂੰ ਦੋ ਚੀਜ਼ਾਂ ਕਰਣੀਆਂ ਹੋਣਗੀਆਂ:
 
-- **ਪ੍ਰਮਾਣਿਕਤਾ**, ਜੋ ਇਹ ਪਤਾ ਕਰਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਹੈ ਕਿ ਕੀ ਅਸੀਂ ਕਿਸੇ ਵਿਅਕਤੀ ਨੂੰ ਆਪਣੇ ਘਰ ਵਿੱਚ ਦਾਖਲ ਹੋਣ ਦੇਣਗੇ, ਕਿ ਉਹ "ਇੱਥੇ" ਹੋਣ ਦਾ ਅਧਿਕਾਰ ਰੱਖਦੇ ਹਨ, ਅਰਥਾਤ ਉਹਨਾਂ ਨੂੰ ਸਾਡੇ ਰਿਸੋਰਸ ਸਰਵਰ ਤੱਕ ਪਹੁੰਚ ਹੈ ਜਿੱਥੇ ਸਾਡੇ MCP ਸਰਵਰ ਫੀਚਰ ਹਨ।
-- **ਅਧਿਕਾਰ**, ਇਹ ਪਤਾ ਕਰਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਹੈ ਕਿ ਕੀ ਉਪਭੋਗਤਾ ਨੂੰ ਉਹਨਾਂ ਖਾਸ ਰਿਸੋਰਸਾਂ ਤੱਕ ਪਹੁੰਚ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ ਜਿਨ੍ਹਾਂ ਦੀ ਉਹ ਮੰਗ ਕਰ ਰਹੇ ਹਨ, ਉਦਾਹਰਣ ਲਈ ਇਹ ਆਰਡਰ ਜਾਂ ਇਹ ਉਤਪਾਦ ਜਾਂ ਕੀ ਉਹ ਸਮੱਗਰੀ ਨੂੰ ਪੜ੍ਹਨ ਦੀ ਇਜਾਜ਼ਤ ਰੱਖਦੇ ਹਨ ਪਰ ਮਿਟਾਉਣ ਦੀ ਨਹੀਂ।
+- **Authentication**, ਜਿਸਦਾ ਪ੍ਰਕਿਰਿਆ ਇਹ ਪਤਾ ਲਗਾਉਣ ਦੀ ਹੁੰਦੀ ਹੈ ਕਿ ਕਿਸੇ ਵਿਅਕਤੀ ਨੂੰ ਸਾਡੀ ਘਰ ਵਿੱਚ ਪਰਵਾਨਗੀ ਦੇਣ ਦੀ ਇਜਾਜ਼ਤ ਹੈ ਜਾਂ ਨਹੀਂ, ਉਹ ਇਥੇ "ਹੈ" ਇਸ ਦਾ ਅਰਥ ਹੈ ਕਿ ਉਹ ਸਾਡਾ resource ਸਰਵਰ ਵਰਤ ਸਕਦਾ ਹੈ ਜਿਥੇ ਸਾਡੇ MCP ਸਰਵਰ ਦੇ ਫੀਚਰ ਹਨ।
+- **Authorization**, ਇਸ ਦਾ ਮਤਲਬ ਇਹ ਪਤਾ ਲਗਾਉਣਾ ਹੈ ਕਿ ਕਿਸੇ ਵਰਤੋਂਕਾਰ ਨੂੰ ਉਹ ਸਪੈਸ਼ਲ resource ਜਿਨ੍ਹਾਂ ਲਈ ਉਹ ਮੁੰਗ ਰਹੇ ਹਨ, ਜਿਵੇਂ ਕਿਹੜੇ ਆਰਡਰ ਜਾਂ ਉਤਪਾਦ, ਹੋਣ ਦੀ ਇਜਾਜ਼ਤ ਹੈ ਜਾਂ ਨਹੀਂ, ਜਾਂ ਉਹ ਸਮੱਗਰੀ ਨੂੰ ਕਿਵੇਂ ਪੜ੍ਹ ਸਕਦੇ ਹਨ ਪਰ ਮਿਟਾ ਨਹੀਂ ਸਕਦੇ, ਜਿਵੇਂ ਹੋਰ ਉਦਾਹਰਨ।
 
-## ਪ੍ਰਮਾਣ ਪੱਤਰ: ਸਿਸਟਮ ਨੂੰ ਕਿਵੇਂ ਦੱਸਿਆ ਜਾਵੇ ਕਿ ਅਸੀਂ ਕੌਣ ਹਾਂ
+## Credentials: ਅਸੀਂ ਸਿਸਟਮ ਨੂੰ ਕਿਵੇਂ ਦੱਸਦੇ ਹਾਂ ਕਿ ਅਸੀਂ ਕੌਣ ਹਾਂ
 
-ਅੱਛਾ, ਜ਼ਿਆਦਾਤਰ ਵੈੱਬ ਡਿਵੈਲਪਰ ਆਮ ਤੌਰ 'ਤੇ ਸਰਵਰ ਨੂੰ ਇੱਕ ਪ੍ਰਮਾਣ ਪੱਤਰ ਪ੍ਰਦਾਨ ਕਰਨ ਦੇ ਵਿਚਾਰ ਵਿੱਚ ਸ਼ੁਰੂ ਕਰਦੇ ਹਨ, ਆਮ ਤੌਰ 'ਤੇ ਇੱਕ ਰਾਜ਼ ਜੋ ਦੱਸਦਾ ਹੈ ਕਿ ਕੀ ਉਹ "ਪ੍ਰਮਾਣਿਕਤਾ" ਲਈ ਇੱਥੇ ਹੋਣ ਦੀ ਇਜਾਜ਼ਤ ਰੱਖਦੇ ਹਨ। ਇਹ ਪ੍ਰਮਾਣ ਪੱਤਰ ਆਮ ਤੌਰ 'ਤੇ ਯੂਜ਼ਰਨੇਮ ਅਤੇ ਪਾਸਵਰਡ ਦਾ ਬੇਸ64 ਕੋਡਿਤ ਸੰਸਕਰਣ ਜਾਂ ਇੱਕ API ਕੁੰਜੀ ਹੁੰਦੀ ਹੈ ਜੋ ਖਾਸ ਉਪਭੋਗਤਾ ਦੀ ਪਛਾਣ ਕਰਦੀ ਹੈ।
+ਜ਼ਿਆਦਾਤਰ ਵੈੱਬ ਡਿਵੈਲਪਰਜ਼ ਆਪਣੇ ਸਿਰ ਤੇ ਇਹ ਸੋਚਦੇ ਹਨ ਕਿ ਸਰਵਰ ਨੂੰ ਇੱਕ credential ਪ੍ਰਦਾਨ ਕਰਨਾ, ਆਮ ਤੌਰ 'ਤੇ ਇੱਕ ਸੈਕਰੇਟ, ਜੋ ਦੱਸਦਾ ਹੈ ਕਿ ਉਹ ਇੱਥੇ "Authentication" ਲਈ ਆਇਆ ਹੈ ਜਾਂ ਨਹੀਂ, ਦੀ ਜ਼ਰੂਰਤ ਹੈ। ਇਹ credential ਆਮ ਤੌਰ 'ਤੇ username ਅਤੇ password ਦਾ base64 encode ਕੀਤਾ version ਜਾਂ ਇੱਕ API key ਹੁੰਦੀ ਹੈ ਜੋ ਕਿਸੇ ਖ਼ਾਸ ਯੂਜ਼ਰ ਨੂੰ ਪਹਚਾਨਦੀ ਹੈ।
 
-ਇਸ ਵਿੱਚ "Authorization" ਨਾਮਕ ਹੈਡਰ ਰਾਹੀਂ ਭੇਜਣਾ ਸ਼ਾਮਲ ਹੈ, ਜਿਵੇਂ:
+ਇਸਨੂੰ "Authorization" ਨਾਮਕ header ਰਾਹੀਂ ਭੇਜਿਆ ਜਾਂਦਾ ਹੈ:
 
 ```json
 { "Authorization": "secret123" }
 ```
-
-ਇਸਨੂੰ ਆਮ ਤੌਰ 'ਤੇ ਬੇਸਿਕ ਔਥੈਂਟੀਕੇਸ਼ਨ ਕਿਹਾ ਜਾਂਦਾ ਹੈ। ਫਿਰ ਸਮੁੱਚੇ ਫਲੋ ਦਾ ਕੰਮ ਕਰਨ ਦਾ ਤਰੀਕਾ ਹੇਠਾਂ ਦਿੱਤੇ ਤਰੀਕੇ ਵਿੱਚ ਹੈ:
+  
+ਇਸਨੂੰ ਆਮ ਤੌਰ 'ਤੇ basic authentication ਕਿਹਾ ਜਾਂਦਾ ਹੈ। ਸਮੂਹਿਕ ਪ੍ਰਕਿਰਿਆ ਕਿਸ ਤਰ੍ਹਾਂ ਕੰਮ ਕਰਦੀ ਹੈ ਇਸ ਤਰ੍ਹਾਂ ਹੈ:
 
 ```mermaid
 sequenceDiagram
@@ -27,13 +27,12 @@ sequenceDiagram
    participant Client
    participant Server
 
-   User->>Client: show me data
-   Client->>Server: show me data, here's my credential
-   Server-->>Client: 1a, I know you, here's your data
-   Server-->>Client: 1b, I don't know you, 401 
-```
-
-ਹੁਣ ਜਦੋਂ ਅਸੀਂ ਸਮਝ ਗਏ ਕਿ ਇਹ ਫਲੋ ਦੇ ਨਜ਼ਰੀਏ ਤੋਂ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ, ਤਾਂ ਅਸੀਂ ਇਸਨੂੰ ਕਿਵੇਂ ਲਾਗੂ ਕਰਦੇ ਹਾਂ? ਅੱਛਾ, ਜ਼ਿਆਦਾਤਰ ਵੈੱਬ ਸਰਵਰਾਂ ਵਿੱਚ ਮਿਡਲਵੇਅਰ ਦਾ ਇੱਕ ਧਾਰਨਾ ਹੁੰਦੀ ਹੈ, ਇੱਕ ਕੋਡ ਦਾ ਟੁਕੜਾ ਜੋ ਬੇਨਤੀ ਦੇ ਹਿੱਸੇ ਵਜੋਂ ਚਲਦਾ ਹੈ ਜੋ ਪ੍ਰਮਾਣ ਪੱਤਰਾਂ ਦੀ ਜਾਂਚ ਕਰ ਸਕਦਾ ਹੈ, ਅਤੇ ਜੇ ਪ੍ਰਮਾਣ ਪੱਤਰ ਵੈਧ ਹਨ ਤਾਂ ਬੇਨਤੀ ਨੂੰ ਅੱਗੇ ਵਧਣ ਦੇ ਸਕਦਾ ਹੈ। ਜੇ ਬੇਨਤੀ ਵਿੱਚ ਵੈਧ ਪ੍ਰਮਾਣ ਪੱਤਰ ਨਹੀਂ ਹਨ ਤਾਂ ਤੁਹਾਨੂੰ ਔਥ ਐਰਰ ਮਿਲਦਾ ਹੈ। ਆਓ ਵੇਖੀਏ ਕਿ ਇਹ ਕਿਵੇਂ ਲਾਗੂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ:
+   User->>Client: ਮੈਨੂੰ ਡਾਟਾ ਦਿਖਾਓ
+   Client->>Server: ਮੈਨੂੰ ਡਾਟਾ ਦਿਖਾਓ, ਇਹ ਮੇਰੀ ਪਹਚਾਨ ਪੱਤਰ ਹੈ
+   Server-->>Client: 1a, ਮੈਂ ਤੈਨੂੰ ਜਾਣਦਾ ਹਾਂ, ਇਹ ਤੇਰਾ ਡਾਟਾ ਹੈ
+   Server-->>Client: 1b, ਮੈਂ ਤੈਨੂੰ ਨਹੀਂ ਜਾਣਦਾ, 401 
+```  
+ਹੁਣ ਜਦ ਤੁਸੀਂ ਸਮਝ ਲਿਆ ਕਿ ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ, ਤਾਂ ਇਸਨੂੰ ਕਿਵੇਂ ਅਮਲ ਵਿੱਚ ਲਿਆਇਆ ਜਾਵੇ? ਜ਼ਿਆਦਾਤਰ ਵੈੱਬ ਸਰਵਰਾਂ ਕੋਲ middleware ਦਾ ਇੱਕ ਕੰਸੈਪਟ ਹੁੰਦਾ ਹੈ, ਜੋ ਇਕ ਕੋਡ ਦਾ ਹਿੱਸਾ ਹੁੰਦਾ ਹੈ ਜੋ request ਦਾ ਇੱਕ ਹਿੱਸਾ ਹੋ ਕੇ credentials ਨੂੰ ਜਾਂਚ ਸਕਦਾ ਹੈ ਅਤੇ ਜੇ credentials ਸਹੀ ਹਨ ਤਾਂ request ਨੂੰ ਆਗੇ ਬਹਾਦਰ ਦਿੰਦਾ ਹੈ। ਜੇ request ਵਿੱਚ credentials ਸਹੀ ਨਹੀਂ ਹਨ ਤਾਂ ਤੁਸੀਂ auth error ਮਿਲਦੀ ਹੈ। ਆਓ ਵੇਖੀਏ ਇਹ ਕਿਵੇਂ ਲਾਗੂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ:
 
 **Python**
 
@@ -53,23 +52,23 @@ class AuthMiddleware(BaseHTTPMiddleware):
         print("Valid token, proceeding...")
        
         response = await call_next(request)
-        # add any customer headers or change in the response in some way
+        # ਕੋਈ ਵੀ ਗ੍ਰਾਹਕ ਹੇੱਡਰ ਸ਼ਾਮਲ ਕਰੋ ਜਾਂ ਜਵਾਬ ਵਿੱਚ ਕਿਸੇ ਤਰੀਕੇ ਨਾਲ ਤਬਦੀਲੀ ਕਰੋ
         return response
 
 
 starlette_app.add_middleware(CustomHeaderMiddleware)
 ```
+  
+ਸਾਡੇ ਕੋਲ ਹੈ:
 
-ਇੱਥੇ ਅਸੀਂ:
-
-- ਇੱਕ ਮਿਡਲਵੇਅਰ ਬਣਾਇਆ ਜਿਸਨੂੰ `AuthMiddleware` ਕਿਹਾ ਜਾਂਦਾ ਹੈ ਜਿਸਦਾ `dispatch` ਮੈਥਡ ਵੈੱਬ ਸਰਵਰ ਦੁਆਰਾ ਚਲਾਇਆ ਜਾ ਰਿਹਾ ਹੈ।
-- ਮਿਡਲਵੇਅਰ ਨੂੰ ਵੈੱਬ ਸਰਵਰ ਵਿੱਚ ਸ਼ਾਮਲ ਕੀਤਾ:
+- ਇੱਕ middleware ਬਣਾਇਆ ਗਿਆ ਹੈ ਜਿਸਦਾ ਨਾਮ `AuthMiddleware` ਹੈ ਜਿੱਥੇ ਇਸਦਾ `dispatch` ਮੈਥਡ ਵੈੱਬ ਸਰਵਰ ਵੱਲੋਂ invoke ਕੀਤਾ ਜਾਂਦਾ ਹੈ।  
+- middleware ਨੂੰ ਵੈੱਬ ਸਰਵਰ ਵਿੱਚ ਸ਼ਾਮਿਲ ਕੀਤਾ ਗਿਆ:
 
     ```python
     starlette_app.add_middleware(AuthMiddleware)
     ```
-
-- ਵੈਧਤਾ ਲਾਜ਼ਿਕ ਲਿਖੀ ਜੋ ਜਾਂਚਦੀ ਹੈ ਕਿ Authorization ਹੈਡਰ ਮੌਜੂਦ ਹੈ ਅਤੇ ਕੀ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਰਾਜ਼ ਵੈਧ ਹੈ:
+  
+- ਇੱਕ validation ਲਾਜਿਕ ਲਿਖੀ ਗਿਆ ਜੋ ਜਾਂਚਦਾ ਹੈ ਕਿ Authorization header ਮੌਜੂਦ ਹੈ ਅਤੇ ਭੇਜਿਆ ਗਿਆ secret ਸਹੀ ਹੈ:
 
     ```python
     has_header = request.headers.get("Authorization")
@@ -81,20 +80,20 @@ starlette_app.add_middleware(CustomHeaderMiddleware)
         print("-> Invalid token!")
         return Response(status_code=403, content="Forbidden")
     ```
-
-    ਜੇ ਰਾਜ਼ ਮੌਜੂਦ ਹੈ ਅਤੇ ਵੈਧ ਹੈ ਤਾਂ ਅਸੀਂ ਬੇਨਤੀ ਨੂੰ `call_next` ਕਹਿ ਕੇ ਅੱਗੇ ਵਧਣ ਦਿੰਦੇ ਹਾਂ ਅਤੇ ਜਵਾਬ ਵਾਪਸ ਕਰਦੇ ਹਾਂ।
+  
+ਜੇ secret ਮੌਜੂਦ ਹੈ ਅਤੇ ਸਹੀ ਹੈ ਤਾਂ ਅਸੀਂ `call_next` ਨੂੰ ਕਾਲ ਕਰਕੇ request ਨੂੰ ਆਗੇ ਜਾੜਦੇ ਹਾਂ ਅਤੇ response ਵਾਪਸ ਕਰਦੇ ਹਾਂ।
 
     ```python
     response = await call_next(request)
-    # add any customer headers or change in the response in some way
+    # ਕਿਸੇ ਵੀ ਗ੍ਰਾਹਕ ਹੈਡਰ ਸ਼ਾਮਲ ਕਰੋ ਜਾਂ ਪ੍ਰਤਿਕ੍ਰਿਆ ਵਿੱਚ ਕਿਸੇ ਤਰ੍ਹਾਂ ਬਦਲਾਅ ਕਰੋ
     return response
     ```
-
-ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ ਕਿ ਜੇ ਵੈੱਬ ਬੇਨਤੀ ਸਰਵਰ ਵੱਲ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ ਮਿਡਲਵੇਅਰ ਚਲਾਇਆ ਜਾਵੇਗਾ ਅਤੇ ਇਸਦੀ ਲਾਗੂ ਕਰਨ ਦੀ ਪ੍ਰਕਿਰਿਆ ਦੇ ਅਨੁਸਾਰ ਇਹ ਜਾਂ ਤਾਂ ਬੇਨਤੀ ਨੂੰ ਅੱਗੇ ਵਧਣ ਦੇਵੇਗਾ ਜਾਂ ਇੱਕ ਐਰਰ ਵਾਪਸ ਕਰੇਗਾ ਜੋ ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਕਲਾਇੰਟ ਅੱਗੇ ਵਧਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਰੱਖਦਾ।
+  
+ਕਿਸ ਤਰ੍ਹਾਂ ਕੰਮ ਕਰਦਾ ਹੈ ਕਿ ਜੇ ਵੈੱਬ request ਸਰਵਰ ਵੱਲ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਤਾਂ middleware invoke ਹੋ ਜਾਵੇਗਾ ਅਤੇ ਉਸਦੀ ਲਾਗੂਆਮਲ ਦੇ ਮੂਤਾਬਕ ਉਹ ਜਾਂ ਤਾਂ request ਨੂੰ ਆਗੇ ਜਾਣ ਦੇਵੇਗਾ ਜਾਂ ਐਸਾ error ਵਾਪਸ ਕਰੇਗਾ ਜੋ ਦੱਸਦਾ ਹੈ ਕਿ ਕਲਾਇੰਟ ਨੂੰ ਅੱਗੇ ਵਧਣ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ।
 
 **TypeScript**
 
-ਇੱਥੇ ਅਸੀਂ ਪ੍ਰਸਿੱਧ ਫਰੇਮਵਰਕ Express ਨਾਲ ਇੱਕ ਮਿਡਲਵੇਅਰ ਬਣਾਉਂਦੇ ਹਾਂ ਅਤੇ ਬੇਨਤੀ ਨੂੰ MCP ਸਰਵਰ ਤੱਕ ਪਹੁੰਚਣ ਤੋਂ ਪਹਿਲਾਂ ਰੋਕਦੇ ਹਾਂ। ਇਸ ਲਈ ਕੋਡ ਹੇਠਾਂ ਦਿੱਤਾ ਗਿਆ ਹੈ:
+ਅਸੀਂ ਇੱਥੇ ਪ੍ਰਸਿੱਧ framework Express ਵਰਤ ਕੇ middleware ਬਣਾਉਂਦੇ ਹਾਂ ਤੇ MCP ਸਰਵਰ ਤੱਕ ਆਉਣ ਵਾਲੀ request ਨੂੰ ਰੋਕਦੇ ਹਾਂ। ਇੱਥੇ ਕੋਡ ਹੈ:
 
 ```typescript
 function isValid(secret) {
@@ -102,54 +101,54 @@ function isValid(secret) {
 }
 
 app.use((req, res, next) => {
-    // 1. Authorization header present?  
+    // 1. ਆਥਰਾਈਜੇਸ਼ਨ ਹੈਡਰ ਮੌਜੂਦ ਹੈ?
     if(!req.headers["Authorization"]) {
         res.status(401).send('Unauthorized');
     }
     
     let token = req.headers["Authorization"];
 
-    // 2. Check validity.
+    // 2. ਵੈਧਤਾ ਦੀ ਜਾਂਚ ਕਰੋ।
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
     }
 
    
     console.log('Middleware executed');
-    // 3. Passes request to the next step in the request pipeline.
+    // 3. ਅਗਲੇ ਕਦਮ ਨੂੰ ਬੇਨਤੀ ਨੂੰ ਪਾਸ ਕਰਦਾ ਹੈ।
     next();
 });
 ```
-
+  
 ਇਸ ਕੋਡ ਵਿੱਚ ਅਸੀਂ:
 
-1. ਜਾਂਚਦੇ ਹਾਂ ਕਿ Authorization ਹੈਡਰ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ, ਜੇ ਨਹੀਂ, ਤਾਂ ਅਸੀਂ 401 ਐਰਰ ਭੇਜਦੇ ਹਾਂ।
-2. ਯਕੀਨੀ ਬਣਾਉਂਦੇ ਹਾਂ ਕਿ ਪ੍ਰਮਾਣ ਪੱਤਰ/ਟੋਕਨ ਵੈਧ ਹੈ, ਜੇ ਨਹੀਂ, ਤਾਂ ਅਸੀਂ 403 ਐਰਰ ਭੇਜਦੇ ਹਾਂ।
-3. ਆਖਿਰਕਾਰ ਬੇਨਤੀ ਨੂੰ ਬੇਨਤੀ ਪਾਈਪਲਾਈਨ ਵਿੱਚ ਅੱਗੇ ਵਧਾਉਂਦੇ ਹਾਂ ਅਤੇ ਮੰਗਿਆ ਗਿਆ ਰਿਸੋਰਸ ਵਾਪਸ ਕਰਦੇ ਹਾਂ।
+1. ਜਾਂਚ ਕਰਦੇ ਹਾਂ ਕਿ Authorization header ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ, ਜੇ ਨਹੀਂ ਤਾਂ 401 error ਭੇਜਦੇ ਹਾਂ।  
+2. credential/token ਦੀ ਜਾਂਚ ਕਰਦੇ ਹਾਂ ਕਿ ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਹੀ ਹੈ ਜਾਂ ਨਹੀਂ, ਜੇ ਨਹੀਂ ਤਾਂ 403 error ਭੇਜਦੇ ਹਾਂ।  
+3. ਆਖ਼ਿਰਕਾਰ request ਨੂੰ request pipeline ਵਿੱਚ ਅਗੇ ਵਧਾਉਂਦੇ ਹਾਂ ਅਤੇ ਮੰਗੇ ਗਏ resource ਨੂੰ ਰਿਟਰਨ ਕਰਦੇ ਹਾਂ।
 
-## ਅਭਿਆਸ: ਔਥੈਂਟੀਕੇਸ਼ਨ ਲਾਗੂ ਕਰੋ
+## Exercise: Authentication ਅਮਲ ਵਿੱਚ ਲਿਆਉਣਾ
 
-ਆਓ ਆਪਣੀ ਜਾਣਕਾਰੀ ਲੈ ਕੇ ਇਸਨੂੰ ਲਾਗੂ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੀਏ। ਯੋਜਨਾ ਹੇਠਾਂ ਦਿੱਤੀ ਗਈ ਹੈ:
+ਆਓ ਆਪਣੀ ਜਾਣਕਾਰੀ ਲਈ ਕੋਸ਼ਿਸ਼ ਕਰੀਏ। ਇਹ ਯੋਜਨਾ ਹੈ:
 
 ਸਰਵਰ
 
-- ਇੱਕ ਵੈੱਬ ਸਰਵਰ ਅਤੇ MCP ਇੰਸਟੈਂਸ ਬਣਾਓ।
-- ਸਰਵਰ ਲਈ ਇੱਕ ਮਿਡਲਵੇਅਰ ਲਾਗੂ ਕਰੋ।
+- ਇੱਕ ਵੈੱਬ ਸਰਵਰ ਅਤੇ MCP ਇੰਸਟੈਂਸ ਬਣਾਓ।  
+- ਸਰਵਰ ਲਈ middleware ਲਾਗੂ ਕਰੋ।
 
-ਕਲਾਇੰਟ 
+ਕਲਾਇੰਟ
 
-- ਹੈਡਰ ਰਾਹੀਂ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੇ ਨਾਲ ਵੈੱਬ ਬੇਨਤੀ ਭੇਜੋ।
+- ਵਰਦੇ premium ਹੇਠਾਂ header ਰਾਹੀਂ request ਭੇਜੋ।  
 
-### -1- ਇੱਕ ਵੈੱਬ ਸਰਵਰ ਅਤੇ MCP ਇੰਸਟੈਂਸ ਬਣਾਓ
+### -1- ਵੈੱਬ ਸਰਵਰ ਅਤੇ MCP ਇੰਸਟੈਂਸ ਬਣਾਓ
 
-ਸਾਡੇ ਪਹਿਲੇ ਕਦਮ ਵਿੱਚ, ਸਾਨੂੰ ਵੈੱਬ ਸਰਵਰ ਇੰਸਟੈਂਸ ਅਤੇ MCP ਸਰਵਰ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ।
+ਸਾਡੇ ਪਹਿਲੇ ਕਦਮ ਵਿੱਚ, ਸਾਨੂੰ ਵੈੱਬ ਸਰਵਰ ਇੰਸਟੈਂਸ ਅਤੇ MCP ਸਰਵਰ ਬਣਾਉਣਾ ਹੈ।
 
 **Python**
 
-ਇੱਥੇ ਅਸੀਂ ਇੱਕ MCP ਸਰਵਰ ਇੰਸਟੈਂਸ ਬਣਾਉਂਦੇ ਹਾਂ, ਇੱਕ starlette ਵੈੱਬ ਐਪ ਬਣਾਉਂਦੇ ਹਾਂ ਅਤੇ ਇਸਨੂੰ uvicorn ਨਾਲ ਹੋਸਟ ਕਰਦੇ ਹਾਂ।
+ਅਸੀਂ ਇੱਥੇ MCP ਸਰਵਰ ਦਾ ਇੰਸਟੈਂਸ ਬਣਾਉਂਦੇ ਹਾਂ, starlette ਵੈੱਬ ਐਪ ਬਣਾਉਂਦੇ ਹਾਂ ਅਤੇ ਉਸਨੂੰ uvicorn ਨਾਲ host ਕਰਦੇ ਹਾਂ।
 
 ```python
-# creating MCP Server
+# MCP ਸਰਵਰ ਬਣਾ ਰਿਹਾ ਹੈ
 
 app = FastMCP(
     name="MCP Resource Server",
@@ -159,10 +158,10 @@ app = FastMCP(
     debug=True
 )
 
-# creating starlette web app
+# starlette ਵੈੱਬ ਐਪ ਬਣਾਈ ਜਾ ਰਹੀ ਹੈ
 starlette_app = app.streamable_http_app()
 
-# serving app via uvicorn
+# uvicorn ਰਾਹੀਂ ਐਪ ਸਰਵ ਕਰ ਰਿਹਾ ਹੈ
 async def run(starlette_app):
     import uvicorn
     config = uvicorn.Config(
@@ -176,16 +175,16 @@ async def run(starlette_app):
 
 run(starlette_app)
 ```
-
+  
 ਇਸ ਕੋਡ ਵਿੱਚ ਅਸੀਂ:
 
-- MCP ਸਰਵਰ ਬਣਾਇਆ।
-- MCP ਸਰਵਰ ਤੋਂ starlette ਵੈੱਬ ਐਪ ਬਣਾਈ, `app.streamable_http_app()`।
-- uvicorn ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਵੈੱਬ ਐਪ ਨੂੰ ਹੋਸਟ ਅਤੇ ਸਰਵ ਕੀਤਾ `server.serve()`।
+- MCP ਸਰਵਰ ਬਣਾਇਆ।  
+- MCP ਸਰਵਰ ਤੋ starlette ਵੈੱਬ ਐਪ ਬਣਾਇਆ, `app.streamable_http_app()`।  
+- uvicorn ਨਾਲ ਵੈੱਬ ਐਪ ਨੂੰ host ਅਤੇ serve ਕੀਤਾ `server.serve()`।
 
 **TypeScript**
 
-ਇੱਥੇ ਅਸੀਂ ਇੱਕ MCP ਸਰਵਰ ਇੰਸਟੈਂਸ ਬਣਾਉਂਦੇ ਹਾਂ।
+ਅਸੀਂ ਇੱਥੇ MCP ਸਰਵਰ ਇੰਸਟੈਂਸ ਬਣਾਉਂਦੇ ਹਾਂ।
 
 ```typescript
 const server = new McpServer({
@@ -193,10 +192,10 @@ const server = new McpServer({
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... ਸਰਵਰ ਸਰੋਤ, ਸੰਦ ਅਤੇ ਪ੍ਰੋਂਪਟ ਸੈੱਟ ਕਰੋ ...
 ```
-
-ਇਹ MCP ਸਰਵਰ ਬਣਾਉਣ ਦੀ ਲੋੜ ਸਾਡੇ POST /mcp ਰੂਟ ਪਰਿਭਾਸ਼ਾ ਦੇ ਅੰਦਰ ਹੋਵੇਗੀ, ਇਸ ਲਈ ਆਓ ਉਪਰੋਕਤ ਕੋਡ ਨੂੰ ਹੇਠਾਂ ਦਿੱਤੇ ਤਰੀਕੇ ਨਾਲ ਮੋੜੀਏ:
+  
+ਇਹ MCP ਸਰਵਰ ਬਣਾਉਣਾ ਸਾਡੇ POST /mcp ਰੂਟ ਡਿਫਨੀਸ਼ਨ ਵਿੱਚ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ, ਇਸ ਲਈ ਆਉਂਦੇ ਹਾਂ ਇਸ ਕੋਡ ਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਲਿਆਂਦੇ ਹਾਂ:
 
 ```typescript
 import express from "express";
@@ -208,33 +207,33 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
 const app = express();
 app.use(express.json());
 
-// Map to store transports by session ID
+// ਸੈਸ਼ਨ ID ਦੁਆਰਾ ਟ੍ਰਾਂਸਪੋਰਟ ਸਟੋਰ ਕਰਨ ਲਈ ਨਕਸ਼ਾ
 const transports: { [sessionId: string]: StreamableHTTPServerTransport } = {};
 
-// Handle POST requests for client-to-server communication
+// ਕਲਾਇੰਟ-ਤੋਂ-ਸਰਵਰ ਸੰਚਾਰ ਲਈ POST ਬੇਨਤੀ ਸੰਭਾਲੋ
 app.post('/mcp', async (req, res) => {
-  // Check for existing session ID
+  // ਮੌਜੂਦਾ ਸੈਸ਼ਨ ID ਦੀ ਜਾਂਚ ਕਰੋ
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   let transport: StreamableHTTPServerTransport;
 
   if (sessionId && transports[sessionId]) {
-    // Reuse existing transport
+    // ਮੌਜੂਦਾ ਟ੍ਰਾਂਸਪੋਰਟ ਨੂੰ ਦੁਬਾਰਾ ਵਰਤੋਂ
     transport = transports[sessionId];
   } else if (!sessionId && isInitializeRequest(req.body)) {
-    // New initialization request
+    // ਨਵੀਂ ਸ਼ੁਰੂਆਤੀ ਬੇਨਤੀ
     transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: () => randomUUID(),
       onsessioninitialized: (sessionId) => {
-        // Store the transport by session ID
+        // ਸੈਸ਼ਨ ID ਦੁਆਰਾ ਟ੍ਰਾਂਸਪੋਰਟ ਸਟੋਰ ਕਰੋ
         transports[sessionId] = transport;
       },
-      // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
-      // locally, make sure to set:
+      // DNS ਰੀਬਾਈਂਡਿੰਗ ਸੁਰੱਖਿਆ ਡਿਫਾਲਟ ਦੌਰ 'ਤੇ ਪਿਛਲੇ ਸਮਰੱਥਾ ਲਈ ਬੰਦ ਹੈ। ਜੇ ਤੁਸੀਂ ਇਸ ਸਰਵਰ ਨੂੰ
+      // ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਚਲਾ ਰਹੇ ਹੋ, ਤਾਂ ਇਹ ਸੈੱਟ ਕਰਨ ਦੀ ਯਕੀਨ ਦਿਵਾਓ:
       // enableDnsRebindingProtection: true,
       // allowedHosts: ['127.0.0.1'],
     });
 
-    // Clean up transport when closed
+    // ਬੰਦ ਹੋਣ 'ਤੇ ਟ੍ਰਾਂਸਪੋਰਟ ਸਾਫ ਕਰੋ
     transport.onclose = () => {
       if (transport.sessionId) {
         delete transports[transport.sessionId];
@@ -245,12 +244,12 @@ app.post('/mcp', async (req, res) => {
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... ਸਰਵਰ ਸਰੋਤ, ਟੂਲ ਅਤੇ ਪ੍ਰੰਪਟ ਸੈੱਟ ਕਰੋ ...
 
-    // Connect to the MCP server
+    // MCP ਸਰਵਰ ਨਾਲ ਜੁੜੋ
     await server.connect(transport);
   } else {
-    // Invalid request
+    // ਅਮਾਨਯ ਬੇਨਤੀ
     res.status(400).json({
       jsonrpc: '2.0',
       error: {
@@ -262,11 +261,11 @@ app.post('/mcp', async (req, res) => {
     return;
   }
 
-  // Handle the request
+  // ਬੇਨਤੀ ਨੂੰ ਸੰਭਾਲੋ
   await transport.handleRequest(req, res, req.body);
 });
 
-// Reusable handler for GET and DELETE requests
+// GET ਅਤੇ DELETE ਬੇਨਤੀਆਂ ਲਈ ਦੁਹਰਾਏ ਜਾ ਸਕਦੇ ਹੈਂਡਲਰ
 const handleSessionRequest = async (req: express.Request, res: express.Response) => {
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   if (!sessionId || !transports[sessionId]) {
@@ -278,52 +277,52 @@ const handleSessionRequest = async (req: express.Request, res: express.Response)
   await transport.handleRequest(req, res);
 };
 
-// Handle GET requests for server-to-client notifications via SSE
+// SSE ਰਾਹੀਂ ਸਰਵਰ-ਤੋਂ-ਕਲਾਇੰਟ ਨੋਟੀਫਿਕੇਸ਼ਨ ਲਈ GET ਬੇਨਤੀ ਸੰਭਾਲੋ
 app.get('/mcp', handleSessionRequest);
 
-// Handle DELETE requests for session termination
+// ਸੈਸ਼ਨ ਖ਼ਤਮ ਕਰਨ ਲਈ DELETE ਬੇਨਤੀ ਸੰਭਾਲੋ
 app.delete('/mcp', handleSessionRequest);
 
 app.listen(3000);
 ```
+  
+ਹੁਣ ਤੂੰ ਵੇਖ ਸਕਦਾ ਹੈ ਕਿ MCP ਸਰਵਰ ਬਣਾਉਣਾ `app.post("/mcp")` ਦੇ ਅੰਦਰ ਲਿਆ ਗਿਆ ਹੈ।
 
-ਹੁਣ ਤੁਸੀਂ ਵੇਖਦੇ ਹੋ ਕਿ MCP ਸਰਵਰ ਬਣਾਉਣ ਨੂੰ `app.post("/mcp")` ਦੇ ਅੰਦਰ ਮੋੜਿਆ ਗਿਆ।
+ਹੁਣ middleware ਬਣਾਉਣ ਦੇ ਅਗਲੇ ਕਦਮ ਵੱਲ ਚਲਦਾ ਹਾਂ ਤਾਂ ਜੋ ਅਸੀਂ ਆਉਣ ਵਾਲੇ credentials ਨੂੰ ਵੈਰੀਫਾਈ ਕਰ ਸਕੀਏ।  
 
-ਆਓ ਮਿਡਲਵੇਅਰ ਬਣਾਉਣ ਦੇ ਅਗਲੇ ਕਦਮ ਵੱਲ ਵਧੀਏ ਤਾਂ ਕਿ ਅਸੀਂ ਆਉਣ ਵਾਲੇ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੀ ਜਾਂਚ ਕਰ ਸਕੀਏ।
+### -2- ਸਰਵਰ ਲਈ middleware ਲਾਗੂ ਕਰੋ
 
-### -2- ਸਰਵਰ ਲਈ ਇੱਕ ਮਿਡਲਵੇਅਰ ਲਾਗੂ ਕਰੋ
-
-ਆਓ ਅਗਲੇ ਹਿੱਸੇ ਵਿੱਚ ਮਿਡਲਵੇਅਰ ਬਣਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੀਏ। ਇੱਥੇ ਅਸੀਂ ਇੱਕ ਮਿਡਲਵੇਅਰ ਬਣਾਉਣ ਜਾ ਰਹੇ ਹਾਂ ਜੋ `Authorization` ਹੈਡਰ ਵਿੱਚ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੀ ਭਾਲ ਕਰਦਾ ਹੈ ਅਤੇ ਇਸਨੂੰ ਵੈਧ ਕਰਦਾ ਹੈ। ਜੇ ਇਹ ਸਵੀਕਾਰਯੋਗ ਹੈ ਤਾਂ ਬੇਨਤੀ ਅੱਗੇ ਵਧੇਗੀ ਅਤੇ ਜੋ ਕੁਝ ਕਰਨ ਦੀ ਲੋੜ ਹੈ (ਉਦਾਹਰਣ ਲਈ ਸੰਦਾਂ ਦੀ ਸੂਚੀ, ਰਿਸੋਰਸ ਪੜ੍ਹੋ ਜਾਂ ਜੋ ਕੁਝ MCP ਫੰਕਸ਼ਨਲਿਟੀ ਕਲਾਇੰਟ ਮੰਗ ਰਿਹਾ ਹੈ)।
+ਹੁਣ middleware ਵਿਚਾਰ ਵਿੱਚ ਚੱਲੀਏ। ਇੱਥੇ ਅਸੀਂ ਇੱਕ middleware ਬਣਾਵਾਂਗੇ ਜੋ `Authorization` header ਵਿੱਚ credential ਤਲਾਸ਼ੇਗਾ ਅਤੇ ਉਸਦੀ ਜਾਂਚ ਕਰੇਗਾ। ਜੇ ਮਨਜ਼ੂਰਯੋਗ ਹੈ ਤਾਂ request ਅੱਗੇ ਜਾਵੇਗੀ ਜਿਵੇਂ ਕਿ ਟੂਲਾਂ ਦੀ ਲਿਸਟ, ਕਿਸੇ resource ਦੌੜਾਨਾ ਜਾਂ ਕੁਝ MCP ਫੰਕਸ਼ਨਲਿਟੀ ਜਿਵੇਂ ਕਲਾਇੰਟ ਮੰਗ ਰਿਹਾ ਸੀ।
 
 **Python**
 
-ਮਿਡਲਵੇਅਰ ਬਣਾਉਣ ਲਈ, ਸਾਨੂੰ ਇੱਕ ਕਲਾਸ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ ਜੋ `BaseHTTPMiddleware` ਤੋਂ ਵਾਰਸ ਹੁੰਦੀ ਹੈ। ਦੋ ਦਿਲਚਸਪ ਹਿੱਸੇ ਹਨ:
+middleware ਬਣਾਉਣ ਲਈ ਸਾਨੂੰ `BaseHTTPMiddleware` ਤੋਂ ਵਾਰਸਾ ਲੈਣ ਵਾਲੀ ਅਦਕਲਾਸ ਬਣਾਉਣੀ ਪਵੇਗੀ। ਦੋ ਸੁਆਦਿਲ ਅੰਸਰ ਹਨ:
 
-- ਬੇਨਤੀ `request`, ਜਿਸ ਤੋਂ ਅਸੀਂ ਹੈਡਰ ਜਾਣਕਾਰੀ ਪੜ੍ਹਦੇ ਹਾਂ।
-- `call_next` ਕਾਲਬੈਕ ਜਿਸਨੂੰ ਸੱਦਣ ਦੀ ਲੋੜ ਹੈ ਜੇ ਕਲਾਇੰਟ ਨੇ ਇੱਕ ਪ੍ਰਮਾਣ ਪੱਤਰ ਲਿਆ ਹੈ ਜਿਸਨੂੰ ਅਸੀਂ ਸਵੀਕਾਰ ਕਰਦੇ ਹਾਂ।
+- `request` ਜੋ ਸਾਡੇ ਕੋਲ header ਜਾਣਕਾਰੀ ਲਈ ਹੈ।  
+- `call_next` ਜੋ callback ਹੈ ਜਿਸਨੂੰ ਅਸੀਂ invoke ਕਰਦੇ ਹਾਂ ਜੇ ਕਲਾਇੰਟ ਵੱਲੋਂ ਲਿਆ ਗਿਆ credential ਸਹੀ ਹੈ।
 
-ਸਭ ਤੋਂ ਪਹਿਲਾਂ, ਸਾਨੂੰ ਇਸ ਮਾਮਲੇ ਨੂੰ ਸੰਭਾਲਣ ਦੀ ਲੋੜ ਹੈ ਜੇ `Authorization` ਹੈਡਰ ਗੁੰਮ ਹੈ:
+ਪਹਿਲਾਂ ਅਸੀਂ ਜਾਂਚ ਕਰੀਏ ਕਿ `Authorization` header ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ:
 
 ```python
 has_header = request.headers.get("Authorization")
 
-# no header present, fail with 401, otherwise move on.
+# ਕੋਈ ਹੈਡਰ ਮੌਜੂਦ ਨਹੀਂ, 401 ਨਾਲ ਅਸਫਲ, ਨਹੀਂ ਤਾਂ ਅੱਗੇ ਵਧੋ।
 if not has_header:
     print("-> Missing Authorization header!")
     return Response(status_code=401, content="Unauthorized")
 ```
+  
+ਇੱਥੇ ਅਸੀਂ 401 unauthorized ਸੁਨੇਹਾ ਭੇਜਦੇ ਹਾਂ ਕਿਉਂਕਿ ਕਲਾਇੰਟ failed authentication ਦੇ ਵਿੱਚ ਹੈ।
 
-ਇੱਥੇ ਅਸੀਂ 401 ਅਨਅਥਰਾਈਜ਼ਡ ਸੁਨੇਹਾ ਭੇਜਦੇ ਹਾਂ ਕਿਉਂਕਿ ਕਲਾਇੰਟ ਔਥੈਂਟੀਕੇਸ਼ਨ ਵਿੱਚ ਫੇਲ੍ਹ ਹੋ ਰਿਹਾ ਹੈ।
-
-ਅਗਲੇ, ਜੇ ਇੱਕ ਪ੍ਰਮਾਣ ਪੱਤਰ ਪੇਸ਼ ਕੀਤਾ ਗਿਆ ਸੀ, ਤਾਂ ਸਾਨੂੰ ਇਸਦੀ ਵੈਧਤਾ ਦੀ ਜਾਂਚ ਕਰਨ ਦੀ ਲੋੜ ਹੈ:
+ਅੱਗੇ, ਜੇ credential ਦਿੱਤਾ ਗਿਆ ਸੀ ਤਾਂ ਅਸੀਂ ਉਸਦੀ ਸਹੀਤਾ ਵੇਖੀਏ:
 
 ```python
  if not valid_token(has_header):
     print("-> Invalid token!")
     return Response(status_code=403, content="Forbidden")
 ```
-
-ਨੋਟ ਕਰੋ ਕਿ ਅਸੀਂ ਉਪਰ 403 ਫੋਰਬਿਡਨ ਸੁਨੇਹਾ ਭੇਜਦੇ ਹਾਂ। ਆਓ ਹੇਠਾਂ ਪੂਰਾ ਮਿਡਲਵੇਅਰ ਵੇਖੀਏ ਜੋ ਉਪਰੋਕਤ ਸਾਰੇ ਹਿੱਸਿਆਂ ਨੂੰ ਲਾਗੂ ਕਰਦਾ ਹੈ:
+  
+ਉੱਪਰ ਅਸੀਂ 403 forbidden ਸੁਨੇਹਾ ਭੇਜਿਆ ਹੈ। ਪੂਰਾ middleware ਇਹ ਰਹੀ ਹੈ ਜੋ ਸਾਰੇ ਕਮੈਂਟ ਲਾਗੂ ਕਰਦਾ ਹੈ:
 
 ```python
 class AuthMiddleware(BaseHTTPMiddleware):
@@ -345,33 +344,33 @@ class AuthMiddleware(BaseHTTPMiddleware):
         return response
 
 ```
-
-ਵਧੀਆ, ਪਰ `valid_token` ਫੰਕਸ਼ਨ ਬਾਰੇ ਕੀ? ਇਹ ਹੇਠਾਂ ਦਿੱਤਾ ਗਿਆ ਹੈ:
+  
+ਵਧੀਆ ਹੈ, ਪਰ `valid_token` ਫੰਕਸ਼ਨ ਕਿਸ ਤਰ੍ਹਾਂ ਹੈ? ਇਹ ਹੈ:
 
 ```python
-# DON'T use for production - improve it !!
+# ਉਤਪਾਦਨ ਲਈ ਇਸਦਾ ਇਸਤੇਮਾਲ ਨਾ ਕਰੋ - ਇਸਨੂੰ ਸੁਧਾਰੋ !!
 def valid_token(token: str) -> bool:
-    # remove the "Bearer " prefix
+    # "Bearer " ਪ੍ਰਿਫਿਕਸ ਨੂੰ ਹਟਾਓ
     if token.startswith("Bearer "):
         token = token[7:]
         return token == "secret-token"
     return False
 ```
+  
+ਇਹ ਸੁਧਾਰ ਲੜੀ ਦੇ ਲਾਇਕ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।  
 
-ਇਸਨੂੰ ਸਪਸ਼ਟ ਤੌਰ 'ਤੇ ਸੁਧਾਰਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ।
-
-ਮਹੱਤਵਪੂਰਨ: ਤੁਹਾਨੂੰ ਕਦੇ ਵੀ ਕੋਡ ਵਿੱਚ ਰਾਜ਼ ਨਹੀਂ ਰੱਖਣਾ ਚਾਹੀਦਾ। ਤੁਹਾਨੂੰ ਆਦਰਸ਼ ਤੌਰ 'ਤੇ ਮੁਕਾਬਲੇ ਲਈ ਮੁੱਲ ਨੂੰ ਡਾਟਾ ਸਰੋਤ ਜਾਂ IDP (ਪਛਾਣ ਸੇਵਾ ਪ੍ਰਦਾਤਾ) ਤੋਂ ਪ੍ਰਾਪਤ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ ਜਾਂ ਇਸ ਤੋਂ ਵੀ ਵਧੀਆ, IDP ਨੂੰ ਵੈਧਤਾ ਕਰਨ ਦਿਓ।
+IMPORTANT: ਤੁਹਾਡੇ ਕੋਡ ਵਿੱਚ ਅਜਿਹੇ secrets ਕਦੇ ਵੀ ਨਹੀਂ ਹੋਣੇ ਚਾਹੀਦੇ। ਇਹਦਾ ਮੂੱਲ ਸਹੀ ਤਰ੍ਹਾਂ ਕਿਸੇ ਡਾਟਾ ਸਰੋਤ ਜਾਂ IDP (ਇਡੈਂਟੀਟੀ ਸਰਵਿਸ ਪ੍ਰਦਾਤਾ) ਤੋਂ ਲੈਣਾ ਚਾਹੀਦਾ ਹੈ ਜਾਂ ਵਧੀਆ ਹੋਵੇ ਤਾਂ IDP ਹੀ validation ਕਰੇ।  
 
 **TypeScript**
 
-ਇਸਨੂੰ Express ਨਾਲ ਲਾਗੂ ਕਰਨ ਲਈ, ਸਾਨੂੰ `use` ਮੈਥਡ ਨੂੰ ਕਾਲ ਕਰਨ ਦੀ ਲੋੜ ਹੈ ਜੋ ਮਿਡਲਵੇਅਰ ਫੰਕਸ਼ਨਾਂ ਨੂੰ ਲੈਂਦਾ ਹੈ।
+Express ਨਾਲ ਇਹ ਅਮਲ ਕਰਨ ਲਈ ਸਾਨੂੰ `use` ਮੈਥਡ ਕਾਲ ਕਰਨੀ ਪੈਂਦੀ ਹੈ ਜੋ middleware functions ਲੈਂਦੀ ਹੈ।
 
 ਸਾਨੂੰ:
 
-- ਬੇਨਤੀ ਵੈਰੀਏਬਲ ਨਾਲ ਸੰਚਾਰ ਕਰਨ ਦੀ ਲੋੜ ਹੈ ਤਾਂ ਕਿ `Authorization` ਪ੍ਰਾਪਰਟੀ ਵਿੱਚ ਭੇਜੇ ਗਏ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਸਕੇ।
-- ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੀ ਵੈਧਤਾ ਕਰੋ, ਅਤੇ ਜੇ ਇਹ ਸਹੀ ਹੈ ਤਾਂ ਬੇਨਤੀ ਨੂੰ ਅੱਗੇ ਵਧਣ ਦਿਓ ਅਤੇ ਕਲਾਇੰਟ ਦੀ MCP ਬੇਨਤੀ ਨੂੰ ਉਹ ਕਰਨ ਦਿਓ ਜੋ ਇਸਨੂੰ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ (ਉਦਾਹਰਣ ਲਈ ਸੰਦਾਂ ਦੀ ਸੂਚੀ, ਰਿਸੋਰਸ ਪੜ੍ਹੋ ਜਾਂ ਕੋਈ ਹੋਰ MCP ਸੰਬੰਧਿਤ)।
+- request variable ਨਾਲ ਸੰਚਾਰ ਕਰਕੇ Authorization ਪ੍ਰਾਪਰਟੀ ਵਿੱਚ ਦਿੱਤਾ credential ਵੇਖਣਾ ਹੈ।  
+- credential ਦੀ ਜਾਂਚ ਕਰਨੀ ਹੈ ਅਤੇ ਜੇ ਸਹੀ ਹੈ ਤਾਂ request ਚਲਾਉਣਾ ਹੈ ਅਤੇ MCP ਰੀਕਵੇਸਟ ਸਹੀ ਤਰ੍ਹਾਂ ਚੱਲੀ ਜਾਏ (ਟੂਲਾਂ ਦੀ ਲਿਸਟ, resource ਪੜ੍ਹਨਾ ਜਾਂ ਕਿਸੇ ਹੋਰ MCP ਸੰਬੰਧੀ ਕੰਮ)।
 
-ਇੱਥੇ, ਅਸੀਂ ਜਾਂਚਦੇ ਹਾਂ ਕਿ `Authorization` ਹੈਡਰ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ ਅਤੇ ਜੇ ਨਹੀਂ, ਤਾਂ ਅਸੀਂ ਬੇਨਤੀ ਨੂੰ ਅੱਗੇ ਵਧਣ ਤੋਂ ਰੋਕਦੇ ਹਾਂ:
+ਅਸੀਂ ਵੇਖ ਰਹੇ ਹਾਂ ਕਿ Authorization header ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ ਅਤੇ ਜੇ ਨਹੀਂ ਤਾਂ request ਨੂੰ ਅੱਗੇ ਜਾਣ ਤੋਂ ਰੋਕੇ:
 
 ```typescript
 if(!req.headers["authorization"]) {
@@ -379,10 +378,10 @@ if(!req.headers["authorization"]) {
     return;
 }
 ```
+  
+ਜੇ header ਪਹਿਲਾਂ ਭੇਜਿਆ ਨਹੀਂ ਗਿਆ, ਤਾਂ 401 ਮਿਲਦਾ ਹੈ।
 
-ਜੇ ਹੈਡਰ ਪਹਿਲਾਂ ਭੇਜਿਆ ਨਹੀਂ ਗਿਆ, ਤਾਂ ਤੁਹਾਨੂੰ 401 ਮਿਲਦਾ ਹੈ।
-
-ਅਗਲੇ, ਅਸੀਂ ਜਾਂਚਦੇ ਹਾਂ ਕਿ ਪ੍ਰਮਾਣ ਪੱਤਰ ਵੈਧ ਹੈ ਜਾਂ ਨਹੀਂ, ਜੇ ਨਹੀਂ ਤਾਂ ਅਸੀਂ ਬੇਨਤੀ ਨੂੰ ਰੋਕਦੇ ਹਾਂ ਪਰ ਥੋੜ੍ਹੇ ਵੱਖਰੇ ਸੁਨੇਹੇ ਨਾਲ:
+ਅੱਗੇ, ਅਸੀਂ credential ਦੀ ਸਹੀਤਾ ਜਾਂਚ ਕਰਦੇ ਹਾਂ ਜੇ ਸਹੀ ਨਹੀਂ ਹੈ ਤਾਂ ਮੁੜ request ਰੋਕੇ ਪਰ ਵੱਖਰੇ ਸੁਨੇਹੇ ਨਾਲ:
 
 ```typescript
 if(!isValid(token)) {
@@ -390,10 +389,10 @@ if(!isValid(token)) {
     return;
 } 
 ```
+  
+ਹੁਣ 403 error ਮਿਲਦਾ ਹੈ।
 
-ਨੋਟ ਕਰੋ ਕਿ ਹੁਣ ਤੁਹਾਨੂੰ 403 ਐਰਰ ਮਿਲਦਾ ਹੈ।
-
-ਇੱਥੇ ਪੂਰਾ ਕੋਡ ਹੈ:
+ਇੱਥੇ ਪੂਰਾ ਕੋਡ:
 
 ```typescript
 app.use((req, res, next) => {
@@ -415,19 +414,19 @@ app.use((req, res, next) => {
     next();
 });
 ```
+  
+ਅਸੀਂ ਵੈੱਬ ਸਰਵਰ ਨੂੰ middleware ਲਈ ਸੈੱਟ ਕੀਤਾ ਹੈ ਜੋ ਕਲਾਇੰਟ ਵੱਲੋਂ ਭੇਜੇ credential ਨੂੰ ਜਾਂਚਦਾ ਹੈ। ਕਲਾਇੰਟ ਦੇ ਬਾਰੇ ਕੀ?
 
-ਅਸੀਂ ਵੈੱਬ ਸਰਵਰ ਨੂੰ ਮਿਡਲਵੇਅਰ ਨੂੰ ਸਵੀਕਾਰ ਕਰਨ ਲਈ ਸੈਟ ਕੀਤਾ ਹੈ ਤਾਂ ਕਿ ਕਲਾਇੰਟ ਸਾਨੂੰ ਭੇਜ ਰਹੇ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਸਕੇ। ਪਰ ਕਲਾਇੰਟ ਬਾਰੇ ਕੀ?
+### -3- ਸੀ Headers ਰਾਹੀਂ credential ਅਤੇ request ਭੇਜੋ
 
-### -3- ਹੈਡਰ ਰਾਹੀਂ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੇ ਨਾਲ ਵੈੱਬ ਬੇਨਤੀ ਭੇਜੋ
-
-ਸਾਨੂੰ ਯਕੀਨੀ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ ਕਿ ਕਲਾਇੰਟ ਹੈਡਰ ਰਾਹੀਂ ਪ੍ਰਮਾਣ ਪੱਤਰ ਭੇਜ ਰਿਹਾ ਹੈ। ਜਿਵੇਂ ਕਿ ਅਸੀਂ ਇਸਨੂੰ ਕਰਨ ਲਈ ਇੱਕ MCP ਕਲਾਇੰਟ ਦੀ ਵਰਤੋਂ ਕਰਨ ਜਾ ਰਹੇ ਹਾਂ, ਸਾਨੂੰ ਇਹ ਪਤਾ ਕਰਨ ਦੀ ਲੋੜ ਹੈ ਕਿ ਇਹ ਕਿਵੇਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।
+ਅਸੀਂ ਯਕੀਨੀ ਬਣਾਉਣਾ ਹੈ ਕਿ ਕਲਾਇੰਟ header ਰਾਹੀਂ credential ਭੇਜ ਰਿਹਾ ਹੈ। ਕਿਉਂਕਿ ਅਸੀਂ MCP ਕਲਾਇੰਟ ਵਰਤਾਂਗੇ ਇਸ ਲਈ ਦੇਖੀਏ ਇਹ ਕਿਵੇਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।
 
 **Python**
 
-ਕਲਾਇੰਟ ਲਈ, ਸਾਨੂੰ ਹੇਠਾਂ ਦਿੱਤੇ ਤਰੀਕੇ ਨਾਲ ਆਪਣੇ ਪ੍ਰਮਾਣ ਪੱਤਰ ਦੇ ਨਾਲ ਇੱਕ ਹੈਡਰ ਭੇਜਣ ਦੀ ਲੋੜ ਹੈ:
+ਕਲਾਇੰਟ ਲਈ ਅਸੀਂ header ਵਿੱਚ credential ਇਸ ਤਰ੍ਹਾਂ ਭੇਜਦੇ ਹਾਂ:
 
 ```python
-# DON'T hardcode the value, have it at minimum in an environment variable or a more secure storage
+# ਮੁੱਲ ਨੂੰ ਸਖਤੀ ਨਾਲ ਕੋਡ ਵਿੱਚ ਨਾ ਲਿਖੋ, ਇਸ ਨੂੰ ਘੱਟੋ ਘੱਟ ਕਿਸੇ ਐਨਵਾਇਰਨਮੈਂਟ ਵੈਰੀਏਬਲ ਜਾਂ ਹੋਰ ਸੁਰੱਖਿਅਤ ਸਟੋਰੇਜ ਵਿੱਚ ਰੱਖੋ
 token = "secret-token"
 
 async with streamablehttp_client(
@@ -444,24 +443,24 @@ async with streamablehttp_client(
         ) as session:
             await session.initialize()
       
-            # TODO, what you want done in the client, e.g list tools, call tools etc.
+            # TODO, ਤੁਸੀਂ ਕਲਾਇੱਟ ਵਿੱਚ ਕੀ ਕਰਵਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ, ਜਿਵੇਂ ਕਿ ਟੂਲਜ਼ ਦੀ ਸੂਚੀ ਬਣਾਉਣਾ, ਟੂਲਜ਼ ਨੂੰ ਕਾਲ ਕਰਨਾ ਆਦਿ।
 ```
-
-ਨੋਟ ਕਰੋ ਕਿ ਅਸੀਂ `headers` ਪ੍ਰਾਪਰਟੀ ਨੂੰ ਹੇਠਾਂ ਦਿੱਤੇ ਤਰੀਕੇ ਨਾਲ ਪੂਰਾ ਕਰਦੇ ਹਾਂ ` headers = {"Authorization": f"Bearer {token}"}`।
+  
+ਤੁਸੀਂ ਦੇਖ ਸਕਦੇ ਹੋ ਕਿ ਕਿਵੇਂ headers ਪ੍ਰਾਪਰਟੀ ਭਰੀ ਜਾਂਦੀ ਹੈ ` headers = {"Authorization": f"Bearer {token}"}`।
 
 **TypeScript**
 
-ਅਸੀਂ ਇਸਨੂੰ ਦੋ ਕਦਮਾਂ ਵਿੱਚ ਹੱਲ ਕਰ ਸਕਦੇ ਹਾਂ:
+ਇਹ ਦੋ ਕਦਮਾਂ ਵਿੱਚ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ:
 
-1. ਆਪਣੇ ਪ੍ਰਮਾਣ ਪੱਤਰ ਨਾਲ ਇੱਕ ਕਨਫਿਗਰੇਸ਼ਨ ਆਬਜੈਕਟ ਨੂੰ ਪੂਰਾ ਕਰੋ।
-2. ਟ੍ਰਾਂਸਪੋਰਟ ਨੂੰ ਕਨਫਿਗਰੇਸ਼ਨ ਆਬਜੈਕਟ ਪਾਸ ਕਰੋ।
+1. config object ਵਿੱਚ credential ਪਾਓ।  
+2. transport ਨੂੰ config object ਦਿਓ।
 
 ```typescript
 
-// DON'T hardcode the value like shown here. At minimum have it as a env variable and use something like dotenv (in dev mode).
+// ਇਥੇ ਦਿਖਾਈ ਦੇ ਰਹੀ ਮੁੱਲ ਨੂੰ ਸਖਤੀ ਨਾਲ ਕੋਡ ਵਿੱਚ ਨਾ ਲਿਖੋ। ਘੱਟੋ ਘੱਟ ਇਸਨੂੰ ਇੱਕ ਇਨਵਾਇਰਨਮੈਂਟ ਵੈਰੀਏਬਲ ਵਜੋਂ ਰੱਖੋ ਅਤੇ ਕੁਝ dotenv ਵਰਗਾ ਕੁਝ ਵਰਤੋ (ਡਿਵ ਮੋਡ ਵਿੱਚ)।
 let token = "secret123"
 
-// define a client transport option object
+// ਇੱਕ ਕਲਾਇੰਟ ਟਰਾਂਸਪੋਰਟ ਵਿਕਲਪ ਑ਬਜੈਕਟ ਨੂੰ ਪਰਿਭਾਸ਼ਿਤ ਕਰੋ
 let options: StreamableHTTPClientTransportOptions = {
   sessionId: sessionId,
   requestInit: {
@@ -471,38 +470,191 @@ let options: StreamableHTTPClientTransportOptions = {
   }
 };
 
-// pass the options object to the transport
+// ਟਰਾਂਸਪੋਰਟ ਨੂੰ ਑ਪਸ਼ਨ ਑ਬਜੈਕਟ ਪਾਸ ਕਰੋ
 async function main() {
    const transport = new StreamableHTTPClientTransport(
       new URL(serverUrl),
       options
    );
 ```
+  
+ਇੱਥੇ ਤੁਸੀਂ ਦੇਖਦੇ ਹੋ ਕਿ ਕਿਵੇਂ ਅਸੀਂ `options` ਬਣਾਈ ਹੈ ਅਤੇ headers `requestInit` ਪ੍ਰਾਪਰਟੀ ਦੇ ਤਹਿਤ ਰੱਖਿਆ ਹੈ।
 
-ਇੱਥੇ ਤੁਸੀਂ ਉਪਰ ਵੇਖਦੇ ਹੋ ਕਿ ਅਸੀਂ ਇੱਕ `options` ਆਬਜੈਕਟ ਬਣਾਉਣ ਦੀ ਲੋੜ ਸੀ ਅਤੇ ਆਪਣੇ ਹੈਡਰ ਨੂੰ `requestInit` ਪ੍ਰਾਪਰਟੀ ਦੇ ਅਧੀਨ ਰੱਖਿਆ।
+IMPORTANT: ਇਹਨੂੰ ਸੁਧਾਰਨ ਲਈ ਕੀ ਕਰਨਾ ਚਾਹੀਦਾ? ਇਸ implementation ਵਿੱਚ ਕੁਝ ਸਮੱਸਿਆਵਾਂ ਹਨ। ਸਭ ਤੋਂ ਪਹਿਲਾਂ, ਇਹ credential ਭੇਜਣਾ ਕਾਫੀ ਖਤਰਨਾਕ ਹੈ ਜੇ ਤੁਸੀਂ ਘੱਟ ਤੋਂ ਘੱਟ HTTPS ਨਹੀਂ ਵਰਤ ਰਹੇ। ਫਿਰ ਭੀ credential ਚੋਰੀ ਹੋ ਸਕਦਾ ਹੈ, ਇਸ ਲਈ ਤੁਸੀਂ ਐਸਾ ਪ੍ਰਣਾਲੀ ਬਣਾਨਾ ਚਾਹੀਦਾ ਹੈ ਜਿੱਥੇ token ਨੂੰ ਆਸਾਨੀ ਨਾਲ ਰੱਦ ਕੀਤਾ ਜਾ ਸਕੇ ਅਤੇ ਹੋਰ ਡਿੱਗ੍ਰੀਆਂ ਵੇਖਣ ਲਈ ਕਿ ਇਹ ਕਿੱਥੋਂ ਆ ਰਿਹਾ ਹੈ ਵਗੈਰਾ। ਕੁੱਲ ਮਿਲਾ ਕੇ ਕਈ ਗੱਲਾਂ ਹਨ।  
 
-ਮਹੱਤਵਪੂਰਨ: ਅਸੀਂ ਇਸਨੂੰ ਇੱਥੋਂ ਕਿਵੇਂ ਸੁਧਾਰਦੇ ਹਾਂ? ਅੱਛਾ, ਮੌਜੂਦਾ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਕੁਝ ਸਮੱਸਿਆਵਾਂ ਹਨ। ਸਭ ਤੋਂ ਪਹਿਲਾਂ, ਇਸ ਤਰ੍ਹਾਂ ਪ੍ਰਮਾਣ ਪੱਤਰ ਭੇਜਣਾ ਕਾਫ਼ੀ ਖਤਰਨਾਕ ਹੈ ਜਦੋਂ ਤੱਕ ਤੁਹਾਡੇ ਕੋਲ ਘੱਟੋ-ਘੱਟ HTTPS ਨਹੀਂ ਹੈ। ਇੱਥੇ ਤੱਕ ਕਿ, ਪ੍ਰਮਾਣ ਪੱਤਰ ਚੋਰੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ ਇਸ ਲਈ ਤੁਹਾਨੂੰ ਇੱਕ ਸਿਸਟਮ ਦੀ ਲੋੜ ਹੈ ਜਿੱਥੇ ਤੁਸੀਂ ਟੋਕਨ ਨੂੰ ਆਸਾਨੀ ਨਾਲ ਰੱਦ ਕਰ ਸਕਦੇ ਹੋ ਅਤੇ ਵਾਧੂ ਜਾਂਚਾਂ ਸ਼ਾਮਲ ਕਰ ਸਕਦੇ ਹੋ ਜਿਵੇਂ ਕਿ ਇਹ ਦੁਨੀਆ ਵਿੱਚ ਕਿੱਥੋਂ ਆ ਰਿਹਾ ਹੈ, ਕੀ ਬੇਨਤੀ ਬਹੁਤ ਜ਼ਿਆਦਾ ਹੋ ਰਹੀ ਹੈ (ਬੋਟ-ਜਿਵੇਂ ਵਿਹਾਰ), ਸਾਰਾ ਕੁਝ, ਇੱਥੇ ਚਿੰਤਾਵਾਂ ਦਾ ਇੱਕ ਪੂਰਾ ਸੈੱਟ ਹੈ।
+ਫਿਰ ਵੀ ਇਹ ਕਿਹਾ ਜਾ ਸਕਦਾ ਹੈ ਕਿ ਬਹੁਤ ਹੀ ਸਧਾਰਨ APIs ਲਈ ਜਿੱਥੇ ਤੁਸੀਂ ਨਹੀਂ ਚਾਹੁੰਦੇ ਕਿ ਕਿਸੇ ਨੂੰ ਤੁਸੀਂ ਵੱਡਾ calls ਕੀਤੇ ਬਿਨਾ authenticate ਕੀਤੇ ਬਿਨਾ ਕਰਦਾ ਹੈ, ਇਹ ਇੱਕ ਵਧੀਆ ਸ਼ੁਰੂਆਤ ਹੈ।
 
-ਇਹ ਕਿਹਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ, ਬਹੁਤ ਸਧਾਰਨ APIs ਲਈ ਜਿੱਥੇ ਤੁਸੀਂ ਨਹੀਂ ਚਾਹੁੰਦੇ ਕਿ ਕੋਈ ਵੀ ਤੁਹਾਡੇ API ਨੂੰ ਔਥੈਂਟੀਕੇਸ਼ਨ ਤੋਂ ਬਿਨਾਂ ਕਾਲ ਕਰੇ ਅਤੇ ਜੋ ਕੁਝ ਸਾਡੇ ਕੋਲ ਹੈ ਉਹ ਇੱਕ ਵਧੀਆ ਸ਼ੁਰੂਆਤ ਹੈ।
-
-ਇਸਨੂੰ ਕਿਹਾ ਗਿਆ, ਆਓ JSON Web Token ਵਰਗੇ ਮਿਆਰੀ ਫਾਰਮੈਟ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਸੁਰੱਖਿਆ ਨੂੰ ਥੋੜ੍ਹਾ ਕਠੋਰ ਬਣਾਉਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੀਏ, ਜਿਸਨੂੰ JWT ਜਾਂ "JOT" ਟੋਕਨ ਵੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ।
+ਇਸ ਸਾਰਿਆਂ ਦੇ ਨਾਲ, ਆਓ JSON Web Token ਵਰਗੇ ਇੱਕ ਮਿਆਰੀਕ੍ਰਿਤ ਫਾਰਮੈਟ ਵਰਤ ਕੇ ਸੁਰੱਖਿਆ ਨੂੰ ਕਿਡਣੀ ਦਰਜੀ ਯਥਾਰਥ ਕਰੋ।
 
 ## JSON Web Tokens, JWT
 
-ਇਸ ਲਈ, ਅਸੀਂ ਬਹੁਤ ਸਧਾਰਨ ਪ੍ਰਮਾਣ ਪੱਤਰ ਭੇਜਣ ਤੋਂ ਸੁਧਾਰ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹਾਂ। JWT ਨੂੰ ਅਪਨਾਉਣ ਨਾਲ ਸਾਨੂੰ ਤੁਰੰਤ ਸੁਧਾਰ ਕੀ ਮਿਲਦੇ ਹਨ?
+ਤਾਂ, ਅਸੀਂ ਬਹੁਤ ਸਧਾਰਨ credentials ਭੇਜਣ ਤੋਂ ਕੰਮ ਸੁਧਾਰਨ ਦਾ ਯਤਨ ਕਰ ਰਹੇ ਹਾਂ। JWT ਸਵੀਕਾਰਨ ਨਾਲ ਤੁਰੰਤ ਸੁਧਾਰ ਕੀ ਹਨ?
 
-- **ਸੁਰੱਖਿਆ ਸੁਧਾਰ**। ਬੇਸਿਕ ਔਥ ਵਿੱਚ, ਤੁਸੀਂ ਯੂਜ਼ਰਨੇਮ ਅਤੇ ਪਾਸਵਰਡ ਨੂੰ ਬੇਸ64 ਕੋਡਿਤ ਟੋਕਨ (ਜਾਂ ਤੁਸੀਂ ਇੱਕ API ਕੁੰਜੀ ਭੇ
-ਅਗਲੇ, ਆਓ ਰੋਲ ਅਧਾਰਿਤ ਐਕਸੈਸ ਕੰਟਰੋਲ, ਜਿਸਨੂੰ RBAC ਵੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ, ਦੇ ਬਾਰੇ ਜਾਣਕਾਰੀ ਲੈਂਦੇ ਹਾਂ।
+- **ਸੁਰੱਖਿਆ ਵਿੱਚ ਸੁਧਾਰ**। basic auth ਵਿੱਚ, ਤੁਸੀਂ username ਅਤੇ password ਨੂੰ base64 encode ਕਰਕੇ (ਜਾਂ API key) ਵਾਰ ਵਾਰ ਭੇਜਦੇ ਹੋ ਜੋ ਖਤਰੇ ਨੂੰ ਵਧਾਉਂਦਾ ਹੈ। JWT ਵਿੱਚ, ਤੁਸੀਂ username ਅਤੇ password ਭੇਜਦੇ ਹੋ ਅਤੇ token ਪ੍ਰਾਪਤ ਕਰਦੇ ਹੋ ਜੋ ਕਿ ਸਮੇਂ-ਅਧਾਰਤ ਹੁੰਦਾ ਹੈ ਜਿੰਨਾ ਕਿ ਇਸਦੀ ਮਿਆਦ ਖ਼ਤਮ ਹੋਣ ਵਾਲੀ ਹੁੰਦੀ ਹੈ। JWT, roles, scopes ਅਤੇ permissions ਵਰਗੇ ਬਰੀਕੀ-ਵਾਲੇ access control ਲਈ ਆਸਾਨੀ ਦਿੰਦਾ ਹੈ।  
+- **Statelessness ਅਤੇ scalability**। JWT self-contained ਹੁੰਦੇ ਹਨ, ਉਹ ਸਾਰਾ user info ਆਪਣੇ ਵਿੱਚ ਰੱਖਦੇ ਹਨ ਅਤੇ ਸਰਵਰ-ਪਾਸੇ ਸੈਸ਼ਨ ਸਟੋਰੇਜ਼ ਦੀ ਲੋੜ ਨਹੀਂ ਰਹਿੰਦੀ। ਟੋਕਨ ਨੂੰ ਲੋਕਲੀ ਵੈਰੀਫਾਈ ਵੀ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।  
+- **Interoperability ਅਤੇ federation**। JWT Open ID Connect ਦਾ ਕੇਂਦਰ ਹੈ ਅਤੇ ਜੰਨੀ ਮਾਨਤਾ ਪ੍ਰਦਾਤਾ ਵਰਗੇ Entra ID, Google Identity ਅਤੇ Auth0 ਨਾਲ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ। ਇਹ ਇੱਕਲਾਪ ਸਾਈਨ-ਆਨ ਅਤੇ ਹੋਰ ਕਈ ਫੀਚਰ ਬਣਾਉ ਖਾਸ ਕਰਦਾ ਹੈ, ਜੋ ਇਸਨੂੰ ਏਂਟਰਪ੍ਰਾਈਜ਼ ਗ੍ਰੇਡ ਬਣਾਉਂਦਾ ਹੈ।  
+- **Modularity ਅਤੇ flexibility**। JWT API Gateways ਜਿਵੇਂ Azure API Management, NGINX ਆਦਿ ਨਾਲ ਵੀ ਵਰਤੇ ਜਾ ਸਕਦੇ ਹਨ। ਇਹ authentication ਸਿਨਾਰਿਓ ਅਤੇ ਸਰਵਰ-ਟੂ-ਸਰਵਰ ਕਮਿਊਨੀਕੇਸ਼ਨ (ਜਿਵੇਂ impersonation ਅਤੇ delegation ਸਥਿਤੀਆਂ) ਨੂੰ ਸਮਰਥਨ ਕਰਦੇ ਹਨ।  
+- **Performance ਅਤੇ caching**। JWT ਨੂੰ decode ਕਰਨ ਦੇ ਬਾਅਦ ਕੈਸ਼ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ, ਜਿਸ ਨਾਲ parsing ਦੀ ਲੋੜ ਘੱਟ ਹੁੰਦੀ ਹੈ। ਇਹ ਖਾਸ ਤੌਰ 'ਤੇ ਵੱਡੇ ਟ੍ਰੈਫਿਕ ਵਾਲੀਆਂ ਐਪਲੀਕੇਸ਼ਨਾਂ ਵਿੱਚ throughput ਨੂ ਵਧਾਉਂਦਾ ਹੈ ਅਤੇ infrastructure 'ਤੇ ਲੋਡ ਨੂੰ ਘਟਾਉਂਦਾ ਹੈ।  
+- **Advanced ਫੀਚਰ**। ਇਹ introspection (server ਤੇ validity ਚੈੱਕ ਕਰਨਾ) ਅਤੇ revocation (token ਨੂੰ ਅਵੈਧ ਬਣਾਉਣਾ) ਦਾ ਵੀ ਸਮਰਥਨ ਕਰਦਾ ਹੈ।
+
+ਇਹ ਸਾਰੇ ਫਾਇਦੇ ਨਾਲ, ਆਓ ਵੇਖੀਏ ਕਿ ਅਸੀਂ ਆਪਣੀ ਲਾਗੂਆਮਲ ਨੂੰ ਕਿਵੇਂ ਅਗਲੇ ਪੱਧਰ ਤੇ ਲਿਆ ਸਕਦੇ ਹਾਂ।
+
+## Basic auth ਨੂੰ JWT ਵਿੱਚ ਬਦਲਣਾ
+
+ਤਾਂ, ਉੱਚ-ਸਤਹ ਤੇ ਜਿਨ੍ਹਾਂ ਤਬਦੀਲੀਆਂ ਕਰਨੀਆਂ ਹਨ ਉਹ ਹਨ:
+
+- **JWT token ਬਣਾਉਣਾ** ਅਤੇ ਇਹ client ਤੋਂ server ਨੂੰ ਭੇਜਣ ਲਈ ਤਿਆਰ ਕਰਨਾ।  
+- **JWT token ਨੂੰ ਵੈਰੀਫਾਈ ਕਰਨਾ**, ਜੇ ਉਹ ਸਹੀ ਹੋਵੇ ਤਾਂ client ਨੂੰ access ਦੇਣਾ।  
+- **ਟੋਕਨ ਸੁਰੱਖਿਆ ਵਾਲੀ ਸਟੋਰੇਜ਼**। ਇਹ टोكن ਕਿਵੇਂ ਸਟੋਰ ਕਰਦੇ ਹਾਂ।  
+- **ਰਸਤੇ ਸੁਰੱਖਿਆ**। ਸਾਡੇ ਕੇਸ ਵਿੱਚ ਸਾਡੇ MCP ਫੀਚਰਾਂ ਅਤੇ ਰਸਤੇ ਸੁਰੱਖਿਅਤ ਕਰਨੇ ਹਨ।  
+- **refresh tokens ਸ਼ਾਮਿਲ ਕਰਨਾ**। ਇਹ ਸਿਰਫ ਟੋਕਨ ਛੋਟੀ ਮਿਆਦ ਵਾਲੇ ਬਣਾਉਣੇ ਹਨ ਪਰ refresh tokens ਦੁੱਗੀ ਮਿਆਦ ਵਾਲੇ ਜੋ expired ਟੋਕਨ ਲਈ ਨਵੇਂ ਟੋਕਨ ਲੈ ਸਕਦੇ ਹਨ। ਇਸ ਲਈ refresh endpoint ਅਤੇ rotation strategy ਵੀ ਲਾਜ਼ਮੀ ਹੈ।
+
+### -1- JWT token ਬਣਾਉਣਾ
+
+ਸਭ ਤੋਂ ਪਹਿਲਾਂ, JWT ਟੋਕਨ ਵਿੱਚ ਹੇਠ ਲਿਖੇ ਹਿੱਸੇ ਹੁੰਦੇ ਹਨ:
+
+- **header**, algorithm ਜੋ ਵਰਤੀ ਜਾਂਦੀ ਹੈ ਅਤੇ token ਦੀ ਕਿਸਮ।  
+- **payload**, ਜਿਵੇਂ sub (ਉਹ ਵਿਅਕਤੀ ਜਾਂ entity ਜਿਸਦਾ ਟੋਕਨ ਹੈ, auth ਸਥਿਤੀ ਵਿੱਚ ਅਕਸਰ user id ਹੁੰਦਾ ਹੈ), exp (ਕਦੋਂ expire ਹੋਵੇਗਾ), role (ਕਿਰਦਾਰ)।  
+- **signature**, ਜੋ secret ਜਾਂ private key ਨਾਲ signed ਹੁੰਦਾ ਹੈ।
+
+ਇਸ ਲਈ ਅਸੀਂ header, payload ਅਤੇ encode ਕੀਤਾ ਟੋਕਨ ਬਣਾਉਣਗੇ।
+
+**Python**
+
+```python
+
+import jwt
+import jwt
+from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
+import datetime
+
+# JWT 'ਤੇ ਦਸਤਖ਼ਤ ਕਰਨ ਲਈ ਗੁਪਤ ਕੁੰਜੀ
+secret_key = 'your-secret-key'
+
+header = {
+    "alg": "HS256",
+    "typ": "JWT"
+}
+
+# ਯੂਜ਼ਰ ਜਾਣਕਾਰੀ ਅਤੇ ਇਸ ਦੇ ਦਾਵੇ ਅਤੇ ਸਮਾਪਤੀ ਸਮਾਂ
+payload = {
+    "sub": "1234567890",               # ਵਿਸ਼ਾ (ਯੂਜ਼ਰ ID)
+    "name": "User Userson",                # ਕਸਟਮ ਦਾਅਵਾ
+    "admin": True,                     # ਕਸਟਮ ਦਾਅਵਾ
+    "iat": datetime.datetime.utcnow(),# ਜਾਰੀ ਕੀਤਾ ਗਿਆ
+    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # ਸਮਾਪਤੀ
+}
+
+# ਇਸ ਨੂੰ ਕੋਡ ਕਰੋ
+encoded_jwt = jwt.encode(payload, secret_key, algorithm="HS256", headers=header)
+```
+  
+ਉੱਪਰ ਦਿੱਤੇ ਕੋਡ ਵਿੱਚ ਸਾਡੇ ਕੋਲ:
+
+- HS256 algorithm ਅਤੇ JWT ਕਿਸਮ ਦੇ ਨਾਲ header ਡਿਫਾਈਨ ਕੀਤਾ।  
+- payload ਬਣਾਇਆ ਹੈ ਜਿਸ ਵਿੱਚ sub ਜਾਂ user id, username, role, ਕਦੋਂ ਜਾਰੀ ਕੀਤਾ ਗਿਆ ਅਤੇ ਕਦੋਂ expire ਹੋਵੇਗਾ ਇਹ ਸਾਰੇ claims ਹਨ ਜੋ ਸਮੇਂ ਦੀ ਸੀਮਾ ਦਰਸਾਉਂਦੇ ਹਨ।
+
+**TypeScript**
+
+ਇੱਥੇ ਕੁਝ dependencies ਚਾਹੀਦੇ ਹਨ ਜੋ JWT token ਬਣਾਉਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਨਗੇ।
+
+Dependencies
+
+```sh
+
+npm install jsonwebtoken
+npm install --save-dev @types/jsonwebtoken
+```
+  
+ਹੁਣ ਸਾਡੇ ਕੋਲ ਇਹ ਹਨ, ਆਓ header, payload ਬਣਾਈਏ ਅਤੇ ਟੋਕਨ encode ਕਰੀਏ।
+
+```typescript
+import jwt from 'jsonwebtoken';
+
+const secretKey = 'your-secret-key'; // ਉਤਪਾਦਨ ਵਿੱਚ env vars ਦੀ ਵਰਤੋਂ ਕਰੋ
+
+// ਪੇਲੋਡ ਨੂੰ ਪਰਿਭਾਸ਼ਿਤ ਕਰੋ
+const payload = {
+  sub: '1234567890',
+  name: 'User usersson',
+  admin: true,
+  iat: Math.floor(Date.now() / 1000), // ਜਾਰੀ ਕੀਤਾ ਗਿਆ
+  exp: Math.floor(Date.now() / 1000) + 60 * 60 // 1 ਘੰਟੇ ਵਿੱਚ ਮਾਪਣ ਬੰਦ
+};
+
+// ਹੈਡਰ ਨੂੰ ਪਰਿਭਾਸ਼ਿਤ ਕਰੋ (ਵਿਕਲਪਿਕ, jsonwebtoken ਮੂਲ ਤੌਰ 'ਤੇ ਸੈੱਟ ਕਰਦਾ ਹੈ)
+const header = {
+  alg: 'HS256',
+  typ: 'JWT'
+};
+
+// ਟੋਕਨ ਬਣਾਓ
+const token = jwt.sign(payload, secretKey, {
+  algorithm: 'HS256',
+  header: header
+});
+
+console.log('JWT:', token);
+```
+  
+ਇਹ ਟੋਕਨ:
+
+HS256 ਨਾਲ signed,  
+1 ਘੰਟੇ ਲਈ ਕਾਮਯਾਬ,  
+ਜਿਸ ਵਿੱਚ claims ਹਨ sub, name, admin, iat ਅਤੇ exp।
+
+### -2- Token ਨੂੰ ਵੈਰੀਫਾਈ ਕਰਨਾ
+
+ਸਾਨੂੰ token ਨੂੰ ਵੈਰੀਫਾਈ ਵੀ ਕਰਨਾ ਪਵੇਗਾ ਜੋ ਕਿ ਸਰਵਰ ਵੱਲੋਂ ਕੀਤਾ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ ਤਾਂ ਜੋ ਇਹ ਯਕੀਨੀ ਬਣ ਸਕੇ ਕਿ client ਵੱਲੋਂ ਭੇਜਿਆ ਗਿਆ token ਸਹੀ ਹੈ। ਇੱਥੇ ਕਈ ਚੈੱਕ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ ਜਿਵੇਂ ਕਿ ਇਸ ਦੀ ਬਣਤਰ ਤੇ validity ਦੀ ਜਾਂਚ। ਤੁਹਾਡੇ ਲਈ ਹੋਰ ਵੀ ਚੈੱਕ ਕਰਨ ਦੀ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ ਜਿਵੇਂ ਕਿ token ਕਿਸ user ਲਈ ਹੈ ਅਤੇ ਉਹ ਯੂਜ਼ਰ ਸਾਡੇ ਸਿਸਟਮ ਵਿੱਚ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ।
+
+Token ਵੈਰੀਫਾਈ ਕਰਨ ਲਈ ਇਸਨੂੰ decode ਕਰਦੇ ਹਾਂ ਤਾਂ ਜੋ ਇਨ੍ਹਾਂ ਨੂੰ ਪੜ੍ਹ ਸਕੀਏ ਅਤੇ validity ਦੀ ਚਾਹਣਾ ਕਰ ਸਕੀਏ:
+
+**Python**
+
+```python
+
+# JWT ਨੂੰ ਡੀਕੋਡ ਅਤੇ ਵੈਰੀਫਾਈ ਕਰੋ
+try:
+    decoded = jwt.decode(token, secret_key, algorithms=["HS256"])
+    print("✅ Token is valid.")
+    print("Decoded claims:")
+    for key, value in decoded.items():
+        print(f"  {key}: {value}")
+except ExpiredSignatureError:
+    print("❌ Token has expired.")
+except InvalidTokenError as e:
+    print(f"❌ Invalid token: {e}")
+
+```
+  
+ਇਸ ਕੋਡ ਵਿੱਚ ਅਸੀਂ `jwt.decode` ਕਾਲ ਕਰਦੇ ਹਾਂ ਟੋਕਨ, secret key ਅਤੇ algorithm ਨੂੰ ਦੇ ਕੇ। ਸੁਣੋ ਕਿ ਅਸੀਂ try-catch ਬਲਾਕ ਵਰਤਿਆ ਹੈ ਕਿਉਂਕਿ failed validation ਵਿੱਚ error ਆ ਸਕਦੀ ਹੈ।
+
+**TypeScript**
+
+ਇੱਥੇ ਅਸੀਂ `jwt.verify` ਕਾਲ ਕਰਦੇ ਹਾਂ ਤਾਂ ਜੋ decode ਟੋਕਨ ਪ੍ਰਾਪਤ ਹੋ ਸਕੇ ਜੋ ਅਸੀਂ ਅੱਗੇ ਜਾਂਚ ਸਕੀਏ। ਜੇ ਇਹ ਕਾਲ fail ਕਰਦੀ ਹੈ ਤਾਂ ਇਸਦਾ ਮਤਲਬ ਹੈ ਕਿ ਟੋਕਨ ਦੀ ਬਣਤਰ ਗਲਤ ਹੈ ਜਾਂ ਇਹ ਹੋਰ ਸਹੀ ਨਹੀਂ ਰਹੀ।
+
+```typescript
+
+try {
+  const decoded = jwt.verify(token, secretKey);
+  console.log('Decoded Payload:', decoded);
+} catch (err) {
+  console.error('Token verification failed:', err);
+}
+```
+  
+NOTE: ਜਿਵੇਂ ਪਹਿਲਾਂ ਦੱਸਿਆ ਗਿਆ, ਅਸੀਂ ਹੋਰ ਚੈੱਕ ਕਰਨੇ ਚਾਹੀਦੇ ਹਾਂ ਯਕੀਨੀ ਬਣਾਉਣ ਲਈ ਕਿ ਇਹ token ਸਾਡੇ ਸਿਸਟਮ ਵਿੱਚ ਕਿਸੇ ਯੂਜ਼ਰ ਨੂੰ ਦਰਸਾਉਂਦਾ ਹੈ ਅਤੇ ਉਹ ਯੂਜ਼ਰ ਆਪਣੇ ਦਾਅਵਿਆਂ 'ਤੇ ਹੱਕਦਾਰ ਹੈ।
+ਅਗਲੇ, ਆਓ ਰੋਲ ਅਧਾਰਿਤ ਐਕਸੈਸ ਕੰਟਰੋਲ ਵਿੱਚ ਵੇਖੀਏ, ਜਿਸਨੂੰ RBAC ਵੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ।
 
 ## ਰੋਲ ਅਧਾਰਿਤ ਐਕਸੈਸ ਕੰਟਰੋਲ ਸ਼ਾਮਲ ਕਰਨਾ
 
-ਵਿਚਾਰ ਇਹ ਹੈ ਕਿ ਅਸੀਂ ਦੱਸਣਾ ਚਾਹੁੰਦੇ ਹਾਂ ਕਿ ਵੱਖ-ਵੱਖ ਰੋਲਾਂ ਦੇ ਵੱਖ-ਵੱਖ ਅਧਿਕਾਰ ਹੁੰਦੇ ਹਨ। ਉਦਾਹਰਣ ਲਈ, ਅਸੀਂ ਮੰਨਦੇ ਹਾਂ ਕਿ ਐਡਮਿਨ ਸਭ ਕੁਝ ਕਰ ਸਕਦਾ ਹੈ, ਇੱਕ ਆਮ ਯੂਜ਼ਰ ਪੜ੍ਹ/ਲਿਖ ਸਕਦਾ ਹੈ, ਅਤੇ ਗੈਸਟ ਸਿਰਫ ਪੜ੍ਹ ਸਕਦਾ ਹੈ। ਇਸ ਲਈ, ਇੱਥੇ ਕੁਝ ਸੰਭਾਵਿਤ ਅਧਿਕਾਰ ਪੱਧਰ ਹਨ:
+ਆਇਡੀਆ ਇਹ ਹੈ ਕਿ ਅਸੀਂ ਦਰਸਾਉਣਾ ਚਾਹੁੰਦੇ ਹਾਂ ਕਿ ਵੱਖ-ਵੱਖ ਰੋਲਾਂ ਕੋਲ ਵੱਖ-ਵੱਖ ਪਰਮਿਸ਼ਨਾਂ ਹਨ। ਉਦਾਹਰਨ ਵਜੋਂ, ਅਸੀਂ ਮੰਨਦੇ ਹਾਂ ਕਿ ਇੱਕ ਐਡਮਿਨ ਸਾਰਾ ਕੁਝ ਕਰ ਸਕਦਾ ਹੈ ਅਤੇ ਇੱਕ ਆਮ ਯੂਜ਼ਰ ਪੜ੍ਹਨਾ/ਲਿਖਣਾ ਕਰ ਸਕਦਾ ਹੈ ਅਤੇ ਇੱਕ ਮਹਿਮਾਨ ਸਿਰਫ ਪੜ੍ਹ ਸਕਦਾ ਹੈ। ਇਸ ਲਈ, ਇੱਥੇ ਕੁਝ ਸੰਭਾਵਿਤ ਪਰਮਿਸ਼ਨ ਲੈਵਲ ਦਿੱਤੇ ਗਏ ਹਨ:
 
 - Admin.Write  
 - User.Read  
 - Guest.Read  
 
-ਆਓ ਵੇਖੀਏ ਕਿ ਅਸੀਂ ਇਸ ਤਰ੍ਹਾਂ ਦੇ ਕੰਟਰੋਲ ਨੂੰ ਮਿਡਲਵੇਅਰ ਨਾਲ ਕਿਵੇਂ ਲਾਗੂ ਕਰ ਸਕਦੇ ਹਾਂ। ਮਿਡਲਵੇਅਰ ਨੂੰ ਹਰ ਰੂਟ ਲਈ ਅਤੇ ਸਾਰੇ ਰੂਟਾਂ ਲਈ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।
+ਆਓ ਵੇਖੀਏ ਕਿ ਅਸੀਂ ਮਿਡਲਵੇਅਰ ਦੇ ਨਾਲ ਇਸ ਤਰ੍ਹਾਂ ਦੇ ਕੰਟਰੋਲ ਨੂੰ ਕਿਵੇਂ ਲਾਗੂ ਕਰ ਸਕਦੇ ਹਾਂ। ਮਿਡਲਵੇਅਰ ਨੂੰ ਹਰ ਇੱਕ ਰੂਟ ਲਈ ਜਾਂ ਸਾਰੇ ਰੂਟਾਂ ਲਈ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।
 
 **Python**
 
@@ -511,8 +663,8 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
 import jwt
 
-# DON'T have the secret in the code like, this is for demonstration purposes only. Read it from a safe place.
-SECRET_KEY = "your-secret-key" # put this in env variable
+# ਕੋਡ ਵਿੱਚ ਸਿਕਰੇਟ ਨਾ ਰੱਖੋ, ਇਹ ਕੇਵਲ ਡੈਮੋਨਸਟ੍ਰੇਸ਼ਨ ਲਈ ਹੈ। ਇਸਨੂੰ ਇੱਕ ਸੁਰੱਖਿਅਤ ਜਗ੍ਹਾ ਤੋਂ ਪੜ੍ਹੋ।
+SECRET_KEY = "your-secret-key" # ਇਸਨੂੰ(env) ਵਾਤਾਵਰਨ variable ਵਿੱਚ ਪਾਓ।
 REQUIRED_PERMISSION = "User.Read"
 
 class JWTPermissionMiddleware(BaseHTTPMiddleware):
@@ -539,41 +691,40 @@ class JWTPermissionMiddleware(BaseHTTPMiddleware):
 
 ```
   
-ਹੇਠਾਂ ਦਿੱਤੇ ਤਰੀਕਿਆਂ ਨਾਲ ਮਿਡਲਵੇਅਰ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ:
+ਹੇਠਾਂ ਦਿੱਤੇ ਤਰੀਕਿਆਂ ਵਿੱਚੋਂ ਕੁਝ ਹੀ ਹਨ ਜਿਹੜੇ ਅਸੀਂ ਮਿਡਲਵੇਅਰ ਨੂੰ ਜੋੜ ਸਕਦੇ ਹਾਂ:
 
 ```python
 
-# Alt 1: add middleware while constructing starlette app
+# ਵਿਕਲਪ 1: ਸਟਾਰਲੇਟ ਐਪ ਬਣਾਉਂਦੇ ਸਮੇਂ ਮਿਡਲਵੇਅਰ ਸ਼ਾਮਲ ਕਰੋ
 middleware = [
     Middleware(JWTPermissionMiddleware)
 ]
 
 app = Starlette(routes=routes, middleware=middleware)
 
-# Alt 2: add middleware after starlette app is a already constructed
+# ਵਿਕਲਪ 2: ਸਟਾਰਲੇਟ ਐਪ ਪਹਿਲਾਂ ਹੀ ਬਣ ਚੁੱਕਾ ਹੋਣ 'ਤੇ ਮਿਡਲਵੇਅਰ ਸ਼ਾਮਲ ਕਰੋ
 starlette_app.add_middleware(JWTPermissionMiddleware)
 
-# Alt 3: add middleware per route
+# ਵਿਕਲਪ 3: ਹਰ ਰਾਹ ਲਈ ਮਿਡਲਵੇਅਰ ਸ਼ਾਮਲ ਕਰੋ
 routes = [
     Route(
         "/mcp",
-        endpoint=..., # handler
+        endpoint=..., # ਹੈਂਡਲਰ
         middleware=[Middleware(JWTPermissionMiddleware)]
     )
 ]
 ```
   
-
 **TypeScript**
 
-ਅਸੀਂ `app.use` ਅਤੇ ਇੱਕ ਮਿਡਲਵੇਅਰ ਵਰਤ ਸਕਦੇ ਹਾਂ ਜੋ ਸਾਰੇ ਰਿਕਵੈਸਟਾਂ ਲਈ ਚੱਲੇਗਾ।
+ਅਸੀਂ `app.use` ਅਤੇ ਇੱਕ ਮਿਡਲਵੇਅਰ ਵਰਤ ਸਕਦੇ ਹਾਂ ਜੋ ਸਾਰੇ ਰਿਕਵੇਸਟਾਂ ਲਈ ਚਲੇਗਾ।
 
 ```typescript
 app.use((req, res, next) => {
     console.log('Request received:', req.method, req.url, req.headers);
     console.log('Headers:', req.headers["authorization"]);
 
-    // 1. Check if authorization header has been sent
+    // 1. ਜਾਂਚੋ ਕਿ ਕੀ ਅਧਿਕਾਰ ਹਨੇਰੇ ਭੇਜੇ ਗਏ ਹਨ
 
     if(!req.headers["authorization"]) {
         res.status(401).send('Unauthorized');
@@ -582,13 +733,13 @@ app.use((req, res, next) => {
     
     let token = req.headers["authorization"];
 
-    // 2. Check if token is valid
+    // 2. ਜਾਂਚੋ ਕਿ ਟੋਕਨ ਵੈਧ ਹੈ ਜਾਂ ਨਹੀਂ
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
         return;
     }  
 
-    // 3. Check if token user exist in our system
+    // 3. ਜਾਂਚੋ ਕਿ ਟੋਕਨ ਯੂਜ਼ਰ ਸਾਡੇ ਪ੍ਰਣਾਲੀ ਵਿੱਚ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ
     if(!isExistingUser(token)) {
         res.status(403).send('Forbidden');
         console.log("User does not exist");
@@ -596,7 +747,7 @@ app.use((req, res, next) => {
     }
     console.log("User exists");
 
-    // 4. Verify the token has the right permissions
+    // 4. ਪੁਸ਼ਟੀ ਕਰੋ ਕਿ ਟੋਕਨ ਕੋਲ ਸਹੀ ਅਧਿਕਾਰ ਹਨ
     if(!hasScopes(token, ["User.Read"])){
         res.status(403).send('Forbidden - insufficient scopes');
     }
@@ -609,14 +760,14 @@ app.use((req, res, next) => {
 
 ```
   
-ਮਿਡਲਵੇਅਰ ਨਾਲ ਅਸੀਂ ਕਈ ਕੰਮ ਕਰ ਸਕਦੇ ਹਾਂ ਅਤੇ ਕੁਝ ਕੰਮ ਕਰਨੇ ਚਾਹੀਦੇ ਹਨ, ਜਿਵੇਂ:
+ਕਈ ਗੱਲਾਂ ਹਨ ਜੋ ਅਸੀਂ ਆਪਣੇ ਮਿਡਲਵੇਅਰ ਨੂੰ ਕਰਨ ਦੇ ਸਕਦੇ ਹਾਂ ਅਤੇ ਮਿਡਲਵੇਅਰ ਨੂੰ ਇਹ ਗੱਲਾਂ ਕਰਨੀ ਚਾਹੀਦੀ ਹਨ, ਜਿਵੇਂ:
 
-1. ਚੈੱਕ ਕਰੋ ਕਿ authorization ਹੈਡਰ ਮੌਜੂਦ ਹੈ।  
-2. ਟੋਕਨ ਵੈਧ ਹੈ ਜਾਂ ਨਹੀਂ, ਅਸੀਂ `isValid` ਕਾਲ ਕਰਦੇ ਹਾਂ ਜੋ ਇੱਕ ਮੈਥਡ ਹੈ ਜੋ JWT ਟੋਕਨ ਦੀ integrity ਅਤੇ validity ਦੀ ਜਾਂਚ ਕਰਦਾ ਹੈ।  
-3. ਯੂਜ਼ਰ ਸਿਸਟਮ ਵਿੱਚ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ, ਅਸੀਂ ਇਸ ਦੀ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ।  
+1. ਚੈੱਕ ਕਰੋ ਕਿ ਅਥਾਰਾਈਜੇਸ਼ਨ ਹੈਡਰ ਮੌਜੂਦ ਹੈ ਜਾਂ ਨਹੀਂ  
+2. ਜਾਂਚ ਕਰੋ ਕਿ ਟੋਕਨ ਵੈਧ ਹੈ, ਅਸੀਂ `isValid` ਕਾਲ ਕਰਦੇ ਹਾਂ ਜੋ ਇੱਕ ਮੈਥਡ ਹੈ ਜੋ ਅਸੀਂ ਲਿਖਿਆ ਹੈ ਜੋ JWT ਟੋਕਨ ਦੀ ਇੰਟੀਗ੍ਰਿਟੀ ਅਤੇ ਵੈਧਤਾ ਦੀ ਜਾਂਚ ਕਰਦਾ ਹੈ।  
+3. ਯੂਜ਼ਰ ਦੀ ਸਿਸਟਮ ਵਿੱਚ ਮੌਜੂਦਗੀ ਨੂੰ ਸਾਬਤ ਕਰੋ, ਸਾਨੂੰ ਇਹ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ।
 
    ```typescript
-    // users in DB
+    // ਡੀਬੀ ਵਿੱਚ ਉਪਭੋਗਤਾ
    const users = [
      "user1",
      "User usersson",
@@ -625,14 +776,14 @@ app.use((req, res, next) => {
    function isExistingUser(token) {
      let decodedToken = verifyToken(token);
 
-     // TODO, check if user exists in DB
+     // ਅਮਲ ਕਰਨ ਲਈ, ਜਾਂਚੋ ਕਿ ਉਪਭੋਗਤਾ ਡੀਬੀ ਵਿੱਚ ਮੌਜੂਦ ਹੈ ਕਿ ਨਹੀਂ
      return users.includes(decodedToken?.name || "");
    }
    ```
   
-   ਉੱਪਰ, ਅਸੀਂ ਇੱਕ ਬਹੁਤ ਹੀ ਸਧਾਰਨ `users` ਲਿਸਟ ਬਣਾਈ ਹੈ, ਜੋ ਸਪਸ਼ਟ ਤੌਰ 'ਤੇ ਡਾਟਾਬੇਸ ਵਿੱਚ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।
+   ਉੱਪਰ, ਅਸੀਂ ਇਕ ਬਹੁਤ ਸਧਾਰਣ `users` ਸੂਚੀ ਬਣਾਈ ਹੈ, ਜੋ ਸਪਸ਼ਟ ਤੌਰ 'ਤੇ ਡੇਟਾ ਬੇਸ ਵਿੱਚ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।
 
-4. ਇਸ ਤੋਂ ਇਲਾਵਾ, ਅਸੀਂ ਇਹ ਵੀ ਜਾਂਚ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ ਕਿ ਟੋਕਨ ਵਿੱਚ ਸਹੀ permissions ਹਨ।  
+4. ਅਤਿਰਿਕਤ ਤੌਰ 'ਤੇ ਸਾਨੂੰ ਇਹ ਵੀ ਜਾਂਚਣਾ ਚਾਹੀਦਾ ਹੈ ਕਿ ਟੋਕਨ ਕੋਲ ਢਕਣ ਵਾਲੀਆਂ ਸਹੀ ਪਰਮਿਸ਼ਨਾਂ ਹਨ।
 
    ```typescript
    if(!hasScopes(token, ["User.Read"])){
@@ -640,13 +791,13 @@ app.use((req, res, next) => {
    }
    ```
   
-   ਉੱਪਰ ਦਿੱਤੇ ਕੋਡ ਵਿੱਚ, ਮਿਡਲਵੇਅਰ ਤੋਂ, ਅਸੀਂ ਜਾਂਚ ਕਰਦੇ ਹਾਂ ਕਿ ਟੋਕਨ ਵਿੱਚ User.Read permission ਹੈ ਜਾਂ ਨਹੀਂ। ਜੇ ਨਹੀਂ, ਤਾਂ ਅਸੀਂ 403 error ਭੇਜਦੇ ਹਾਂ। ਹੇਠਾਂ `hasScopes` ਹੇਲਪਰ ਮੈਥਡ ਹੈ।
+   ਇਸ ਕੋਡ ਵਿਚੋਂ, ਅਸੀਂ ਜਾਂਚਦੇ ਹਾਂ ਕਿ ਟੋਕਨ ਕੋਲ User.Read ਪਰਮਿਸ਼ਨ ਹੈ, ਜੇ ਨਹੀਂ ਤਾਂ ਅਸੀਂ 403 ਐਰਰ ਭੇਜਦੇ ਹਾਂ। ਹੇਠਾਂ `hasScopes` ਸਹਾਇਕ ਮੈਥਡ ਹੈ।
 
    ```typescript
    function hasScopes(scope: string, requiredScopes: string[]) {
      let decodedToken = verifyToken(scope);
     return requiredScopes.every(scope => decodedToken?.scopes.includes(scope));
-  
+  }  
    ```
 
 Have a think which additional checks you should be doing, but these are the absolute minimum of checks you should be doing.
@@ -689,17 +840,17 @@ app.use((err, req, res, next) => {
 
 ```
   
-ਹੁਣ ਤੁਸੀਂ ਦੇਖਿਆ ਕਿ ਮਿਡਲਵੇਅਰ ਨੂੰ authentication ਅਤੇ authorization ਦੋਵਾਂ ਲਈ ਕਿਵੇਂ ਵਰਤਿਆ ਜਾ ਸਕਦਾ ਹੈ। ਪਰ MCP ਦੇ ਬਾਰੇ ਕੀ? ਕੀ ਇਹ auth ਕਰਨ ਦੇ ਤਰੀਕੇ ਨੂੰ ਬਦਲਦਾ ਹੈ? ਆਓ ਅਗਲੇ ਸੈਕਸ਼ਨ ਵਿੱਚ ਪਤਾ ਲਗਾਈਏ।
+ਹੁਣ ਤੁਸੀਂ ਵੇਖ ਲਿਆ ਕਿ ਮਿਡਲਵੇਅਰ ਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਦੋਹਾਂ - ਪ੍ਰਮਾਣਿਕਤਾ ਅਤੇ ਅਥਾਰਾਈਜੇਸ਼ਨ ਲਈ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ, ਪਰ MCP ਬਾਰੇ ਕੀ? ਕੀ ਇਹ ਅਥਾਰਟੀ ਸਿਸਟਮ ਨੂੰ ਬਦਲਦਾ ਹੈ? ਆਓ ਅਗਲੇ ਸੈਕਸ਼ਨ ਵਿੱਚ ਜਾਣਦੇ ਹਾਂ।
 
 ### -3- MCP ਵਿੱਚ RBAC ਸ਼ਾਮਲ ਕਰੋ
 
-ਤੁਸੀਂ ਹੁਣ ਤੱਕ ਦੇਖਿਆ ਕਿ ਮਿਡਲਵੇਅਰ ਰਾਹੀਂ RBAC ਕਿਵੇਂ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਹਾਲਾਂਕਿ, MCP ਲਈ ਹਰ ਫੀਚਰ ਲਈ RBAC ਸ਼ਾਮਲ ਕਰਨ ਦਾ ਕੋਈ ਆਸਾਨ ਤਰੀਕਾ ਨਹੀਂ ਹੈ। ਤਾਂ ਅਸੀਂ ਕੀ ਕਰੀਏ? ਖੈਰ, ਅਸੀਂ ਸਿਰਫ ਇਸ ਤਰ੍ਹਾਂ ਦਾ ਕੋਡ ਸ਼ਾਮਲ ਕਰਨਾ ਪਵੇਗਾ ਜੋ ਜਾਂਚ ਕਰੇ ਕਿ ਕਲਾਇੰਟ ਨੂੰ ਕਿਸੇ ਵਿਸ਼ੇਸ਼ ਟੂਲ ਨੂੰ ਕਾਲ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਹੈ ਜਾਂ ਨਹੀਂ:
+ਤੁਸੀਂ ਹੁਣ ਤੱਕ ਵੇਖ ਲਿਆ ਕਿ ਤੁਸੀਂ RBAC ਮਿਡਲਵੇਅਰ ਰਾਹੀਂ ਕਿਵੇਂ ਸ਼ਾਮਲ ਕਰ ਸਕਦੇ ਹੋ, ਪਰ MCP ਲਈ ਹਰ MCP ਫੀਚਰ ਲਈ ਸੌਖਾ RBAC ਸ਼ਾਮਲ ਕਰਨ ਦਾ ਕੋਈ ਆਸਾਨ ਤਰੀਕਾ ਨਹੀਂ ਹੈ, ਤਾਂ ਫਿਰ ਕੀ ਕਰੀਏ? ਚੰਗਾ, ਸਾਨੂੰ ਇਸ ਤਰ੍ਹਾਂ ਕੋਡ ਸ਼ਾਮਲ ਕਰਨਾ ਹੋਵੇਗਾ ਜੋ ਇਸ ਕੇਸ ਵਿੱਚ ਜਾਂਚ ਕਰਦਾ ਹੈ ਕਿ ਕਲਾਇੰਟ ਕੋਲ ਕਿਸੇ ਵਿਸ਼ੇਸ਼ ਯੰਤਰ ਨੂੰ ਕਾਲ ਕਰਨ ਦਾ ਹੱਕ ਹੈ ਜਾਂ ਨਹੀਂ:
 
-ਤੁਹਾਡੇ ਕੋਲ ਹਰ ਫੀਚਰ RBAC ਨੂੰ ਪੂਰਾ ਕਰਨ ਦੇ ਕੁਝ ਵੱਖ-ਵੱਖ ਚੋਣਾਂ ਹਨ, ਜਿਵੇਂ:
+ਤੁਹਾਡੇ ਕੋਲ ਹਰ ਫੀਚਰ RBAC ਪੂਰਾ ਕਰਨ ਲਈ ਕੁਝ ਵੱਖ-ਵੱਖ ਚੋਣਾਂ ਹਨ, ਇੱਥੇ ਕੁਝ ਹਨ:
 
-- ਹਰ ਟੂਲ, ਰਿਸੋਰਸ, ਪ੍ਰੋਮਪਟ ਲਈ ਇੱਕ ਚੈੱਕ ਸ਼ਾਮਲ ਕਰੋ ਜਿੱਥੇ ਤੁਹਾਨੂੰ permission level ਦੀ ਜਾਂਚ ਕਰਨ ਦੀ ਲੋੜ ਹੈ।
+- ਹਰ ਟੂਲ, ਸਰੋਤ, ਪ੍ਰੋਂਪਟ ਲਈ ਇੱਕ ਜਾਂਚ ਜੋੜੋ ਜਿੱਥੇ ਤੁਹਾਨੂੰ ਪਰਮਿਸ਼ਨ ਲੈਵਲ ਜਾਂਚਣਾ ਲੋੜੀਂਦਾ ਹੈ।
 
-   **Python**
+   **python**
 
    ```python
    @tool()
@@ -707,10 +858,10 @@ app.use((err, req, res, next) => {
       try:
           check_permissions(role="Admin.Write", request)
       catch:
-        pass # client failed authorization, raise authorization error
+        pass # ਕਲਾਇੰਟ ਅਧਿਕਾਰ ਪ੍ਰਮਾਣਿਕਤਾ ਵਿੱਚ ਅਸਫਲ, ਅਧਿਕਾਰਿਤ ਤਰੁੱਟੀ ਉਠਾਓ
    ```
   
-   **TypeScript**
+   **typescript**
 
    ```typescript
    server.registerTool(
@@ -724,7 +875,7 @@ app.use((err, req, res, next) => {
       
       try {
         checkPermissions("Admin.Write", request);
-        // todo, send id to productService and remote entry
+        // TODO, productService ਅਤੇ remote entry ਨੂੰ id ਭੇਜੋ
       } catch(Exception e) {
         console.log("Authorization error, you're not allowed");  
       }
@@ -735,9 +886,9 @@ app.use((err, req, res, next) => {
     }
    );
    ```
-  
 
-- ਉੱਨਤ ਸਰਵਰ ਪਹੁੰਚ ਅਤੇ ਰਿਕਵੈਸਟ ਹੈਂਡਲਰ ਵਰਤੋ ਤਾਂ ਜੋ ਤੁਹਾਨੂੰ ਚੈੱਕ ਕਰਨ ਵਾਲੇ ਸਥਾਨਾਂ ਦੀ ਗਿਣਤੀ ਘਟਾਈ ਜਾ ਸਕੇ।
+
+- ਐਡਵਾਂਸਡ ਸਰਵਰ ਅਪ੍ਰੋਚ ਅਤੇ ਬੇਨਤੀ ਹੈਂਡਲਰ ਵਰਤੋ ਤਾਂ ਜੋ ਤੁਸੀਂ ਇਹ ਜਾਂਚ ਕਿੰਨੀ ਥਾਵਾਂ 'ਤੇ ਕਰਨੀ ਹੈ ਘਟਾ ਸਕੋ।
 
    **Python**
 
@@ -749,31 +900,31 @@ app.use((err, req, res, next) => {
    }
 
    def has_permission(user_permissions, required_permissions) -> bool:
-      # user_permissions: list of permissions the user has
-      # required_permissions: list of permissions required for the tool
+      # user_permissions: ਉਪਭੋਗਤਾ ਕੋਲ ਮੌਜੂਦ ਅਧਿਕਾਰਾਂ ਦੀ ਸੂਚੀ
+      # required_permissions: ਟੂਲ ਲਈ ਲੋੜੀਂਦੇ ਅਧਿਕਾਰਾਂ ਦੀ ਸੂਚੀ
       return any(perm in user_permissions for perm in required_permissions)
 
    @server.call_tool()
    async def handle_call_tool(
      name: str, arguments: dict[str, str] | None
    ) -> list[types.TextContent]:
-    # Assume request.user.permissions is a list of permissions for the user
+    # ਧਾਰਨਾ ਕਰੋ ਕਿ request.user.permissions ਉਪਭੋਗਤਾ ਲਈ ਅਧਿਕਾਰਾਂ ਦੀ ਸੂਚੀ ਹੈ
      user_permissions = request.user.permissions
      required_permissions = tool_permission.get(name, [])
      if not has_permission(user_permissions, required_permissions):
-        # Raise error "You don't have permission to call tool {name}"
+        # ਤਰੁਟਿ ਫੈਲਾਓ "ਤੁਹਾਡੇ ਕੋਲ ਟੂਲ {name} ਨੂੰ ਕਾਲ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਨਹੀਂ ਹੈ"
         raise Exception(f"You don't have permission to call tool {name}")
-     # carry on and call tool
+     # ਜਾਰੀ ਰੱਖੋ ਅਤੇ ਟੂਲ ਕਾਲ ਕਰੋ
      # ...
    ```   
-  
+    
 
    **TypeScript**
 
    ```typescript
    function hasPermission(userPermissions: string[], requiredPermissions: string[]): boolean {
        if (!Array.isArray(userPermissions) || !Array.isArray(requiredPermissions)) return false;
-       // Return true if user has at least one required permission
+       // ਜੇ ਉਪਭੋਗਤਾ ਕੋਲ ਘੱਟੋ ਘੱਟ ਇੱਕ ਜ਼ਰੂਰੀ ਅਨੁਮਤੀ ਹੈ ਤਾਂ ਸੱਚਾ ਵਾਪਸ ਕਰੋ
        
        return requiredPermissions.some(perm => userPermissions.includes(perm));
    }
@@ -787,47 +938,53 @@ app.use((err, req, res, next) => {
          return new Error(`You don't have permission to call ${name}`);
       }
   
-      // carry on..
+      // ਜਾਰੀ ਰੱਖੋ..
    });
    ```
   
-   ਧਿਆਨ ਦਿਓ, ਤੁਹਾਨੂੰ ਇਹ ਯਕੀਨੀ ਬਣਾਉਣ ਦੀ ਲੋੜ ਹੈ ਕਿ ਤੁਹਾਡਾ ਮਿਡਲਵੇਅਰ ਡਿਕੋਡ ਕੀਤਾ ਟੋਕਨ ਰਿਕਵੈਸਟ ਦੇ ਯੂਜ਼ਰ ਪ੍ਰਾਪਰਟੀ ਵਿੱਚ ਅਸਾਈਨ ਕਰਦਾ ਹੈ ਤਾਂ ਜੋ ਉੱਪਰ ਦਿੱਤਾ ਕੋਡ ਸਧਾਰਨ ਬਣੇ।
+   ਧਿਆਨ ਦਿਓ, ਤੁਸੀਂ ਯਕੀਨੀ ਬਣਾਉਣਾ ਹੋਵੇਗਾ ਕਿ ਤੁਹਾਡੇ ਮਿਡਲਵੇਅਰ ਨੇ ਡੀਕੋਡ ਕੀਤੇ ਟੋਕਨ ਨੂੰ ਬੇਨਤੀ ਦੇ ਯੂਜ਼ਰ ਪ੍ਰਾਪਰਟੀ 'ਚ ਅਸਾਈਨ ਕੀਤਾ ਹੈ ਤਾਂ ਜੋ ਉਪਰੋਕਤ ਕੋਡ ਸਧਾਰਣ ਬਣੇ।
 
-### ਸਾਰ
+### ਸੰਖੇਪ
 
-ਹੁਣ ਜਦੋਂ ਅਸੀਂ ਆਮ ਤੌਰ 'ਤੇ RBAC ਅਤੇ ਵਿਸ਼ੇਸ਼ ਤੌਰ 'ਤੇ MCP ਲਈ ਸਹਾਇਤਾ ਸ਼ਾਮਲ ਕਰਨ ਦੇ ਬਾਰੇ ਚਰਚਾ ਕੀਤੀ ਹੈ, ਇਹ ਸਮਾਂ ਹੈ ਕਿ ਤੁਸੀਂ ਆਪਣੇ ਆਪ ਸੁਰੱਖਿਆ ਲਾਗੂ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਤਾਂ ਜੋ ਤੁਹਾਨੂੰ ਪੇਸ਼ ਕੀਤੇ ਗਏ ਸੰਕਲਪਾਂ ਦੀ ਸਮਝ ਹੋਵੇ।
+ਹੁਣ ਜਦੋਂ ਅਸੀਂ ਆਮ ਤੌਰ 'ਤੇ RBAC ਅਤੇ ਖਾਸ ਤੌਰ 'ਤੇ MCP ਲਈ ਇਸਨੂੰ ਸ਼ਾਮਲ ਕਰਨ ਦੀ ਗੱਲ ਕੀਤੀ ਹੈ, ਤਾਂ ਇਹ ਸਮਾਂ ਆ ਗਿਆ ਹੈ ਕਿ ਤੁਸੀਂ ਸੁਰੱਖਿਆ ਨੂੰ ਆਪਣੇ ਆਪ ਲਾਗੂ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ ਤਾਂ ਜੋ ਇਹ ਸੁਨਿਸ਼ਚਿਤ ਕਰ ਸਕੋ ਕਿ ਤੁਸੀਂ ਉਪਰੋਕਤ ਵਿਚਾਰਧਾਰਾਵਾਂ ਨੂੰ ਸਮਝ ਲਿਆ ਹੈ।
 
-## ਅਸਾਈਨਮੈਂਟ 1: ਬੇਸਿਕ authentication ਨਾਲ ਇੱਕ MCP ਸਰਵਰ ਅਤੇ MCP ਕਲਾਇੰਟ ਬਣਾਓ
+## ਅਸਾਈਨਮੈਂਟ 1: ਆਧਾਰਭੂਤ ਪ੍ਰਮਾਣੀਕਰਨ ਨਾਲ mcp ਸਰਵਰ ਅਤੇ mcp ਕਲਾਇੰਟ ਬਣਾਓ
 
-ਇੱਥੇ ਤੁਸੀਂ ਸਿੱਖਿਆ ਹੈ ਕਿ ਕਿਵੇਂ headers ਰਾਹੀਂ credentials ਭੇਜਣੇ ਹਨ।
+ਇੱਥੇ ਤੁਸੀਂ ਹੈਡਰਾਂ ਰਾਹੀਂ ਕ੍ਰੈਡੈਂਸ਼ਲ ਭੇਜਣ ਦਾ ਜੋ ਕੁਝ ਸਿੱਖਿਆ ਹੈ, ਉਹ ਲਾਗੂ ਕਰੋਗੇ।
 
-## ਹੱਲ 1
+## ਸਮਾਧਾਨ 1
 
 [Solution 1](./code/basic/README.md)
 
-## ਅਸਾਈਨਮੈਂਟ 2: ਅਸਾਈਨਮੈਂਟ 1 ਦੇ ਹੱਲ ਨੂੰ JWT ਨਾਲ ਅਪਗਰੇਡ ਕਰੋ
+## ਅਸਾਈਨਮੈਂਟ 2: ਅਸਾਈਨਮੈਂਟ 1 ਤੋਂ ਸਮਾਧਾਨ ਨੂੰ JWT ਵਰਤ ਕੇ ਅੱਪਗਰੇਡ ਕਰੋ
 
-ਪਹਿਲੇ ਹੱਲ ਨੂੰ ਲਓ ਪਰ ਇਸ ਵਾਰ, ਇਸਨੂੰ ਬਿਹਤਰ ਬਣਾਉ।  
+ਪਹਿਲੇ ਸਮਾਧਾਨ ਨੂੰ ਲਓ ਪਰ ਇਸ ਵਾਰੀ ਅਸੀਂ ਇਸਨੂੰ ਬਿਹਤਰ ਬਣਾਈਏ।
 
-ਬੇਸਿਕ Auth ਦੀ ਬਜਾਏ, ਆਓ JWT ਵਰਤਦੇ ਹਾਂ।  
+ਆਧਾਰਭੂਤ ਆਥ ਵਰਤੇ ਬਜਾਏ, ਅਸੀਂ JWT ਵਰਤਾਂਗੇ।
 
-## ਹੱਲ 2
+## ਸਮਾਧਾਨ 2
 
 [Solution 2](./solution/jwt-solution/README.md)
 
-## ਚੁਣੌਤੀ
+## ਚੈਲੇਂਜ
 
-RBAC ਨੂੰ ਹਰ ਟੂਲ ਲਈ ਸ਼ਾਮਲ ਕਰੋ ਜਿਵੇਂ ਕਿ ਅਸੀਂ "Add RBAC to MCP" ਸੈਕਸ਼ਨ ਵਿੱਚ ਵਰਣਨ ਕੀਤਾ ਹੈ।
+ਉਹ ਟੂਲ ਪ੍ਰਤੀ RBAC ਸ਼ਾਮਲ ਕਰੋ ਜੋ ਅਸੀਂ ਸੈਕਸ਼ਨ "Add RBAC to MCP" ਵਿੱਚ ਵਰਣਨ ਕੀਤਾ ਹੈ।
 
-## ਸਾਰ
+## ਸੰਖੇਪ
 
-ਤੁਹਾਨੂੰ ਇਸ ਅਧਿਆਇ ਵਿੱਚ ਬਹੁਤ ਕੁਝ ਸਿੱਖਣ ਨੂੰ ਮਿਲਿਆ ਹੋਵੇਗਾ, ਜਿਵੇਂ ਕਿ ਬਿਨਾਂ ਸੁਰੱਖਿਆ ਤੋਂ ਬੇਸਿਕ ਸੁਰੱਖਿਆ, JWT ਅਤੇ ਇਹ ਕਿਵੇਂ MCP ਵਿੱਚ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।
+ਤੁਸੀਂ ਉਮੀਦ ਕਰਦੇ ਹੋ ਕਿ ਇਸ ਅਧਿਆਇ ਵਿੱਚ ਬਹੁਤ ਕੁਝ ਸਿੱਖਿਆ ਹੈ, ਬਿਨਾਂ ਕਿਸੇ ਸੁਰੱਖਿਆ ਤੋਂ ਲੈ ਕੇ ਮੂਲ ਸੁਰੱਖਿਆ ਤੱਕ, JWT ਅਤੇ ਇਸਨੂੰ MCP ਵਿੱਚ ਕਿਵੇਂ ਸ਼ਾਮਲ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।
 
-ਅਸੀਂ ਕਸਟਮ JWTs ਨਾਲ ਇੱਕ ਮਜ਼ਬੂਤ ਨੀਂਹ ਬਣਾਈ ਹੈ, ਪਰ ਜਿਵੇਂ ਜਿਵੇਂ ਅਸੀਂ ਵਧਦੇ ਹਾਂ, ਅਸੀਂ ਮਿਆਰੀ ਅਧਾਰਿਤ ਪਹਿਚਾਣ ਮਾਡਲ ਵੱਲ ਵਧ ਰਹੇ ਹਾਂ। Entra ਜਾਂ Keycloak ਵਰਗੇ IdP ਨੂੰ ਅਪਨਾਉਣ ਨਾਲ ਸਾਨੂੰ ਟੋਕਨ ਜਾਰੀ ਕਰਨ, ਵੈਰੀਫਿਕੇਸ਼ਨ, ਅਤੇ ਲਾਈਫਸਾਈਕਲ ਮੈਨੇਜਮੈਂਟ ਨੂੰ ਇੱਕ ਭਰੋਸੇਮੰਦ ਪਲੇਟਫਾਰਮ ਨੂੰ ਸੌਂਪਣ ਦੀ ਆਜ਼ਾਦੀ ਮਿਲਦੀ ਹੈ — ਜਿਸ ਨਾਲ ਅਸੀਂ ਐਪ ਲਾਜਿਕ ਅਤੇ ਯੂਜ਼ਰ ਅਨੁਭਵ 'ਤੇ ਧਿਆਨ ਕੇਂਦਰਿਤ ਕਰ ਸਕਦੇ ਹਾਂ।
+ਅਸੀਂ ਕਸਟਮ JWT ਨਾਲ ਇੱਕ ਮਜ਼ਬੂਤ ਬੁਨਿਆਦ ਤਿਆਰ ਕੀਤੀ ਹੈ, ਪਰ ਜਿਵੇਂ ਜਿਵੇਂ ਅਸੀਂ ਪੈਮਾਨਾ ਵਧਾ ਰਹੇ ਹਾਂ, ਅਸੀਂ ਇੱਕ ਮਿਆਰੀਆਧਾਰਿਤ ਪਹਚਾਣ ਮਾਡਲ ਵੱਲ ਵਧ ਰਹੇ ਹਾਂ। Entra ਜਾਂ Keycloak ਵਰਗੀ IdP ਅਪਣਾਉਣ ਨਾਲ ਅਸੀਂ ਟੋਕਨ ਜਾਰੀ ਕਰਨ, ਵੈਧਤਾ ਅਤੇ ਜੀਵਨ ਚਕ੍ਰ ਨੂੰ ਇੱਕ ਭਰੋਸੇਮੰਦ ਪਲੇਟਫਾਰਮ ਨੂੰ ਸੌਂਪ ਸਕਦੇ ਹਾਂ — ਜਿਸ ਨਾਲ ਅਸੀਂ ਐਪ ਲాజਿਕ ਅਤੇ ਯੂਜ਼ਰ ਅਨੁਭਵ 'ਤੇ ਧਿਆਨ ਕੇਂਦ੍ਰਿਤ ਕਰ ਸਕਦੇ ਹਾਂ।
 
-ਇਸ ਲਈ, ਸਾਡੇ ਕੋਲ [Entra 'ਤੇ ਇੱਕ ਉੱਨਤ ਅਧਿਆਇ](../../05-AdvancedTopics/mcp-security-entra/README.md) ਹੈ।
+ਇਸ ਲਈ, ਸਾਡੇ ਕੋਲ ਇੱਕ ਹੋਰ [ਐਡਵਾਂਸਡ ਅਧਿਆਇ Entra ਬਾਰੇ](../../05-AdvancedTopics/mcp-security-entra/README.md) ਹੈ।
+
+## ਅੱਗੇ ਕੀ ਹੈ
+
+- ਅਗਲੇ: [MCP ਹੋਸਟਾਂ ਦੀ ਸੈਟਿੰਗ](../12-mcp-hosts/README.md)
 
 ---
 
-**ਅਸਵੀਕਰਤਾ**:  
-ਇਹ ਦਸਤਾਵੇਜ਼ AI ਅਨੁਵਾਦ ਸੇਵਾ [Co-op Translator](https://github.com/Azure/co-op-translator) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਅਨੁਵਾਦ ਕੀਤਾ ਗਿਆ ਹੈ। ਹਾਲਾਂਕਿ ਅਸੀਂ ਸਹੀ ਹੋਣ ਦਾ ਯਤਨ ਕਰਦੇ ਹਾਂ, ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਦਿਓ ਕਿ ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦਾਂ ਵਿੱਚ ਗਲਤੀਆਂ ਜਾਂ ਅਸੁਚੱਜੇਪਣ ਹੋ ਸਕਦੇ ਹਨ। ਇਸ ਦਸਤਾਵੇਜ਼ ਦੀ ਮੂਲ ਭਾਸ਼ਾ ਵਿੱਚ ਮੌਜੂਦ ਅਸਲ ਕਾਪੀ ਨੂੰ ਅਧਿਕਾਰਤ ਸਰੋਤ ਮੰਨਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਮਹੱਤਵਪੂਰਨ ਜਾਣਕਾਰੀ ਲਈ, ਪੇਸ਼ੇਵਰ ਮਨੁੱਖੀ ਅਨੁਵਾਦ ਦੀ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਇਸ ਅਨੁਵਾਦ ਦੀ ਵਰਤੋਂ ਤੋਂ ਪੈਦਾ ਹੋਣ ਵਾਲੇ ਕਿਸੇ ਵੀ ਗਲਤਫਹਿਮੀ ਜਾਂ ਗਲਤ ਵਿਆਖਿਆ ਲਈ ਅਸੀਂ ਜ਼ਿੰਮੇਵਾਰ ਨਹੀਂ ਹਾਂ।
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**ਇਨਕਾਰ**:  
+ਇਸ ਦਸਤਾਵੇਜ਼ ਦਾ ਅਨੁਵਾਦ ਏਆਈ ਅਨੁਵਾਦ ਸੇਵਾ [Co-op Translator](https://github.com/Azure/co-op-translator) ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਕੀਤਾ ਗਿਆ ਹੈ। ਅਸੀਂ ਸਹੀਤਾ ਲਈ ਯਤਨਸ਼ੀਲ ਹਾਂ, ਪਰ ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਦਿਓ ਕਿ ਸਵੈਚਾਲਿਤ ਅਨੁਵਾਦਾਂ ਵਿੱਚ ਗਲਤੀਆਂ ਜਾਂ ਅਸਪਸ਼ਟਤਾਵਾਂ ਹੋ ਸਕਦੀਆਂ ਹਨ। ਮੂਲ ਦਸਤਾਵੇਜ਼ ਆਪਣੇ ਮੂਲ ਭਾਸ਼ਾ ਵਿੱਚ ਪ੍ਰਮਾਣਿਕ ਸਰੋਤ ਮੰਨਿਆ ਜਾਣਾ ਚਾਹੀਦਾ ਹੈ। ਸੰਵੇਦਨਸ਼ੀਲ ਜਾਣਕਾਰੀ ਲਈ, ਪ੍ਰੋਫੈਸ਼ਨਲ ਮਨੁੱਖੀ ਅਨੁਵਾਦ ਦੀ ਸਿਫਾਰਿਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ। ਇਸ ਅਨੁਵਾਦ ਦੀ ਵਰਤੋਂ ਨਾਲ ਹੋਣ ਵਾਲੀਆਂ ਕਿਸੇ ਵੀ ਗਲਤ ਫਹਿਮੀਆਂ ਜਾਂ ਗਲਤ ਵਿਆਖਿਆਵਾਂ ਲਈ ਅਸੀਂ ਜ਼ਿੰਮੇਵਰ ਨਹੀਂ ਹਾਂ।
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,282 +1,289 @@
-# Protocolul Model Context (MCP) pentru Începători - Ghid de Studiu
+# Protocolul Contextului Modelului (MCP) pentru Începători - Ghid de Studiu
 
-Acest ghid de studiu oferă o prezentare generală a structurii și conținutului depozitului pentru curriculumul "Protocolul Model Context (MCP) pentru Începători". Folosește acest ghid pentru a naviga eficient prin depozit și pentru a profita la maximum de resursele disponibile.
+Acest ghid de studiu oferă o prezentare generală a structurii și conținutului repository-ului pentru curriculumul "Protocolul Contextului Modelului (MCP) pentru Începători". Folosiți acest ghid pentru a naviga eficient în repository și pentru a profita la maximum de resursele disponibile.
 
-## Prezentare Generală a Depozitului
+## Prezentare Generală a Repository-ului
 
-Protocolul Model Context (MCP) este un cadru standardizat pentru interacțiunile dintre modelele AI și aplicațiile client. Creat inițial de Anthropic, MCP este acum întreținut de comunitatea mai largă MCP prin organizația oficială GitHub. Acest depozit oferă un curriculum cuprinzător, cu exemple practice de cod în C#, Java, JavaScript, Python și TypeScript, conceput pentru dezvoltatori AI, arhitecți de sisteme și ingineri software.
+Protocolul Contextului Modelului (MCP) este un cadru standardizat pentru interacțiunile dintre modelele AI și aplicațiile client. Inițial creat de Anthropic, MCP este acum întreținut de comunitatea mai largă MCP prin organizația oficială GitHub. Acest repository oferă un curriculum cuprinzător cu exemple practice de cod în C#, Java, JavaScript, Python și TypeScript, destinat dezvoltatorilor AI, arhitecților de sisteme și inginerilor software.
 
-## Harta Vizuală a Curriculumului
+## Hartă Vizuală a Curriculumului
 
 ```mermaid
 mindmap
-  root((MCP for Beginners))
-    00. Introduction
+  root((MCP pentru Începători))
+    00. Introducere
       ::icon(fa fa-book)
-      (Protocol Overview)
-      (Standardization Benefits)
-      (Real-world Use Cases)
-      (AI Integration Fundamentals)
-    01. Core Concepts
+      (Prezentare Generală a Protocolului)
+      (Beneficiile Standardizării)
+      (Cazuri de Utilizare din Lumea Reală)
+      (Fundamentele Integrării AI)
+    01. Concepte de Bază
       ::icon(fa fa-puzzle-piece)
-      (Client-Server Architecture)
-      (Protocol Components)
-      (Messaging Patterns)
-      (Transport Mechanisms)
-    02. Security
+      (Arhitectura Client-Server)
+      (Componentele Protocolului)
+      (Modele de Mesagerie)
+      (Mecanisme de Transport)
+      (Sarcini - Experimentale)
+      (Anotări pentru Unelte)
+    02. Securitate
       ::icon(fa fa-shield)
-      (AI-Specific Threats)
-      (Best Practices 2025)
-      (Azure Content Safety)
-      (Auth & Authorization)
-      (Microsoft Prompt Shields)
-    03. Getting Started
+      (Amenințări Specifice AI)
+      (Cele Mai Bune Practici 2025)
+      (Siguranța Conținutului Azure)
+      (Autentificare & Autorizare)
+      (Scuturi Prompt Microsoft)
+      (Top 10 OWASP MCP)
+      (Workshop de Securitate Sherpa)
+    03. Începerea Lucrului
       ::icon(fa fa-rocket)
-      (First Server Implementation)
-      (Client Development)
-      (LLM Client Integration)
-      (VS Code Extensions)
-      (SSE Server Setup)
-      (HTTP Streaming)
-      (AI Toolkit Integration)
-      (Testing Frameworks)
-      (Advanced Server Usage)
-      (Simple Auth)
-      (Deployment Strategies)
-    04. Practical Implementation
+      (Prima Implementare Server)
+      (Dezvoltare Client)
+      (Integrarea Client LLM)
+      (Extensii VS Code)
+      (Configurare Server SSE)
+      (Streaming HTTP)
+      (Integrarea Toolkit AI)
+      (Framework-uri de Testare)
+      (Utilizare Avansată Server)
+      (Autentificare Simplă)
+      (Strategii de Implementare)
+      (Configurare Gazde MCP)
+      (Inspector MCP)
+    04. Implementare Practică
       ::icon(fa fa-code)
-      (Multi-Language SDKs)
-      (Testing & Debugging)
-      (Prompt Templates)
-      (Sample Projects)
-      (Production Patterns)
-    05. Advanced Topics
+      (SDK-uri Multi-limbă)
+      (Testare & Debugging)
+      (Șabloane Prompt)
+      (Proiecte Exemplu)
+      (Modele de Producție)
+      (Strategii de Paginare)
+    05. Subiecte Avansate
       ::icon(fa fa-graduation-cap)
-      (Context Engineering)
-      (Foundry Agent Integration)
-      (Multi-modal AI Workflows)
-      (OAuth2 Authentication)
-      (Real-time Search)
-      (Streaming Protocols)
-      (Root Contexts)
-      (Routing Strategies)
-      (Sampling Techniques)
-      (Scaling Solutions)
-      (Security Hardening)
-      (Entra ID Integration)
+      (Ingineria Contextului)
+      (Integrarea Agentului Foundry)
+      (Fluxuri de Lucru AI Multi-modal)
+      (Autentificare OAuth2)
+      (Căutare în Timp Real)
+      (Protocoale de Streaming)
+      (Contexturi Rădăcină)
+      (Strategii de Rutare)
+      (Tehnici de Eșantionare)
+      (Soluții de Scalare)
+      (Întărirea Securității)
+      (Integrarea Entra ID)
       (Web Search MCP)
+      (Explorarea Profundă a Funcțiilor Protocolului)
       
-    06. Community
+    06. Comunitate
       ::icon(fa fa-users)
-      (Code Contributions)
-      (Documentation)
-      (MCP Client Ecosystem)
-      (MCP Server Registry)
-      (Image Generation Tools)
-      (GitHub Collaboration)
-    07. Early Adoption
+      (Contribuții de Cod)
+      (Documentație)
+      (Ecosistemul Client MCP)
+      (Registrul Server MCP)
+      (Unelte de Generare Imagini)
+      (Colaborare GitHub)
+    07. Adoptare Timpurie
       ::icon(fa fa-lightbulb)
-      (Production Deployments)
-      (Microsoft MCP Servers)
-      (Azure MCP Service)
-      (Enterprise Case Studies)
-      (Future Roadmap)
-    08. Best Practices
+      (Implementări în Producție)
+      (Servere Microsoft MCP)
+      (Serviciul Azure MCP)
+      (Studii de Caz Enterprise)
+      (Plan de Dezvoltare Viitor)
+    08. Cele Mai Bune Practici
       ::icon(fa fa-check)
-      (Performance Optimization)
-      (Fault Tolerance)
-      (System Resilience)
-      (Monitoring & Observability)
-    09. Case Studies
+      (Optimizarea Performanței)
+      (Toleranță la Defecțiuni)
+      (Rezistența Sistemului)
+      (Monitorizare & Observabilitate)
+    09. Studii de Caz
       ::icon(fa fa-file-text)
-      (Azure API Management)
-      (AI Travel Agent)
-      (Azure DevOps Integration)
-      (Documentation MCP)
-      (GitHub MCP Registry)
-      (VS Code Integration)
-      (Real-world Implementations)
-    10. Hands-on Workshop
+      (Management API Azure)
+      (Agent de Turism AI)
+      (Integrare Azure DevOps)
+      (Documentație MCP)
+      (Registrul MCP GitHub)
+      (Integrare VS Code)
+      (Implementări din Lumea Reală)
+    10. Workshop Practic
       ::icon(fa fa-laptop)
-      (MCP Server Fundamentals)
-      (Advanced Development)
-      (AI Toolkit Integration)
-      (Production Deployment)
-      (4-Lab Structure)
-    11. Database Integration Labs
+      (Fundamente Server MCP)
+      (Dezvoltare Avansată)
+      (Integrarea Toolkit AI)
+      (Implementare în Producție)
+      (Structura 4-Lab)
+    11. Laboratoare de Integrare Bază de Date
       ::icon(fa fa-database)
-      (PostgreSQL Integration)
-      (Retail Analytics Use Case)
-      (Row Level Security)
-      (Semantic Search)
-      (Production Deployment)
-      (13-Lab Structure)
-      (Hands-on Learning)
+      (Integrare PostgreSQL)
+      (Caz de Utilizare Analitică Retail)
+      (Securitate la Nivel de Rând)
+      (Căutare Semantică)
+      (Implementare în Producție)
+      (Structura 13-Lab)
+      (Învățare Practică)
 ```
+## Structura Repository-ului
 
-## Structura Depozitului
-
-Depozitul este organizat în unsprezece secțiuni principale, fiecare concentrându-se pe diferite aspecte ale MCP:
+Repository-ul este organizat în unsprezece secțiuni principale, fiecare axându-se pe diferite aspecte ale MCP:
 
 1. **Introducere (00-Introduction/)**
-   - Prezentare generală a Protocolului Model Context
-   - De ce este importantă standardizarea în fluxurile de lucru AI
+   - Prezentare generală a Protocolului Contextului Modelului
+   - De ce contează standardizarea în pipeline-urile AI
    - Cazuri practice de utilizare și beneficii
 
 2. **Concepte de Bază (01-CoreConcepts/)**
-   - Arhitectura client-server
-   - Componentele cheie ale protocolului
+   - Arhitectură client-server
+   - Componente cheie ale protocolului
    - Modele de mesagerie în MCP
 
 3. **Securitate (02-Security/)**
    - Amenințări de securitate în sistemele bazate pe MCP
-   - Cele mai bune practici pentru implementări sigure
+   - Cele mai bune practici pentru securizarea implementărilor
    - Strategii de autentificare și autorizare
-   - **Documentație Cuprinzătoare de Securitate**:
-     - Cele mai bune practici de securitate MCP 2025
+   - **Documentație cuprinzătoare de securitate**:
+     - Cele mai bune practici MCP pentru securitate 2025
      - Ghid de implementare Azure Content Safety
      - Controale și tehnici de securitate MCP
-     - Referință rapidă pentru cele mai bune practici MCP
-   - **Subiecte Cheie de Securitate**:
-     - Atacuri de injectare de prompt și otrăvirea uneltelor
-     - Deturnarea sesiunii și problemele de confuzie a autorității
-     - Vulnerabilități de transmitere a token-urilor
+     - Referință rapidă practici MCP pentru securitate
+   - **Teme cheie de securitate**:
+     - Atacuri de injecție în prompt și otrăvire a uneltelor
+     - Hijacking de sesiune și probleme de tip "confused deputy"
+     - Vulnerabilități legate de token passthrough
      - Permisiuni excesive și controlul accesului
-     - Securitatea lanțului de aprovizionare pentru componentele AI
+     - Securitatea lanțului de aprovizionare pentru componente AI
      - Integrarea Microsoft Prompt Shields
 
-4. **Primii Pași (03-GettingStarted/)**
-   - Configurarea și configurarea mediului
-   - Crearea de servere și clienți MCP de bază
+4. **Pornirea Începutului (03-GettingStarted/)**
+   - Configurarea și pregătirea mediului
+   - Crearea primelor servere și clienți MCP
    - Integrarea cu aplicații existente
    - Include secțiuni pentru:
-     - Prima implementare a unui server
+     - Prima implementare a serverului
      - Dezvoltarea clientului
      - Integrarea clientului LLM
-     - Integrarea cu VS Code
+     - Integrarea VS Code
      - Server Server-Sent Events (SSE)
-     - Utilizarea avansată a serverului
+     - Utilizare avansată a serverului
      - Streaming HTTP
      - Integrarea AI Toolkit
      - Strategii de testare
-     - Ghiduri de implementare
+     - Ghid pentru implementare
 
 5. **Implementare Practică (04-PracticalImplementation/)**
-   - Utilizarea SDK-urilor în diferite limbaje de programare
+   - Utilizarea SDK-urilor în diverse limbaje de programare
    - Tehnici de depanare, testare și validare
-   - Crearea de șabloane de prompt reutilizabile și fluxuri de lucru
-   - Proiecte exemplu cu implementări practice
+   - Crearea de template-uri și workflow-uri reutilizabile pentru prompturi
+   - Proiecte exemplu cu exemple de implementare
 
 6. **Subiecte Avansate (05-AdvancedTopics/)**
    - Tehnici de inginerie a contextului
-   - Integrarea agenților Foundry
-   - Fluxuri de lucru AI multi-modale
-   - Demonstrații de autentificare OAuth2
+   - Integrarea agentului Foundry
+   - Workflow-uri AI multi-modale
+   - Demo-uri autentificare OAuth2
    - Capacități de căutare în timp real
    - Streaming în timp real
-   - Implementarea contextelor rădăcină
+   - Implementare contexte rădăcină
    - Strategii de rutare
-   - Tehnici de eșantionare
+   - Tehnici de sampling
    - Abordări de scalare
    - Considerații de securitate
    - Integrarea securității Entra ID
    - Integrarea căutării web
 
 7. **Contribuții Comunitare (06-CommunityContributions/)**
-   - Cum să contribui cu cod și documentație
-   - Colaborarea prin GitHub
-   - Îmbunătățiri și feedback din partea comunității
+   - Cum să contribuiți cu cod și documentație
+   - Colaborare prin GitHub
+   - Îmbunătățiri și feedback conduse de comunitate
    - Utilizarea diferiților clienți MCP (Claude Desktop, Cline, VSCode)
-   - Lucrul cu servere MCP populare, inclusiv generarea de imagini
+   - Lucrul cu populari servere MCP inclusiv generare de imagini
 
-8. **Lecții din Adopția Timpurie (07-LessonsfromEarlyAdoption/)**
-   - Implementări reale și povești de succes
+8. **Lecții din Adoptarea Timpurie (07-LessonsfromEarlyAdoption/)**
+   - Implementări din lumea reală și povești de succes
    - Construirea și implementarea soluțiilor bazate pe MCP
-   - Tendințe și foaie de parcurs viitoare
-   - **Ghidul Serverelor MCP Microsoft**: Ghid cuprinzător pentru 10 servere MCP Microsoft gata de producție, inclusiv:
-     - Server MCP Microsoft Learn Docs
-     - Server MCP Azure (15+ conectori specializați)
-     - Server MCP GitHub
-     - Server MCP Azure DevOps
-     - Server MCP MarkItDown
-     - Server MCP SQL Server
-     - Server MCP Playwright
-     - Server MCP Dev Box
-     - Server MCP Azure AI Foundry
-     - Server MCP Microsoft 365 Agents Toolkit
+   - Tendințe și roadmap viitor
+   - **Ghid Microsoft MCP Servers**: Ghid complet pentru 10 servere Microsoft MCP gata pentru producție, inclusiv:
+     - Microsoft Learn Docs MCP Server
+     - Azure MCP Server (15+ conectori specializați)
+     - GitHub MCP Server
+     - Azure DevOps MCP Server
+     - MarkItDown MCP Server
+     - SQL Server MCP Server
+     - Playwright MCP Server
+     - Dev Box MCP Server
+     - Azure AI Foundry MCP Server
+     - Microsoft 365 Agents Toolkit MCP Server
 
 9. **Cele Mai Bune Practici (08-BestPractices/)**
-   - Optimizarea performanței
+   - Optimizarea performanței și tuning
    - Proiectarea sistemelor MCP tolerante la erori
    - Strategii de testare și reziliență
 
 10. **Studii de Caz (09-CaseStudy/)**
-    - **Șapte studii de caz cuprinzătoare** care demonstrează versatilitatea MCP în diverse scenarii:
-    - **Agenți de Călătorie Azure AI**: Orchestrare multi-agent cu Azure OpenAI și AI Search
-    - **Integrarea Azure DevOps**: Automatizarea proceselor de lucru cu actualizări de date YouTube
-    - **Recuperare de Documentație în Timp Real**: Client Python în consolă cu streaming HTTP
-    - **Generator Interactiv de Planuri de Studiu**: Aplicație web Chainlit cu AI conversațional
-    - **Documentație în Editor**: Integrare VS Code cu fluxuri de lucru GitHub Copilot
-    - **Managementul API-urilor Azure**: Integrare API la nivel de întreprindere cu crearea serverului MCP
-    - **Registrul MCP GitHub**: Dezvoltarea ecosistemului și platforma de integrare agentică
-    - Exemple de implementare care acoperă integrarea la nivel de întreprindere, productivitatea dezvoltatorilor și dezvoltarea ecosistemului
+    - **Șapte studii de caz cuprinzătoare** demonstrând versatilitatea MCP în diverse scenarii:
+    - **Azure AI Travel Agents**: Orchestrație multi-agent cu Azure OpenAI și AI Search
+    - **Integrare Azure DevOps**: Automatizarea proceselor workflow cu actualizări date YouTube
+    - **Obținerea Documentației în timp real**: Client Python consola cu streaming HTTP
+    - **Generator Interactiv de Plan de Studiu**: Aplicație web Chainlit cu AI conversațională
+    - **Documentație în Editor**: Integrare VS Code cu workflow-uri GitHub Copilot
+    - **Gestionare Azure API**: Integrare API enterprise cu crearea de server MCP
+    - **Registrul GitHub MCP**: Dezvoltarea ecosistemului și platforma de integrare agentică
+    - Exemple de implementare ce acoperă integrarea enterprise, productivitatea dezvoltatorilor și dezvoltarea ecosistemului
 
 11. **Atelier Practic (10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/)**
-    - Atelier practic cuprinzător care combină MCP cu AI Toolkit
-    - Construirea de aplicații inteligente care leagă modelele AI de unelte din lumea reală
-    - Module practice care acoperă fundamentele, dezvoltarea serverului personalizat și strategiile de implementare în producție
-    - **Structura Laboratorului**:
-      - Laborator 1: Fundamentele Serverului MCP
-      - Laborator 2: Dezvoltarea Avansată a Serverului MCP
+    - Atelier practic cuprinzător combinând MCP cu AI Toolkit
+    - Construirea de aplicații inteligente care leagă modelele AI cu unelte din lumea reală
+    - Module practice acoperind fundamentele, dezvoltarea serverului personalizat și strategii de implementare în producție
+    - **Structura laboratorului**:
+      - Laborator 1: Fundamentele serverului MCP
+      - Laborator 2: Dezvoltare avansată a serverului MCP
       - Laborator 3: Integrarea AI Toolkit
-      - Laborator 4: Implementare și Scalare în Producție
-    - Abordare bazată pe laboratoare cu instrucțiuni pas cu pas
+      - Laborator 4: Implementare și scalare în producție
+    - Abordare de învățare bazată pe laborator cu instrucțiuni pas cu pas
 
-12. **Laboratoare de Integrare a Serverului MCP cu Baza de Date (11-MCPServerHandsOnLabs/)**
-    - **Cale de învățare cuprinzătoare de 13 laboratoare** pentru construirea serverelor MCP gata de producție cu integrare PostgreSQL
-    - **Implementare reală de analitică retail** folosind cazul de utilizare Zava Retail
-    - **Modele la nivel de întreprindere** incluzând Securitatea la Nivel de Rând (RLS), căutare semantică și acces multi-chiriaș
-    - **Structura Completă a Laboratoarelor**:
-      - **Laboratoare 00-03: Fundamente** - Introducere, Arhitectură, Securitate, Configurarea Mediului
-      - **Laboratoare 04-06: Construirea Serverului MCP** - Proiectarea Bazei de Date, Implementarea Serverului MCP, Dezvoltarea Uneltelor
-      - **Laboratoare 07-09: Funcționalități Avansate** - Căutare Semantică, Testare și Depanare, Integrare VS Code
-      - **Laboratoare 10-12: Producție și Cele Mai Bune Practici** - Implementare, Monitorizare, Optimizare
-    - **Tehnologii Acoperite**: Cadrul FastMCP, PostgreSQL, Azure OpenAI, Azure Container Apps, Application Insights
-    - **Rezultate ale Învățării**: Servere MCP gata de producție, modele de integrare a bazelor de date, analitică bazată pe AI, securitate la nivel de întreprindere
+12. **Laboratoare pentru Integrarea Bazei de Date MCP Server (11-MCPServerHandsOnLabs/)**
+    - **Curs complet de 13 laboratoare** pentru construirea de servere MCP gata pentru producție cu integrare PostgreSQL
+    - **Implementare reală de analiză retail** folosind studiul de caz Zava Retail
+    - **Tipare enterprise** incluzând Row Level Security (RLS), căutare semantică și acces multi-chiriaș la date
+    - **Structura completă a laboratorului**:
+      - **Laboratoare 00-03: Fundamente** - Introducere, Arhitectură, Securitate, Configurare mediu
+      - **Laboratoare 04-06: Construirea serverului MCP** - Design baza de date, Implementarea serverului MCP, Dezvoltare unelte
+      - **Laboratoare 07-09: Funcții avansate** - Căutare semantică, Testare & depanare, Integrarea VS Code
+      - **Laboratoare 10-12: Producție & Cele mai bune practici** - Implementare, Monitorizare, Optimizare
+    - **Tehnologii acoperite**: Framework FastMCP, PostgreSQL, Azure OpenAI, Azure Container Apps, Application Insights
+    - **Rezultate de învățare**: Servere MCP gata pentru producție, tipare de integrare bază de date, analiză AI-powered, securitate enterprise
 
 ## Resurse Suplimentare
 
-Depozitul include resurse de suport:
+Repository-ul include resurse suport:
 
-- **Folderul Images**: Conține diagrame și ilustrații utilizate pe parcursul curriculumului
-- **Traduceri**: Suport multilingvistic cu traduceri automate ale documentației
+- **Folderul Imagini**: Conține diagrame și ilustrații folosite în curriculum
+- **Traduceri**: Suport multi-limbaj cu traduceri automate ale documentației
 - **Resurse Oficiale MCP**:
   - [Documentația MCP](https://modelcontextprotocol.io/)
   - [Specificația MCP](https://spec.modelcontextprotocol.io/)
-  - [Depozitul GitHub MCP](https://github.com/modelcontextprotocol)
+  - [Repository MCP pe GitHub](https://github.com/modelcontextprotocol)
 
-## Cum să Folosești Acest Depozit
+## Cum să Folosești Acest Repository
 
 1. **Învățare Secvențială**: Urmează capitolele în ordine (00 până la 11) pentru o experiență de învățare structurată.
-2. **Focalizare pe Limbaj**: Dacă ești interesat de un anumit limbaj de programare, explorează directoarele de exemple pentru implementări în limbajul tău preferat.
-3. **Implementare Practică**: Începe cu secțiunea "Primii Pași" pentru a-ți configura mediul și a crea primul tău server și client MCP.
-4. **Explorare Avansată**: După ce te familiarizezi cu elementele de bază, aprofundează subiectele avansate pentru a-ți extinde cunoștințele.
-5. **Implicare Comunitară**: Alătură-te comunității MCP prin discuțiile de pe GitHub și canalele Discord pentru a te conecta cu experți și alți dezvoltatori.
+2. **Focalizare pe Limbaj Specific**: Dacă ești interesat de un anumit limbaj de programare, explorează directoarele sample pentru implementări în limbajul preferat.
+3. **Implementare Practică**: Începe cu secțiunea „Getting Started” pentru a-ți configura mediul și a crea primul server și client MCP.
+4. **Explorare Avansată**: După ce ești confortabil cu bazele, aprofundează subiectele avansate pentru a-ți extinde cunoștințele.
+5. **Implicare în Comunitate**: Alătură-te comunității MCP prin discuții pe GitHub și canale Discord pentru a te conecta cu experți și alți dezvoltatori.
 
 ## Clienți și Unelte MCP
 
-Curriculumul acoperă diferiți clienți și unelte MCP:
+Curriculumul acoperă diverși clienți și unelte MCP:
 
 1. **Clienți Oficiali**:
-   - Visual Studio Code 
+   - Visual Studio Code
    - MCP în Visual Studio Code
    - Claude Desktop
-   - Claude în VSCode 
+   - Claude în VSCode
    - Claude API
 
 2. **Clienți Comunitari**:
    - Cline (bazat pe terminal)
-   - Cursor (editor de cod)
+   - Cursor (editor cod)
    - ChatMCP
    - Windsurf
 
@@ -288,19 +295,19 @@ Curriculumul acoperă diferiți clienți și unelte MCP:
 
 ## Servere MCP Populare
 
-Depozitul introduce diverse servere MCP, inclusiv:
+Repository-ul prezintă diverse servere MCP, inclusiv:
 
-1. **Servere Oficiale Microsoft MCP**:
-   - Server MCP Microsoft Learn Docs
-   - Server MCP Azure (15+ conectori specializați)
-   - Server MCP GitHub
-   - Server MCP Azure DevOps
-   - Server MCP MarkItDown
-   - Server MCP SQL Server
-   - Server MCP Playwright
-   - Server MCP Dev Box
-   - Server MCP Azure AI Foundry
-   - Server MCP Microsoft 365 Agents Toolkit
+1. **Servere MCP Oficiale Microsoft**:
+   - Microsoft Learn Docs MCP Server
+   - Azure MCP Server (15+ conectori specializați)
+   - GitHub MCP Server
+   - Azure DevOps MCP Server
+   - MarkItDown MCP Server
+   - SQL Server MCP Server
+   - Playwright MCP Server
+   - Dev Box MCP Server
+   - Azure AI Foundry MCP Server
+   - Microsoft 365 Agents Toolkit MCP Server
 
 2. **Servere de Referință Oficiale**:
    - Filesystem
@@ -308,15 +315,15 @@ Depozitul introduce diverse servere MCP, inclusiv:
    - Memory
    - Sequential Thinking
 
-3. **Generare de Imagini**:
+3. **Generare Imagini**:
    - Azure OpenAI DALL-E 3
    - Stable Diffusion WebUI
    - Replicate
 
 4. **Unelte de Dezvoltare**:
    - Git MCP
-   - Control Terminal
-   - Asistent de Cod
+   - Terminal Control
+   - Code Assistant
 
 5. **Servere Specializate**:
    - Salesforce
@@ -325,13 +332,15 @@ Depozitul introduce diverse servere MCP, inclusiv:
 
 ## Contribuții
 
-Acest depozit acceptă contribuții din partea comunității. Vezi secțiunea Contribuții Comunitare pentru îndrumări despre cum să contribui eficient la ecosistemul MCP.
+Acest repository primește cu plăcere contribuții din partea comunității. Consultați secțiunea Contribuții Comunitare pentru îndrumări despre cum să contribuiți eficient la ecosistemul MCP.
 
 ----
 
-*Acest ghid de studiu a fost actualizat pe 6 octombrie 2025 și oferă o prezentare generală a depozitului la acea dată. Conținutul depozitului poate fi actualizat după această dată.*
+*Acest ghid de studiu a fost actualizat ultima dată pe 5 februarie 2026, reflectând cea mai recentă Specificație MCP 2025-11-25 și oferă o prezentare generală a repository-ului până la această dată. Conținutul repository-ului poate fi actualizat după această dată.*
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Declinare de responsabilitate**:  
-Acest document a fost tradus folosind serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim să asigurăm acuratețea, vă rugăm să fiți conștienți că traducerile automate pot conține erori sau inexactități. Documentul original în limba sa natală ar trebui considerat sursa autoritară. Pentru informații critice, se recomandă traducerea profesională realizată de un specialist. Nu ne asumăm responsabilitatea pentru eventualele neînțelegeri sau interpretări greșite care pot apărea din utilizarea acestei traduceri.
+Acest document a fost tradus utilizând serviciul de traducere AI [Co-op Translator](https://github.com/Azure/co-op-translator). Deși ne străduim pentru acuratețe, vă rugăm să rețineți că traducerile automate pot conține erori sau inexactități. Documentul original, în limba sa nativă, trebuie considerat sursa autorizată. Pentru informații critice, se recomandă traducerea profesională realizată de un specialist. Nu ne asumăm răspunderea pentru orice neînțelegeri sau interpretări greșite care pot decurge din utilizarea acestei traduceri.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

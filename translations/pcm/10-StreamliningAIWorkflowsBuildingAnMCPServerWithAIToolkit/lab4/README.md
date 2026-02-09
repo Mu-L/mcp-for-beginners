@@ -6,45 +6,45 @@
 ![VS Code](https://img.shields.io/badge/VS%20Code-Integration-blue?style=flat-square&logo=visualstudiocode)
 ![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-Agent%20Mode-green?style=flat-square&logo=github)
 
-> **⚡ Quick Start:** Build MCP server wey fit automate GitHub repo cloning and VS Code integration for just 30 minutes!
+> **⚡ Quick Start:** Build beta-ready MCP server wey dey automate GitHub repository cloning plus VS Code integration for just 30 minutes!
 
-## 🎯 Wetin You Go Learn
+## 🎯 Learning Objectives
 
-By di end of dis lab, you go sabi:
+By di end of dis lab, you go fit:
 
-- ✅ Create custom MCP server wey fit work for real-world development workflows
-- ✅ Add GitHub repo cloning functionality inside MCP
-- ✅ Connect custom MCP servers with VS Code and Agent Builder
-- ✅ Use GitHub Copilot Agent Mode with custom MCP tools
+- ✅ Create custom MCP server for real-world development workflows
+- ✅ Implement GitHub repository cloning functionality via MCP
+- ✅ Integrate custom MCP servers wit VS Code and Agent Builder
+- ✅ Use GitHub Copilot Agent Mode wit custom MCP tools
 - ✅ Test and deploy custom MCP servers for production environments
 
-## 📋 Wetin You Need Before You Start
+## 📋 Prerequisites
 
-- Finish Labs 1-3 (MCP basics and advanced development)
-- Get GitHub Copilot subscription ([free signup dey here](https://github.com/github-copilot/signup))
-- Install VS Code with AI Toolkit and GitHub Copilot extensions
-- Make sure say Git CLI dey your system and e don configure
+- Finish Labs 1-3 (MCP fundamentals and advanced development)
+- GitHub Copilot subscription ([free signup dey](https://github.com/github-copilot/signup))
+- VS Code wit AI Toolkit and GitHub Copilot extensions
+- Git CLI installed and configured
 
 ## 🏗️ Project Overview
 
 ### **Real-World Development Challenge**
-As developers, we dey use GitHub wella to clone repos and open dem for VS Code or VS Code Insiders. Dis manual process dey involve:
+As developers, we dey always use GitHub to clone repositories and open dem for VS Code or VS Code Insiders. Dis manual process na:
 1. Open terminal/command prompt
-2. Go di directory wey you want
+2. Move go di right directory
 3. Run `git clone` command
 4. Open VS Code for di cloned directory
 
-**Our MCP solution go make all dis process easy with just one smart command!**
+**Our MCP solution go make dis na one smart command!**
 
 ### **Wetin You Go Build**
-You go create **GitHub Clone MCP Server** (`git_mcp_server`) wey go provide:
+One **GitHub Clone MCP Server** (`git_mcp_server`) wey dey provide:
 
 | Feature | Description | Benefit |
 |---------|-------------|---------|
-| 🔄 **Smart Repository Cloning** | Clone GitHub repos with validation | Automated error checking |
-| 📁 **Intelligent Directory Management** | Check and create directories safely | Prevents overwriting |
-| 🚀 **Cross-Platform VS Code Integration** | Open projects in VS Code/Insiders | Seamless workflow transition |
-| 🛡️ **Robust Error Handling** | Handle network, permission, and path issues | Production-ready reliability |
+| 🔄 **Smart Repository Cloning** | Clone GitHub repos wit validation | Automatic error checking |
+| 📁 **Intelligent Directory Management** | Check and create directories well | E go prevent overwriting |
+| 🚀 **Cross-Platform VS Code Integration** | Open projects for VS Code/Insiders | Smooth workflow transition |
+| 🛡️ **Robust Error Handling** | Manage network, permission, and path wahala | Production-ready reliability |
 
 ---
 
@@ -52,30 +52,30 @@ You go create **GitHub Clone MCP Server** (`git_mcp_server`) wey go provide:
 
 ### Step 1: Create GitHub Agent for Agent Builder
 
-1. **Open Agent Builder** through AI Toolkit extension
-2. **Create new agent** with dis configuration:
+1. **Launch Agent Builder** through AI Toolkit extension
+2. **Create new agent** wit dis configuration:
    ```
    Agent Name: GitHubAgent
    ```
 
 3. **Start custom MCP server:**
    - Go **Tools** → **Add Tool** → **MCP Server**
-   - Select **"Create A new MCP Server"**
-   - Choose **Python template** for better flexibility
+   - Pick **"Create A new MCP Server"**
+   - Use **Python template** for beta flexibility
    - **Server Name:** `git_mcp_server`
 
 ### Step 2: Configure GitHub Copilot Agent Mode
 
 1. **Open GitHub Copilot** for VS Code (Ctrl/Cmd + Shift + P → "GitHub Copilot: Open")
-2. **Select Agent Model** for Copilot interface
-3. **Pick Claude 3.7 model** for better reasoning capabilities
-4. **Enable MCP integration** for tool access
+2. **Select Agent Model** inside Copilot interface
+3. **Choose Claude 3.7 model** for better reasoning power
+4. **Turn on MCP integration** for tool access
 
-> **💡 Pro Tip:** Claude 3.7 sabi development workflows and e dey handle errors well.
+> **💡 Pro Tip:** Claude 3.7 get strong understanding for development workflows plus error handling ways.
 
-### Step 3: Implement di Main MCP Server Functionality
+### Step 3: Implement Core MCP Server Functionality
 
-**Use dis detailed prompt with GitHub Copilot Agent Mode:**
+**Make use of di detailed prompt with GitHub Copilot Agent Mode:**
 
 ```
 Create two MCP tools with the following comprehensive requirements:
@@ -112,15 +112,15 @@ Additional Requirements:
 
 #### 4a. Test for Agent Builder
 
-1. **Run di debug configuration** for Agent Builder
-2. **Set up your agent with dis system prompt:**
+1. **Start debug configuration** for Agent Builder
+2. **Set your agent wit dis system prompt:**
 
 ```
 SYSTEM_PROMPT:
 You are my intelligent coding repository assistant. You help developers efficiently clone GitHub repositories and set up their development environment. Always provide clear feedback about operations and handle errors gracefully.
 ```
 
-3. **Test am with real user scenarios:**
+3. **Test wit realistic user cases:**
 
 ```
 USER_PROMPT EXAMPLES:
@@ -132,11 +132,11 @@ Scenario : Basic Clone and Open
 
 ![Agent Builder Testing](../../../../translated_images/pcm/DebugAgent.81d152370c503241.webp)
 
-**Expected Results:**
-- ✅ Repo go clone successfully with path confirmation
+**Wetin You Suppose See:**
+- ✅ Successful cloning wit path confirmation
 - ✅ VS Code go open automatically
-- ✅ Clear error messages for invalid scenarios
-- ✅ E go handle edge cases well
+- ✅ Clear error messages for wrong cases
+- ✅ Correct handling of edge cases
 
 #### 4b. Test for MCP Inspector
 
@@ -147,60 +147,67 @@ Scenario : Basic Clone and Open
 
 
 
-**🎉 Congrats!** You don successfully create MCP server wey fit work for production and e dey solve real development workflow problems. Your custom GitHub clone server don show di power of MCP for automating and improving developer productivity.
+**🎉 Congrats!** You don successfully create practical, production-ready MCP server wey solve real development workflow wahala. Your custom GitHub clone server show di power of MCP to automate and improve developer productivity.
 
 ### 🏆 Achievement Unlocked:
 - ✅ **MCP Developer** - Create custom MCP server
-- ✅ **Workflow Automator** - Make development process easy  
+- ✅ **Workflow Automator** - Make development processes easy  
 - ✅ **Integration Expert** - Connect different development tools
-- ✅ **Production Ready** - Build solution wey fit deploy
+- ✅ **Production Ready** - Build solutions wey fit deploy
 
 ---
 
-## 🎓 Workshop Completion: Your Journey with Model Context Protocol
+## 🎓 Workshop Completion: Your Journey wit Model Context Protocol
 
 **Dear Workshop Participant,**
 
-Congrats say you don finish all di four modules for di Model Context Protocol workshop! You don move from di basics of AI Toolkit to building MCP servers wey dey solve real-world development problems.
+Congrats for finishing all four modules of Model Context Protocol workshop! You don waka far from the basic AI Toolkit concepts to building production-ready MCP servers wey fit solve real-world development problems.
 
-### 🚀 Wetin You Don Learn:
+### 🚀 Your Learning Path Recap:
 
-**[Module 1](../lab1/README.md)**: You start by learning AI Toolkit basics, model testing, and creating your first AI agent.
+**[Module 1](../lab1/README.md)**: You begin to sabi AI Toolkit basics, model testing, plus create your first AI agent.
 
-**[Module 2](../lab2/README.md)**: You learn MCP architecture, integrate Playwright MCP, and build browser automation agent.
+**[Module 2](../lab2/README.md)**: You learn MCP architecture, finish Playwright MCP integration, and build your first browser automation agent.
 
-**[Module 3](../lab3/README.md)**: You move to custom MCP server development with di Weather MCP server and master debugging tools.
+**[Module 3](../lab3/README.md)**: You advance to custom MCP server development wit Weather MCP server and master debug tools.
 
-**[Module 4](../lab4/README.md)**: You don use everything to create GitHub repo workflow automation tool.
+**[Module 4](../lab4/README.md)**: Now you don apply all to create practical GitHub repository workflow automation tool.
 
 ### 🌟 Wetin You Don Master:
 
-- ✅ **AI Toolkit Ecosystem**: Models, agents, and integration patterns
+- ✅ **AI Toolkit Ecosystem**: Models, agents, and integration methods
 - ✅ **MCP Architecture**: Client-server design, transport protocols, and security
 - ✅ **Developer Tools**: From Playground to Inspector to production deployment
-- ✅ **Custom Development**: Build, test, and deploy your own MCP servers
-- ✅ **Practical Applications**: Solve real-world workflow problems with AI
+- ✅ **Custom Development**: Building, testing, and deploying your own MCP servers
+- ✅ **Practical Applications**: Solve real-world workflow challenges wit AI
 
-### 🔮 Wetin You Fit Do Next:
+### 🔮 Wetin Next You Go Do:
 
-1. **Build Your Own MCP Server**: Use di skills wey you don learn to automate your own workflows
-2. **Join di MCP Community**: Share your work and learn from others
+1. **Build Your Own MCP Server**: Use these skills to automate your own workflows
+2. **Join MCP Community**: Share your work and learn from others
 3. **Explore Advanced Integration**: Connect MCP servers to enterprise systems
-4. **Contribute to Open Source**: Help improve MCP tools and documentation
+4. **Contribute to Open Source**: Help improve MCP tools and docs
 
-Remember say dis workshop na just di beginning. Di Model Context Protocol ecosystem dey grow fast, and you don get di skills to dey lead for AI-powered development tools.
+Remember, dis workshop na di beginning. Model Context Protocol ecosystem dey grow fast, and you ready to dey front for AI-powered development tools.
 
-**Thank you for joining and for your dedication to learning!**
+**Thank you for your participation and dedication to learning!**
 
-We hope say dis workshop don give you ideas wey go change how you dey build and use AI tools for your development journey.
+We hope dis workshop don spark ideas wey go change how you build and use AI tools for your development journey.
 
 **Happy coding!**
 
 ---
 
+## Wetin Next
+
+Congrats for finishing all labs for Module 10!
+
+- Go back to: [Module 10 Overview](../README.md)
+- Continue to: [Module 11: MCP Server Hands-On Labs](../../11-MCPServerHandsOnLabs/README.md)
+
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis docu wey you dey see na AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) translate am. Even though we dey try make sure say e correct, make you sabi say machine translation fit get mistake or no dey accurate well. Di original docu for di language wey dem write am first na di one wey you go take as di correct source. For important mata, e good make you use professional human translation. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translation.
+**Disclaimer**:
+Dis document don translate by AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we try to make am correct, abeg sabi say machine translation fit get some mistakes or wrong parts. Di original document wey dey dia for im own language na di correct one. If na serious matter, make you use person wey sabi translate well well. We no go take responsibility if person no understand well or if e use dis translation cause wahala.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

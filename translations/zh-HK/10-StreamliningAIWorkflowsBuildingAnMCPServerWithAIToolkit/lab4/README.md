@@ -1,4 +1,4 @@
-# 🐙 模組 4：實戰 MCP 開發 - 自訂 GitHub 複製伺服器
+# 🐙 模組 4：實務 MCP 開發 - 自訂 GitHub 克隆伺服器
 
 ![Duration](https://img.shields.io/badge/Duration-30_minutes-blue?style=flat-square)
 ![Difficulty](https://img.shields.io/badge/Difficulty-Intermediate-orange?style=flat-square)
@@ -6,76 +6,76 @@
 ![VS Code](https://img.shields.io/badge/VS%20Code-Integration-blue?style=flat-square&logo=visualstudiocode)
 ![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-Agent%20Mode-green?style=flat-square&logo=github)
 
-> **⚡ 快速開始：** 在短短 30 分鐘內打造一個生產級 MCP 伺服器，自動化 GitHub 倉庫複製並整合 VS Code！
+> **⚡ 快速開始：** 在短短 30 分鐘內打造一個生產等級的 MCP 伺服器，自動化 GitHub 倉庫克隆與 VS Code 集成！
 
 ## 🎯 學習目標
 
-完成本實驗後，你將能夠：
+完成此實驗後，您將能夠：
 
-- ✅ 建立符合實務需求的自訂 MCP 伺服器
-- ✅ 透過 MCP 實作 GitHub 倉庫複製功能
-- ✅ 將自訂 MCP 伺服器與 VS Code 及 Agent Builder 整合
+- ✅ 建立適用於真實開發流程的自訂 MCP 伺服器
+- ✅ 透過 MCP 實作 GitHub 倉庫克隆功能
+- ✅ 將自訂 MCP 伺服器與 VS Code 和 Agent Builder 集成
 - ✅ 使用 GitHub Copilot Agent Mode 搭配自訂 MCP 工具
-- ✅ 在生產環境中測試並部署自訂 MCP 伺服器
+- ✅ 在生產環境中測試與部署自訂 MCP 伺服器
 
-## 📋 先決條件
+## 📋 前置條件
 
 - 完成實驗 1-3（MCP 基礎與進階開發）
-- GitHub Copilot 訂閱（[免費註冊](https://github.com/github-copilot/signup)）
-- 安裝並啟用 AI Toolkit 與 GitHub Copilot 擴充功能的 VS Code
-- 已安裝並設定 Git CLI
+- GitHub Copilot 訂閱（[可免費註冊](https://github.com/github-copilot/signup)）
+- 安裝具備 AI Toolkit 與 GitHub Copilot 擴充功能的 VS Code
+- 安裝並設定 Git CLI
 
-## 🏗️ 專案概覽
+## 🏗️ 專案概述
 
-### **實務開發挑戰**
-作為開發者，我們經常需要從 GitHub 複製倉庫並在 VS Code 或 VS Code Insiders 中開啟。這個手動流程包含：
-1. 開啟終端機或命令提示字元
-2. 切換到目標資料夾
+### **真實開發挑戰**
+身為開發者，我們經常使用 GitHub 來克隆倉庫，並在 VS Code 或 VS Code Insiders 中開啟。此手動流程通常包含：
+1. 開啟終端機/命令提示字元
+2. 切換到目標目錄
 3. 執行 `git clone` 指令
-4. 在複製的資料夾中開啟 VS Code
+4. 在克隆的目錄中開啟 VS Code
 
-**我們的 MCP 解決方案將這些步驟整合成一條智慧指令！**
+**我們的 MCP 解決方案將這流程簡化成一條智慧指令！**
 
-### **你將打造的東西**
-一個名為 **GitHub Clone MCP Server**（`git_mcp_server`）的伺服器，具備以下功能：
+### **您將打造的東西**
+一個 **GitHub 克隆 MCP 伺服器**（`git_mcp_server`），具備：
 
 | 功能 | 說明 | 優點 |
 |---------|-------------|---------|
-| 🔄 **智慧倉庫複製** | 複製 GitHub 倉庫並進行驗證 | 自動錯誤檢查 |
-| 📁 **智慧目錄管理** | 安全檢查並建立資料夾 | 避免覆寫 |
-| 🚀 **跨平台 VS Code 整合** | 在 VS Code/Insiders 中開啟專案 | 流暢的工作流程切換 |
-| 🛡️ **強健錯誤處理** | 處理網路、權限及路徑問題 | 生產環境可靠性 |
+| 🔄 **智慧倉庫克隆** | 帶驗證的 GitHub 倉庫克隆 | 自動錯誤檢查 |
+| 📁 **智慧目錄管理** | 安全檢查與建立目錄 | 防止覆寫 |
+| 🚀 **跨平台 VS Code 集成** | 在 VS Code/Insiders 開啟專案 | 流程無縫切換 |
+| 🛡️ **強韌錯誤處理** | 處理網路、權限與路徑問題 | 生產等級可靠性 |
 
 ---
 
 ## 📖 逐步實作指南
 
-### 第 1 步：在 Agent Builder 建立 GitHub Agent
+### 第 1 步：於 Agent Builder 建立 GitHub Agent
 
-1. 透過 AI Toolkit 擴充功能啟動 Agent Builder
-2. 建立一個新 agent，設定如下：
+1. **用 AI Toolkit 擴充功能啟動 Agent Builder**
+2. **建立新代理**，並套用以下設定：
    ```
    Agent Name: GitHubAgent
    ```
 
-3. 初始化自訂 MCP 伺服器：
+3. **初始化自訂 MCP 伺服器：**
    - 前往 **工具** → **新增工具** → **MCP 伺服器**
    - 選擇 **「建立新的 MCP 伺服器」**
-   - 選擇 **Python 範本** 以獲得最大彈性
+   - 選擇 **Python 範本** 以取得最大彈性
    - **伺服器名稱：** `git_mcp_server`
 
-### 第 2 步：設定 GitHub Copilot Agent Mode
+### 第 2 步：設定 GitHub Copilot Agent 模式
 
-1. 在 VS Code 開啟 GitHub Copilot（Ctrl/Cmd + Shift + P → 輸入 "GitHub Copilot: Open"）
-2. 在 Copilot 介面選擇 Agent 模型
-3. 選擇具備強化推理能力的 Claude 3.7 模型
-4. 啟用 MCP 整合以存取工具
+1. **在 VS Code 開啟 GitHub Copilot**（Ctrl/Cmd + Shift + P → 「GitHub Copilot: Open」）
+2. **在 Copilot 介面選擇代理模型**
+3. **選擇 Claude 3.7 模型**，加強推理能力
+4. **啟用 MCP 集成** 以使用工具
 
-> **💡 專家提示：** Claude 3.7 對開發流程與錯誤處理模式有更優秀的理解。
+> **💡 專業提示：** Claude 3.7 對開發工作流與錯誤處理模式有更優秀的理解。
 
 ### 第 3 步：實作 MCP 伺服器核心功能
 
-**使用以下詳細提示搭配 GitHub Copilot Agent Mode：**
+**使用以下精確提示與 GitHub Copilot Agent 模式：**
 
 ```
 Create two MCP tools with the following comprehensive requirements:
@@ -108,19 +108,19 @@ Additional Requirements:
 - Include comprehensive error handling
 ```
 
-### 第 4 步：測試你的 MCP 伺服器
+### 第 4 步：測試您的 MCP 伺服器
 
 #### 4a. 在 Agent Builder 中測試
 
-1. 啟動 Agent Builder 的除錯設定
-2. 使用以下系統提示設定你的 agent：
+1. **啟動 Agent Builder 的除錯設定**
+2. **使用此系統提示配置您的代理：**
 
 ```
 SYSTEM_PROMPT:
 You are my intelligent coding repository assistant. You help developers efficiently clone GitHub repositories and set up their development environment. Always provide clear feedback about operations and handle errors gracefully.
 ```
 
-3. 以真實使用情境進行測試：
+3. **以真實使用場景測試：**
 
 ```
 USER_PROMPT EXAMPLES:
@@ -130,70 +130,84 @@ Scenario : Basic Clone and Open
  } and save to {The global path you specify}, then open it with VS Code Insiders"
 ```
 
-![Agent Builder Testing](../../../../translated_images/zh-HK/DebugAgent.81d152370c503241b3b39a251b8966f7f739286df19dd57f9147f6402214a012.png)
+![Agent Builder Testing](../../../../translated_images/zh-HK/DebugAgent.81d152370c503241.webp)
 
 **預期結果：**
-- ✅ 成功複製並確認路徑
+- ✅ 成功克隆並顯示路徑確認
 - ✅ 自動啟動 VS Code
-- ✅ 對無效情境給出清楚錯誤訊息
-- ✅ 妥善處理邊界狀況
+- ✅ 無效情況顯示清晰錯誤訊息
+- ✅ 正確處理邊界案例
 
 #### 4b. 在 MCP Inspector 中測試
 
-![MCP Inspector Testing](../../../../translated_images/zh-HK/DebugInspector.eb5c95f94c69a8ba36944941b9a3588309a3a2fae101ace470ee09bde41d1667.png)
+
+![MCP Inspector Testing](../../../../translated_images/zh-HK/DebugInspector.eb5c95f94c69a8ba.webp)
 
 ---
 
-**🎉 恭喜！** 你已成功打造一個實用且生產級的 MCP 伺服器，解決了真實開發流程中的挑戰。你的自訂 GitHub 複製伺服器展現了 MCP 在自動化與提升開發者生產力上的強大能力。
+
+
+**🎉 恭喜！** 您已成功建立一個實用並且生產可用的 MCP 伺服器，解決真實的開發工作流程問題。您的自訂 GitHub 克隆伺服器展示了 MCP 自動化及提升開發者生產力的強大威力。
 
 ### 🏆 成就解鎖：
-- ✅ **MCP 開發者** - 建立自訂 MCP 伺服器
-- ✅ **流程自動化專家** - 精簡開發流程  
-- ✅ **整合高手** - 連接多種開發工具
-- ✅ **生產準備** - 打造可部署解決方案
+- ✅ **MCP 開發者** - 創建自訂 MCP 伺服器
+- ✅ **流程自動化者** - 簡化開發流程  
+- ✅ **整合專家** - 連結多種開發工具
+- ✅ **生產準備** - 建置可部署方案
 
 ---
 
-## 🎓 工作坊結業：你的 Model Context Protocol 之旅
+## 🎓 工作坊完成：您與 Model Context Protocol 的旅程
 
 **親愛的工作坊參與者，**
 
-恭喜你完成 Model Context Protocol 工作坊的全部四個模組！你已從理解 AI Toolkit 基礎概念，進階到打造生產級 MCP 伺服器，解決真實開發挑戰。
+恭喜您完成 Model Context Protocol 工作坊的所有四個模組！您已從理解 AI Toolkit 基礎概念，成長到構建生產等級的 MCP 伺服器，有效解決真實開發挑戰。
 
-### 🚀 你的學習路徑回顧：
+### 🚀 您的學習路徑回顧：
 
-**[模組 1](../lab1/README.md)**：從探索 AI Toolkit 基礎、模型測試，到建立第一個 AI agent 開始。
+**[模組 1](../lab1/README.md)：** 您開始探討 AI Toolkit 基礎、模型測試與建立您的第一個 AI 代理。
 
-**[模組 2](../lab2/README.md)**：學習 MCP 架構，整合 Playwright MCP，打造首個瀏覽器自動化 agent。
+**[模組 2](../lab2/README.md)：** 您學習 MCP 架構、結合 Playwright MCP，並建置第一個瀏覽器自動化代理。
 
-**[模組 3](../lab3/README.md)**：進階自訂 MCP 伺服器開發，使用 Weather MCP 伺服器並掌握除錯工具。
+**[模組 3](../lab3/README.md)：** 您進階到自訂 MCP 伺服器開發，完成天氣 MCP 伺服器並精通除錯工具。
 
-**[模組 4](../lab4/README.md)**：將所學應用於打造實用的 GitHub 倉庫工作流程自動化工具。
+**[模組 4](../lab4/README.md)：** 您運用所學打造實務性的 GitHub 倉庫工作流程自動化工具。
 
-### 🌟 你已精通：
+### 🌟 您的專業技能：
 
-- ✅ **AI Toolkit 生態系**：模型、agent 與整合模式
-- ✅ **MCP 架構**：客戶端-伺服器設計、傳輸協定與安全性
+- ✅ **AI Toolkit 生態系統**：模型、代理及整合模式
+- ✅ **MCP 架構**：客戶端-服務器設計、通訊協定與安全
 - ✅ **開發工具**：從 Playground、Inspector 到生產部署
-- ✅ **自訂開發**：建立、測試與部署自訂 MCP 伺服器
-- ✅ **實務應用**：用 AI 解決真實工作流程挑戰
+- ✅ **自訂開發**：建立、測試及部署您的 MCP 伺服器
+- ✅ **實務應用**：利用 AI 解決真實工作流程挑戰
 
-### 🔮 你的下一步：
+### 🔮 您接下來的步驟：
 
-1. **打造自己的 MCP 伺服器**：運用所學自動化你的專屬流程
-2. **加入 MCP 社群**：分享作品並向他人學習
-3. **探索進階整合**：將 MCP 伺服器連接企業系統
-4. **貢獻開源**：協助改進 MCP 工具與文件
+1. **打造自己的 MCP 伺服器**：應用這些技能自動化您的獨特工作流程
+2. **加入 MCP 社群**：分享您的作品並向他人學習
+3. **探索進階整合**：將 MCP 伺服器連結企業系統
+4. **貢獻開源專案**：協助改進 MCP 工具與文件
 
-請記得，這個工作坊只是開始。Model Context Protocol 生態系正快速演進，你已具備站在 AI 驅動開發工具前沿的能力。
+請記得，這個工作坊只是個開始。Model Context Protocol 生態系統持續快速演進，而您已經準備好站在 AI 驅動開發工具前沿。
 
-**感謝你的參與與學習熱忱！**
+**感謝您的參與與學習熱忱！**
 
-希望這次工作坊激發你更多靈感，改變你未來與 AI 工具互動及開發的方式。
+我們希望本工作坊激發您的靈感，改變您在開發旅程中如何打造並與 AI 工具互動。
 
-**祝你編碼愉快！**
+**祝程式設計愉快！**
 
 ---
 
+## 下一步
+
+恭喜您完成模組 10 的所有實驗！
+
+- 返回：[模組 10 總覽](../README.md)
+- 繼續：[模組 11：MCP 伺服器實作實驗](../../11-MCPServerHandsOnLabs/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **免責聲明**：  
-本文件由 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們致力於確保準確性，但請注意自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於重要資訊，建議採用專業人工翻譯。我們不對因使用本翻譯而引起的任何誤解或誤釋承擔責任。
+此文件使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們致力於確保準確性，但請注意自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於重要資訊，建議採用專業人工翻譯。使用本翻譯所引致的任何誤解或誤譯，本公司概不負責。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

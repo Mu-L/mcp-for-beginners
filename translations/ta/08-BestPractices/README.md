@@ -1,87 +1,89 @@
-# MCP மேம்பாட்டு சிறந்த நடைமுறைகள்
+# MCP வளர்ச்சி சிறந்த நடைமுறைகள்
 
-[![MCP மேம்பாட்டு சிறந்த நடைமுறைகள்](../../../translated_images/ta/09.d0f6d86c9d72134ccf5a8d8c8650a0557e519936661fc894cad72d73522227cb.png)](https://youtu.be/W56H9W7x-ao)
+[![MCP Development Best Practices](../../../translated_images/ta/09.d0f6d86c9d72134c.webp)](https://youtu.be/W56H9W7x-ao)
 
-_(மேலே உள்ள படத்தை கிளிக் செய்து இந்த பாடத்தின் வீடியோவைப் பாருங்கள்)_
+_(இந்த பாடத்தின் வீடியோக்களை காண மேற்கண்ட படத்தை கிளிக் செய்யவும்)_
 
 ## கண்ணோட்டம்
 
-இந்த பாடம் MCP சர்வர்கள் மற்றும் அம்சங்களை உற்பத்தி சூழல்களில் உருவாக்க, சோதனை செய்ய மற்றும் வெளியிடுவதற்கான மேம்பட்ட சிறந்த நடைமுறைகளை மையமாகக் கொண்டுள்ளது. MCP சூழல்கள் சிக்கலான மற்றும் முக்கியமானதாக வளரும்போது, நிறுவப்பட்ட முறைமைகளை பின்பற்றுவது நம்பகத்தன்மை, பராமரிப்பு மற்றும் பரஸ்பர செயல்பாட்டை உறுதிப்படுத்துகிறது. இந்த பாடம் உண்மையான MCP செயல்பாடுகளில் இருந்து பெறப்பட்ட நடைமுறை அறிவை ஒருங்கிணைத்து, வலுவான, திறமையான MCP சர்வர்களை உருவாக்க வழிகாட்டுகிறது.
+இந்த பாடம் MCP சேவையகங்கள் மற்றும் அம்சங்களை தயாரிப்பதில், சோதிப்பதில், மற்றும் உற்பத்தி சூழல்களில் பிரயோஜனப்படுத்துவதில் முன்னேற்ற சிறந்த நடைமுறைகளுக்கு கவனம் செலுத்துகிறது. MCP சுற்றுச்சூழல்கள் சிக்கலானதும் முக்கியத்துவம்சேர்ந்ததும் ஆகிவரும் போது, நெறிமுறை முறைகளை பின்பற்றுவது நம்பகத்தன்மை, பராமரிப்பு திறன் மற்றும் தொடர்பு திறனைக் காக்கிறது. உண்மையான MCP அமல்படுத்தல்கள் மூலம் கிடைத்த நடைமுறை அறிவுத்தொகுப்புகளை இந்த பாடம் ஒருங்கிணைத்து, பயனுள்ள வளங்கள், ஊக்கங்கள் மற்றும் கருவிகளுடன் வலிமையான, திறமையான சேவையகங்களை உருவாக்க வழிகாட்டி செய்கிறது.
 
-## கற்றல் நோக்கங்கள்
+## கற்றல் இலக்குகள்
 
-இந்த பாடத்தின் முடிவில், நீங்கள்:
+இந்த பாடத்தின் இறுதியில், நீங்கள் இயல்பாக:
 
-- MCP சர்வர் மற்றும் அம்ச வடிவமைப்பில் தொழில்துறை சிறந்த நடைமுறைகளைப் பயன்படுத்த முடியும்
-- MCP சர்வர்களுக்கான விரிவான சோதனை உத்திகளை உருவாக்க முடியும்
-- சிக்கலான MCP பயன்பாடுகளுக்கான திறமையான, மீண்டும் பயன்படுத்தக்கூடிய வேலைப்பாடுகளை வடிவமைக்க முடியும்
-- MCP சர்வர்களில் சரியான பிழை கையாளுதல், பதிவு மற்றும் கண்காணிப்பை செயல்படுத்த முடியும்
-- செயல்திறன், பாதுகாப்பு மற்றும் பராமரிப்புக்கான MCP செயல்பாடுகளை மேம்படுத்த முடியும்
+- MCP சேவையக மற்றும் அம்ச வடிவமைப்பில் தொழில் நுட்ப சிறந்த நடைமுறைகளை பின்பற்றலாம்
+- MCP சேவையகங்களுக்கு விரிவான சோதனை திட்டங்களை உருவாக்கலாம்
+- சிக்கலான MCP பயன்பாடுகள் için திறமையான, மீண்டும் பயன்படுத்தக்கூடிய பணிமுறை வடிவங்களை வடிவமைக்கலாம்
+- MCP சேவையகங்களில் சரியான பிழை கைப்பிடிப்பு, பதிவு மற்றும் கண்காணிப்புகளை செயல்படுத்தலாம்
+- செயல்திறன், பாதுகாப்பு மற்றும் பராமரிப்பு திறன் கொண்ட MCP செயல்பாட்டை மேம்படுத்தலாம்
 
-## MCP முக்கியக் கொள்கைகள்
+## MCP அடிப்படை கோட்பாடுகள்
 
-குறிப்பிட்ட செயல்பாட்டு நடைமுறைகளில் இறங்குவதற்கு முன், MCP மேம்பாட்டைச் செயல்படுத்த வழிகாட்டும் முக்கியக் கொள்கைகளைப் புரிந்துகொள்வது முக்கியம்:
+குறிப்பிட்ட அமல்படுத்தல் நடைமுறைகளுக்கு நுழைவதற்கு முன், செயல்திறன் உள்ள MCP வளர்ச்சி வழிகாட்டும் அடிப்படை கோட்பாடுகளை புரிந்து கொள்ள வேண்டும்:
 
-1. **மிகைப்படுத்தப்பட்ட தொடர்பு**: MCP JSON-RPC 2.0 ஐ அடிப்படையாகக் கொண்டது, அனைத்து செயல்பாடுகளிலும் கோரிக்கைகள், பதில்கள் மற்றும் பிழை கையாளுதலுக்கான ஒரே வடிவத்தை வழங்குகிறது.
+1. **முறைப்படுத்தப்பட்ட தொடர்பு**: MCP அதன் அடிப்படையாக JSON-RPC 2.0 ஐ பயன்படுத்துகிறது, அனைத்து செயல்பாடுகளிலும் கோரிக்கைகள், பதில்கள் மற்றும் பிழை கைப்பிடிப்புக்கு ஒரே மாதிரியான வடிவமைப்பை வழங்குகிறது.
 
-2. **பயனர் மையமான வடிவமைப்பு**: MCP செயல்பாடுகளில் எப்போதும் பயனர் ஒப்புதல், கட்டுப்பாடு மற்றும் வெளிப்படைத்தன்மையை முன்னுரிமை அளிக்கவும்.
+2. **பயனர் மையமான வடிவமைப்பு**: எப்போதும் பயனர் ஒப்புதலும் கட்டுப்பாடு மற்றும் வெளிப்படைத்தன்மை MCP செயல்பாடுகளில் முன்னிலைப்படுத்த வேண்டும்.
 
-3. **பாதுகாப்பு முதலில்**: அங்கீகாரம், அனுமதி, சரிபார்ப்பு மற்றும் விகித வரையறை ஆகியவற்றை உள்ளடக்கிய வலுவான பாதுகாப்பு நடவடிக்கைகளை செயல்படுத்தவும்.
+3. **பாதுகாப்பு முதலில்**: அடையாளம் నిరூபிப்பு, அங்கீகாரம், சரிபார்த்தல் மற்றும் விகித வரம்புக்குள் காலை ஆகிய பாதுகாப்பு நடவடிக்கைகளை வலுவாக செயல்படுத்துக.
 
-4. **தொகுதி கட்டமைப்பு**: ஒவ்வொரு கருவி மற்றும் வளமும் தெளிவான, மையமான நோக்கத்துடன் இருக்கும் வகையில் MCP சர்வர்களை தொகுதி அணுகுமுறையுடன் வடிவமைக்கவும்.
+4. **தொகுதி கட்டமைப்பு**: ஒவ்வொரு கருவியும் மற்றும் வளமும் தெளிவான, கவனமான நோக்கத்துடன் MCP சேவையகங்களை வடிவமைக்கவும்.
 
-5. **நிலைமையான இணைப்புகள்**: பல கோரிக்கைகளுக்கு இடையில் நிலையை பராமரிக்க MCP இன் திறனை பயன்படுத்தி, மேலும் தெளிவான மற்றும் சூழலுக்கு பொருந்தக்கூடிய தொடர்புகளை உருவாக்கவும்.
+5. **நிலை சார்ந்த இணைப்புகள்**: பல கோரிக்கைகளுக்கு இடையேயான நிலையை பராமரிக்கும் MCP திறனை பயன்படுத்தி இணக்கமான மற்றும் சூழல் அறிவுடன் பரிமாற்றங்களை மேம்படுத்துக.
 
-## MCP அதிகாரப்பூர்வ சிறந்த நடைமுறைகள்
+## அதிகாரபூர்வ MCP சிறந்த நடைமுறைகள்
 
-அதிகாரப்பூர்வ Model Context Protocol ஆவணங்களில் இருந்து பெறப்பட்ட சிறந்த நடைமுறைகள் பின்வருமாறு:
+பின்வரும் சிறந்த நடைமுறைகள் அதிகாரபூர்வ Model Context Protocol ஆவணத்திலிருந்து பெறப்பட்டவை:
 
 ### பாதுகாப்பு சிறந்த நடைமுறைகள்
 
-1. **பயனர் ஒப்புதல் மற்றும் கட்டுப்பாடு**: தரவுகளை அணுகுவதற்கு அல்லது செயல்பாடுகளைச் செய்யும் முன் எப்போதும் வெளிப்படையான பயனர் ஒப்புதலை தேவைப்படுத்தவும். எந்த தரவுகள் பகிரப்படுகின்றன மற்றும் எந்த நடவடிக்கைகள் அங்கீகரிக்கப்படுகின்றன என்பதை தெளிவாகக் கூறவும்.
+1. **பயனர் ஒப்புதல் மற்றும் கட்டுப்பாடு**: தரவு அணுகல் அல்லது செயல்பாடுகளை செய்வதற்கு முன் எப்போதும் தெளிவான பயனர் ஒப்புதலை கோருங்கள். பகிரப்படும் தரவு மற்றும் அங்கீகரிக்கப்பட்ட செயல்பாடுகளுக்கு தெளிவான கட்டுப்பாடு வழங்குக.
 
-2. **தரவு தனியுரிமை**: வெளிப்படையான ஒப்புதலுடன் மட்டுமே பயனர் தரவுகளை வெளிப்படுத்தவும் மற்றும் அதனை சரியான அணுகல் கட்டுப்பாடுகளுடன் பாதுகாக்கவும். அனுமதியில்லாத தரவுப் பரிமாற்றத்திலிருந்து பாதுகாக்கவும்.
+2. **தரவு தனியுரிமை**: தெளிவான ஒப்புதலுடன் மட்டுமே பயனர் தரவுகளை வெளிப்படுத்தவும், சரியான அணுகல் கட்டுப்பாடுகளால் பாதுகாக்கவும். அனுமதியில்லாத தரவு பரிமாற்றம் எதிர்கொள்ள பாதுகாப்புக.
 
-3. **கருவி பாதுகாப்பு**: எந்த கருவியையும் இயக்குவதற்கு முன் வெளிப்படையான பயனர் ஒப்புதலை தேவைப்படுத்தவும். ஒவ்வொரு கருவியின் செயல்பாட்டை பயனர்கள் புரிந்துகொள்ளவும் மற்றும் வலுவான பாதுகாப்பு எல்லைகளை அமல்படுத்தவும்.
+3. **கருவிகள் பாதுகாப்பு**: எந்த கருவியையும் இயக்குவதற்கு முன் தெளிவான பயனர் ஒப்புதலை தேவையாக்கவும். ஒவ்வொரு கருவியின் செயல்பாட்டை பயனர்கள் புரிந்து கொள்வதை உறுதிப்படுத்தவும் மற்றும் வலுவான பாதுகாப்பு எல்லைகளை அமுல்படுத்தவும்.
 
-4. **கருவி அனுமதி கட்டுப்பாடு**: ஒரு அமர்வின் போது ஒரு மாதிரி எந்த கருவிகளைப் பயன்படுத்த அனுமதிக்கப்படுகிறது என்பதை உள்ளமைக்கவும், வெளிப்படையாக அங்கீகரிக்கப்பட்ட கருவிகள் மட்டுமே அணுகக்கூடியவை என்பதை உறுதிப்படுத்தவும்.
+4. **கருவி அனுமதி கட்டுப்பாடு**: ஒரு அமர்வில் மாடல் பயன்படுத்த அனுமதிக்கப்பட்ட கருவிகளை அமைக்க, தெளிவாக அங்கீகரிக்கப்பட்ட கருவிகள் மட்டுமே கிடைக்க வேண்டியது உறுதி செய்யவும்.
 
-5. **அங்கீகாரம்**: API கீக்கள், OAuth டோக்கன்கள் அல்லது பிற பாதுகாப்பான அங்கீகார முறைகளைப் பயன்படுத்தி கருவிகள், வளங்கள் அல்லது நுணுக்கமான செயல்பாடுகளுக்கு அணுகலை வழங்குவதற்கு முன் சரியான அங்கீகாரத்தை தேவைப்படுத்தவும்.
+5. **அடையாளம் சரிபார்ப்பு**: கருவிகள், வளங்கள் அல்லது நுணுக்கமான செயல்பாடுகளுக்கு அணுகுவதற்கு முன் சரியான அடையாளம் சரிபார்ப்பை API விசைகள், OAuth டோக்கன்கள் அல்லது பிற பாதுகாப்பான முறைகள் மூலம் கோர்‌க்கவும்.
 
-6. **அளவுரு சரிபார்ப்பு**: கருவி செயல்பாடுகளுக்கு தவறான அல்லது தீவிர உள்ளீடுகளைத் தடுக்க அனைத்து அழைப்புகளுக்கும் சரிபார்ப்பை அமல்படுத்தவும்.
+6. **பொறிமுறை சரிபார்ப்பு**: முறைகேடான அல்லது தீங்கு செய்கின்ற உள்ளீடுகள் கருவி அமல்படுத்தல்களைத் தாக்காமல் அனைத்து கருவி அழைப்புகளுக்கும் சரிபார்ப்பை அமுல்படுத்தல்.
 
-7. **விகித வரையறை**: MCP சர்வர் வளங்களை நியாயமான முறையில் பயன்படுத்தவும் மற்றும் தவறாக பயன்படுத்துவதைத் தடுக்க விகித வரையறையை செயல்படுத்தவும்.
+7. **விகித வரம்பு**: சேவை வளங்களின் முற்றுப்புள்ளியாக சீரான மற்றும் நியாயமான பயன்பாட்டை உறுதி செய்யப் பழுக்கு தடுக்கும் விகித வரம்பை அமுல்படுத்தல்.
 
-### செயல்பாட்டு சிறந்த நடைமுறைகள்
+### அமல்படுத்தல் சிறந்த நடைமுறைகள்
 
-1. **திறன் பேச்சுவார்த்தை**: இணைப்பு அமைப்பின் போது, ஆதரிக்கப்படும் அம்சங்கள், நெறிமுறை பதிப்புகள், கிடைக்கக்கூடிய கருவிகள் மற்றும் வளங்கள் பற்றிய தகவல்களை பரிமாறவும்.
+1. **திறன் பேச்சுவார்த்தை**: இணைப்பு அமைப்பின் போது ஆதரவு பெறும் அம்சங்கள், நெறிமுறை பதிப்புகள், கிடைக்கும் கருவிகள் மற்றும் வளங்கள் குறித்து தகவலை பரிமாறுக.
 
-2. **கருவி வடிவமைப்பு**: பல கவலைகளை கையாளும் மொத்த கருவிகளை உருவாக்குவதற்குப் பதிலாக, ஒரு விஷயத்தை நன்றாகச் செய்யும் மையமான கருவிகளை உருவாக்கவும்.
+2. **கருவி வடிவமைப்பு**: பல செயல்பாடுகளை கையாளும் ஒரே கருவிகளுக்கு பதிலாக, ஒரு விஷயத்தில் சிறந்த கவனம் செலுத்தும் கருவிகளை உருவாக்குக.
 
-3. **பிழை கையாளுதல்**: சிக்கல்களைத் தீர்க்க உதவும், தோல்விகளை நன்றாக கையாளவும் மற்றும் செயல்படக்கூடிய கருத்துகளை வழங்கவும், தரநிலையான பிழை செய்திகளையும் குறியீடுகளையும் செயல்படுத்தவும்.
+3. **பிழை கைப்பிடிப்பு**: பிழைகளை கண்டறியும், தோல்விகளை மென்மையாக கையாளும் மற்றும் செயல்திறனான பின்னூட்டங்களை வழங்கும் ஒருங்கிணைந்த பிழை தகவல் மற்றும் குறியீடுகளை செயல்படுத்துக.
 
-4. **பதிவு**: நெறிமுறை தொடர்புகளை கண்காணிக்க, பிழை தீர்க்க மற்றும் கண்காணிக்க அமைக்கப்பட்ட பதிவுகளை உள்ளமைக்கவும்.
+4. **பதிவு**: ஆராய்ச்சி, பிழைதிறப்பு மற்றும் நெறிமுறைக் தொடர்புகளை கண்காணிப்பதற்கான கட்டமைக்கப்பட்ட பதிவுகளை அமைக்கவும்.
 
-5. **முன்னேற்ற கண்காணிப்பு**: நீண்ட செயல்பாடுகளுக்கு, பதிலளிக்கக்கூடிய பயனர் இடைமுகங்களை இயக்க முன்னேற்றப் புதுப்பிப்புகளைப் புகாரளிக்கவும்.
+5. **முன்னேற்ற கண்காணிப்பு**: நீண்ட நேர செயல்பாடுகளுக்கு, பயனர் இடைமுகங்களை பதிலளிப்பதற்கு முன்னேற்றத்தை அறிவிக்கவும்.
 
-6. **கோரிக்கை ரத்து**: தேவையில்லாத அல்லது அதிக நேரம் எடுத்துக்கொள்ளும் கோரிக்கைகளை ரத்து செய்ய வாடிக்கையாளர்களுக்கு அனுமதி அளிக்கவும்.
+6. **கோரிக்கை நிறுத்தல்**: தேவையில்லை거나 நிரம்புதற்கிடையான கோரிக்கைகளை வாடிக்கையாளர்கள் ரத்து செய்ய அனுமதி வழங்குக.
 
-## கூடுதல் குறிப்புகள்
+## கூடுதல் குறிப்பு
 
-MCP சிறந்த நடைமுறைகள் பற்றிய சமீபத்திய தகவல்களுக்கு, பின்வரும் இணைப்புகளைப் பார்க்கவும்:
+சமீபத்திய MCP சிறந்த நடைமுறைகளுக்கு கீழ்காணும் வளங்களைப் பார்வையிடவும்:
 
 - [MCP ஆவணங்கள்](https://modelcontextprotocol.io/)
-- [MCP விவரக்குறிப்பு](https://spec.modelcontextprotocol.io/)
-- [GitHub Repository](https://github.com/modelcontextprotocol)
+- [MCP விவரக்குறிப்பு (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+- [GitHub களஞ்சியம்](https://github.com/modelcontextprotocol)
 - [பாதுகாப்பு சிறந்த நடைமுறைகள்](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - பாதுகாப்பு ஆபத்துகள் மற்றும் தடைகள்
+- [MCP பாதுகாப்பு மாநாடு பயிற்சி (Sherpa)](https://azure-samples.github.io/sherpa/) - கைமுறை பாதுகாப்பு பயிற்சி
 
-## நடைமுறை செயல்பாட்டு உதாரணங்கள்
+## நடைமுறை அமல்படுத்தல் உதாரணங்கள்
 
 ### கருவி வடிவமைப்பு சிறந்த நடைமுறைகள்
 
-#### 1. ஒற்றை பொறுப்பு கொள்கை
+#### 1. தனி பொறுப்பு கோட்பாடு
 
-ஒவ்வொரு MCP கருவியும் தெளிவான, மையமான நோக்கத்துடன் இருக்க வேண்டும். பல கவலைகளை கையாள முயற்சிக்கும் மொத்த கருவிகளை உருவாக்குவதற்குப் பதிலாக, குறிப்பிட்ட பணிகளில் சிறப்பாக செயல்படும் சிறப்பு கருவிகளை உருவாக்கவும்.
+ஒவ்வொரு MCP கருவிக்கும் தெளிவான, கவனமாகும் நோக்கம் இருக்க வேண்டும். பல பிரச்சனைகளை கையாளும் ஒருங்கிணைந்த கருவிகளுக்குப் பதிலாக, குறிப்பிட்ட பணிகளில் சிறப்பு பெற்ற கருவிகளை உருவாக்குக.
 
 ```csharp
 // A focused tool that does one thing well
@@ -141,12 +143,12 @@ public class WeatherForecastTool : ITool
 }
 ```
 
-#### 2. நிலையான பிழை கையாளுதல்
+#### 2. ஒரே மாதிரி பிழை கைப்பிடிப்பு
 
-தகவலளிக்கும் பிழை செய்திகளுடன் வலுவான பிழை கையாளுதலை செயல்படுத்தவும் மற்றும் பொருத்தமான மீட்பு முறைகளை உள்ளமைக்கவும்.
+விவரமான பிழை செய்திகள் மற்றும் சரியான மீட்பு நடைமுறைகளுடன் வலுவான பிழை கைப்பிடிப்பை செயல்படுத்தவும்.
 
 ```python
-# Python example with comprehensive error handling
+# முழுமையான பிழை கையாளுதலுடன் Python உதாரணம்
 class DataQueryTool:
     def get_name(self):
         return "dataQuery"
@@ -156,19 +158,19 @@ class DataQueryTool:
     
     async def execute(self, parameters):
         try:
-            # Parameter validation
+            # அளவுரு சரிபார்ப்பு
             if "query" not in parameters:
                 raise ToolParameterError("Missing required parameter: query")
                 
             query = parameters["query"]
             
-            # Security validation
+            # பாதுகாப்பு சரிபார்ப்பு
             if self._contains_unsafe_sql(query):
                 raise ToolSecurityError("Query contains potentially unsafe SQL")
             
             try:
-                # Database operation with timeout
-                async with timeout(10):  # 10 second timeout
+                # காலவரையறையுடன் தரவுத்தள செயல்பாடு
+                async with timeout(10):  # 10 வினாடி காலவரையறு
                     result = await self._database.execute_query(query)
                     
                 return ToolResponse(
@@ -177,37 +179,37 @@ class DataQueryTool:
             except asyncio.TimeoutError:
                 raise ToolExecutionError("Database query timed out after 10 seconds")
             except DatabaseConnectionError as e:
-                # Connection errors might be transient
+                # இணைப்பு பிழைகள் தற்காலிகமாக இருக்கலாம்
                 self._log_error("Database connection error", e)
                 raise ToolExecutionError(f"Database connection error: {str(e)}")
             except DatabaseQueryError as e:
-                # Query errors are likely client errors
+                # விசாரணை பிழைகள் அதிகமாக கிளையண்ட் பிழைகள்
                 self._log_error("Database query error", e)
                 raise ToolExecutionError(f"Invalid query: {str(e)}")
                 
         except ToolError:
-            # Let tool-specific errors pass through
+            # கருவி-குறுந்தொடர்புடைய பிழைகளை அனுமதி தருக
             raise
         except Exception as e:
-            # Catch-all for unexpected errors
+            # எதிர்பாராத பிழைகளுக்கு பொதுவான பிடிப்பு
             self._log_error("Unexpected error in DataQueryTool", e)
             raise ToolExecutionError(f"An unexpected error occurred: {str(e)}")
     
     def _contains_unsafe_sql(self, query):
-        # Implementation of SQL injection detection
+        # SQL ஊடுருவல் கண்டறிதலின் நடைமுறை
         pass
         
     def _log_error(self, message, error):
-        # Implementation of error logging
+        # பிழை பதிவேட்டின் நடைமுறை
         pass
 ```
 
-#### 3. அளவுரு சரிபார்ப்பு
+#### 3. தொழிற் பாத்திரப்பட்ட சரிபார்ப்பு
 
-தவறான அல்லது தீவிர உள்ளீடுகளைத் தடுக்க, அளவுருக்களை எப்போதும் முழுமையாகச் சரிபார்க்கவும்.
+தவறான அல்லது தீங்கு விளைவிக்கும் உள்ளீடுகளை தடுக்கும் வகையில் தொழிற் பாத்திரப்பட்ட சரிபார்ப்பை எப்போதும் செய்யவும்.
 
 ```javascript
-// JavaScript/TypeScript example with detailed parameter validation
+// விரிவான அளவுரு சரிபார்ப்பு உடன் JavaScript/TypeScript உதாரணம்
 class FileOperationTool {
   getName() {
     return "fileOperation";
@@ -242,7 +244,7 @@ class FileOperationTool {
   }
   
   async execute(parameters) {
-    // 1. Validate parameter presence
+    // 1. அளவுரு இருப்பை சரிபார்க்கவும்
     if (!parameters.operation) {
       throw new ToolError("Missing required parameter: operation");
     }
@@ -251,7 +253,7 @@ class FileOperationTool {
       throw new ToolError("Missing required parameter: path");
     }
     
-    // 2. Validate parameter types
+    // 2. அளவுரு வகைகளை சரிபார்க்கவும்
     if (typeof parameters.operation !== "string") {
       throw new ToolError("Parameter 'operation' must be a string");
     }
@@ -260,45 +262,45 @@ class FileOperationTool {
       throw new ToolError("Parameter 'path' must be a string");
     }
     
-    // 3. Validate parameter values
+    // 3. அளவுரு மதிப்புகளை சரிபார்க்கவும்
     const validOperations = ["read", "write", "delete"];
     if (!validOperations.includes(parameters.operation)) {
       throw new ToolError(`Invalid operation. Must be one of: ${validOperations.join(", ")}`);
     }
     
-    // 4. Validate content presence for write operation
+    // 4. எழுதும் செயலுக்கு உள்ளடக்க உரிய இருப்பைச் சரிபார்க்கவும்
     if (parameters.operation === "write" && !parameters.content) {
       throw new ToolError("Content parameter is required for write operation");
     }
     
-    // 5. Path safety validation
+    // 5. பாதை பாதுகாப்பு சரிபார்ப்பு
     if (!this.isPathWithinAllowedDirectories(parameters.path)) {
       throw new ToolError("Access denied: path is outside of allowed directories");
     }
     
-    // Implementation based on validated parameters
+    // சரிபார்க்கப்பட்ட அளவுருக்கள் அடிப்படையில் நடைமுறைப்படுத்தல்
     // ...
   }
   
   isPathWithinAllowedDirectories(path) {
-    // Implementation of path safety check
+    // பாதை பாதுகாப்பு சரிபார்ப்பின் நடைமுறைப்படுத்தல்
     // ...
   }
 }
 ```
 
-### பாதுகாப்பு செயல்பாட்டு உதாரணங்கள்
+### பாதுகாப்பு அமல்படுத்தல் உதாரணங்கள்
 
-#### 1. அங்கீகாரம் மற்றும் அனுமதி
+#### 1. அடையாளம் நிரூபித்தல் மற்றும் அங்கீகாரம்
 
 ```java
-// Java example with authentication and authorization
+// அங்கீகாரம் மற்றும் அனுமதி உடன் ஜாவா உதாரணம்
 public class SecureDataAccessTool implements Tool {
     private final AuthenticationService authService;
     private final AuthorizationService authzService;
     private final DataService dataService;
     
-    // Dependency injection
+    // சார்ப்புக் குறி ஊட்டல்
     public SecureDataAccessTool(
             AuthenticationService authService,
             AuthorizationService authzService,
@@ -315,10 +317,10 @@ public class SecureDataAccessTool implements Tool {
     
     @Override
     public ToolResponse execute(ToolRequest request) {
-        // 1. Extract authentication context
+        // 1. அங்கீகார சூழலைப் பெறுக
         String authToken = request.getContext().getAuthToken();
         
-        // 2. Authenticate user
+        // 2. பயனரை அங்கீகரிக்கவும்
         UserIdentity user;
         try {
             user = authService.validateToken(authToken);
@@ -326,7 +328,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Authentication failed: " + e.getMessage());
         }
         
-        // 3. Check authorization for the specific operation
+        // 3. குறிப்பிட்ட செயலுக்கான அனுமதியைச் சரிபார்க்கவும்
         String dataId = request.getParameters().get("dataId").getAsString();
         String operation = request.getParameters().get("operation").getAsString();
         
@@ -335,7 +337,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Access denied: Insufficient permissions for this operation");
         }
         
-        // 4. Proceed with authorized operation
+        // 4. அனுமதி பெற்ற செயலுடன் முன்னெடுங்கள்
         try {
             switch (operation) {
                 case "read":
@@ -355,7 +357,7 @@ public class SecureDataAccessTool implements Tool {
 }
 ```
 
-#### 2. விகித வரையறை
+#### 2. விகித வரம்பு
 
 ```csharp
 // C# rate limiting implementation
@@ -431,30 +433,30 @@ public class RateLimitingMiddleware
 }
 ```
 
-## சோதனை சிறந்த நடைமுறைகள்
+## சோதனை சிறந்த நடைமுறை
 
-### 1. MCP கருவிகளுக்கான யூனிட் சோதனை
+### 1. தனித்தனி சோதனை MCP கருவிகள்
 
-வெளிப்புற சார்புகளை மொக்கிங் செய்து, உங்கள் கருவிகளை தனித்துவமாகச் சோதிக்கவும்:
+உங்கள் கருவிகளை தனித்தனியாகவும் வெளிப்புற சார்புகளை வேடிக்கையிடும் முறையிலும் எப்போதும் சோதிக்கவும்:
 
 ```typescript
-// TypeScript example of a tool unit test
+// ஒரு கருவி யூனிட் சோதனைக்கு TypeScript உதாரணம்
 describe('WeatherForecastTool', () => {
   let tool: WeatherForecastTool;
   let mockWeatherService: jest.Mocked<IWeatherService>;
   
   beforeEach(() => {
-    // Create a mock weather service
+    // ஒரு மோக் வானிலை சேவையை உருவாக்கவும்
     mockWeatherService = {
       getForecasts: jest.fn()
     } as any;
     
-    // Create the tool with the mock dependency
+    // மோக் சாரப்படுத்தலுடன் கருவியை உருவாக்கவும்
     tool = new WeatherForecastTool(mockWeatherService);
   });
   
   it('should return weather forecast for a location', async () => {
-    // Arrange
+    // ஏற்பாடு செய்யவும்
     const mockForecast = {
       location: 'Seattle',
       forecasts: [
@@ -466,23 +468,23 @@ describe('WeatherForecastTool', () => {
     
     mockWeatherService.getForecasts.mockResolvedValue(mockForecast);
     
-    // Act
+    // செயல்படுத்து
     const response = await tool.execute({
       location: 'Seattle',
       days: 3
     });
     
-    // Assert
+    // உறுதிப்படுத்து
     expect(mockWeatherService.getForecasts).toHaveBeenCalledWith('Seattle', 3);
     expect(response.content[0].text).toContain('Seattle');
     expect(response.content[0].text).toContain('Sunny');
   });
   
   it('should handle errors from the weather service', async () => {
-    // Arrange
+    // ஏற்பாடு செய்யவும்
     mockWeatherService.getForecasts.mockRejectedValue(new Error('Service unavailable'));
     
-    // Act & Assert
+    // செயல்படுத்து மற்றும் உறுதிப்படுத்து
     await expect(tool.execute({
       location: 'Seattle',
       days: 3
@@ -491,48 +493,48 @@ describe('WeatherForecastTool', () => {
 });
 ```
 
-### 2. ஒருங்கிணைப்பு சோதனை
+### 2. ஒருங்கிணைந்த சோதனை
 
-வாடிக்கையாளர் கோரிக்கைகளிலிருந்து சர்வர் பதில்கள் வரை முழு ஓட்டத்தைச் சோதிக்கவும்:
+வாடிக்கையாளர் கோரிக்கைகளிலிருந்து சேவையக பதில்களுக்கு முழுமையான பணியை சோதிக்கவும்:
 
 ```python
-# Python integration test example
+# பைதான் ஒருங்கிணைப்பு சோதனை உதாரணம்
 @pytest.mark.asyncio
 async def test_mcp_server_integration():
-    # Start a test server
+    # சோதனை சேவையகம் துவக்கு
     server = McpServer()
     server.register_tool(WeatherForecastTool(MockWeatherService()))
     await server.start(port=5000)
     
     try:
-        # Create a client
+        # ஒரு கிளையன்டை உருவாக்கு
         client = McpClient("http://localhost:5000")
         
-        # Test tool discovery
+        # கருவி கண்டறிதலை சோதி
         tools = await client.discover_tools()
         assert "weatherForecast" in [t.name for t in tools]
         
-        # Test tool execution
+        # கருவி இயக்கத்தை சோதி
         response = await client.execute_tool("weatherForecast", {
             "location": "Seattle",
             "days": 3
         })
         
-        # Verify response
+        # பதிலை சரிபார்க்கவும்
         assert response.status_code == 200
         assert "Seattle" in response.content[0].text
         assert len(json.loads(response.content[0].text)["forecasts"]) == 3
         
     finally:
-        # Clean up
+        # ஒழுங்குபடுத்து
         await server.stop()
 ```
 
-## செயல்திறன் மேம்பாடு
+## செயல்திறன் மேம்படுத்தல்
 
-### 1. கேஷிங் உத்திகள்
+### 1. கேச்சிங் தந்திரங்கள்
 
-தாமதம் மற்றும் வள பயன்பாட்டை குறைக்க பொருத்தமான கேஷிங்கை செயல்படுத்தவும்:
+காலதாமதத்தை குறைக்கும் மற்றும் வள பயன்பாட்டை குறைக்கும் வகையில் பொருத்தமான கேச்சிங்கை செயல்படுத்தல்:
 
 ```csharp
 // C# example with caching
@@ -601,18 +603,18 @@ public class CachedWeatherTool : ITool
 }
 ```
 
-#### 2. சார்பு ஊடுருவல் மற்றும் சோதனை திறன்
+#### 2. சார்புரிமை ஊட்டம் மற்றும் சோதனை திறன்
 
-கருவிகள் தங்கள் சார்புகளை கட்டமைப்பாளர் ஊடுருவலின் மூலம் பெறும் வகையில் வடிவமைக்கவும், அவற்றை சோதிக்கக்கூடிய மற்றும் உள்ளமைக்கக்கூடியதாக மாற்றவும்:
+கருவிகள் தங்கள் சார்புகளை கட்டமைப்பாளர் ஊட்ட மூலமாகப் பெறும் முறையில் வடிவமைக்கப்பட வேண்டும், இதனால் அவை சோதிக்கக்கூடியதும் அமைக்கக்கூடியதுமானவை ஆகின்றன:
 
 ```java
-// Java example with dependency injection
+// சார்பு நிரப்பல் உடன் ஜாவா எடுத்துக்காட்டு
 public class CurrencyConversionTool implements Tool {
     private final ExchangeRateService exchangeService;
     private final CacheService cacheService;
     private final Logger logger;
     
-    // Dependencies injected through constructor
+    // கட்டுமான செயலி மூலம் சார்புகள் நிரப்பப்படுகின்றன
     public CurrencyConversionTool(
             ExchangeRateService exchangeService,
             CacheService cacheService,
@@ -622,51 +624,51 @@ public class CurrencyConversionTool implements Tool {
         this.logger = logger;
     }
     
-    // Tool implementation
+    // கருவி அமலாக்கம்
     // ...
 }
 ```
 
-#### 3. இணைக்கக்கூடிய கருவிகள்
+#### 3. சேர்க்கக்கூடிய கருவிகள்
 
-மேலும் சிக்கலான வேலைப்பாடுகளை உருவாக்க பல கருவிகளை இணைக்கக்கூடியதாக வடிவமைக்கவும்:
+அனைத்துக் கருவிகளையும் சேர்த்துக் கூட்டி மிகவும் சிக்கலான பணிமுறைகளை உருவாக்கக்கூடிய வகையில் வடிவமைக்கவும்:
 
 ```python
-# Python example showing composable tools
+# Python எடுத்துக்காட்டு கூட்டுக்கூடிய கருவிகளை காட்டுகிறது
 class DataFetchTool(Tool):
     def get_name(self):
         return "dataFetch"
     
-    # Implementation...
+    # நடைமுறைப்படுத்தல்...
 
 class DataAnalysisTool(Tool):
     def get_name(self):
         return "dataAnalysis"
     
-    # This tool can use results from the dataFetch tool
+    # இந்த கருவி dataFetch கருவியின் முடிவுகளை பயன்படுத்தலாம்
     async def execute_async(self, request):
-        # Implementation...
+        # நடைமுறைப்படுத்தல்...
         pass
 
 class DataVisualizationTool(Tool):
     def get_name(self):
         return "dataVisualize"
     
-    # This tool can use results from the dataAnalysis tool
+    # இந்த கருவி dataAnalysis கருவியின் முடிவுகளை பயன்படுத்தலாம்
     async def execute_async(self, request):
-        # Implementation...
+        # நடைமுறைப்படுத்தல்...
         pass
 
-# These tools can be used independently or as part of a workflow
+# இந்த கருவிகள் தனி முறையிலும் அல்லது வேலைநெறியின் பகுதியாகவும் பயன்படுத்தலாம்
 ```
 
-### ஸ்கீமா வடிவமைப்பு சிறந்த நடைமுறைகள்
+### திட்ட வடிவமைப்பு சிறந்த நடைமுறைகள்
 
-ஸ்கீமா என்பது மாதிரி மற்றும் உங்கள் கருவிக்கிடையேயான ஒப்பந்தமாகும். நன்றாக வடிவமைக்கப்பட்ட ஸ்கீமாக்கள் கருவி பயன்பாட்டை மேம்படுத்துகின்றன.
+திட்டம் என்பது மாடல் மற்றும் உங்கள் கருவியின் இடையேயான ஒப்பந்தம் ஆகும். நன்றாக வடிவமைக்கப்பட்ட திட்டங்கள் கருவி பயன்பாட்டை மேம்படுத்துகின்றன.
 
-#### 1. தெளிவான அளவுரு விளக்கங்கள்
+#### 1. தெளிவான தொழிற் பாத்திர விளக்கங்கள்
 
-ஒவ்வொரு அளவுருவிற்கும் விளக்கமான தகவல்களை எப்போதும் சேர்க்கவும்:
+ஒவ்வொரு தொழிற் பாத்திரத்திற்கும் விளக்கக் குறிப்பு எப்போதும் சேர்க்கவும்:
 
 ```csharp
 public object GetSchema()
@@ -705,7 +707,7 @@ public object GetSchema()
 
 #### 2. சரிபார்ப்பு கட்டுப்பாடுகள்
 
-தவறான உள்ளீடுகளைத் தடுக்க சரிபார்ப்பு கட்டுப்பாடுகளைச் சேர்க்கவும்:
+தவறான உள்ளீடுகளைத் தடுக்கும் வகையில் சரிபார்ப்பு கட்டுப்பாடுகளை நுழைத்தல்:
 
 ```java
 Map<String, Object> getSchema() {
@@ -714,20 +716,20 @@ Map<String, Object> getSchema() {
     
     Map<String, Object> properties = new HashMap<>();
     
-    // Email property with format validation
+    // வடிவமைப்பு சரிபார்ப்புடன் மின்னஞ்சல் சொத்துகள்
     Map<String, Object> email = new HashMap<>();
     email.put("type", "string");
     email.put("format", "email");
     email.put("description", "User email address");
     
-    // Age property with numeric constraints
+    // எண் கட்டளைகளுடன் வயது சொத்துகள்
     Map<String, Object> age = new HashMap<>();
     age.put("type", "integer");
     age.put("minimum", 13);
     age.put("maximum", 120);
     age.put("description", "User age in years");
     
-    // Enumerated property
+    // விவரம் செய்யப்பட்ட சொத்துகள்
     Map<String, Object> subscription = new HashMap<>();
     subscription.put("type", "string");
     subscription.put("enum", Arrays.asList("free", "basic", "premium"));
@@ -745,17 +747,17 @@ Map<String, Object> getSchema() {
 }
 ```
 
-#### 3. நிலையான பதில் அமைப்புகள்
+#### 3. ஒரே மாதிரி பதில் அமைப்புகள்
 
-மாதிரிகள் முடிவுகளை விளக்க எளிதாக இருக்க பதில் அமைப்புகளில் நிலைத்தன்மையை பராமரிக்கவும்:
+மாடல்களுக்கு விளைவுகளை தெளிவாக்கும் முறையில் பதில்கள் ஒரே மாதிரியாக இருக்க வேண்டும்:
 
 ```python
 async def execute_async(self, request):
     try:
-        # Process request
+        # கோரிக்கையை செயலாக்கு
         results = await self._search_database(request.parameters["query"])
         
-        # Always return a consistent structure
+        # எப்போதும் ஒரே மாதிரியான அமைப்பை திருப்பி அனுப்பு
         return ToolResponse(
             result={
                 "matches": [self._format_item(item) for item in results],
@@ -786,13 +788,13 @@ def _format_item(self, item):
     }
 ```
 
-### பிழை கையாளுதல்
+### பிழை கைப்பிடிப்பு
 
-MCP கருவிகளின் நம்பகத்தன்மையை பராமரிக்க வலுவான பிழை கையாளுதல் முக்கியம்.
+MCP கருவிகளுக்கு நம்பகத்தன்மை காக்க வலுவான பிழை கைப்பிடிப்பு அவசியம்.
 
-#### 1. நன்றாக பிழை கையாளுதல்
+#### 1. மென்மையான பிழை கைப்பிடிப்பு
 
-பிழைகளை பொருத்தமான நிலைகளில் கையாளவும் மற்றும் தகவலளிக்கும் செய்திகளை வழங்கவும்:
+சமயசீரான நிலைகளில் பிழைகளை கையாளவும் மற்றும் விளக்கக் குறிப்புகளை வழங்கவும்:
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -834,15 +836,15 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 }
 ```
 
-#### 2. அமைக்கப்பட்ட பிழை பதில்கள்
+#### 2. கட்டமைக்கப்பட்ட பிழை பதில்கள்
 
-சாத்தியமான போது அமைக்கப்பட்ட பிழை தகவலைத் திருப்பவும்:
+சாத்தியமானபோது கட்டமைக்கப்பட்ட பிழை தகவலை வழங்கவும்:
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
     try {
-        // Implementation
+        // செயல்படுத்தல்
     } catch (Exception ex) {
         Map<String, Object> errorResult = new HashMap<>();
         
@@ -860,45 +862,45 @@ public ToolResponse execute(ToolRequest request) {
                 .build();
         }
         
-        // Re-throw other exceptions as ToolExecutionException
+        // பிற தவறுகள் ToolExecutionException ஆக மீண்டும் வீசவும்
         throw new ToolExecutionException("Tool execution failed: " + ex.getMessage(), ex);
     }
 }
 ```
 
-#### 3. மீண்டும் முயற்சி செய்யும் முறை
+#### 3. மீண்டும் முயற்சி செயல்
 
-தற்காலிக தோல்விகளுக்கு பொருத்தமான மீண்டும் முயற்சி செய்யும் முறையை செயல்படுத்தவும்:
+தற்காலிக தோல்விகளுக்கு பொருத்தமான மீண்டும் முயற்சி நிலையை செயல்படுத்துக:
 
 ```python
 async def execute_async(self, request):
     max_retries = 3
     retry_count = 0
-    base_delay = 1  # seconds
+    base_delay = 1  # விநாடிகள்
     
     while retry_count < max_retries:
         try:
-            # Call external API
+            # வெளிப்புற API ஐ அழைக்கவும்
             return await self._call_api(request.parameters)
         except TransientError as e:
             retry_count += 1
             if retry_count >= max_retries:
                 raise ToolExecutionException(f"Operation failed after {max_retries} attempts: {str(e)}")
                 
-            # Exponential backoff
+            # எக்ஸ்போனென்ஷியல் பேக்க்அஃப்
             delay = base_delay * (2 ** (retry_count - 1))
             logging.warning(f"Transient error, retrying in {delay}s: {str(e)}")
             await asyncio.sleep(delay)
         except Exception as e:
-            # Non-transient error, don't retry
+            # அசாதாரண பிழை, மீண்டும் முயற்சி செய்ய வேண்டாம்
             raise ToolExecutionException(f"Operation failed: {str(e)}")
 ```
 
-### செயல்திறன் மேம்பாடு
+### செயல்திறன் மேம்படுத்தல்
 
-#### 1. கேஷிங்
+#### 1. கேச்சிங்
 
-செலவான செயல்பாடுகளுக்கு கேஷிங்கை செயல்படுத்தவும்:
+மேலோங்கி இயங்கும் பணிகளுக்கு கேச்சிங்கை செயல்படுத்தவும்:
 
 ```csharp
 public class CachedDataTool : IMcpTool
@@ -944,9 +946,9 @@ public class CachedDataTool : IMcpTool
 }
 ```
 
-#### 2. அசிங்க செயல்பாடு
+#### 2. அசைன்க்ரனஸ் செயலாக்கம்
 
-I/O சார்ந்த செயல்பாடுகளுக்கு அசிங்க நிரலாக்க முறைகளைப் பயன்படுத்தவும்:
+I/O சார்ந்த பணிகளுக்கு அசைன்க்ரனஸ் நிரலாக்க முறைகளை பயன்படுத்தவும்:
 
 ```java
 public class AsyncDocumentProcessingTool implements Tool {
@@ -957,23 +959,23 @@ public class AsyncDocumentProcessingTool implements Tool {
     public ToolResponse execute(ToolRequest request) {
         String documentId = request.getParameters().get("documentId").asText();
         
-        // For long-running operations, return a processing ID immediately
+        // நீண்டநேர செயல்பாடுகளுக்கு, உடனடி செயலாக்க ID ஐ திருப்பிக் கொடு
         String processId = UUID.randomUUID().toString();
         
-        // Start async processing
+        // அசிங்க் செயலாக்கத்தை தொடங்கு
         CompletableFuture.runAsync(() -> {
             try {
-                // Perform long-running operation
+                // நீண்டநேர செயல்பாட்டை நிறைவேற்று
                 documentService.processDocument(documentId);
                 
-                // Update status (would typically be stored in a database)
+                // நிலையை புதுப்பி (அதிகமாக ஒரு தரவுத்தளத்தில் சேமிக்கப்படும்)
                 processStatusRepository.updateStatus(processId, "completed");
             } catch (Exception ex) {
                 processStatusRepository.updateStatus(processId, "failed", ex.getMessage());
             }
         }, executorService);
         
-        // Return immediate response with process ID
+        // செயலாக்க ID உடன் உடனடி பதிலை வழங்கு
         Map<String, Object> result = new HashMap<>();
         result.put("processId", processId);
         result.put("status", "processing");
@@ -982,7 +984,7 @@ public class AsyncDocumentProcessingTool implements Tool {
         return new ToolResponse.Builder().setResult(result).build();
     }
     
-    // Companion status check tool
+    // துணை நிலை சரிபார்ப்பு கருவி
     public class ProcessStatusTool implements Tool {
         @Override
         public ToolResponse execute(ToolRequest request) {
@@ -995,35 +997,35 @@ public class AsyncDocumentProcessingTool implements Tool {
 }
 ```
 
-#### 3. வளக் கட்டுப்பாடு
+#### 3. வள தடுப்பு
 
-அதிக சுமையைத் தடுக்க வளக் கட்டுப்பாட்டை செயல்படுத்தவும்:
+அதிவேகத்திலிருந்து பாதுகாப்பாக வள தடுப்பை பயன்படுத்தவும்:
 
 ```python
 class ThrottledApiTool(Tool):
     def __init__(self):
         self.rate_limiter = TokenBucketRateLimiter(
-            tokens_per_second=5,  # Allow 5 requests per second
-            bucket_size=10        # Allow bursts up to 10 requests
+            tokens_per_second=5,  # இரண்டு வினாடிக்கு 5 கோரிக்கைகள் அங்கீகாரம் செய்யவும்
+            bucket_size=10        # 10 கோரிக்கைகள் வரை கூட்டு அனுமதி
         )
     
     async def execute_async(self, request):
-        # Check if we can proceed or need to wait
+        # Proceed செய்யக்கூடியதா அல்லது காத்திருப்பதா என்பது சரிபார்க்கவும்
         delay = self.rate_limiter.get_delay_time()
         
         if delay > 0:
-            if delay > 2.0:  # If wait is too long
+            if delay > 2.0:  # காத்திருக்கும் காலம் மிகவும் நீண்டதாக இருந்தால்
                 raise ToolExecutionException(
                     f"Rate limit exceeded. Please try again in {delay:.1f} seconds."
                 )
             else:
-                # Wait for the appropriate delay time
+                # பொருத்தமான இடைவெளி நேரத்திற்கு காத்திருக்கவும்
                 await asyncio.sleep(delay)
         
-        # Consume a token and proceed with the request
+        # ஒரு டோக்கனை பயன்படுத்தி கோரிக்கையை தொடரவும்
         self.rate_limiter.consume()
         
-        # Call API
+        # API-ஐ அழைக்கவும்
         result = await self._call_api(request.parameters)
         return ToolResponse(result=result)
 
@@ -1041,7 +1043,7 @@ class TokenBucketRateLimiter:
             if self.tokens >= 1:
                 return 0
             
-            # Calculate time until next token available
+            # அடுத்த டோக்கன் கிடைக்கும் வரை நேரத்தை கணக்கிடுக
             return (1 - self.tokens) / self.tokens_per_second
     
     async def consume(self):
@@ -1053,7 +1055,7 @@ class TokenBucketRateLimiter:
         now = time.time()
         elapsed = now - self.last_refill
         
-        # Add new tokens based on elapsed time
+        # கடந்த நேரத்தின் அடிப்படையில் புதிய டோக்கன்களைச் சேர்க்கவும்
         new_tokens = elapsed * self.tokens_per_second
         self.tokens = min(self.bucket_size, self.tokens + new_tokens)
         self.last_refill = now
@@ -1063,7 +1065,7 @@ class TokenBucketRateLimiter:
 
 #### 1. உள்ளீடு சரிபார்ப்பு
 
-அளவுரு உள்ளீடுகளை எப்போதும் முழுமையாகச் சரிபார்க்கவும்:
+உள்ளீடு தொழிற் பாத்திரங்களை அடிக்கடி பரிசோதிக்கவும்:
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -1104,33 +1106,33 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 }
 ```
 
-#### 2. அனுமதி சரிபார்ப்பு
+#### 2. அங்கீகாரம் சோதனைகள்
 
-சரியான அனுமதி சரிபார்ப்புகளை செயல்படுத்தவும்:
+உரிய அங்கீகாரம் சோதனைகளை செயல்படுத்தவும்:
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
-    // Get user context from request
+    // கோரிக்கையிலிருந்து பயனர் சூழலைப் பெறுக
     UserContext user = request.getContext().getUserContext();
     
-    // Check if user has required permissions
+    // பயனரிடம் தேவையான அனுமதிகள் உள்ளதா என்று சரிபார்க்கவும்
     if (!authorizationService.hasPermission(user, "documents:read")) {
         throw new ToolExecutionException("User does not have permission to access documents");
     }
     
-    // For specific resources, check access to that resource
+    // குறிப்பிட்ட வளங்களுக்கு, அந்த வரலாற்றிற்கு அணுகலை சரிபார்க்கவும்
     String documentId = request.getParameters().get("documentId").asText();
     if (!documentService.canUserAccess(user.getId(), documentId)) {
         throw new ToolExecutionException("Access denied to the requested document");
     }
     
-    // Proceed with tool execution
+    // கருவி செயலாக்கத்தை தொடரவும்
     // ...
 }
 ```
 
-#### 3. நுணுக்கமான தரவுகளை கையாளுதல்
+#### 3. நுணுக்கமான தரவு கையாளல்
 
 நுணுக்கமான தரவுகளை கவனமாக கையாளவும்:
 
@@ -1150,46 +1152,46 @@ class SecureDataTool(Tool):
         user_id = request.parameters["userId"]
         include_sensitive = request.parameters.get("includeSensitiveData", False)
         
-        # Get user data
+        # பயனர் தரவைக் காண்க
         user_data = await self.user_service.get_user_data(user_id)
         
-        # Filter sensitive fields unless explicitly requested AND authorized
+        # தெளிவாக கோரப்பட்டதும் அங்கீகாரம் பெற்றதும் இல்லையெனில் நுணுக்கமான புலங்களை வடிகட்டி வெளியிடுக
         if not include_sensitive or not self._is_authorized_for_sensitive_data(request):
             user_data = self._redact_sensitive_fields(user_data)
         
         return ToolResponse(result=user_data)
     
     def _is_authorized_for_sensitive_data(self, request):
-        # Check authorization level in request context
+        # கோரிக்கை சூழலில் அங்கீகார நிலையைச் சரிபார்க்கவும்
         auth_level = request.context.get("authorizationLevel")
         return auth_level == "admin"
     
     def _redact_sensitive_fields(self, user_data):
-        # Create a copy to avoid modifying the original
+        # அசல் பதிப்பை மாற்றாமல் இருக்க நகலை உருவாக்கவும்
         redacted = user_data.copy()
         
-        # Redact specific sensitive fields
+        # குறிப்பிட்ட நுணுக்கமான புலங்களை மறைக்கவும்
         sensitive_fields = ["ssn", "creditCardNumber", "password"]
         for field in sensitive_fields:
             if field in redacted:
                 redacted[field] = "REDACTED"
         
-        # Redact nested sensitive data
+        # உட்பட நுணுக்கமான தரவை மறைக்கவும்
         if "financialInfo" in redacted:
             redacted["financialInfo"] = {"available": True, "accessRestricted": True}
         
         return redacted
 ```
 
-## MCP கருவிகளுக்கான சோதனை சிறந்த நடைமுறைகள்
+## MCP கருவிகள் சோதனை சிறந்த நடைமுறைகள்
 
-விரிவான சோதனை MCP கருவிகள் சரியாக செயல்படுவதை, விளிம்பு வழக்குகளை கையாளுவதை மற்றும் மொத்த அமைப்புடன் சரியாக ஒருங்கிணைக்கப்படுவதை உறுதிப்படுத்துகிறது.
+விரிவான சோதனைகள் MCP கருவிகள் சரியாக இயங்குவதை, முனை நிலை கையாளலை மற்றும் மொத்த அமைப்புடன் இணைப்பை உறுதிப்படுத்துகிறது.
 
-### யூனிட் சோதனை
+### தனித்தனி சோதனை
 
-#### 1. ஒவ்வொரு கருவியையும் தனித்துவமாகச் சோதிக்கவும்
+#### 1. ஒவ்வொரு கருவியையும் தனி முறையில் சோதிக்கவும்
 
-ஒவ்வொரு கருவியின் செயல்பாட்டிற்கான மைய சோதனைகளை உருவாக்கவும்:
+ஒவ்வொரு கருவியின் செயல்பாட்டுக்கு கவனம் செலுத்தி சோதனைகளை உருவாக்கவும்:
 
 ```csharp
 [Fact]
@@ -1249,27 +1251,27 @@ public async Task WeatherTool_InvalidLocation_ThrowsToolExecutionException()
 }
 ```
 
-#### 2. ஸ்கீமா சரிபார்ப்பு சோதனை
+#### 2. திட்ட சரிபார்ப்பு சோதனை
 
-ஸ்கீமாக்கள் செல்லுபடியாகும் மற்றும் சரிபார்ப்பு கட்டுப்பாடுகளை சரியாக அமல்படுத்துவதைச் சோதிக்கவும்:
+திட்டங்கள் செல்லுபடியாகும் மற்றும் கட்டுப்பாடுகளை சரியாக அமுல்படுத்தும் என்பதை சோதிக்கவும்:
 
 ```java
 @Test
 public void testSchemaValidation() {
-    // Create tool instance
+    // கருவி உதாரணம் உருவாக்கவும்
     SearchTool searchTool = new SearchTool();
     
-    // Get schema
+    // வார்ப்புருவைப் பெறவும்
     Object schema = searchTool.getSchema();
     
-    // Convert schema to JSON for validation
+    // சரிபார்க்க JSON ஆக வார்ப்புருவை மாற்றவும்
     String schemaJson = objectMapper.writeValueAsString(schema);
     
-    // Validate schema is valid JSONSchema
+    // வார்ப்புரு செல்லுபடியாகும் JSONSchema ஆக இருக்கிறதா என்று சரிபார்க்கவும்
     JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
     JsonSchema jsonSchema = factory.getJsonSchema(schemaJson);
     
-    // Test valid parameters
+    // செல்லுபடியாகும் அளவுருக்கள் சோதனை செய்யவும்
     JsonNode validParams = objectMapper.createObjectNode()
         .put("query", "test query")
         .put("limit", 5);
@@ -1277,14 +1279,14 @@ public void testSchemaValidation() {
     ProcessingReport validReport = jsonSchema.validate(validParams);
     assertTrue(validReport.isSuccess());
     
-    // Test missing required parameter
+    // அவசியமான அளவுரு இல்லாமல் சோதனை செய்யவும்
     JsonNode missingRequired = objectMapper.createObjectNode()
         .put("limit", 5);
         
     ProcessingReport missingReport = jsonSchema.validate(missingRequired);
     assertFalse(missingReport.isSuccess());
     
-    // Test invalid parameter type
+    // தவறான அளவுரு வகையை சோதனை செய்யவும்
     JsonNode invalidType = objectMapper.createObjectNode()
         .put("query", "test")
         .put("limit", "not-a-number");
@@ -1294,21 +1296,21 @@ public void testSchemaValidation() {
 }
 ```
 
-#### 3. பிழை கையாளுதல் சோதனைகள்
+#### 3. பிழை கைப்பிடிப்பு சோதனைகள்
 
-பிழை நிலைகளுக்கான குறிப்பிட்ட சோதனைகளை உருவாக்கவும்:
+குறிப்பிட்ட பிழை நிலைகளுக்கு சோதனைகளை உருவாக்கவும்:
 
 ```python
 @pytest.mark.asyncio
 async def test_api_tool_handles_timeout():
-    # Arrange
-    tool = ApiTool(timeout=0.1)  # Very short timeout
+    # ஒழுங்குபடுத்தவும்
+    tool = ApiTool(timeout=0.1)  # மிகவும் குறுகிய நேரவிட்டு
     
-    # Mock a request that will time out
+    # நேரவிட்டு ஆகும் கோரிக்கையை மாக் செய்க
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
-            callback=lambda *args, **kwargs: asyncio.sleep(0.5)  # Longer than timeout
+            callback=lambda *args, **kwargs: asyncio.sleep(0.5)  # நேரவிட்டை விட நீளம்
         )
         
         request = ToolRequest(
@@ -1316,19 +1318,19 @@ async def test_api_tool_handles_timeout():
             parameters={"url": "https://api.example.com/data"}
         )
         
-        # Act & Assert
+        # செயல் & உறுதிப்படும்
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception message
+        # தவறான செய்தியை உறுதிப்படுத்தவும்
         assert "timed out" in str(exc_info.value).lower()
 
 @pytest.mark.asyncio
 async def test_api_tool_handles_rate_limiting():
-    # Arrange
+    # ஒழுங்குபடுத்தவும்
     tool = ApiTool()
     
-    # Mock a rate-limited response
+    # ஒரு வீத வரம்பு கொண்ட பதிலை மாக் செய்க
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
@@ -1342,21 +1344,21 @@ async def test_api_tool_handles_rate_limiting():
             parameters={"url": "https://api.example.com/data"}
         )
         
-        # Act & Assert
+        # செயல் & உறுதிப்படும்
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception contains rate limit information
+        # தவறு செய்தி வீத வரம்பு தகவலை கொண்டிருக்கிறது என்பதை உறுதிப்படுத்தவும்
         error_msg = str(exc_info.value).lower()
         assert "rate limit" in error_msg
         assert "try again" in error_msg
 ```
 
-### ஒருங்கிணைப்பு சோதனை
+### ஒருங்கிணைந்த சோதனை
 
 #### 1. கருவி சங்கிலி சோதனை
 
-எதிர்பார்க்கப்பட்ட இணைப்புகளில் வேலை செய்யும் கருவிகளைச் சோதிக்கவும்:
+எதிர்பாராத இணைப்புகளில் கருவிகள் இணைந்து செயல்படுவதை சோதிக்கவும்:
 
 ```csharp
 [Fact]
@@ -1395,9 +1397,9 @@ public async Task DataProcessingWorkflow_CompletesSuccessfully()
 }
 ```
 
-#### 2. MCP சர்வர் சோதனை
+#### 2. MCP சேவையக சோதனை
 
-முழு கருவி பதிவு மற்றும் செயல்பாட்டுடன் MCP சர்வரைச் சோதிக்கவும்:
+சம்பூர்ண கருவி பதிவு மற்றும் செயலாக்கத்துடன் MCP சேவையகத்தை சோதிக்கவும்:
 
 ```java
 @SpringBootTest
@@ -1412,7 +1414,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolDiscovery() throws Exception {
-        // Test the discovery endpoint
+        // கண்டுபிடிப்பு முனையத்தை சோதிக்கவும்
         mockMvc.perform(get("/mcp/tools"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.tools").isArray())
@@ -1423,7 +1425,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolExecution() throws Exception {
-        // Create tool request
+        // கருவி கோரிக்கையை உருவாக்கவும்
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
@@ -1433,7 +1435,7 @@ public class McpServerIntegrationTest {
         parameters.put("b", 7);
         request.put("parameters", parameters);
         
-        // Send request and verify response
+        // கோரிக்கையை அனுப்பி பதிலை சரிபார்க்கவும்
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1443,17 +1445,17 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolValidation() throws Exception {
-        // Create invalid tool request
+        // தவறான கருவி கோரிக்கையை உருவாக்கவும்
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("operation", "divide");
         parameters.put("a", 10);
-        // Missing parameter "b"
+        // "b" என்னும் பரிமாணம் இல்லை
         request.put("parameters", parameters);
         
-        // Send request and verify error response
+        // கோரிக்கையை அனுப்பி பிழை பதிலை சரிபார்க்கவும்
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1463,17 +1465,17 @@ public class McpServerIntegrationTest {
 }
 ```
 
-#### 3. முடிவு முதல் இறுதி வரை சோதனை
+#### 3. முடிவு முதல் முடிவுவரை சோதனை
 
-மாதிரி உந்துதல் முதல் கருவி செயல்பாடு வரை முழு வேலைப்பாடுகளைச் சோதிக்கவும்:
+மாடல் ஊக்கமிடல் முதல் கருவியின் செயல்பாடு வரை முழுமையான பணிமுறையை சோதிக்கவும்:
 
 ```python
 @pytest.mark.asyncio
 async def test_model_interaction_with_tool():
-    # Arrange - Set up MCP client and mock model
+    # ஒழுங்குபடுத்து - MCP கிளையன்ட் மற்றும் மொக் மாதிரியை அமைக்கு
     mcp_client = McpClient(server_url="http://localhost:5000")
     
-    # Mock model responses
+    # மொக் மாதிரி பதில்கள்
     mock_model = MockLanguageModel([
         MockResponse(
             "What's the weather in Seattle?",
@@ -1488,7 +1490,7 @@ async def test_model_interaction_with_tool():
         )
     ])
     
-    # Mock weather tool response
+    # மொக் காலநிலை கருவி பதில்
     with aioresponses() as mocked:
         mocked.post(
             "http://localhost:5000/mcp/execute",
@@ -1504,14 +1506,14 @@ async def test_model_interaction_with_tool():
             }
         )
         
-        # Act
+        # செயல்
         response = await mcp_client.send_prompt(
             "What's the weather in Seattle?",
             model=mock_model,
             allowed_tools=["weatherForecast"]
         )
         
-        # Assert
+        # உறுதி செய்
         assert "Seattle" in response.generated_text
         assert "65" in response.generated_text
         assert "Sunny" in response.generated_text
@@ -1522,9 +1524,9 @@ async def test_model_interaction_with_tool():
 
 ### செயல்திறன் சோதனை
 
-#### 1. சுமை சோதனை
+#### 1. பாரம் சோதனை
 
-உங்கள் MCP சர்வர் எவ்வளவு ஒரே நேரத்தில் கோரிக்கைகளை கையாள முடியும் என்பதைச் சோதிக்கவும்:
+எத்தனை ஒருங்கிணைந்த கோரிக்கைகளை உங்கள் MCP சேவையகங்கள் கையாள முடியும் என சோதிக்கவும்:
 
 ```csharp
 [Fact]
@@ -1559,7 +1561,7 @@ public async Task McpServer_HandlesHighConcurrency()
 
 #### 2. அழுத்த சோதனை
 
-அதிக சுமையின் கீழ் அமைப்பைச் சோதிக்கவும்:
+மிகக் கடுமையான பாரத்தை அமைப்பில் வைக்கவும் சோதிக்கவும்:
 
 ```java
 @Test
@@ -1568,13 +1570,13 @@ public void testServerUnderStress() {
     int rampUpTimeSeconds = 60;
     int testDurationSeconds = 300;
     
-    // Set up JMeter for stress testing
+    // மன அழுத்தம் சோதனைக்காக JMeter ஐ செட் அப் செய்க
     StandardJMeterEngine jmeter = new StandardJMeterEngine();
     
-    // Configure JMeter test plan
+    // JMeter சோதனை திட்டத்தை உள்ளமைக்கவும்
     HashTree testPlanTree = new HashTree();
     
-    // Create test plan, thread group, samplers, etc.
+    // சோதனை திட்டம், திரெட் குழு, சம்பிளர்கள் ஆகியவற்றை உருவாக்கவும்
     TestPlan testPlan = new TestPlan("MCP Server Stress Test");
     testPlanTree.add(testPlan);
     
@@ -1586,7 +1588,7 @@ public void testServerUnderStress() {
     
     testPlanTree.add(threadGroup);
     
-    // Add HTTP sampler for tool execution
+    // கருவி செயல்பாட்டிற்கான HTTP சம்பிளரை சேர்க்கவும்
     HTTPSampler toolExecutionSampler = new HTTPSampler();
     toolExecutionSampler.setDomain("localhost");
     toolExecutionSampler.setPort(5000);
@@ -1597,29 +1599,29 @@ public void testServerUnderStress() {
     
     threadGroup.add(toolExecutionSampler);
     
-    // Add listeners
+    // சுவாரஸ்யர்களை சேர்க்கவும்
     SummaryReport summaryReport = new SummaryReport();
     threadGroup.add(summaryReport);
     
-    // Run test
+    // சோதனையை இயக்குக
     jmeter.configure(testPlanTree);
     jmeter.run();
     
-    // Validate results
+    // முடிவுகளைச் சரிபார்க்கவும்
     assertEquals(0, summaryReport.getErrorCount());
-    assertTrue(summaryReport.getAverage() < 200); // Average response time < 200ms
-    assertTrue(summaryReport.getPercentile(90.0) < 500); // 90th percentile < 500ms
+    assertTrue(summaryReport.getAverage() < 200); // சராசரி பதிலளிக்கும் நேரம் < 200மி உ
+    assertTrue(summaryReport.getPercentile(90.0) < 500); // 90வது சதவீதம் < 500மி உ
 }
 ```
 
-#### 3. கண்காணிப்பு மற்றும் சுயவிவர அமைப்பு
+#### 3. கண்காணிப்பு மற்றும் சுய பற்றாள்பு
 
-நீண்டகால செயல்திறன் பகுப்பாய்வுக்கான கண்காணிப்பை அமைக்கவும்:
+நீண்ட கால செயல்திறன் மதிப்பீட்டிற்கான கண்காணிப்பை அமைக்கவும்:
 
 ```python
-# Configure monitoring for an MCP server
+# ஒரு MCP சேவையகத்திற்கு கண்காணிப்பை குறியீடு செய்யவும்
 def configure_monitoring(server):
-    # Set up Prometheus metrics
+    # Prometheus அளவுருக்களை அமைக்கவும்
     prometheus_metrics = {
         "request_count": Counter("mcp_requests_total", "Total MCP requests"),
         "request_latency": Histogram(
@@ -1645,10 +1647,10 @@ def configure_monitoring(server):
         )
     }
     
-    # Add middleware for timing and recording metrics
+    # நேரம் எடுத்துக்கொள்ள மற்றும் அளவுருக்களை பதிவு செய்ய மிடில் வேர் சேர்க்கவும்
     server.add_middleware(PrometheusMiddleware(prometheus_metrics))
     
-    # Expose metrics endpoint
+    # அளவுருக்கள் தொடுப்பை வெளிப்படுத்தவும்
     @server.router.get("/metrics")
     async def metrics():
         return generate_latest()
@@ -1656,29 +1658,29 @@ def configure_monitoring(server):
     return server
 ```
 
-## MCP வேலைப்பாடு வடிவமைப்பு முறைமைகள்
+## MCP பணிமுறை வடிவமைப்பு மாதிரிகள்
 
-நன்றாக வடிவமைக்கப்பட்ட MCP வேலைப்பாடுகள் திறன், நம்பகத்தன்மை மற்றும் பராமரிப்பை மேம்படுத்துகின்றன. பின்வரும் முக்கிய முறைமைகளைப் பின்பற்றவும்:
+நன்றாக வடிவமைக்கப்பட்ட MCP பணிமுறைகள் செயல்திறன், நம்பகத்தன்மை மற்றும் பராமரிப்பு திறனை மேம்படுத்துகின்றன. பின்வரும் முக்கிய மாதிரிகளை பின்பற்றவும்:
 
-### 1. கருவி சங்கிலி முறை
+### 1. கருவிகள் சங்கிலி மாதிரி
 
-ஒவ்வொரு கருவியின் வெளியீடு அடுத்த கருவியின் உள்ளீடாக மாறும் வரிசையில் பல கருவிகளை இணைக்கவும்:
+ஒவ்வொரு கருவியின் வெளியீடு அடுத்த கருவிக்கு உள்ளீடாக மாறுகின்ற வரிசையில் பல கருவிகளை இணையாக்கவும்:
 
 ```python
-# Python Chain of Tools implementation
+# Python சீரியல் டூல்ஸ் செயல்படுத்தல்
 class ChainWorkflow:
     def __init__(self, tools_chain):
-        self.tools_chain = tools_chain  # List of tool names to execute in sequence
+        self.tools_chain = tools_chain  # தொடர்ச்சியில் செயல்படுத்தும் கருவி பெயர்கள் பட்டியல்
     
     async def execute(self, mcp_client, initial_input):
         current_result = initial_input
         all_results = {"input": initial_input}
         
         for tool_name in self.tools_chain:
-            # Execute each tool in the chain, passing previous result
+            # தொடர் ஒவ்வொரு கருவியையும் இயக்கவும், முந்தைய முடிவைத் தெரிவிக்கவும்
             response = await mcp_client.execute_tool(tool_name, current_result)
             
-            # Store result and use as input for next tool
+            # முடிவைச் சேமித்து அடுத்த கருவிக்காக உள்ளீடாகப் பயன்படுத்தவும்
             all_results[tool_name] = response.result
             current_result = response.result
         
@@ -1687,7 +1689,7 @@ class ChainWorkflow:
             "all_results": all_results
         }
 
-# Example usage
+# எடுத்துக்காட்டு பயன்பாடு
 data_processing_chain = ChainWorkflow([
     "dataFetch",
     "dataCleaner",
@@ -1701,9 +1703,9 @@ result = await data_processing_chain.execute(
 )
 ```
 
-### 2. அனுப்புநர் முறை
+### 2. பகிர்மானி மாதிரி
 
-உள்ளீட்டின் அடிப்படையில் சிறப்பு கருவிகளுக்கு அனுப்பும் மைய கருவியைப் பயன்படுத்தவும்:
+உள்ளீட்டை அடிப்படையாகக் கொண்டு சிறப்பு செய்யப்பட்ட கருவிகளுக்கு பகிர்மானி கருவியைப் பயன்படுத்துக:
 
 ```csharp
 public class ContentDispatcherTool : IMcpTool
@@ -1783,9 +1785,9 @@ public class ContentDispatcherTool : IMcpTool
 }
 ```
 
-### 3. இணை செயலாக்க முறை
+### 3. இணை கோலாகல செயலாக்கம்
 
-திறமையை மேம்படுத்த பல கருவிகளை ஒரே நேரத்தில் செயல்படுத்தவும்:
+ஆற்றலைச் செயல்திறம்படுத்த பல கருவிகளை ஒரே நேரத்தில் இயக்கு:
 
 ```java
 public class ParallelDataProcessingWorkflow {
@@ -1796,11 +1798,11 @@ public class ParallelDataProcessingWorkflow {
     }
     
     public WorkflowResult execute(String datasetId) {
-        // Step 1: Fetch dataset metadata (synchronous)
+        // படி 1: தரவுத்தொகை மெடாடேட்டாவை பெறு (ஒத்திசைவு)
         ToolResponse metadataResponse = mcpClient.executeTool("datasetMetadata", 
             Map.of("datasetId", datasetId));
         
-        // Step 2: Launch multiple analyses in parallel
+        // படி 2: பல விசாரணைகளை ஒரே நேரத்தில் தொடங்கு
         CompletableFuture<ToolResponse> statisticalAnalysis = CompletableFuture.supplyAsync(() ->
             mcpClient.executeTool("statisticalAnalysis", Map.of(
                 "datasetId", datasetId,
@@ -1822,25 +1824,25 @@ public class ParallelDataProcessingWorkflow {
             ))
         );
         
-        // Wait for all parallel tasks to complete
+        // அனைத்து 병ியல் பணிகளும் முடிந்த வரை காத்திரு
         CompletableFuture<Void> allAnalyses = CompletableFuture.allOf(
             statisticalAnalysis, correlationAnalysis, outlierDetection
         );
         
-        allAnalyses.join();  // Wait for completion
+        allAnalyses.join();  // முடிவை காத்திரு
         
-        // Step 3: Combine results
+        // படி 3: முடிவுகளை ஒன்றிணை
         Map<String, Object> combinedResults = new HashMap<>();
         combinedResults.put("metadata", metadataResponse.getResult());
         combinedResults.put("statistics", statisticalAnalysis.join().getResult());
         combinedResults.put("correlations", correlationAnalysis.join().getResult());
         combinedResults.put("outliers", outlierDetection.join().getResult());
         
-        // Step 4: Generate summary report
+        // படி 4: சுருக்கமான அறிக்கையை உருவாக்கு
         ToolResponse summaryResponse = mcpClient.executeTool("reportGenerator", 
             Map.of("analysisResults", combinedResults));
         
-        // Return complete workflow result
+        // முழுமையான பணிநிரலின் முடிவை திருப்பி கொடு
         WorkflowResult result = new WorkflowResult();
         result.setDatasetId(datasetId);
         result.setAnalysisResults(combinedResults);
@@ -1851,9 +1853,9 @@ public class ParallelDataProcessingWorkflow {
 }
 ```
 
-### 4. பிழை மீட்பு முறை
+### 4. பிழை மீட்பு மாதிரி
 
-கருவி தோல்விகளுக்கு நன்றாக மாற்றங்களை செயல்படுத்தவும்:
+கருவிகளில் தோல்விகள் நேருமானால் மென்மையான மீட்புகளை செயல்படுத்துக:
 
 ```python
 class ResilientWorkflow:
@@ -1862,7 +1864,7 @@ class ResilientWorkflow:
     
     async def execute_with_fallback(self, primary_tool, fallback_tool, parameters):
         try:
-            # Try primary tool first
+            # முதன்மை கருவியை முதலில் முயற்சிக்கவும்
             response = await self.client.execute_tool(primary_tool, parameters)
             return {
                 "result": response.result,
@@ -1870,12 +1872,12 @@ class ResilientWorkflow:
                 "tool": primary_tool
             }
         except ToolExecutionException as e:
-            # Log the failure
+            # தோல்வியை பதிவு செய்யவும்
             logging.warning(f"Primary tool '{primary_tool}' failed: {str(e)}")
             
-            # Fall back to secondary tool
+            # மாற்று கருவிக்கு கிருமிக்கவும்
             try:
-                # Might need to transform parameters for fallback tool
+                # மாற்று கருவிக்கான அளவுருக்களை மாற்ற வேண்டியிருக்கலாம்
                 fallback_params = self._adapt_parameters(parameters, primary_tool, fallback_tool)
                 
                 response = await self.client.execute_tool(fallback_tool, fallback_params)
@@ -1886,7 +1888,7 @@ class ResilientWorkflow:
                     "primaryError": str(e)
                 }
             except ToolExecutionException as fallback_error:
-                # Both tools failed
+                # இரண்டு கருவிகளும் தோல்வியடைந்தன
                 logging.error(f"Both primary and fallback tools failed. Fallback error: {str(fallback_error)}")
                 raise WorkflowExecutionException(
                     f"Workflow failed: primary error: {str(e)}; fallback error: {str(fallback_error)}"
@@ -1894,22 +1896,22 @@ class ResilientWorkflow:
     
     def _adapt_parameters(self, params, from_tool, to_tool):
         """Adapt parameters between different tools if needed"""
-        # This implementation would depend on the specific tools
-        # For this example, we'll just return the original parameters
+        # இந்த அமலாக்கம் குறிப்பிடப்பட்ட கருவிகளுக்கே சார்ந்திருக்கும்
+        # இந்த எடுத்துக்காட்டிற்கு, நாம் முதலில் உள்ள அளவுருக்களை திரும்ப தருவோம்
         return params
 
-# Example usage
+# உதாரண பயன்பாடு
 async def get_weather(workflow, location):
     return await workflow.execute_with_fallback(
-        "premiumWeatherService",  # Primary (paid) weather API
-        "basicWeatherService",    # Fallback (free) weather API
+        "premiumWeatherService",  # முதன்மை (பணம் கொடுக்கப்படும்) வானிலை API
+        "basicWeatherService",    # மாற்று (இலவச) வானிலை API
         {"location": location}
     )
 ```
 
-### 5. வேலைப்பாடு அமைப்பு முறை
+### 5. பணிமுறை சேர்க்கை மாதிரி
 
-எளிய வேலைப்பாடுகளை இணைத்து சிக்கலான வேலைப்பாடுகளை உருவாக்கவும்:
+சுலபமான பணிமுறைகளை சேர்க்கையாக்கி சிக்கலான பணிமுறைகளை உருவாக்கு:
 
 ```csharp
 public class CompositeWorkflow : IWorkflow
@@ -1956,34 +1958,286 @@ var result = await documentWorkflow.ExecuteAsync(new WorkflowContext {
 });
 ```
 
-# MCP சர்வர்களை சோதனை செய்வது: சிறந்த நடைமுறைகள் மற்றும் முக்கிய குறிப்புகள்
+# MCP சேவையகங்கள் சோதனை: சிறந்த நடைமுறைகள் மற்றும் சிறந்த நுட்பங்கள்
 
 ## கண்ணோட்டம்
 
-சோதனை என்பது MCP சர்வர்களை நம்பகமான, உயர் தரமானதாக உருவாக்குவதற்கான முக்கிய அம்சமாகும். இந்த வழிகாட்டி உங்கள் MCP சர்வர்களை மேம்பாட்டு வாழ்க்கைச் சுழற்சியின் முழு நீளத்திலும், யூனிட் சோதனைகளிலிருந்து ஒருங்கிணைப்பு சோதனைகள் மற்றும் முடிவு முதல் இறுதி வரை சரிபார்ப்பு வரை சோதனை செய்ய சிறந்த நடைமுறைகள் மற்றும் குறிப்புகளை வழங்குகிறது.
+நம்பகமான, உயர்தர MCP சேவையகங்களை உருவாக்குவதில் சோதனை என்பது மிகவும் முக்கியமான அமசமாகும். இந்த வழிகாட்டி உற்பத்தி வாழ்நாள் முழுவதும், தனித்தனி சோதனைகளிலிருந்து ஒருங்கிணைந்த சோதனைகள் மற்றும் முடிவு முதல் முடிவுவரை செல்லும் சரிபார்ப்புகளுக்கு MCP சேவையகங்கள் சோதனைக்கு முழுமையான சிறந்த நடைமுறைகள் மற்றும் குறிப்புகளை வழங்குகிறது.
 
-## MCP சர்வர்களுக்கான சோதனை ஏன் முக்கியம்
+## MCP சேவையகங்களுக்கு சோதனை ஏன் முக்கியம்
 
-MCP சர்வர்கள் AI மாதிரிகள் மற்றும் வாடிக்கையாளர் பயன்பாடுகளுக்கு இடையேயான முக்கிய இடைமுகமாக செயல்படுகின்றன. முழுமையான சோதனை உறுதிப்படுத்துகிறது:
+MCP சேவையகங்கள் AI மாடல்களுக்கும் வாடிக்கையாளர் பயன்பாடுகளுக்கும் இடையில் முக்கிய மிடில் வேர் ஆகும். முழுமையான சோதனைகள் உறுதிப்படுத்துகின்றன:
 
-- உற்பத்தி சூழல்களில் நம்பகத்தன்மை
-- கோரிக்கைகள் மற்றும் பதில்களை சரியாக கையாளுதல்
-- MCP விவரக்குறிப்புகளின் சரியான செயல்பாடு
-- தோல்விகள் மற்றும் விளிம்பு வழக்குகளுக்கு எதிரான பொறுமை
-- பல்வேறு சுமைகளின் கீழ் நிலையான செயல்திறன்
+- உற்பத்தி சூழலில் நம்பகத்தன்மை
+- கோரிக்கைகள் மற்றும் பதில்களை சுத்தமாக கையாளல்
+- MCP விவரக்குறிப்புகளை சரியாக அமல் செய்தல்
+- தோல்விகள் மற்றும் முனை நிலைகளுக்கு எதிர்ப்பு திறன்
+- பல்வேறு பாரங்களில் ஒரே மாதிரியான செயல்திறன்
 
-## MCP சர்வர்களுக்கான யூனிட் சோதனை
+## MCP சேவையகங்களுக்கு தனித்தனி சோதனை
 
-### யூனிட் சோதனை (அடித்தளம்)
+### தனித்தனி சோதனை (அடிப்பு)
 
-யூனிட் சோதனைகள் உங்கள் MCP சர்வரின் தனித்துவமான கூறுகளை தனித்துவமாகச் சரிபார்க்கின்றன.
+தனித்தனி சோதனைகள் உங்கள் MCP சேவையகத்தின் தனித்தனி கூறுகளை தனிமையாகச் சோதிக்கின்றன.
 
 #### என்ன சோதிக்க வேண்டும்
 
-1. **வளக் கையாளர்கள்**: ஒவ்வொரு வளக் கையாளரின் தர்க்கத்தை தனித்துவமாகச் சோதிக்கவும்
-2. **கருவி செயல்பாடுகள்**: பல உள்ளீடுகளுடன் கருவி நடத்தை சரிபார்க்கவும்
-3. **உந்துதல் வார்ப்புருக்கள்**: உந்துதல் வார்ப்புருக்கள் சரியாக உருவாக்கப்படுவதை உறுதிப்படுத்தவும்
-4. **ஸ்கீமா சரிபார்ப்பு**: அளவுரு சரிபார்ப்பு தர்க்கத்தைச் சோதிக்க
+1. **வள முகவர்கள்**: ஒவ்வொரு வள முகவரின் தர்க்கத்தை தனிப்படியாக சோதிக்கவும்
+2. **கருவி செயல்பாடுகள்**: பல்வேறு உள்ளீடுகளுடன் கருவிகளின் நடத்தை சரிபார்க்கவும்
+3. **ஊக்க வந்தைகள்**: ஊக்க வார்ப்புருக்கள் சரியாக காண்பிக்கப்படுகின்றனவா என்று உறுதிப்படுத்தவும்
+4. **திட்ட சரிபார்ப்பு**: தொழிற் பாத்திர சரிபார்ப்பைச் சோதிக்கவும்
+5. **பிழை கைப்பிடிப்பு**: தவறான உள்ளீடுகளுக்கு பிழை பதில்களை பரிசோதிக்கவும்
+
+#### தனித்தனி சோதனை சிறந்த நடைமுறைகள்
+
+```csharp
+// Example unit test for a calculator tool in C#
+[Fact]
+public async Task CalculatorTool_Add_ReturnsCorrectSum()
+{
+    // Arrange
+    var calculator = new CalculatorTool();
+    var parameters = new Dictionary<string, object>
+    {
+        ["operation"] = "add",
+        ["a"] = 5,
+        ["b"] = 7
+    };
+    
+    // Act
+    var response = await calculator.ExecuteAsync(parameters);
+    var result = JsonSerializer.Deserialize<CalculationResult>(response.Content[0].ToString());
+    
+    // Assert
+    Assert.Equal(12, result.Value);
+}
+```
+
+```python
+# பைதானில் கால்குலேட்டர் கருவிக்கான உதாரண யூனிட் சோதனை
+def test_calculator_tool_add():
+    # ஏற்பாடு செய்
+    calculator = CalculatorTool()
+    parameters = {
+        "operation": "add",
+        "a": 5,
+        "b": 7
+    }
+    
+    # செயல்படுத்து
+    response = calculator.execute(parameters)
+    result = json.loads(response.content[0].text)
+    
+    # உறுதி செய்
+    assert result["value"] == 12
+```
+
+### ஒருங்கிணைந்த சோதனை (மத்திய அடுக்கு)
+
+ஒருங்கிணைந்த சோதனைகள் உங்கள் MCP சேவையகத்தின் கூறுகளுக்கிடையேயான தொடர்புகளை சரிபார்க்கின்றன.
+
+#### என்ன சோதிக்க வேண்டும்
+
+1. **சேவையகத் துவக்கம்**: பல்வேறு கட்டமைப்புகளுடன் சேவையக துவக்கத்தை சோதிக்கவும்
+2. **பாதை பதிவு**: அனைத்து முடிவுகளை சரியாக பதிவு செய்துள்ளதா என்று உறுதிப்படுத்து
+3. **கோரிக்கை செயலாக்கம்**: முழு கோரிக்கை-பதில் சுழற்சியை சோதனை செய்யவும்
+4. **பிழை பரப்புதல்**: கூறுகளுக்கு இடையேயான பிழைகள் சரியாக கையாளப்படுகிறதா என்று உறுதிப்படுத்து
+5. **அடையாளம் மற்றும் அங்கீகாரம்**: பாதுகாப்பு முறைகளை சோதிக்கவும்
+
+#### ஒருங்கிணைந்த சோதனை சிறந்த நடைமுறைகள்
+
+```csharp
+// Example integration test for MCP server in C#
+[Fact]
+public async Task Server_ProcessToolRequest_ReturnsValidResponse()
+{
+    // Arrange
+    var server = new McpServer();
+    server.RegisterTool(new CalculatorTool());
+    await server.StartAsync();
+    
+    var request = new McpRequest
+    {
+        Tool = "calculator",
+        Parameters = new Dictionary<string, object>
+        {
+            ["operation"] = "multiply",
+            ["a"] = 6,
+            ["b"] = 7
+        }
+    };
+    
+    // Act
+    var response = await server.ProcessRequestAsync(request);
+    
+    // Assert
+    Assert.NotNull(response);
+    Assert.Equal(McpStatusCodes.Success, response.StatusCode);
+    // Additional assertions for response content
+    
+    // Cleanup
+    await server.StopAsync();
+}
+```
+
+### முடிவிலி சோதனை (மேல் அடுக்கு)
+
+முடிவிலி சோதனைகள் வாடிக்கையாளர் முதல் சேவையகத்திற்கான முழு அமைப்பின் நடத்தை சரிபார்க்கின்றன.
+
+#### என்ன சோதிக்க வேண்டும்
+
+1. **வாடிக்கையாளர்-சேவையக தொடர்பு**: முழு கோரிக்கை-பதில் சுழற்சிகளைச் சோதனை செய்யவும்
+2. **உண்மை வாடிக்கையாளர் SDK கள்**: நிஜ வாடிக்கையாளர் செயலாக்கங்களுடன் சோதிக்கவும்
+3. **பாரத்தில் செயல்திறன்**: பல ஒருங்கிணைந்த கோரிக்கைகளுடன் நடத்தை சொல்லவும்
+4. **பிழை மீட்பு**: தோல்விகளில் இருந்து அமைப்பு மீட்கப்படுகிறதா என்று சோதிக்கவும்
+5. **நீண்டநேர செயல்பாடுகள்**: ஸ்ட்ரீமிங் மற்றும் நீண்ட செயல்பாடுகளின் கையாளல் சோதனை செய்யவும்
+
+#### E2E சோதனை சிறந்த நடைமுறைகள்
+
+```typescript
+// TypeScript-இல் ஒரு கிளையண்டுடன் எடுத்துக்காட்டு E2E சோதனை
+describe('MCP Server E2E Tests', () => {
+  let client: McpClient;
+  
+  beforeAll(async () => {
+    // சோதனை சூழலில் சர்வரை துவக்கு
+    await startTestServer();
+    client = new McpClient('http://localhost:5000');
+  });
+  
+  afterAll(async () => {
+    await stopTestServer();
+  });
+  
+  test('Client can invoke calculator tool and get correct result', async () => {
+    // செயல்
+    const response = await client.invokeToolAsync('calculator', {
+      operation: 'divide',
+      a: 20,
+      b: 4
+    });
+    
+    // உறுதிப்படுத்து
+    expect(response.statusCode).toBe(200);
+    expect(response.content[0].text).toContain('5');
+  });
+});
+```
+
+## MCP சோதனைக்கு வேடிக்கைக்கூறுகள்
+
+வகுப்புகளுக்கு இடமாற்றம் செய்யும் போது மூலக்கூறுகளை தனிமைப்படுத்தவே வேடிக்கைக்கூறுகள் அவசியம்.
+
+### பூஞ்சையிட வேண்டிய கூறுகள்
+
+1. **வெளியுற AI மாடல்கள்**: கண்காணிக்கப்பட்ட சோதனைக்கு மாடல் பதில்களை வேடிக்கையாக மாற்றுக
+2. **வெளியுற சேவைகள்**: API சார்புகளை (தரவுத்தளம், மூன்றாம் பக்கம் சேவைகள்) வேடிக்கையாக மாற்றுக
+3. **அடையாள சேவைகள்**: அடையாள வழங்குநர்களை வேடிக்கையாக மாற்றுக
+4. **வள வழங்குநர்கள்**: அதிக விலை உள்ள வள முகவர்களை வேடிக்கையாக மாற்றுக
+
+### உதாரணம்: AI மாடல் பதிலை வேடிக்கப்படுத்தல்
+
+```csharp
+// C# example with Moq
+var mockModel = new Mock<ILanguageModel>();
+mockModel
+    .Setup(m => m.GenerateResponseAsync(
+        It.IsAny<string>(),
+        It.IsAny<McpRequestContext>()))
+    .ReturnsAsync(new ModelResponse { 
+        Text = "Mocked model response",
+        FinishReason = FinishReason.Completed
+    });
+
+var server = new McpServer(modelClient: mockModel.Object);
+```
+
+```python
+# Python எடுத்துக்காட்டு unittest.mock உடன்
+@patch('mcp_server.models.OpenAIModel')
+def test_with_mock_model(mock_model):
+    # மாக் அமைக்கவும்
+    mock_model.return_value.generate_response.return_value = {
+        "text": "Mocked model response",
+        "finish_reason": "completed"
+    }
+    
+    # சோதனையில் மாக் பயன்படுத்தவும்
+    server = McpServer(model_client=mock_model)
+    # சோதனையுடன் தொடர்ந்து செயல்படவும்
+```
+
+## செயல்திறன் சோதனை
+
+உற்பத்தி MCP சேவையகங்களுக்கு செயல்திறன் சோதனை முக்கியம்.
+
+### என்ன அளவிட வேண்டும்
+
+1. **தாமதம்**: கோரிக்கைகளுக்கான பதிலளிக்கும் வேகம்
+2. **தொகுதி**: ஒரு விநாடிக்கு கையாளும் கோரிக்கைகள்
+3. **வள பயன்பாடு**: CPU, நினைவகம், நெட்வொர்க் பயன்பாடு
+4. **ஒரே நேர கோரிக்கை கையாளல்**: இணை கோரிக்கைகளில் நடத்தை
+5. **தோற்றத்தின் பண்புகள்**: பாரம் அதிகரிக்கும் போது செயல்திறன்
+
+### செயல்திறன் சோதனை கருவிகள்
+
+- **k6**: திறந்த மூல பார சோதனை கருவி
+- **JMeter**: விரிவான செயல்திறன் சோதனை
+- **Locust**: Python அடிப்படையிலான பார சோதனை
+- **Azure Load Testing**: மேகத்தில் செயல்திறன் சோதனை
+
+### உதாரணம்: k6 உடன் அடிப்படைக் பார சோதனை
+
+```javascript
+// MCP சேவையகத்தை மொத்த சுமை பரிசோதனை செய்ய k6 ஸ்கிரிப்ட்
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  vus: 10,  // 10 மெய்நிகர் பயனர்கள்
+  duration: '30s',
+};
+
+export default function () {
+  const payload = JSON.stringify({
+    tool: 'calculator',
+    parameters: {
+      operation: 'add',
+      a: Math.floor(Math.random() * 100),
+      b: Math.floor(Math.random() * 100)
+    }
+  });
+
+  const params = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer test-token'
+    },
+  };
+
+  const res = http.post('http://localhost:5000/api/tools/invoke', payload, params);
+  
+  check(res, {
+    'status is 200': (r) => r.status === 200,
+    'response time < 500ms': (r) => r.timings.duration < 500,
+  });
+  
+  sleep(1);
+}
+```
+
+## MCP சேவையகங்களுக்கான சோதனை தானியக்கமயமாக்கல்
+
+உங்கள் சோதனைகளை தானியக்கமாக்குவதன் மூலம் தொடர்ச்சியான தரமாகும் மற்றும் வேகமான பின்னூட்ட சுழற்சிகளை உறுதிப்படுத்தலாம்.
+
+### CI/CD ஒருங்கிணைப்பு
+1. **புல் கோரிக்கைகள் மீது யூனிட் சோதனைகள் இயக்குக**: கோடு மாற்றங்கள் தற்போதைய செயல்பாடுகளை முறையாக செயல்படுத்துவதை உறுதி செய்க
+2. **ஸ்டேஜிங் பகுதியில் ஒருங்கிணைவு சோதனைகள்**: முன்னெண்ணிக்கை சூழல்களில் ஒருங்கிணைவு சோதனைகள் இயக்குக
+3. **செயல்திறன் அடிப்படைகள்**: மீள்பார்வை நிகழ்வுகளை கண்டறிய செயல்திறன் அடிப்படைகளை பாதுகாப்புக
+4. **பாதுகாப்பு ஸ்கேன்**: குழாயின் ஒரு பகுதியாக பாதுகாப்பு சோதனையை தானாக இயக்குக
+
+### உதாரண CI குழாய் (GitHub Actions)
+
 ```yaml
 name: MCP Server Tests
 
@@ -2021,19 +2275,19 @@ jobs:
       run: dotnet run --project tests/PerformanceTests/PerformanceTests.csproj
 ```
 
-## MCP விவரக்குறிப்பு உடன் இணக்கமானதா என்பதை சோதனை செய்வது
+## MCP குறிப்புக்கு ஏற்ப சோதனை
 
-உங்கள் சர்வர் MCP விவரக்குறிப்பை சரியாக செயல்படுத்துகிறதா என்பதை உறுதிப்படுத்தவும்.
+உங்கள் செர்வர் MCP குறிப்பை சரியாக செயல்படுத்துகிறதா என்பதை சரிபார்க்கவும்.
 
-### முக்கிய இணக்கமான பகுதிகள்
+### முக்கிய அமத்தீன பகுதிகள்
 
-1. **API முடுக்கங்கள்**: தேவையான முடுக்கங்களை (/resources, /tools, etc.) சோதனை செய்யவும்
-2. **கோரிக்கை/பதில் வடிவம்**: Schema இணக்கத்தைக் கண்டறியவும்
-3. **பிழை குறியீடுகள்**: பல சூழல்களுக்கு சரியான நிலை குறியீடுகளை உறுதிப்படுத்தவும்
-4. **உள்ளடக்க வகைகள்**: பல உள்ளடக்க வகைகளை கையாள்வதை சோதனை செய்யவும்
-5. **அங்கீகார ஓட்டம்**: விவரக்குறிப்புடன் இணக்கமான அங்கீகார முறைகளை உறுதிப்படுத்தவும்
+1. **API முடிவிலிகள்**: தேவையான முடிவிலிகளைக் சோதிக்கவும் (/resources, /tools, எனன)
+2. **கோரிக்கை/பதிலளி வடிவம்**: உரிமைமுறை ஒற்றுமை சரிபார்க்கவும்
+3. **பிழை குறியீடுகள்**: பல்வேறு நிலைகளிற்கு சரியான நிலை குறியீடுகளை உறுதிப்படுத்துக
+4. **உள்ளடக்க வகைகள்**: வெவ்வேறு உள்ளடக்க வகைகளை கையாள்வதை சோதிக்கவும்
+5. **அங்கீகார முறை**: குறிப்புக்கு ஏற்ப அங்கீகரிப்பு முறைகளை உறுதிப்படுத்துக
 
-### இணக்கமான சோதனை தொகுப்பு
+### ஒற்றுமை சோதனைத் தொகுப்பு
 
 ```csharp
 [Fact]
@@ -2060,64 +2314,69 @@ public async Task Server_ResourceEndpoint_ReturnsCorrectSchema()
 }
 ```
 
-## MCP சர்வர் சோதனைக்கு 10 சிறந்த குறிப்புகள்
+## MCP செர்வர் சோதனைக்கு சிறந்த 10 குறிப்பு
 
-1. **கருவி வரையறைகளை தனியாக சோதனை செய்யவும்**: Schema வரையறைகளை கருவி தார்மீகத்திலிருந்து தனியாக உறுதிப்படுத்தவும்
-2. **அளவுரு சோதனைகளைப் பயன்படுத்தவும்**: பல உள்ளீடுகளுடன், குறிப்பாக விளிம்பு வழக்குகளுடன் கருவிகளை சோதனை செய்யவும்
-3. **பிழை பதில்களைச் சோதிக்கவும்**: அனைத்து சாத்தியமான பிழை நிலைகளுக்கு சரியான பிழை கையாளுதலை உறுதிப்படுத்தவும்
-4. **அங்கீகார தார்மீகத்தைச் சோதிக்கவும்**: பல பயனர் பங்குகளுக்கு சரியான அணுகல் கட்டுப்பாட்டை உறுதிப்படுத்தவும்
-5. **சோதனை கவரேஜை கண்காணிக்கவும்**: முக்கிய பாதை குறியீட்டின் அதிக கவரேஜை நோக்கமாகக் கொள்ளவும்
-6. **ஸ்ட்ரீமிங் பதில்களைச் சோதிக்கவும்**: ஸ்ட்ரீமிங் உள்ளடக்கத்தை சரியாக கையாள்வதை உறுதிப்படுத்தவும்
-7. **நெட்வொர்க் பிரச்சினைகளை ஒத்திகை செய்யவும்**: மோசமான நெட்வொர்க் நிலைகளின் கீழ் நடத்தை சோதனை செய்யவும்
-8. **வள வரம்புகளைச் சோதிக்கவும்**: கோட்டாக்கள் அல்லது வீத வரம்புகளை அடையும் போது நடத்தை உறுதிப்படுத்தவும்
-9. **மீள்நிலை சோதனைகளை தானியக்கமாக்கவும்**: ஒவ்வொரு குறியீட்டு மாற்றத்திலும் இயங்கும் தொகுப்பை உருவாக்கவும்
-10. **சோதனை வழக்குகளை ஆவணப்படுத்தவும்**: சோதனை சூழல்களின் தெளிவான ஆவணங்களை பராமரிக்கவும்
+1. **கருவி வரையறைகளை தனித்தனியாக சோதிக்கவும்**: கருவி தர்க்கத்திலிருந்து தனித்தனியே கொள்கை வரையறைகளை உறுதிப்படுத்தவும்
+2. **அளவுரு கொண்ட சோதனைகளை பயன்படுத்துக**: பலவித உள்ளீடுகளுடன் கருவிகளை சோதிக்கவும், அதில் மிகைவான நிலைகளும் அடக்கம்
+3. **பிழை பதில்களைச் சரிபார்க்கவும்**: அனைத்து சாத்தியமான பிழை நிலைகளுக்கும் சரியான பிழை கையாளலை உறுதிப்படுத்துக
+4. **அங்கீகார எழுதுவரிசையை சோதிக்கவும்**: வெவ்வேறு பயனர் பங்குகளுக்கான சரியான அணுகல் கட்டுப்பாட்டை உறுதிப்படுத்துக
+5. **சோதனை வரம்பைக் கண்காணிக்கவும்**: முக்கிய வழிக்கடத்தல் கோடை அதிகமாக உள்ளதா என்பதை நோக்கு
+6. **ஸ்ட்ரீமிங் பதில்களை சோதிக்கவும்**: ஸ்ட்ரீமிங் உள்ளடக்கத்தைச் சரியான முறையில் கையாள்வதை உறுதிப்படுத்துக
+7. **நெட்வொர்க் சிக்கல்களை ஒப்பநிலை படுத்துக**: மோசமான நெட்வொர்க் சூழ்நிலைகளில் நடத்தை சோதிக்கவும்
+8. **வள வரம்புகளை சோதிக்கவும்**: அளவுருக்கள் அல்லது வீத வரம்புகளை அடைந்தபோது நடத்தை உறுதி செய்க
+9. **மீள்பார்வை சோதனைகளை தானாக இயக்குக**: ஒவ்வொரு கோடு மாற்றத்திலும் இயங்கும் தொகுப்பை உருவாக்குக
+10. **சோதனை வழக்குகளை ஆவணப்படுத்தவும்**: சோதனை நிலைகளின் தெளிவான ஆவணங்களை பராமரிக்கவும்
 
-## பொதுவான சோதனை தவறுகள்
+## பொதுவான சோதனை குறுக்கீடுகள்
 
-- **சந்தோஷமான பாதை சோதனையில் அதிக நம்பிக்கை**: பிழை வழக்குகளை முழுமையாக சோதனை செய்யவும்
-- **செயல்திறன் சோதனையை புறக்கணித்தல்**: உற்பத்திக்கு பாதிப்பை ஏற்படுத்தும் முன் bottlenecks ஐ கண்டறியவும்
-- **தனிமையில் மட்டும் சோதனை செய்யுதல்**: Unit, Integration, மற்றும் E2E சோதனைகளை இணைக்கவும்
-- **முழுமையான API கவரேஜ் இல்லாமல்**: அனைத்து முடுக்கங்கள் மற்றும் அம்சங்கள் சோதனை செய்யப்படுவதை உறுதிப்படுத்தவும்
-- **மாறுபட்ட சோதனை சூழல்கள்**: Containers ஐப் பயன்படுத்தி சோதனை சூழல்களின் நிலைத்தன்மையை உறுதிப்படுத்தவும்
+- **மகிழ்ச்சி வழிக்கான சோதனையில் மிகை நம்பிக்கை**: பிழை நிலையில் கூட நன்கு சோதிக்க வேண்டும்
+- **செயல்திறன் சோதனையை புறக்கணித்தல்**: உற்பத்தி பாதிக்குமுன் தடைகள் கண்டறியப்பட வேண்டும்
+- **தனித்தனிப்பாக மட்டும் சோதனை செய்வது**: யூனிட், ஒருங்கிணைவு, மற்றும் E2E சோதனைகளை ஒன்றோடு ஒன்று இணைக்கவும்
+- **குறைந்த API கவனிப்பாடு**: அனைத்து முடிவுகளும் மற்றும் அம்சங்களும் சோதிக்கப்பட்டுள்ளன என்பதை உறுதிப்படுத்துக
+- **ஒற்றைமையற்ற சோதனை சூழல்கள்**: ஒரே மாதிரியாக சோதனை சூழல்களை உறுதிப்படுத்த கன்டெயினர்களைப் பயன்படுத்துக
 
 ## முடிவு
 
-ஒரு விரிவான சோதனை உத்தி MCP சர்வர்களை நம்பகமான, உயர் தரமானதாக உருவாக்குவதற்கு அவசியமானது. இந்த வழிகாட்டியில் குறிப்பிடப்பட்ட சிறந்த நடைமுறைகள் மற்றும் குறிப்புகளை செயல்படுத்துவதன் மூலம், உங்கள் MCP செயல்பாடுகள் தரம், நம்பகத்தன்மை மற்றும் செயல்திறனின் மிக உயர்ந்த தரங்களை பூர்த்தி செய்யும் என்பதை உறுதிப்படுத்தலாம்.
+நம்பகமான, உயர் தரமான MCP செர்வர்களை அமல்படுத்துவதற்கு முழுமையான சோதனை நிலைப் பார்வை அவசியம். இந்த வழிகாட்டியில் கொடுக்கப்பட்ட சிறந்த பழக்க வழக்கங்கள் மற்றும் குறிப்புகளை பின்பற்றி, உங்கள் MCP அமலாக்கங்கள் தரம், நம்பகத்தன்மை மற்றும் செயல்திறன் ஆகிய உயர்ந்த தரக்கோள்களை பூர்த்தி செய்யலாம்.
+
 
 ## முக்கிய எடுத்துக்காட்டுகள்
 
-1. **கருவி வடிவமைப்பு**: Single Responsibility Principle ஐ பின்பற்றவும், Dependency Injection ஐப் பயன்படுத்தவும், மற்றும் Composability க்காக வடிவமைக்கவும்
-2. **Schema வடிவமைப்பு**: தெளிவான, நன்கு ஆவணப்படுத்தப்பட்ட schemas ஐ உருவாக்கவும், சரியான validation கட்டுப்பாடுகளுடன்
-3. **பிழை கையாளுதல்**: மெல்லிய பிழை கையாளுதல், அமைந்த பிழை பதில்கள், மற்றும் மீண்டும் முயற்சி செய்யும் தார்மீகத்தை செயல்படுத்தவும்
-4. **செயல்திறன்**: Caching, Asynchronous Processing, மற்றும் Resource Throttling ஐப் பயன்படுத்தவும்
-5. **பாதுகாப்பு**: முழுமையான உள்ளீட்டு சரிபார்ப்பு, அங்கீகார சோதனைகள், மற்றும் நுண்ணறிவு தரவுகளை கையாளுதல்
-6. **சோதனை**: விரிவான Unit, Integration, மற்றும் End-to-End சோதனைகளை உருவாக்கவும்
-7. **Workflow Patterns**: Chains, Dispatchers, மற்றும் Parallel Processing போன்ற நிலைநிறுத்தப்பட்ட முறைமைகளைப் பயன்படுத்தவும்
+1. **கருவி வடிவமைப்பு**: தனிப்பட்ட பொறுப்புக் கோட்பாட்டை பின்பற்றி, சாராம்சச் செருகல்களைப் பயன்படுத்தி, தொகுக்கக்கூடிய முறையில் வடிவமைக்கவும்
+2. **கொள்கை வடிவமைப்பு**: தெளிவான, நன்கு ஆவணப்படுத்தப்பட்ட கொள்கைகள் உருவாக்கவும் மற்றும் சரியான உறுதிப்படுத்தல் கட்டுப்பாடுகளை வைக்கவும்
+3. **பிழை கையாளல்**: மென்மையான பிழை கையாளல், கட்டமைக்கப்பட்ட பிழை பதில்கள், மற்றும் மீண்டும் முயற்சி செய்யும் முறைமைகளை அமல்படுத்தவும்
+4. **செயல்திறன்**: கேஷிங், அசிங்ககமான செயலாக்கம், மற்றும் வள கட்டுப்பாட்டை பயன்படுத்தவும்
+5. **பாதுகாப்பு**: விரிவான உள்ளீடு சரிபார்ப்பு, அங்கீகார சோதனைகள் மற்றும் நுணுக்கத் தரவு கையாளலை பாய்ச்சவும்
+6. **சோதனை**: முழுமையான யூனிட், ஒருங்கிணைப்பு மற்றும் இறுதிப் புள்ளி சோதனைகளை உருவாக்கவும்
+7. **வேலைபாடு பிராணல்கள்**: சங்கிலிகள், அனுப்புநர்கள், மற்றும் ஒத்த செயலாக்கம் போன்ற நிலையான பிராணல்களைப் பயன்படுத்தவும்
 
 ## பயிற்சி
 
-ஒரு MCP கருவி மற்றும் workflow ஐ ஒரு ஆவண செயலாக்க அமைப்பிற்காக வடிவமைக்கவும்:
+ஒரு ஆவண செயலாக்க அமைப்புக்கான MCP கருவி மற்றும் வேலைப்பாட்டை வடிவமைக்கவும், அது:
 
-1. பல வடிவங்களில் (PDF, DOCX, TXT) ஆவணங்களை ஏற்கிறது
-2. ஆவணங்களில் இருந்து உரை மற்றும் முக்கிய தகவல்களை எடுக்கிறது
-3. ஆவணங்களை வகை மற்றும் உள்ளடக்கத்தின் அடிப்படையில் வகைப்படுத்துகிறது
-4. ஒவ்வொரு ஆவணத்திற்கும் சுருக்கத்தை உருவாக்குகிறது
+1. பல வடிவங்களில் ஆவணங்களை ஏற்கிறது (PDF, DOCX, TXT)
+2. ஆவணங்களிலிருந்து உரையும் முக்கியத் தகவல்களையும் எடுக்கின்றது
+3. ஆவணங்களை வகை மற்றும் உள்ளடக்கத்தின் அடிப்படையில் வகைப்படுத்துகின்றது
+4. ஒவ்வொரு ஆவணத்தின் சுருக்கத்தையும் உருவாக்குகின்றது
 
-இந்த சூழலுக்கு மிகவும் பொருத்தமான கருவி schemas, பிழை கையாளுதல், மற்றும் workflow முறைமையை செயல்படுத்தவும். இந்த செயல்பாட்டை நீங்கள் எப்படி சோதனை செய்வீர்கள் என்பதை பரிசீலிக்கவும்.
+கருவி கொள்கைகள், பிழை கையாளல் மற்றும் இந்த சூழலுக்கு ஏற்ற வேலைப்பாடு முறைமையை அமல்படுத்தவும். இந்த அமல்பாட்டை எப்படி சோதிப்பீர்கள் என நினைவில் வையுங்கள்.
 
 ## வளங்கள்
 
-1. [Azure AI Foundry Discord Community](https://aka.ms/foundrydevs) இல் MCP சமூகத்தில் சேர்ந்து சமீபத்திய முன்னேற்றங்களைப் பெறுங்கள்
-2. [MCP projects](https://github.com/modelcontextprotocol) இல் திறந்த மூலமாக பங்களிக்கவும்
-3. உங்கள் நிறுவனத்தின் AI முயற்சிகளில் MCP கொள்கைகளைப் பயன்படுத்தவும்
-4. உங்கள் தொழில்துறைக்கு சிறப்பு MCP செயல்பாடுகளை ஆராயவும்
-5. பல்துறை ஒருங்கிணைப்பு அல்லது நிறுவன பயன்பாட்டு ஒருங்கிணைப்பு போன்ற MCP குறிப்புகளில் மேம்பட்ட பாடங்களை எடுத்துக்கொள்ள பரிசீலிக்கவும்
-6. [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) மூலம் கற்றுக்கொண்ட கொள்கைகளைப் பயன்படுத்தி உங்கள் சொந்த MCP கருவிகள் மற்றும் workflows ஐ உருவாக்க முயற்சிக்கவும்
+1. சமீபத்திய வளர்ச்சிகளைப் பற்றி அறிவதற்கு [Azure AI Foundry Discord Community](https://aka.ms/foundrydevs) இல் MCP சமூகத்தில் சேரவும்
+2. திறந்த மூல [MCP திட்டங்களில்](https://github.com/modelcontextprotocol) பங்களிக்கவும்
+3. உங்கள் நிறுவனத்தின் AI முயற்சிகளில் MCP கொள்கைகளை பயன்படுத்தவும்
+4. உங்கள் தொழில்துறைக்கான சிறப்பு MCP அமல்பாடுகளை ஆராயவும்
+5. பல்வேறு MCP தலைப்புகளில் முன்னேறிய பாடத்திட்டங்களை எடுத்துக்கொள்ள பரிந்துரைக்கப்படுகின்றது, உதாரணமாக மல்டிமோடல் ஒருங்கிணைவு அல்லது நிறுவன பயன்பாட்டு ஒருங்கிணைவு
+6. [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) மூலம் கற்ற MCP கருவிகள் மற்றும் வேலைப்பாடுகளை உருவாக்கி முயற்சியிடவும்
 
-Next: Best Practices [case studies](../09-CaseStudy/README.md)
+## அடுத்து என்ன
+
+அடுத்து: [Case Studies](../09-CaseStudy/README.md)
 
 ---
 
-**குறிப்பு**:  
-இந்த ஆவணம் [Co-op Translator](https://github.com/Azure/co-op-translator) என்ற AI மொழிபெயர்ப்பு சேவையை பயன்படுத்தி மொழிபெயர்க்கப்பட்டுள்ளது. நாங்கள் துல்லியத்திற்காக முயற்சிக்கிறோம், ஆனால் தானியக்க மொழிபெயர்ப்புகளில் பிழைகள் அல்லது தவறான தகவல்கள் இருக்கக்கூடும் என்பதை கவனத்தில் கொள்ளவும். அதன் தாய்மொழியில் உள்ள மூல ஆவணம் அதிகாரப்பூர்வ ஆதாரமாக கருதப்பட வேண்டும். முக்கியமான தகவல்களுக்கு, தொழில்முறை மனித மொழிபெயர்ப்பு பரிந்துரைக்கப்படுகிறது. இந்த மொழிபெயர்ப்பைப் பயன்படுத்துவதால் ஏற்படும் எந்த தவறான புரிதல்கள் அல்லது தவறான விளக்கங்களுக்கு நாங்கள் பொறுப்பல்ல.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**மறுப்பு**:
+இந்த ஆவணம் AI மொழிபெயர்ப்பு சேவை [Co-op Translator](https://github.com/Azure/co-op-translator) பயன்படுத்தி மொழிபெயர்க்கப்பட்டுள்ளது. நாம் துல்லியத்திற்காக முயலினாலும், தானாக செய்யப்படும் மொழிபெயர்ப்புகளில் பிழைகள் அல்லது தவறுகள் இருக்கலாம் என்பதை தயவுசெய்து கவனத்தில் கொள்ளுங்கள். அசல் ஆவணம் அதன் சொந்த மொழியிலேயே அதிகாரப்பூர்வ மூலமாகக் கருதப்பட வேண்டும். முக்கியமான தகவலுக்கு, தொழில்நுட்பமான மனித மொழிபெயர்ப்பை பரிந்துரைக்கப்படுகிறது. இந்த மொழிபெயர்ப்பின் பயன்படுத்தியதனால் ஏற்படும் எந்தவொரு தவறான புரிதல்களுக்கும் அல்லது தவறான விளக்கங்களுக்கும் நாங்கள் பொறுப்பற்றவராக இருக்கிறோம்.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

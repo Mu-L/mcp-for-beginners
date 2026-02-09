@@ -1,68 +1,74 @@
-# MCP Sigurnosne Kontrole - Ažuriranje za prosinac 2025.
+# MCP Sigurnosne Kontrole - Ažuriranje za veljaču 2026.
 
-> **Trenutni standard**: Ovaj dokument odražava sigurnosne zahtjeve [MCP specifikacije 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) i službene [MCP sigurnosne najbolje prakse](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices).
+> **Trenutni Standard**: Ovaj dokument odražava sigurnosne zahtjeve [MCP specifikacije 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) i službene [MCP Sigurnosne Najbolje Prakse](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices).
 
-Model Context Protocol (MCP) značajno je sazrio s poboljšanim sigurnosnim kontrolama koje pokrivaju i tradicionalnu softversku sigurnost i prijetnje specifične za AI. Ovaj dokument pruža sveobuhvatne sigurnosne kontrole za sigurne MCP implementacije od prosinca 2025.
+Model Context Protocol (MCP) je značajno napredovao s poboljšanim sigurnosnim kontrolama koje pokrivaju i tradicionalnu softversku sigurnost i prijetnje specifične za AI. Ovaj dokument pruža sveobuhvatne sigurnosne kontrole za sigurne MCP implementacije usklađene s OWASP MCP Top 10 okvirom.
+
+## 🏔️ Praktična Sigurnosna Obuka
+
+Za praktično iskustvo implementacije sigurnosti, preporučujemo **[MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/)** - sveobuhvatna vođena ekspedicija za osiguranje MCP servera u Azureu koristeći metodologiju "ranjiv → eksploatacija → popravak → validacija".
+
+Sve sigurnosne kontrole u ovom dokumentu usklađene su s **[OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)**, koja pruža referentne arhitekture i smjernice za implementaciju specifične za Azure za OWASP MCP Top 10 rizike.
 
 ## **OBAVEZNI Sigurnosni Zahtjevi**
 
 ### **Kritične zabrane iz MCP specifikacije:**
 
-> **ZABRANJENO**: MCP serveri **NE SMIJU** prihvaćati bilo kakve tokene koji nisu izričito izdani za MCP server  
+> **ZABRANJENO**: MCP serveri **NIKADA NE SMIJU** prihvatiti tokene koji nisu eksplicitno izdani za MCP server  
 >
-> **ZABRANJENO**: MCP serveri **NE SMIJU** koristiti sesije za autentikaciju  
+> **ZABRANJENO**: MCP serveri **NIKADA NE SMIJU** koristiti sesije za autentifikaciju  
 >
 > **OBAVEZNO**: MCP serveri koji implementiraju autorizaciju **MORAJU** provjeriti SVE dolazne zahtjeve  
 >
-> **OBAVEZNO**: MCP proxy serveri koji koriste statične ID-jeve klijenata **MORAJU** dobiti korisnički pristanak za svakog dinamički registriranog klijenta
+> **OBAVEZNO**: MCP proxy serveri koji koriste statičke ID-e klijenata **MORAJU** dobiti pristanak korisnika za svakog dinamički registriranog klijenta
 
 ---
 
-## 1. **Kontrole Autentikacije i Autorizacije**
+## 1. **Kontrole Autentifikacije i Autorizacije**
 
 ### **Integracija vanjskog pružatelja identiteta**
 
-**Trenutni MCP standard (2025-06-18)** dopušta MCP serverima delegiranje autentikacije vanjskim pružateljima identiteta, što predstavlja značajno sigurnosno poboljšanje:
+**Trenutni MCP standard (2025-11-25)** dopušta MCP serverima delegiranje autentifikacije vanjskim pružateljima identiteta, što predstavlja značajno sigurnosno poboljšanje:
 
-### **Integracija vanjskog pružatelja identiteta**
-
-**Trenutni MCP standard (2025-11-25)** dopušta MCP serverima delegiranje autentikacije vanjskim pružateljima identiteta, što predstavlja značajno sigurnosno poboljšanje:
+**OWASP MCP rizik kojem se pristupa**: [MCP07 - Nedostatna Autentifikacija i Autorizacija](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp07-authz/)
 
 **Sigurnosne prednosti:**
-1. **Eliminira rizike prilagođene autentikacije**: Smanjuje površinu ranjivosti izbjegavanjem prilagođenih implementacija autentikacije  
+1. **Eliminira rizike prilagođene autentifikacije**: Smanjuje površinu ranjivosti izbjegavanjem prilagođenih implementacija autentifikacije  
 2. **Sigurnost razine poduzeća**: Koristi etablirane pružatelje identiteta poput Microsoft Entra ID s naprednim sigurnosnim značajkama  
-3. **Centralizirano upravljanje identitetom**: Pojednostavljuje upravljanje životnim ciklusom korisnika, kontrolu pristupa i reviziju usklađenosti  
-4. **Višefaktorska autentikacija**: Nasljeđuje MFA mogućnosti od pružatelja identiteta poduzeća  
-5. **Politike uvjetnog pristupa**: Koristi kontrole pristupa temeljene na riziku i adaptivnu autentikaciju  
+3. **Centralizirano upravljanje identitetima**: Pojednostavljuje upravljanje životnim ciklusom korisnika, kontrolu pristupa i reviziju usklađenosti  
+4. **Višefaktorska autentifikacija**: Nasljeđuje MFA mogućnosti od pružatelja identiteta poduzeća  
+5. **Uvjetne politike pristupa**: Koristi kontrole pristupa temeljene na riziku i prilagodljivu autentifikaciju
 
 **Zahtjevi implementacije:**
-- **Validacija publike tokena**: Provjeriti da su svi tokeni izričito izdani za MCP server  
-- **Provjera izdavatelja**: Validirati da izdavatelj tokena odgovara očekivanom pružatelju identiteta  
+- **Validacija publike tokena**: Provjeriti da su svi tokeni eksplicitno izdani za MCP server  
+- **Verifikacija izdavatelja**: Potvrditi da izdavatelj tokena odgovara očekivanom pružatelju identiteta  
 - **Provjera potpisa**: Kriptografska validacija integriteta tokena  
-- **Primjena isteka**: Strogo provođenje ograničenja trajanja tokena  
-- **Validacija opsega**: Osigurati da tokeni sadrže odgovarajuće dozvole za tražene operacije  
+- **Provedba isteka**: Strogo poštivanje trajanja valjanosti tokena  
+- **Provjera dozvola**: Osigurati da tokeni sadrže odgovarajuće ovlasti za tražene operacije  
 
 ### **Sigurnost autorizacijske logike**
 
 **Kritične kontrole:**
-- **Sveobuhvatne revizije autorizacije**: Redoviti sigurnosni pregledi svih točaka donošenja autorizacijskih odluka  
-- **Sigurnosni zadani odgovori**: Odbij pristup kada autorizacijska logika ne može donijeti konačnu odluku  
-- **Granice dozvola**: Jasna razdvojenost između različitih razina privilegija i pristupa resursima  
-- **Evidencija revizije**: Potpuno bilježenje svih autorizacijskih odluka za sigurnosni nadzor  
-- **Redoviti pregledi pristupa**: Periodična validacija korisničkih dozvola i dodjela privilegija  
+- **Sveobuhvatne revizije autorizacije**: Redoviti sigurnosni pregledi svih točaka odluke o autorizaciji  
+- **Sigurnosni zadani odgovori**: Odbij pristup kada autorizacijska logika ne može donijeti jasnu odluku  
+- **Granice dozvola**: Jasna razgraničenja između različitih razina privilegija i pristupa resursima  
+- **Evidentiranje detalja**: Potpuno bilježenje svih odluka o autorizaciji za sigurnosni nadzor  
+- **Redoviti pregledi pristupa**: Periodična validacija korisničkih ovlasti i dodjela privilegija  
 
 ## 2. **Sigurnost tokena i kontrole protiv prosljeđivanja**
 
-### **Sprečavanje prosljeđivanja tokena**
+**OWASP MCP rizik kojem se pristupa**: [MCP01 - Nepravilno upravljanje tokenima i izlaganje tajni](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp01-token-mismanagement/)
 
-**Prosljeđivanje tokena je izričito zabranjeno** u MCP specifikaciji autorizacije zbog kritičnih sigurnosnih rizika:
+### **Prevencija prosljeđivanja tokena**
 
-**Sigurnosni rizici koji se rješavaju:**
-- **Zaobilaženje kontrole**: Zaobilazi ključne sigurnosne kontrole poput ograničenja brzine, validacije zahtjeva i nadzora prometa  
-- **Raskid odgovornosti**: Onemogućuje identifikaciju klijenta, narušavajući revizijske tragove i istrage incidenata  
-- **Izvlačenje podataka preko proxyja**: Omogućuje zlonamjernim akterima korištenje servera kao proxyja za neovlašteni pristup podacima  
-- **Kršenje granica povjerenja**: Krši pretpostavke downstream servisa o podrijetlu tokena  
-- **Lateralno kretanje**: Kompromitirani tokeni preko više servisa omogućuju širenje napada  
+**Prosljeđivanje tokena je eksplicitno zabranjeno** u MCP Authorization Specification zbog kritičnih sigurnosnih rizika:
+
+**Sigurnosni rizici kojima se pristupa:**
+- **Zaobilaženje kontrole**: Preskače ključne sigurnosne kontrole poput ograničenja brzine, provjere zahtjeva i nadzora prometa  
+- **Gubitak odgovornosti**: Onemogućava identifikaciju klijenta, narušavajući zapisnike i istrage incidenata  
+- **Izlučivanje podataka putem proxyja**: Omogućava zlonamjernim akterima korištenje servera kao proxyja za neovlašteni pristup podacima  
+- **Kršenje granica povjerenja**: Krši pretpostavke downstream usluga o porijeklu tokena  
+- **Lateralno širenje**: Kompromitirani tokeni na više servisa omogućuju širu eskalaciju napada
 
 **Kontrole implementacije:**
 ```yaml
@@ -83,20 +89,20 @@ Token Lifecycle Management:
 ### **Sigurni obrasci upravljanja tokenima**
 
 **Najbolje prakse:**
-- **Kratkotrajni tokeni**: Minimizirati izloženost čestim rotacijama tokena  
-- **Izdavanje po potrebi**: Izdavati tokene samo kada su potrebni za specifične operacije  
-- **Sigurno pohranjivanje**: Koristiti hardverske sigurnosne module (HSM) ili sigurne spremišta ključeva  
+- **Kratkotrajni tokeni**: Minimizirati izloženost čestim rotiranjem tokena  
+- **Izdavanje prema potrebi (Just-in-Time)**: Izdavati tokene samo kada su potrebni za specifične operacije  
+- **Sigurna pohrana**: Koristiti hardverske sigurnosne module (HSM) ili sigurne spremišta ključeva  
 - **Povezivanje tokena**: Povezati tokene s određenim klijentima, sesijama ili operacijama gdje je moguće  
-- **Nadzor i upozorenja**: Detekcija u stvarnom vremenu zloupotrebe tokena ili neovlaštenih obrazaca pristupa  
+- **Nadzor i upozorenja**: Detekcija zloupotrebe tokena ili neovlaštenog pristupa u stvarnom vremenu  
 
 ## 3. **Kontrole sigurnosti sesija**
 
-### **Sprečavanje otmice sesije**
+### **Prevencija preuzimanja sesije**
 
-**Adversarni vektori:**
-- **Umetanje prompta za otmicu sesije**: Zlonamjerne radnje umetnute u zajedničko stanje sesije  
-- **Impersonacija sesije**: Neovlaštena upotreba ukradenih ID-jeva sesije za zaobilaženje autentikacije  
-- **Napadi na nastavak streama**: Iskorištavanje nastavka događaja poslanih sa servera za umetanje zlonamjernog sadržaja  
+**Adrese napada:**
+- **Umetanje podataka u sesijski prompt (Session Hijack Prompt Injection)**: Zlonamjerne radnje umetnute u zajedničko stanje sesije  
+- **Imitacija sesije**: Neovlaštena upotreba ukradenih ID-eva sesije za zaobilaženje autentifikacije  
+- **Napadi s nastavkom streama**: Eksploatacija nastavljanja serverom poslanih događaja za zlonamjerne injekcije sadržaja
 
 **Obavezne kontrole sesije:**
 ```yaml
@@ -119,27 +125,32 @@ Session Lifecycle:
 ```
 
 **Sigurnost prijenosa:**
-- **Primjena HTTPS-a**: Sva komunikacija sesije preko TLS 1.3  
-- **Sigurni atributi kolačića**: HttpOnly, Secure, SameSite=Strict  
-- **Pinning certifikata**: Za kritične veze radi sprječavanja MITM napada  
+- **HTTPS provedba**: Sva komunikacija sesije preko TLS 1.3  
+- **Sigurni atributi kolačića (cookies)**: HttpOnly, Secure, SameSite=Strict  
+- **Piniranje certifikata**: Za kritične veze radi sprječavanja MITM napada  
 
-### **Razmatranja za stanje sesije (stateful) vs bez stanja (stateless)**
+### **Razmatranja za stanje i bezstanje sesije**
 
-**Za implementacije sa stanjem:**
-- Dijeljeno stanje sesije zahtijeva dodatnu zaštitu od napada umetanja  
-- Upravljanje sesijama temeljeno na redovima zahtijeva provjeru integriteta  
-- Više instanci servera zahtijeva sigurnu sinkronizaciju stanja sesije  
+**Za implementacije koje zadržavaju stanje:**
+- Dijeljeno stanje sesije zahtijeva dodatnu zaštitu od injekcijskih napada  
+- Upravljanje sesijama putem redova treba provjeru integriteta  
+- Višestruki serveri zahtijevaju sigurnu sinkronizaciju stanja sesije  
 
-**Za implementacije bez stanja:**
-- Upravljanje sesijama temeljeno na JWT ili sličnim tokenima  
+**Za implementacije bez zadržavanja stanja:**
+- Upravljanje sesijom bazirano na JWT ili sličnim tokenima  
 - Kriptografska provjera integriteta stanja sesije  
 - Smanjena površina napada, ali zahtijeva robusnu validaciju tokena  
 
 ## 4. **Sigurnosne kontrole specifične za AI**
 
-### **Obrana od umetanja prompta**
+**OWASP MCP rizici kojima se pristupa**:  
+- [MCP06 - Umetanje naredbi preko kontekstualnih podataka (Prompt Injection)](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp06-prompt-injection/)  
+- [MCP03 - Trovanje alata](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp03-tool-poisoning/)  
+- [MCP05 - Injekcija i izvršenje naredbi](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp05-command-injection/)
 
-**Integracija Microsoft Prompt Shields:**
+### **Obrana od Prompt Injection**
+
+**Integracija Microsoft Prompt Shields:**  
 ```yaml
 Detection Mechanisms:
   - "Advanced ML-based instruction detection"
@@ -159,13 +170,13 @@ Integration Points:
 
 **Kontrole implementacije:**
 - **Sanitizacija unosa**: Sveobuhvatna validacija i filtriranje svih korisničkih unosa  
-- **Definiranje granica sadržaja**: Jasna razdvojenost između sistemskih uputa i korisničkog sadržaja  
-- **Hijerarhija uputa**: Ispravna pravila prioriteta za sukobljene upute  
+- **Definicija granica sadržaja**: Jasno razdvajanje sistemskih uputa i korisničkog sadržaja  
+- **Hijerarhija instrukcija**: Pravilna primjena prioriteta kod sukobljenih naredbi  
 - **Nadzor izlaza**: Detekcija potencijalno štetnih ili manipuliranih izlaza  
 
-### **Sprečavanje trovanja alata**
+### **Prevencija trovanja alata**
 
-**Okvir sigurnosti alata:**
+**Sigurnosni okvir alata:**  
 ```yaml
 Tool Definition Protection:
   validation:
@@ -188,16 +199,16 @@ Tool Definition Protection:
 ```
 
 **Dinamičko upravljanje alatima:**
-- **Radni tokovi odobrenja**: Izričit korisnički pristanak za izmjene alata  
-- **Mogućnosti povrata**: Sposobnost vraćanja na prethodne verzije alata  
+- **Radni tokovi odobravanja**: Eksplicitan pristanak korisnika za izmjene alata  
+- **Mogućnosti vraćanja promjena**: Sposobnost povratka na prethodne verzije alata  
 - **Revizija promjena**: Potpuna povijest izmjena definicija alata  
-- **Procjena rizika**: Automatska evaluacija sigurnosnog stanja alata  
+- **Procjena rizika**: Automatizirana evaluacija sigurnosnog stanja alata  
 
-## 5. **Sprečavanje napada zbunjenog zamjenika (Confused Deputy)**
+## 5. **Prevencija napada zbunjenog zamjenika (Confused Deputy)**
 
-### **Sigurnost OAuth proxyja**
+### **Sigurnost OAuth Proxyja**
 
-**Kontrole za sprječavanje napada:**
+**Kontrole za prevenciju napada:**  
 ```yaml
 Client Registration:
   static_client_protection:
@@ -214,16 +225,16 @@ Client Registration:
 ```
 
 **Zahtjevi implementacije:**
-- **Provjera korisničkog pristanka**: Nikada ne preskakati zaslone pristanka za dinamičku registraciju klijenata  
-- **Validacija URI-ja preusmjeravanja**: Stroga validacija odredišta preusmjeravanja na temelju bijele liste  
-- **Zaštita autorizacijskog koda**: Kratkotrajni kodovi s provedbom jednokratne upotrebe  
-- **Provjera identiteta klijenta**: Robusna validacija vjerodajnica i metapodataka klijenta  
+- **Provjera pristanka korisnika**: Nikada ne zaobilaziti zaslone pristanka za dinamičku registraciju klijenata  
+- **Validacija Redirect URI**: Stroga provjera odredišta preusmjeravanja na temelju bijelog popisa  
+- **Zaštita autorizacijskog koda**: Kratkotrajni kodovi s primjenom jednokratne upotrebe  
+- **Verifikacija identiteta klijenta**: Robusna provjera vjerodajnica i metapodataka klijenta  
 
-## 6. **Sigurnost izvršavanja alata**
+## 6. **Sigurnost izvršenja alata**
 
 ### **Sandboxing i izolacija**
 
-**Izolacija temeljena na kontejnerima:**
+**Izolacija zasnovana na kontejnerima:**  
 ```yaml
 Execution Environment:
   containerization: "Docker/Podman with security profiles"
@@ -241,14 +252,14 @@ Execution Environment:
 ```
 
 **Izolacija procesa:**
-- **Odvojeni kontekst procesa**: Svako izvršavanje alata u izoliranom prostoru procesa  
+- **Odvojeni konteksti procesa**: Svako izvršenje alata u izoliranom procesu  
 - **Međuprocesna komunikacija**: Sigurni IPC mehanizmi s validacijom  
-- **Nadzor procesa**: Analiza ponašanja u runtime-u i detekcija anomalija  
-- **Primjena ograničenja resursa**: Stroga ograničenja CPU-a, memorije i I/O operacija  
+- **Nadzor procesa**: Analiza ponašanja u stvarnom vremenu i detekcija anomalija  
+- **Provjera resursa**: Stroga ograničenja za CPU, memoriju i ulazno-izlazne operacije  
 
-### **Implementacija principa najmanjih privilegija**
+### **Implementacija najmanjih privilegija**
 
-**Upravljanje dozvolama:**
+**Upravljanje dozvolama:**  
 ```yaml
 Access Control:
   file_system:
@@ -269,11 +280,13 @@ Access Control:
     - "Restricted environment variable access"
 ```
 
-## 7. **Sigurnosne kontrole lanca opskrbe**
+## 7. **Kontrole sigurnosti lanca opskrbe**
 
-### **Verifikacija ovisnosti**
+**OWASP MCP rizik kojem se pristupa**: [MCP04 - Napadi na lanac opskrbe](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp04-supply-chain/)
 
-**Sveobuhvatna sigurnost komponenti:**
+### **Provjera ovisnosti**
+
+**Sveobuhvatna sigurnost komponenti:**  
 ```yaml
 Software Dependencies:
   scanning: 
@@ -306,15 +319,17 @@ AI Components:
 
 **Detekcija prijetnji u lancu opskrbe:**
 - **Praćenje zdravlja ovisnosti**: Kontinuirana procjena svih ovisnosti zbog sigurnosnih problema  
-- **Integracija obavještavanja o prijetnjama**: Ažuriranja u stvarnom vremenu o novim prijetnjama u lancu opskrbe  
-- **Analiza ponašanja**: Detekcija neuobičajenog ponašanja u vanjskim komponentama  
-- **Automatski odgovor**: Trenutno suzbijanje kompromitiranih komponenti  
+- **Integracija obavještajnih podataka o prijetnjama**: Ažuriranja u stvarnom vremenu o novim prijetnjama u lancu opskrbe  
+- **Analiza ponašanja**: Detekcija neuobičajenih aktivnosti u vanjskim komponentama  
+- **Automatizirani odgovor**: Neposredna izolacija kompromitiranih komponenti  
 
 ## 8. **Kontrole nadzora i detekcije**
 
-### **Sigurnosni informacijsk i sustav za upravljanje događajima (SIEM)**
+**OWASP MCP rizik kojem se pristupa**: [MCP08 - Nedostatak revizije i telemetrije](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp08-telemetry/)
 
-**Sveobuhvatna strategija bilježenja:**
+### **Upravljanje sigurnosnim informacijama i događajima (SIEM)**
+
+**Sveobuhvatna strategija evidentiranja:**  
 ```yaml
 Authentication Events:
   - "All authentication attempts (success/failure)"
@@ -337,17 +352,17 @@ Security Events:
 
 ### **Detekcija prijetnji u stvarnom vremenu**
 
-**Analitika ponašanja:**
+**Analiza ponašanja:**
 - **Analitika ponašanja korisnika (UBA)**: Detekcija neuobičajenih obrazaca pristupa korisnika  
 - **Analitika ponašanja entiteta (EBA)**: Nadzor ponašanja MCP servera i alata  
-- **Detekcija anomalija pomoću strojnog učenja**: AI-pokretano prepoznavanje sigurnosnih prijetnji  
-- **Korelacija obavještavanja o prijetnjama**: Usklađivanje opaženih aktivnosti s poznatim obrascima napada  
+- **Detekcija anomalija potpomognuta strojnim učenjem**: AI-pokretano prepoznavanje sigurnosnih prijetnji  
+- **Korelacija obavještajnih podataka o prijetnjama**: Usporedba opaženih aktivnosti s poznatim obrascima napada  
 
 ## 9. **Odgovor na incidente i oporavak**
 
 ### **Automatizirane mogućnosti odgovora**
 
-**Neposredne akcije odgovora:**
+**Neposredne mjere odgovora:**  
 ```yaml
 Threat Containment:
   session_management:
@@ -374,28 +389,28 @@ Recovery Procedures:
 
 ### **Forenzičke mogućnosti**
 
-**Podrška istrazi:**
-- **Očuvanje revizijskog traga**: Nemjenjivo bilježenje s kriptografskom integritetom  
-- **Prikupljanje dokaza**: Automatsko prikupljanje relevantnih sigurnosnih artefakata  
-- **Rekonstrukcija vremenske linije**: Detaljan slijed događaja koji su doveli do sigurnosnih incidenata  
-- **Procjena utjecaja**: Evaluacija opsega kompromisa i izloženosti podataka  
+**Podrška za istragu:**
+- **Čuvanje auditnih tragova**: Nepromjenjivo bilježenje s kriptografskim potpisom  
+- **Prikupljanje dokaza**: Automatizirano prikupljanje relevantnih sigurnosnih artefakata  
+- **Rekonstrukcija vremenske crte**: Detaljan slijed događaja koji su doveli do sigurnosnih incidenata  
+- **Procjena utjecaja**: Evaluacija opsega kompromisa i izlaganja podataka  
 
-## **Ključni principi sigurnosne arhitekture**
+## **Ključni načela sigurnosne arhitekture**
 
 ### **Obrana u dubinu**
-- **Višestruki sigurnosni slojevi**: Nema jedne točke otkaza u sigurnosnoj arhitekturi  
+- **Višeslojna sigurnost**: Nema jedne točke neuspjeha u sigurnosnoj arhitekturi  
 - **Redundantne kontrole**: Preklapajuće sigurnosne mjere za kritične funkcije  
-- **Sigurnosni zadani mehanizmi**: Sigurni zadani postavci kada sustavi naiđu na pogreške ili napade  
+- **Mehanizmi sigurnosnih zadataka**: Sigurni zadani načini rada u slučaju pogrešaka ili napada  
 
-### **Implementacija Zero Trust**
-- **Nikada ne vjeruj, uvijek provjeri**: Kontinuirana validacija svih entiteta i zahtjeva  
-- **Princip najmanjih privilegija**: Minimalna prava pristupa za sve komponente  
-- **Mikrosegmentacija**: Granularne mrežne i pristupne kontrole  
+### **Implementacija Zero Trust-a**
+- **Nikad ne vjeruj, uvijek provjeri**: Kontinuirana validacija svih entiteta i zahtjeva  
+- **Načelo najmanjih privilegija**: Minimalna prava pristupa za sve komponente  
+- **Mikrosegmentacija**: Detaljne mrežne i kontrolne pristupne mjere  
 
 ### **Kontinuirana evolucija sigurnosti**
-- **Prilagodba prijetnjama**: Redovita ažuriranja za rješavanje novih prijetnji  
-- **Učinkovitost sigurnosnih kontrola**: Stalna evaluacija i poboljšanje kontrola  
-- **Usklađenost sa specifikacijom**: Poravnavanje s razvojem MCP sigurnosnih standarda  
+- **Prilagodba novim prijetnjama**: Redovita ažuriranja za nove sigurnosne izazove  
+- **Efikasnost sigurnosnih kontrola**: Stalna evaluacija i poboljšanje kontrola  
+- **Usklađenost s specifikacijama**: Usklađenost s razvijajućim MCP sigurnosnim standardima  
 
 ---
 
@@ -403,8 +418,13 @@ Recovery Procedures:
 
 ### **Službena MCP dokumentacija**
 - [MCP specifikacija (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
-- [MCP sigurnosne najbolje prakse](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
-- [MCP specifikacija autorizacije](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
+- [MCP Sigurnosne Najbolje Prakse](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
+- [MCP Authorization Specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
+
+### **OWASP MCP sigurnosni resursi**
+- [OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/) - Sveobuhvatni OWASP MCP Top 10 s implementacijom za Azure  
+- [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) - Službeni OWASP MCP sigurnosni rizici  
+- [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) - Praktična sigurnosna obuka za MCP na Azureu  
 
 ### **Microsoft sigurnosna rješenja**
 - [Microsoft Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)
@@ -413,17 +433,22 @@ Recovery Procedures:
 - [Azure Key Vault](https://learn.microsoft.com/azure/key-vault/)
 
 ### **Sigurnosni standardi**
-- [OAuth 2.0 sigurnosne najbolje prakse (RFC 9700)](https://datatracker.ietf.org/doc/html/rfc9700)
-- [OWASP Top 10 za velike jezične modele](https://genai.owasp.org/)
-- [NIST okvir za kibernetičku sigurnost](https://www.nist.gov/cyberframework)
+- [OAuth 2.0 Sigurnosne Najbolje Prakse (RFC 9700)](https://datatracker.ietf.org/doc/html/rfc9700)
+- [OWASP Top 10 za Velike Jezične Modele](https://genai.owasp.org/)
+- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
 
 ---
 
-> **Važno**: Ove sigurnosne kontrole odražavaju trenutnu MCP specifikaciju (2025-06-18). Uvijek provjerite najnoviju [službenu dokumentaciju](https://spec.modelcontextprotocol.io/) jer se standardi brzo razvijaju.
+> **Važno**: Ove sigurnosne kontrole odražavaju trenutnu MCP specifikaciju (2025-11-25). Uvijek provjerite najnoviju [službenu dokumentaciju](https://spec.modelcontextprotocol.io/) jer se standardi brzo razvijaju.
+
+## Što slijedi
+
+- Povratak na: [Pregled sigurnosnog modula](./README.md)
+- Nastavi na: [Modul 3: Početak rada](../03-GettingStarted/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Odricanje od odgovornosti**:
-Ovaj dokument preveden je pomoću AI usluge za prevođenje [Co-op Translator](https://github.com/Azure/co-op-translator). Iako nastojimo postići točnost, imajte na umu da automatski prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na izvornom jeziku treba smatrati autoritativnim izvorom. Za kritične informacije preporučuje se profesionalni ljudski prijevod. Ne snosimo odgovornost za bilo kakva nesporazuma ili pogrešna tumačenja koja proizlaze iz korištenja ovog prijevoda.
+**Napomena**:
+Ovaj dokument je preveden korištenjem AI usluge prevođenja [Co-op Translator](https://github.com/Azure/co-op-translator). Iako nastojimo postići točnost, imajte na umu da automatizirani prijevodi mogu sadržavati pogreške ili netočnosti. Izvorni dokument na njegovom izvornom jeziku treba smatrati službenim izvorom. Za kritične informacije preporučuje se profesionalni ljudski prijevod. Nismo odgovorni za bilo kakve nesporazume ili pogrešne interpretacije koje proizlaze iz korištenja ovog prijevoda.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

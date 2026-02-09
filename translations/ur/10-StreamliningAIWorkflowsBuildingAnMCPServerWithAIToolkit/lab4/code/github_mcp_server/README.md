@@ -1,108 +1,110 @@
-# موسم ایم سی پی سرور
+# ویڈر MCP سرور
 
-یہ ایک نمونہ ایم سی پی سرور ہے جو پائتھون میں موسم کے آلات کے ساتھ فرضی جوابات فراہم کرتا ہے۔ یہ آپ کے اپنے ایم سی پی سرور کے لیے بنیاد کے طور پر استعمال کیا جا سکتا ہے۔ اس میں درج ذیل خصوصیات شامل ہیں:
+یہ ایک نمونہ MCP سرور ہے جو Python میں موسم کے آلات کو موک جوابات کے ساتھ نافذ کرتا ہے۔ اسے آپ کے اپنے MCP سرور کے لیے ایک ڈھانچہ کے طور پر استعمال کیا جا سکتا ہے۔ اس میں درج ذیل خصوصیات شامل ہیں:
 
-- **موسم کا آلہ**: ایک آلہ جو دی گئی جگہ کی بنیاد پر فرضی موسم کی معلومات فراہم کرتا ہے۔
-- **گٹ کلون آلہ**: ایک آلہ جو گٹ ریپوزیٹری کو مخصوص فولڈر میں کلون کرتا ہے۔
-- **وی ایس کوڈ اوپن آلہ**: ایک آلہ جو وی ایس کوڈ یا وی ایس کوڈ انسائیڈرز میں فولڈر کھولتا ہے۔
-- **ایجنٹ بلڈر سے جڑیں**: ایک خصوصیت جو ایم سی پی سرور کو ایجنٹ بلڈر سے جڑنے کی اجازت دیتی ہے تاکہ ٹیسٹنگ اور ڈیبگنگ کی جا سکے۔
-- **[ایم سی پی انسپیکٹر](https://github.com/modelcontextprotocol/inspector) میں ڈیبگ کریں**: ایک خصوصیت جو ایم سی پی انسپیکٹر کے ذریعے ایم سی پی سرور کو ڈیبگ کرنے کی اجازت دیتی ہے۔
+- **ویڈر ٹول**: ایک ٹول جو دی گئی جگہ کی بنیاد پر موک شدہ موسم کی معلومات فراہم کرتا ہے۔
+- **Git Clone Tool**: ایک ٹول جو گٹ ریپوزیٹری کو مخصوص فولڈر میں کلون کرتا ہے۔
+- **VS Code Open Tool**: ایک ٹول جو فولڈر کو VS Code یا VS Code Insiders میں کھولتا ہے۔
+- **ایجنٹ بلڈر سے رابطہ کریں**: ایک خصوصیت جو آپ کو MCP سرور کو ایجنٹ بلڈر سے ٹیسٹنگ اور ڈی بگنگ کے لیے جوڑنے کی اجازت دیتی ہے۔
+- **[MCP Inspector](https://github.com/modelcontextprotocol/inspector) میں ڈی بگ کریں**: ایک خصوصیت جو آپ کو MCP سرور کو MCP Inspector کے ذریعے ڈی بگ کرنے کی اجازت دیتی ہے۔
 
-## موسم ایم سی پی سرور ٹیمپلیٹ کے ساتھ شروع کریں
+## ویڈر MCP سرور ٹیمپلیٹ کے ساتھ شروع کریں
 
-> **ضروریات**
+> **شرائط**
 >
-> اپنے مقامی ڈویلپمنٹ مشین پر ایم سی پی سرور چلانے کے لیے آپ کو درج ذیل چیزوں کی ضرورت ہوگی:
+> اپنے لوکل ڈویلپمنٹ مشین پر MCP سرور چلانے کے لیے آپ کو درکار ہیں:
 >
-> - [پائتھون](https://www.python.org/)
-> - [گٹ](https://git-scm.com/) (گٹ کلون ریپو آلہ کے لیے ضروری)
-> - [وی ایس کوڈ](https://code.visualstudio.com/) یا [وی ایس کوڈ انسائیڈرز](https://code.visualstudio.com/insiders/) (اوپن ان وی ایس کوڈ آلہ کے لیے ضروری)
-> - (*اختیاری - اگر آپ uv کو ترجیح دیتے ہیں*) [uv](https://github.com/astral-sh/uv)
-> - [پائتھون ڈیبگر ایکسٹینشن](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
+> - [Python](https://www.python.org/)
+> - [Git](https://git-scm.com/) (git_clone_repo ٹول کے لیے ضروری)
+> - [VS Code](https://code.visualstudio.com/) یا [VS Code Insiders](https://code.visualstudio.com/insiders/) (open_in_vscode ٹول کے لیے ضروری)
+> - (*اختیاری - اگر آپ uv پسند کرتے ہیں*) [uv](https://github.com/astral-sh/uv)
+> - [Python Debugger Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy)
 
 ## ماحول تیار کریں
 
-اس پروجیکٹ کے لیے ماحول ترتیب دینے کے دو طریقے ہیں۔ آپ اپنی ترجیح کے مطابق کسی ایک کو منتخب کر سکتے ہیں۔
+اس پروجیکٹ کے لیے ماحول تیار کرنے کے دو طریقے ہیں۔ آپ اپنی پسند کے مطابق کوئی بھی طریقہ منتخب کر سکتے ہیں۔
 
-> نوٹ: ورچوئل ماحول بنانے کے بعد وی ایس کوڈ یا ٹرمینل کو ری لوڈ کریں تاکہ ورچوئل ماحول کا پائتھون استعمال ہو۔
+> نوٹ: ورچوئل انوائرنمنٹ بنانے کے بعد VSCode یا ٹرمینل کو ری لوڈ کریں تاکہ ورچوئل انوائرنمنٹ کا Python استعمال ہو۔
 
-| طریقہ | مراحل |
+| طریقہ | اقدامات |
 | -------- | ----- |
-| `uv` استعمال کرتے ہوئے | 1. ورچوئل ماحول بنائیں: `uv venv` <br>2. وی ایس کوڈ کمانڈ "***Python: Select Interpreter***" چلائیں اور بنائے گئے ورچوئل ماحول سے پائتھون منتخب کریں <br>3. ڈپینڈنسیز انسٹال کریں (ڈویلپمنٹ ڈپینڈنسیز شامل کریں): `uv pip install -r pyproject.toml --extra dev` |
-| `pip` استعمال کرتے ہوئے | 1. ورچوئل ماحول بنائیں: `python -m venv .venv` <br>2. وی ایس کوڈ کمانڈ "***Python: Select Interpreter***" چلائیں اور بنائے گئے ورچوئل ماحول سے پائتھون منتخب کریں <br>3. ڈپینڈنسیز انسٹال کریں (ڈویلپمنٹ ڈپینڈنسیز شامل کریں): `pip install -e .[dev]` | 
+| `uv` کا استعمال | 1. ورچوئل انوائرنمنٹ بنائیں: `uv venv` <br>2. VSCode کمانڈ "***Python: Select Interpreter***" چلائیں اور بنائی گئی ورچوئل انوائرنمنٹ کا Python منتخب کریں <br>3. انحصار (dependencies) انسٹال کریں (ڈویلپمنٹ انحصار سمیت): `uv pip install -r pyproject.toml --extra dev` |
+| `pip` کا استعمال | 1. ورچوئل انوائرنمنٹ بنائیں: `python -m venv .venv` <br>2. VSCode کمانڈ "***Python: Select Interpreter***" چلائیں اور بنائی گئی ورچوئل انوائرنمنٹ کا Python منتخب کریں<br>3. انحصار انسٹال کریں (ڈویلپمنٹ انحصار سمیت): `pip install -e .[dev]` | 
 
-ماحول ترتیب دینے کے بعد، آپ ایم سی پی کلائنٹ کے طور پر ایجنٹ بلڈر کے ذریعے اپنے مقامی ڈویلپمنٹ مشین پر سرور چلا سکتے ہیں:
-1. وی ایس کوڈ ڈیبگ پینل کھولیں۔ `Debug in Agent Builder` منتخب کریں یا `F5` دبائیں تاکہ ایم سی پی سرور کو ڈیبگ کرنا شروع کریں۔
-2. ای آئی ٹول کٹ ایجنٹ بلڈر استعمال کریں تاکہ سرور کو [اس پرامپٹ](../../../../../../../../../../../open_prompt_builder) کے ساتھ ٹیسٹ کریں۔ سرور خود بخود ایجنٹ بلڈر سے جڑ جائے گا۔
-3. `Run` پر کلک کریں تاکہ پرامپٹ کے ساتھ سرور کو ٹیسٹ کریں۔
+ماحول سیٹ اپ کرنے کے بعد، آپ ایجنٹ بلڈر کے ذریعے MCP کلائنٹ کے طور پر اپنے لوکل مشین پر سرور چلانا شروع کر سکتے ہیں:
+1. VS Code کے Debug پینل کو کھولیں۔ `Debug in Agent Builder` منتخب کریں یا MCP سرور کو ڈی بگ کرنے کے لیے `F5` دبائیں۔
+2. AI Toolkit Agent Builder استعمال کریں اور [اس پرامپٹ](../../../../../../../../../../../open_prompt_builder) کے ذریعے سرور کا ٹیسٹ کریں۔ سرور خود بخود ایجنٹ بلڈر سے جڑ جائے گا۔
+3. پرامپٹ کے ساتھ سرور ٹیسٹ کرنے کے لیے `Run` پر کلک کریں۔
 
-**مبارک ہو**! آپ نے کامیابی سے موسم ایم سی پی سرور کو اپنے مقامی ڈویلپمنٹ مشین پر ایجنٹ بلڈر کے ذریعے ایم سی پی کلائنٹ کے طور پر چلایا۔
+**مبارک ہو**! آپ نے کامیابی سے ایجنٹ بلڈر کے ذریعے MCP کلائنٹ کے طور پر اپنے لوکل مشین پر ویڈر MCP سرور چلایا ہے۔
 ![DebugMCP](https://raw.githubusercontent.com/microsoft/windows-ai-studio-templates/refs/heads/dev/mcpServers/mcp_debug.gif)
 
 ## ٹیمپلیٹ میں کیا شامل ہے
 
 | فولڈر / فائل | مواد                                     |
-| ------------ | ---------------------------------------- |
-| `.vscode`    | وی ایس کوڈ فائلز ڈیبگنگ کے لیے           |
-| `.aitk`      | ای آئی ٹول کٹ کی کنفیگریشنز              |
-| `src`        | موسم ایم سی پی سرور کا سورس کوڈ          |
+| ------------ | -------------------------------------------- |
+| `.vscode`    | VSCode کی فائلیں ڈی بگنگ کے لیے               |
+| `.aitk`      | AI Toolkit کی کنفیگریشنز                          |
+| `src`        | ویڈر MCP سرور کا سورس کوڈ                      |
 
-## موسم ایم سی پی سرور کو کیسے ڈیبگ کریں
+## ویڈر MCP سرور کو کس طرح ڈی بگ کریں
 
 > نوٹس:
-> - [ایم سی پی انسپیکٹر](https://github.com/modelcontextprotocol/inspector) ایم سی پی سرورز کو ٹیسٹ اور ڈیبگ کرنے کے لیے ایک بصری ڈویلپر ٹول ہے۔
-> - تمام ڈیبگنگ موڈز بریک پوائنٹس کو سپورٹ کرتے ہیں، لہذا آپ ٹول امپلیمنٹیشن کوڈ میں بریک پوائنٹس شامل کر سکتے ہیں۔
+> - [MCP Inspector](https://github.com/modelcontextprotocol/inspector) ایک بصری ڈویلپر ٹول ہے جو MCP سرورز کی ٹیسٹنگ اور ڈی بگنگ کے لیے استعمال ہوتا ہے۔
+> - تمام ڈی بگنگ موڈز بریک پوائنٹس کی حمایت کرتے ہیں، لہٰذا آپ ٹول کے امپلیمنٹیشن کوڈ میں بریک پوائنٹس شامل کر سکتے ہیں۔
 
 ## دستیاب آلات
 
-### موسم کا آلہ
-`get_weather` آلہ دی گئی جگہ کے لیے فرضی موسم کی معلومات فراہم کرتا ہے۔
+### ویڈر ٹول
+`get_weather` ٹول دی گئی جگہ کے لیے موک شدہ موسم کی معلومات فراہم کرتا ہے۔
 
 | پیرامیٹر | قسم | وضاحت |
 | --------- | ---- | ----------- |
-| `location` | string | وہ جگہ جس کے لیے موسم معلوم کرنا ہے (جیسے شہر کا نام، ریاست، یا کوآرڈینیٹس) |
+| `location` | سٹرنگ | موسم حاصل کرنے کے لیے جگہ (جیسے شہر کا نام، ریاست، یا کوآرڈینیٹس) |
 
-### گٹ کلون آلہ
-`git_clone_repo` آلہ گٹ ریپوزیٹری کو مخصوص فولڈر میں کلون کرتا ہے۔
-
-| پیرامیٹر | قسم | وضاحت |
-| --------- | ---- | ----------- |
-| `repo_url` | string | کلون کرنے کے لیے گٹ ریپوزیٹری کا یو آر ایل |
-| `target_folder` | string | وہ فولڈر جہاں ریپوزیٹری کلون کی جائے گی |
-
-یہ آلہ ایک JSON آبجیکٹ واپس کرتا ہے جس میں شامل ہیں:
-- `success`: آپریشن کامیاب ہونے کا اشارہ کرنے والا بولین
-- `target_folder` یا `error`: کلون کی گئی ریپوزیٹری کا راستہ یا ایک ایرر میسج
-
-### وی ایس کوڈ اوپن آلہ
-`open_in_vscode` آلہ وی ایس کوڈ یا وی ایس کوڈ انسائیڈرز ایپلیکیشن میں فولڈر کھولتا ہے۔
+### Git Clone Tool
+`git_clone_repo` ٹول گٹ ریپوزیٹری کو مخصوص فولڈر میں کلون کرتا ہے۔
 
 | پیرامیٹر | قسم | وضاحت |
 | --------- | ---- | ----------- |
-| `folder_path` | string | وہ فولڈر جسے کھولنا ہے |
-| `use_insiders` | boolean (اختیاری) | وی ایس کوڈ انسائیڈرز استعمال کرنے کی ترجیح |
+| `repo_url` | سٹرنگ | کلون کرنے کے لیے گٹ ریپوزیٹری کا URL |
+| `target_folder` | سٹرنگ | فولڈر کا راستہ جہاں ریپوزیٹری کلون کرنی ہے |
 
-یہ آلہ ایک JSON آبجیکٹ واپس کرتا ہے جس میں شامل ہیں:
-- `success`: آپریشن کامیاب ہونے کا اشارہ کرنے والا بولین
-- `message` یا `error`: ایک تصدیقی پیغام یا ایک ایرر میسج
+یہ ٹول ایک JSON آبجیکٹ واپس کرتا ہے جس میں شامل ہیں:
+- `success`: بلیئن جو بتاتا ہے کہ آپریشن کامیاب ہوا یا نہیں
+- `target_folder` یا `error`: کلون کی گئی ریپوزیٹری کا راستہ یا کوئی ایرر پیغام
 
-| ڈیبگ موڈ | وضاحت | ڈیبگ کرنے کے مراحل |
+### VS Code Open Tool
+`open_in_vscode` ٹول فولڈر کو VS Code یا VS Code Insiders ایپلیکیشن میں کھولتا ہے۔
+
+| پیرامیٹر | قسم | وضاحت |
+| --------- | ---- | ----------- |
+| `folder_path` | سٹرنگ | فولڈر کا راستہ جو کھولنا ہے |
+| `use_insiders` | بلیئن (اختیاری) | آیا عام VS Code کی بجائے VS Code Insiders استعمال کرنا ہے یا نہیں |
+
+یہ ٹول ایک JSON آبجیکٹ واپس کرتا ہے جس میں شامل ہیں:
+- `success`: بلیئن جو بتاتا ہے کہ آپریشن کامیاب تھا یا نہیں
+- `message` یا `error`: تصدیقی پیغام یا ایرر پیغام
+
+| ڈی بگ موڈ | وضاحت | ڈی بگ کرنے کے اقدامات |
 | ---------- | ----------- | --------------- |
-| ایجنٹ بلڈر | ایم سی پی سرور کو ایجنٹ بلڈر میں ای آئی ٹول کٹ کے ذریعے ڈیبگ کریں۔ | 1. وی ایس کوڈ ڈیبگ پینل کھولیں۔ `Debug in Agent Builder` منتخب کریں اور `F5` دبائیں تاکہ ایم سی پی سرور کو ڈیبگ کرنا شروع کریں۔<br>2. ای آئی ٹول کٹ ایجنٹ بلڈر استعمال کریں تاکہ سرور کو [اس پرامپٹ](../../../../../../../../../../../open_prompt_builder) کے ساتھ ٹیسٹ کریں۔ سرور خود بخود ایجنٹ بلڈر سے جڑ جائے گا۔<br>3. `Run` پر کلک کریں تاکہ پرامپٹ کے ساتھ سرور کو ٹیسٹ کریں۔ |
-| ایم سی پی انسپیکٹر | ایم سی پی سرور کو ایم سی پی انسپیکٹر کے ذریعے ڈیبگ کریں۔ | 1. [Node.js](https://nodejs.org/) انسٹال کریں<br> 2. انسپیکٹر ترتیب دیں: `cd inspector` && `npm install` <br> 3. وی ایس کوڈ ڈیبگ پینل کھولیں۔ `Debug SSE in Inspector (Edge)` یا `Debug SSE in Inspector (Chrome)` منتخب کریں۔ `F5` دبائیں تاکہ ڈیبگنگ شروع کریں۔<br> 4. جب ایم سی پی انسپیکٹر براؤزر میں لانچ ہو جائے، `Connect` بٹن پر کلک کریں تاکہ یہ ایم سی پی سرور سے جڑ جائے۔<br> 5. پھر آپ `List Tools` کر سکتے ہیں، ایک ٹول منتخب کریں، پیرامیٹرز درج کریں، اور `Run Tool` پر کلک کریں تاکہ اپنے سرور کوڈ کو ڈیبگ کریں۔<br> |
+| Agent Builder | AI Toolkit کے ذریعے ایجنٹ بلڈر میں MCP سرور کو ڈی بگ کریں۔ | 1. VS Code کے Debug پینل کو کھولیں۔ `Debug in Agent Builder` منتخب کریں اور MCP سرور ڈی بگ کرنے کے لیے `F5` دبائیں۔<br>2. AI Toolkit Agent Builder کا استعمال کرتے ہوئے [اس پرامپٹ](../../../../../../../../../../../open_prompt_builder) کے ساتھ سرور کو ٹیسٹ کریں۔ سرور خود بخود ایجنٹ بلڈر سے جڑ جائے گا۔<br>3. پرامپٹ کے ساتھ سرور ٹیسٹ کرنے کے لیے `Run` پر کلک کریں۔ |
+| MCP Inspector | MCP Inspector کا استعمال کرتے ہوئے MCP سرور کو ڈی بگ کریں۔ | 1. [Node.js](https://nodejs.org/) انسٹال کریں<br> 2. Inspector سیٹ اپ کریں: `cd inspector` && `npm install` <br> 3. VS Code کے Debug پینل کو کھولیں۔ `Debug SSE in Inspector (Edge)` یا `Debug SSE in Inspector (Chrome)` منتخب کریں۔ ڈی بگنگ شروع کرنے کے لیے `F5` دبائیں۔<br> 4. جب MCP Inspector براؤزر میں لانچ ہو جائے، تو اس MCP سرور کو جوڑنے کے لیے `Connect` بٹن پر کلک کریں۔<br> 5. پھر آپ `List Tools` کر سکتے ہیں، کوئی ٹول منتخب کریں، پیرامیٹرز داخل کریں، اور `Run Tool` کر کے اپنے سرور کو ڈی بگ کر سکتے ہیں۔<br> |
 
-## ڈیفالٹ پورٹس اور حسب ضرورت
+## ڈیفالٹ پورٹس اور حسب ضرورت تبدیلیاں
 
-| ڈیبگ موڈ | پورٹس | تعریف | حسب ضرورت | نوٹ |
+| ڈی بگ موڈ | پورٹس | تعریفیں | حسب ضرورت تبدیلیاں | نوٹ |
 | ---------- | ----- | ------------ | -------------- |-------------- |
-| ایجنٹ بلڈر | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json)، [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json)، [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py)، [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) میں ترمیم کریں تاکہ اوپر دی گئی پورٹس کو تبدیل کریں۔ | N/A |
-| ایم سی پی انسپیکٹر | 3001 (سرور); 5173 اور 3000 (انسپیکٹر) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json)، [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json)، [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py)، [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) میں ترمیم کریں تاکہ اوپر دی گئی پورٹس کو تبدیل کریں۔| N/A |
+| Agent Builder | 3001 | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | مذکورہ پورٹس کو تبدیل کرنے کے لیے [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json)، [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json)، [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py)، [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) کو ترمیم کریں۔ | لاگو نہیں |
+| MCP Inspector | 3001 (سرور)؛ 5173 اور 3000 (Inspector) | [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json) | مذکورہ پورٹس کو تبدیل کرنے کے لیے [launch.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/launch.json)، [tasks.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.vscode/tasks.json)، [\_\_init\_\_.py](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/src/__init__.py)، [mcp.json](../../../../../../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/lab4/code/github_mcp_server/.aitk/mcp.json) کو ترمیم کریں۔ | لاگو نہیں |
 
-## فیڈبیک
+## تاثرات
 
-اگر آپ کے پاس اس ٹیمپلیٹ کے لیے کوئی فیڈبیک یا تجاویز ہیں، تو براہ کرم [ای آئی ٹول کٹ گٹ ہب ریپوزیٹری](https://github.com/microsoft/vscode-ai-toolkit/issues) پر ایک مسئلہ کھولیں۔
+اگر آپ کے پاس اس ٹیمپلیٹ کے بارے میں کوئی فیڈبیک یا تجاویز ہیں، تو براہ کرم [AI Toolkit GitHub repository](https://github.com/microsoft/vscode-ai-toolkit/issues) پر مسئلہ کھولیں۔
 
 ---
 
-**ڈسکلیمر**:  
-یہ دستاویز AI ترجمہ سروس [Co-op Translator](https://github.com/Azure/co-op-translator) کا استعمال کرتے ہوئے ترجمہ کی گئی ہے۔ ہم درستگی کے لیے کوشش کرتے ہیں، لیکن براہ کرم آگاہ رہیں کہ خودکار ترجمے میں غلطیاں یا غیر درستیاں ہو سکتی ہیں۔ اصل دستاویز کو اس کی اصل زبان میں مستند ذریعہ سمجھا جانا چاہیے۔ اہم معلومات کے لیے، پیشہ ور انسانی ترجمہ کی سفارش کی جاتی ہے۔ ہم اس ترجمے کے استعمال سے پیدا ہونے والی کسی بھی غلط فہمی یا غلط تشریح کے ذمہ دار نہیں ہیں۔
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**انتباہ**:  
+یہ دستاویز AI ترجمہ سروس [Co-op Translator](https://github.com/Azure/co-op-translator) کے ذریعے ترجمہ کی گئی ہے۔ اگرچہ ہم درستگی کے لیے کوشاں ہیں، براہ کرم اس بات کا خیال رکھیں کہ خودکار ترجمے میں غلطیاں یا نقصانات ہو سکتے ہیں۔ اصل دستاویز اپنی مادری زبان میں ہی معتبر ماخذ سمجھی جانی چاہیے۔ اہم معلومات کے لیے پیشہ ور انسانی ترجمہ کی سفارش کی جاتی ہے۔ اس ترجمے کے استعمال سے ہونے والی کسی بھی غلط فہمی یا غلط تشریح کی ذمہ داری ہم پر عائد نہیں ہوتی۔
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,20 +1,20 @@
 # Avancerad serveranvändning
 
-Det finns två olika typer av servrar som exponeras i MCP SDK: din vanliga server och låg-nivå servern. Normalt sett använder du den vanliga servern för att lägga till funktioner. I vissa fall kan det dock vara bättre att använda låg-nivå servern, exempelvis:
+Det finns två olika typer av servrar som exponeras i MCP SDK, din vanliga server och low-level servern. Normalt använder du den vanliga servern för att lägga till funktioner i den. För vissa fall vill du dock förlita dig på low-level servern såsom:
 
-- Bättre arkitektur. Det är möjligt att skapa en ren arkitektur med både den vanliga servern och låg-nivå servern, men det kan argumenteras att det är något enklare med låg-nivå servern.
-- Funktionstillgänglighet. Vissa avancerade funktioner kan endast användas med låg-nivå servern. Du kommer att se detta i senare kapitel när vi lägger till sampling och elicitering.
+- Bättre arkitektur. Det är möjligt att skapa en ren arkitektur med både den vanliga servern och en low-level server men det kan hävdas att det är något enklare med en low-level server.
+- Funktionstillgång. Vissa avancerade funktioner kan endast användas med en low-level server. Du kommer att se detta i senare kapitel när vi lägger till sampling och elicitation.
 
-## Vanlig server vs låg-nivå server
+## Vanlig server vs low-level server
 
-Så här ser skapandet av en MCP-server ut med den vanliga servern:
+Så här ser skapandet av en MCP Server ut med den vanliga servern
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# Lägg till ett additionsverktyg
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// Lägg till ett additionsverktyg
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,16 +42,16 @@ server.registerTool("add",
 );
 ```
 
-Poängen är att du explicit lägger till varje verktyg, resurs eller prompt som du vill att servern ska ha. Det är inget fel med det.  
+Poängen är att du explicit lägger till varje verktyg, resurs eller prompt som du vill att servern ska ha. Inget fel med det.
 
-### Låg-nivå servermetod
+### Low-level server-ansatsen
 
-När du använder låg-nivå servermetoden behöver du tänka annorlunda, nämligen att istället för att registrera varje verktyg skapar du två hanterare per funktionstyp (verktyg, resurser eller prompts). Så för exempelvis verktyg har du bara två funktioner som ser ut så här:
+När du använder low-level server-ansatsen måste du tänka annorlunda, nämligen att istället för att registrera varje verktyg skapar du istället två hanterare per funktionstyp (verktyg, resurser eller prompts). Så till exempel har verktyg då bara två funktioner som så här:
 
-- Lista alla verktyg. En funktion ansvarar för alla försök att lista verktyg.
+- Lista alla verktyg. En funktion skulle vara ansvarig för alla försök att lista verktyg.
 - Hantera anrop till alla verktyg. Här finns också bara en funktion som hanterar anrop till ett verktyg.
 
-Det låter som potentiellt mindre arbete, eller hur? Istället för att registrera ett verktyg behöver jag bara se till att verktyget listas när jag listar alla verktyg och att det anropas när det finns en inkommande begäran att anropa ett verktyg.
+Det låter som potentiellt mindre arbete, eller hur? Så istället för att registrera ett verktyg behöver jag bara säkerställa att verktyget listas när jag listar alla verktyg och att det anropas när det finns en inkommande förfrågan att anropa ett verktyg.
 
 Låt oss titta på hur koden ser ut nu:
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Returnera listan över registrerade verktyg
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Här har vi nu en funktion som returnerar en lista med funktioner. Varje post i verktygslistan har nu fält som `name`, `description` och `inputSchema` för att följa returtypen. Detta gör det möjligt att placera våra verktyg och funktionsdefinitioner någon annanstans. Vi kan nu skapa alla våra verktyg i en verktygsmapp och samma sak gäller för alla dina funktioner, så ditt projekt kan plötsligt organiseras så här:
+Här har vi nu en funktion som returnerar en lista av funktioner. Varje post i verktygslistan har nu fält som `name`, `description` och `inputSchema` för att följa returtypen. Detta gör att vi kan lägga våra verktyg och funktionsdefinitioner på annat håll. Vi kan nu skapa alla våra verktyg i en verktygsmapp och samma gäller alla dina funktioner så att ditt projekt plötsligt kan organiseras så här:
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-Det är fantastiskt, vår arkitektur kan göras ganska ren.
+Det är toppen, vår arkitektur kan göras ganska ren.
 
-Hur är det med att anropa verktyg, är det samma idé då, en hanterare för att anropa ett verktyg, vilket som helst? Ja, precis, här är koden för det:
+Hur är det med att anropa verktyg, är det samma idé då, en hanterare för att anropa ett verktyg, vilket verktyg som helst? Ja, exakt, här är koden för det:
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools är en ordlista med verktygsnamn som nycklar
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO anropa verktyget,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-Som du kan se från koden ovan behöver vi analysera vilket verktyg som ska anropas och med vilka argument, och sedan fortsätta med att anropa verktyget.
+Som du kan se från ovanstående kod måste vi parsa ut vilket verktyg som ska anropas, och med vilka argument, och sedan fortsätta med att anropa verktyget.
 
-## Förbättra metoden med validering
+## Förbättra ansatsen med validering
 
-Hittills har du sett hur alla dina registreringar för att lägga till verktyg, resurser och prompts kan ersättas med dessa två hanterare per funktionstyp. Vad mer behöver vi göra? Jo, vi bör lägga till någon form av validering för att säkerställa att verktyget anropas med rätt argument. Varje runtime har sin egen lösning för detta, till exempel använder Python Pydantic och TypeScript använder Zod. Idén är att vi gör följande:
+Hittills har du sett hur alla dina registreringar för att lägga till verktyg, resurser och prompts kan ersättas med dessa två hanterare per funktionstyp. Vad mer behöver vi göra? Jo, vi bör lägga till någon form av validering för att säkerställa att verktyget anropas med rätt argument. Varje runtime har sin egen lösning för detta, exempelvis använder Python Pydantic och TypeScript använder Zod. Idén är att vi gör följande:
 
 - Flytta logiken för att skapa en funktion (verktyg, resurs eller prompt) till dess dedikerade mapp.
-- Lägg till ett sätt att validera en inkommande begäran som exempelvis ber om att anropa ett verktyg.
+- Lägg till ett sätt att validera en inkommande förfrågan som till exempel begär att anropa ett verktyg.
 
 ### Skapa en funktion
 
-För att skapa en funktion behöver vi skapa en fil för den funktionen och se till att den har de obligatoriska fälten som krävs för den funktionen. Vilka fält som krävs skiljer sig något mellan verktyg, resurser och prompts.
+För att skapa en funktion behöver vi skapa en fil för den funktionen och säkerställa att den har de obligatoriska fälten som krävs för den funktionen. Vilka fält som krävs skiljer sig lite mellan verktyg, resurser och prompts.
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Validera indata med hjälp av Pydantic-modell
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: lägg till Pydantic, så att vi kan skapa en AddInputModel och validera argumenten
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,21 +213,21 @@ tool_add = {
 }
 ```
 
-Här kan du se hur vi gör följande:
+här kan du se hur vi gör följande:
 
 - Skapar ett schema med Pydantic `AddInputModel` med fälten `a` och `b` i filen *schema.py*.
-- Försöker analysera den inkommande begäran till att vara av typen `AddInputModel`. Om det finns en mismatch i parametrar kommer detta att krascha:
+- Försöker parsa den inkommande förfrågan till typen `AddInputModel`, om det finns en avvikelse i parametrarna kraschar detta:
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Validera indata med Pydantic-modell
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-Du kan välja om du vill placera denna analyslogik i själva verktygsanropet eller i hanterarfunktionen.
+Du kan välja att lägga denna parsningslogik i själva verktygsanropet eller i hanteringsfunktionen.
 
 **TypeScript**
 
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- I hanteraren som hanterar alla verktygsanrop försöker vi nu analysera den inkommande begäran till verktygets definierade schema:
+- I hanteraren som hanterar alla verktygsanrop försöker vi nu parsa den inkommande förfrågan till verktygets definierade schema:
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    Om det fungerar fortsätter vi med att anropa det faktiska verktyget:
+    om det lyckas fortsätter vi att anropa det faktiska verktyget:
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-Som du kan se skapar denna metod en fantastisk arkitektur där allt har sin plats. *server.ts* är en mycket liten fil som bara kopplar ihop begäranhanterare, och varje funktion finns i sina respektive mappar, dvs tools/, resources/ eller /prompts.
+Som du ser skapar detta angreppssätt en bra arkitektur eftersom allt har sin plats, *server.ts* är en mycket liten fil som bara kopplar upp förfrågningshanterare och varje funktion finns i respektive mapp dvs verktyg/, resurser/ eller /prompts.
 
-Bra, låt oss försöka bygga detta nästa gång.
+Bra, låt oss försöka bygga detta härnäst.
 
-## Övning: Skapa en låg-nivå server
+## Övning: Skapa en low-level server
 
-I denna övning kommer vi att göra följande:
+I denna övning ska vi göra följande:
 
-1. Skapa en låg-nivå server som hanterar listning av verktyg och anrop av verktyg.
-1. Implementera en arkitektur som du kan bygga vidare på.
-1. Lägg till validering för att säkerställa att dina verktygsanrop valideras korrekt.
+1. Skapa en low-level server som hanterar listning av verktyg och anrop av verktyg.
+1. Implementera en arkitektur du kan bygga vidare på.
+1. Lägg till validering för att säkerställa att dina verktygsanrop är korrekt validerade.
 
 ### -1- Skapa en arkitektur
 
-Det första vi behöver adressera är en arkitektur som hjälper oss att skala när vi lägger till fler funktioner. Så här ser det ut:
+Det första vi behöver ta itu med är en arkitektur som hjälper oss att skala när vi lägger till fler funktioner, så här ser den ut:
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-Nu har vi satt upp en arkitektur som säkerställer att vi enkelt kan lägga till nya verktyg i en verktygsmapp. Du kan följa detta för att lägga till undermappar för resurser och prompts.
+Nu har vi satt upp en arkitektur som säkerställer att vi enkelt kan lägga till nya verktyg i en verktygsmapp. Känn dig fri att följa detta för att lägga till undermappar för resurser och prompts.
 
 ### -2- Skapa ett verktyg
 
-Låt oss se hur det ser ut att skapa ett verktyg. Först måste det skapas i sin *tool*-undermapp så här:
+Låt oss se hur det ser ut att skapa ett verktyg härnäst. Först måste det skapas i dess *tool*-undermapp så här:
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Validera indata med Pydantic-modell
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: lägg till Pydantic, så att vi kan skapa en AddInputModel och validera argumenten
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-Här ser vi hur vi definierar namn, beskrivning, ett inmatningsschema med Pydantic och en hanterare som kommer att anropas när detta verktyg används. Slutligen exponerar vi `tool_add`, som är en ordbok som innehåller alla dessa egenskaper.
+Vad vi ser här är hur vi definierar namn, beskrivning, ett inmatningsschema med Pydantic och en hanterare som kommer att anropas när detta verktyg kallas. Slutligen exponerar vi `tool_add` som är en dictionary som innehåller alla dessa egenskaper.
 
-Det finns också *schema.py* som används för att definiera inmatningsschemat som används av vårt verktyg:
+Det finns också *schema.py* som används för att definiera inmatningsschemat som vårt verktyg använder:
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Vi behöver också fylla i *__init__.py* för att säkerställa att verktygsmappen behandlas som en modul. Dessutom behöver vi exponera modulerna inom den så här:
+Vi måste också fylla på *__init__.py* för att säkerställa att verktygsmappen behandlas som en modul. Dessutom måste vi exponera modulerna inom den så här:
 
 ```python
 from .add import tool_add
@@ -393,7 +393,7 @@ tools = {
 }
 ```
 
-Vi kan fortsätta att lägga till i denna fil när vi lägger till fler verktyg.
+Vi kan fortsätta lägga till i denna fil när vi lägger till fler verktyg.
 
 **TypeScript**
 
@@ -414,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-Här skapar vi en ordbok som består av egenskaper:
+Här skapar vi en dictionary bestående av egenskaper:
 
 - name, detta är namnet på verktyget.
-- rawSchema, detta är Zod-schemat, det kommer att användas för att validera inkommande begäranden att anropa detta verktyg.
+- rawSchema, detta är Zod-schemat, det kommer att användas för att validera inkommande förfrågningar att anropa detta verktyg.
 - inputSchema, detta schema kommer att användas av hanteraren.
 - callback, detta används för att anropa verktyget.
 
-Det finns också `Tool` som används för att konvertera denna ordbok till en typ som MCP-serverhanteraren kan acceptera, och det ser ut så här:
+Det finns också `Tool` som används för att omvandla denna dictionary till en typ som mcp-serverhanteraren kan acceptera och det ser ut så här:
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-Och det finns *schema.ts* där vi lagrar inmatningsscheman för varje verktyg, som ser ut så här med endast ett schema för närvarande, men när vi lägger till verktyg kan vi lägga till fler poster:
+Och det finns *schema.ts* där vi lagrar inmatningsscheman för varje verktyg som ser ut så här med endast ett schema för tillfället men när vi lägger till verktyg kan vi lägga till fler poster:
 
 ```typescript
 import { z } from 'zod';
@@ -442,16 +442,16 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Bra, låt oss gå vidare till att hantera listning av våra verktyg nästa gång.
+Toppen, låt oss gå vidare till att hantera listning av våra verktyg härnäst.
 
-### -3- Hantera verktygslistning
+### -3- Hantera listning av verktyg
 
-För att hantera listning av verktyg behöver vi ställa in en begäranhanterare för det. Här är vad vi behöver lägga till i vår serverfil:
+Nästa steg, för att hantera listning av våra verktyg, behöver vi ställa in en förfrågningshanterare för det. Så här behöver vi lägga till i vår serverfil:
 
 **Python**
 
 ```python
-# code omitted for brevity
+# kod utelämnad för korthet
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-Här lägger vi till dekorationen `@server.list_tools` och den implementerande funktionen `handle_list_tools`. I den senare behöver vi producera en lista med verktyg. Observera hur varje verktyg behöver ha ett namn, en beskrivning och ett inputSchema.   
+Här lägger vi till dekoratorn `@server.list_tools` och implementerande funktionen `handle_list_tools`. I den senare måste vi producera en lista med verktyg. Observera hur varje verktyg måste ha namn, beskrivning och inputSchema.
 
 **TypeScript**
 
-För att ställa in begäranhanteraren för att lista verktyg behöver vi anropa `setRequestHandler` på servern med ett schema som passar det vi försöker göra, i detta fall `ListToolsRequestSchema`. 
+För att ställa in förfrågningshanteraren för att lista verktyg behöver vi anropa `setRequestHandler` på servern med ett schema som passar det vi vill göra, i detta fall `ListToolsRequestSchema`.
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// kod utelämnad för korthet
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Returnera listan över registrerade verktyg
   return {
     tools: tools
   };
 });
 ```
 
-Bra, nu har vi löst biten med att lista verktyg, låt oss titta på hur vi kan anropa verktyg nästa gång.
+Bra, nu har vi löst biten för att lista verktyg, låt oss titta på hur vi kan anropa verktyg härnäst.
 
 ### -4- Hantera anrop av ett verktyg
 
-För att anropa ett verktyg behöver vi ställa in en annan begäranhanterare, denna gång fokuserad på att hantera en begäran som specificerar vilken funktion som ska anropas och med vilka argument.
+För att anropa ett verktyg behöver vi ställa in en annan förfrågningshanterare, den här gången med fokus på att hantera en förfrågan som specificerar vilken funktion som ska anropas och med vilka argument.
 
 **Python**
 
-Låt oss använda dekorationen `@server.call_tool` och implementera den med en funktion som `handle_call_tool`. Inom den funktionen behöver vi analysera verktygsnamnet, dess argument och säkerställa att argumenten är giltiga för det aktuella verktyget. Vi kan antingen validera argumenten i denna funktion eller längre ner i det faktiska verktyget.
+Låt oss använda dekoratorn `@server.call_tool` och implementera den med en funktion som `handle_call_tool`. Inom den funktionen måste vi parsa ut verktygsnamnet, dess argument och säkerställa att argumenten är giltiga för det verktyg det gäller. Vi kan antingen validera argumenten i denna funktion eller längre ner i det faktiska verktyget.
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools är en ordlista med verktygsnamn som nycklar
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # anropa verktyget
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -533,27 +533,33 @@ async def handle_call_tool(
     ] 
 ```
 
-Här är vad som händer:
+Så här går det till:
 
-- Vårt verktygsnamn finns redan som inmatningsparameter `name`, vilket också gäller för våra argument i form av ordboken `arguments`.
+- Vårt verktygsnamn finns redan som inparameter `name` vilket också gäller för våra argument i form av `arguments` dictionaryn.
 
-- Verktyget anropas med `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Valideringen av argumenten sker i egenskapen `handler`, som pekar på en funktion. Om det misslyckas kommer det att generera ett undantag. 
+- Verktyget anropas med `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Valideringen av argumenten sker i egenskapen `handler` som pekar på en funktion, om detta misslyckas kastas ett undantag.
 
-Där, nu har vi en full förståelse för att lista och anropa verktyg med en låg-nivå server.
+Där har vi det, nu har vi en full förståelse för hur man listar och anropar verktyg med en low-level server.
 
-Se [hela exemplet](./code/README.md) här.
+Se det [fullständiga exemplet](./code/README.md) här
 
 ## Uppgift
 
-Utöka koden du har fått med ett antal verktyg, resurser och prompts och reflektera över hur du märker att du bara behöver lägga till filer i verktygsmappen och ingen annanstans. 
+Utöka den kod du fått med ett antal verktyg, resurser och prompts och reflektera över hur du märker att du bara behöver lägga till filer i verktygsmappen och ingen annanstans.
 
-*Ingen lösning ges*
+*Ingen lösning finns*
 
 ## Sammanfattning
 
-I detta kapitel såg vi hur låg-nivå servermetoden fungerar och hur den kan hjälpa oss att skapa en trevlig arkitektur som vi kan fortsätta bygga på. Vi diskuterade också validering och du fick se hur man arbetar med valideringsbibliotek för att skapa scheman för inmatningsvalidering.
+I detta kapitel såg vi hur low-level server-ansatsen fungerade och hur den kan hjälpa oss skapa en trevlig arkitektur som vi kan fortsätta bygga på. Vi diskuterade också validering och du visades hur man arbetar med valideringsbibliotek för att skapa scheman för inmatningsvalidering.
+
+## Vad kommer härnäst
+
+- Nästa: [Enkel autentisering](../11-simple-auth/README.md)
 
 ---
 
-**Ansvarsfriskrivning**:  
-Detta dokument har översatts med hjälp av AI-översättningstjänsten [Co-op Translator](https://github.com/Azure/co-op-translator). Även om vi strävar efter noggrannhet, bör det noteras att automatiserade översättningar kan innehålla fel eller felaktigheter. Det ursprungliga dokumentet på dess originalspråk bör betraktas som den auktoritativa källan. För kritisk information rekommenderas professionell mänsklig översättning. Vi ansvarar inte för eventuella missförstånd eller feltolkningar som uppstår vid användning av denna översättning.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Ansvarsfriskrivning**:
+Detta dokument har översatts med hjälp av AI-översättningstjänsten [Co-op Translator](https://github.com/Azure/co-op-translator). Trots att vi strävar efter noggrannhet kan automatiska översättningar innehålla fel eller brister. Det ursprungliga dokumentet på dess modersmål bör betraktas som den auktoritativa källan. För viktig information rekommenderas professionell översättning av människa. Vi ansvarar inte för några missförstånd eller feltolkningar som uppstår från användningen av denna översättning.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

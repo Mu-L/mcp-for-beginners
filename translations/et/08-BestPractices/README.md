@@ -1,87 +1,89 @@
-# MCP arenduse parimad tavad
+# MCP arendamise parimad tavad
 
-[![MCP arenduse parimad tavad](../../../translated_images/et/09.d0f6d86c9d72134ccf5a8d8c8650a0557e519936661fc894cad72d73522227cb.png)](https://youtu.be/W56H9W7x-ao)
+[![MCP arendamise parimad tavad](../../../translated_images/et/09.d0f6d86c9d72134c.webp)](https://youtu.be/W56H9W7x-ao)
 
-_(Klõpsake ülaloleval pildil, et vaadata selle õppetunni videot)_
+_(Vajuta ülalolevale pildile, et vaadata selle õppetunni videot)_
 
 ## Ülevaade
 
-See õppetund keskendub MCP serverite ja funktsioonide arendamise, testimise ja juurutamise parimatele tavadele tootmiskeskkondades. Kuna MCP ökosüsteemid muutuvad keerukamaks ja olulisemaks, tagavad väljakujunenud mustrite järgimine töökindluse, hooldatavuse ja koostalitlusvõime. See õppetund koondab praktilisi teadmisi, mis on saadud MCP rakenduste reaalsest kasutamisest, et aidata teil luua vastupidavaid ja tõhusaid servereid koos tõhusate ressursside, käskude ja tööriistadega.
+See õppetund keskendub edasijõudnud parimatele tavadele MCP serverite ja funktsioonide arendamisel, testimisel ja juurutamisel tootmiskeskkondades. MCP ökosüsteemide kasvades keerukamaks ja olulisemaks tagab kehtestatud mustrite järgimine usaldusväärsuse, hooldatavuse ja ühilduvuse. See õppetund koondab praktilist tarkust, mis on saadud reaalse MCP rakendamise käigus, et juhendada sind tugevate ja tõhusate serverite loomisel koos tõhusate ressursside, promptide ja tööriistadega.
 
-## Õppe-eesmärgid
+## Õpieesmärgid
 
-Selle õppetunni lõpuks suudate:
+Selle õppetunni lõpuks saad:
 
-- Rakendada MCP serverite ja funktsioonide kujundamisel tööstuse parimaid tavasid
-- Luua MCP serverite jaoks põhjalikke testimisstrateegiaid
-- Kujundada tõhusaid ja taaskasutatavaid töövoo mustreid keerukate MCP rakenduste jaoks
-- Rakendada MCP serverites korrektset veakäsitlust, logimist ja jälgitavust
+- Rakendada tööstusharu parimaid tavasid MCP serverite ja funktsioonide disainis
+- Luua terviklikke testimisstrateegiaid MCP serveritele
+- Kujundada tõhusaid, taaskasutatavaid töövoo mustreid keerukate MCP rakenduste jaoks
+- Rakendada korrektset veahaldust, logimist ja jälgitavust MCP serverites
 - Optimeerida MCP rakendusi jõudluse, turvalisuse ja hooldatavuse jaoks
 
 ## MCP põhialused
 
-Enne konkreetsete rakendustavade juurde asumist on oluline mõista põhimõtteid, mis juhivad tõhusat MCP arendust:
+Enne spetsiifiliste rakendustavade juurde asumist on oluline mõista peamisi põhimõtteid, mis juhivad tõhusat MCP arendust:
 
-1. **Standardiseeritud suhtlus**: MCP kasutab JSON-RPC 2.0 protokolli, mis tagab ühtse formaadi päringute, vastuste ja veakäsitluse jaoks kõigis rakendustes.
+1. **Standardiseeritud suhtlus**: MCP kasutab baastasandina JSON-RPC 2.0, pakkudes ühetaolist vormingut päringute, vastuste ja veahalduste jaoks kõigis rakendustes.
 
-2. **Kasutajakeskne disain**: MCP rakendustes tuleb alati eelistada kasutaja nõusolekut, kontrolli ja läbipaistvust.
+2. **Kasutajakeskne disain**: Pööra alati esmatähtsat tähelepanu kasutaja nõusolekule, kontrollile ja läbipaistvusele MCP rakendustes.
 
-3. **Turvalisus ennekõike**: Rakendage tugevaid turvameetmeid, sealhulgas autentimist, autoriseerimist, valideerimist ja kiiruse piiranguid.
+3. **Turvalisus esikohal**: Rakenda tugevaid turvameetmeid, sealhulgas autentimist, autoriseerimist, valideerimist ja kiirusepiirangut.
 
-4. **Modulaarne arhitektuur**: Kujundage MCP serverid modulaarse lähenemisega, kus igal tööriistal ja ressursil on selge ja keskendunud eesmärk.
+4. **Moodulipõhine arhitektuur**: Kujunda oma MCP serverid moodulselt, kus iga tööriist ja allikas omab selget ja konkreetset eesmärki.
 
-5. **Seisundiga ühendused**: Kasutage MCP võimet säilitada seisund mitme päringu vahel, et tagada sidusamad ja kontekstiteadlikumad interaktsioonid.
+5. **Seisundipüsivad ühendused**: Kasuta MCP võimet säilitada seisundit mitme päringu vahel, võimaldades koherentsemat ja kontekstitundlikumat suhtlust.
 
 ## Ametlikud MCP parimad tavad
 
 Järgnevad parimad tavad on tuletatud ametlikust Model Context Protocol dokumentatsioonist:
 
-### Turvalisuse parimad tavad
+### Turbe parimad tavad
 
-1. **Kasutaja nõusolek ja kontroll**: Nõudke alati selget kasutaja nõusolekut enne andmete kasutamist või toimingute tegemist. Pakkuge selget kontrolli selle üle, milliseid andmeid jagatakse ja millised toimingud on lubatud.
+1. **Kasutaja nõusolek ja kontroll**: Nõua alati kasutaja selget nõusolekut enne andmetele juurdepääsu või toimingute sooritamist. Paku selget kontrolli, millist andmeid jagatakse ja millised tegevused on autoriseeritud.
 
-2. **Andmete privaatsus**: Avaldage kasutaja andmeid ainult selge nõusolekuga ja kaitske neid sobivate juurdepääsukontrollidega. Kaitske volitamata andmeedastuse eest.
+2. **Andmete privaatsus**: Avalikusta kasutaja andmeid ainult selge nõusoleku alusel ja kaitse neid sobivate ligipääsukontrollidega. Kaitse volitamata andmeedastuse eest.
 
-3. **Tööriistade turvalisus**: Nõudke selget kasutaja nõusolekut enne tööriista kasutamist. Tagage, et kasutajad mõistavad iga tööriista funktsionaalsust ja rakendage tugevaid turvapiiranguid.
+3. **Tööriista turvalisus**: Nõua kasutaja selget nõusolekut enne mis tahes tööriista kutsumist. Tagada, et kasutajad mõistavad iga tööriista funktsionaalsust ja kehtesta tugevad turvapiirid.
 
-4. **Tööriistade lubade kontroll**: Konfigureerige, milliseid tööriistu mudel võib seansi ajal kasutada, tagades, et ainult selgelt lubatud tööriistad on kättesaadavad.
+4. **Tööriistade õiguste kontroll**: Seadista, milliseid tööriistu mudel sessiooni ajal kasutama lubatakse, tagades, et ligipääs on ainult selgelt volitatud tööriistadele.
 
-5. **Autentimine**: Nõudke korrektset autentimist enne tööriistadele, ressurssidele või tundlikele toimingutele juurdepääsu andmist, kasutades API võtmeid, OAuth token'eid või muid turvalisi autentimismeetodeid.
+5. **Autentimine**: Nõua korrektset autentimist enne tööriistadele, ressurssidele või tundlikele toimingutele juurdepääsu andmist, kasutades API võtmeid, OAuth tokeneid või muid turvalisi autentimismeetodeid.
 
-6. **Parameetrite valideerimine**: Rakendage valideerimist kõigi tööriistakutsungite jaoks, et vältida vigase või pahatahtliku sisendi jõudmist tööriista rakendustesse.
+6. **Parameetrite valideerimine**: Kehtesta valideerimine kõigi tööriista kutsumiste puhul, et vältida vigaste või pahatahtlike sisendite jõudmist tööriistade rakendustesse.
 
-7. **Kiiruse piiramine**: Rakendage kiiruse piiranguid, et vältida kuritarvitamist ja tagada serveri ressursside õiglane kasutamine.
+7. **Kiirusepiirang**: Rakenda kiirusepiirang, et vältida väärkasutust ja tagada õiglane serveriressursside kasutus.
 
-### Rakenduse parimad tavad
+### Rakendamise parimad tavad
 
-1. **Võimekuse läbirääkimine**: Ühenduse loomise ajal vahetage teavet toetatud funktsioonide, protokolliversioonide, saadaolevate tööriistade ja ressursside kohta.
+1. **Võimekuse läbirääkimine**: Ühenduse loomisel vaheta infot toetatud funktsioonide, protokolli versioonide, saadaolevate tööriistade ja ressursside kohta.
 
-2. **Tööriistade disain**: Looge keskendunud tööriistad, mis teevad ühte asja hästi, mitte monoliitseid tööriistu, mis käsitlevad mitut muret.
+2. **Tööriista disain**: Loo fokusseeritud tööriistad, mis teevad ühe asja hästi, mitte monoliitsed tööriistad, mis hõlmavad mitut valdkonda.
 
-3. **Veakäsitlus**: Rakendage standardiseeritud veateateid ja koode, et aidata probleeme diagnoosida, tõrkeid sujuvalt käsitleda ja anda rakendatavat tagasisidet.
+3. **Veahaldus**: Rakenda standardiseeritud veateated ja -koodid, et aidata probleemide diagnoosimisel, rikete korral kenasti käituda ja pakkuda toiminguks sobivaid tagasisidet.
 
-4. **Logimine**: Konfigureerige struktureeritud logid protokolli interaktsioonide auditeerimiseks, silumiseks ja jälgimiseks.
+4. **Logimine**: Seadista struktureeritud logimised auditeerimiseks, veaparanduseks ja protokolli interaktsioonide jälgimiseks.
 
-5. **Edenemise jälgimine**: Pikaajaliste toimingute puhul edastage edenemise värskendusi, et võimaldada reageerivaid kasutajaliideseid.
+5. **Edenemise jälgimine**: Pikaajaliste operatsioonide puhul teavita edenemise uuendustest, et võimaldada reageerivaid kasutajaliideseid.
 
-6. **Päringute tühistamine**: Lubage klientidel tühistada päringud, mida enam ei vajata või mis võtavad liiga kaua aega.
+6. **Päringute tühistamine**: Luba klientidel tühistada pooleli olevaid päringuid, mida enam ei vajata või mis võtavad liiga kaua aega.
 
-## Täiendavad viited
+## Täiendavad allikad
 
-Kõige ajakohasema teabe MCP parimate tavade kohta leiate:
+Kõige uuema info jaoks MCP parimate tavade kohta vaata:
 
 - [MCP dokumentatsioon](https://modelcontextprotocol.io/)
-- [MCP spetsifikatsioon](https://spec.modelcontextprotocol.io/)
-- [GitHubi hoidla](https://github.com/modelcontextprotocol)
+- [MCP spetsifikatsioon (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
+- [GitHubi repositoorium](https://github.com/modelcontextprotocol)
 - [Turvalisuse parimad tavad](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - turvariskid ja leevennused
+- [MCP turvasümpoosiumi töötuba (Sherpa)](https://azure-samples.github.io/sherpa/) - praktiline turbakoolitus
 
-## Praktilised rakenduse näited
+## Praktilised rakendusnäited
 
 ### Tööriistade disaini parimad tavad
 
-#### 1. Ühe vastutuse põhimõte
+#### 1. Ühe vastutuse printsiip
 
-Iga MCP tööriist peaks olema selge ja keskendunud eesmärgiga. Selle asemel, et luua monoliitseid tööriistu, mis püüavad käsitleda mitut muret, arendage spetsialiseeritud tööriistu, mis paistavad silma konkreetsete ülesannete täitmisel.
+Igal MCP tööriistal peaks olema selge, spetsiifiline eesmärk. Selle asemel, et luua monoliitseid tööriistu, mis püüavad tegeleda mitme teemaga, arenda spetsialiseeritud tööriistu, mis on oma ülesannetes silmapaistvad.
 
 ```csharp
 // A focused tool that does one thing well
@@ -141,12 +143,12 @@ public class WeatherForecastTool : ITool
 }
 ```
 
-#### 2. Järjekindel veakäsitlus
+#### 2. Järjepidev veahaldus
 
-Rakendage tugevat veakäsitlust informatiivsete veateadete ja sobivate taastemehhanismidega.
+Rakenda tugev veahaldus informatiivsete veateadete ja asjakohaste taastemehhanismidega.
 
 ```python
-# Python example with comprehensive error handling
+# Pythoni näide põhjaliku veahaldusega
 class DataQueryTool:
     def get_name(self):
         return "dataQuery"
@@ -156,19 +158,19 @@ class DataQueryTool:
     
     async def execute(self, parameters):
         try:
-            # Parameter validation
+            # Parameetrite valideerimine
             if "query" not in parameters:
                 raise ToolParameterError("Missing required parameter: query")
                 
             query = parameters["query"]
             
-            # Security validation
+            # Turvalisuse valideerimine
             if self._contains_unsafe_sql(query):
                 raise ToolSecurityError("Query contains potentially unsafe SQL")
             
             try:
-                # Database operation with timeout
-                async with timeout(10):  # 10 second timeout
+                # Andmebaasi toiming ajapiiranguga
+                async with timeout(10):  # 10-sekundiline ajapiirang
                     result = await self._database.execute_query(query)
                     
                 return ToolResponse(
@@ -177,37 +179,37 @@ class DataQueryTool:
             except asyncio.TimeoutError:
                 raise ToolExecutionError("Database query timed out after 10 seconds")
             except DatabaseConnectionError as e:
-                # Connection errors might be transient
+                # Ühendusvead võivad olla ajutised
                 self._log_error("Database connection error", e)
                 raise ToolExecutionError(f"Database connection error: {str(e)}")
             except DatabaseQueryError as e:
-                # Query errors are likely client errors
+                # Päringuvead on tõenäoliselt kliendipoolsed vead
                 self._log_error("Database query error", e)
                 raise ToolExecutionError(f"Invalid query: {str(e)}")
                 
         except ToolError:
-            # Let tool-specific errors pass through
+            # Luba tööriistaspetsiifilistel vigadel edasi minna
             raise
         except Exception as e:
-            # Catch-all for unexpected errors
+            # Universaalne püüdmine ootamatute vigade jaoks
             self._log_error("Unexpected error in DataQueryTool", e)
             raise ToolExecutionError(f"An unexpected error occurred: {str(e)}")
     
     def _contains_unsafe_sql(self, query):
-        # Implementation of SQL injection detection
+        # SQL-i süstimise tuvastamise rakendus
         pass
         
     def _log_error(self, message, error):
-        # Implementation of error logging
+        # Vigade logimise rakendus
         pass
 ```
 
 #### 3. Parameetrite valideerimine
 
-Valideerige alati parameetreid põhjalikult, et vältida vigase või pahatahtliku sisendi jõudmist.
+Valideeri parameetrid alati põhjalikult, et vältida vigaste või pahatahtlike sisendite sattumist.
 
 ```javascript
-// JavaScript/TypeScript example with detailed parameter validation
+// JavaScript/TypeScript näide koos üksikasjaliku parameetrite valideerimisega
 class FileOperationTool {
   getName() {
     return "fileOperation";
@@ -242,7 +244,7 @@ class FileOperationTool {
   }
   
   async execute(parameters) {
-    // 1. Validate parameter presence
+    // 1. Kontrolli parameetri olemasolu
     if (!parameters.operation) {
       throw new ToolError("Missing required parameter: operation");
     }
@@ -251,7 +253,7 @@ class FileOperationTool {
       throw new ToolError("Missing required parameter: path");
     }
     
-    // 2. Validate parameter types
+    // 2. Kontrolli parameetri tüüpe
     if (typeof parameters.operation !== "string") {
       throw new ToolError("Parameter 'operation' must be a string");
     }
@@ -260,28 +262,28 @@ class FileOperationTool {
       throw new ToolError("Parameter 'path' must be a string");
     }
     
-    // 3. Validate parameter values
+    // 3. Kontrolli parameetri väärtusi
     const validOperations = ["read", "write", "delete"];
     if (!validOperations.includes(parameters.operation)) {
       throw new ToolError(`Invalid operation. Must be one of: ${validOperations.join(", ")}`);
     }
     
-    // 4. Validate content presence for write operation
+    // 4. Kontrolli sisu olemasolu kirjutamise operatsiooni jaoks
     if (parameters.operation === "write" && !parameters.content) {
       throw new ToolError("Content parameter is required for write operation");
     }
     
-    // 5. Path safety validation
+    // 5. Tee ohutuse valideerimine
     if (!this.isPathWithinAllowedDirectories(parameters.path)) {
       throw new ToolError("Access denied: path is outside of allowed directories");
     }
     
-    // Implementation based on validated parameters
+    // Rakendus valideeritud parameetrite põhjal
     // ...
   }
   
   isPathWithinAllowedDirectories(path) {
-    // Implementation of path safety check
+    // Tee ohutuse kontrolli rakendus
     // ...
   }
 }
@@ -292,13 +294,13 @@ class FileOperationTool {
 #### 1. Autentimine ja autoriseerimine
 
 ```java
-// Java example with authentication and authorization
+// Java näide autentimise ja autoriseerimisega
 public class SecureDataAccessTool implements Tool {
     private final AuthenticationService authService;
     private final AuthorizationService authzService;
     private final DataService dataService;
     
-    // Dependency injection
+    // Sõltuvuste süstimine
     public SecureDataAccessTool(
             AuthenticationService authService,
             AuthorizationService authzService,
@@ -315,10 +317,10 @@ public class SecureDataAccessTool implements Tool {
     
     @Override
     public ToolResponse execute(ToolRequest request) {
-        // 1. Extract authentication context
+        // 1. Autentimiskonteksti eraldamine
         String authToken = request.getContext().getAuthToken();
         
-        // 2. Authenticate user
+        // 2. Kasutaja autentimine
         UserIdentity user;
         try {
             user = authService.validateToken(authToken);
@@ -326,7 +328,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Authentication failed: " + e.getMessage());
         }
         
-        // 3. Check authorization for the specific operation
+        // 3. Kontrolli autoriseerimist konkreetse toimingu jaoks
         String dataId = request.getParameters().get("dataId").getAsString();
         String operation = request.getParameters().get("operation").getAsString();
         
@@ -335,7 +337,7 @@ public class SecureDataAccessTool implements Tool {
             return ToolResponse.error("Access denied: Insufficient permissions for this operation");
         }
         
-        // 4. Proceed with authorized operation
+        // 4. Jätka autoriseeritud toiminguga
         try {
             switch (operation) {
                 case "read":
@@ -355,7 +357,7 @@ public class SecureDataAccessTool implements Tool {
 }
 ```
 
-#### 2. Kiiruse piiramine
+#### 2. Kiirusepiirang
 
 ```csharp
 // C# rate limiting implementation
@@ -433,28 +435,28 @@ public class RateLimitingMiddleware
 
 ## Testimise parimad tavad
 
-### 1. MCP tööriistade ühiktestimine
+### 1. MCP tööriistade üksustestimine
 
-Testige alati oma tööriistu eraldi, simuleerides väliseid sõltuvusi:
+Testi alati oma tööriistu eraldi, kasutades väliste sõltuvuste asendamist (mockimist):
 
 ```typescript
-// TypeScript example of a tool unit test
+// TypeScript näide tööriista üksuse testist
 describe('WeatherForecastTool', () => {
   let tool: WeatherForecastTool;
   let mockWeatherService: jest.Mocked<IWeatherService>;
   
   beforeEach(() => {
-    // Create a mock weather service
+    // Loo tehistingimustele tuginev ilmateenus
     mockWeatherService = {
       getForecasts: jest.fn()
     } as any;
     
-    // Create the tool with the mock dependency
+    // Loo tööriist tehistingimise sõltuvusega
     tool = new WeatherForecastTool(mockWeatherService);
   });
   
   it('should return weather forecast for a location', async () => {
-    // Arrange
+    // Valmista ette
     const mockForecast = {
       location: 'Seattle',
       forecasts: [
@@ -466,23 +468,23 @@ describe('WeatherForecastTool', () => {
     
     mockWeatherService.getForecasts.mockResolvedValue(mockForecast);
     
-    // Act
+    // Tegutse
     const response = await tool.execute({
       location: 'Seattle',
       days: 3
     });
     
-    // Assert
+    // Kinnita
     expect(mockWeatherService.getForecasts).toHaveBeenCalledWith('Seattle', 3);
     expect(response.content[0].text).toContain('Seattle');
     expect(response.content[0].text).toContain('Sunny');
   });
   
   it('should handle errors from the weather service', async () => {
-    // Arrange
+    // Valmista ette
     mockWeatherService.getForecasts.mockRejectedValue(new Error('Service unavailable'));
     
-    // Act & Assert
+    // Tegutse ja kinnita
     await expect(tool.execute({
       location: 'Seattle',
       days: 3
@@ -491,48 +493,48 @@ describe('WeatherForecastTool', () => {
 });
 ```
 
-### 2. Integreerimistestimine
+### 2. Integratsioonitestimine
 
-Testige kogu voogu kliendi päringutest serveri vastusteni:
+Testi kogu voogu klientide päringutest serveri vastusteni:
 
 ```python
-# Python integration test example
+# Pythoni integratsioonitesti näide
 @pytest.mark.asyncio
 async def test_mcp_server_integration():
-    # Start a test server
+    # Alusta testserverit
     server = McpServer()
     server.register_tool(WeatherForecastTool(MockWeatherService()))
     await server.start(port=5000)
     
     try:
-        # Create a client
+        # Loo klient
         client = McpClient("http://localhost:5000")
         
-        # Test tool discovery
+        # Testi tööriista avastamist
         tools = await client.discover_tools()
         assert "weatherForecast" in [t.name for t in tools]
         
-        # Test tool execution
+        # Testi tööriista käivitamist
         response = await client.execute_tool("weatherForecast", {
             "location": "Seattle",
             "days": 3
         })
         
-        # Verify response
+        # Kontrolli vastust
         assert response.status_code == 200
         assert "Seattle" in response.content[0].text
         assert len(json.loads(response.content[0].text)["forecasts"]) == 3
         
     finally:
-        # Clean up
+        # Tee koristustööd
         await server.stop()
 ```
 
 ## Jõudluse optimeerimine
 
-### 1. Vahemälu strateegiad
+### 1. Vahemälustrateegiad
 
-Rakendage sobivat vahemälu, et vähendada latentsust ja ressursikasutust:
+Rakenda sobivat vahemällu salvestamist, et vähendada latentsust ja ressursside kasutust:
 
 ```csharp
 // C# example with caching
@@ -603,16 +605,16 @@ public class CachedWeatherTool : ITool
 
 #### 2. Sõltuvuste süstimine ja testitavus
 
-Kujundage tööriistad nii, et need saaksid oma sõltuvused konstruktorisüstimise kaudu, muutes need testitavaks ja konfigureeritavaks:
+Kujunda tööriistad nii, et nad saaksid sõltuvusi konstruktorite kaudu, mis teeb need testitavaks ja seadistatavaks:
 
 ```java
-// Java example with dependency injection
+// Java näide sõltuvuste süstimisega
 public class CurrencyConversionTool implements Tool {
     private final ExchangeRateService exchangeService;
     private final CacheService cacheService;
     private final Logger logger;
     
-    // Dependencies injected through constructor
+    // Sõltuvused süstitud konstruktoris
     public CurrencyConversionTool(
             ExchangeRateService exchangeService,
             CacheService cacheService,
@@ -622,51 +624,51 @@ public class CurrencyConversionTool implements Tool {
         this.logger = logger;
     }
     
-    // Tool implementation
+    // Tööriista teostus
     // ...
 }
 ```
 
-#### 3. Kombineeritavad tööriistad
+#### 3. Komponeeritavad tööriistad
 
-Kujundage tööriistad, mida saab kombineerida keerukamate töövoogude loomiseks:
+Kujunda tööriistad nii, et neid saaks omavahel kombineerida keerukamate töövoogude loomiseks:
 
 ```python
-# Python example showing composable tools
+# Pythoni näide koosseisvate tööriistade näitamiseks
 class DataFetchTool(Tool):
     def get_name(self):
         return "dataFetch"
     
-    # Implementation...
+    # Rakendus...
 
 class DataAnalysisTool(Tool):
     def get_name(self):
         return "dataAnalysis"
     
-    # This tool can use results from the dataFetch tool
+    # See tööriist saab kasutada andmete kogumise tööriista tulemusi
     async def execute_async(self, request):
-        # Implementation...
+        # Rakendus...
         pass
 
 class DataVisualizationTool(Tool):
     def get_name(self):
         return "dataVisualize"
     
-    # This tool can use results from the dataAnalysis tool
+    # See tööriist saab kasutada andmeanalüüsi tööriista tulemusi
     async def execute_async(self, request):
-        # Implementation...
+        # Rakendus...
         pass
 
-# These tools can be used independently or as part of a workflow
+# Neid tööriistu saab kasutada iseseisvalt või töövoo osana
 ```
 
 ### Skeemi disaini parimad tavad
 
-Skeem on leping mudeli ja teie tööriista vahel. Hästi kujundatud skeemid parandavad tööriista kasutatavust.
+Skeem on leping mudeli ja sinu tööriista vahel. Hästi disainitud skeemid tagavad parema tööriista kasutatavuse.
 
-#### 1. Selged parameetrite kirjeldused
+#### 1. Selged parameetri kirjeldused
 
-Lisage alati iga parameetri kohta kirjeldav teave:
+Lisage alati kirjeldav info iga parameetri kohta:
 
 ```csharp
 public object GetSchema()
@@ -703,9 +705,9 @@ public object GetSchema()
 }
 ```
 
-#### 2. Valideerimispiirangud
+#### 2. Valideerimiskontraintid
 
-Lisage valideerimispiirangud, et vältida vigaseid sisendeid:
+Sisaldage valideerimise piire, et vältida kehtetuid sisendeid:
 
 ```java
 Map<String, Object> getSchema() {
@@ -714,20 +716,20 @@ Map<String, Object> getSchema() {
     
     Map<String, Object> properties = new HashMap<>();
     
-    // Email property with format validation
+    // E-posti atribuut formaadi valideerimisega
     Map<String, Object> email = new HashMap<>();
     email.put("type", "string");
     email.put("format", "email");
     email.put("description", "User email address");
     
-    // Age property with numeric constraints
+    // Vanuse atribuut arvuliste piirangutega
     Map<String, Object> age = new HashMap<>();
     age.put("type", "integer");
     age.put("minimum", 13);
     age.put("maximum", 120);
     age.put("description", "User age in years");
     
-    // Enumerated property
+    // Loendatud atribuut
     Map<String, Object> subscription = new HashMap<>();
     subscription.put("type", "string");
     subscription.put("enum", Arrays.asList("free", "basic", "premium"));
@@ -745,17 +747,17 @@ Map<String, Object> getSchema() {
 }
 ```
 
-#### 3. Järjekindlad tagastusstruktuurid
+#### 3. Järjepidevad vastustruktuurid
 
-Hoidke vastusestruktuurides järjekindlust, et mudelitel oleks lihtsam tulemusi tõlgendada:
+Hoolitsege oma vastuste struktuuride järjepidevuse eest, et mudelil oleks lihtsam tulemusi tõlgendada:
 
 ```python
 async def execute_async(self, request):
     try:
-        # Process request
+        # Töötle päringut
         results = await self._search_database(request.parameters["query"])
         
-        # Always return a consistent structure
+        # Alati tagasta järjepidev struktuur
         return ToolResponse(
             result={
                 "matches": [self._format_item(item) for item in results],
@@ -786,13 +788,13 @@ def _format_item(self, item):
     }
 ```
 
-### Veakäsitlus
+### Veahaldus
 
-Tugev veakäsitlus on MCP tööriistade töökindluse säilitamiseks hädavajalik.
+Tugev veahaldus on MCP tööriistade usaldusväärsuse säilitamiseks ülioluline.
 
-#### 1. Sujuv veakäsitlus
+#### 1. Graatsiline veahaldus
 
-Käsitlege vigu sobival tasemel ja pakkuge informatiivseid teateid:
+Käsitle vead sobivatel tasanditel ja paku informatiivseid sõnumeid:
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -834,15 +836,15 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 }
 ```
 
-#### 2. Struktureeritud veavastused
+#### 2. Struktureeritud vea vastused
 
-Tagastage võimalusel struktureeritud veateave:
+Kui võimalik, tagasta struktureeritud veaandmed:
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
     try {
-        // Implementation
+        // Rakendamine
     } catch (Exception ex) {
         Map<String, Object> errorResult = new HashMap<>();
         
@@ -860,45 +862,45 @@ public ToolResponse execute(ToolRequest request) {
                 .build();
         }
         
-        // Re-throw other exceptions as ToolExecutionException
+        // Viska teised erandid uuesti kui ToolExecutionException
         throw new ToolExecutionException("Tool execution failed: " + ex.getMessage(), ex);
     }
 }
 ```
 
-#### 3. Kordusloogika
+#### 3. Taaste loogika
 
-Rakendage sobivat kordusloogikat ajutiste tõrgete korral:
+Rakenda asjakohast taaste loogikat ajutisteks tõrgeteks:
 
 ```python
 async def execute_async(self, request):
     max_retries = 3
     retry_count = 0
-    base_delay = 1  # seconds
+    base_delay = 1  # sekundid
     
     while retry_count < max_retries:
         try:
-            # Call external API
+            # Kutsu välist API-d
             return await self._call_api(request.parameters)
         except TransientError as e:
             retry_count += 1
             if retry_count >= max_retries:
                 raise ToolExecutionException(f"Operation failed after {max_retries} attempts: {str(e)}")
                 
-            # Exponential backoff
+            # Eksponentsiaalne tagasilükkamine
             delay = base_delay * (2 ** (retry_count - 1))
             logging.warning(f"Transient error, retrying in {delay}s: {str(e)}")
             await asyncio.sleep(delay)
         except Exception as e:
-            # Non-transient error, don't retry
+            # Mitte-ajutine viga, ära proovi uuesti
             raise ToolExecutionException(f"Operation failed: {str(e)}")
 ```
 
 ### Jõudluse optimeerimine
 
-#### 1. Vahemälu
+#### 1. Vahemällu salvestamine
 
-Rakendage vahemälu kulukate toimingute jaoks:
+Rakenda vahemällu salvestamist ressursimahukate operatsioonide jaoks:
 
 ```csharp
 public class CachedDataTool : IMcpTool
@@ -946,7 +948,7 @@ public class CachedDataTool : IMcpTool
 
 #### 2. Asünkroonne töötlemine
 
-Kasutage I/O-suunatud toimingute jaoks asünkroonseid programmeerimismustreid:
+Kasuta I/O-sid bound-operatsioonide jaoks asünkroonseid programmeerimismustreid:
 
 ```java
 public class AsyncDocumentProcessingTool implements Tool {
@@ -957,23 +959,23 @@ public class AsyncDocumentProcessingTool implements Tool {
     public ToolResponse execute(ToolRequest request) {
         String documentId = request.getParameters().get("documentId").asText();
         
-        // For long-running operations, return a processing ID immediately
+        // Pikaajaliste operatsioonide puhul tagastage kohe töötlemise ID
         String processId = UUID.randomUUID().toString();
         
-        // Start async processing
+        // Alustage asünkroonset töötlemist
         CompletableFuture.runAsync(() -> {
             try {
-                // Perform long-running operation
+                // Tehke pikaajaline operatsioon
                 documentService.processDocument(documentId);
                 
-                // Update status (would typically be stored in a database)
+                // Uuendage olekut (tavaliselt salvestatakse see andmebaasis)
                 processStatusRepository.updateStatus(processId, "completed");
             } catch (Exception ex) {
                 processStatusRepository.updateStatus(processId, "failed", ex.getMessage());
             }
         }, executorService);
         
-        // Return immediate response with process ID
+        // Tagastage viivitamatu vastus koos protsessi ID-ga
         Map<String, Object> result = new HashMap<>();
         result.put("processId", processId);
         result.put("status", "processing");
@@ -982,7 +984,7 @@ public class AsyncDocumentProcessingTool implements Tool {
         return new ToolResponse.Builder().setResult(result).build();
     }
     
-    // Companion status check tool
+    // Abiline oleku kontrollimise tööriist
     public class ProcessStatusTool implements Tool {
         @Override
         public ToolResponse execute(ToolRequest request) {
@@ -997,33 +999,33 @@ public class AsyncDocumentProcessingTool implements Tool {
 
 #### 3. Ressursside piiramine
 
-Rakendage ressursside piiramine, et vältida ülekoormust:
+Rakenda ressursipiiranguid, et vältida ülekoormust:
 
 ```python
 class ThrottledApiTool(Tool):
     def __init__(self):
         self.rate_limiter = TokenBucketRateLimiter(
-            tokens_per_second=5,  # Allow 5 requests per second
-            bucket_size=10        # Allow bursts up to 10 requests
+            tokens_per_second=5,  # Luba 5 päringut sekundis
+            bucket_size=10        # Luba pursete kuni 10 päringut
         )
     
     async def execute_async(self, request):
-        # Check if we can proceed or need to wait
+        # Kontrolli, kas saame jätkata või peame ootama
         delay = self.rate_limiter.get_delay_time()
         
         if delay > 0:
-            if delay > 2.0:  # If wait is too long
+            if delay > 2.0:  # Kui ooteaeg on liiga pikk
                 raise ToolExecutionException(
                     f"Rate limit exceeded. Please try again in {delay:.1f} seconds."
                 )
             else:
-                # Wait for the appropriate delay time
+                # Oota sobiva viivituse aja
                 await asyncio.sleep(delay)
         
-        # Consume a token and proceed with the request
+        # Tarbi üks märk ja jätka päringuga
         self.rate_limiter.consume()
         
-        # Call API
+        # Kõneta API-d
         result = await self._call_api(request.parameters)
         return ToolResponse(result=result)
 
@@ -1041,7 +1043,7 @@ class TokenBucketRateLimiter:
             if self.tokens >= 1:
                 return 0
             
-            # Calculate time until next token available
+            # Arvuta aeg järgmise märgi saadavuseni
             return (1 - self.tokens) / self.tokens_per_second
     
     async def consume(self):
@@ -1053,7 +1055,7 @@ class TokenBucketRateLimiter:
         now = time.time()
         elapsed = now - self.last_refill
         
-        # Add new tokens based on elapsed time
+        # Lisa uusi märke põhinedes möödunud ajal
         new_tokens = elapsed * self.tokens_per_second
         self.tokens = min(self.bucket_size, self.tokens + new_tokens)
         self.last_refill = now
@@ -1063,7 +1065,7 @@ class TokenBucketRateLimiter:
 
 #### 1. Sisendi valideerimine
 
-Valideerige alati sisendparameetreid põhjalikult:
+Valideeri alati sisendparameetrid põhjalikult:
 
 ```csharp
 public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
@@ -1106,33 +1108,33 @@ public async Task<ToolResponse> ExecuteAsync(ToolRequest request)
 
 #### 2. Autoriseerimise kontrollid
 
-Rakendage korrektseid autoriseerimise kontrolle:
+Rakenda korrektsed autoriseerimise kontrollid:
 
 ```java
 @Override
 public ToolResponse execute(ToolRequest request) {
-    // Get user context from request
+    // Hangi kasutaja kontekst päringust
     UserContext user = request.getContext().getUserContext();
     
-    // Check if user has required permissions
+    // Kontrolli, kas kasutajal on vajalikud õigused
     if (!authorizationService.hasPermission(user, "documents:read")) {
         throw new ToolExecutionException("User does not have permission to access documents");
     }
     
-    // For specific resources, check access to that resource
+    // Spetsiifiliste ressursside puhul kontrolli juurdepääsu sellele ressursile
     String documentId = request.getParameters().get("documentId").asText();
     if (!documentService.canUserAccess(user.getId(), documentId)) {
         throw new ToolExecutionException("Access denied to the requested document");
     }
     
-    // Proceed with tool execution
+    // Jätka tööriista täitmisega
     // ...
 }
 ```
 
-#### 3. Tundlike andmete käsitsemine
+#### 3. Tundlike andmete käsitlemine
 
-Käsitlege tundlikke andmeid hoolikalt:
+Käsitle tundlikke andmeid hoolikalt:
 
 ```python
 class SecureDataTool(Tool):
@@ -1150,31 +1152,31 @@ class SecureDataTool(Tool):
         user_id = request.parameters["userId"]
         include_sensitive = request.parameters.get("includeSensitiveData", False)
         
-        # Get user data
+        # Hangi kasutajaandmed
         user_data = await self.user_service.get_user_data(user_id)
         
-        # Filter sensitive fields unless explicitly requested AND authorized
+        # Filtreeri tundlikud väljad, välja arvatud juhul, kui need on selgesõnaliselt nõutud JA volitatud
         if not include_sensitive or not self._is_authorized_for_sensitive_data(request):
             user_data = self._redact_sensitive_fields(user_data)
         
         return ToolResponse(result=user_data)
     
     def _is_authorized_for_sensitive_data(self, request):
-        # Check authorization level in request context
+        # Kontrolli volituste taset päringu kontekstis
         auth_level = request.context.get("authorizationLevel")
         return auth_level == "admin"
     
     def _redact_sensitive_fields(self, user_data):
-        # Create a copy to avoid modifying the original
+        # Loo koopia, et vältida algandmete muutmist
         redacted = user_data.copy()
         
-        # Redact specific sensitive fields
+        # Punastada konkreetsed tundlikud väljad
         sensitive_fields = ["ssn", "creditCardNumber", "password"]
         for field in sensitive_fields:
             if field in redacted:
                 redacted[field] = "REDACTED"
         
-        # Redact nested sensitive data
+        # Punastada pesastatud tundlikud andmed
         if "financialInfo" in redacted:
             redacted["financialInfo"] = {"available": True, "accessRestricted": True}
         
@@ -1183,13 +1185,13 @@ class SecureDataTool(Tool):
 
 ## MCP tööriistade testimise parimad tavad
 
-Põhjalik testimine tagab, et MCP tööriistad töötavad korrektselt, käsitlevad erandjuhtumeid ja integreeruvad korralikult ülejäänud süsteemiga.
+Terviklik testimine tagab, et MCP tööriistad töötavad õigesti, käsitlevad äärejuhtumeid ja integreeruvad korrektselt süsteemi ülejäänud osaga.
 
-### Ühiktestimine
+### Üksustestimine
 
-#### 1. Testige iga tööriista eraldi
+#### 1. Testi iga tööriista eraldi
 
-Looge keskendunud testid iga tööriista funktsionaalsuse jaoks:
+Loo sihitud testid iga tööriista funktsionaalsuse kohta:
 
 ```csharp
 [Fact]
@@ -1251,25 +1253,25 @@ public async Task WeatherTool_InvalidLocation_ThrowsToolExecutionException()
 
 #### 2. Skeemi valideerimise testimine
 
-Testige, et skeemid oleksid kehtivad ja korralikult jõustaksid piiranguid:
+Testi, et skeemid on kehtivad ja nõuetekohaselt piiranguid rakendavad:
 
 ```java
 @Test
 public void testSchemaValidation() {
-    // Create tool instance
+    // Loo tööriista eksemplar
     SearchTool searchTool = new SearchTool();
     
-    // Get schema
+    // Hangi skeem
     Object schema = searchTool.getSchema();
     
-    // Convert schema to JSON for validation
+    // Muuda skeem JSON-iks valideerimiseks
     String schemaJson = objectMapper.writeValueAsString(schema);
     
-    // Validate schema is valid JSONSchema
+    // Kontrolli, kas skeem on kehtiv JSONSchema
     JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
     JsonSchema jsonSchema = factory.getJsonSchema(schemaJson);
     
-    // Test valid parameters
+    // Testi kehtivaid parameetreid
     JsonNode validParams = objectMapper.createObjectNode()
         .put("query", "test query")
         .put("limit", 5);
@@ -1277,14 +1279,14 @@ public void testSchemaValidation() {
     ProcessingReport validReport = jsonSchema.validate(validParams);
     assertTrue(validReport.isSuccess());
     
-    // Test missing required parameter
+    // Testi puuduvat nõutud parameetrit
     JsonNode missingRequired = objectMapper.createObjectNode()
         .put("limit", 5);
         
     ProcessingReport missingReport = jsonSchema.validate(missingRequired);
     assertFalse(missingReport.isSuccess());
     
-    // Test invalid parameter type
+    // Testi sobimatut parameetri tüüpi
     JsonNode invalidType = objectMapper.createObjectNode()
         .put("query", "test")
         .put("limit", "not-a-number");
@@ -1294,21 +1296,21 @@ public void testSchemaValidation() {
 }
 ```
 
-#### 3. Veakäsitluse testid
+#### 3. Veahaldustestid
 
-Looge spetsiifilised testid veatingimuste jaoks:
+Loo spetsiifilised testid veaolukordade jaoks:
 
 ```python
 @pytest.mark.asyncio
 async def test_api_tool_handles_timeout():
-    # Arrange
-    tool = ApiTool(timeout=0.1)  # Very short timeout
+    # Paiguta
+    tool = ApiTool(timeout=0.1)  # Väga lühike ajapiirang
     
-    # Mock a request that will time out
+    # Vale päring, mis aegub
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
-            callback=lambda *args, **kwargs: asyncio.sleep(0.5)  # Longer than timeout
+            callback=lambda *args, **kwargs: asyncio.sleep(0.5)  # Pikem kui ajapiirang
         )
         
         request = ToolRequest(
@@ -1316,19 +1318,19 @@ async def test_api_tool_handles_timeout():
             parameters={"url": "https://api.example.com/data"}
         )
         
-        # Act & Assert
+        # Tegutse ja kinnita
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception message
+        # Kontrolli erandi sõnumit
         assert "timed out" in str(exc_info.value).lower()
 
 @pytest.mark.asyncio
 async def test_api_tool_handles_rate_limiting():
-    # Arrange
+    # Paiguta
     tool = ApiTool()
     
-    # Mock a rate-limited response
+    # Võltsita piiratud kiirusega vastus
     with aioresponses() as mocked:
         mocked.get(
             "https://api.example.com/data",
@@ -1342,21 +1344,21 @@ async def test_api_tool_handles_rate_limiting():
             parameters={"url": "https://api.example.com/data"}
         )
         
-        # Act & Assert
+        # Tegutse ja kinnita
         with pytest.raises(ToolExecutionException) as exc_info:
             await tool.execute_async(request)
         
-        # Verify exception contains rate limit information
+        # Kontrolli, et erand sisaldab kiirusepiirangu infot
         error_msg = str(exc_info.value).lower()
         assert "rate limit" in error_msg
         assert "try again" in error_msg
 ```
 
-### Integreerimistestimine
+### Integratsioonitestimine
 
-#### 1. Tööriistade ahelate testimine
+#### 1. Tööriistade ahela testimine
 
-Testige tööriistu, mis töötavad koos eeldatavates kombinatsioonides:
+Testi tööriistu koos eeldatud kombinatsioonides:
 
 ```csharp
 [Fact]
@@ -1397,7 +1399,7 @@ public async Task DataProcessingWorkflow_CompletesSuccessfully()
 
 #### 2. MCP serveri testimine
 
-Testige MCP serverit koos täieliku tööriistade registreerimise ja täitmisega:
+Testi MCP serverit koos täieliku tööriistade registreerimise ja täitmisega:
 
 ```java
 @SpringBootTest
@@ -1412,7 +1414,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolDiscovery() throws Exception {
-        // Test the discovery endpoint
+        // Testi avastamise lõpp-punkti
         mockMvc.perform(get("/mcp/tools"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.tools").isArray())
@@ -1423,7 +1425,7 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolExecution() throws Exception {
-        // Create tool request
+        // Loo tööriista päring
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
@@ -1433,7 +1435,7 @@ public class McpServerIntegrationTest {
         parameters.put("b", 7);
         request.put("parameters", parameters);
         
-        // Send request and verify response
+        // Saada päring ja kontrolli vastust
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1443,17 +1445,17 @@ public class McpServerIntegrationTest {
     
     @Test
     public void testToolValidation() throws Exception {
-        // Create invalid tool request
+        // Loo kehtetu tööriista päring
         Map<String, Object> request = new HashMap<>();
         request.put("toolName", "calculator");
         
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("operation", "divide");
         parameters.put("a", 10);
-        // Missing parameter "b"
+        // Puudu parameeter "b"
         request.put("parameters", parameters);
         
-        // Send request and verify error response
+        // Saada päring ja kontrolli veateadet
         mockMvc.perform(post("/mcp/execute")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(request)))
@@ -1463,17 +1465,17 @@ public class McpServerIntegrationTest {
 }
 ```
 
-#### 3. Lõpuni testimine
+#### 3. Algusest lõpuni testimine
 
-Testige täielikke töövooge mudeli käsklusest tööriista täitmiseni:
+Testi täielikke töövooge mudeli promptist tööriista täitmiseni:
 
 ```python
 @pytest.mark.asyncio
 async def test_model_interaction_with_tool():
-    # Arrange - Set up MCP client and mock model
+    # Korralda - Sea paika MCP klient ja imitatsioonmudel
     mcp_client = McpClient(server_url="http://localhost:5000")
     
-    # Mock model responses
+    # Imitatsioonmudeli vastused
     mock_model = MockLanguageModel([
         MockResponse(
             "What's the weather in Seattle?",
@@ -1488,7 +1490,7 @@ async def test_model_interaction_with_tool():
         )
     ])
     
-    # Mock weather tool response
+    # Imitatsioon ilmavahendi vastus
     with aioresponses() as mocked:
         mocked.post(
             "http://localhost:5000/mcp/execute",
@@ -1504,14 +1506,14 @@ async def test_model_interaction_with_tool():
             }
         )
         
-        # Act
+        # Tegutse
         response = await mcp_client.send_prompt(
             "What's the weather in Seattle?",
             model=mock_model,
             allowed_tools=["weatherForecast"]
         )
         
-        # Assert
+        # Kinnita
         assert "Seattle" in response.generated_text
         assert "65" in response.generated_text
         assert "Sunny" in response.generated_text
@@ -1520,11 +1522,11 @@ async def test_model_interaction_with_tool():
         assert response.tool_calls[0].tool_name == "weatherForecast"
 ```
 
-### Jõudluse testimine
+### Jõudlustestimine
 
 #### 1. Koormustestimine
 
-Testige, kui palju samaaegseid päringuid teie MCP server suudab käsitleda:
+Testi, mitu samaaegset päringut su MCP server suudab töödelda:
 
 ```csharp
 [Fact]
@@ -1559,7 +1561,7 @@ public async Task McpServer_HandlesHighConcurrency()
 
 #### 2. Stressitestimine
 
-Testige süsteemi äärmusliku koormuse all:
+Testi süsteemi ekstreemsete koormuste all:
 
 ```java
 @Test
@@ -1568,13 +1570,13 @@ public void testServerUnderStress() {
     int rampUpTimeSeconds = 60;
     int testDurationSeconds = 300;
     
-    // Set up JMeter for stress testing
+    // Seadista JMeter koormustestimiseks
     StandardJMeterEngine jmeter = new StandardJMeterEngine();
     
-    // Configure JMeter test plan
+    // Konfigureeri JMeter testplaan
     HashTree testPlanTree = new HashTree();
     
-    // Create test plan, thread group, samplers, etc.
+    // Loo testplaan, niidugrupp, proovijad jne
     TestPlan testPlan = new TestPlan("MCP Server Stress Test");
     testPlanTree.add(testPlan);
     
@@ -1586,7 +1588,7 @@ public void testServerUnderStress() {
     
     testPlanTree.add(threadGroup);
     
-    // Add HTTP sampler for tool execution
+    // Lisa HTTP proovija tööriista käivitamiseks
     HTTPSampler toolExecutionSampler = new HTTPSampler();
     toolExecutionSampler.setDomain("localhost");
     toolExecutionSampler.setPort(5000);
@@ -1597,29 +1599,29 @@ public void testServerUnderStress() {
     
     threadGroup.add(toolExecutionSampler);
     
-    // Add listeners
+    // Lisa kuulajad
     SummaryReport summaryReport = new SummaryReport();
     threadGroup.add(summaryReport);
     
-    // Run test
+    // Käivita test
     jmeter.configure(testPlanTree);
     jmeter.run();
     
-    // Validate results
+    // Kontrolli tulemusi
     assertEquals(0, summaryReport.getErrorCount());
-    assertTrue(summaryReport.getAverage() < 200); // Average response time < 200ms
-    assertTrue(summaryReport.getPercentile(90.0) < 500); // 90th percentile < 500ms
+    assertTrue(summaryReport.getAverage() < 200); // Keskmine reageerimisaeg < 200ms
+    assertTrue(summaryReport.getPercentile(90.0) < 500); // 90. protsentiil < 500ms
 }
 ```
 
 #### 3. Jälgimine ja profiilimine
 
-Seadistage jälgimine pikaajalise jõudluse analüüsimiseks:
+Seadista pikaajaliseks jõudlusanalüüsiks jälgimine:
 
 ```python
-# Configure monitoring for an MCP server
+# Konfigureeri jälgimine MCP serveri jaoks
 def configure_monitoring(server):
-    # Set up Prometheus metrics
+    # Sea üles Prometheuse mõõdikud
     prometheus_metrics = {
         "request_count": Counter("mcp_requests_total", "Total MCP requests"),
         "request_latency": Histogram(
@@ -1645,10 +1647,10 @@ def configure_monitoring(server):
         )
     }
     
-    # Add middleware for timing and recording metrics
+    # Lisa vahevara mõõtmise ja mõõdikute salvestamiseks
     server.add_middleware(PrometheusMiddleware(prometheus_metrics))
     
-    # Expose metrics endpoint
+    # Avalikusta mõõdikute lõpp-punkt
     @server.router.get("/metrics")
     async def metrics():
         return generate_latest()
@@ -1658,27 +1660,27 @@ def configure_monitoring(server):
 
 ## MCP töövoo disainimustrid
 
-Hästi kujundatud MCP töövood parandavad tõhusust, töökindlust ja hooldatavust. Siin on peamised mustrid, mida järgida:
+Hästi disainitud MCP töövood parandavad tõhusust, usaldusväärsust ja hooldatavust. Siin on olulised mustrid, mida järgida:
 
 ### 1. Tööriistade ahela muster
 
-Ühendage mitu tööriista järjestikku, kus iga tööriista väljund muutub järgmise sisendiks:
+Seosta mitu tööriista järjestuses, kus iga tööriista väljund saab järgmise sisendiks:
 
 ```python
-# Python Chain of Tools implementation
+# Pythoni tööriistade ahela rakendus
 class ChainWorkflow:
     def __init__(self, tools_chain):
-        self.tools_chain = tools_chain  # List of tool names to execute in sequence
+        self.tools_chain = tools_chain  # Tööriistade nimede loend, mida täita järjest
     
     async def execute(self, mcp_client, initial_input):
         current_result = initial_input
         all_results = {"input": initial_input}
         
         for tool_name in self.tools_chain:
-            # Execute each tool in the chain, passing previous result
+            # Täida iga tööriist ahelas, edastades eelneva tulemuse
             response = await mcp_client.execute_tool(tool_name, current_result)
             
-            # Store result and use as input for next tool
+            # Salvesta tulemus ja kasuta seda järgmise tööriista sisendina
             all_results[tool_name] = response.result
             current_result = response.result
         
@@ -1687,7 +1689,7 @@ class ChainWorkflow:
             "all_results": all_results
         }
 
-# Example usage
+# Näidiskasutus
 data_processing_chain = ChainWorkflow([
     "dataFetch",
     "dataCleaner",
@@ -1701,9 +1703,9 @@ result = await data_processing_chain.execute(
 )
 ```
 
-### 2. Saatja muster
+### 2. Saadetaja muster
 
-Kasutage keskset tööriista, mis suunab sisendi põhjal spetsialiseeritud tööriistadele:
+Kasuta keskset tööriista, mis suunab inputi põhjal spetsialiseeritud tööriistadele:
 
 ```csharp
 public class ContentDispatcherTool : IMcpTool
@@ -1783,9 +1785,9 @@ public class ContentDispatcherTool : IMcpTool
 }
 ```
 
-### 3. Paralleeltöötluse muster
+### 3. Paralleelprotsesside muster
 
-Täitke mitu tööriista samaaegselt tõhususe huvides:
+Täida mitu tööriista samaaegselt tõhususe saavutamiseks:
 
 ```java
 public class ParallelDataProcessingWorkflow {
@@ -1796,11 +1798,11 @@ public class ParallelDataProcessingWorkflow {
     }
     
     public WorkflowResult execute(String datasetId) {
-        // Step 1: Fetch dataset metadata (synchronous)
+        // 1. samm: Andmekogu metaandmete toomine (sünkroonne)
         ToolResponse metadataResponse = mcpClient.executeTool("datasetMetadata", 
             Map.of("datasetId", datasetId));
         
-        // Step 2: Launch multiple analyses in parallel
+        // 2. samm: Käivita mitu analüüsi paralleelselt
         CompletableFuture<ToolResponse> statisticalAnalysis = CompletableFuture.supplyAsync(() ->
             mcpClient.executeTool("statisticalAnalysis", Map.of(
                 "datasetId", datasetId,
@@ -1822,25 +1824,25 @@ public class ParallelDataProcessingWorkflow {
             ))
         );
         
-        // Wait for all parallel tasks to complete
+        // Oota kõigi paralleelsete ülesannete lõpetamist
         CompletableFuture<Void> allAnalyses = CompletableFuture.allOf(
             statisticalAnalysis, correlationAnalysis, outlierDetection
         );
         
-        allAnalyses.join();  // Wait for completion
+        allAnalyses.join();  // Oota lõpetamist
         
-        // Step 3: Combine results
+        // 3. samm: Tulemuste kombineerimine
         Map<String, Object> combinedResults = new HashMap<>();
         combinedResults.put("metadata", metadataResponse.getResult());
         combinedResults.put("statistics", statisticalAnalysis.join().getResult());
         combinedResults.put("correlations", correlationAnalysis.join().getResult());
         combinedResults.put("outliers", outlierDetection.join().getResult());
         
-        // Step 4: Generate summary report
+        // 4. samm: Kokkuvõtva raporti genereerimine
         ToolResponse summaryResponse = mcpClient.executeTool("reportGenerator", 
             Map.of("analysisResults", combinedResults));
         
-        // Return complete workflow result
+        // Tagasta kogu töövoo tulemus
         WorkflowResult result = new WorkflowResult();
         result.setDatasetId(datasetId);
         result.setAnalysisResults(combinedResults);
@@ -1851,9 +1853,9 @@ public class ParallelDataProcessingWorkflow {
 }
 ```
 
-### 4. Veataaste muster
+### 4. Veapuhastuse muster
 
-Rakendage tööriistade tõrgete korral sujuvaid varulahendusi:
+Rakenda graatsilisi tagasiveoleid tööriistade rikete korral:
 
 ```python
 class ResilientWorkflow:
@@ -1862,7 +1864,7 @@ class ResilientWorkflow:
     
     async def execute_with_fallback(self, primary_tool, fallback_tool, parameters):
         try:
-            # Try primary tool first
+            # Proovi esmalt põhivahendit
             response = await self.client.execute_tool(primary_tool, parameters)
             return {
                 "result": response.result,
@@ -1870,12 +1872,12 @@ class ResilientWorkflow:
                 "tool": primary_tool
             }
         except ToolExecutionException as e:
-            # Log the failure
+            # Logi ebaõnnestumine
             logging.warning(f"Primary tool '{primary_tool}' failed: {str(e)}")
             
-            # Fall back to secondary tool
+            # Lange sekundaarse tööriista peale
             try:
-                # Might need to transform parameters for fallback tool
+                # Võib-olla tuleb parameetreid varutööriista jaoks ümber vormindada
                 fallback_params = self._adapt_parameters(parameters, primary_tool, fallback_tool)
                 
                 response = await self.client.execute_tool(fallback_tool, fallback_params)
@@ -1886,7 +1888,7 @@ class ResilientWorkflow:
                     "primaryError": str(e)
                 }
             except ToolExecutionException as fallback_error:
-                # Both tools failed
+                # Mõlemad tööriistad ebaõnnestusid
                 logging.error(f"Both primary and fallback tools failed. Fallback error: {str(fallback_error)}")
                 raise WorkflowExecutionException(
                     f"Workflow failed: primary error: {str(e)}; fallback error: {str(fallback_error)}"
@@ -1894,22 +1896,22 @@ class ResilientWorkflow:
     
     def _adapt_parameters(self, params, from_tool, to_tool):
         """Adapt parameters between different tools if needed"""
-        # This implementation would depend on the specific tools
-        # For this example, we'll just return the original parameters
+        # Selle rakenduse sõltuks konkreetsetest tööriistadest
+        # Selle näite puhul tagastame lihtsalt algsed parameetrid
         return params
 
-# Example usage
+# Näidis kasutamine
 async def get_weather(workflow, location):
     return await workflow.execute_with_fallback(
-        "premiumWeatherService",  # Primary (paid) weather API
-        "basicWeatherService",    # Fallback (free) weather API
+        "premiumWeatherService",  # Põhivorminguline (tasuline) ilmaandmete API
+        "basicWeatherService",    # Varutööriist (tasuta) ilmaandmete API
         {"location": location}
     )
 ```
 
-### 5. Töövoo koostamise muster
+### 5. Töövoo kompositsiooni muster
 
-Looge keerukaid töövooge, kombineerides lihtsamaid:
+Ehita keerukad töövood lihtsamate koostisest:
 
 ```csharp
 public class CompositeWorkflow : IWorkflow
@@ -1956,37 +1958,37 @@ var result = await documentWorkflow.ExecuteAsync(new WorkflowContext {
 });
 ```
 
-# MCP serverite testimine: parimad tavad ja olulised näpunäited
+# MCP serverite testimine: parimad tavad ja tähtsamad nõuanded
 
 ## Ülevaade
 
-Testimine on usaldusväärsete ja kvaliteetsete MCP serverite arendamise kriitiline aspekt. See juhend pakub põhjalikke parimaid tavasid ja näpunäiteid MCP serverite testimiseks kogu arendustsükli jooksul, alates ühiktestidest kuni integreerimistestide ja lõpuni valideerimiseni.
+Testimine on usaldusväärsete ja kvaliteetsete MCP serverite arenduse kriitiline aspekt. See juhend pakub terviklikke parimaid tavasid ja nõuandeid MCP serverite testimiseks kogu arenduse elutsükli vältel, alates üksustestidest kuni integratsioonitestide ja lõpp-punktide valideerimiseni.
 
-## Miks MCP serverite testimine on oluline
+## Miks testimine on oluline MCP serveritele
 
-MCP serverid toimivad olulise vahendajana AI mudelite ja kliendirakenduste vahel. Põhjalik testimine tagab:
+MCP serverid toimivad olulise vahendusena AI mudelite ja kliendirakenduste vahel. Põhjalik testimine tagab:
 
-- Töökindluse tootmiskeskkondades
-- Päringute ja vastuste korrektse käsitlemise
-- MCP spetsifikatsioonide korrektse rakendamise
-- Vastupidavuse tõrgete ja erandjuhtumite korral
-- Järjekindla jõudluse erinevate koormuste all
+- Usaldusväärsuse tootmiskeskkondades
+- Päringute ja vastuste korrektse töötlemise
+- MCP spetsifikatsioonide nõuetekohase rakendamise
+- Vastupidavuse rikete ja äärejuhtumite korral
+- Järjepideva jõudluse erinevate koormuste all
 
-## MCP serverite ühiktestimine
+## Üksustestimine MCP serveritele
 
-### Ühiktestimine (Alustase)
+### Üksustestimine (alus)
 
-Ühiktestid kontrollivad MCP serveri üksikkomponente eraldi.
+Üksustestid kontrollivad MCP serveri üksikuid komponente eraldi.
 
 #### Mida testida
 
-1. **Ressursihaldurid**: Testige iga ressursihalduri loogikat iseseisvalt
-2. **Tööriistade rakendused**: Kontrollige tööriistade käitumist erinevate sisenditega
-3. **Käskluse mallid**: Veenduge, et käskluse mallid renderduksid korrektselt
-4. **Skeemi valideerimine**: Testige parameetrite valideerimise loogikat
-5. **Veakäsitlus**: Kontrollige vigaste sisendite veavastuseid
+1. **Ressursside töötlejad**: Testi iga ressursi töötleja loogikat iseseisvalt  
+2. **Tööriistade rakendused**: Kontrolli tööriistade käitumist eri sisendite korral  
+3. **Prompti mallid**: Veendu, et promptide mallid renderduvad õigesti  
+4. **Skeemi valideerimine**: Testi parameetrite valideerimise loogikat  
+5. **Veahaldus**: Kontrolli vigaste sisendite vea vastuseid
 
-#### Ühiktestimise parimad tavad
+#### Parimad tavad üksustestimisel
 
 ```csharp
 // Example unit test for a calculator tool in C#
@@ -2012,9 +2014,9 @@ public async Task CalculatorTool_Add_ReturnsCorrectSum()
 ```
 
 ```python
-# Example unit test for a calculator tool in Python
+# Näidis ühikutest kalkulaatori tööriista jaoks Pythonis
 def test_calculator_tool_add():
-    # Arrange
+    # Valmista ette
     calculator = CalculatorTool()
     parameters = {
         "operation": "add",
@@ -2022,27 +2024,27 @@ def test_calculator_tool_add():
         "b": 7
     }
     
-    # Act
+    # Tegutse
     response = calculator.execute(parameters)
     result = json.loads(response.content[0].text)
     
-    # Assert
+    # Kinnita
     assert result["value"] == 12
 ```
 
-### Integreerimistestimine (Kesktase)
+### Integratsioonitestimine (keskmine tase)
 
-Integreerimistestid kontrollivad MCP serveri komponentide vahelisi interaktsioone.
+Integratsioonitestid kontrollivad komponentide omavahelist suhtlust MCP serveris.
 
 #### Mida testida
 
-1. **Serveri initsialiseerimine**: Testige serveri käivitamist erinevate konfiguratsioonidega
-2. **Marsruutide registreerimine**: Kontrollige, et kõik lõpp-punktid oleksid korrektselt registreeritud
-3. **Päringute töötlemine**: Testige kogu päringu-vastuse tsüklit
-4. **Vigade levitamine**: Veenduge, et vead oleksid korralikult käsitletud komponentide vahel
-5. **Autentimine ja autoriseerimine**: Testige turvamehhanisme
+1. **Serveri initsialiseerimine**: Testi serveri käivitust erineva konfiguratsiooniga  
+2. **Raja registreerimine**: Kontrolli, et kõik otsapunktid on korralikult registreeritud  
+3. **Päringute töötlemine**: Testi kogu päringu-vastuse tsüklit  
+4. **Vea levitamine**: Veendu, et vead käsitletakse korrektselt kaudu komponentide  
+5. **Autentimine ja autoriseerimine**: Testi turvamehhanisme
 
-#### Integreerimistestimise parimad tavad
+#### Parimad tavad integratsioonitestimisel
 
 ```csharp
 // Example integration test for MCP server in C#
@@ -2078,27 +2080,27 @@ public async Task Server_ProcessToolRequest_ReturnsValidResponse()
 }
 ```
 
-### Lõpuni testimine (Kõrgem tase)
+### Algusest lõpuni testimine (kõrgeim tase)
 
-Lõpuni testid kontrollivad kogu süsteemi käitumist kliendist serverini.
+End-to-end testid kontrollivad kogu süsteemi käitumist kliendist serverini.
 
 #### Mida testida
 
-1. **Kliendi-serveri suhtlus**: Testige täielikke päringu-vastuse tsükleid
-2. **Tõelised kliendi SDK-d**: Testige tegelike kliendirakendustega
-3. **Jõudlus koormuse all**: Kontrollige käitumist mitme samaaegse päringuga
-4. **Veataaste**: Testige süsteemi taastumist tõrgetest
-5. **Pikaajalised toimingud**: Kontrollige voogude ja pikkade toimingute käsitlemist
+1. **Kliendi ja serveri suhtlus**: Testi täielikke päringu-vastuse tsükleid  
+2. **Tegeliku kliendi SDK-d**: Testi päriseluliste kliendirakendustega  
+3. **Jõudlus koormuse all**: Kinnita käitumine mitme samaaegse päringuga  
+4. **Vea taastumine**: Testi süsteemi taastumist riketest  
+5. **Pikaajalised operatsioonid**: Kontrolli voogude ja pikkade protsesside käsitlemist
 
-#### Lõpuni testimise parimad tavad
+#### Parimad tavad lõpp-punktide testimisel
 
 ```typescript
-// Example E2E test with a client in TypeScript
+// Näide E2E test kliendiga TypeScriptis
 describe('MCP Server E2E Tests', () => {
   let client: McpClient;
   
   beforeAll(async () => {
-    // Start server in test environment
+    // Käivita server testkeskkonnas
     await startTestServer();
     client = new McpClient('http://localhost:5000');
   });
@@ -2108,32 +2110,134 @@ describe('MCP Server E2E Tests', () => {
   });
   
   test('Client can invoke calculator tool and get correct result', async () => {
-    // Act
+    // Toimi
     const response = await client.invokeToolAsync('calculator', {
       operation: 'divide',
       a: 20,
       b: 4
     });
     
-    // Assert
+    // Väida
     expect(response.statusCode).toBe(200);
     expect(response.content[0].text).toContain('5');
   });
 });
 ```
 
-## MCP testimise simuleerimisstrateegiad
+## Mockimise strateegiad MCP testimiseks
 
-Simuleerimine on komponentide eraldamiseks testimise ajal hädavajalik.
+Mockimine on oluline komponentide eraldamiseks testimise ajal.
 
-### Komponendid, mida simuleerida
+### Mockitavad komponendid
 
-1. **Välised AI mudelid**: Simuleerige mudeli vastuseid ennustatava testimise jaoks
-2. **Välised teenused**: Simuleerige API sõltuvusi (andmebaasid, kolmanda osapoole teenused)
-3. **Autentimisteenused**: Simuleerige identiteedipakkujaid
-4. **Ressursipakkujad**: Simuleerige kulukaid ressursihaldureid
+1. **Välised AI mudelid**: Mocki mudeli vastuseid ennustatava testimise jaoks  
+2. **Välised teenused**: Mocki API sõltuvusi (andmebaasid, kolmandate osapoolte teenused)  
+3. **Autentimisteenused**: Mocki identiteediteenuse pakkujaid  
+4. **Ressursside pakkujad**: Mocki kulukaid ressursihaldureid
 
-### Näide
+### Näide: AI mudeli vastuse mockimine
+
+```csharp
+// C# example with Moq
+var mockModel = new Mock<ILanguageModel>();
+mockModel
+    .Setup(m => m.GenerateResponseAsync(
+        It.IsAny<string>(),
+        It.IsAny<McpRequestContext>()))
+    .ReturnsAsync(new ModelResponse { 
+        Text = "Mocked model response",
+        FinishReason = FinishReason.Completed
+    });
+
+var server = new McpServer(modelClient: mockModel.Object);
+```
+
+```python
+# Pythoni näide unittest.mock'iga
+@patch('mcp_server.models.OpenAIModel')
+def test_with_mock_model(mock_model):
+    # Määra mähis
+    mock_model.return_value.generate_response.return_value = {
+        "text": "Mocked model response",
+        "finish_reason": "completed"
+    }
+    
+    # Kasuta mähist testis
+    server = McpServer(model_client=mock_model)
+    # Jätka testiga
+```
+
+## Jõudlustestimine
+
+Jõudlustestimine on olulise tähtsusega tootmises kasutatavate MCP serverite puhul.
+
+### Mida mõõta
+
+1. **Latentsus**: Päringute vastamise aeg  
+2. **Läbivool**: Sekundis töödeldud päringute arv  
+3. **Ressursside kasutus**: CPU, mälu, võrgu koormus  
+4. **Konkurentsitöötlus**: Käitumine samaaegsete päringute korral  
+5. **Skaalumise omadused**: Jõudlus koormuse kasvades
+
+### Jõudlustestimise tööriistad
+
+- **k6**: Avatud lähtekoodiga koormustestimise tööriist  
+- **JMeter**: Kõikehõlmav jõudlustestimine  
+- **Locust**: Pythonipõhine koormustestimine  
+- **Azure Load Testing**: Pilvepõhine jõudlustestimine
+
+### Näide: Põhiline k6 koormustest
+
+```javascript
+// k6 skript MCP serveri koormustestimiseks
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+
+export const options = {
+  vus: 10,  // 10 virtuaalkasutajat
+  duration: '30s',
+};
+
+export default function () {
+  const payload = JSON.stringify({
+    tool: 'calculator',
+    parameters: {
+      operation: 'add',
+      a: Math.floor(Math.random() * 100),
+      b: Math.floor(Math.random() * 100)
+    }
+  });
+
+  const params = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer test-token'
+    },
+  };
+
+  const res = http.post('http://localhost:5000/api/tools/invoke', payload, params);
+  
+  check(res, {
+    'status is 200': (r) => r.status === 200,
+    'response time < 500ms': (r) => r.timings.duration < 500,
+  });
+  
+  sleep(1);
+}
+```
+
+## Testimise automatiseerimine MCP serveritele
+
+Testide automatiseerimine tagab järjepideva kvaliteedi ja kiired tagasisideringid.
+
+### CI/CD integratsioon
+1. **Üksustestid Pull Requestide puhul**: Tagada, et koodimuudatused ei rikuks olemasolevat funktsionaalsust  
+2. **Integratsioonitestid Staging keskkonnas**: Käivitada integratsioonitestid eeltootmiskeskkondades  
+3. **Jõudluse baasjooned**: Säilitada jõudlusnäitajaid tagamaks regressioonide avastamine  
+4. **Turvalisuse skaneerimine**: Automatiseerida turvatestid osana töövoost  
+
+### Näide CI Töövoost (GitHub Actions)
+
 ```yaml
 name: MCP Server Tests
 
@@ -2170,20 +2274,20 @@ jobs:
     - name: Performance Tests
       run: dotnet run --project tests/PerformanceTests/PerformanceTests.csproj
 ```
+  
+## Testimine MCP Spetsifikatsiooni Järgimise Kohta
 
-## MCP spetsifikatsioonile vastavuse testimine
+Kontrolli, kas sinu server rakendab MCP spetsifikatsiooni korrektselt.
 
-Kontrollige, kas teie server rakendab MCP spetsifikatsiooni korrektselt.
+### Peamised Järgimisel Vaadeldavad Alad
 
-### Olulised vastavusalad
+1. **API lõpp-punktid**: Testi nõutud lõpp-punkte (/resources, /tools jne)  
+2. **Päringu/Vastuse Vorming**: Kontrolli skeemi nõuetele vastavust  
+3. **Veakoodid**: Kinnita õiget olekukoodide kasutamist erinevates stsenaariumites  
+4. **Sisu Tüübid**: Testi erinevate sisutüüpide töötlemist  
+5. **Autentimise Voog**: Kontrolli spetsifikatsioonile vastavaid autentimismehhanisme  
 
-1. **API lõpp-punktid**: Testige vajalikke lõpp-punkte (/resources, /tools jne)
-2. **Päringu/vastuse formaat**: Kinnitage skeemi vastavus
-3. **Veakoodid**: Kontrollige õigeid olekukoode erinevates olukordades
-4. **Sisu tüübid**: Testige erinevate sisu tüüpide käsitlemist
-5. **Autentimise voog**: Kontrollige spetsifikatsioonile vastavaid autentimismehhanisme
-
-### Vastavuse testikomplekt
+### Vastavustestide Komplekt
 
 ```csharp
 [Fact]
@@ -2209,65 +2313,69 @@ public async Task Server_ResourceEndpoint_ReturnsCorrectSchema()
     });
 }
 ```
+  
+## Tõhusate MCP Serveri Testide Top 10 Nõuannet
 
-## 10 parimat nõuannet MCP serveri tõhusaks testimiseks
+1. **Testi tööriistade definitsioone eraldi**: Kontrolli skeemide definitsioone tööriista loogikast sõltumatult  
+2. **Kasuta parameetriseeritud teste**: Testi tööriistu erinevate sisenditega, kaasaarvatud äärejuhtumid  
+3. **Kontrolli veavastuseid**: Kinnita korrektne veahaldus kõigi võimalike veatingimuste puhul  
+4. **Testi autoriseerimisloogikat**: Tagada õige juurdepääsukontroll erinevatele kasutajarollidele  
+5. **Jälgi testide katvust**: Püüdle kriitilise tee koodi kõrge katvuse poole  
+6. **Testi striimimisega vastuseid**: Kontrolli voos oleva sisu korrektset käsitlemist  
+7. **Simuleeri võrgu probleeme**: Testi käitumist kehvades võrgutingimustes  
+8. **Testi ressursside piire**: Kontrolli käitumist kvantiteedi- või kiiruspiirangute saavutamisel  
+9. **Automatiseeri regressioonitestid**: Loo komplekt, mis liigub läbi iga koodimuudatuse  
+10. **Dokumenteeri testjuhtumid**: Säilita selge dokumentatsioon teststsenaariumitest  
 
-1. **Testige tööriista määratlusi eraldi**: Kontrollige skeemi määratlusi sõltumatult tööriista loogikast
-2. **Kasutage parameetriseeritud teste**: Testige tööriistu mitmesuguste sisenditega, sealhulgas äärejuhtumitega
-3. **Kontrollige veavastuseid**: Veenduge, et kõik võimalikud veatingimused on korrektselt käsitletud
-4. **Testige autoriseerimisloogikat**: Kontrollige juurdepääsu kontrolli erinevate kasutajarollide jaoks
-5. **Jälgige testkatvust**: Püüdke saavutada kriitilise tee koodi kõrge katvus
-6. **Testige voogesituse vastuseid**: Kontrollige voogesituse sisu korrektset käsitlemist
-7. **Simuleerige võrguprobleeme**: Testige käitumist halva võrguühenduse tingimustes
-8. **Testige ressursipiiranguid**: Kontrollige käitumist kvootide või kiiruspiirangute saavutamisel
-9. **Automatiseerige regressioonitestid**: Looge komplekt, mis käivitub iga koodimuudatuse korral
-10. **Dokumenteerige testjuhtumid**: Hoidke teststsenaariumide selget dokumentatsiooni
+## Levinud Testimisvead
 
-## Levinud testimise vead
-
-- **Liigne keskendumine "õnneliku tee" testimisele**: Veenduge, et veajuhtumeid testitakse põhjalikult
-- **Jõudlustestide ignoreerimine**: Tuvastage kitsaskohad enne, kui need tootmist mõjutavad
-- **Testimine ainult eraldatult**: Kombineerige üksus-, integratsiooni- ja E2E testid
-- **API katvuse puudulikkus**: Veenduge, et kõik lõpp-punktid ja funktsioonid on testitud
-- **Ebakindlad testkeskkonnad**: Kasutage konteinereid, et tagada testkeskkondade järjepidevus
+- **Liigne rõhk “õnneliku tee” testimisel**: Veendu, et vigade juhtumeid testitakse põhjalikult  
+- **Jõudlustestide eiramine**: Ava kitsaskohad enne, kui need tootmiskeskkonda mõjutavad  
+- **Ainult isolatsioonis testimine**: Kombineeri üksus-, integratsiooni- ja lõpp-lõpuni teste  
+- **API mittetäielik katvus**: Tagada, et kõik lõpp-punktid ja funktsioonid on testitud  
+- **Ebastabiilsed testikeskkonnad**: Kasuta konteinerid, et tagada ühtsed testikeskkonnad  
 
 ## Kokkuvõte
 
-Põhjalik testimisstrateegia on hädavajalik usaldusväärsete ja kvaliteetsete MCP serverite arendamiseks. Rakendades selles juhendis toodud parimaid praktikaid ja nõuandeid, saate tagada, et teie MCP rakendused vastavad kõrgeimatele kvaliteedi-, usaldusväärsuse- ja jõudlusstandarditele.
+Kattuv testimisstrateegia on oluline usaldusväärsete ja kvaliteetsete MCP serverite arendamiseks. Rakendades selles juhendis kirjeldatud parimaid tavasid ja nõuandeid, saad tagada, et sinu MCP lahendused vastavad kõige kõrgematele kvaliteedi, usaldusväärsuse ja jõudluse standarditele.  
 
-## Olulised punktid
+## Olulised Mõtted
 
-1. **Tööriista disain**: Järgige ühe vastutuse põhimõtet, kasutage sõltuvuste süstimist ja kujundage kompositsiooniks
-2. **Skeemi disain**: Looge selged, hästi dokumenteeritud skeemid koos korrektsete valideerimispiirangutega
-3. **Veakäsitlus**: Rakendage sujuvat veakäsitlust, struktureeritud veavastuseid ja kordusloogikat
-4. **Jõudlus**: Kasutage vahemällu salvestamist, asünkroonset töötlemist ja ressursipiiranguid
-5. **Turvalisus**: Rakendage põhjalikku sisendi valideerimist, autoriseerimiskontrolle ja tundliku teabe käsitlemist
-6. **Testimine**: Looge põhjalikud üksus-, integratsiooni- ja lõpp-to-lõpp testid
-7. **Töövoo mustrid**: Rakendage väljakujunenud mustreid, nagu ahelad, dispatcherid ja paralleeltöötlus
+1. **Tööriista kujundus**: Järgi üheahela vastutuse printsiipi, kasuta sõltuvuste süstimist ja kujunda koostalitlusvõimelisust silmas pidades  
+2. **Skeemi kujundus**: Loo selged, hästi dokumenteeritud skeemid koos nõuetekohaste valideerimispiirangutega  
+3. **Veahaldus**: Rakenda sujuvat veahaldust, struktureeritud veavastuseid ja taaskäivitamise loogikat  
+4. **Jõudlus**: Kasuta vahemällu salvestamist, asünkroonset töötlemist ja ressursside piirangut  
+5. **Turvalisus**: Rakenda põhjalikku sisendi valideerimist, autoriseerimiskontrolli ja tundlike andmete käitlemist  
+6. **Testimine**: Loo põhjalikke üksus-, integratsiooni- ja lõpp-lõpuni teste  
+7. **Töövoo Mustrid**: Rakenda kindlaks tehtud mustreid nagu ahelad, dispatch’erid ja paralleeltöötlemine  
 
 ## Harjutus
 
-Kujundage MCP tööriist ja töövoog dokumenditöötlussüsteemi jaoks, mis:
+Kujunda MCP tööriist ja töövoog dokumendi töötlemise süsteemi jaoks, mis:  
 
-1. Võtab vastu dokumente mitmes formaadis (PDF, DOCX, TXT)
-2. Ekstraheerib tekst ja võtmeinformatsiooni dokumentidest
-3. Klassifitseerib dokumendid tüübi ja sisu järgi
-4. Genereerib iga dokumendi kokkuvõtte
+1. Võtab vastu dokumente mitmes vormingus (PDF, DOCX, TXT)  
+2. Ekstraktib dokumentidest teksti ja võtmeinfot  
+3. Klasifitseerib dokumendid tüübi ja sisu alusel  
+4. Loob iga dokumendi kokkuvõtte  
 
-Rakendage tööriista skeemid, veakäsitlus ja töövoo muster, mis sobib selle stsenaariumi jaoks kõige paremini. Mõelge, kuidas te seda rakendust testiksite.
+Rakenda tööriistade skeemid, veahaldus ja sobiv töövoo muster selle stsenaariumi jaoks. Mõtle läbi, kuidas sa seda lahendust testiksid.  
 
 ## Ressursid
 
-1. Liituge MCP kogukonnaga [Azure AI Foundry Discord Community](https://aka.ms/foundrydevs), et olla kursis viimaste arengutega
-2. Panustage avatud lähtekoodiga [MCP projektidesse](https://github.com/modelcontextprotocol)
-3. Rakendage MCP põhimõtteid oma organisatsiooni AI algatustes
-4. Uurige spetsialiseeritud MCP rakendusi oma tööstusharu jaoks
-5. Kaaluge edasijõudnute kursuste võtmist MCP spetsiifilistel teemadel, nagu multimodaalne integratsioon või ettevõtte rakenduste integratsioon
-6. Katsetage MCP tööriistade ja töövoogude loomist, kasutades [Hands on Lab](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) kaudu õpitud põhimõtteid
+1. Liitu MCP kogukonnaga [Azure AI Foundry Discord Community](https://aka.ms/foundrydevs), et olla kursis viimaste arengutega  
+2. Panusta avatud lähtekoodiga [MCP projektidesse](https://github.com/modelcontextprotocol)  
+3. Rakenda MCP printsiipe oma organisatsiooni tehisintellekti algatustes  
+4. Uuri spetsialiseeritud MCP lahendusi oma tööstusele  
+5. Mõtle edasiõppimise võimalustele konkreetsetel MCP teemadel, nagu multimodaalne integreerimine või ettevõtte rakenduste integreerimine  
+6. Katseta oma MCP tööriistade ja töövoogude loomist, kasutades teadmisi juhendatud [Hands on Labist](../10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md)  
 
-Järgmine: Parimate praktikate [juhtumiuuringud](../09-CaseStudy/README.md)
+## Mis Järgmiseks
+
+Järgmine: [Juhtumiuuringud](../09-CaseStudy/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:  
+See dokument on tõlgitud kasutades tehisintellekti tõlketeenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüame tõlketeenuse täpsust, palun arvestage, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument selle emakeeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tingitud arusaamatuste või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,40 +1,50 @@
 # Täiustatud MCP turvalisus Azure Content Safety abil
 
-Azure Content Safety pakub mitmeid võimsaid tööriistu, mis aitavad parandada teie MCP rakenduste turvalisust:
+> **OWASP MCP riski lahendus**: [MCP06 – Prompt Injection kontekstuaalsete koormiste kaudu](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp06-prompt-injection/)
 
-## Prompt Shields
+Azure Content Safety pakub mitmeid võimsaid tööriistu, mis võivad tõsta teie MCP lahenduste turvalisust. Praktilise rakenduskogemuse saamiseks vaadake [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) laager 3: I/O turvalisus.
 
-Microsofti AI Prompt Shields pakub tugevat kaitset nii otseste kui ka kaudsete prompt injection rünnakute vastu, kasutades:
+## Prompt Shields (Käsuvarjud)
 
-1. **Täiustatud tuvastamine**: Kasutab masinõpet, et tuvastada pahatahtlikke juhiseid, mis on sisus peidetud.
-2. **Spotlighting**: Muudab sisendteksti, et aidata AI-süsteemidel eristada kehtivaid juhiseid ja väliseid sisendeid.
-3. **Piiritlemine ja andmemärgistamine**: Märgib usaldusväärse ja ebausaldusväärse andmevahelised piirid.
-4. **Content Safety integratsioon**: Töötab koos Azure AI Content Safety-ga, et tuvastada jailbreak-katseid ja kahjulikku sisu.
-5. **Pidevad uuendused**: Microsoft uuendab regulaarselt kaitsemehhanisme, et vastata uutele ohtudele.
+Microsofti AI Prompt Shields pakuvad tugevat kaitset nii otseste kui ka kaudsete käsu süstimise rünnakute vastu, kasutades:
 
-## Azure Content Safety rakendamine MCP-ga
+1. **Täiustatud tuvastamist**: Masinõppe abil tuvastab kuritahtlikud juhised sisus.
+2. **Esiletõstmist**: Muutmine sisestusest, aidates AI süsteemidel eristada kehtivaid juhiseid välistest sisenditest.
+3. **Piiritlejaid ja andmemärgistust**: Märgib usaldusväärse ja mitteilustatava andmepiire.
+4. **Content Safety integreerimist**: Töötab koos Azure AI Content Safetyga, et tuvastada jailbreak'i katsed ja kahjulik sisu.
+5. **Jätkuvaid uuendusi**: Microsoft uuendab kaitsemehhanisme regulaarselt tekkivate ohtude vastu.
+
+## Azure Content Safety kasutuselevõtt MCP-ga
 
 See lähenemine pakub mitmekihilist kaitset:
-- Sisendite skaneerimine enne töötlemist
+- Sisendite skannimine enne töötlemist
 - Väljundite valideerimine enne tagastamist
-- Blokiloendite kasutamine teadaolevate kahjulike mustrite jaoks
-- Azure'i pidevalt uuendatavate sisuturvalisuse mudelite kasutamine
+- Mustade nimekirjade kasutamine tuntud kahjulike mustrite puhul
+- Azure pidevalt uuenevate sisuturvalisuse mudelite rakendamine
 
 ## Azure Content Safety ressursid
 
-Lisateabe saamiseks Azure Content Safety rakendamise kohta MCP serveritega tutvuge nende ametlike ressurssidega:
+Azure Content Safety MCP serverite juurutamisest lisateabe saamiseks vaadake neid ametlikke ressursse:
 
-1. [Azure AI Content Safety dokumentatsioon](https://learn.microsoft.com/azure/ai-services/content-safety/) - Ametlik dokumentatsioon Azure Content Safety kohta.
-2. [Prompt Shield dokumentatsioon](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/prompt-shield) - Õppige, kuidas vältida prompt injection rünnakuid.
-3. [Content Safety API viide](https://learn.microsoft.com/rest/api/contentsafety/) - Üksikasjalik API viide Content Safety rakendamiseks.
-4. [Kiirstart: Azure Content Safety C#-ga](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-csharp) - Kiire rakendamise juhend C# abil.
-5. [Content Safety klienditeegid](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-client-libraries-rest-api) - Klienditeegid erinevatele programmeerimiskeeltele.
-6. [Jailbreak-katsete tuvastamine](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection) - Spetsiifilised juhised jailbreak-katsete tuvastamiseks ja ennetamiseks.
-7. [Parimad praktikad sisuturvalisuse jaoks](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/best-practices) - Parimad praktikad sisuturvalisuse tõhusaks rakendamiseks.
+1. [Azure AI Content Safety dokumentatsioon](https://learn.microsoft.com/azure/ai-services/content-safety/) – Azure Content Safety ametlik dokumentatsioon.
+2. [Prompt Shield dokumentatsioon](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/prompt-shield) – Õppige, kuidas takistada prompt süstimise rünnakuid.
+3. [Content Safety API viide](https://learn.microsoft.com/rest/api/contentsafety/) – Üksikasjalik API viide Content Safety rakendamiseks.
+4. [Kiirjuhend: Azure Content Safety C# abil](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-csharp) – Kiire rakendusjuhend C# kasutamiseks.
+5. [Content Safety klienditeegid](https://learn.microsoft.com/azure/ai-services/content-safety/quickstart-client-libraries-rest-api) – Klienditeegid erinevates programmeerimiskeeltes.
+6. [Jailbreak'i katsete tuvastamine](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection) – Spetsiifilised juhised jailbreak'i katsete tuvastamiseks ja takistamiseks.
+7. [Parimad praktikad Content Safety jaoks](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/best-practices) – Parimad praktikad tõhusaks sisuturvalisuseks.
 
-Põhjalikuma rakendamise jaoks vaadake meie [Azure Content Safety rakendamise juhendit](./azure-content-safety-implementation.md).
+Põhjalikuma rakenduse jaoks vaadake meie [Azure Content Safety rakendamise juhendit](./azure-content-safety-implementation.md).
+
+## Mis järgmiseks
+
+- Loe: [Azure Content Safety rakendamine](./azure-content-safety-implementation.md)
+- Naase: [Turvalisuse mooduli ülevaade](./README.md)
+- Jätka: [Moodul 3: Alustamine](../03-GettingStarted/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Vastutusest loobumine**:
+See dokument on tõlgitud tehisintellekti tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi me püüdleme täpsuse poole, palun arvestage, et automatiseeritud tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument selle emakeeles tuleks pidada autoriteetseks allikaks. Kriitilise informatsiooni puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tingitud arusaamatuste või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

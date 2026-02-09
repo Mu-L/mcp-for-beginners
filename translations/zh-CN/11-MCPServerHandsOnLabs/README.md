@@ -1,160 +1,163 @@
-# 🚀 MCP服务器与PostgreSQL - 完整学习指南
+# 🚀 MCP 服务器与 PostgreSQL - 完整学习指南
 
-## 🧠 MCP数据库集成学习路径概述
+## 🧠 MCP 数据库集成学习路径概述
 
-这份全面的学习指南将教您如何通过一个实际的零售分析实现，构建生产级的**Model Context Protocol (MCP)服务器**并与数据库集成。您将学习企业级模式，包括**行级安全（RLS）**、**语义搜索**、**Azure AI集成**以及**多租户数据访问**。
+本全面学习指南通过零售分析的实际实现，教授您如何构建可投入生产的 **模型上下文协议（MCP）服务器**，并实现与数据库的集成。您将学习企业级模式，包括 **行级安全（RLS）**、**语义搜索**、**Azure AI 集成** 以及 **多租户数据访问**。
 
-无论您是后端开发人员、AI工程师还是数据架构师，这份指南都提供了结构化的学习内容，结合真实案例和动手练习，带您逐步完成以下MCP服务器：https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail。
+无论您是后端开发人员、AI 工程师还是数据架构师，本指南均提供结构化学习，辅以真实案例和动手练习，带您逐步掌握以下 MCP 服务器 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail。
 
-## 🔗 官方MCP资源
+## 🔗 官方 MCP 资源
 
-- 📘 [MCP文档](https://modelcontextprotocol.io/) – 详细教程和用户指南
-- 📜 [MCP规范](https://modelcontextprotocol.io/docs/) – 协议架构和技术参考
-- 🧑‍💻 [MCP GitHub仓库](https://github.com/modelcontextprotocol) – 开源SDK、工具和代码示例
-- 🌐 [MCP社区](https://github.com/orgs/modelcontextprotocol/discussions) – 加入讨论并为社区做贡献
+- 📘 [MCP 文档](https://modelcontextprotocol.io/) – 详细教程和用户指南
+- 📜 [MCP 规范 (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – 协议架构与技术参考
+- 🧑‍💻 [MCP GitHub 仓库](https://github.com/modelcontextprotocol) – 开源 SDK、工具和代码示例
+- 🌐 [MCP 社区](https://github.com/orgs/modelcontextprotocol/discussions) – 参与讨论并贡献社区
+- 🔒 [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – 安全最佳实践与风险缓解
 
-## 🧭 MCP数据库集成学习路径
+## 🧭 MCP 数据库集成学习路径
 
-### 📚 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail 的完整学习结构
+### 📚 https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail 完整学习结构
 
 | 实验 | 主题 | 描述 | 链接 |
 |--------|-------|-------------|------|
-| **实验1-3：基础知识** | | | |
-| 00 | [MCP数据库集成简介](./00-Introduction/README.md) | MCP与数据库集成及零售分析用例概述 | [从这里开始](./00-Introduction/README.md) |
-| 01 | [核心架构概念](./01-Architecture/README.md) | 了解MCP服务器架构、数据库层和安全模式 | [学习](./01-Architecture/README.md) |
-| 02 | [安全性与多租户](./02-Security/README.md) | 行级安全、认证和多租户数据访问 | [学习](./02-Security/README.md) |
-| 03 | [环境设置](./03-Setup/README.md) | 设置开发环境、Docker和Azure资源 | [设置](./03-Setup/README.md) |
-| **实验4-6：构建MCP服务器** | | | |
-| 04 | [数据库设计与架构](./04-Database/README.md) | PostgreSQL设置、零售架构设计和示例数据 | [构建](./04-Database/README.md) |
-| 05 | [MCP服务器实现](./05-MCP-Server/README.md) | 构建与数据库集成的FastMCP服务器 | [构建](./05-MCP-Server/README.md) |
-| 06 | [工具开发](./06-Tools/README.md) | 创建数据库查询工具和架构内省工具 | [构建](./06-Tools/README.md) |
-| **实验7-9：高级功能** | | | |
-| 07 | [语义搜索集成](./07-Semantic-Search/README.md) | 使用Azure OpenAI和pgvector实现向量嵌入 | [进阶](./07-Semantic-Search/README.md) |
-| 08 | [测试与调试](./08-Testing/README.md) | 测试策略、调试工具和验证方法 | [测试](./08-Testing/README.md) |
-| 09 | [VS Code集成](./09-VS-Code/README.md) | 配置VS Code MCP集成和AI聊天功能 | [集成](./09-VS-Code/README.md) |
-| **实验10-12：生产与最佳实践** | | | |
-| 10 | [部署策略](./10-Deployment/README.md) | Docker部署、Azure容器应用和扩展考虑 | [部署](./10-Deployment/README.md) |
-| 11 | [监控与可观测性](./11-Monitoring/README.md) | 应用洞察、日志记录和性能监控 | [监控](./11-Monitoring/README.md) |
-| 12 | [最佳实践与优化](./12-Best-Practices/README.md) | 性能优化、安全加固和生产技巧 | [优化](./12-Best-Practices/README.md) |
+| **实验 1-3：基础篇** | | | |
+| 00 | [MCP 数据库集成简介](./00-Introduction/README.md) | MCP 及其数据库集成和零售分析用例概览 | [开始](./00-Introduction/README.md) |
+| 01 | [核心架构概念](./01-Architecture/README.md) | 理解 MCP 服务器架构、数据库层和安全模式 | [学习](./01-Architecture/README.md) |
+| 02 | [安全与多租户](./02-Security/README.md) | 行级安全、认证及多租户数据访问 | [学习](./02-Security/README.md) |
+| 03 | [环境搭建](./03-Setup/README.md) | 开发环境、Docker 及 Azure 资源配置 | [搭建](./03-Setup/README.md) |
+| **实验 4-6：构建 MCP 服务器** | | | |
+| 04 | [数据库设计与模式](./04-Database/README.md) | PostgreSQL 设置、零售模式设计和示例数据 | [构建](./04-Database/README.md) |
+| 05 | [MCP 服务器实现](./05-MCP-Server/README.md) | 构建具数据库集成的 FastMCP 服务器 | [构建](./05-MCP-Server/README.md) |
+| 06 | [工具开发](./06-Tools/README.md) | 创建数据库查询工具和模式自省 | [构建](./06-Tools/README.md) |
+| **实验 7-9：高级功能** | | | |
+| 07 | [语义搜索集成](./07-Semantic-Search/README.md) | 使用 Azure OpenAI 和 pgvector 实现向量嵌入 | [进阶](./07-Semantic-Search/README.md) |
+| 08 | [测试与调试](./08-Testing/README.md) | 测试策略、调试工具与验证方法 | [测试](./08-Testing/README.md) |
+| 09 | [VS Code 集成](./09-VS-Code/README.md) | 配置 VS Code MCP 集成及 AI 聊天使用 | [集成](./09-VS-Code/README.md) |
+| **实验 10-12：生产与最佳实践** | | | |
+| 10 | [部署策略](./10-Deployment/README.md) | Docker 部署、Azure 容器应用及扩展考虑 | [部署](./10-Deployment/README.md) |
+| 11 | [监控与可观测性](./11-Monitoring/README.md) | Application Insights、日志记录和性能监控 | [监控](./11-Monitoring/README.md) |
+| 12 | [最佳实践与优化](./12-Best-Practices/README.md) | 性能优化、安全加固及生产环境建议 | [优化](./12-Best-Practices/README.md) |
 
-### 💻 您将构建的内容
+### 💻 你将构建的内容
 
-完成学习路径后，您将构建一个完整的**Zava零售分析MCP服务器**，包括：
+完成本学习路径后，您将构建一个完整的 **Zava 零售分析 MCP 服务器**，包含：
 
 - **多表零售数据库**，涵盖客户订单、产品和库存
-- **行级安全**，实现基于门店的数据隔离
-- **语义产品搜索**，使用Azure OpenAI嵌入
-- **VS Code AI聊天集成**，支持自然语言查询
-- **生产级部署**，使用Docker和Azure
-- **全面监控**，通过应用洞察实现
+- 以店铺为单位隔离数据的 **行级安全（RLS）**
+- 使用 Azure OpenAI 嵌入的 **语义产品搜索**
+- 集成 VS Code 的 **AI 聊天** 用于自然语言查询
+- 基于 Docker 和 Azure 的 **生产级部署**
+- 使用 Application Insights 的 **全面监控**
 
-## 🎯 学习前提条件
+## 🎯 学习前置条件
 
-为了充分利用这条学习路径，您需要具备以下知识：
+为获得最佳学习效果，建议您具备：
 
-- **编程经验**：熟悉Python（优先）或类似语言
-- **数据库知识**：基本了解SQL和关系型数据库
-- **API概念**：理解REST API和HTTP相关概念
-- **开发工具**：熟悉命令行、Git和代码编辑器
-- **云基础知识**：（可选）了解Azure或类似云平台
-- **Docker基础知识**：（可选）理解容器化概念
+- **编程经验**：熟悉 Python（推荐）或类似语言
+- **数据库知识**：了解基本 SQL 和关系型数据库
+- **API 概念**：理解 REST API 和 HTTP 基础
+- **开发工具**：使用过命令行、Git 和代码编辑器
+- **云基础**：（可选）了解 Azure 或类似云平台基础
+- **Docker 了解**：（可选）理解容器化概念
 
-### 所需工具
+### 必备工具
 
-- **Docker Desktop** - 用于运行PostgreSQL和MCP服务器
-- **Azure CLI** - 用于云资源部署
-- **VS Code** - 用于开发和MCP集成
-- **Git** - 用于版本控制
-- **Python 3.8+** - 用于MCP服务器开发
+- **Docker Desktop** — 用于运行 PostgreSQL 和 MCP 服务器
+- **Azure CLI** — 云资源部署工具
+- **VS Code** — 开发和 MCP 集成
+- **Git** — 版本控制工具
+- **Python 3.8+** — MCP 服务器开发环境
 
 ## 📚 学习指南与资源
 
-这条学习路径包含全面的资源，帮助您高效学习：
+本学习路径包含丰富资源，助您高效掌握：
 
 ### 学习指南
 
-每个实验包括：
-- **清晰的学习目标** - 您将实现的内容
-- **分步指导** - 详细的实施指南
-- **代码示例** - 带有解释的工作样例
-- **练习** - 动手实践机会
-- **故障排除指南** - 常见问题及解决方案
-- **额外资源** - 深入阅读和探索
+每个实验附带：
+- **明确学习目标** — 您将收获什么
+- **逐步实施指南** — 详细的操作手册
+- **代码示例** — 可运行示例和解说
+- **练习题** — 亲自动手实践
+- **故障排除指南** — 常见问题解决方案
+- **额外资源** — 深入阅读和扩展
 
-### 前提条件检查
+### 前置知识核查
 
-在开始每个实验之前，您将看到：
-- **所需知识** - 您需要事先了解的内容
-- **设置验证** - 如何验证您的环境
-- **时间估算** - 预计完成时间
-- **学习成果** - 完成后您将掌握的内容
+每个实验开始前提供：
+- **所需知识** — 事先应了解内容
+- **环境验证** — 如何确认配置正确
+- **时间估算** — 预计完成时长
+- **学习成果** — 完成后掌握内容
 
 ### 推荐学习路径
 
-根据您的经验水平选择学习路径：
+根据经验选择适合您的学习路线：
 
-#### 🟢 **初学者路径**（MCP新手）
-1. 确保您已完成 [MCP初学者指南](https://aka.ms/mcp-for-beginners) 的0-10部分
-2. 完成实验00-03以巩固基础知识
-3. 按顺序完成实验04-06进行动手实践
-4. 尝试实验07-09以了解实际应用
+#### 🟢 **初学路径**（MCP 新手）
+1. 先完成 [MCP 入门](https://aka.ms/mcp-for-beginners) 中 0-10 单元
+2. 完成 00-03 实验巩固基础
+3. 跟随 04-06 实验动手搭建
+4. 进行 07-09 实验实际应用
 
-#### 🟡 **中级路径**（有一定MCP经验）
-1. 回顾实验00-01以了解数据库相关概念
-2. 专注于实验02-06进行实现
-3. 深入研究实验07-12以掌握高级功能
+#### 🟡 **中级路径**（有一定 MCP 经验）
+1. 回顾 00-01 实验数据库相关概念
+2. 重点完成 02-06 实验实现功能
+3. 深入 07-12 实验学习高级特性
 
-#### 🔴 **高级路径**（MCP经验丰富）
-1. 略读实验00-03以了解背景
-2. 专注于实验04-09进行数据库集成
-3. 重点研究实验10-12以实现生产部署
+#### 🔴 **高级路径**（MCP 资深用户）
+1. 浏览 00-03 实验获取背景
+2. 专注 04-09 实验数据库集成
+3. 重点攻克 10-12 实验生产部署
 
-## 🛠️ 如何高效使用这条学习路径
+## 🛠️ 如何高效使用本学习路径
 
 ### 顺序学习（推荐）
 
-按顺序完成实验以全面理解：
+按顺序完成实验获取系统理解：
 
-1. **阅读概述** - 了解您将学习的内容
-2. **检查前提条件** - 确保您具备所需知识
-3. **遵循分步指导** - 边学边实现
-4. **完成练习** - 巩固您的理解
-5. **回顾关键要点** - 加深学习成果
+1. **阅读概述** — 明确学习内容
+2. **检查前置条件** — 确认所需知识
+3. **跟随步骤指南** — 边学边做
+4. **完成练习题** — 巩固技能
+5. **回顾关键点** — 夯实成果
 
-### 目标导向学习
+### 针对性学习
 
-如果您需要特定技能：
+若需特定技能点学习：
 
-- **数据库集成**：专注于实验04-06
-- **安全性实现**：集中于实验02、08、12
-- **AI/语义搜索**：深入研究实验07
-- **生产部署**：学习实验10-12
+- **数据库集成**：侧重完成 04-06 实验
+- **安全实现**：重点关注 02、08、12 实验
+- **AI/语义搜索**：深度学习 07 实验
+- **生产部署**：研读 10-12 实验
 
 ### 动手实践
 
-每个实验包括：
-- **工作代码示例** - 复制、修改并实验
-- **真实场景** - 实际零售分析用例
-- **逐步复杂性** - 从简单到高级逐步构建
-- **验证步骤** - 确保您的实现有效
+每个实验均提供：
+- **可运行代码示例** — 复制、修改并实验
+- **真实场景案例** — 零售分析实用性场景
+- **逐步递进难度** — 由浅入深构建
+- **验证步骤** — 确认实现正确
 
 ## 🌟 社区与支持
 
-### 获取帮助
+### 寻求帮助
 
-- **Azure AI Discord**: [加入以获得专家支持](https://discord.com/invite/ByRwuEEgH4)
-- **GitHub仓库与实现示例**: [部署示例与资源](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
-- **MCP社区**: [加入更广泛的MCP讨论](https://github.com/orgs/modelcontextprotocol/discussions)
+- **Azure AI Discord**：[加入专家支持](https://discord.com/invite/ByRwuEEgH4)
+- **GitHub 仓库与实现示例**：[部署示例及资源](https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail/)
+- **MCP 社区**：[参与更广泛讨论](https://github.com/orgs/modelcontextprotocol/discussions)
 
 ## 🚀 准备开始了吗？
 
-从**[实验00：MCP数据库集成简介](./00-Introduction/README.md)**开始您的学习之旅
+从 **[实验 00：MCP 数据库集成简介](./00-Introduction/README.md)** 开始您的旅程
 
 ---
 
-*通过这份全面的动手学习体验，掌握构建生产级MCP服务器与数据库集成的技能。*
+*通过此综合动手学习体验，掌握构建带数据库集成的生产级 MCP 服务器的技能。*
 
 ---
 
-**免责声明**：  
-本文档使用AI翻译服务 [Co-op Translator](https://github.com/Azure/co-op-translator) 进行翻译。尽管我们努力确保翻译的准确性，但请注意，自动翻译可能包含错误或不准确之处。原始语言的文档应被视为权威来源。对于关键信息，建议使用专业人工翻译。我们对因使用此翻译而产生的任何误解或误读不承担责任。
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免责声明**：
+本文件是使用AI翻译服务[Co-op Translator](https://github.com/Azure/co-op-translator)翻译的。虽然我们努力确保准确性，但请注意自动翻译可能包含错误或不准确之处。原始文件的母语版本应被视为权威来源。对于重要信息，建议采用专业人工翻译。我们不对因使用此翻译而产生的任何误解或误释承担责任。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

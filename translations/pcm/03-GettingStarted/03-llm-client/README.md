@@ -1,34 +1,34 @@
 # Creating a client with LLM
 
-So far, you don see how to create server and client. The client don fit call the server clearly to list im tools, resources and prompts. But e no too practical. Your user dey for the agentic era and e expect to use prompts and talk with LLM to do am. For your user, e no matter if you use MCP or no to store your capabilities but dem expect to use natural language to interact. So how we go solve dis? The solution na to add LLM to the client.
+So far, you don see how to create server and client. The client don fit call the server directly to list im tools, resources and prompts. But that no too practical. Your user dey for dis new agentic time and dem dey expect to use prompts and talk to LLM to do am. For your user, e no matter if you use MCP or no to store your capabilities but dem dey expect to use natural language to interact. So how we go solve dis? The solution be say make we add LLM for the client.
 
 ## Overview
 
-For dis lesson, we go focus on how to add LLM to your client and show how e go give better experience for your user.
+For dis lesson, we go focus on how to add LLM to your client and show how dis go give your user better experience.
 
 ## Learning Objectives
 
 By the end of dis lesson, you go fit:
 
 - Create client with LLM.
-- Interact well well with MCP server using LLM.
-- Give better end user experience for client side.
+- Interact smoothly with MCP server using LLM.
+- Give better experience for user for client side.
 
 ## Approach
 
-Make we try understand the approach we need take. Adding LLM sound simple, but we really go do am?
+Make we try understand the approach we suppose take. To add LLM sounds easy, but how we go really do am?
 
-Na so client go take interact with server:
+Na so client go dey interact with server:
 
-1. Establish connection with server.
+1. Connect to server.
 
 1. List capabilities, prompts, resources and tools, then save their schema.
 
-1. Add LLM and pass the saved capabilities and schema in way wey LLM go understand.
+1. Add LLM and pass saved capabilities and schema in way wey LLM fit understand.
 
-1. Handle user prompt by passing am to LLM together with tools wey client list.
+1. Handle user prompt by passing am to LLM plus tools wey client list.
 
-Correct, now we don understand how to do am for high level, make we try am for below exercise.
+Correct, now we sabi how to do am for high level, make we try am for below exercise.
 
 ## Exercise: Creating a client with an LLM
 
@@ -36,17 +36,17 @@ For dis exercise, we go learn how to add LLM to our client.
 
 ### Authentication using GitHub Personal Access Token
 
-To create GitHub token na easy process. Na so you fit do am:
+To create GitHub token no hard. Na so you fit do am:
 
-- Go GitHub Settings – Click your profile picture for top right corner and select Settings.
+- Go GitHub Settings – Click your profile picture for top right corner then select Settings.
 - Go Developer Settings – Scroll down and click Developer Settings.
 - Select Personal Access Tokens – Click Fine-grained tokens then Generate new token.
-- Configure Your Token – Add note for reference, set expiration date, and select scopes (permissions) wey you need. For here, make sure say you add Models permission.
-- Generate and Copy the Token – Click Generate token, and copy am quick quick, because you no go fit see am again.
+- Configure Your Token – Put note for reference, set expiration date, select necessary scopes (permissions). For dis case, make sure say you add Models permission.
+- Generate and Copy Token – Click Generate token, then copy am quick quick as you no go fit see am again.
 
 ### -1- Connect to server
 
-Make we create our client first:
+Make we first create our client:
 
 #### TypeScript
 
@@ -83,11 +83,11 @@ class MCPClient {
 }
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
-- Import the libraries wey we need
-- Create class with two members, `client` and `openai` wey go help us manage client and interact with LLM.
-- Configure our LLM instance to use GitHub Models by setting `baseUrl` to point to inference API.
+- Imported needed libraries
+- Created class with two members, `client` and `openai` wey go help us manage client and interact with LLM.
+- Configure our LLM instance use GitHub Models by setting `baseUrl` to inference API.
 
 #### Python
 
@@ -119,9 +119,9 @@ if __name__ == "__main__":
 
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
-- Import the libraries wey MCP need
+- Imported required libraries for MCP
 - Create client
 
 #### .NET
@@ -147,7 +147,7 @@ await using var mcpClient = await McpClientFactory.CreateAsync(clientTransport);
 
 #### Java
 
-First, you go need add LangChain4j dependencies to your `pom.xml` file. Add these dependencies to enable MCP integration and GitHub Models support:
+First, you need add LangChain4j dependencies to your `pom.xml`. Add these dependencies to enable MCP integration and GitHub Models support:
 
 ```xml
 <properties>
@@ -210,7 +210,7 @@ public class LangChain4jClient {
                 .modelName("gpt-4.1-nano")
                 .build();
 
-        // Make MCP transport wey go connect to server
+        // Make MCP transport to join server
         McpTransport transport = new HttpMcpTransport.Builder()
                 .sseUrl("http://localhost:8080/sse")
                 .timeout(Duration.ofSeconds(60))
@@ -226,18 +226,18 @@ public class LangChain4jClient {
 }
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
-- **Add LangChain4j dependencies**: We need am for MCP integration, OpenAI official client, and GitHub Models support
-- **Import LangChain4j libraries**: For MCP integration and OpenAI chat model functionality
-- **Create `ChatLanguageModel`**: Configure am to use GitHub Models with your GitHub token
+- **Add LangChain4j dependencies**: Needed for MCP integration, OpenAI official client, and GitHub Models support
+- **Imported LangChain4j libraries**: For MCP integration and OpenAI chat model functionality
+- **Create `ChatLanguageModel`**: Configured to use GitHub Models with your GitHub token
 - **Set up HTTP transport**: Using Server-Sent Events (SSE) to connect MCP server
-- **Create MCP client**: Wey go handle communication with server
-- **Use LangChain4j's built-in MCP support**: E make integration between LLMs and MCP servers easy
+- **Create MCP client**: To handle communication with server
+- **Use LangChain4j's built-in MCP support**: To simplify integration between LLMs and MCP servers
 
 #### Rust
 
-Dis example assume say you get Rust based MCP server wey dey run. If you no get am, check back the [01-first-server](../01-first-server/README.md) lesson to create server.
+Dis example dey assume say you get Rust based MCP server wey dey run. If you no get, check back [01-first-server](../01-first-server/README.md) lesson to create server.
 
 Once you get your Rust MCP server, open terminal and go the same directory as server. Then run this command to create new LLM client project:
 
@@ -247,7 +247,7 @@ cd calculator-llmclient
 cargo init
 ```
 
-Add these dependencies to your `Cargo.toml` file:
+Add these dependencies to your `Cargo.toml`:
 
 ```toml
 [dependencies]
@@ -258,9 +258,9 @@ tokio = { version = "1.46.1", features = ["rt-multi-thread"] }
 ```
 
 > [!NOTE]
-> No official Rust library for OpenAI, but `async-openai` crate na [community maintained library](https://platform.openai.com/docs/libraries/rust#rust) wey people dey use well.
+> No official Rust library for OpenAI but `async-openai` crate na [community maintained library](https://platform.openai.com/docs/libraries/rust#rust) wey people dey use well.
 
-Open `src/main.rs` file and replace content with this code:
+Open `src/main.rs` and replace content with this code:
 
 ```rust
 use async_openai::{Client, config::OpenAIConfig};
@@ -302,24 +302,24 @@ async fn main() -> Result<(), Box<dyn Error>> {
         )
         .await?;
 
-    // TODO: Make we find MCP tool list
+    // TODO: Find MCP tool list
 
-    // TODO: Talk with LLM and call tool dem
+    // TODO: LLM talk with tool calls
 
     Ok(())
 }
 ```
 
-Dis code set up basic Rust app wey go connect MCP server and GitHub Models for LLM interactions.
+Dis code dey setup basic Rust app to connect MCP server and GitHub Models for LLM.
 
 > [!IMPORTANT]
-> Make sure say you set `OPENAI_API_KEY` environment variable with your GitHub token before you run the app.
+> Make sure say you set `OPENAI_API_KEY` environment variable with your GitHub token before you run app.
 
-Correct, for our next step, make we list capabilities for server.
+Correct, next step, make we list server capabilities.
 
 ### -2- List server capabilities
 
-Now we go connect server and ask for im capabilities:
+Now we go connect to server and ask for im capabilities:
 
 #### Typescript
 
@@ -335,26 +335,26 @@ async connectToServer(transport: Transport) {
 async run() {
     console.log("Asking server for available tools");
 
-    // di tools wey dem dey list
+    // de list all de tools dem
     const toolsResult = await this.client.listTools();
 }
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
 - Add code to connect server, `connectToServer`.
-- Create `run` method wey dey handle our app flow. So far e just dey list tools but we go add more soon.
+- Create `run` method wey dey handle app flow. So far dem dey list tools but we go add more soon.
 
 #### Python
 
 ```python
-# Make list of di resources wey dey available
+# List all di tins wey dey available
 resources = await session.list_resources()
 print("LISTING RESOURCES")
 for resource in resources:
     print("Resource: ", resource)
 
-# Make list of di tools wey dey available
+# List all di tools wey dey available
 tools = await session.list_tools()
 print("LISTING TOOLS")
 for tool in tools.tools:
@@ -362,9 +362,9 @@ for tool in tools.tools:
     print("Tool", tool.inputSchema["properties"])
 ```
 
-Na wetin we add be dis:
+Wetn we add be say:
 
-- List resources and tools and print dem. For tools we also list `inputSchema` wey we go use later.
+- List resources and tools and print dem. For tools, we also list `inputSchema` we go use later.
 
 #### .NET
 
@@ -389,47 +389,47 @@ async Task<List<ChatCompletionsToolDefinition>> GetMcpTools()
 }
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
 - List tools wey dey MCP Server
-- For each tool, list name, description and schema. The schema na wetin we go use to call tools soon.
+- For each tool, list name, description and im schema. We go use the schema to call tools later.
 
 #### Java
 
 ```java
-// Make one tool provider wey go sabi find MCP tools by itself
+// Make one tool provider wey go sabi find MCP tools by itsel
 ToolProvider toolProvider = McpToolProvider.builder()
         .mcpClients(List.of(mcpClient))
         .build();
 
-// The MCP tool provider dey handle these tins by itself:
-// - Show list of tools wey dey for MCP server
-// - Change MCP tool schemas go LangChain4j format
-// - Manage how tools dey run and how dem respond
+// The MCP tool provider dey automatically handle:
+// - To show tools wey dey available for MCP server
+// - To change MCP tool schemas to LangChain4j format
+// - To handle how tools go run and the answer dem go bring back
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
-- Create `McpToolProvider` wey automatically find and register all tools from MCP server
-- The tool provider dey handle conversion between MCP tool schemas and LangChain4j's tool format inside
-- Dis approach dey hide manual tool listing and conversion process
+- Create `McpToolProvider` wey self sabi find and register all tools from MCP server
+- Tool provider dey handle conversion between MCP tool schemas and LangChain4j's tool format inside
+- Dis way, e remove manual listing and conversion wahala
 
 #### Rust
 
-To get tools from MCP server, use `list_tools` method. For your `main` function, after you set MCP client, add this code:
+To get tools from MCP server, use `list_tools` method. For your `main` function, after setting up MCP client, add this code:
 
 ```rust
-// Comot MCP tool list
+// Make dem show MCP tool list
 let tools = mcp_client.list_tools(Default::default()).await?;
 ```
 
 ### -3- Convert server capabilities to LLM tools
 
-Next step after listing server capabilities na to convert dem to format wey LLM go understand. Once we do am, we fit give these capabilities as tools to our LLM.
+Next after we list server capabilities na to convert dem into format wey LLM go understand. When we do am, we fit give LLM these capabilities as tools.
 
 #### TypeScript
 
-1. Add this code to convert response from MCP Server to tool format wey LLM fit use:
+1. Add this code to convert MCP Server response to tool format LLM fit use:
 
     ```typescript
     openAiToolAdapter(tool: {
@@ -437,7 +437,7 @@ Next step after listing server capabilities na to convert dem to format wey LLM 
         description?: string;
         input_schema: any;
         }) {
-        // Make one zod schema based on di input_schema
+        // Make one zod schema wey base on the input_schema
         const schema = z.object(tool.input_schema);
     
         return {
@@ -456,7 +456,7 @@ Next step after listing server capabilities na to convert dem to format wey LLM 
 
     ```
 
-    The code above dey take response from MCP Server and convert am to tool definition format wey LLM go understand.
+    Dis code dey convert MCP Server response to tool definition wey LLM fit understand.
 
 1. Make we update `run` method next to list server capabilities:
 
@@ -474,11 +474,11 @@ Next step after listing server capabilities na to convert dem to format wey LLM 
     }
     ```
 
-    For the code wey pass, we update `run` method to map through result and for each entry call `openAiToolAdapter`.
+    For code wey pass, we update `run` method to map through result and for each entry call `openAiToolAdapter`.
 
 #### Python
 
-1. First, make we create this converter function
+1. First, make we create dis converter function
 
     ```python
     def convert_to_llm_tool(tool):
@@ -498,9 +498,9 @@ Next step after listing server capabilities na to convert dem to format wey LLM 
         return tool_schema
     ```
 
-    For the function `convert_to_llm_tools` we dey take MCP tool response and convert am to format wey LLM go understand.
+    For function `convert_to_llm_tools`, we dey take MCP tool response and convert am to format LLM fit understand.
 
-1. Next, make we update our client code to use this function like dis:
+1. Next, make we update client code to use dis function like dis:
 
     ```python
     functions = []
@@ -510,11 +510,11 @@ Next step after listing server capabilities na to convert dem to format wey LLM 
         functions.append(convert_to_llm_tool(tool))
     ```
 
-    Here, we dey add call to `convert_to_llm_tool` to convert MCP tool response to wetin we fit give LLM later.
+    Here, we dey add call to `convert_to_llm_tool` to convert MCP tool response so we fit give am to LLM later.
 
 #### .NET
 
-1. Make we add code to convert MCP tool response to wetin LLM go understand
+1. Make we add code to convert MCP tool response to something LLM go understand
 
 ```csharp
 ChatCompletionsToolDefinition ConvertFrom(string name, string description, JsonElement jsonElement)
@@ -537,12 +537,12 @@ ChatCompletionsToolDefinition ConvertFrom(string name, string description, JsonE
 }
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
 - Create function `ConvertFrom` wey take name, description and input schema.
-- Define functionality wey create FunctionDefinition wey go pass to ChatCompletionsDefinition. The last one na wetin LLM go understand.
+- Define function wey create FunctionDefinition wey dem go pass to ChatCompletionsDefinition. Dis na wetin LLM go understand.
 
-1. Make we see how to update some existing code to use this function:
+1. Make we see how to update existing code to use dis function:
 
     ```csharp
     async Task<List<ChatCompletionsToolDefinition>> GetMcpTools()
@@ -588,28 +588,28 @@ For the code wey pass, we:
 #### Java
 
 ```java
-// Make Bot interface wey fit talk for natural language
+// Make Bot interface wey go fit talk natural language
 public interface Bot {
     String chat(String prompt);
 }
 
-// Set up the AI service wit LLM and MCP tools
+// Setup di AI service wit LLM and MCP tools
 Bot bot = AiServices.builder(Bot.class)
         .chatLanguageModel(model)
         .toolProvider(toolProvider)
         .build();
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
-- Define simple `Bot` interface for natural language interactions
-- Use LangChain4j's `AiServices` to automatically bind LLM with MCP tool provider
-- The framework dey handle tool schema conversion and function calling behind scenes
-- Dis approach remove manual tool conversion - LangChain4j dey handle all the wahala of converting MCP tools to LLM-compatible format
+- Define simple `Bot` interface for natural language interaction
+- Use LangChain4j's `AiServices` to bind LLM with MCP tool provider automatic
+- Framework dey handle tool schema conversion and function calling behind scenes
+- Dis approach remove manual tool conversion - LangChain4j dey handle all the complexity of converting MCP tools to LLM-compatible format
 
 #### Rust
 
-To convert MCP tool response to format wey LLM go understand, we go add helper function wey go format tools listing. Add this code to your `main.rs` file below `main` function. E go call am when you dey make requests to LLM:
+To convert MCP tool response to format wey LLM go understand, we go add helper function wey go format tools listing. Add this code to your `main.rs` below `main` function. Dem go call am when dem dey make request to LLM:
 
 ```rust
 async fn format_tools(tools: &ListToolsResult) -> Result<Vec<Value>, Box<dyn Error>> {
@@ -644,15 +644,15 @@ async fn format_tools(tools: &ListToolsResult) -> Result<Vec<Value>, Box<dyn Err
 }
 ```
 
-Correct, we don ready to handle user requests, so make we do am next.
+Correct, now we ready to handle any user requests, make we tackle that next.
 
 ### -4- Handle user prompt request
 
-For dis part of code, we go handle user requests.
+For dis part, we go handle user requests.
 
 #### TypeScript
 
-1. Add method wey we go use call our LLM:
+1. Add method wey go call our LLM:
 
     ```typescript
     async callTools(
@@ -681,10 +681,10 @@ For dis part of code, we go handle user requests.
     }
     ```
 
-    For the code wey pass we:
+    For code wey pass, we:
 
     - Add method `callTools`.
-    - The method dey take LLM response and check which tools dem call, if any:
+    - The method dey check LLM response to see which tools dem call, if any:
 
         ```typescript
         for (const tool_call of tool_calls) {
@@ -693,14 +693,14 @@ For dis part of code, we go handle user requests.
 
         console.log(`Calling tool ${toolName} with args ${JSON.stringify(args)}`);
 
-        // make call tool
+        // make tool call
         }
         ```
 
-    - Call tool, if LLM talk say make e call am:
+    - Call tool if LLM say make e call:
 
         ```typescript
-        // 2. Call di server tool
+        // 2. Make call the server tool
         const toolResult = await this.client.callTool({
             name: toolName,
             arguments: JSON.parse(args),
@@ -708,11 +708,11 @@ For dis part of code, we go handle user requests.
 
         console.log("Tool result: ", toolResult);
 
-        // 3. Do sometin wit di result
+        // 3. Do somtin wit di result
         // TODO
         ```
 
-1. Update `run` method to include calls to LLM and call `callTools`:
+1. Update `run` method to include calls to LLM and `callTools`:
 
     ```typescript
 
@@ -728,9 +728,9 @@ For dis part of code, we go handle user requests.
 
     console.log("Querying LLM: ", messages[0].content);
 
-    // 2. Call the LLM
+    // 2. Di LLM dey call
     let response = this.openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4.1-mini",
         max_tokens: 1000,
         messages,
         tools: tools,
@@ -738,7 +738,7 @@ For dis part of code, we go handle user requests.
 
     let results: any[] = [];
 
-    // 3. Check the LLM response, for each choice, see if e get tool calls
+    // 3. Check di LLM response well, for each choice, see if e get tool calls
     (await response).choices.map(async (choice: { message: any; }) => {
         const message = choice.message;
         if (message.tool_calls) {
@@ -762,7 +762,7 @@ class MyClient {
     private client: Client;
     constructor(){
         this.openai = new OpenAI({
-            baseURL: "https://models.inference.ai.azure.com", // fit need change go this url later: https://models.github.ai/inference
+            baseURL: "https://models.inference.ai.azure.com", // fit need to change to dis url for future: https://models.github.ai/inference
             apiKey: process.env.GITHUB_TOKEN,
         });
 
@@ -792,11 +792,11 @@ class MyClient {
         description?: string;
         input_schema: any;
           }) {
-          // Make zod schema based on the input_schema
+          // Create one zod schema based on di input_schema
           const schema = z.object(tool.input_schema);
       
           return {
-            type: "function" as const, // Clear clear set type to "function"
+            type: "function" as const, // Clearly set di type to "function"
             function: {
               name: tool.name,
               description: tool.description,
@@ -820,7 +820,7 @@ class MyClient {
           console.log(`Calling tool ${toolName} with args ${JSON.stringify(args)}`);
     
     
-          // 2. Call the server tool
+          // 2. Call di server tool
           const toolResult = await this.client.callTool({
             name: toolName,
             arguments: JSON.parse(args),
@@ -856,7 +856,7 @@ class MyClient {
 
         console.log("Querying LLM: ", messages[0].content);
         let response = this.openai.chat.completions.create({
-            model: "gpt-4o-mini",
+            model: "gpt-4.1-mini",
             max_tokens: 1000,
             messages,
             tools: tools,
@@ -864,7 +864,7 @@ class MyClient {
 
         let results: any[] = [];
     
-        // 1. Go through di LLM response, for each choice, check if e get tool calls
+        // 1. Go through di LLM answer, for each choice, check if e get tool calls
         (await response).choices.map(async (choice: { message: any; }) => {
           const message = choice.message;
           if (message.tool_calls) {
@@ -887,7 +887,7 @@ client.connectToServer(transport);
 
 #### Python
 
-1. Make we add some imports wey we need to call LLM
+1. Add imports wey we need to call LLM
 
     ```python
     # llm
@@ -898,7 +898,7 @@ client.connectToServer(transport);
     import json
     ```
 
-1. Next, make we add function wey go call LLM:
+1. Next, add function wey go call LLM:
 
     ```python
     # llm
@@ -948,19 +948,19 @@ client.connectToServer(transport);
         return functions_to_call
     ```
 
-    For the code wey pass, we:
+    For code wey pass, we:
 
-    - Pass our functions wey we find for MCP server and convert to LLM.
-    - Then we call LLM with those functions.
-    - Then, we dey check result to see which functions we suppose call, if any.
-    - Finally, we pass array of functions to call.
+    - Pass functions wey we find on MCP server and convert to LLM.
+    - Call LLM with the functions.
+    - Check result to see which functions to call, if any.
+    - Pass array of functions to call.
 
-1. Last step, make we update our main code:
+1. Final step, update main code:
 
     ```python
     prompt = "Add 2 to 20"
 
-    # ask LLM wetin tools dem dey use, if e get any
+    # ask LLM wetin tools wey fit use be, if e get
     functions_to_call = call_llm(prompt, functions)
 
     # call di functions wey dem suggest
@@ -969,14 +969,14 @@ client.connectToServer(transport);
         print("TOOLS result: ", result.content)
     ```
 
-    There, na final step, for the code above we:
+    That was final step, for code we:
 
-    - Call MCP tool via `call_tool` using function wey LLM think say we suppose call based on our prompt.
+    - Call MCP tool via `call_tool` using function LLM think say we suppose call base on prompt.
     - Print result of tool call to MCP Server.
 
 #### .NET
 
-1. Make we show code for LLM prompt request:
+1. Code to do LLM prompt request:
 
     ```csharp
     var tools = await GetMcpTools();
@@ -999,7 +999,7 @@ client.connectToServer(transport);
     // 2. Define options, including the tools
     var options = new ChatCompletionsOptions(chatHistory)
     {
-        Model = "gpt-4o-mini",
+        Model = "gpt-4.1-mini",
         Tools = { tools[0] }
     };
 
@@ -1010,14 +1010,14 @@ client.connectToServer(transport);
 
     ```
 
-    For the code wey pass, we:
+    For code wey pass, we:
 
     - Fetch tools from MCP server, `var tools = await GetMcpTools()`.
     - Define user prompt `userMessage`.
-    - Construct options object specifying model and tools.
+    - Construct options object with model and tools.
     - Make request to LLM.
 
-1. One last step, make we see if LLM think say we suppose call function:
+1. One last step, check if LLM think say we suppose call function:
 
     ```csharp
     // 4. Check if the response contains a function call
@@ -1040,12 +1040,12 @@ client.connectToServer(transport);
     }
     ```
 
-    For the code wey pass, we:
+    For code wey pass, we:
 
-    - Loop through list of function calls.
-    - For each tool call, parse name and arguments and call tool on MCP server using MCP client. Finally print results.
+    - Loop through function calls.
+    - For each, parse name and args and call tool on MCP server using MCP client. Then print results.
 
-Here na full code:
+Full code:
 
 ```csharp
 using Azure;
@@ -1140,7 +1140,7 @@ chatHistory.Add(new ChatRequestUserMessage(userMessage));
 // 3. Define options, including the tools
 var options = new ChatCompletionsOptions(chatHistory)
 {
-    Model = "gpt-4o-mini",
+    Model = "gpt-4.1-mini",
     Tools = { tools[0] }
 };
 
@@ -1176,7 +1176,7 @@ Console.WriteLine($"Assistant response: {content}");
 
 ```java
 try {
-    // Run natural language request wey go automatically use MCP tools
+    // Run natural language requests wey go automatically use MCP tools
     String response = bot.chat("Calculate the sum of 24.5 and 17.3 using the calculator service");
     System.out.println(response);
 
@@ -1190,15 +1190,15 @@ try {
 }
 ```
 
-For the code wey pass, we:
+For code wey pass, we:
 
 - Use simple natural language prompts to interact with MCP server tools
-- LangChain4j framework dey automatically handle:
+- LangChain4j framework automatically handle:
   - Convert user prompts to tool calls when e need am
-  - Call correct MCP tools based on LLM decision
+  - Call MCP tools based on LLM decision
   - Manage conversation flow between LLM and MCP server
-- `bot.chat()` method dey return natural language responses wey fit include results from MCP tool executions
-- Dis approach dey give smooth user experience where users no need sabi about MCP implementation
+- `bot.chat()` method return natural language responses wey fit include results from MCP tool runs
+- Dis approach give smooth user experience so users no need sabi the MCP backend
 
 Complete code example:
 
@@ -1251,9 +1251,9 @@ public class LangChain4jClient {
 
 #### Rust
 
-Na here most work dey happen. We go call LLM with initial user prompt, then process response to see if any tools need call. If yes, we go call those tools and continue conversation with LLM until no more tool calls dey and we get final response.
+Dis na where heavy work dey happen. We go call LLM with initial user prompt, then process answer to see if any tools need call. If so, we go call those tools and continue conversation with LLM until no more tool calls and we get final answer.
 
-We go make multiple calls to LLM, so make we define function wey go handle LLM call. Add this function to your `main.rs` file:
+We go do multiple calls to LLM, so make we define function to handle LLM call. Add dis function to your `main.rs` file:
 
 ```rust
 async fn call_llm(
@@ -1273,8 +1273,8 @@ async fn call_llm(
 }
 ```
 
-Dis function dey take LLM client, list of messages (including user prompt), tools from MCP server, and send request to LLM, then return response.
-Di response wey come from di LLM go get array of `choices`. We go need process di result to see if any `tool_calls` dey. Dis one go let us sabi say di LLM dey request say make dem call specific tool with arguments. Add di code wey dey below for your `main.rs` file to define function wey go handle di LLM response:
+Dis function take LLM client, list of messages (including user prompt), MCP tools, then send request to LLM, come return response.
+The response from the LLM go contain an array of `choices`. We go need process the result to see if e get any `tool_calls`. Dis one go let us sabi say LLM dey request make one specific tool call with arguments. Add dis code for the bottom of your `main.rs` file to define one function wey go handle the LLM response:
 
 ```rust
 async fn process_llm_response(
@@ -1322,7 +1322,7 @@ async fn process_llm_response(
             }));
         }
 
-        // Continue talk with tool results
+        // Continue gist wit tool results
         let response = call_llm(openai_client, messages, mcp_tools).await?;
         Box::pin(process_llm_response(
             &response,
@@ -1337,9 +1337,9 @@ async fn process_llm_response(
 }
 ```
 
-If `tool_calls` dey, e go extract di tool information, call di MCP server with di tool request, then add di results to di conversation messages. E go continue di conversation with di LLM and di messages go update with di assistant response and tool call results.
+If `tool_calls` dey present, e go extract the tool information, call the MCP server with the tool request, then add the results join the conversation messages. E go continue the conversation with the LLM and the messages go update with the assistant's response and tool call results.
 
-To extract tool call information wey di LLM return for MCP calls, we go add another helper function to extract everything wey we need to make di call. Add di code wey dey below for your `main.rs` file:
+To extract tool call information wey the LLM return for MCP calls, we go add another helper function to extract everything wey we need to make the call. Add dis code for the bottom of your `main.rs` file:
 
 ```rust
 fn extract_tool_call_info(tool_call: &Value) -> Result<(String, String, String), Box<dyn Error>> {
@@ -1363,10 +1363,10 @@ fn extract_tool_call_info(tool_call: &Value) -> Result<(String, String, String),
 }
 ```
 
-With all di pieces wey dey, we fit now handle di initial user prompt and call di LLM. Update your `main` function to include di code wey dey below:
+With all the pieces don set, now we fit handle the initial user prompt and call the LLM. Update your `main` function to include dis code:
 
 ```rust
-// LLM tok tok wit tool dem call
+// LLM tori wit tool dem call
 let response = call_llm(&openai_client, &messages, &tools).await?;
 process_llm_response(
     &response,
@@ -1378,13 +1378,13 @@ process_llm_response(
 .await?;
 ```
 
-Dis one go query di LLM with di initial user prompt wey dey ask for di sum of two numbers, and e go process di response to dynamically handle tool calls.
+Dis one go query the LLM with the initial user prompt wey dey ask for the sum of two numbers, and e go process the response to dynamically handle tool calls.
 
-Great, you don do am!
+Correct, you don nail am!
 
 ## Assignment
 
-Take di code from di exercise and build out di server with some more tools. Then create client with LLM, like for di exercise, and test am with different prompts to make sure all your server tools dey called dynamically. Dis way of building client mean say di end user go get better user experience as dem fit use prompts, instead of exact client commands, and dem no go sabi say any MCP server dey called.
+Take the code from the exercise and build the server with more tools. Then create one client wey get LLM, like for the exercise, and test am with different prompts to make sure say all your server tools dey call dynamically. Dis kain way to build client mean say the end user go get beta user experience because dem fit use prompts, instead of exact client commands, and dem no go sabi or see any MCP server dey call.
 
 ## Solution
 
@@ -1392,8 +1392,8 @@ Take di code from di exercise and build out di server with some more tools. Then
 
 ## Key Takeaways
 
-- Adding LLM to your client dey provide better way for users to interact with MCP Servers.
-- You need convert di MCP Server response to something wey LLM fit understand.
+- To add LLM to your client dey give better way for users to interact with MCP Servers.
+- You need turn the MCP Server response to something wey LLM fit understand.
 
 ## Samples
 
@@ -1413,6 +1413,6 @@ Take di code from di exercise and build out di server with some more tools. Then
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:
-Dis document don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am correct, abeg sabi say automated translation fit get some mistakes or wrong parts. Di original document wey e dey for im own language na di correct one. If na serious matter, e better make professional human translation do am. We no go responsible for any misunderstanding or wrong meaning wey fit come from dis translation.
+**Disclaimer**:  
+Dis document don get beta translation wey AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) help do. Even though we dey try make am correct, abeg sabi say automated translations fit get some mistake or inaccuracy. Di original document way e be for im own language na di correct one. If na important info, make you use professional human translation. We no go responsible if person miss understand or interpret wrong because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

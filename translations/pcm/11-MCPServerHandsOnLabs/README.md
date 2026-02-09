@@ -1,17 +1,19 @@
 # 🚀 MCP Server wit PostgreSQL - Complete Learning Guide
 
-## 🧠 Overview of MCP Database Integration Learning Path
+## 🧠 Overview of di MCP Database Integration Learning Path
 
-Dis guide go teach you how to build production-ready **Model Context Protocol (MCP) servers** wey dey work wit database through one practical retail analytics implementation. You go sabi enterprise-grade patterns like **Row Level Security (RLS)**, **semantic search**, **Azure AI integration**, and **multi-tenant data access**.
+Dis comprehensive learning guide go teach you how to build production-ready **Model Context Protocol (MCP) servers** wey dey integrate wit databases through practical retail analytics implementation. You go learn enterprise-grade patterns like **Row Level Security (RLS)**, **semantic search**, **Azure AI integration**, and **multi-tenant data access**.
 
-Whether you be backend developer, AI engineer, or data architect, dis guide go give you structured learning wit real-world examples and hands-on exercises wey go show you how MCP server dey work https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
+Whether you be backend developer, AI engineer, or data architect, dis guide dey provide structured learning wit real-world examples and hands-on exercises wey go waka you through di following MCP server https://github.com/microsoft/MCP-Server-and-PostgreSQL-Sample-Retail.
 
 ## 🔗 Official MCP Resources
 
-- 📘 [MCP Documentation](https://modelcontextprotocol.io/) – Tutorials and user guides wey dey detailed
-- 📜 [MCP Specification](https://modelcontextprotocol.io/docs/) – Protocol architecture and technical references
+- 📘 [MCP Documentation](https://modelcontextprotocol.io/) – Detailed tutorials and user guides
+- 📜 [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/) – Protocol architecture and technical references
 - 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) – Open-source SDKs, tools, and code samples
 - 🌐 [MCP Community](https://github.com/orgs/modelcontextprotocol/discussions) – Join discussions and contribute to di community
+- 🔒 [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) – Security best practices and risk mitigations
+
 
 ## 🧭 MCP Database Integration Learning Path
 
@@ -21,17 +23,17 @@ Whether you be backend developer, AI engineer, or data architect, dis guide go g
 |--------|-------|-------------|------|
 | **Lab 1-3: Foundations** | | | |
 | 00 | [Introduction to MCP Database Integration](./00-Introduction/README.md) | Overview of MCP wit database integration and retail analytics use case | [Start Here](./00-Introduction/README.md) |
-| 01 | [Core Architecture Concepts](./01-Architecture/README.md) | Understand MCP server architecture, database layers, and security patterns | [Learn](./01-Architecture/README.md) |
+| 01 | [Core Architecture Concepts](./01-Architecture/README.md) | Understanding MCP server architecture, database layers, and security patterns | [Learn](./01-Architecture/README.md) |
 | 02 | [Security and Multi-Tenancy](./02-Security/README.md) | Row Level Security, authentication, and multi-tenant data access | [Learn](./02-Security/README.md) |
-| 03 | [Environment Setup](./03-Setup/README.md) | How to setup development environment, Docker, Azure resources | [Setup](./03-Setup/README.md) |
-| **Lab 4-6: Building di MCP Server** | | | |
+| 03 | [Environment Setup](./03-Setup/README.md) | Setting up development environment, Docker, Azure resources | [Setup](./03-Setup/README.md) |
+| **Lab 4-6: Building the MCP Server** | | | |
 | 04 | [Database Design and Schema](./04-Database/README.md) | PostgreSQL setup, retail schema design, and sample data | [Build](./04-Database/README.md) |
-| 05 | [MCP Server Implementation](./05-MCP-Server/README.md) | Build di FastMCP server wit database integration | [Build](./05-MCP-Server/README.md) |
-| 06 | [Tool Development](./06-Tools/README.md) | Create database query tools and schema introspection | [Build](./06-Tools/README.md) |
+| 05 | [MCP Server Implementation](./05-MCP-Server/README.md) | Building the FastMCP server wit database integration | [Build](./05-MCP-Server/README.md) |
+| 06 | [Tool Development](./06-Tools/README.md) | Creating database query tools and schema introspection | [Build](./06-Tools/README.md) |
 | **Lab 7-9: Advanced Features** | | | |
-| 07 | [Semantic Search Integration](./07-Semantic-Search/README.md) | Implement vector embeddings wit Azure OpenAI and pgvector | [Advance](./07-Semantic-Search/README.md) |
+| 07 | [Semantic Search Integration](./07-Semantic-Search/README.md) | Implementing vector embeddings wit Azure OpenAI and pgvector | [Advance](./07-Semantic-Search/README.md) |
 | 08 | [Testing and Debugging](./08-Testing/README.md) | Testing strategies, debugging tools, and validation approaches | [Test](./08-Testing/README.md) |
-| 09 | [VS Code Integration](./09-VS-Code/README.md) | Configure VS Code MCP integration and AI Chat usage | [Integrate](./09-VS-Code/README.md) |
+| 09 | [VS Code Integration](./09-VS-Code/README.md) | Configuring VS Code MCP integration and AI Chat usage | [Integrate](./09-VS-Code/README.md) |
 | **Lab 10-12: Production and Best Practices** | | | |
 | 10 | [Deployment Strategies](./10-Deployment/README.md) | Docker deployment, Azure Container Apps, and scaling considerations | [Deploy](./10-Deployment/README.md) |
 | 11 | [Monitoring and Observability](./11-Monitoring/README.md) | Application Insights, logging, performance monitoring | [Monitor](./11-Monitoring/README.md) |
@@ -39,41 +41,41 @@ Whether you be backend developer, AI engineer, or data architect, dis guide go g
 
 ### 💻 Wetin You Go Build
 
-By di end of dis learning path, you go don build one complete **Zava Retail Analytics MCP Server** wey get:
+By di end of dis learning path, you go don build a complete **Zava Retail Analytics MCP Server** wey get:
 
-- **Multi-table retail database** wey get customer orders, products, and inventory
+- **Multi-table retail database** wit customer orders, products, and inventory
 - **Row Level Security** for store-based data isolation
-- **Semantic product search** wit Azure OpenAI embeddings
+- **Semantic product search** using Azure OpenAI embeddings
 - **VS Code AI Chat integration** for natural language queries
 - **Production-ready deployment** wit Docker and Azure
 - **Comprehensive monitoring** wit Application Insights
 
-## 🎯 Wetin You Need Before You Start
+## 🎯 Prerequisites for Learning
 
-To enjoy dis learning path well, you need:
+To get di most out of dis learning path, you suppose get:
 
-- **Programming Experience**: Sabi Python (preferred) or similar languages
+- **Programming Experience**: Familiarity wit Python (preferred) or similar languages
 - **Database Knowledge**: Basic understanding of SQL and relational databases
-- **API Concepts**: Sabi REST APIs and HTTP concepts
+- **API Concepts**: Understanding of REST APIs and HTTP concepts
 - **Development Tools**: Experience wit command line, Git, and code editors
 - **Cloud Basics**: (Optional) Basic knowledge of Azure or similar cloud platforms
-- **Docker Familiarity**: (Optional) Understand containerization concepts
+- **Docker Familiarity**: (Optional) Understanding of containerization concepts
 
-### Tools You Need
+### Required Tools
 
-- **Docker Desktop** - To run PostgreSQL and di MCP server
-- **Azure CLI** - To deploy cloud resources
+- **Docker Desktop** - For running PostgreSQL and the MCP server
+- **Azure CLI** - For cloud resource deployment
 - **VS Code** - For development and MCP integration
 - **Git** - For version control
 - **Python 3.8+** - For MCP server development
 
 ## 📚 Study Guide & Resources
 
-Dis learning path get plenty resources to help you learn well:
+Dis learning path get comprehensive resources to help you navigate well:
 
 ### Study Guide
 
-Each lab get:
+Every lab get:
 - **Clear learning objectives** - Wetin you go achieve
 - **Step-by-step instructions** - Detailed implementation guides
 - **Code examples** - Working samples wit explanations
@@ -83,11 +85,11 @@ Each lab get:
 
 ### Prerequisites Check
 
-Before you start each lab, you go see:
-- **Required knowledge** - Wetin you suppose sabi before you start
-- **Setup validation** - How to confirm say your environment dey ready
-- **Time estimates** - How long e go take you
-- **Learning outcomes** - Wetin you go sabi after you finish
+Before you start each lab, you go find:
+- **Required knowledge** - Wetin you suppose sabi before
+- **Setup validation** - How to verify your environment
+- **Time estimates** - Expected completion time
+- **Learning outcomes** - Wetin you go sabi after finish
 
 ### Recommended Learning Paths
 
@@ -95,16 +97,16 @@ Choose your path based on your experience level:
 
 #### 🟢 **Beginner Path** (New to MCP)
 1. Make sure say you don complete 0-10 of [MCP for Beginners](https://aka.ms/mcp-for-beginners) first
-2. Complete labs 00-03 to sabi di foundations well
+2. Complete labs 00-03 to reinforce your foundations
 3. Follow labs 04-06 for hands-on building
 4. Try labs 07-09 for practical usage
 
-#### 🟡 **Intermediate Path** (Small MCP Experience)
+#### 🟡 **Intermediate Path** (Some MCP Experience)
 1. Review labs 00-01 for database-specific concepts
 2. Focus on labs 02-06 for implementation
-3. Dive deep into labs 07-12 for advanced features
+3. Deep dive into labs 07-12 for advanced features
 
-#### 🔴 **Advanced Path** (Sabi MCP well well)
+#### 🔴 **Advanced Path** (Experienced wit MCP)
 1. Skim labs 00-03 for context
 2. Focus on labs 04-09 for database integration
 3. Concentrate on labs 10-12 for production deployment
@@ -113,13 +115,13 @@ Choose your path based on your experience level:
 
 ### Sequential Learning (Recommended)
 
-Follow di labs one by one to sabi everything well:
+Work through labs in order for better understanding:
 
-1. **Read di overview** - Understand wetin you go learn
-2. **Check prerequisites** - Make sure say you sabi wetin you need
+1. **Read the overview** - Understand wetin you go learn
+2. **Check prerequisites** - Make sure you get di required knowledge
 3. **Follow step-by-step guides** - Implement as you dey learn
-4. **Complete exercises** - Practice wetin you don learn
-5. **Review key takeaways** - Confirm wetin you don sabi
+4. **Complete exercises** - Reinforce your understanding
+5. **Review key takeaways** - Solidify learning outcomes
 
 ### Targeted Learning
 
@@ -132,11 +134,11 @@ If you need specific skills:
 
 ### Hands-on Practice
 
-Each lab get:
+Every lab get:
 - **Working code examples** - Copy, modify, and experiment
 - **Real-world scenarios** - Practical retail analytics use cases
-- **Progressive complexity** - From simple to advanced
-- **Validation steps** - Confirm say your implementation dey work
+- **Progressive complexity** - Building from simple to advanced
+- **Validation steps** - Verify say your implementation dey work
 
 ## 🌟 Community and Support
 
@@ -152,11 +154,11 @@ Begin your journey wit **[Lab 00: Introduction to MCP Database Integration](./00
 
 ---
 
-*Master how to build production-ready MCP servers wit database integration through dis hands-on learning experience.*
+*Master building production-ready MCP servers wit database integration through dis comprehensive, hands-on learning experience.*
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis dokyument don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even as we dey try make am accurate, abeg sabi say automated translations fit get mistake or no dey correct well. Di original dokyument for im native language na di main source wey you go trust. For important information, e good make professional human translation dey use. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translation.
+**Disclaimer**:
+Dis document na AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) wey translate am. Even though we try make am correct, abeg sabi say automated translation fit get mistake or no dey accurate. Di original document wey dey im own language na di correct one. For important matter, na professional human translation you suppose use. We no go take responsibility if anybody misunderstand or miss-interpret because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

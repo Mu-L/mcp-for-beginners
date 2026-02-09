@@ -1,18 +1,24 @@
-# MCP Security Controls - December 2025 Update
+# MCP Security Controls - February 2026 Update
 
-> **Current Standard**: Dis dokument dey reflect [MCP Specification 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) security requirements and official [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices).
+> **Current Standard**: Dis document dey show [MCP Specification 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) security requirements and official [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices).
 
-Di Model Context Protocol (MCP) don mature well well wit beta security controls wey dey address both traditional software security and AI-specific threats. Dis dokument dey provide full security controls for secure MCP implementations as of December 2025.
+The Model Context Protocol (MCP) don mature well well with beta-beta security controls wey dey tackle both normal software security and AI-specific wahala dem. Dis document dey give complete security controls for secure MCP use dem wey gree with OWASP MCP Top 10 framework.
+
+## 🏔️ Hands-On Security Training
+
+For practical, hands-on security implementation experience, we recommend the **[MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/)** - na complete guided journey to secure MCP servers for Azure using "vulnerable → exploit → fix → validate" method.
+
+All security controls for dis document dey follow the **[OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)**, wey dey give architecture examples and Azure-specific implementation guidance for the OWASP MCP Top 10 risks.
 
 ## **MANDATORY Security Requirements**
 
 ### **Critical Prohibitions from MCP Specification:**
 
-> **FORBIDDEN**: MCP servers **MUST NOT** accept any tokens wey dem no explicitly issue for di MCP server
+> **FORBIDDEN**: MCP servers **MUST NOT** accept any tokens we no expressly issue for the MCP server  
 >
 > **PROHIBITED**: MCP servers **MUST NOT** use sessions for authentication  
 >
-> **REQUIRED**: MCP servers wey dey implement authorization **MUST** verify ALL inbound requests
+> **REQUIRED**: MCP servers we dey do authorization **MUST** check ALL inbound requests  
 >
 > **MANDATORY**: MCP proxy servers wey dey use static client IDs **MUST** get user consent for every dynamically registered client
 
@@ -22,47 +28,47 @@ Di Model Context Protocol (MCP) don mature well well wit beta security controls 
 
 ### **External Identity Provider Integration**
 
-**Current MCP Standard (2025-06-18)** allow MCP servers to delegate authentication to external identity providers, wey be big security improvement:
+**Current MCP Standard (2025-11-25)** allow MCP servers make dem fit hand over authentication to external identity providers, wey mean better security for dem:
 
-### **External Identity Provider Integration**
-
-**Current MCP Standard (2025-11-25)** allow MCP servers to delegate authentication to external identity providers, wey be big security improvement:
+**OWASP MCP Risk Addressed**: [MCP07 - Insufficient Authentication & Authorization](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp07-authz/)
 
 **Security Benefits:**
-1. **Eliminates Custom Authentication Risks**: E reduce vulnerability surface by no dey use custom authentication implementations
-2. **Enterprise-Grade Security**: E use established identity providers like Microsoft Entra ID wey get advanced security features
-3. **Centralized Identity Management**: E make user lifecycle management, access control, and compliance auditing easy
-4. **Multi-Factor Authentication**: E inherit MFA capabilities from enterprise identity providers
-5. **Conditional Access Policies**: E benefit from risk-based access controls and adaptive authentication
+1. **Cuts Custom Authentication Risks**: E reduce yawa wey custom authentication fit cause
+2. **Enterprise-Grade Security**: E use top identity providers like Microsoft Entra ID wey get strong security features
+3. **Centralized Identity Management**: Make e easy to manage user lifecycle, access control, and compliance audit
+4. **Multi-Factor Authentication**: E succor MFA capabilities from enterprise identity providers
+5. **Conditional Access Policies**: E fit use risk-based access controls and adaptive authentication
 
 **Implementation Requirements:**
-- **Token Audience Validation**: Verify say all tokens dem explicitly issue for di MCP server
-- **Issuer Verification**: Validate say token issuer match di expected identity provider
-- **Signature Verification**: Cryptographic validation of token integrity
-- **Expiration Enforcement**: Strict enforcement of token lifetime limits
-- **Scope Validation**: Make sure tokens get correct permissions for di requested operations
+- **Token Audience Validation**: Confirm say all tokens na make for MCP server
+- **Issuer Verification**: Check sey token issuer na the correct identity provider
+- **Signature Verification**: Confirm token integrity with cryptography
+- **Expiration Enforcement**: Make sure token no dey valid after e expire
+- **Scope Validation**: Confirm tokens get correct permission for wetin dem wan do
 
 ### **Authorization Logic Security**
 
 **Critical Controls:**
-- **Comprehensive Authorization Audits**: Regular security reviews of all authorization decision points
-- **Fail-Safe Defaults**: Deny access when authorization logic no fit make clear decision
-- **Permission Boundaries**: Clear separation between different privilege levels and resource access
-- **Audit Logging**: Complete logging of all authorization decisions for security monitoring
-- **Regular Access Reviews**: Periodic validation of user permissions and privilege assignments
+- **Comprehensive Authorization Audits**: Regular security check for all authorization decision points
+- **Fail-Safe Defaults**: Deny access if the authorization logic no fit confirm decision
+- **Permission Boundaries**: Clear divide for different privilege levels and resource access
+- **Audit Logging**: Full logging of all authorization decisions for security monitoring
+- **Regular Access Reviews**: Check user permissions and privilege assignments often
 
 ## 2. **Token Security & Anti-Passthrough Controls**
 
+**OWASP MCP Risk Addressed**: [MCP01 - Token Mismanagement & Secret Exposure](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp01-token-mismanagement/)
+
 ### **Token Passthrough Prevention**
 
-**Token passthrough na explicitly prohibited** for MCP Authorization Specification because e get critical security risks:
+**Token passthrough no dey allowed** for MCP Authorization Specification because e get critical security risk dem:
 
 **Security Risks Addressed:**
-- **Control Circumvention**: E bypass essential security controls like rate limiting, request validation, and traffic monitoring
-- **Accountability Breakdown**: E make client identification impossible, spoil audit trails and incident investigation
-- **Proxy-Based Exfiltration**: E allow bad people to use servers as proxies for unauthorized data access
-- **Trust Boundary Violations**: E break downstream service trust assumptions about token origins
-- **Lateral Movement**: Compromised tokens across many services fit enable bigger attack expansion
+- **Control Circumvention**: E fit bypass important security controls like rate limiting, request validation, and traffic monitoring
+- **Accountability Breakdown**: E no allow client identification, wey go spoil audit trails and incident investigation
+- **Proxy-Based Exfiltration**: E let bad people use servers as proxy to collect data without permission
+- **Trust Boundary Violations**: E break downstream service trust wey dem get for token origin
+- **Lateral Movement**: If token don spoil, e fit spread trouble reach many services
 
 **Implementation Controls:**
 ```yaml
@@ -83,20 +89,20 @@ Token Lifecycle Management:
 ### **Secure Token Management Patterns**
 
 **Best Practices:**
-- **Short-Lived Tokens**: Make exposure window small with frequent token rotation
-- **Just-in-Time Issuance**: Issue tokens only when dem need am for specific operations
+- **Short-Lived Tokens**: Use token we no last long to reduce exposure time
+- **Just-in-Time Issuance**: Give tokens only when dem really need am for specific things
 - **Secure Storage**: Use hardware security modules (HSMs) or secure key vaults
-- **Token Binding**: Bind tokens to specific clients, sessions, or operations where e possible
-- **Monitoring & Alerting**: Real-time detection of token misuse or unauthorized access patterns
+- **Token Binding**: Bind tokens to certain clients, sessions, or operations if possible
+- **Monitoring & Alerting**: Real-time detection for token misuse or unauthorized access patterns
 
 ## 3. **Session Security Controls**
 
 ### **Session Hijacking Prevention**
 
 **Attack Vectors Addressed:**
-- **Session Hijack Prompt Injection**: Bad events wey dem inject inside shared session state
-- **Session Impersonation**: Unauthorized use of stolen session IDs to bypass authentication
-- **Resumable Stream Attacks**: Exploitation of server-sent event resumption for bad content injection
+- **Session Hijack Prompt Injection**: Malicious things wey dem inject into shared session state
+- **Session Impersonation**: Bad people wey use stolen session IDs to skip authentication
+- **Resumable Stream Attacks**: Use server-sent event resume to inject bad content
 
 **Mandatory Session Controls:**
 ```yaml
@@ -119,23 +125,28 @@ Session Lifecycle:
 ```
 
 **Transport Security:**
-- **HTTPS Enforcement**: All session communication must dey over TLS 1.3
+- **HTTPS Enforcement**: All session communication suppose use TLS 1.3
 - **Secure Cookie Attributes**: HttpOnly, Secure, SameSite=Strict
-- **Certificate Pinning**: For critical connections to prevent MITM attacks
+- **Certificate Pinning**: For important connections to stop MITM attacks
 
 ### **Stateful vs Stateless Considerations**
 
 **For Stateful Implementations:**
 - Shared session state need extra protection against injection attacks
-- Queue-based session management need integrity verification
-- Multiple server instances need secure session state synchronization
+- Queue-based session management need integrity check
+- Many server instances need secure session state sync
 
 **For Stateless Implementations:**
 - JWT or similar token-based session management
-- Cryptographic verification of session state integrity
-- Reduced attack surface but need strong token validation
+- Cryptographic verification for session state integrity
+- Smaller attack surface but need strong token validation
 
 ## 4. **AI-Specific Security Controls**
+
+**OWASP MCP Risks Addressed**:
+- [MCP06 - Prompt Injection via Contextual Payloads](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp06-prompt-injection/)
+- [MCP03 - Tool Poisoning](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp03-tool-poisoning/)
+- [MCP05 - Command Injection & Execution](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp05-command-injection/)
 
 ### **Prompt Injection Defense**
 
@@ -158,10 +169,10 @@ Integration Points:
 ```
 
 **Implementation Controls:**
-- **Input Sanitization**: Full validation and filtering of all user inputs
+- **Input Sanitization**: Thoroughly check and filter all user input
 - **Content Boundary Definition**: Clear separation between system instructions and user content
-- **Instruction Hierarchy**: Proper precedence rules for conflicting instructions
-- **Output Monitoring**: Detection of potentially harmful or manipulated outputs
+- **Instruction Hierarchy**: Proper order for conflicting instructions
+- **Output Monitoring**: Detect harmful or manipulated outputs
 
 ### **Tool Poisoning Prevention**
 
@@ -188,10 +199,10 @@ Tool Definition Protection:
 ```
 
 **Dynamic Tool Management:**
-- **Approval Workflows**: Explicit user consent for tool modifications
-- **Rollback Capabilities**: Ability to revert to previous tool versions
-- **Change Auditing**: Complete history of tool definition modifications
-- **Risk Assessment**: Automated evaluation of tool security posture
+- **Approval Workflows**: Explicit user consent for tool changes
+- **Rollback Capabilities**: Ability to return to previous tool versions
+- **Change Auditing**: Full history of tool modification
+- **Risk Assessment**: Automated check of tool security status
 
 ## 5. **Confused Deputy Attack Prevention**
 
@@ -215,9 +226,9 @@ Client Registration:
 
 **Implementation Requirements:**
 - **User Consent Verification**: No skip consent screens for dynamic client registration
-- **Redirect URI Validation**: Strict whitelist-based validation of redirect destinations
-- **Authorization Code Protection**: Short-lived codes with single-use enforcement
-- **Client Identity Verification**: Strong validation of client credentials and metadata
+- **Redirect URI Validation**: Strict whitelist validation of redirect destinations
+- **Authorization Code Protection**: Short-lived codes wey fit use only once
+- **Client Identity Verification**: Strong check of client credentials and metadata
 
 ## 6. **Tool Execution Security**
 
@@ -241,10 +252,10 @@ Execution Environment:
 ```
 
 **Process Isolation:**
-- **Separate Process Contexts**: Each tool execution dey for isolated process space
-- **Inter-Process Communication**: Secure IPC mechanisms with validation
-- **Process Monitoring**: Runtime behavior analysis and anomaly detection
-- **Resource Enforcement**: Hard limits on CPU, memory, and I/O operations
+- **Separate Process Contexts**: Each tool execution dey for isolated process environment
+- **Inter-Process Communication**: Secure IPC ways with validation
+- **Process Monitoring**: Watch runtime behavior and detect strange things
+- **Resource Enforcement**: Hard limits for CPU, memory, and I/O work
 
 ### **Least Privilege Implementation**
 
@@ -270,6 +281,8 @@ Access Control:
 ```
 
 ## 7. **Supply Chain Security Controls**
+
+**OWASP MCP Risk Addressed**: [MCP04 - Supply Chain Attacks](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp04-supply-chain/)
 
 ### **Dependency Verification**
 
@@ -305,12 +318,14 @@ AI Components:
 ### **Continuous Monitoring**
 
 **Supply Chain Threat Detection:**
-- **Dependency Health Monitoring**: Continuous assessment of all dependencies for security issues
-- **Threat Intelligence Integration**: Real-time updates on emerging supply chain threats
-- **Behavioral Analysis**: Detection of unusual behavior in external components
-- **Automated Response**: Immediate containment of compromised components
+- **Dependency Health Monitoring**: Always check dependencies for security issues
+- **Threat Intelligence Integration**: Real-time update on new supply chain threats
+- **Behavioral Analysis**: Spot unusual behavior in outside components
+- **Automated Response**: Quickly contain any compromised components
 
 ## 8. **Monitoring & Detection Controls**
+
+**OWASP MCP Risk Addressed**: [MCP08 - Lack of Audit & Telemetry](https://microsoft.github.io/mcp-azure-security-guide/mcp/mcp08-telemetry/)
 
 ### **Security Information and Event Management (SIEM)**
 
@@ -338,10 +353,10 @@ Security Events:
 ### **Real-Time Threat Detection**
 
 **Behavioral Analytics:**
-- **User Behavior Analytics (UBA)**: Detection of unusual user access patterns
-- **Entity Behavior Analytics (EBA)**: Monitoring of MCP server and tool behavior
-- **Machine Learning Anomaly Detection**: AI-powered identification of security threats
-- **Threat Intelligence Correlation**: Matching observed activities against known attack patterns
+- **User Behavior Analytics (UBA)**: Detect strange user access patterns
+- **Entity Behavior Analytics (EBA)**: Watch MCP server and tool behavior
+- **Machine Learning Anomaly Detection**: AI powered detection of security threats
+- **Threat Intelligence Correlation**: Match observed activities with known attack patterns
 
 ## 9. **Incident Response & Recovery**
 
@@ -375,27 +390,27 @@ Recovery Procedures:
 ### **Forensic Capabilities**
 
 **Investigation Support:**
-- **Audit Trail Preservation**: Immutable logging with cryptographic integrity
-- **Evidence Collection**: Automated gathering of relevant security artifacts
-- **Timeline Reconstruction**: Detailed sequence of events wey lead to security incidents
-- **Impact Assessment**: Evaluation of compromise scope and data exposure
+- **Audit Trail Preservation**: Immutable log with cryptographic integrity
+- **Evidence Collection**: Automatic collection of important security stuff
+- **Timeline Reconstruction**: Detailed event timeline of security incidents
+- **Impact Assessment**: Check how big the compromise and data exposure be
 
 ## **Key Security Architecture Principles**
 
 ### **Defense in Depth**
-- **Multiple Security Layers**: No single point of failure for security architecture
-- **Redundant Controls**: Overlapping security measures for critical functions
-- **Fail-Safe Mechanisms**: Secure defaults when systems get errors or attacks
+- **Multiple Security Layers**: No single point wey fit spoil security architecture
+- **Redundant Controls**: Overlapping security measures for important functions
+- **Fail-Safe Mechanisms**: Secure default settings when system get error or attack
 
 ### **Zero Trust Implementation**
-- **Never Trust, Always Verify**: Continuous validation of all entities and requests
-- **Principle of Least Privilege**: Minimal access rights for all components
-- **Micro-Segmentation**: Granular network and access controls
+- **Never Trust, Always Verify**: Always check all entities and requests
+- **Principle of Least Privilege**: Give only minimum access rights
+- **Micro-Segmentation**: Fine control of network and access
 
 ### **Continuous Security Evolution**
-- **Threat Landscape Adaptation**: Regular updates to address new threats
-- **Security Control Effectiveness**: Ongoing evaluation and improvement of controls
-- **Specification Compliance**: Alignment with evolving MCP security standards
+- **Threat Landscape Adaptation**: Regular updates to face new threats
+- **Security Control Effectiveness**: Always check and improve controls
+- **Specification Compliance**: Follow the latest MCP security standards
 
 ---
 
@@ -405,6 +420,11 @@ Recovery Procedures:
 - [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 - [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-11-25/basic/security_best_practices)
 - [MCP Authorization Specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization)
+
+### **OWASP MCP Security Resources**
+- [OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/) - Complete OWASP MCP Top 10 plus Azure implementation
+- [OWASP MCP Top 10](https://owasp.org/www-project-mcp-top-10/) - Official OWASP MCP security risks
+- [MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/) - Hands-on security training for MCP on Azure
 
 ### **Microsoft Security Solutions**
 - [Microsoft Prompt Shields](https://learn.microsoft.com/azure/ai-services/content-safety/concepts/jailbreak-detection)
@@ -419,11 +439,16 @@ Recovery Procedures:
 
 ---
 
-> **Important**: These security controls dey reflect di current MCP specification (2025-06-18). Always verify against di latest [official documentation](https://spec.modelcontextprotocol.io/) as standards dey continue to evolve fast fast.
+> **Important**: These security controls dey reflect current MCP specification (2025-11-25). Always check the latest [official documentation](https://spec.modelcontextprotocol.io/) as standards dey change quick.
+
+## What's Next
+
+- Go back to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:
-Dis document na AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) wey translate am. Even though we dey try make am correct, abeg sabi say automated translation fit get some mistakes or no too correct. The original document wey e dey for im own language na the correct one. If na serious matter, e better make person wey sabi translate am well do am. We no go responsible if person no understand well or if dem use dis translation do mistake.
+**Talk wey make sense:**
+Dis document na AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) we use translate am. Even though we dey try make am correct, abeg sabi say automatic translation fit get some mistakes or error. Di original document wey dem write for im correct language na di real correct one. If na serious matter, e good make person use professional person translate am. We no responsible if person no understand well or if mistake show because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

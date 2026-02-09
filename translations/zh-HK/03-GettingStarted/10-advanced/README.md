@@ -1,20 +1,20 @@
-# 高級伺服器使用
+# 進階伺服器使用
 
-MCP SDK 中提供了兩種不同類型的伺服器：普通伺服器和低層伺服器。通常情況下，您會使用普通伺服器來添加功能。然而，在某些情況下，您可能需要依賴低層伺服器，例如：
+MCP SDK 中公開了兩種不同類型的伺服器，分別是你的普通伺服器和低階伺服器。通常你會使用普通伺服器來新增功能。但在某些情況下，你會想依賴低階伺服器，例如：
 
-- 更好的架構。雖然使用普通伺服器和低層伺服器都可以創建乾淨的架構，但可以說使用低層伺服器會稍微容易一些。
-- 功能可用性。一些高級功能只能通過低層伺服器使用。在後續章節中，您將看到如何添加取樣和引導功能。
+- 更佳的架構。使用普通伺服器和低階伺服器都能建立乾淨的架構，但有人認為使用低階伺服器會稍微更簡單。
+- 功能可用性。某些進階功能只能透過低階伺服器使用。你會在後面的章節看到我們加入抽樣和誘導的部分。
 
-## 普通伺服器 vs 低層伺服器
+## 普通伺服器 vs 低階伺服器
 
-以下是使用普通伺服器創建 MCP 伺服器的樣子：
+以下是使用普通伺服器建立 MCP Server 的範例
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# 新增一個加法工具
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// 新增一個加法工具
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,18 +42,18 @@ server.registerTool("add",
 );
 ```
 
-重點在於，您需要明確地添加每個工具、資源或提示到伺服器中。這樣做並沒有問題。
+重點在於你明確地新增每個你希望伺服器擁有的工具、資源或提示。這樣做沒錯。
 
-### 低層伺服器方法
+### 低階伺服器方式
 
-然而，當您使用低層伺服器方法時，您需要以不同的方式思考。與其註冊每個工具，您需要為每種功能類型（工具、資源或提示）創建兩個處理器。例如，對於工具，只有兩個函數，如下所示：
+使用低階伺服器時，你需要換個角度思考，具體來說不是註冊每一個工具，而是對每種功能類型（工具、資源或提示）建立兩個處理器。例如對工具來說，只有兩個函式：
 
-- 列出所有工具。一個函數負責所有列出工具的嘗試。
-- 處理所有工具的調用。同樣，只有一個函數負責處理工具的調用。
+- 列出所有工具。這個函式負責所有列出工具的請求。
+- 處理呼叫所有工具。這裡只有一個函式負責處理呼叫工具。
 
-這聽起來工作量可能更少吧？因此，與其註冊工具，我只需要確保工具在列出所有工具時被列出，並且在有請求調用工具時被調用。
+聽起來好像工作量比較少對吧？所以不需要註冊工具，只要確保在列出工具時包含該工具，且當有呼叫工具請求時它能被呼叫。
 
-讓我們看看代碼現在的樣子：
+我們來看看程式碼現在的樣貌：
 
 **Python**
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // 返回已註冊工具的列表
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-在這裡，我們有一個函數返回功能列表。工具列表中的每個條目現在都有 `name`、`description` 和 `inputSchema` 等字段，以符合返回類型。這使我們可以將工具和功能定義放在其他地方。我們現在可以在工具文件夾中創建所有工具，資源和提示也可以如此，讓您的項目突然變得井然有序：
+這裡我們有一個函式回傳功能列表。每個工具清單裡都包含 `name`、`description` 和 `inputSchema` 等欄位以符合回傳型別。這使我們可以把工具和功能定義放在其他地方。我們現在可以在一個 tools 資料夾中建立所有工具，其他功能也是如此，專案結構可以變成如下：
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-這很棒，我們的架構可以變得非常乾淨。
+太棒了，我們的架構可以設計得相當乾淨。
 
-那麼調用工具呢？是否也是同樣的思路，一個處理器負責調用工具，無論是哪個工具？是的，完全正確，以下是相關代碼：
+呼叫工具也是同理嗎？只用一個處理器呼叫任何工具？沒錯，下面是相關程式碼：
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools 是一個以工具名稱為鍵的字典
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -157,8 +157,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
        };
     }
     
-    // args: request.params.arguments
-    // TODO call the tool, 
+    // 參數：request.params.arguments
+    // TODO 呼叫工具，
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-從上面的代碼可以看到，我們需要解析出要調用的工具及其參數，然後繼續調用該工具。
+從以上程式碼可以看到，我們需要解析要呼叫的工具以及它所帶的參數，接著執行呼叫該工具。
 
-## 改進方法：添加驗證
+## 使用驗證改進方法
 
-到目前為止，您已經看到如何用每種功能類型的兩個處理器替代所有註冊工具、資源和提示的操作。還需要做什麼呢？我們應該添加某種形式的驗證，以確保工具被正確的參數調用。每種運行時都有自己的解決方案，例如 Python 使用 Pydantic，TypeScript 使用 Zod。基本思路如下：
+到目前為止，你已經看過如何用每種功能類型的兩個處理器替代所有註冊工具、資源和提示的方式。那還需要做什麼呢？我們應該添加某種驗證機制，以確保工具被呼叫時帶上正確的參數。各個執行環境有自己的解決方案，例如 Python 使用 Pydantic，而 TypeScript 使用 Zod。核心概念如下：
 
-- 將創建功能（工具、資源或提示）的邏輯移到專用文件夾。
-- 添加一種方法來驗證請求，例如調用工具的請求。
+- 把建立功能（工具、資源或提示）的邏輯搬到專屬資料夾。
+- 添加方法驗證前來呼叫工具的請求。
 
-### 創建功能
+### 建立功能
 
-要創建功能，我們需要為該功能創建一個文件，並確保它具有該功能所需的必填字段。不同功能（工具、資源和提示）的字段略有不同。
+要建立功能，我們需要為該功能建立一個檔案，並確保它擁有該功能必須的欄位，不同工具、資源和提示間欄位略有差異。
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # 使用 Pydantic 模型驗證輸入
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: 添加 Pydantic，這樣我們可以創建 AddInputModel 並驗證參數
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,26 +213,26 @@ tool_add = {
 }
 ```
 
-在這裡，您可以看到我們做了以下操作：
+這裡示範了：
 
-- 在文件 *schema.py* 中使用 Pydantic 創建了一個名為 `AddInputModel` 的模式，包含字段 `a` 和 `b`。
-- 嘗試將傳入請求解析為 `AddInputModel` 類型，如果參數不匹配，則會報錯：
+- 透過 Pydantic 建立架構 `AddInputModel`，欄位有 `a` 和 `b`，位於 *schema.py*。
+- 嘗試解析輸入請求為 `AddInputModel` 類型，若參數不符會引發錯誤：
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # 使用 Pydantic 模型驗證輸入
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-您可以選擇將此解析邏輯放在工具調用本身或處理器函數中。
+你可以選擇把這段解析邏輯放在工具呼叫本身或在處理器函式中。
 
 **TypeScript**
 
 ```typescript
-// server.ts
+// 伺服器.ts
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { params: { name } } = request;
     let tool = tools.find(t => t.name === name);
@@ -249,7 +249,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
        const input = Schema.parse(request.params.arguments);
 
-       // @ts-ignore
+       // @ts-忽略
        const result = await tool.callback(input);
 
        return {
@@ -266,12 +266,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
 });
 
-// schema.ts
+// 架構.ts
 import { z } from 'zod';
 
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 
-// add.ts
+// 新增.ts
 import { Tool } from "./tool.js";
 import { MathInputSchema } from "./schema.js";
 import { zodToJsonSchema } from "zod-to-json-schema";
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- 在處理所有工具調用的處理器中，我們嘗試將傳入請求解析為工具定義的模式：
+- 在處理所有工具呼叫的 handler 會先嘗試將輸入請求解析成對應工具定義的 schema：
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    如果成功，我們就繼續調用實際工具：
+    若成功，接著呼叫工具：
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-如您所見，這種方法創建了一個很棒的架構，所有內容都有其位置，*server.ts* 是一個非常小的文件，只負責連接請求處理器，而每個功能都在其各自的文件夾中，例如 tools/、resources/ 或 /prompts。
+正如你所見，這個方法創造出優秀的架構，所有東西各就各位，*server.ts* 只是一個很小的檔案，只負責串接請求處理函式，而各功能分別放在對應資料夾內，如 tools/、resources/ 或 prompts/。
 
-很好，接下來我們嘗試構建這個架構。
+很好，我們接著來實作看看。
 
-## 練習：創建低層伺服器
+## 練習：建立低階伺服器
 
-在這個練習中，我們將完成以下任務：
+本練習將進行以下步驟：
 
-1. 創建一個低層伺服器，處理工具的列出和調用。
-1. 實現一個可擴展的架構。
-1. 添加驗證，確保工具調用得到正確的驗證。
+1. 建立一個低階伺服器，處理列出工具和呼叫工具。
+1. 實作一個可擴充的架構。
+1. 添加驗證以確保工具呼叫參數正確。
 
-### -1- 創建架構
+### -1- 建立架構
 
-首先，我們需要解決一個架構問題，幫助我們在添加更多功能時擴展。以下是架構的樣子：
+首先要解決的是架構問題，讓我們能隨著功能擴充而擴展，架構如下：
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-現在我們已經設置了一個架構，確保我們可以輕鬆地在工具文件夾中添加新工具。您可以按照此方法為資源和提示添加子目錄。
+現在我們建立了一個架構，可以輕鬆在 tools 資料夾中新增工具。你也可以依此架構為 resources 和 prompts 新增子目錄。
 
-### -2- 創建工具
+### -2- 建立工具
 
-接下來，我們看看如何創建工具。首先，它需要在其 *tool* 子目錄中創建，如下所示：
+接著看看建立工具的樣子。工具得放在它的 *tool* 子目錄中，像這樣：
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # 使用 Pydantic 模型驗證輸入
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # 待辦事項：加入 Pydantic，讓我們可以建立 AddInputModel 並驗證參數
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-我們看到這裡如何定義名稱、描述、使用 Pydantic 定義輸入模式，以及工具被調用時的處理器。最後，我們暴露了 `tool_add`，它是一個包含所有這些屬性的字典。
+這裡示範如何定義名稱、描述、使用 Pydantic 建立輸入 schema，以及定義工具被呼叫時會觸發的 handler。最後暴露 `tool_add`，這是一個字典包含以上屬性。
 
-還有 *schema.py*，用於定義工具使用的輸入模式：
+還有 *schema.py* 用來定義工具的輸入 schema：
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-我們還需要填充 *__init__.py*，以確保工具目錄被視為模塊。此外，我們需要暴露其中的模塊，如下所示：
+我們也得建立 *__init__.py* 確保 tools 目錄被當成模組。此外要暴露此模組中的內容，如下：
 
 ```python
 from .add import tool_add
@@ -393,7 +393,7 @@ tools = {
 }
 ```
 
-隨著添加更多工具，我們可以繼續向此文件添加內容。
+隨著新增更多工具，可以一直在此檔案添加。
 
 **TypeScript**
 
@@ -414,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-在這裡，我們創建了一個包含以下屬性的字典：
+這裡定義了由以下屬性組成的字典：
 
-- name，工具的名稱。
-- rawSchema，這是 Zod 模式，用於驗證調用工具的請求。
-- inputSchema，此模式將由處理器使用。
-- callback，用於調用工具。
+- name，工具名稱。
+- rawSchema，Zod schema，用途為驗證呼叫此工具的輸入。
+- inputSchema，handler 會使用此 schema。
+- callback，用來呼叫工具。
 
-還有 `Tool`，用於將此字典轉換為 MCP 伺服器處理器可以接受的類型，樣子如下：
+還有 `Tool` 類型用來把該字典轉換成 mcp server handler 可接受的型別，看起來如下：
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-此外，還有 *schema.ts*，我們在其中存儲每個工具的輸入模式，目前只有一個模式，但隨著工具的增加，我們可以添加更多條目：
+然後 *schema.ts* 儲存所有工具的輸入 schema，目前只有一個，但未來可以依功能新增：
 
 ```typescript
 import { z } from 'zod';
@@ -446,12 +446,12 @@ export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 
 ### -3- 處理工具列出
 
-接下來，為了處理工具列出，我們需要在伺服器文件中設置一個請求處理器。以下是需要添加的內容：
+要處理工具列出，我們需要設定一個請求處理器。下面是在 server 檔案加上的內容：
 
 **Python**
 
 ```python
-# code omitted for brevity
+# 為簡潔起見，省略代碼
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-在這裡，我們添加了裝飾器 `@server.list_tools` 和實現函數 `handle_list_tools`。在後者中，我們需要生成工具列表。注意每個工具需要有名稱、描述和輸入模式。
+這裡用裝飾器 `@server.list_tools` 和實作函式 `handle_list_tools`。該函式要回傳工具清單，注意每個工具必須有名稱、描述和輸入 schema。
 
 **TypeScript**
 
-要設置列出工具的請求處理器，我們需要在伺服器上調用 `setRequestHandler`，並使用適合我們目標的模式，在此情況下為 `ListToolsRequestSchema`。
+要設定工具列出的請求處理器，需要在伺服器呼叫 `setRequestHandler`，並傳入對應的 schema，這裡是 `ListToolsRequestSchema`。
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// 為簡潔起見省略代碼
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // 返回已註冊工具的列表
   return {
     tools: tools
   };
 });
 ```
 
-很好，現在我們已經解決了列出工具的部分，接下來看看如何調用工具。
+太好了，工具列出功能完成，接著我們看怎麼呼叫工具。
 
-### -4- 處理工具調用
+### -4- 處理呼叫工具
 
-要調用工具，我們需要設置另一個請求處理器，這次專注於處理指定要調用的功能及其參數的請求。
+呼叫工具需要另一個請求處理器，關注點是指定要呼叫的功能和其參數。
 
 **Python**
 
-我們使用裝飾器 `@server.call_tool` 並用函數 `handle_call_tool` 實現它。在該函數中，我們需要解析工具名稱及其參數，並確保參數對於該工具是有效的。我們可以選擇在此函數中或下游的實際工具中進行參數驗證。
+使用裝飾器 `@server.call_tool` 並以 `handle_call_tool` 函式實作。函式中需解析工具名稱、參數，並確保參數符合規範。你可以在此函式驗證參數或放至實際工具中驗證。
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools 是以工具名稱作為鍵的字典
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # 調用該工具
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -533,27 +533,32 @@ async def handle_call_tool(
     ] 
 ```
 
-以下是發生的事情：
+說明如下：
 
-- 工具名稱已作為輸入參數 `name` 提供，參數以 `arguments` 字典的形式提供。
+- 工具名稱存在輸入參數 `name`，參數在 `arguments` 字典中。
+- 工具透過 `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)` 呼叫。參數驗證發生在 `handler` 函式，失敗會拋出例外。
 
-- 工具通過 `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)` 調用。參數的驗證發生在指向函數的 `handler` 屬性中，如果失敗，將引發異常。
+這樣，我們完整了解如何用低階伺服器列出和呼叫工具。
 
-現在，我們已經完全了解如何使用低層伺服器列出和調用工具。
-
-查看[完整示例](./code/README.md)
+參考 [完整範例](./code/README.md)
 
 ## 作業
 
-擴展您已獲得的代碼，添加多個工具、資源和提示，並反思您是否注意到只需要在工具目錄中添加文件，而不需要在其他地方進行修改。
+擴充你手上的程式碼，新增多個工具、資源和提示，並觀察你實際上只需要在 tools 目錄下新增檔案，而不必修改其他位置。
 
-*不提供解決方案*
+*未提供解答*
 
 ## 總結
 
-在本章中，我們了解了低層伺服器方法的工作原理，以及如何幫助我們創建一個可以持續構建的良好架構。我們還討論了驗證，並展示了如何使用驗證庫創建輸入驗證模式。
+這章節我們了解低階伺服器方式的運作，以及如何用這種架構持續擴充。我們也討論驗證問題，並展示如何使用驗證函式庫建立輸入驗證 schema。
+
+## 接下來
+
+- 下一步：[簡易認證](../11-simple-auth/README.md)
 
 ---
 
-**免責聲明**：  
-本文件已使用人工智能翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。儘管我們致力於提供準確的翻譯，但請注意，自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於重要信息，建議使用專業人工翻譯。我們對因使用此翻譯而引起的任何誤解或錯誤解釋概不負責。
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免責聲明**：
+本文件已使用 AI 翻譯服務 [Co-op Translator](https://github.com/Azure/co-op-translator) 進行翻譯。雖然我們力求準確，但請注意自動翻譯可能包含錯誤或不準確之處。原始文件的母語版本應被視為權威來源。對於重要資訊，建議採用專業人工翻譯。我們對因使用本翻譯而產生的任何誤解或誤釋不承擔任何責任。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,20 +1,20 @@
-# 高度なサーバーの使用方法
+# 高度なサーバー使用法
 
-MCP SDKでは、通常のサーバーと低レベルサーバーの2種類のサーバーが提供されています。通常は、通常のサーバーを使用して機能を追加します。ただし、以下のような場合には低レベルサーバーを使用することが推奨されます。
+MCP SDKには、通常のサーバーと低レベルサーバーの2種類のサーバーが公開されています。通常は、通常のサーバーを使用して機能を追加します。ただし、場合によっては低レベルサーバーに依存したいことがあります。例えば：
 
-- **より良いアーキテクチャ**: 通常のサーバーと低レベルサーバーの両方でクリーンなアーキテクチャを構築することは可能ですが、低レベルサーバーの方がやや簡単であると言えます。
-- **機能の利用可能性**: 一部の高度な機能は低レベルサーバーでのみ使用可能です。後の章で、サンプリングやエリシテーションを追加する際にこれを確認できます。
+- より良いアーキテクチャ。通常のサーバーと低レベルサーバーの両方でクリーンなアーキテクチャを作成することは可能ですが、低レベルサーバーの方がわずかに簡単と言える場合があります。
+- 機能の可用性。高度な機能の一部は低レベルサーバーでのみ使用可能です。サンプリングやエリシテーションを追加する後の章でこれが分かります。
 
 ## 通常のサーバー vs 低レベルサーバー
 
-以下は、通常のサーバーを使用してMCPサーバーを作成する例です。
+通常のサーバーでMCPサーバーを作成する例は以下の通りです。
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# 加算ツールを追加する
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// 追加ツールを追加する
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,18 +42,18 @@ server.registerTool("add",
 );
 ```
 
-この方法では、サーバーに追加したいツール、リソース、プロンプトを明示的に登録します。この方法自体には問題はありません。
+ポイントは、サーバーに持たせたい各ツール、リソース、またはプロンプトを明示的に追加することです。それ自体は問題ありません。
 
 ### 低レベルサーバーのアプローチ
 
-しかし、低レベルサーバーを使用する場合、考え方が少し異なります。各機能タイプ（ツール、リソース、プロンプト）ごとに2つのハンドラーを作成する必要があります。例えば、ツールの場合、以下のような2つの関数を持つことになります。
+しかし、低レベルサーバーのアプローチを使う場合は、各ツールを登録する代わりに、機能タイプごと（ツール、リソース、プロンプト）に2つのハンドラを作成するという風に考える必要があります。例えば、ツールには以下のような2つの関数だけがあります：
 
-- **ツールの一覧表示**: ツールを一覧表示する試みをすべて処理する関数。
-- **ツールの呼び出し処理**: ツールを呼び出すリクエストを処理する関数。
+- すべてのツールを一覧表示する。1つの関数がすべてのツール一覧取得の試行を担当します。
+- ツールの呼び出しを処理する。同様に、1つの関数がツール呼び出しの処理を担当します。
 
-これにより、作業量が減るように感じられるかもしれません。ツールを登録する代わりに、ツールが一覧表示されることと、ツール呼び出しリクエストが処理されることを確認するだけで済みます。
+これは作業量が少なそうに聞こえますよね？ツールを登録する代わりに、ツール一覧取得時にそれをリストに含め、ツール呼び出し要求が来た際にはその呼び出しを処理すればよいのです。
 
-コードがどのように見えるか見てみましょう。
+コードがどのようになるか見てみましょう。
 
 **Python**
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // 登録されているツールのリストを返します
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-ここでは、機能のリストを返す関数を作成しています。ツールリストの各エントリには、`name`、`description`、`inputSchema`といったフィールドが含まれており、返り値の型に準拠しています。この方法により、ツールや機能の定義を別の場所に移動できます。ツールをすべてtoolsフォルダーに作成し、他の機能も同様に整理することで、プロジェクトを以下のように構成できます。
+ここでは、機能のリストを返す関数があります。toolsリスト内の各エントリーは `name`、`description`、`inputSchema` といったフィールドを持ち、返り値の型に準拠しています。これによりツールや機能定義を別の場所に置くことができます。すべてのツールを tools フォルダに作成し、他のすべての機能も同様に整理できるため、プロジェクトは次のように構成されます。
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-これにより、アーキテクチャが非常にクリーンになります。
+素晴らしいですね。アーキテクチャがかなりクリーンに見えます。
 
-ツールの呼び出しについても同じ考え方で、どのツールでも1つのハンドラーで処理するのでしょうか？その通りです。以下はそのコード例です。
+ツールの呼び出しはどうでしょうか。同じ考え方で良いのでしょうか？ツールを呼び出す1つのハンドラがあり、どのツールでも呼び出すという形でしょうか？そうです、そのとおりです。以下がそのコード例です。
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools はツール名をキーとする辞書です
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO ツールを呼び出す,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-上記のコードでは、呼び出すツールとその引数を解析し、その後ツールを呼び出す処理を行っています。
+上記のコードでわかるように、呼び出すツールとその引数を解析し、ツール呼び出し処理へ進みます。
 
-## アプローチの改善: バリデーションの追加
+## バリデーションを用いたアプローチの改良
 
-これまで、ツール、リソース、プロンプトを追加するための登録を各機能タイプごとの2つのハンドラーに置き換える方法を見てきました。次に必要なのは何でしょうか？ツールが正しい引数で呼び出されることを確認するためのバリデーションを追加するべきです。各ランタイムには独自のソリューションがあります。例えば、PythonではPydanticを使用し、TypeScriptではZodを使用します。このアイデアは以下の通りです。
+これまで、ツール、リソース、プロンプトを追加するためのすべての登録を各機能タイプごとに2つのハンドラーで代替できることを示しました。ほかに何が必要でしょうか？それはツールが正しい引数で呼ばれていることを検証するための何らかのバリデーションを追加することです。各ランタイムには独自のソリューションがあります。例えば、PythonはPydanticを使い、TypeScriptはZodを使います。考えとしては以下の通りです：
 
-- 機能（ツール、リソース、プロンプト）を作成するロジックを専用のフォルダーに移動する。
-- ツールを呼び出すリクエストなどを検証する方法を追加する。
+- 機能（ツール、リソース、プロンプト）を作成するロジックをそれぞれの専用フォルダに移動する。
+- ツール呼び出しなどの受け入れリクエストのバリデーション手段を用意する。
 
 ### 機能の作成
 
-機能を作成するには、その機能専用のファイルを作成し、必要なフィールドを含める必要があります。フィールドはツール、リソース、プロンプトによって少し異なります。
+機能を作成するには、その機能用のファイルを作り、必要な必須フィールドが含まれていることを確認します。どのフィールドが必須かはツール、リソース、プロンプトで少し異なります。
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Pydanticモデルを使って入力を検証する
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: Pydanticを追加して、AddInputModelを作成し、引数を検証できるようにする
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,21 +213,21 @@ tool_add = {
 }
 ```
 
-ここでは以下のことを行っています。
+ここで以下の処理を行います：
 
-- *schema.py*ファイルでPydanticの`AddInputModel`を使用してフィールド`a`と`b`を持つスキーマを作成。
-- リクエストを`AddInputModel`型に解析しようと試み、パラメータが一致しない場合はクラッシュします。
+- Pydanticを使い `AddInputModel` というスキーマを *schema.py* ファイルで作成し、`a` と `b` フィールドを持たせる。
+- 受信リクエストを `AddInputModel` として解析し、パラメータに不一致があればクラッシュさせる：
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Pydanticモデルを使用して入力を検証する
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-この解析ロジックをツール呼び出し自体に含めるか、ハンドラー関数に含めるかは選択できます。
+この解析ロジックはツール呼び出し自体に置くことも、ハンドラ関数に置くことも自由です。
 
 **TypeScript**
 
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- ツール呼び出しを処理するハンドラーでは、リクエストをツールの定義されたスキーマに解析しようとします。
+- すべてのツール呼び出しを扱うハンドラでは、受信リクエストをツール定義のスキーマへ解析を試みます：
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    これが成功すれば、実際のツールを呼び出します。
+    解析が成功したら、続いて実際にツールを呼び出します：
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-このアプローチにより、すべてが整理され、*server.ts*ファイルはリクエストハンドラーを接続するだけの非常に小さなファイルとなり、各機能はそれぞれのフォルダー（tools/、resources/、prompts/）に配置されます。
+ご覧の通り、このアプローチではすべてが所定の場所にあり、*server.ts* はリクエストハンドラを結線するだけの非常に小さいファイルとなり、各機能がそれぞれのフォルダ（tools/、resources/、prompts/）にあるので素晴らしいアーキテクチャになります。
 
-素晴らしいですね。次にこれを構築してみましょう。
+それでは、次にこれを構築してみましょう。
 
-## 演習: 低レベルサーバーの作成
+## 演習：低レベルサーバーの作成
 
-この演習では以下を行います。
+この演習では以下を行います：
 
-1. ツールの一覧表示と呼び出しを処理する低レベルサーバーを作成する。
+1. ツール一覧の取得とツール呼び出しを扱う低レベルサーバーを作成する。
 1. 拡張可能なアーキテクチャを実装する。
-1. ツール呼び出しが適切に検証されるようにバリデーションを追加する。
+1. ツール呼び出しが適切にバリデートされていることを保証するバリデーションを追加する。
 
 ### -1- アーキテクチャの作成
 
-まず、機能を追加する際にスケールしやすいアーキテクチャを構築する必要があります。以下がその例です。
+まず、機能追加の際にスケール可能になるアーキテクチャを整えます。以下のようになります：
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-これで、toolsフォルダーに新しいツールを簡単に追加できるアーキテクチャが設定されました。リソースやプロンプトのサブディレクトリを追加することもできます。
+これでtoolsフォルダ内に新しいツールを簡単に追加できるアーキテクチャが構築できました。必要に応じてresourcesやpromptsのサブディレクトリを追加してください。
 
 ### -2- ツールの作成
 
-次に、ツールを作成する方法を見てみましょう。まず、ツールを*tool*サブディレクトリに作成する必要があります。
+次に実際にツールを作る例を見てみましょう。まず、対象の *tool* サブディレクトリでツールを作成します。
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Pydanticモデルを使用して入力を検証する
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: Pydanticを追加して、AddInputModelを作成し、引数を検証できるようにする
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-ここでは、名前、説明、Pydanticを使用した入力スキーマ、ツールが呼び出された際に実行されるハンドラーを定義しています。最後に、これらのプロパティを保持する辞書`tool_add`を公開します。
+ここでは、Pydanticを使いname、descriptionと入力スキーマを定義し、このツール呼び出し時に実行されるハンドラを定義しています。最後に `tool_add` を公開してこれらのプロパティをまとめた辞書を提供します。
 
-また、ツールで使用する入力スキーマを定義するための*schema.py*も必要です。
+また、ツールの入力スキーマを定義するための *schema.py* もあります：
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-さらに、toolsディレクトリをモジュールとして扱うために*__init__.py*を更新し、内部のモジュールを公開する必要があります。
+toolsディレクトリをモジュールとして扱うために *__init__.py* にも内容を入れる必要があります。さらに内部モジュールを公開するのも同様です：
 
 ```python
 from .add import tool_add
@@ -393,7 +393,7 @@ tools = {
 }
 ```
 
-新しいツールを追加するたびにこのファイルを更新できます。
+ツールを追加するごとにこのファイルにも追記していけます。
 
 **TypeScript**
 
@@ -414,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-ここでは以下のプロパティを持つ辞書を作成します。
+ここでは以下のプロパティをもつ辞書を作成します：
 
-- **name**: ツールの名前。
-- **rawSchema**: Zodスキーマ。ツール呼び出しリクエストを検証するために使用されます。
-- **inputSchema**: ハンドラーで使用されるスキーマ。
-- **callback**: ツールを呼び出すために使用されます。
+- name：ツール名
+- rawSchema：Zodスキーマで、ツール呼び出しリクエストのバリデーションに使う
+- inputSchema：ハンドラーで利用するスキーマ
+- callback：ツールを実行するためのコールバック
 
-また、この辞書をMCPサーバーハンドラーが受け入れる型に変換する`Tool`も作成します。
+また、mcpサーバーハンドラーが受け入れ可能な型に変換する `Tool` も次のように定義しています：
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-さらに、各ツールの入力スキーマを格納する*schema.ts*も作成します。現在は1つのスキーマしかありませんが、ツールを追加するたびにエントリを増やすことができます。
+さらに、各ツールの入力スキーマを格納する *schema.ts* は以下のように初期状態は1つだけのスキーマですが、ツール追加時にエントリを追加します：
 
 ```typescript
 import { z } from 'zod';
@@ -442,16 +442,16 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-素晴らしいですね。次はツールの一覧表示を処理する方法を見てみましょう。
+素晴らしいですね。次にツール一覧取得を処理しましょう。
 
-### -3- ツールの一覧表示を処理する
+### -3- ツール一覧の処理
 
-次に、ツールの一覧表示を処理するためのリクエストハンドラーを設定します。以下をサーバーファイルに追加します。
+続いてツール一覧取得を処理するリクエストハンドラを設定します。サーバーファイルに以下を追加します。
 
 **Python**
 
 ```python
-# code omitted for brevity
+# 簡潔にするためコードを省略しました
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-ここでは、デコレーター`@server.list_tools`と実装関数`handle_list_tools`を追加しています。後者では、ツールのリストを生成する必要があります。各ツールには`name`、`description`、`inputSchema`が必要です。
+ここでは `@server.list_tools` デコレータと実装関数 `handle_list_tools` を追加しています。後者ではツール一覧を生成します。各ツールは名前、説明、inputSchemaを持つ必要があることに注意。
 
 **TypeScript**
 
-ツールの一覧表示を処理するリクエストハンドラーを設定するには、サーバーで`setRequestHandler`を呼び出し、`ListToolsRequestSchema`に適合するスキーマを指定します。
+ツール一覧取得のために `setRequestHandler` をサーバー上で呼び出し、扱うリクエストのスキーマには `ListToolsRequestSchema` を使います。
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// 簡潔にするためコードを省略
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // 登録されたツールのリストを返す
   return {
     tools: tools
   };
 });
 ```
 
-これでツールの一覧表示部分が解決しました。次はツールの呼び出し方法を見てみましょう。
+これでツール一覧取得は解決しました。次にツール呼び出しをどう扱うか見てみましょう。
 
-### -4- ツールの呼び出しを処理する
+### -4- ツール呼び出しの処理
 
-ツールを呼び出すには、どの機能をどの引数で呼び出すかを指定するリクエストを処理するためのリクエストハンドラーを設定する必要があります。
+ツール呼び出しにはもう一つのリクエストハンドラを設定します。呼び出す機能を指定し、どんな引数で呼び出すかに対応します。
 
 **Python**
 
-デコレーター`@server.call_tool`を使用し、`handle_call_tool`のような関数で実装します。この関数内で、ツール名とその引数を解析し、引数がツールに適しているかを確認します。引数の検証はこの関数内で行うか、ツール内で行うか選択できます。
+`@server.call_tool` デコレータを使い、`handle_call_tool` という関数を実装します。この中でツール名、引数を解析し、ツールへの引数が妥当か確認します。バリデーションはこの関数内またはツール内部で行えます。
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # toolsはツール名をキーとする辞書です
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # ツールを呼び出す
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -533,26 +533,32 @@ async def handle_call_tool(
     ] 
 ```
 
-ここで行われていることは以下の通りです。
+処理内容は以下の通り：
 
-- ツール名は入力パラメータ`name`として既に存在しており、引数は`arguments`辞書として存在しています。
-- ツールは`result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`で呼び出されます。引数の検証は`handler`プロパティが指す関数内で行われ、失敗すると例外が発生します。
+- ツール名は入力パラメータ `name` として既に存在し、引数は `arguments` 辞書として受け取る。
+- ツールは `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)` で呼び出される。バリデーションは`handler`プロパティが指す関数内で行われ、失敗すると例外が発生する。
 
-これで、低レベルサーバーを使用してツールの一覧表示と呼び出しを完全に理解できました。
+これで低レベルサーバーを使ったツール一覧と呼び出しが完全に理解できました。
 
-[完全な例](./code/README.md)はこちらをご覧ください。
+[完全な例](./code/README.md)はこちら
 
 ## 課題
 
-提供されたコードを拡張して、複数のツール、リソース、プロンプトを追加し、toolsディレクトリにファイルを追加するだけで済むことを確認してください。
+与えられたコードに複数のツール、リソース、プロンプトを追加し、toolsディレクトリにファイルを追加するだけでよく、他の場所を触らなくてよいことを実感してください。
 
 *解答はありません*
 
 ## まとめ
 
-この章では、低レベルサーバーのアプローチがどのように機能するかを学び、それが拡張可能なアーキテクチャの構築にどのように役立つかを確認しました。また、バリデーションについて議論し、入力検証のためのスキーマを作成する方法を示しました。
+この章では低レベルサーバーアプローチの仕組みと、それが拡張しやすいアーキテクチャを作るのに役立つことを学びました。またバリデーションについても説明し、バリデーションライブラリを用いて入力検証用のスキーマを作成する方法を示しました。
+
+## 次に進む
+
+- 次へ: [シンプル認証](../11-simple-auth/README.md)
 
 ---
 
-**免責事項**:  
-この文書はAI翻訳サービス[Co-op Translator](https://github.com/Azure/co-op-translator)を使用して翻訳されています。正確性を追求しておりますが、自動翻訳には誤りや不正確な部分が含まれる可能性があります。元の言語で記載された文書を正式な情報源としてお考えください。重要な情報については、専門の人間による翻訳を推奨します。この翻訳の使用に起因する誤解や誤認について、当社は責任を負いません。
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**免責事項**：
+本書類はAI翻訳サービス「Co-op Translator」（https://github.com/Azure/co-op-translator）を使用して翻訳されています。正確性の確保に努めておりますが、自動翻訳には誤りや不正確な箇所が含まれる可能性があります。正確な情報の確認には、原文の言語で書かれたオリジナル文書を権威ある情報源としてご参照ください。重要な情報については、専門の人間翻訳をご利用いただくことを推奨します。本翻訳の利用に起因するいかなる誤解や解釈の相違についても、一切の責任を負いかねます。
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -1,59 +1,59 @@
-# Streamlining AI Workflows: How to Build MCP Server wit AI Toolkit
+# Streamlining AI Workflows: Building an MCP Server with AI Toolkit
 
-[![MCP Version](https://img.shields.io/badge/MCP-1.9.3-blue.svg)](https://modelcontextprotocol.io/)
+[![MCP Spec](https://img.shields.io/badge/MCP%20Spec-2025--11--25-blue.svg)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 [![Python](https://img.shields.io/badge/Python-3.10+-green.svg)](https://python.org)
 [![VS Code](https://img.shields.io/badge/VS%20Code-Latest-orange.svg)](https://code.visualstudio.com/)
 
 ![logo](../../../translated_images/pcm/logo.ec93918ec338dadd.webp)
 
-## 🎯 Overview
+## 🎯  Overview
 
 [![Build AI Agents in VS Code: 4 Hands-On Labs with MCP and AI Toolkit](../../../translated_images/pcm/11.0f6db6a0fb606885.webp)](https://youtu.be/r34Csn3rkeQ)
 
-_(Click di image wey dey up to watch di video for dis lesson)_
+_(Click di piksha wey dey above to watch video for dis lesson)_
 
-Welcome to di **Model Context Protocol (MCP) Workshop**! Dis workshop go teach you how to use two beta technologies wey go change di way we dey develop AI applications:
+Welcome to di **Model Context Protocol (MCP) Workshop**! Dis kain hands-on workshop combine two top latest technologies wey go change how person dey build AI application dem:
 
-- **🔗 Model Context Protocol (MCP)**: Na open standard wey dey make AI tools connect well well
+- **🔗 Model Context Protocol (MCP)**: One open standard for easy AI-tool work together
 - **🛠️ AI Toolkit for Visual Studio Code (AITK)**: Microsoft strong AI development extension
 
 ### 🎓 Wetin You Go Learn
 
-By di end of dis workshop, you go sabi how to build smart applications wey go connect AI models wit tools and services wey dey real life. From automated testing to custom API integration, you go get beta skills to solve business wahala.
+By di time you don finish dis workshop, you go sabi how to build smart applications wey fit join AI models with real-world tools and services. From automated testing reach custom API integrations, you go get skills to fit solve serious business wahala.
 
 ## 🏗️ Technology Stack
 
 ### 🔌 Model Context Protocol (MCP)
 
-MCP na di **"USB-C for AI"** - e be universal standard wey dey connect AI models to tools and data sources.
+MCP na di **"USB-C for AI"** - na universal standard wey dey connect AI models to other tools and data sources.
 
-**✨ Key Features:**
+**✨ Main Features:**
 
-- 🔄 **Standardized Integration**: Universal interface wey dey connect AI tools
-- 🏛️ **Flexible Architecture**: Local & remote servers wey dey use stdio/SSE transport
-- 🧰 **Rich Ecosystem**: Tools, prompts, and resources dey one protocol
-- 🔒 **Enterprise-Ready**: E get security and e dey reliable
+- 🔄 **Standardized Integration**: Universal interface to join AI-tool together
+- 🏛️ **Flexible Architecture**: Local and remote servers wey dey use stdio/SSE transport
+- 🧰 **Rich Ecosystem**: Tools, prompts, and resources inside one protocol
+- 🔒 **Enterprise-Ready**: Security and reliability inside
 
 **🎯 Why MCP Matter:**
-Just like USB-C wey clear cable wahala, MCP dey clear di wahala wey dey AI integration. One protocol, plenty possibilities.
+Just like USB-C stop cable wahala, MCP stop the trouble of AI integration. One protocol, plenty possibilities.
 
 ### 🤖 AI Toolkit for Visual Studio Code (AITK)
 
-Microsoft strong AI development extension wey dey turn VS Code into AI powerhouse.
+Microsoft AI development extension wey fit turn VS Code into AI powerhouse.
 
-**🚀 Core Capabilities:**
+**🚀 Core Bana:**
 
 - 📦 **Model Catalog**: Access models from Azure AI, GitHub, Hugging Face, Ollama
-- ⚡ **Local Inference**: ONNX-optimized CPU/GPU/NPU execution
-- 🏗️ **Agent Builder**: Visual AI agent development wit MCP integration
+- ⚡ **Local Inference**: ONNX-optimized CPU/GPU/NPU running
+- 🏗️ **Agent Builder**: Visual AI agent development with MCP connection
 - 🎭 **Multi-Modal**: Text, vision, and structured output support
 
 **💡 Development Benefits:**
 
-- No need to configure model deployment
+- No wahala model deployment
 - Visual prompt engineering
 - Real-time testing playground
-- MCP server dey integrate well well
+- Smooth MCP server join
 
 ## 📚 Learning Journey
 
@@ -62,50 +62,50 @@ Microsoft strong AI development extension wey dey turn VS Code into AI powerhous
 **Duration**: 15 minutes
 
 - 🛠️ Install and configure AI Toolkit for VS Code
-- 🗂️ Check di Model Catalog (100+ models from GitHub, ONNX, OpenAI, Anthropic, Google)
-- 🎮 Learn how to use di Interactive Playground for real-time model testing
-- 🤖 Build your first AI agent wit Agent Builder
-- 📊 Check model performance wit built-in metrics (F1, relevance, similarity, coherence)
-- ⚡ Learn batch processing and multi-modal support
+- 🗂️ Check out Model Catalog (100+ models from GitHub, ONNX, OpenAI, Anthropic, Google)
+- 🎮 Master di Interactive Playground for real-time model testing
+- 🤖 Build your first AI agent with Agent Builder
+- 📊 Check model performance with built-in metrics (F1, relevance, similarity, coherence)
+- ⚡ Learn batch processing and multi-modal support skill dem
 
-**🎯 Learning Outcome**: Create one functional AI agent wey go make you sabi AITK well well
+**🎯 Learning Outcome**: Build proper AI agent with full understanding of AITK functions
 
-### [🌐 Module 2: MCP wit AI Toolkit Fundamentals](./lab2/README.md)
+### [🌐 Module 2: MCP with AI Toolkit Fundamentals](./lab2/README.md)
 
 **Duration**: 20 minutes
 
-- 🧠 Sabi di Model Context Protocol (MCP) architecture and concepts
-- 🌐 Check di MCP server ecosystem wey Microsoft get
-- 🤖 Build browser automation agent wit Playwright MCP server
-- 🔧 Connect MCP servers wit AI Toolkit Agent Builder
+- 🧠 Understand Model Context Protocol (MCP) architecture and ideas
+- 🌐 Explore Microsoft MCP server setup
+- 🤖 Build browser automation agent using Playwright MCP server
+- 🔧 Join MCP servers with AI Toolkit Agent Builder
 - 📊 Configure and test MCP tools inside your agents
 - 🚀 Export and deploy MCP-powered agents for production
 
-**🎯 Learning Outcome**: Deploy AI agent wey dey use external tools wit MCP
+**🎯 Learning Outcome**: Deploy AI agent wey dey powered by external tools through MCP
 
-### [🔧 Module 3: Advanced MCP Development wit AI Toolkit](./lab3/README.md)
+### [🔧 Module 3: Advanced MCP Development with AI Toolkit](./lab3/README.md)
 
 **Duration**: 20 minutes
 
-- 💻 Create custom MCP servers wit AI Toolkit
-- 🐍 Configure and use di latest MCP Python SDK (v1.9.3)
-- 🔍 Set up and use MCP Inspector for debugging
-- 🛠️ Build Weather MCP Server wit professional debugging workflows
-- 🧪 Debug MCP servers inside Agent Builder and Inspector environments
+- 💻 Build custom MCP servers using AI Toolkit
+- 🐍 Configure and use latest MCP Python SDK (v1.9.3)
+- 🔍 Setup and use MCP Inspector for debugging
+- 🛠️ Build Weather MCP Server with professional debugging workflow
+- 🧪 Debug MCP servers for both Agent Builder and Inspector environment
 
-**🎯 Learning Outcome**: Develop and debug custom MCP servers wit beta tools
+**🎯 Learning Outcome**: Develop and debug custom MCP servers with modern tools
 
 ### [🐙 Module 4: Practical MCP Development - Custom GitHub Clone Server](./lab4/README.md)
 
 **Duration**: 30 minutes
 
-- 🏗️ Build real-world GitHub Clone MCP Server for development workflows
-- 🔄 Implement smart repository cloning wit validation and error handling
+- 🏗️ Build real-world GitHub Clone MCP Server for development workflow
+- 🔄 Implement smart repository cloning with validation and error handling
 - 📁 Create intelligent directory management and VS Code integration
-- 🤖 Use GitHub Copilot Agent Mode wit custom MCP tools
+- 🤖 Use GitHub Copilot Agent Mode with custom MCP tools
 - 🛡️ Apply production-ready reliability and cross-platform compatibility
 
-**🎯 Learning Outcome**: Deploy production-ready MCP server wey dey make development workflows easy
+**🎯 Learning Outcome**: Deploy production-ready MCP server wey go simplify real development workflow
 
 ## 💡 Real-World Applications & Impact
 
@@ -113,35 +113,35 @@ Microsoft strong AI development extension wey dey turn VS Code into AI powerhous
 
 #### 🔄 DevOps Automation
 
-Change your development workflow wit smart automation:
+Change your development workflow with smart automation:
 
-- **Smart Repository Management**: AI wey dey help review code and make merge decisions
-- **Intelligent CI/CD**: Automated pipeline wey dey optimize based on code changes
+- **Smart Repository Management**: AI-powered code review and merge decisions
+- **Intelligent CI/CD**: Automated pipeline improvement based on code changes
 - **Issue Triage**: Automatic bug classification and assignment
 
 #### 🧪 Quality Assurance Revolution
 
-Make testing beta wit AI-powered automation:
+Improve testing with AI automation:
 
-- **Intelligent Test Generation**: Create test suites automatically
-- **Visual Regression Testing**: AI wey dey detect UI changes
-- **Performance Monitoring**: Identify and solve issues before dem happen
+- **Smart Test Generation**: Automatically create full test suites
+- **Visual Regression Testing**: AI-powered UI change detection
+- **Performance Monitoring**: Early issue detection and fixing
 
 #### 📊 Data Pipeline Intelligence
 
-Build smarter data processing workflows:
+Build smarter data processing workflow:
 
-- **Adaptive ETL Processes**: Self-optimizing data transformations
-- **Anomaly Detection**: Real-time data quality monitoring
-- **Intelligent Routing**: Smart data flow management
+- **Adaptive ETL Processes**: Self-optimizing data transformation
+- **Anomaly Detection**: Real-time data quality checking
+- **Smart Routing**: Smart data flow management
 
 #### 🎧 Customer Experience Enhancement
 
-Make customer interactions beta:
+Make top customer interaction:
 
-- **Context-Aware Support**: AI agents wey sabi customer history
-- **Proactive Issue Resolution**: Predictive customer service
-- **Multi-Channel Integration**: Unified AI experience across platforms
+- **Context-Aware Support**: AI agents get access to customer history
+- **Proactive Issue Solution**: Predict customer service issues
+- **Multi-Channel Integration**: Unified AI experience across different platforms
 
 ## 🛠️ Prerequisites & Setup
 
@@ -150,7 +150,7 @@ Make customer interactions beta:
 | Component | Requirement | Notes |
 |-----------|-------------|-------|
 | **Operating System** | Windows 10+, macOS 10.15+, Linux | Any modern OS |
-| **Visual Studio Code** | Latest stable version | Required for AITK |
+| **Visual Studio Code** | Latest stable version | Needed for AITK |
 | **Node.js** | v18.0+ and npm | For MCP server development |
 | **Python** | 3.10+ | Optional for Python MCP servers |
 | **Memory** | 8GB RAM minimum | 16GB recommended for local models |
@@ -162,7 +162,7 @@ Make customer interactions beta:
 - **AI Toolkit** (ms-windows-ai-studio.windows-ai-studio)
 - **Python** (ms-python.python)
 - **Python Debugger** (ms-python.debugpy)
-- **GitHub Copilot** (GitHub.copilot) - Optional but helpful
+- **GitHub Copilot** (GitHub.copilot) - Optional but useful
 
 #### Optional Tools
 
@@ -174,49 +174,54 @@ Make customer interactions beta:
 
 ### 🏆 Skill Mastery Checklist
 
-By di time you finish dis workshop, you go sabi:
+After you finish dis workshop, you go fit master:
 
 #### 🎯 Core Competencies
 
-- [ ] **MCP Protocol Mastery**: Understand di architecture and implementation patterns well well
-- [ ] **AITK Proficiency**: Sabi how to use AI Toolkit for fast development
-- [ ] **Custom Server Development**: Build, deploy, and maintain MCP servers for production
-- [ ] **Tool Integration Excellence**: Connect AI wit existing development workflows
-- [ ] **Problem-Solving Application**: Use di skills wey you learn to solve business wahala
+- [ ] **MCP Protocol Mastery**: Understand architecture and implementation patterns well well
+- [ ] **AITK Proficiency**: Expert in AI Toolkit for quick development
+- [ ] **Custom Server Development**: Build, deploy, and maintain production MCP servers
+- [ ] **Tool Integration Excellence**: Join AI with existing development workflow smoothly
+- [ ] **Problem-Solving Application**: Use learned skills to handle real business issues
 
 #### 🔧 Technical Skills
 
-- [ ] Set up and configure AI Toolkit inside VS Code
-- [ ] Design and implement custom MCP servers
-- [ ] Connect GitHub Models wit MCP architecture
-- [ ] Build automated testing workflows wit Playwright
+- [ ] Setup and configure AI Toolkit in VS Code
+- [ ] Design and build custom MCP servers
+- [ ] Join GitHub Models with MCP architecture
+- [ ] Build automated testing workflow with Playwright
 - [ ] Deploy AI agents for production
-- [ ] Debug and optimize MCP server performance
+- [ ] Debug and improve MCP server performance
 
 #### 🚀 Advanced Capabilities
 
-- [ ] Architect enterprise-scale AI integrations
-- [ ] Implement security best practices for AI applications
+- [ ] Build enterprise-scale AI integrations
+- [ ] Use good security practice for AI apps
 - [ ] Design scalable MCP server architectures
-- [ ] Create custom tool chains for specific domains
-- [ ] Teach others how to develop AI-native applications
+- [ ] Build custom tool chains for specific areas
+- [ ] Mentor others in AI-native development
 
 ## 📖 Additional Resources
 
-- [MCP Specification](https://modelcontextprotocol.io/docs)
+- [MCP Specification (2025-11-25)](https://spec.modelcontextprotocol.io/specification/2025-11-25/)
 - [AI Toolkit GitHub Repository](https://github.com/microsoft/vscode-ai-toolkit)
 - [Sample MCP Servers Collection](https://github.com/modelcontextprotocol/servers)
 - [Best Practices Guide](https://modelcontextprotocol.io/docs/best-practices)
+- [OWASP MCP Top 10](https://microsoft.github.io/mcp-azure-security-guide/mcp/) - Security best practices
 
 ---
 
-**🚀 Ready to change di way you dey develop AI applications?**
+**🚀 Ready to change your AI development workflow?**
 
-Make we build di future of smart applications together wit MCP and AI Toolkit!
+Make we build future intelligent applications together with MCP and AI Toolkit!
+
+## What's Next
+
+Continue to: [Module 11: MCP Server Hands-On Labs](../11-MCPServerHandsOnLabs/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis dokyument don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am accurate, abeg make you sabi say machine translation fit get mistake or no dey correct well. Di original dokyument for di language wey dem write am first na di one wey you go take as di correct source. For important information, e good make professional human translator check am. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translation.
+**Disclaimer**:
+Dis document don translate wit AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we dey try make am correct, abeg sabi sey automated translations fit get error or wahala. Di original document wey e dey for im own language na di correct tin. If na important information, e good make person get professional human translation. We no go take responsibility for any misunderstanding or wrong meaning wey fit show because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

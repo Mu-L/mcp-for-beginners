@@ -1,12 +1,12 @@
 # Implantando Servidores MCP
 
-Implantar seu servidor MCP permite que outras pessoas acessem suas ferramentas e recursos além do seu ambiente local. Existem várias estratégias de implantação a considerar, dependendo dos seus requisitos de escalabilidade, confiabilidade e facilidade de gerenciamento. Abaixo, você encontrará orientações para implantar servidores MCP localmente, em containers e na nuvem.
+Implantar seu servidor MCP permite que outros acessem suas ferramentas e recursos além do seu ambiente local. Existem várias estratégias de implantação a considerar, dependendo dos seus requisitos de escalabilidade, confiabilidade e facilidade de gerenciamento. Abaixo você encontrará orientações para implantar servidores MCP localmente, em contêineres e na nuvem.
 
-## Visão Geral
+## Visão geral
 
-Esta lição aborda como implantar seu aplicativo MCP Server.
+Esta lição cobre como implantar seu aplicativo de Servidor MCP.
 
-## Objetivos de Aprendizagem
+## Objetivos de aprendizado
 
 Ao final desta lição, você será capaz de:
 
@@ -15,10 +15,10 @@ Ao final desta lição, você será capaz de:
 
 ## Desenvolvimento e implantação local
 
-Se o seu servidor for destinado a ser usado rodando na máquina dos usuários, você pode seguir os seguintes passos:
+Se seu servidor deve ser consumido executando na máquina do usuário, você pode seguir os seguintes passos:
 
-1. **Baixe o servidor**. Se você não escreveu o servidor, faça o download dele primeiro para sua máquina.  
-1. **Inicie o processo do servidor**: Execute seu aplicativo MCP server
+1. **Baixe o servidor**. Se você não escreveu o servidor, então faça o download primeiro para sua máquina.  
+1. **Inicie o processo do servidor**: Execute seu aplicativo de servidor MCP.
 
 Para SSE (não necessário para servidor do tipo stdio)
 
@@ -30,14 +30,14 @@ Para SSE (não necessário para servidor do tipo stdio)
 Servidores MCP podem ser implantados em várias plataformas de nuvem:
 
 - **Funções Serverless**: Implante servidores MCP leves como funções serverless  
-- **Serviços de Containers**: Use serviços como Azure Container Apps, AWS ECS ou Google Cloud Run  
-- **Kubernetes**: Implemente e gerencie servidores MCP em clusters Kubernetes para alta disponibilidade
+- **Serviços de Contêineres**: Use serviços como Azure Container Apps, AWS ECS ou Google Cloud Run  
+- **Kubernetes**: Implante e gerencie servidores MCP em clusters Kubernetes para alta disponibilidade
 
 ### Exemplo: Azure Container Apps
 
-Azure Container Apps suporta a implantação de MCP Servers. Ainda está em desenvolvimento e atualmente suporta servidores SSE.
+Azure Container Apps suporta implantação de Servidores MCP. Ainda está em desenvolvimento e atualmente suporta servidores SSE.
 
-Veja como proceder:
+Veja como você pode proceder:
 
 1. Clone um repositório:
 
@@ -45,7 +45,7 @@ Veja como proceder:
   git clone https://github.com/anthonychu/azure-container-apps-mcp-sample.git
   ```
 
-1. Execute localmente para testar:
+1. Execute localmente para testar as coisas:
 
   ```sh
   uv venv
@@ -59,7 +59,7 @@ Veja como proceder:
   uv run fastapi dev main.py
   ```
 
-1. Para testar localmente, crie um arquivo *mcp.json* em um diretório *.vscode* e adicione o seguinte conteúdo:
+1. Para tentar localmente, crie um arquivo *mcp.json* em um diretório *.vscode* e adicione o seguinte conteúdo:
 
   ```json
   {
@@ -83,7 +83,7 @@ Veja como proceder:
   }
   ```
 
-  Uma vez que o servidor SSE esteja iniciado, você pode clicar no ícone de play no arquivo JSON, agora as ferramentas no servidor devem ser reconhecidas pelo GitHub Copilot, veja o ícone da ferramenta.
+  Uma vez que o servidor SSE seja iniciado, você pode clicar no ícone de play no arquivo JSON, agora você deve ver as ferramentas no servidor sendo capturadas pelo GitHub Copilot, veja o ícone da ferramenta.
 
 1. Para implantar, execute o seguinte comando:
 
@@ -91,17 +91,22 @@ Veja como proceder:
   az containerapp up -g <RESOURCE_GROUP_NAME> -n weather-mcp --environment mcp -l westus --env-vars API_KEYS=<AN_API_KEY> --source .
   ```
 
-Pronto, implante localmente ou na Azure seguindo esses passos.
+É isso aí, implante localmente, implante no Azure seguindo essas etapas.
 
 ## Recursos Adicionais
 
 - [Azure Functions + MCP](https://learn.microsoft.com/en-us/samples/azure-samples/remote-mcp-functions-dotnet/remote-mcp-functions-dotnet/)
-- [Artigo sobre Azure Container Apps](https://techcommunity.microsoft.com/blog/appsonazureblog/host-remote-mcp-servers-in-azure-container-apps/4403550)
-- [Repositório MCP para Azure Container Apps](https://github.com/anthonychu/azure-container-apps-mcp-sample)
+- [Artigo Azure Container Apps](https://techcommunity.microsoft.com/blog/appsonazureblog/host-remote-mcp-servers-in-azure-container-apps/4403550)
+- [Repositório Azure Container Apps MCP](https://github.com/anthonychu/azure-container-apps-mcp-sample)
 
-## O que vem a seguir
 
-- Próximo: [Implementação Prática](../../04-PracticalImplementation/README.md)
+## Próximos Passos
 
+- Próximo: [Tópicos Avançados de Servidor](../10-advanced/README.md)
+
+---
+
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Aviso Legal**:  
-Este documento foi traduzido utilizando o serviço de tradução por IA [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos para garantir a precisão, esteja ciente de que traduções automáticas podem conter erros ou imprecisões. O documento original em seu idioma nativo deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se tradução profissional humana. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações incorretas decorrentes do uso desta tradução.
+Este documento foi traduzido usando o serviço de tradução por IA [Co-op Translator](https://github.com/Azure/co-op-translator). Embora nos esforcemos para garantir a precisão, esteja ciente de que traduções automáticas podem conter erros ou imprecisões. O documento original em seu idioma nativo deve ser considerado a fonte autorizada. Para informações críticas, recomenda-se a tradução profissional realizada por humanos. Não nos responsabilizamos por quaisquer mal-entendidos ou interpretações equivocadas decorrentes do uso desta tradução.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

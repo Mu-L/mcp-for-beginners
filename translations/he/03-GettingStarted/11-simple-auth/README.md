@@ -1,25 +1,25 @@
 # אימות פשוט
 
-SDKs של MCP תומכים בשימוש ב-OAuth 2.1, תהליך די מורכב שכולל מושגים כמו שרת אימות, שרת משאבים, שליחת אישורים, קבלת קוד, החלפת הקוד עבור אסימון נושא עד שתוכל סוף סוף לקבל את נתוני המשאבים שלך. אם אינך רגיל ל-OAuth, שהוא כלי נהדר ליישום, כדאי להתחיל ברמת אימות בסיסית ולבנות בהדרגה אבטחה טובה יותר. זו הסיבה שהפרק הזה קיים – כדי להוביל אותך לאימות מתקדם יותר.
+MCP SDKs תומכות בשימוש ב-OAuth 2.1 שבאמת הוא תהליך מעמיק הכולל מושגים כמו שרת אימות, שרת משאבים, שליחת אישורים, קבלת קוד, החלפת הקוד בטוקן נושא עד שניתן בסופו של דבר לקבל את נתוני המשאב. אם אינך מורגל ב-OAuth שהוא דבר מצוין ליישום, כדאי להתחיל ברמת אימות בסיסית ולבנות לקראת אבטחה טובה וטובה יותר. לכן קיים פרק זה, כדי לבנות אותך לאימות מתקדם יותר.
 
-## מה זה אימות?
+## אימות, מה אנו מתכוונים?
 
-אימות הוא קיצור של "אימות" ו-"הרשאה". הרעיון הוא שעלינו לבצע שני דברים:
+אימות הוא קיצור של Authentication ו-Authorization. הרעיון הוא שעלינו לעשות שני דברים:
 
-- **אימות**: תהליך שבו אנו מוודאים אם לאפשר לאדם להיכנס לבית שלנו, כלומר אם יש לו את הזכות להיות "כאן" – גישה לשרת המשאבים שבו נמצאות תכונות שרת MCP שלנו.
-- **הרשאה**: תהליך שבו אנו מוודאים אם למשתמש יש גישה למשאבים הספציפיים שהוא מבקש, לדוגמה הזמנות או מוצרים מסוימים, או אם הוא מורשה לקרוא את התוכן אך לא למחוק אותו, כדוגמה נוספת.
+- **Authentication**, שהוא התהליך של לברר אם אנו מרשים לאדם להיכנס לבית שלנו, כלומר שיש לו את הזכות להיות "כאן" כלומר גישה לשרת המשאבים שלנו שבו מתכונות MCP Server שלנו נמצאות.
+- **Authorization**, הוא התהליך של לברר אם למשתמש צריך להיות גישה למשאבים ספציפיים שהוא מבקש, למשל הזמנות אלה או מוצרים אלה או האם הוא מורשה לקרוא את התוכן אך לא למחוק, כדוגמה נוספת.
 
-## אישורים: איך אנחנו מזהים את עצמנו למערכת
+## אישורים: איך אנו אומרים למערכת מי אנחנו
 
-רוב מפתחי האינטרנט מתחילים לחשוב במונחים של מתן אישור לשרת, בדרך כלל סוד שמאשר אם הם מורשים להיות כאן ("אימות"). אישור זה בדרך כלל גרסה מקודדת ב-base64 של שם משתמש וסיסמה או מפתח API שמזהה באופן ייחודי משתמש מסוים.
+ובכן, רוב מפתחי האינטרנט שם מתחילים לחשוב במונחים של מתן אישור לשרת, בדרך כלל סוד שאומר אם הם מורשים להיות כאן "Authentication". אישור זה הוא בדרך כלל גרסה מקודדת ב-base64 של שם משתמש וסיסמה או מפתח API שמזהה באופן ייחודי משתמש מסוים.
 
-זה כולל שליחה דרך כותרת שנקראת "Authorization" כך:
+זה כרוך בשליחתו דרך כותרת שנקראת "Authorization" כך:
 
 ```json
 { "Authorization": "secret123" }
 ```
 
-זה נקרא בדרך כלל אימות בסיסי. איך הזרימה הכללית עובדת היא כך:
+זה בדרך כלל מכונה אימות בסיסי. איך הזרימה הכללית פועלת אז היא כך:
 
 ```mermaid
 sequenceDiagram
@@ -27,13 +27,12 @@ sequenceDiagram
    participant Client
    participant Server
 
-   User->>Client: show me data
-   Client->>Server: show me data, here's my credential
-   Server-->>Client: 1a, I know you, here's your data
-   Server-->>Client: 1b, I don't know you, 401 
+   User->>Client: הצג לי נתונים
+   Client->>Server: הצג לי נתונים, הנה האישורים שלי
+   Server-->>Client: 1a, אני מכיר אותך, הנה הנתונים שלך
+   Server-->>Client: 1b, אני לא מכיר אותך, 401 
 ```
-
-עכשיו כשאנחנו מבינים איך זה עובד מבחינת זרימה, איך אנחנו מיישמים את זה? ובכן, רוב שרתי האינטרנט כוללים מושג שנקרא middleware, קטע קוד שרץ כחלק מהבקשה שיכול לאמת אישורים, ואם האישורים תקפים, מאפשר לבקשה לעבור. אם הבקשה לא כוללת אישורים תקפים, תקבל שגיאת אימות. בואו נראה איך זה יכול להיות מיושם:
+עכשיו כשהבנו איך זה פועל מבחינת זרימה, איך מיישמים זאת? ובכן, רוב שרתי האינטרנט יש מושג שנקרא middleware, קטע קוד שרץ כחלק מהבקשה שיכול לאמת אישורים, ואם האישורים תקינים יכול לאפשר לבקשה לעבור. אם הבקשה לא מכילה אישורים תקינים אז אתה מקבל שגיאת אימות. בוא נראה איך זה יכול להיות מיושם:
 
 **Python**
 
@@ -53,23 +52,23 @@ class AuthMiddleware(BaseHTTPMiddleware):
         print("Valid token, proceeding...")
        
         response = await call_next(request)
-        # add any customer headers or change in the response in some way
+        # הוסף כותרות לקוח כלשהן או שינוי בתגובה בדרך כלשהי
         return response
 
 
 starlette_app.add_middleware(CustomHeaderMiddleware)
 ```
 
-כאן ביצענו:
+כאן יש לנו:
 
-- יצירת middleware בשם `AuthMiddleware` שבו מתבצע קריאה לשיטת `dispatch` על ידי שרת האינטרנט.
-- הוספת ה-middleware לשרת האינטרנט:
+- יצרנו middleware בשם `AuthMiddleware` שבו מתודת `dispatch` שלו מופעלת על ידי שרת האינטרנט.
+- הוספנו את ה-middleware לשרת האינטרנט:
 
     ```python
     starlette_app.add_middleware(AuthMiddleware)
     ```
 
-- כתיבת לוגיקת אימות שבודקת אם כותרת Authorization קיימת ואם הסוד שנשלח תקף:
+- כתבנו לוגיקה של אימות שבודקת אם כותרת Authorization קיימת ואם הסוד שנשלח תקין:
 
     ```python
     has_header = request.headers.get("Authorization")
@@ -82,19 +81,19 @@ starlette_app.add_middleware(CustomHeaderMiddleware)
         return Response(status_code=403, content="Forbidden")
     ```
 
-    אם הסוד קיים ותקף, אנו מאפשרים לבקשה לעבור על ידי קריאה ל-`call_next` ומחזירים את התגובה.
+    אם הסוד קיים ותקין אז אנו מאפשרים לבקשה לעבור על ידי קריאה ל-`call_next` ומחזירים את התגובה.
 
     ```python
     response = await call_next(request)
-    # add any customer headers or change in the response in some way
+    # הוסף כל כותרות מותאמות אישית או תבצע שינוי כלשהו בתגובה
     return response
     ```
 
-איך זה עובד? אם בקשת אינטרנט נעשית לשרת, ה-middleware יופעל ובזכות היישום שלו, הוא יאפשר לבקשה לעבור או יחזיר שגיאה שמצביעה על כך שהלקוח אינו מורשה להמשיך.
+איך זה פועל הוא שאם מתבצעת בקשה לשרת ה-middleware יופעל ובהתאם למימוש שלו הוא או יאפשר לבקשה לעבור או יחזיר שגיאה שמציינת שהלקוח אינו מורשה להמשיך.
 
 **TypeScript**
 
-כאן אנו יוצרים middleware עם מסגרת הפופולרית Express ומיירטים את הבקשה לפני שהיא מגיעה לשרת MCP. הנה הקוד לכך:
+כאן אנו יוצרים middleware עם המסגרת הפופולרית Express ותופסים את הבקשה לפני שהיא מגיעה ל-MCP Server. הנה הקוד לכך:
 
 ```typescript
 function isValid(secret) {
@@ -102,54 +101,54 @@ function isValid(secret) {
 }
 
 app.use((req, res, next) => {
-    // 1. Authorization header present?  
+    // 1. האם כותרת האישור קיימת?
     if(!req.headers["Authorization"]) {
         res.status(401).send('Unauthorized');
     }
     
     let token = req.headers["Authorization"];
 
-    // 2. Check validity.
+    // 2. בדוק תקפות.
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
     }
 
    
     console.log('Middleware executed');
-    // 3. Passes request to the next step in the request pipeline.
+    // 3. מעביר את הבקשה לשלב הבא בצינור הבקשות.
     next();
 });
 ```
 
 בקוד זה אנו:
 
-1. בודקים אם כותרת Authorization קיימת מלכתחילה, אם לא, אנו שולחים שגיאת 401.
-2. מוודאים שהאישור/אסימון תקף, אם לא, אנו שולחים שגיאת 403.
-3. לבסוף מעבירים את הבקשה בצינור הבקשות ומחזירים את המשאב המבוקש.
+1. בודקים אם כותרת Authorization קיימת מלכתחילה, אם לא אנו שולחים שגיאה 401.
+2. מוודאים שהאישור/טוקן תקין, אם לא אנו שולחים שגיאה 403.
+3. לבסוף מעבירים את הבקשה דרך צינור הבקשה ומחזירים את המשאב שנדרש.
 
 ## תרגיל: יישום אימות
 
-בואו ניקח את הידע שלנו וננסה ליישם אותו. הנה התוכנית:
+בואו ניקח את הידע שלנו וננסה ליישם זאת. הנה התוכנית:
 
 שרת
 
-- יצירת שרת אינטרנט ומופע MCP.
-- יישום middleware לשרת.
+- צור שרת אינטרנט ומופע MCP.
+- יישם middleware עבור השרת.
 
-לקוח 
+לקוח
 
-- שליחת בקשת אינטרנט, עם אישור, דרך כותרת.
+- שלח בקשת אינטרנט עם אישור דרך הכותרת.
 
-### -1- יצירת שרת אינטרנט ומופע MCP
+### -1- צור שרת אינטרנט ומופע MCP
 
-בשלב הראשון שלנו, עלינו ליצור מופע שרת אינטרנט ומופע שרת MCP.
+בשלב הראשון נצטרך ליצור את מופע שרת האינטרנט ושרת MCP.
 
 **Python**
 
-כאן אנו יוצרים מופע שרת MCP, אפליקציית אינטרנט starlette ומארחים אותה עם uvicorn.
+כאן אנו יוצרים מופע שרת MCP, יוצרים אפליקציית starlette ומאחסנים אותה עם uvicorn.
 
 ```python
-# creating MCP Server
+# יצירת שרת MCP
 
 app = FastMCP(
     name="MCP Resource Server",
@@ -159,10 +158,10 @@ app = FastMCP(
     debug=True
 )
 
-# creating starlette web app
+# יצירת אפליקציית ווב starlette
 starlette_app = app.streamable_http_app()
 
-# serving app via uvicorn
+# הפעלת האפליקציה דרך uvicorn
 async def run(starlette_app):
     import uvicorn
     config = uvicorn.Config(
@@ -180,8 +179,8 @@ run(starlette_app)
 בקוד זה אנו:
 
 - יוצרים את שרת MCP.
-- בונים את אפליקציית האינטרנט starlette מתוך שרת MCP, `app.streamable_http_app()`.
-- מארחים ומשרתים את אפליקציית האינטרנט באמצעות uvicorn `server.serve()`.
+- בונים את אפליקציית starlette מהשרת MCP, `app.streamable_http_app()`.
+- מאחסנים ומפעילים את אפליקציית האינטרנט באמצעות uvicorn `server.serve()`.
 
 **TypeScript**
 
@@ -193,10 +192,10 @@ const server = new McpServer({
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... להגדיר משאבי שרת, כלים, והנחיות ...
 ```
 
-יצירת שרת MCP זו תצטרך להתבצע בתוך הגדרת הנתיב POST /mcp שלנו, אז בואו ניקח את הקוד לעיל ונעביר אותו כך:
+יצירת שרת MCP זה תצטרך להיעשות בתוך הגדרת הנתיב POST /mcp, אז בוא נעביר את הקוד מעלה כך:
 
 ```typescript
 import express from "express";
@@ -208,33 +207,33 @@ import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
 const app = express();
 app.use(express.json());
 
-// Map to store transports by session ID
+// מפה לאחסון תחבורה לפי מזהה סשן
 const transports: { [sessionId: string]: StreamableHTTPServerTransport } = {};
 
-// Handle POST requests for client-to-server communication
+// טיפול בבקשות POST לתקשורת מלקוח לשרת
 app.post('/mcp', async (req, res) => {
-  // Check for existing session ID
+  // בדיקה של קיום מזהה סשן
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   let transport: StreamableHTTPServerTransport;
 
   if (sessionId && transports[sessionId]) {
-    // Reuse existing transport
+    // שימוש חוזר בתחבורה קיימת
     transport = transports[sessionId];
   } else if (!sessionId && isInitializeRequest(req.body)) {
-    // New initialization request
+    // בקשה לאתחול חדש
     transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: () => randomUUID(),
       onsessioninitialized: (sessionId) => {
-        // Store the transport by session ID
+        // אחסון התחבורה לפי מזהה סשן
         transports[sessionId] = transport;
       },
-      // DNS rebinding protection is disabled by default for backwards compatibility. If you are running this server
-      // locally, make sure to set:
+      // הגנת DNS rebinding מנוטרלת כברירת מחדל לשמירת תאימות לאחור. אם אתם מפעילים את השרת הזה
+      // מקומית, וודאו שתקבעו:
       // enableDnsRebindingProtection: true,
       // allowedHosts: ['127.0.0.1'],
     });
 
-    // Clean up transport when closed
+    // ניקוי התחבורה כאשר היא נסגרת
     transport.onclose = () => {
       if (transport.sessionId) {
         delete transports[transport.sessionId];
@@ -245,12 +244,12 @@ app.post('/mcp', async (req, res) => {
       version: "1.0.0"
     });
 
-    // ... set up server resources, tools, and prompts ...
+    // ... הקמת משאבים של השרת, כלים והנחות ...
 
-    // Connect to the MCP server
+    // התחברות לשרת MCP
     await server.connect(transport);
   } else {
-    // Invalid request
+    // בקשה לא חוקית
     res.status(400).json({
       jsonrpc: '2.0',
       error: {
@@ -262,11 +261,11 @@ app.post('/mcp', async (req, res) => {
     return;
   }
 
-  // Handle the request
+  // טיפול בבקשה
   await transport.handleRequest(req, res, req.body);
 });
 
-// Reusable handler for GET and DELETE requests
+// מטפל שניתן להשתמש בו עבור בקשות GET ו-DELETE
 const handleSessionRequest = async (req: express.Request, res: express.Response) => {
   const sessionId = req.headers['mcp-session-id'] as string | undefined;
   if (!sessionId || !transports[sessionId]) {
@@ -278,44 +277,44 @@ const handleSessionRequest = async (req: express.Request, res: express.Response)
   await transport.handleRequest(req, res);
 };
 
-// Handle GET requests for server-to-client notifications via SSE
+// טיפול בבקשות GET עבור התראות משרת ללקוח באמצעות SSE
 app.get('/mcp', handleSessionRequest);
 
-// Handle DELETE requests for session termination
+// טיפול בבקשות DELETE לסיום הסשן
 app.delete('/mcp', handleSessionRequest);
 
 app.listen(3000);
 ```
 
-עכשיו אתם רואים איך יצירת שרת MCP הועברה בתוך `app.post("/mcp")`.
+עכשיו אתה רואה איך יצירת שרת MCP הועברה בתוך `app.post("/mcp")`.
 
-בואו נעבור לשלב הבא של יצירת ה-middleware כדי שנוכל לאמת את האישור הנכנס.
+בוא נמשיך לשלב הבא של יצירת ה-middleware כדי שנוכל לאמת את האישורים שנכנסים.
 
-### -2- יישום middleware לשרת
+### -2- יישום middleware עבור השרת
 
-בואו נעבור לחלק של ה-middleware. כאן ניצור middleware שמחפש אישור בכותרת `Authorization` ומאמת אותו. אם הוא מתקבל, הבקשה תמשיך לעשות את מה שהיא צריכה (למשל, רשימת כלים, קריאת משאב או כל פונקציונליות MCP שהלקוח ביקש).
+נעבור עכשיו לחלק של ה-middleware. כאן ניצור middleware שמחפש אישור בכותרת `Authorization` ומאמת אותו. אם הוא מתקבל אז הבקשה תמשיך ותבצע את מה שצריך (למשל רשימת כלים, קריאת משאב או כל פונקציונליות MCP שהלקוח ביקש).
 
 **Python**
 
-כדי ליצור את ה-middleware, עלינו ליצור מחלקה שיורשת מ-`BaseHTTPMiddleware`. ישנם שני חלקים מעניינים:
+כדי ליצור את ה-middleware, נצטרך ליצור מחלקה שיורשת מ-`BaseHTTPMiddleware`. יש שני חלקים מעניינים:
 
-- הבקשה `request`, שממנה אנו קוראים את המידע מהכותרת.
-- `call_next`, הקריאה חזרה שעלינו להפעיל אם הלקוח הביא אישור שאנו מקבלים.
+- הבקשה `request` , שממנה נקרא את פרטי הכותרת.
+- `call_next` הקריאה החוזרת שצריך להפעיל אם ללקוח יש אישור שאנו מקבלים.
 
-ראשית, עלינו לטפל במקרה שבו כותרת `Authorization` חסרה:
+תחילה, צריך לטפל במצב בו כותרת `Authorization` חסרה:
 
 ```python
 has_header = request.headers.get("Authorization")
 
-# no header present, fail with 401, otherwise move on.
+# אין כותרת, נכשל עם 401, אחרת ממשיך.
 if not has_header:
     print("-> Missing Authorization header!")
     return Response(status_code=401, content="Unauthorized")
 ```
 
-כאן אנו שולחים הודעת 401 לא מורשה מכיוון שהלקוח נכשל באימות.
+כאן אנו שולחים הודעת 401 unauthorized מאחר שהלקוח נכשל באימות.
 
-לאחר מכן, אם אישור נשלח, עלינו לבדוק את תקפותו כך:
+אחר כך, אם הוגש אישור, עלינו לבדוק את תקפותו כך:
 
 ```python
  if not valid_token(has_header):
@@ -323,7 +322,7 @@ if not has_header:
     return Response(status_code=403, content="Forbidden")
 ```
 
-שימו לב איך אנו שולחים הודעת 403 אסור למעלה. בואו נראה את ה-middleware המלא למטה שמיישם את כל מה שציינו:
+שים לב שאנו שולחים כאן הודעת 403 forbidden. בוא נראה את ה-middleware המלא למטה שמממש את כל הדברים שהזכרנו:
 
 ```python
 class AuthMiddleware(BaseHTTPMiddleware):
@@ -346,32 +345,33 @@ class AuthMiddleware(BaseHTTPMiddleware):
 
 ```
 
-מעולה, אבל מה לגבי פונקציית `valid_token`? הנה היא למטה:
+מצוין, אבל מה עם פונקציית `valid_token`? הנה היא מטה:
+:
 
 ```python
-# DON'T use for production - improve it !!
+# אל תשתמש בפרודקשן - שפר את זה !!
 def valid_token(token: str) -> bool:
-    # remove the "Bearer " prefix
+    # הסר את הקידומת "Bearer "
     if token.startswith("Bearer "):
         token = token[7:]
         return token == "secret-token"
     return False
 ```
 
-זה כמובן צריך להשתפר.
+כמובן שזה צריך להשתפר.
 
-חשוב: לעולם אין לשמור סודות כאלה בקוד. עדיף לשלוף את הערך להשוואה ממקור נתונים או מספק שירות זהות (IDP) או אפילו טוב יותר, לתת ל-IDP לבצע את האימות.
+[!IMPORTANT] אסור לך לעולם לשים סודות כאלה בקוד. רצוי לקבל את הערך להשוואה ממקור נתונים או מ-IDP (ספק שירות זהות) או טוב יותר, לאפשר ל-IDP לאמת.
 
 **TypeScript**
 
-כדי ליישם זאת עם Express, עלינו לקרוא לשיטת `use` שמקבלת פונקציות middleware.
+כדי ליישם זאת עם Express, נצטרך לקרוא למתודת `use` שלוקחת פונקציות middleware.
 
-עלינו:
+צריך:
 
-- לתקשר עם משתנה הבקשה כדי לבדוק את האישור שנשלח בכותרת `Authorization`.
-- לאמת את האישור, ואם כן, לאפשר לבקשה להמשיך ולבצע את בקשת MCP של הלקוח.
+- לתקשר עם משתנה הבקשה לבדוק את האישור שנשלח בתכונת `Authorization`.
+- לאמת את האישורים ואם כן לאפשר לבקשה להמשיך ולהנחות את בקשת MCP של הלקוח לעשות את מה שצריך (למשל רשימת כלים, קריאת משאב או כל דבר אחר שקשור ל-MCP).
 
-כאן, אנו בודקים אם כותרת `Authorization` קיימת ואם לא, אנו עוצרים את הבקשה מלעבור:
+כאן, אנו בודקים אם כותרת `Authorization` קיימת ואם לא, אנו מפסיקים את הבקשה מללכת הלאה:
 
 ```typescript
 if(!req.headers["authorization"]) {
@@ -380,9 +380,9 @@ if(!req.headers["authorization"]) {
 }
 ```
 
-אם הכותרת לא נשלחת מלכתחילה, תקבלו שגיאת 401.
+אם הכותרת לא נשלחה מלכתחילה, תקבל שגיאה 401.
 
-לאחר מכן, אנו בודקים אם האישור תקף, אם לא, אנו שוב עוצרים את הבקשה אך עם הודעה מעט שונה:
+אחר כך, אנו בודקים אם האישורים תקינים, אם לא אנו שוב מפסיקים את הבקשה אך עם הודעה שונה במעט:
 
 ```typescript
 if(!isValid(token)) {
@@ -391,7 +391,7 @@ if(!isValid(token)) {
 } 
 ```
 
-שימו לב איך אתם מקבלים עכשיו שגיאת 403.
+שים לב שאתה מקבל עכשיו שגיאה 403.
 
 הנה הקוד המלא:
 
@@ -416,18 +416,18 @@ app.use((req, res, next) => {
 });
 ```
 
-הגדרנו את שרת האינטרנט לקבל middleware כדי לבדוק את האישור שהלקוח מקווה לשלוח לנו. מה לגבי הלקוח עצמו?
+הגדרנו את שרת האינטרנט לקבל middleware שיבדוק את האישורים שהלקוח מקווה לשלוח לנו. ומה לגבי הלקוח עצמו?
 
 ### -3- שליחת בקשת אינטרנט עם אישור דרך כותרת
 
-עלינו לוודא שהלקוח מעביר את האישור דרך הכותרת. מכיוון שאנו הולכים להשתמש בלקוח MCP כדי לעשות זאת, עלינו להבין איך זה נעשה.
+אנחנו צריכים לוודא שהלקוח מעביר את האישור דרך הכותרת. מכיוון שנשתמש בלקוח MCP כדי לעשות זאת, עלינו להבין איך זה מבוצע.
 
 **Python**
 
-עבור הלקוח, עלינו להעביר כותרת עם האישור שלנו כך:
+עבור הלקוח, צריך להעביר כותרת עם האישורים כך:
 
 ```python
-# DON'T hardcode the value, have it at minimum in an environment variable or a more secure storage
+# אל תקשיח את הערך, שמור אותו לפחות במשתנה סביבה או באחסון מאובטח יותר
 token = "secret-token"
 
 async with streamablehttp_client(
@@ -444,24 +444,24 @@ async with streamablehttp_client(
         ) as session:
             await session.initialize()
       
-            # TODO, what you want done in the client, e.g list tools, call tools etc.
+            # יש לעשות, מה שרוצים לבצע בצד הלקוח, לדוגמה הצגת כלים, קריאת כלים וכו'
 ```
 
-שימו לב איך אנו מאכלסים את מאפיין `headers` כך ` headers = {"Authorization": f"Bearer {token}"}`.
+שים לב כיצד אנו ממלאים את המאפיין `headers` כך ` headers = {"Authorization": f"Bearer {token}"}`.
 
 **TypeScript**
 
-אנו יכולים לפתור זאת בשני שלבים:
+נוכל לפתור זאת בשני שלבים:
 
-1. לאכלס אובייקט תצורה עם האישור שלנו.
-2. להעביר את אובייקט התצורה ל-transport.
+1. למלא אובייקט תצורה עם האישורים שלנו.
+2. להעביר את אובייקט התצורה למנגנון התעבורה.
 
 ```typescript
 
-// DON'T hardcode the value like shown here. At minimum have it as a env variable and use something like dotenv (in dev mode).
+// אל תקבע את הערך ישירות בקוד כפי שמוצג כאן. לפחות תהפוך אותו למשתנה סביבה ותשתמש במשהו כמו dotenv (במצב פיתוח).
 let token = "secret123"
 
-// define a client transport option object
+// הגדר אובייקט אפשרויות תחבורה ללקוח
 let options: StreamableHTTPClientTransportOptions = {
   sessionId: sessionId,
   requestInit: {
@@ -471,7 +471,7 @@ let options: StreamableHTTPClientTransportOptions = {
   }
 };
 
-// pass the options object to the transport
+// העבר את אובייקט האפשרויות לתחבורה
 async function main() {
    const transport = new StreamableHTTPClientTransport(
       new URL(serverUrl),
@@ -479,46 +479,46 @@ async function main() {
    );
 ```
 
-כאן אתם רואים למעלה איך היינו צריכים ליצור אובייקט `options` ולהציב את הכותרות שלנו תחת מאפיין `requestInit`.
+כאן אתה רואה כיצד נאלצנו ליצור אובייקט `options` ולמקם את הכותרות תחת `requestInit`.
 
-חשוב: איך אנו משפרים את זה מכאן? ובכן, ליישום הנוכחי יש כמה בעיות. ראשית, העברת אישור בצורה כזו היא די מסוכנת אלא אם כן יש לכם לפחות HTTPS. גם אז, האישור יכול להיגנב ולכן אתם צריכים מערכת שבה תוכלו לבטל בקלות את האסימון ולהוסיף בדיקות נוספות כמו מאיפה בעולם זה מגיע, האם הבקשה מתרחשת בתדירות גבוהה מדי (התנהגות דמוית בוט), בקיצור, ישנם שלל חששות.
+[!IMPORTANT] איך נשתפר מזה ואילך? ובכן, היישום הנוכחי כולל כמה חסרונות. ראשית, שליחת אישורים כזו היא די מסוכנת אלא אם כן יש לך לפחות HTTPS. גם אז, האישורים יכולים להיגנב ולכן אתה צריך מערכת שבה אפשר לבטל בקלות את הטוקן ולהוסיף בדיקות נוספות כמו מאיפה בעולם הוא מגיע, האם הבקשה מתרחשת בתדירות גבוהה מדי (התנהגות של בוט), בקיצור, יש שורה ארוכה של דאגות.
 
-עם זאת, עבור APIs פשוטים מאוד שבהם אינכם רוצים שמישהו יקרא ל-API שלכם ללא אימות, מה שיש לנו כאן הוא התחלה טובה.
+עם זאת, יש לומר, עבור API פשוטים מאוד שבהם אינך רוצה שאף אחד יקרא ל-API שלך מבלי להיות מאומת ומה שיש לנו כאן הוא התחלה טובה.
 
-עם זאת, בואו ננסה לחזק את האבטחה מעט על ידי שימוש בפורמט סטנדרטי כמו JSON Web Token, הידוע גם כ-JWT או "JOT" tokens.
+עם זאת, בוא ננסה להקשות את האבטחה קצת על ידי שימוש בפורמט מוסכם כמו JSON Web Token, הידועים גם כ-JWT או "ג'ות" טוקנים.
 
 ## JSON Web Tokens, JWT
 
-אז, אנו מנסים לשפר דברים מהעברת אישורים פשוטים מאוד. מה השיפורים המיידיים שאנו מקבלים מאימוץ JWT?
+אז, אנו מנסים לשפר את הדברים במקום לשלוח אישורים פשוטים מאוד. מה הם השיפורים המיידיים שאנו מקבלים מאימוץ JWT?
 
-- **שיפורי אבטחה**. באימות בסיסי, אתם שולחים את שם המשתמש והסיסמה כטוקן מקודד ב-base64 (או שולחים מפתח API) שוב ושוב, מה שמגדיל את הסיכון. עם JWT, אתם שולחים את שם המשתמש והסיסמה ומקבלים טוקן בתמורה, והוא גם מוגבל בזמן, כלומר הוא יפוג. JWT מאפשר לכם להשתמש בקלות בבקרת גישה מדויקת באמצעות תפקידים, תחומים והרשאות.
-- **חוסר מצב ויכולת הרחבה**. JWTs הם עצמאים, הם נושאים את כל המידע על המשתמש ומבטלים את הצורך באחסון צד שרת. ניתן גם לאמת את הטוקן באופן מקומי.
-- **אינטרופרביליות ופדרציה**. JWTs הם מרכזיים ב-Open ID Connect ומשמשים עם ספקי זהות ידועים כמו Entra ID, Google Identity ו-Auth0. הם גם מאפשרים שימוש ב-Single Sign-On ועוד, מה שהופך אותם לדרגת Enterprise.
-- **מודולריות וגמישות**. JWTs יכולים גם לשמש עם שערי API כמו Azure API Management, NGINX ועוד. הם גם תומכים בתרחישי אימות ושירות-לשירות כולל תרחישי התחזות והאצלה.
-- **ביצועים ו-caching**. ניתן לאחסן JWTs במטמון לאחר פענוח, מה שמפחית את הצורך בניתוח. זה עוזר במיוחד עם אפליקציות בעלות תעבורה גבוהה שכן זה משפר את התפוקה ומפחית את העומס על התשתית שבחרתם.
-- **תכונות מתקדמות**. הם גם תומכים באינטראוספקציה (בדיקת תקפות בשרת) ובביטול (הפיכת טוקן ללא תקף).
+- **שיפורי אבטחה**. באימות בסיסי, אתה שולח שם משתמש וסיסמה כטוקן מקודד ב-base64 (או שולח מפתח API) שוב ושוב, מה שמעלה את הסיכון. עם JWT, אתה שולח את שם המשתמש והסיסמה ומקבל טוקן בתמורה והוא גם מוגבל בזמן כלומר הוא יפוג תוקף. JWT מאפשר לך להשתמש בקלות בשליטה ברמת גישה מדויקת באמצעות תפקידים, סקופים והרשאות.
+- **חוסר מדינה וסקלאביליות**. JWT מכילים את כל מידע המשתמש ומבטלים את הצורך באחסון מושב צד שרת. ניתן גם לאמת את הטוקן באופן מקומי.
+- **אינטרופראביליות ופדרציה**. JWT הם מרכזיים ב-Open ID Connect ומשמשים עם ספקי זהות מוכרים כמו Entra ID, Google Identity ו-Auth0. הם גם מאפשרים שימוש בכניסה יחידה ועוד, מה שהופך אותם לדרגת ארגון.
+- **מודולריות וגמישות**. JWT ניתן גם להשתמש שערי API כמו Azure API Management, NGINX ועוד. הוא גם תומך בתרחישי אימות ושירות-לשירות כולל חשבונות ייצוג והאצלת סמכויות.
+- **ביצועים וקאשינג**. JWT ניתן לקאש אחרי הפענוח מה שמפחית את הצורך בניתוח חוזר. זה עוזר במיוחד באפליקציות עם תנועה גבוהה כי זה משפר את התפוקה ומפחית עומס על התשתית שבחרת.
+- **תכונות מתקדמות**. תומך גם באינטראוסקפציה (בדיקת תקפות בשרת) ובביטול (הפיכת טוקן ללא תקף).
 
-עם כל היתרונות הללו, בואו נראה איך אנו יכולים לקחת את היישום שלנו לשלב הבא.
+עם כל היתרונות הללו, בוא נראה איך אנו יכולים לקחת את היישום שלנו לשלב הבא.
 
 ## הפיכת אימות בסיסי ל-JWT
 
-אז, השינויים שאנו צריכים ברמה גבוהה הם:
+אז השינויים שאנו צריכים לעשות ברמת עיקרונית הם:
 
-- **ללמוד לבנות טוקן JWT** ולהכין אותו לשליחה מלקוח לשרת.
+- **ללמוד לבנות טוקן JWT** ולעשות אותו מוכן לשליחה מלקוח לשרת.
 - **לאמת טוקן JWT**, ואם כן, לאפשר ללקוח לקבל את המשאבים שלנו.
-- **אחסון טוקן מאובטח**. איך אנו מאחסנים את הטוקן הזה.
-- **הגנה על הנתיבים**. אנו צריכים להגן על הנתיבים, במקרה שלנו, אנו צריכים להגן על נתיבים ותכונות MCP ספציפיות.
-- **הוספת טוקנים לרענון**. לוודא שאנו יוצרים טוקנים קצרי טווח אך טוקנים לרענון ארוכי טווח שניתן להשתמש בהם כדי להשיג טוקנים חדשים אם הם פג. גם לוודא שיש נקודת רענון ואסטרטגיית סיבוב.
+- **אחסון בטוח של הטוקן**. איך אנו מאחסנים את הטוקן הזה.
+- **הגנת הנתיבים**. עלינו להגן על הנתיבים, במקרה שלנו, על הנתיבים ותכונות MCP ספציפיות.
+- **הוספת טוקני רענון**. לוודא שאנו יוצרים טוקנים קצרים תוקף אך גם טוקני רענון ארוכי תוקף שיכולים לשמש להשגת טוקנים חדשים אם פגו. בנוסף לדאוג לנקודת קצה לרענון ואסטרטגיית סיבוב.
 
 ### -1- בניית טוקן JWT
 
-ראשית, טוקן JWT כולל את החלקים הבאים:
+קודם כל, לטוקן JWT יש את החלקים הבאים:
 
-- **header**, האלגוריתם בשימוש וסוג הטוקן.
-- **payload**, תביעות, כמו sub (המשתמש או הישות שהטוקן מייצג. בתרחיש אימות זה בדרך כלל מזהה המשתמש), exp (מתי הוא פג) role (התפקיד).
+- **header**, האלגוריתם שבו השתמשו וסוג הטוקן.
+- **payload**, טענות, כמו sub (המשתמש או הישות שהטוקן מייצג. בתרחיש אימות זה בדרך כלל userid), exp (מתי הוא פג) role (התפקיד)
 - **signature**, חתום עם סוד או מפתח פרטי.
 
-לצורך כך, נצטרך לבנות את ה-header, ה-payload והטוקן המקודד.
+לשם כך, נצטרך לבנות את ה-header, ה-payload והטוקן המקודד.
 
 **Python**
 
@@ -529,7 +529,7 @@ import jwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 import datetime
 
-# Secret key used to sign the JWT
+# מפתח סודי המשמש לחתום על JWT
 secret_key = 'your-secret-key'
 
 header = {
@@ -537,29 +537,29 @@ header = {
     "typ": "JWT"
 }
 
-# the user info andits claims and expiry time
+# מידע המשתמש, הטענות שלו וזמן התפוגה
 payload = {
-    "sub": "1234567890",               # Subject (user ID)
-    "name": "User Userson",                # Custom claim
-    "admin": True,                     # Custom claim
-    "iat": datetime.datetime.utcnow(),# Issued at
-    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # Expiry
+    "sub": "1234567890",               # נושא (מזהה משתמש)
+    "name": "User Userson",                # טענה מותאמת אישית
+    "admin": True,                     # טענה מותאמת אישית
+    "iat": datetime.datetime.utcnow(),# תאריך ההנפקה
+    "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # תאריך התפוגה
 }
 
-# encode it
+# קידוד שלו
 encoded_jwt = jwt.encode(payload, secret_key, algorithm="HS256", headers=header)
 ```
 
-בקוד לעיל ביצענו:
+בקוד שלמעלה אנו:
 
-- הגדרת header באמצעות HS256 כאלגוריתם וסוג להיות JWT.
-- בניית payload שמכיל נושא או מזהה משתמש, שם משתמש, תפקיד, מתי הוא נוצר ומתי הוא אמור לפוג, ובכך מיישם את ההיבט המוגבל בזמן שציינו קודם.
+- הגדירו header שמשתמש ב-HS256 כאלגוריתם וסוג להיות JWT.
+- בנו payload שמכיל נושא או מזהה משתמש, שם משתמש, תפקיד, מתי הוא הונפק ומתי הוא צפוי לפוג תוקף ובכך מממשים את ההיבט של מגבלת הזמן שהזכרנו קודם.
 
 **TypeScript**
 
-כאן נצטרך כמה תלות שיעזרו לנו לבנות את טוקן ה-JWT.
+כאן נצטרך כמה תלותים שיעזרו לנו לבנות את טוקן ה-JWT.
 
-תלות
+תלותים
 
 ```sh
 
@@ -567,29 +567,29 @@ npm install jsonwebtoken
 npm install --save-dev @types/jsonwebtoken
 ```
 
-עכשיו כשיש לנו את זה במקום, בואו ניצור את ה-header, ה-payload ודרכם ניצור את הטוקן המקודד.
+כעת כשיש לנו את זה, בואו ניצור את ה-header, ה-payload ובאמצעות זה ניצור את הטוקן המקודד.
 
 ```typescript
 import jwt from 'jsonwebtoken';
 
-const secretKey = 'your-secret-key'; // Use env vars in production
+const secretKey = 'your-secret-key'; // השתמש במשתני סביבה בייצור
 
-// Define the payload
+// הגדר את המטען
 const payload = {
   sub: '1234567890',
   name: 'User usersson',
   admin: true,
-  iat: Math.floor(Date.now() / 1000), // Issued at
-  exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expires in 1 hour
+  iat: Math.floor(Date.now() / 1000), // נוצר ב
+  exp: Math.floor(Date.now() / 1000) + 60 * 60 // פג תוקף תוך שעה
 };
 
-// Define the header (optional, jsonwebtoken sets defaults)
+// הגדר את הכותרת (אופציונלי, jsonwebtoken מגדיר ערכי בררת מחדל)
 const header = {
   alg: 'HS256',
   typ: 'JWT'
 };
 
-// Create the token
+// צור את הטוקן
 const token = jwt.sign(payload, secretKey, {
   algorithm: 'HS256',
   header: header
@@ -598,15 +598,15 @@ const token = jwt.sign(payload, secretKey, {
 console.log('JWT:', token);
 ```
 
-הטוקן הזה:
+טוקן זה:
 
-חתום באמצעות HS256  
-תקף לשעה אחת  
-כולל תביעות כמו sub, name, admin, iat, ו-exp.
+חותם באמצעות HS256
+תקף לשעה אחת
+כולל טענות כמו sub, name, admin, iat ו-exp.
 
 ### -2- אימות טוקן
 
-נצטרך גם לאמת טוקן, זה משהו שעלינו לעשות בשרת כדי לוודא מה שהלקוח שולח לנו אכן תקף. ישנם הרבה בדיקות שעלינו לבצע כאן, החל מאימות המבנה ועד תקפותו. מומלץ גם להוסיף בדיקות נוספות כדי לראות אם המשתמש נמצא במערכת שלכם ועוד.
+גם נצטרך לאמת טוקן, זה משהו שצריך לעשות בשרת כדי לוודא שמה שהלקוח שולח לנו הוא אכן תקין. יש הרבה בדיקות שצריך לעשות כאן מווידוא המבנה שלו ועד לתקפותו. מומלץ גם להוסיף בדיקות נוספות כדי לראות אם המשתמש קיים במערכת שלך ועוד.
 
 כדי לאמת טוקן, עלינו לפענח אותו כדי שנוכל לקרוא אותו ואז להתחיל לבדוק את תקפותו:
 
@@ -614,7 +614,7 @@ console.log('JWT:', token);
 
 ```python
 
-# Decode and verify the JWT
+# לפענח ולאמת את ה-JWT
 try:
     decoded = jwt.decode(token, secret_key, algorithms=["HS256"])
     print("✅ Token is valid.")
@@ -628,11 +628,11 @@ except InvalidTokenError as e:
 
 ```
 
-בקוד זה, אנו קוראים ל-`jwt.decode` באמצעות הטוקן, מפתח הסוד והאלגוריתם שנבחר כקלט. שימו לב איך אנו משתמשים במבנה try-catch מכיוון שאימות שנכשל מוביל לשגיאה.
+בקוד זה אנו קוראים ל-`jwt.decode` עם הטוקן, המפתח הסודי והאלגוריתם שנבחר כקלט. שים לב שאנו משתמשים במבנה try-catch כי אימות שנכשל מוביל לזריקת שגיאה.
 
 **TypeScript**
 
-כאן עלינו לקרוא ל-`jwt.verify` כדי לקבל גרסה מפוענחת של הטוקן שנוכל לנתח עוד. אם הקריאה הזו נכשלת, זה אומר שמבנה הטוקן אינו נכון או שהוא כבר לא תקף.
+כאן נצטרך לקרוא ל-`jwt.verify` כדי לקבל גרסה מפוענחת של הטוקן שנוכל לנתח הלאה. אם הקריאה הזו נכשלת, זה אומר שמבנה הטוקן אינו תקין או שהוא לא תקין עוד.
 
 ```typescript
 
@@ -644,18 +644,18 @@ try {
 }
 ```
 
-שימו לב: כפי שצוין קודם, עלינו לבצע בדיקות נוספות כדי לוודא שהטוקן הזה מצביע על משתמש במערכת שלנו ולוודא שלמשתמש יש את הזכויות שהוא טוען שיש לו.
-בואו נבחן את בקרת הגישה מבוססת תפקידים, הידועה גם בשם RBAC.
+[!NOTE] כפי שהוזכר קודם, מומלץ לבצע בדיקות נוספות כדי לוודא שהטוקן מצביע על משתמש במערכת שלך ולוודא שלמשתמש יש את הזכויות שהוא טוען שיש לו.
+הבא, נבחן בקרת גישה מבוססת תפקידים, הידועה גם כ-RBAC.
 
 ## הוספת בקרת גישה מבוססת תפקידים
 
-הרעיון הוא לבטא שלתפקידים שונים יש הרשאות שונות. לדוגמה, נניח שמנהל מערכת יכול לעשות הכל, משתמש רגיל יכול לקרוא ולכתוב, ואורח יכול רק לקרוא. לכן, הנה כמה רמות הרשאה אפשריות:
+הרעיון הוא שאנו רוצים לבטא שתפקידים שונים מקבלים הרשאות שונות. לדוגמה, אנו מניחים שמנהל יכול לעשות הכל, שמשתמשים רגילים יכולים לקרוא ולכתוב, ואורחים יכולים רק לקרוא. לכן, הנה כמה רמות הרשאה אפשריות:
 
 - Admin.Write  
 - User.Read  
 - Guest.Read  
 
-בואו נראה כיצד ניתן ליישם בקרת גישה כזו באמצעות Middleware. ניתן להוסיף Middleware לכל נתיב בנפרד וגם לכל הנתיבים.
+בואו נסתכל כיצד ניתן לממש בקרת גישה כזו באמצעות middleware. ניתן להוסיף middleware על כל מסלול בנפרד וגם על כל המסלולים.
 
 **Python**
 
@@ -664,8 +664,8 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse
 import jwt
 
-# DON'T have the secret in the code like, this is for demonstration purposes only. Read it from a safe place.
-SECRET_KEY = "your-secret-key" # put this in env variable
+# אל תשמור את הסוד בקוד כמו זה, זה למטרות הדגמה בלבד. קרא אותו ממקום בטוח.
+SECRET_KEY = "your-secret-key" # שמור את זה במשתנה סביבה
 REQUIRED_PERMISSION = "User.Read"
 
 class JWTPermissionMiddleware(BaseHTTPMiddleware):
@@ -692,41 +692,40 @@ class JWTPermissionMiddleware(BaseHTTPMiddleware):
 
 ```
   
-יש כמה דרכים שונות להוסיף את ה-Middleware כמו בדוגמה הבאה:
+יש כמה דרכים שונות להוסיף את ה-middleware כמו למטה:
 
 ```python
 
-# Alt 1: add middleware while constructing starlette app
+# אפשרות 1: הוסף תוכן ביניים בעת בניית אפליקציית starlette
 middleware = [
     Middleware(JWTPermissionMiddleware)
 ]
 
 app = Starlette(routes=routes, middleware=middleware)
 
-# Alt 2: add middleware after starlette app is a already constructed
+# אפשרות 2: הוסף תוכן ביניים לאחר שאפליקציית starlette כבר נבנתה
 starlette_app.add_middleware(JWTPermissionMiddleware)
 
-# Alt 3: add middleware per route
+# אפשרות 3: הוסף תוכן ביניים לכל נתיב
 routes = [
     Route(
         "/mcp",
-        endpoint=..., # handler
+        endpoint=..., # מטפל
         middleware=[Middleware(JWTPermissionMiddleware)]
     )
 ]
 ```
   
-
 **TypeScript**
 
-ניתן להשתמש ב-`app.use` וב-Middleware שירוץ עבור כל הבקשות.
+אפשר להשתמש ב-`app.use` וב-middleware שירוץ על כל הבקשות.
 
 ```typescript
 app.use((req, res, next) => {
     console.log('Request received:', req.method, req.url, req.headers);
     console.log('Headers:', req.headers["authorization"]);
 
-    // 1. Check if authorization header has been sent
+    // 1. בדוק אם נשלח כותרת הרשאה
 
     if(!req.headers["authorization"]) {
         res.status(401).send('Unauthorized');
@@ -735,13 +734,13 @@ app.use((req, res, next) => {
     
     let token = req.headers["authorization"];
 
-    // 2. Check if token is valid
+    // 2. בדוק אם הטוקן תקף
     if(!isValid(token)) {
         res.status(403).send('Forbidden');
         return;
     }  
 
-    // 3. Check if token user exist in our system
+    // 3. בדוק אם משתמש הטוקן קיים במערכת שלנו
     if(!isExistingUser(token)) {
         res.status(403).send('Forbidden');
         console.log("User does not exist");
@@ -749,7 +748,7 @@ app.use((req, res, next) => {
     }
     console.log("User exists");
 
-    // 4. Verify the token has the right permissions
+    // 4. אמת שהטוקן מכיל את ההרשאות הנכונות
     if(!hasScopes(token, ["User.Read"])){
         res.status(403).send('Forbidden - insufficient scopes');
     }
@@ -762,14 +761,14 @@ app.use((req, res, next) => {
 
 ```
   
-ישנם כמה דברים שה-Middleware שלנו יכול לעשות ושעליו לעשות, כלומר:
+יש כמה דברים שנוכל לאפשר ל-middleware שלנו לעשות ושה-middleware שלנו צריך לעשות, כלומר:
 
-1. לבדוק אם כותרת ההרשאה קיימת.  
-2. לבדוק אם הטוקן תקין. אנו קוראים ל-`isValid`, שהיא שיטה שכתבנו לבדוק את שלמות ותקפות טוקן ה-JWT.  
-3. לוודא שהמשתמש קיים במערכת שלנו. עלינו לבדוק זאת.  
+1. לבדוק אם כותרת Authorization קיימת  
+2. לבדוק אם הטוקן תקין, אנחנו קוראים ל-`isValid` שהיא פונקציה שכתבנו שבודקת שלמות ותוקף של JWT  
+3. לאמת שהמשתמש קיים במערכת שלנו, עלינו לבדוק זאת
 
    ```typescript
-    // users in DB
+    // משתמשים במסד הנתונים
    const users = [
      "user1",
      "User usersson",
@@ -778,14 +777,14 @@ app.use((req, res, next) => {
    function isExistingUser(token) {
      let decodedToken = verifyToken(token);
 
-     // TODO, check if user exists in DB
+     // יש לעשות, לבדוק אם המשתמש קיים במסד הנתונים
      return users.includes(decodedToken?.name || "");
    }
    ```
   
-   למעלה, יצרנו רשימת `users` פשוטה מאוד, שבפועל צריכה להיות במסד נתונים כמובן.
+מעל יצרנו רשימה מאוד פשוטה של `users`, שצריכה להיות כמובן במסד נתונים.
 
-4. בנוסף, עלינו גם לבדוק אם לטוקן יש את ההרשאות הנכונות.
+4. בנוסף, עלינו לבדוק שהטוקן מכיל את ההרשאות הנכונות.
 
    ```typescript
    if(!hasScopes(token, ["User.Read"])){
@@ -793,13 +792,13 @@ app.use((req, res, next) => {
    }
    ```
   
-   בקוד למעלה מתוך ה-Middleware, אנו בודקים שהטוקן מכיל הרשאת User.Read, ואם לא, אנו שולחים שגיאה 403. להלן שיטת העזר `hasScopes`.
+בקוד שלמעלה מה-middleware, אנו בודקים שהטוקן מכיל את ההרשאה User.Read, אם לא אנחנו מחזירים שגיאת 403. להלן פונקציית העזר `hasScopes`.
 
    ```typescript
    function hasScopes(scope: string, requiredScopes: string[]) {
      let decodedToken = verifyToken(scope);
     return requiredScopes.every(scope => decodedToken?.scopes.includes(scope));
-  
+  }  
    ```
 
 Have a think which additional checks you should be doing, but these are the absolute minimum of checks you should be doing.
@@ -842,17 +841,17 @@ app.use((err, req, res, next) => {
 
 ```
   
-עכשיו שראיתם כיצד ניתן להשתמש ב-Middleware הן לאימות והן להרשאה, מה לגבי MCP? האם זה משנה את הדרך שבה אנו מבצעים אימות? בואו נגלה בסעיף הבא.
+כעת ראיתם כיצד ניתן להשתמש ב-middleware גם לאימות וגם להרשאה, אך מה עם MCP, האם זה משנה את אופן האימות? בואו נבדוק בפרק הבא.
 
 ### -3- הוספת RBAC ל-MCP
 
-ראיתם עד כה כיצד ניתן להוסיף RBAC באמצעות Middleware, אך עבור MCP אין דרך פשוטה להוסיף RBAC לכל תכונה של MCP. אז מה עושים? פשוט מוסיפים קוד שבודק במקרה זה אם ללקוח יש את הזכויות לקרוא לכלי מסוים:
+עד כה ראיתם כיצד להוסיף RBAC באמצעות middleware, אולם עבור MCP אין דרך פשוטה להוסיף RBAC לפריט פונקציונלי ספציפי ב-MCP, אז מה עושים? ובכן, פשוט נוסיף קוד כזה שבודק במקרה הזה אם ללקוח יש זכויות לקרוא לכלי מסוים:
 
-יש לכם כמה אפשרויות שונות כיצד לבצע RBAC לכל תכונה, הנה כמה:
+יש לכם כמה אפשרויות שונות כיצד להשיג RBAC לפי פריט, הנה כמה:
 
-- הוספת בדיקה לכל כלי, משאב, או פקודה שבה צריך לבדוק את רמת ההרשאה.
+- הוספת בדיקה עבור כל כלי, משאב או פקודה שבהם נדרש לבדוק רמת הרשאה.
 
-   **Python**
+   **python**
 
    ```python
    @tool()
@@ -860,10 +859,10 @@ app.use((err, req, res, next) => {
       try:
           check_permissions(role="Admin.Write", request)
       catch:
-        pass # client failed authorization, raise authorization error
+        pass # הלקוח נכשל באישור, העלה שגיאת הרשאה
    ```
   
-   **TypeScript**
+   **typescript**
 
    ```typescript
    server.registerTool(
@@ -877,7 +876,7 @@ app.use((err, req, res, next) => {
       
       try {
         checkPermissions("Admin.Write", request);
-        // todo, send id to productService and remote entry
+        // לעשות, לשלוח מזהה ל-productService ולכניסה מרחוק
       } catch(Exception e) {
         console.log("Authorization error, you're not allowed");  
       }
@@ -888,9 +887,9 @@ app.use((err, req, res, next) => {
     }
    );
    ```
-  
 
-- שימוש בגישה מתקדמת של שרת ומטפלי בקשות כדי למזער את מספר המקומות שבהם צריך לבצע את הבדיקה.
+
+- שימוש בגישת שרת מתקדמת וב-handler של הבקשות כדי למזער את מספר המקומות שבהם נדרש לבצע את הבדיקה.
 
    **Python**
 
@@ -902,31 +901,31 @@ app.use((err, req, res, next) => {
    }
 
    def has_permission(user_permissions, required_permissions) -> bool:
-      # user_permissions: list of permissions the user has
-      # required_permissions: list of permissions required for the tool
+      # user_permissions: רשימת ההרשאות שיש למשתמש
+      # required_permissions: רשימת ההרשאות הנדרשות לכלי
       return any(perm in user_permissions for perm in required_permissions)
 
    @server.call_tool()
    async def handle_call_tool(
      name: str, arguments: dict[str, str] | None
    ) -> list[types.TextContent]:
-    # Assume request.user.permissions is a list of permissions for the user
+    # הנח ש-request.user.permissions היא רשימת ההרשאות של המשתמש
      user_permissions = request.user.permissions
      required_permissions = tool_permission.get(name, [])
      if not has_permission(user_permissions, required_permissions):
-        # Raise error "You don't have permission to call tool {name}"
+        # העלה שגיאה "אין לך הרשאה לקרוא לכלי {name}"
         raise Exception(f"You don't have permission to call tool {name}")
-     # carry on and call tool
+     # להמשיך ולהפעיל את הכלי
      # ...
    ```   
-  
+    
 
    **TypeScript**
 
    ```typescript
    function hasPermission(userPermissions: string[], requiredPermissions: string[]): boolean {
        if (!Array.isArray(userPermissions) || !Array.isArray(requiredPermissions)) return false;
-       // Return true if user has at least one required permission
+       // להחזיר נכון אם למשתמש יש לפחות רשות אחת נדרשת
        
        return requiredPermissions.some(perm => userPermissions.includes(perm));
    }
@@ -940,47 +939,53 @@ app.use((err, req, res, next) => {
          return new Error(`You don't have permission to call ${name}`);
       }
   
-      // carry on..
+      // להמשיך..
    });
    ```
   
-   שימו לב, תצטרכו לוודא שה-Middleware שלכם מקצה טוקן מפוענח למאפיין המשתמש של הבקשה כך שהקוד למעלה יהיה פשוט.
+   שימו לב, תצטרכו לוודא שה-middleware שלכם מקצה טוקן מפוענח לשדה user שבבקשה כדי שהקוד למעלה יהיה פשוט.
 
 ### סיכום
 
-עכשיו שדנו כיצד להוסיף תמיכה ב-RBAC באופן כללי וב-MCP בפרט, הגיע הזמן לנסות ליישם אבטחה בעצמכם כדי לוודא שהבנתם את הרעיונות שהוצגו לכם.
+כעת, לאחר שדיברנו כיצד להוסיף תמיכה ב-RBAC בכלל ועבור MCP בפרט, הגיע הזמן לנסות ליישם אבטחה בעצמכם כדי לוודא שהבנתם את המושגים שהוצגו לכם.
 
-## משימה 1: בניית שרת MCP ולקוח MCP באמצעות אימות בסיסי
+## משימה 1: לבנות שרת MCP ולקוח MCP עם אימות בסיסי
 
-כאן תשתמשו במה שלמדתם לגבי שליחת אישורים דרך כותרות.
+כאן תוכלו לקחת את מה שלמדתם לגבי שליחת אישורי גישה באמצעות כותרות.
 
 ## פתרון 1
 
-[פתרון 1](./code/basic/README.md)
+[Solution 1](./code/basic/README.md)
 
-## משימה 2: שדרוג הפתרון ממשימה 1 לשימוש ב-JWT
+## משימה 2: לשדרג את הפתרון ממשימה 1 לשימוש ב-JWT
 
-קחו את הפתרון הראשון, אך הפעם נשפר אותו.
+קחו את הפתרון הראשון, אך הפעם, נשפר אותו.  
 
-במקום להשתמש באימות בסיסי, נשתמש ב-JWT.
+במקום להשתמש ב-Basic Auth, נשתמש ב-JWT.
 
 ## פתרון 2
 
-[פתרון 2](./solution/jwt-solution/README.md)
+[Solution 2](./solution/jwt-solution/README.md)
 
 ## אתגר
 
-הוסיפו RBAC לכל כלי כפי שתיארנו בסעיף "הוספת RBAC ל-MCP".
+הוספת RBAC לפי כלי כפי שתואר בסעיף "הוספת RBAC ל-MCP".
 
 ## סיכום
 
-מקווים שלמדתם הרבה בפרק הזה, החל מאפס אבטחה, דרך אבטחה בסיסית, ועד ל-JWT וכיצד ניתן להוסיף אותו ל-MCP.
+מקווים שלמדתם הרבה בפרק זה, מאין אבטחה בכלל, דרך אבטחה בסיסית, ועד JWT ואיך ניתן להוסיף זאת ל-MCP.
 
-בנינו בסיס מוצק עם JWT מותאם אישית, אך ככל שאנו מתרחבים, אנו עוברים למודל זהות מבוסס תקנים. אימוץ ספק זהות כמו Entra או Keycloak מאפשר לנו להעביר את ניהול הטוקנים, האימות והמחזוריות לפלטפורמה אמינה — מה שמשחרר אותנו להתמקד בלוגיקת האפליקציה ובחוויית המשתמש.
+בנינו בסיס איתן עם JWT מותאם אישית, אך ככל שאנו מתקדמים, אנו עוברים למודל זהות מבוסס סטנדרטים. אימוץ ספק זהות (IdP) כמו Entra או Keycloak מאפשר לנו להעביר את הניהול של הנפקת הטוקנים, אימותם וניהול מחזור החיים שלהם לפלטפורמה אמינה — וכך למקד את עצמנו בלוגיקת האפליקציה ובחוויית המשתמש.
 
-לשם כך, יש לנו [פרק מתקדם על Entra](../../05-AdvancedTopics/mcp-security-entra/README.md)
+לשם כך, יש לנו פרק [מתקדם יותר על Entra](../../05-AdvancedTopics/mcp-security-entra/README.md)
+
+## מה הלאה
+
+- הבא: [הגדרת מארחי MCP](../12-mcp-hosts/README.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **כתב ויתור**:  
-מסמך זה תורגם באמצעות שירות תרגום מבוסס בינה מלאכותית [Co-op Translator](https://github.com/Azure/co-op-translator). למרות שאנו שואפים לדיוק, יש לקחת בחשבון שתרגומים אוטומטיים עשויים להכיל שגיאות או אי דיוקים. המסמך המקורי בשפתו המקורית צריך להיחשב כמקור סמכותי. עבור מידע קריטי, מומלץ להשתמש בתרגום מקצועי על ידי אדם. אנו לא נושאים באחריות לאי הבנות או לפרשנויות שגויות הנובעות משימוש בתרגום זה.
+מסמך זה תורגם באמצעות שירות תרגום מבוסס בינה מלאכותית [Co-op Translator](https://github.com/Azure/co-op-translator). למרות שאנו שואפים לדיוק, יש לשים לב כי תרגומים ממוחשבים עלולים להכיל טעויות או אי-דיוקים. המסמך המקורי בשפת המקור יהווה את המקור הסמכותי. למידע קריטי מומלץ להשתמש בתרגום מקצועי בידי אדם. אנו לא נושאים באחריות לכל אי-הבנה או פרשנות שגויה הנובעים משימוש בתרגום זה.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

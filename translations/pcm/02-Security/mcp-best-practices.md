@@ -1,111 +1,115 @@
 # MCP Security Best Practices 2025
 
-Dis comprehensive guide dey outline important security best practices for how to implement Model Context Protocol (MCP) systems based on di latest **MCP Specification 2025-11-25** and current industry standards. Dem practices dey cover both traditional security wahala and AI-specific threats wey dey unique to MCP deployments.
+Dis complete guide show di important security best practices wey dem suppose follow to implement Model Context Protocol (MCP) systems based on di latest **MCP Specification 2025-11-25** and current industry standards. Dem practices dey cover both regular security mata dem and AI-specific wahala dem wey unique to MCP deployments.
 
 ## Critical Security Requirements
 
 ### Mandatory Security Controls (MUST Requirements)
 
-1. **Token Validation**: MCP servers **MUST NOT** accept any tokens wey no be explicitly issued for di MCP server itself
-2. **Authorization Verification**: MCP servers wey dey implement authorization **MUST** verify ALL inbound requests and **MUST NOT** use sessions for authentication  
-3. **User Consent**: MCP proxy servers wey dey use static client IDs **MUST** get explicit user consent for each dynamically registered client
+1. **Token Validation**: MCP servers **MUST NOT** accept any tokens wey dem no really issue for di MCP server by itself
+2. **Authorization Verification**: MCP servers wey dey do authorization **MUST** check ALL inbound requests and **MUST NOT** use sessions for authentication  
+3. **User Consent**: MCP proxy servers wey dey use static client IDs **MUST** collect explicit user consent for every dynamically registered client
 4. **Secure Session IDs**: MCP servers **MUST** use cryptographically secure, non-deterministic session IDs wey dem generate with secure random number generators
 
 ## Core Security Practices
 
 ### 1. Input Validation & Sanitization
-- **Comprehensive Input Validation**: Validate and sanitize all inputs to stop injection attacks, confused deputy problems, and prompt injection vulnerabilities
-- **Parameter Schema Enforcement**: Implement strict JSON schema validation for all tool parameters and API inputs
-- **Content Filtering**: Use Microsoft Prompt Shields and Azure Content Safety to filter bad content for prompts and responses
-- **Output Sanitization**: Validate and sanitize all model outputs before you show am to users or downstream systems
+- **Comprehensive Input Validation**: Check and sanitize all inputs to block injection attacks, confused deputy problems, and prompt injection wahala
+- **Parameter Schema Enforcement**: Make sure say dem put strict JSON schema validation for all tool parameters and API inputs
+- **Content Filtering**: Use Microsoft Prompt Shields and Azure Content Safety to filter bad content wey dey for prompts and responses
+- **Output Sanitization**: Validate and sanitize all model outputs before dem show am to users or downstream systems
 
 ### 2. Authentication & Authorization Excellence  
-- **External Identity Providers**: Make authentication dey handled by established identity providers (Microsoft Entra ID, OAuth 2.1 providers) instead of making your own authentication
-- **Fine-grained Permissions**: Implement detailed, tool-specific permissions based on di principle of least privilege
-- **Token Lifecycle Management**: Use short-lived access tokens with secure rotation and proper audience validation
-- **Multi-Factor Authentication**: Require MFA for all admin access and sensitive operations
+- **External Identity Providers**: Pass authentication duty go established identity providers (Microsoft Entra ID, OAuth 2.1 providers) make dem no use custom authentication
+- **Fine-grained Permissions**: Put fine permissions wey focus on tool specific stuffs based on least privilege principle
+- **Token Lifecycle Management**: Use short-life access tokens with secure rotation and correct audience validation
+- **Multi-Factor Authentication**: Make MFA mandatory for all admin access and sensitive operations
 
 ### 3. Secure Communication Protocols
-- **Transport Layer Security**: Use HTTPS/TLS 1.3 for all MCP communications with proper certificate validation
-- **End-to-End Encryption**: Add extra encryption layers for very sensitive data wey dey move and wey dey stored
-- **Certificate Management**: Keep proper certificate lifecycle management with automated renewal processes
-- **Protocol Version Enforcement**: Use di current MCP protocol version (2025-11-25) with proper version negotiation.
+- **Transport Layer Security**: Use HTTPS/TLS 1.3 for all MCP communications with correct certificate validation
+- **End-to-End Encryption**: Put extra encryption layers for highly sensitive data wey dey waka and wey dey keep
+- **Certificate Management**: Maintain correct certificate lifecycle management with automatic renewal processes
+- **Protocol Version Enforcement**: Use di current MCP protocol version (2025-11-25) with correct version negotiation.
 
 ### 4. Advanced Rate Limiting & Resource Protection
-- **Multi-layer Rate Limiting**: Put rate limiting for user, session, tool, and resource levels to stop abuse
+- **Multi-layer Rate Limiting**: Put rate limiting for user, session, tool, and resource levels to block abuse
 - **Adaptive Rate Limiting**: Use machine learning-based rate limiting wey fit adjust to usage patterns and threat signs
-- **Resource Quota Management**: Set correct limits for computational resources, memory usage, and execution time
+- **Resource Quota Management**: Put correct limits for computation resources, memory usage, and execution time
 - **DDoS Protection**: Deploy full DDoS protection and traffic analysis systems
 
 ### 5. Comprehensive Logging & Monitoring
-- **Structured Audit Logging**: Implement detailed, searchable logs for all MCP operations, tool executions, and security events
-- **Real-time Security Monitoring**: Deploy SIEM systems with AI-powered anomaly detection for MCP workloads
-- **Privacy-compliant Logging**: Log security events but still respect data privacy requirements and regulations
-- **Incident Response Integration**: Connect logging systems to automated incident response workflows
+- **Structured Audit Logging**: Put detailed, searchable logs for all MCP operations, tool executions, and security events
+- **Real-time Security Monitoring**: Arrange SIEM systems with AI-powered anomaly detection for MCP workloads
+- **Privacy-compliant Logging**: Log security events but respect data privacy rules and regulations
+- **Incident Response Integration**: Join logging systems to automatic incident response workflows
 
 ### 6. Enhanced Secure Storage Practices
-- **Hardware Security Modules**: Use HSM-backed key storage (Azure Key Vault, AWS CloudHSM) for important cryptographic operations
-- **Encryption Key Management**: Implement proper key rotation, segregation, and access controls for encryption keys
-- **Secrets Management**: Store all API keys, tokens, and credentials inside dedicated secret management systems
-- **Data Classification**: Classify data based on how sensitive e be and apply correct protection measures
+- **Hardware Security Modules**: Use HSM-backed key storage (Azure Key Vault, AWS CloudHSM) for critical cryptographic operations
+- **Encryption Key Management**: Put correct key rotation, segregation, and access controls for encryption keys
+- **Secrets Management**: Store all API keys, tokens, and credentials inside special secret management systems
+- **Data Classification**: Arrange data based on how sensitive e be and put correct protection measures
 
 ### 7. Advanced Token Management
-- **Token Passthrough Prevention**: Explicitly forbid token passthrough patterns wey fit bypass security controls
-- **Audience Validation**: Always check say token audience claims match di intended MCP server identity
-- **Claims-based Authorization**: Implement detailed authorization based on token claims and user attributes
-- **Token Binding**: Bind tokens to specific sessions, users, or devices where e make sense
+- **Token Passthrough Prevention**: Clearly forbid token passthrough patterns wey fit bypass security controls
+- **Audience Validation**: Always check say token audience claims match di MCP server identity wey dem mean
+- **Claims-based Authorization**: Use fine-grained authorization based on token claims and user attributes
+- **Token Binding**: Tie tokens to specific sessions, users, or devices if e make sense
 
 ### 8. Secure Session Management
-- **Cryptographic Session IDs**: Generate session IDs using cryptographically secure random number generators (no be predictable sequences)
-- **User-specific Binding**: Bind session IDs to user-specific info using secure formats like `<user_id>:<session_id>`
-- **Session Lifecycle Controls**: Implement proper session expiration, rotation, and invalidation mechanisms
-- **Session Security Headers**: Use correct HTTP security headers for session protection
+- **Cryptographic Session IDs**: Generate session IDs with cryptographically secure random number generators (no predictable sequences)
+- **User-specific Binding**: Tie session IDs to user-specific information using secure formats like `<user_id>:<session_id>`
+- **Session Lifecycle Controls**: Make session expiration, rotation, and invalidation mechanisms correct
+- **Session Security Headers**: Use proper HTTP security headers to protect session
 
 ### 9. AI-Specific Security Controls
-- **Prompt Injection Defense**: Deploy Microsoft Prompt Shields with spotlighting, delimiters, and datamarking techniques
-- **Tool Poisoning Prevention**: Validate tool metadata, monitor for dynamic changes, and verify tool integrity
-- **Model Output Validation**: Scan model outputs for possible data leakage, harmful content, or security policy violations
-- **Context Window Protection**: Implement controls to stop context window poisoning and manipulation attacks
+- **Prompt Injection Defense**: Use Microsoft Prompt Shields with spotlighting, delimiters, and datamarking methods
+- **Tool Poisoning Prevention**: Check tool metadata, monitor for dynamic changes, and verify tool integrity
+- **Model Output Validation**: Scan model outputs to find possible data leakage, harmful content, or security policy breaks
+- **Context Window Protection**: Use controls to prevent context window poisoning and manipulation attacks
 
 ### 10. Tool Execution Security
-- **Execution Sandboxing**: Run tool executions inside containerized, isolated environments with resource limits
+- **Execution Sandboxing**: Run tool executions in containerized, isolated environments with resource limits
 - **Privilege Separation**: Run tools with minimum required privileges and separate service accounts
-- **Network Isolation**: Implement network segmentation for tool execution environments
-- **Execution Monitoring**: Monitor tool execution for strange behavior, resource usage, and security violations
+- **Network Isolation**: Put network segmentation for tool execution environments
+- **Execution Monitoring**: Monitor tool execution for strange behavior, resource usage, and security breaches
 
 ### 11. Continuous Security Validation
-- **Automated Security Testing**: Add security testing inside CI/CD pipelines with tools like GitHub Advanced Security
-- **Vulnerability Management**: Regularly scan all dependencies, including AI models and external services
-- **Penetration Testing**: Do regular security assessments wey focus on MCP implementations
+- **Automated Security Testing**: Join security testing inside CI/CD pipelines with tools like GitHub Advanced Security
+- **Vulnerability Management**: Regularly scan all dependencies, including AI models and outside services
+- **Penetration Testing**: Do regular security assessments wey specifically target MCP implementations
 - **Security Code Reviews**: Make security reviews mandatory for all MCP-related code changes
 
 ### 12. Supply Chain Security for AI
-- **Component Verification**: Verify provenance, integrity, and security of all AI components (models, embeddings, APIs)
+- **Component Verification**: Check provenance, integrity, and security of all AI components (models, embeddings, APIs)
 - **Dependency Management**: Keep current inventories of all software and AI dependencies with vulnerability tracking
 - **Trusted Repositories**: Use verified, trusted sources for all AI models, libraries, and tools
-- **Supply Chain Monitoring**: Continuously monitor for compromises in AI service providers and model repositories
+- **Supply Chain Monitoring**: Continuously watch for compromises in AI service providers and model repositories
 
 ## Advanced Security Patterns
 
 ### Zero Trust Architecture for MCP
-- **Never Trust, Always Verify**: Implement continuous verification for all MCP participants
-- **Micro-segmentation**: Isolate MCP components with detailed network and identity controls
-- **Conditional Access**: Implement risk-based access controls wey fit adjust to context and behavior
-- **Continuous Risk Assessment**: Dynamically evaluate security posture based on current threat signs
+- **Never Trust, Always Verify**: Put continuous verification for all MCP participants
+- **Micro-segmentation**: Separate MCP components with granular network and identity controls
+- **Conditional Access**: Use risk-based access controls wey fit adapt to context and behavior
+- **Continuous Risk Assessment**: Dynamically check security posture based on current threat signs
 
 ### Privacy-Preserving AI Implementation
-- **Data Minimization**: Only expose minimum necessary data for each MCP operation
-- **Differential Privacy**: Implement privacy-preserving techniques for sensitive data processing
-- **Homomorphic Encryption**: Use advanced encryption techniques for secure computation on encrypted data
-- **Federated Learning**: Implement distributed learning approaches wey preserve data locality and privacy
+- **Data Minimization**: Only show small small data wey dey necessary for each MCP operation
+- **Differential Privacy**: Use privacy-preserving methods for sensitive data processing
+- **Homomorphic Encryption**: Use advanced encryption methods for secure calculation on encrypted data
+- **Federated Learning**: Use distributed learning ways wey keep data local and private
 
 ### Incident Response for AI Systems
-- **AI-Specific Incident Procedures**: Develop incident response procedures wey fit AI and MCP-specific threats
-- **Automated Response**: Implement automated containment and remediation for common AI security incidents  
-- **Forensic Capabilities**: Maintain forensic readiness for AI system compromises and data breaches
-- **Recovery Procedures**: Establish procedures for recovering from AI model poisoning, prompt injection attacks, and service compromises
+- **AI-Specific Incident Procedures**: Prepare incident response plans wey tailor for AI and MCP-specific threats
+- **Automated Response**: Put automatic containment and remediation for common AI security incidents  
+- **Forensic Capabilities**: Be ready for forensic analysis for AI system breaches and data leaks
+- **Recovery Procedures**: Set procedures to fix AI model poisoning, prompt injection attacks, and service compromises
 
 ## Implementation Resources & Standards
+
+### 🏔️ Hands-On Security Training
+- **[MCP Security Summit Workshop (Sherpa)](https://azure-samples.github.io/sherpa/)** - Complete hands-on workshop for securing MCP servers in Azure
+- **[OWASP MCP Azure Security Guide](https://microsoft.github.io/mcp-azure-security-guide/)** - Reference architecture and OWASP MCP Top 10 implementation guidance
 
 ### Official MCP Documentation
 - [MCP Specification 2025-11-25](https://spec.modelcontextprotocol.io/specification/2025-11-25/) - Current MCP protocol specification
@@ -160,24 +164,31 @@ Dis comprehensive guide dey outline important security best practices for how to
 ## 🔄 Continuous Improvement
 
 ### Stay Current with Evolving Standards
-- **MCP Specification Updates**: Monitor official MCP specification changes and security advisories
+- **MCP Specification Updates**: Watch official MCP specification changes and security advisories
 - **Threat Intelligence**: Subscribe to AI security threat feeds and vulnerability databases  
-- **Community Engagement**: Join MCP security community discussions and working groups
-- **Regular Assessment**: Do quarterly security posture assessments and update practices as needed
+
+- **Community Engagement**: Take part for MCP security community discussions and working groups
+- **Regular Assessment**: Do quarterly security posture assessments and update practices as e suppose
 
 ### Contributing to MCP Security
 - **Security Research**: Contribute to MCP security research and vulnerability disclosure programs
-- **Best Practice Sharing**: Share security implementations and lessons learned with di community
-- **Standard Development**: Join body for MCP specification development and security standard creation
+- **Best Practice Sharing**: Share security ways and lessons wey you learn with the community
+- **Standard Development**: Take part for MCP specification development and security standard creation
 - **Tool Development**: Develop and share security tools and libraries for the MCP ecosystem
 
 ---
 
-*Dis document dey show MCP security best practices as of December 18, 2025, based on MCP Specification 2025-11-25. Security practices suppose dey regularly checked and updated as the protocol and threat landscape dey change.*
+*This document dey show MCP security best practices as e be for December 18, 2025, based on MCP Specification 2025-11-25. Security practices suppose dey regularly check and update as protocol and threat wey dey ground dey change.*
+
+## Wetin Dey Next
+
+- Read: [MCP Security Best Practices 2025](./mcp-security-best-practices-2025.md)
+- Return to: [Security Module Overview](./README.md)
+- Continue to: [Module 3: Getting Started](../03-GettingStarted/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:
-Dis document na AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) wey translate am. Even though we dey try make am correct, abeg sabi say automated translation fit get some mistakes or no too correct. The original document wey dem write for im own language na the correct one. If na serious matter, e better make person wey sabi human translation do am. We no go responsible for any wahala or wrong understanding wey fit happen because of this translation.
+**Disclaimer**:  
+Dis document na wetin AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator) translate am. Even though we dey try make e correct, abeg sabi say automatic translation fit get some mistake or no too correct. Di original document wey dey dia for im original language na di correct one. If na serious matter, e good make human professional translate am. We no go responsible for any mistake or wrong understand wey fit happen from dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

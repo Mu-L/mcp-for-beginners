@@ -1,28 +1,28 @@
-# Case Study: How to Update Azure DevOps Items wit YouTube Data wit MCP
+# Case Study: Updating Azure DevOps Items from YouTube Data with MCP
 
-> **Disclaimer:** E get tools wey dey online wey fit help automate di process of updating Azure DevOps items wit data from places like YouTube. Di example wey dey here na just sample wey go show how MCP tools fit work for automation and integration tasks.
+> **Disclaimer:** Dem get existing online tools and reports we fit automate how person dey update Azure DevOps items with data from platform dem like YouTube. The scenario wey follow na example to show how MCP tools fit dey use for automation and integration work.
 
 ## Overview
 
-Dis case study dey show one example of how Model Context Protocol (MCP) and di tools wey e get fit help automate di process of updating Azure DevOps (ADO) work items wit info wey dem collect from online places like YouTube. Di example wey dey here na just one way wey dis tools fit work, but e fit also work for plenty other automation needs.
+Dis case study show one example of how Model Context Protocol (MCP) and im tools fit take automate the process to update Azure DevOps (ADO) work items with info we dem fit source from online platforms, like YouTube. The scenario wey dem talk na only one example of how these tools dey work, and you fit use am for many other similar automation works.
 
-For dis example, one Advocate dey use ADO items track online sessions, and each item get YouTube video URL. Wit MCP tools, di Advocate fit dey update di ADO items wit di latest video metrics, like view counts, in a way wey no go stress am and e go dey repeatable. Dis method fit also work for other cases wey online info need to enter ADO or other systems.
+For dis example, one Advocate dey track online sessions with ADO items, and every item get YouTube video URL inside am. By using MCP tools, the Advocate fit keep ADO items up-to-date with the latest video metrics, like how many people don view am, inside automatic and repeatable way. You fit generalize this to other use cases wey need to join info from online source into ADO or other systems.
 
 ## Scenario
 
-One Advocate dey in charge of tracking how online sessions and community engagements dey perform. Each session dey as ADO work item for di 'DevRel' project, and di work item get one field wey dey hold di YouTube video URL. To fit report di reach of di session well, di Advocate need to dey update di ADO item wit di current number of video views and di date wey dem collect di info.
+One Advocate dey responsible to dey track how online sessions and community engagement dey impact. Every session na ADO work item wey dem record for 'DevRel' project, and the work item get field wey carry YouTube video URL. To fit report the session reach well, the Advocate need update the ADO item with correct number of video views and the date when the info dem collect.
 
-## Tools We Dem Use
+## Tools Used
 
-- [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp): E dey allow programmatic access and updates to ADO work items wit MCP.
-- [Playwright MCP](https://github.com/microsoft/playwright-mcp): E dey automate browser actions to collect live data from web pages, like YouTube video stats.
+- [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp): E dey allow programmatic access and update to ADO work items using MCP.
+- [Playwright MCP](https://github.com/microsoft/playwright-mcp): E dey automate browser actions to comot live data from web pages, like YouTube video stats.
 
 ## Step-by-Step Workflow
 
-1. **Find di ADO Item**: Start wit di ADO work item ID (e.g., 1234) for di 'DevRel' project.
-2. **Collect di YouTube URL**: Use di Azure DevOps MCP tool to collect di YouTube URL from di work item.
-3. **Get di Video Views**: Use di Playwright MCP tool to go di YouTube URL and collect di current view count.
-4. **Update di ADO Item**: Put di latest view count and di date wey dem collect am inside di 'Impact and Learnings' section of di ADO work item wit di Azure DevOps MCP tool.
+1. **Identify the ADO Item**: Start with the ADO work item ID (example, 1234) for the 'DevRel' project.
+2. **Retrieve the YouTube URL**: Use Azure DevOps MCP tool to carry out the YouTube URL for the work item.
+3. **Extract Video Views**: Use Playwright MCP tool to waka go the YouTube URL and comot the current view count.
+4. **Update the ADO Item**: Write the latest view count and the date wey you collect the info inside the 'Impact and Learnings' part of the ADO work item with Azure DevOps MCP tool.
 
 ## Example Prompt
 
@@ -38,23 +38,22 @@ One Advocate dey in charge of tracking how online sessions and community engagem
 
 ```mermaid
 flowchart TD
-    A[Start: Advocate identifies ADO Item ID] --> B[Get YouTube URL from ADO Item using Azure DevOps MCP]
-    B --> C[Extract current video views using Playwright MCP]
-    C --> D[Update ADO Item's Impact and Learnings section with view count and date]
+    A[Stat: Advocate de find ADO Item ID] --> B[Comot YouTube URL from ADO Item wit Azure DevOps MCP]
+    B --> C[Comot current video views wit Playwright MCP]
+    C --> D[Update ADO Item Impact and Learnings section wit view count and date]
     D --> E[End]
 ```
-
 ## Technical Implementation
 
-- **MCP Orchestration**: Di workflow dey managed by MCP server, wey dey control how Azure DevOps MCP and Playwright MCP tools go work together.
-- **Automation**: Di process fit start manually or e fit dey scheduled to run regularly to dey update ADO items.
-- **Extensibility**: Dis same method fit dey used to update ADO items wit other online metrics (like likes, comments) or from other platforms.
+- **MCP Orchestration**: MCP server dey manage how to use both Azure DevOps MCP and Playwright MCP tools well.
+- **Automation**: Dem fit trigger the process manually or arrange am to run at intervals to make sure ADO items dey always up to date.
+- **Extensibility**: You fit use the same pattern to update ADO items with other online metrics (like likes, comments) or from other platforms.
 
 ## Results and Impact
 
-- **Efficiency**: E go reduce di manual work wey Advocates dey do by automating how dem dey collect and update video metrics.
-- **Accuracy**: E go make sure say di ADO items dey show di latest data wey dey available from online sources.
-- **Repeatability**: E go provide one workflow wey fit dey used again for similar cases wey involve other data sources or metrics.
+- **Efficiency**: E reduce manual work for Advocates by automating how dem de collect and update video metrics.
+- **Accuracy**: E make sure say ADO items get the most correct data wey dey available from online sources.
+- **Repeatability**: E get reusable workflow wey fit work for similar things wey concern other data source or metrics.
 
 ## References
 
@@ -62,9 +61,14 @@ flowchart TD
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp)
 - [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
 
+## What's Next
+
+- Back to: [Case Studies Overview](./README.md)
+- Next: [Real-Time Documentation Retrieval with MCP](./docs-mcp/README.md)
+
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Disclaimer**:  
-Dis dokyument don use AI translet service [Co-op Translator](https://github.com/Azure/co-op-translator) do di translet. Even as we dey try make am correct, abeg make you sabi say AI translet fit get mistake or no dey accurate well. Di original dokyument wey dey for im native language na di one wey you go take as di correct source. For important mata, e good make you use professional human translet. We no go fit take blame for any misunderstanding or wrong interpretation wey fit happen because you use dis translet.
+**Disclaimer**:
+Dis document don translate wit AI translation service wey dem dey call [Co-op Translator](https://github.com/Azure/co-op-translator). Even though we try make am correct, abeg sabi say automated translation fit get some mistake or no too correct. Di original document wey dey dia language na di oga wey pass. If na important information, better make human professional translate am. We no go carry any blame if person misunderstand or interpret am wrongly because of dis translation.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->

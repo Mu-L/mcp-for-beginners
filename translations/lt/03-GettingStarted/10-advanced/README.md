@@ -1,20 +1,20 @@
 # Išplėstinis serverio naudojimas
 
-MCP SDK pateikia du skirtingus serverių tipus: įprastą serverį ir žemo lygio serverį. Paprastai naudojate įprastą serverį, kad pridėtumėte funkcijų. Tačiau kai kuriais atvejais verta pasikliauti žemo lygio serveriu, pavyzdžiui:
+MCP SDK yra du skirtingi serverių tipai, jūsų įprastasis serveris ir žemo lygio serveris. Paprastai naudotumėte įprastą serverį, kad jame pridėtumėte funkcijų. Tačiau kai kuriais atvejais norite pasikliauti žemo lygio serveriu, pavyzdžiui:
 
-- Geresnė architektūra. Nors švarią architektūrą galima sukurti tiek naudojant įprastą, tiek žemo lygio serverį, galima teigti, kad su žemo lygio serveriu tai padaryti šiek tiek lengviau.
-- Funkcijų prieinamumas. Kai kurios pažangios funkcijos gali būti naudojamos tik su žemo lygio serveriu. Tai pamatysite vėlesniuose skyriuose, kai pridėsime mėginių ėmimą ir elicitaciją.
+- Geresnė architektūra. Galima sukurti tvarkingą architektūrą tiek naudojant įprastą serverį, tiek žemo lygio serverį, bet galima teigti, kad žemo lygio serveriu tai padaryti šiek tiek lengviau.
+- Funkcijų prieinamumas. Kai kurios pažangios funkcijos gali būti naudojamos tik su žemo lygio serveriu. Tai pamatysite vėlesniuose skyriuose, kai pridėsime mėginius ir iššaukimo mechanizmus.
 
-## Įprastas serveris vs žemo lygio serveris
+## Įprastinis serveris prieš žemo lygio serverį
 
-Štai kaip atrodo MCP serverio kūrimas naudojant įprastą serverį:
+Štai kaip atrodo MCP serverio kūrimas naudojant įprastinį serverį
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# Pridėti papildymo įrankį
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// Pridėti pridėjimo įrankį
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,18 +42,18 @@ server.registerTool("add",
 );
 ```
 
-Esmė ta, kad aiškiai pridedate kiekvieną įrankį, resursą ar užklausą, kurią norite turėti serveryje. Tai visiškai normalu.
+Svarbiausia, kad jūs aiškiai pridedate kiekvieną įrankį, išteklių ar iššaukimo tekstą, kurį norite, kad serveris turėtų. Tai nėra klaida.  
 
 ### Žemo lygio serverio metodas
 
-Tačiau naudojant žemo lygio serverio metodą reikia galvoti kitaip. Vietoj to, kad registruotumėte kiekvieną įrankį, jūs sukuriate du tvarkytuvus kiekvienam funkcijų tipui (įrankiai, resursai ar užklausos). Pavyzdžiui, įrankiams yra tik dvi funkcijos:
+Tačiau naudojant žemo lygio serverio metodą reikia galvoti kitaip, t. y., vietoj kiekvieno įrankio registravimo jūs sukuriate du apdorotojus kiekvienam funkcijos tipui (įrankiai, ištekliai arba iššaukimo tekstai). Pavyzdžiui, įrankiams yra tik dvi funkcijos:
 
-- Visų įrankių sąrašas. Viena funkcija atsakinga už visus bandymus pateikti įrankių sąrašą.
-- Visų įrankių iškvietimas. Čia taip pat yra tik viena funkcija, tvarkanti įrankio iškvietimus.
+- Visų įrankių išvardijimas. Viena funkcija atsakinga už visas pastangas išvardyti įrankius.
+- Visi įrankių kvietimai. Čia taip pat yra viena funkcija, apdorojanti kvietimus į bet kurį įrankį.
 
-Skamba kaip mažiau darbo, tiesa? Vietoj to, kad registruotumėte įrankį, jums tereikia užtikrinti, kad įrankis būtų įtrauktas į sąrašą, kai pateikiamas visų įrankių sąrašas, ir kad jis būtų iškviečiamas, kai gaunamas prašymas iškviesti įrankį.
+Skamba kaip mažiau darbo, tiesa? Taigi, vietoj įrankio registravimo, man reikia tik įsitikinti, kad įrankis yra išvardytas, kai išvardiju visus įrankius, ir kad jis kviečiamas, kai yra įeinantis užklausimas įrankio kvietimui. 
 
-Pažvelkime, kaip dabar atrodo kodas:
+Pažiūrėkime, kaip dabar atrodo kodas:
 
 **Python**
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Grąžina registruotų įrankių sąrašą
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Čia turime funkciją, kuri grąžina funkcijų sąrašą. Kiekvienas įrašas įrankių sąraše dabar turi laukus, tokius kaip `name`, `description` ir `inputSchema`, kad atitiktų grąžinimo tipą. Tai leidžia mums perkelti įrankių ir funkcijų apibrėžimą kitur. Dabar galime sukurti visus savo įrankius atskirame įrankių aplanke, o tas pats galioja visoms funkcijoms, todėl projektas gali būti organizuotas taip:
+Čia turime funkciją, kuri grąžina funkcijų sąrašą. Kiekvienas įrankių sąrašo įrašas turi laukus kaip `name`, `description` ir `inputSchema`, atitinkančius grąžinimo tipą. Tai leidžia mums perkelti įrankių ir funkcijų apibrėžimus kitur. Galime dabar kurti visus įrankius į *tools* aplanką ir tas pats galioja visoms jūsų funkcijoms, tad jūsų projektas gali būti organizuotas taip:
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-Puiku, mūsų architektūra gali atrodyti gana švari.
+Puiku, mūsų architektūra gali atrodyti labai tvarkingai.
 
-O kaip dėl įrankių iškvietimo? Ar tai ta pati idėja – vienas tvarkytuvas, skirtas bet kokiam įrankiui iškviesti? Taip, būtent, štai kodas:
+O kaip su įrankių kvietimu – ar tai ta pati idėja, vienas apdorotojas kviečia bet kurį įrankį? Taip, tiksliai, štai tas kodas:
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools yra žodynas, kuriame raktai yra įrankių pavadinimai
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO iškviesti įrankį,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-Kaip matote iš aukščiau pateikto kodo, reikia išanalizuoti, kurį įrankį iškviesti ir su kokiais argumentais, o tada tęsti įrankio iškvietimą.
+Kaip matote iš aukščiau pateikto kodo, reikia išanalizuoti, kurį įrankį kviečiame ir su kokiais argumentais, tada tęsti įrankio kvietimą.
 
-## Požiūrio tobulinimas su validacija
+## Metodo gerinimas su validacija
 
-Iki šiol matėte, kaip visus registracijos veiksmus, skirtus įrankiams, resursams ir užklausoms pridėti, galima pakeisti šiais dviem tvarkytuvais kiekvienam funkcijų tipui. Ką dar reikia padaryti? Na, turėtume pridėti tam tikrą validaciją, kad užtikrintume, jog įrankis iškviečiamas su tinkamais argumentais. Kiekviena vykdymo aplinka turi savo sprendimą, pavyzdžiui, Python naudoja Pydantic, o TypeScript – Zod. Idėja yra tokia:
+Iki šiol matėte, kaip visas įrankių, išteklių ir iššaukimo registracijas galima pakeisti šiais dviem apdorotojais kiekvienam funkcijos tipui. Ką dar turėtume daryti? Reikėtų pridėti tam tikrą validacijos būdą, kad užtikrintume, jog įrankis kviečiamas su teisingais argumentais. Kiekviena vykdymo aplinka turi savo sprendimą: Python naudoja Pydantic, o TypeScript – Zod. Idėja yra tokia:
 
-- Perkelti logiką, skirtą funkcijai (įrankiui, resursui ar užklausai) sukurti, į jai skirtą aplanką.
-- Pridėti būdą patikrinti gaunamą prašymą, pavyzdžiui, iškviesti įrankį.
+- Perkelti logiką, kuri kuria funkciją (įrankį, išteklių arba iššaukimo tekstą), į savo dedikuotą aplanką.
+- Pridėti būdą patikrinti įeinančią užklausą, pavyzdžiui kvietimą įrankiui.
 
-### Funkcijos kūrimas
+### Kurti funkciją
 
-Norėdami sukurti funkciją, turėsime sukurti failą tai funkcijai ir užtikrinti, kad jame būtų privalomi laukai, reikalingi tai funkcijai. Kokie laukai reikalingi, šiek tiek skiriasi tarp įrankių, resursų ir užklausų.
+Norint sukurti funkciją, turėsime sukurti failą šiai funkcijai ir užtikrinti, kad jame būtų privalomi laukai, reikalingi tai funkcijai. Šie laukai šiek tiek skiriasi tarp įrankių, išteklių ir iššaukimo tekstų.
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Patikrinkite įvestį naudodami Pydantic modelį
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: pridėti Pydantic, kad galėtume sukurti AddInputModel ir patikrinti argumentus
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,26 +213,26 @@ tool_add = {
 }
 ```
 
-Čia matote, kaip mes darome:
+Čia matote, kaip darome šiuos veiksmus:
 
 - Sukuriame schemą naudodami Pydantic `AddInputModel` su laukais `a` ir `b` faile *schema.py*.
-- Bandome analizuoti gaunamą prašymą, kad jis atitiktų `AddInputModel` tipą. Jei parametrai nesutampa, tai sukels klaidą:
+- Bandoma išanalizuoti įeinančią užklausą kaip tipą `AddInputModel`, jei yra neatitikimų argumentuose, programa sugrius:
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Patikrinti įvestį naudojant Pydantic modelį
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-Galite pasirinkti, ar šią analizės logiką įdėti į patį įrankio iškvietimą, ar į tvarkytuvo funkciją.
+Galite pasirinkti, ar šią analizės logiką dėti į patį įrankio kvietimą, ar į apdorotojo funkciją.
 
 **TypeScript**
 
 ```typescript
-// server.ts
+// serveris.ts
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { params: { name } } = request;
     let tool = tools.find(t => t.name === name);
@@ -271,7 +271,7 @@ import { z } from 'zod';
 
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 
-// add.ts
+// pridėti.ts
 import { Tool } from "./tool.js";
 import { MathInputSchema } from "./schema.js";
 import { zodToJsonSchema } from "zod-to-json-schema";
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- Tvarkytuve, kuris tvarko visus įrankių iškvietimus, bandome analizuoti gaunamą prašymą pagal įrankio apibrėžtą schemą:
+- Apdorotoje, tvarkančioje visus įrankių kvietimus, dabar bandoma išanalizuoti įeinančią užklausą pagal įrankio apibrėžtą schemą:
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    jei tai veikia, tęsiame faktinio įrankio iškvietimą:
+    jei tai pavyksta, tęsiame faktinį įrankio kvietimą:
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-Kaip matote, šis požiūris sukuria puikią architektūrą, kurioje viskas turi savo vietą, *server.ts* yra labai mažas failas, kuris tik sujungia prašymų tvarkytuvus, o kiekviena funkcija yra savo atitinkamame aplanke, pvz., tools/, resources/ arba /prompts.
+Kaip matote, šis metodas sukuria puikią architektūrą, nes viskas yra savo vietoje, *server.ts* yra labai mažas failas, kuris tiesiog susieja užklausų apdorotojus, o kiekviena funkcija yra savo aplanke, pvz. tools/, resources/ arba prompts/.
 
-Puiku, pabandykime tai sukurti.
+Puiku, pradėkime tai kurti.
 
-## Pratimai: žemo lygio serverio kūrimas
+## Užduotis: Žemo lygio serverio kūrimas
 
-Šiame pratime atliksime šiuos veiksmus:
+Šioje užduotyje padarysime šiuos dalykus:
 
-1. Sukursime žemo lygio serverį, kuris tvarkys įrankių sąrašą ir jų iškvietimą.
-1. Įgyvendinsime architektūrą, kurią galėsite plėsti.
-1. Pridėsime validaciją, kad užtikrintume, jog įrankių iškvietimai yra tinkamai patikrinti.
+1. Sukursime žemo lygio serverį, kuris apdoros įrankių išvardijimą ir įrankių kvietimą.
+1. Įgyvendinsime architektūrą, kuria galėsite plėtoti.
+1. Pridėsime validaciją, kad jūsų įrankių kvietimai būtų tinkamai patikrinti.
 
-### -1- Architektūros kūrimas
+### -1- Kurti architektūrą
 
-Pirmiausia turime sukurti architektūrą, kuri padėtų mums plėstis, kai pridėsime daugiau funkcijų. Štai kaip tai atrodo:
+Pirmiausia turime sukurt architektūrą, kuri padės mums praplėsti sistemą pridedant daugiau funkcijų, štai kaip ji atrodo:
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-Dabar turime architektūrą, kuri užtikrina, kad galime lengvai pridėti naujus įrankius į įrankių aplanką. Galite laisvai pridėti subkatalogus resursams ir užklausoms.
+Dabar turime architektūrą, kuri užtikrina, kad galime lengvai pridėti naujų įrankių į *tools* aplanką. Galite sekti šiuo pavyzdžiu ir pridėti aplankų ištekliams bei iššaukimo tekstams.
 
-### -2- Įrankio kūrimas
+### -2- Kurti įrankį
 
-Pažiūrėkime, kaip atrodo įrankio kūrimas. Pirmiausia jis turi būti sukurtas savo *tool* subkataloge, pavyzdžiui:
+Pažiūrėkime, kaip atrodo įrankio kūrimas. Pirmiausia jis turi būti sukurtas atitinkamame *tool* poskirsnyje:
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Patvirtinkite įvestį naudodami Pydantic modelį
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: pridėti Pydantic, kad galėtume sukurti AddInputModel ir patvirtinti argumentus
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-Čia matome, kaip apibrėžiame pavadinimą, aprašymą, įvesties schemą naudodami Pydantic ir tvarkytuvą, kuris bus iškviečiamas, kai šis įrankis bus naudojamas. Galiausiai, mes eksponuojame `tool_add`, kuris yra žodynas, turintis visas šias savybes.
+Čia matome, kaip aprašome pavadinimą, aprašymą, įvedimo schemą naudodami Pydantic ir apdorotoją, kuris bus iškviečiamas, kai šis įrankis bus kviečiamas. Galiausiai eksponuojame `tool_add`, kuris yra žodynas, laikantis šias savybes.
 
-Taip pat yra *schema.py*, kuris naudojamas apibrėžti įvesties schemą, naudojamą mūsų įrankyje:
+Taip pat yra *schema.py*, kuri naudojama apibrėžti įvedimo schemą mūsų įrankiui:
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Taip pat turime užpildyti *__init__.py*, kad užtikrintume, jog įrankių katalogas būtų traktuojamas kaip modulis. Be to, turime eksponuoti modulius jame, pavyzdžiui:
+Taip pat turime užpildyti *__init__.py*, kad *tools* katalogas būtų laikomas moduliu. Be to, turime eksportuoti jame esančius modulius taip:
 
 ```python
 from .add import tool_add
@@ -393,7 +393,7 @@ tools = {
 }
 ```
 
-Galime tęsti šio failo pildymą, kai pridėsime daugiau įrankių.
+Šį failą galime toliau papildyti pridėdami daugiau įrankių.
 
 **TypeScript**
 
@@ -414,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-Čia sukuriame žodyną, sudarytą iš savybių:
+Čia kuriame žodyną su savybėmis:
 
-- name – tai įrankio pavadinimas.
-- rawSchema – tai Zod schema, ji bus naudojama patikrinti gaunamus prašymus iškviesti šį įrankį.
-- inputSchema – ši schema bus naudojama tvarkytuve.
-- callback – tai naudojama įrankio iškvietimui.
+- name – įrankio pavadinimas.
+- rawSchema – Zod schema, kuri bus naudojama patikrinti įeinančias užklausas įrankio kvietimui.
+- inputSchema – šią schemą naudos apdorotojas.
+- callback – funkcija, kuri kvies įrankį.
 
-Taip pat yra `Tool`, kuris naudojamas konvertuoti šį žodyną į tipą, kurį MCP serverio tvarkytuvas gali priimti, ir jis atrodo taip:
+Yra taip pat `Tool`, kuris paverčia žodyną į tipą, kurį MCP serverio apdorotojas gali priimti, ir jis atrodo taip:
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-Ir yra *schema.ts*, kur saugome įvesties schemas kiekvienam įrankiui, kuris atrodo taip, šiuo metu turint tik vieną schemą, bet pridėdami įrankius galime pridėti daugiau įrašų:
+Yra *schema.ts*, kur saugomos įvedimo schemos kiekvienam įrankiui. Šiuo metu yra tik viena schema, bet pridedant įrankių, galėsime pridėti daugiau:
 
 ```typescript
 import { z } from 'zod';
@@ -442,16 +442,16 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Puiku, pereikime prie įrankių sąrašo tvarkymo.
+Puiku, dabar pereikime prie įrankių išvardijimo apdorojimo.
 
-### -3- Įrankių sąrašo tvarkymas
+### -3- Tvarkyti įrankių išvardijimą
 
-Norėdami tvarkyti įrankių sąrašą, turime nustatyti prašymo tvarkytuvą. Štai ką reikia pridėti prie mūsų serverio failo:
+Dabar, kad aptarnautume įrankių išvardijimą, turime sukurti užklausų apdorotoją tam. Štai ką reikia pridėti prie serverio failo:
 
 **Python**
 
 ```python
-# code omitted for brevity
+# kodas sutrumpintas dėl glaustumo
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-Čia pridedame dekoratorių `@server.list_tools` ir įgyvendiname funkciją `handle_list_tools`. Pastarojoje turime pateikti įrankių sąrašą. Atkreipkite dėmesį, kad kiekvienas įrankis turi turėti pavadinimą, aprašymą ir inputSchema.
+Čia pridedame dekoratorių `@server.list_tools` ir apdorojančią funkciją `handle_list_tools`. Pastaroje turime sugeneruoti įrankių sąrašą. Atkreipkite dėmesį, kad kiekvienas įrankis turi turėti pavadinimą, aprašymą ir inputSchema.   
 
 **TypeScript**
 
-Norėdami nustatyti prašymo tvarkytuvą įrankių sąrašui, turime iškviesti `setRequestHandler` serveryje su schema, atitinkančia tai, ką bandome padaryti, šiuo atveju `ListToolsRequestSchema`.
+Norėdami nustatyti užklausų apdorotoją įrankių išvardijimui, kviečiame `setRequestHandler` serveryje su schema, atitinkančia mūsų siekį, šiuo atveju `ListToolsRequestSchema`.
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// kodas sutrumpintas
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Grąžinti registruotų įrankių sąrašą
   return {
     tools: tools
   };
 });
 ```
 
-Puiku, dabar išsprendėme įrankių sąrašo dalį, pažiūrėkime, kaip galėtume iškviesti įrankius.
+Puiku, dabar išsprendėme įrankių išvardijimo dalį, pažiūrėkime, kaip galėtume kvieti įrankius.
 
-### -4- Įrankio iškvietimo tvarkymas
+### -4- Tvarkyti įrankio kvietimą
 
-Norėdami iškviesti įrankį, turime nustatyti kitą prašymo tvarkytuvą, šį kartą skirtą prašymui, nurodančiam, kurią funkciją iškviesti ir su kokiais argumentais.
+Norint iškviesti įrankį, reikia sukurti kitą užklausų apdorotoją, kuris apdoros užklausą, nurodančią, kuri funkcija turi būti kviečiama ir su kokiais argumentais.
 
 **Python**
 
-Naudokime dekoratorių `@server.call_tool` ir įgyvendinkime jį funkcijoje, pavyzdžiui, `handle_call_tool`. Šioje funkcijoje turime išanalizuoti įrankio pavadinimą, jo argumentus ir užtikrinti, kad argumentai būtų tinkami tam įrankiui. Galime patikrinti argumentus šioje funkcijoje arba toliau pačiame įrankyje.
+Naudosime dekoratorių `@server.call_tool` ir įgyvendinsime jį funkcija `handle_call_tool`. Šioje funkcijoje turime išanalizuoti įrankio pavadinimą, argumentus ir užtikrinti, kad argumentai yra teisingi tam įrankiui. Galime validuoti argumentus tiek čia, tiek žemiau pačiame įrankyje.
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools yra žodynas, kurio raktai yra įrankių pavadinimai
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # iškvieskite įrankį
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -533,27 +533,33 @@ async def handle_call_tool(
     ] 
 ```
 
-Štai kas vyksta:
+Čia vyksta šie veiksmai:
 
-- Mūsų įrankio pavadinimas jau yra kaip įvesties parametras `name`, tas pats pasakytina apie argumentus, pateiktus kaip `arguments` žodynas.
+- Įrankio pavadinimas jau pateiktas įvesties parametru `name`, o mūsų argumentai yra `arguments` žodyne.
 
-- Įrankis iškviečiamas su `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Argumentų validacija vyksta `handler` savybėje, kuri nurodo funkciją. Jei tai nepavyksta, bus iškelta išimtis.
+- Įrankis kviečiamas su `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Argumentų validacija vyksta `handler` funkcijoje; jei nepavyksta, kyla išimtis. 
 
-Štai, dabar turime pilną supratimą apie įrankių sąrašą ir jų iškvietimą naudojant žemo lygio serverį.
+Štai ir viskas – dabar turime pilną supratimą apie įrankių išvardijimą ir kvietimą žemo lygio serverio pagalba.
 
-Žiūrėkite [pilną pavyzdį](./code/README.md) čia.
+Pilną pavyzdį rasite [čia](./code/README.md).
 
 ## Užduotis
 
-Papildykite jums pateiktą kodą keliais įrankiais, resursais ir užklausomis ir apmąstykite, kaip pastebite, kad jums tereikia pridėti failus į įrankių katalogą ir niekur kitur.
+Išplėskite pateiktą kodą pridėdami kelis įrankius, išteklių ir iššaukimo tekstų ir pastebėkite, kaip reikia tik pridėti failus *tools* kataloge, ir niekur kitur.
 
-*Sprendimas nepateiktas*
+*Nėra pateikto sprendimo*
 
 ## Santrauka
 
-Šiame skyriuje aptarėme, kaip veikia žemo lygio serverio metodas ir kaip jis gali padėti sukurti gražią architektūrą, kurią galima toliau plėsti. Taip pat aptarėme validaciją ir jums buvo parodyta, kaip dirbti su validacijos bibliotekomis, kad sukurtumėte schemas įvesties validacijai.
+Šiame skyriuje pamatėme, kaip veikia žemo lygio serverio metodas ir kaip jis gali padėti sukurti tvarkingą architektūrą, ant kurios galima tęsti kūrimą. Taip pat aptarėme validaciją ir parodėme, kaip dirbti su validavimo bibliotekomis, kad būtų sukurtos schemos įvedimo validacijai.
+
+## Kas toliau
+
+- Toliau: [Paprastas autentifikavimas](../11-simple-auth/README.md)
 
 ---
 
-**Atsakomybės atsisakymas**:  
-Šis dokumentas buvo išverstas naudojant AI vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors stengiamės užtikrinti tikslumą, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų ar netikslumų. Originalus dokumentas jo gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Kritinei informacijai rekomenduojama naudoti profesionalų žmogaus vertimą. Mes neprisiimame atsakomybės už nesusipratimus ar neteisingus interpretavimus, atsiradusius dėl šio vertimo naudojimo.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Atsakomybės apribojimas**:
+Šis dokumentas buvo išverstas naudojant dirbtinio intelekto vertimo paslaugą [Co-op Translator](https://github.com/Azure/co-op-translator). Nors stengiamės užtikrinti tikslumą, prašome atkreipti dėmesį, kad automatiniai vertimai gali turėti klaidų arba netikslumų. Originalus dokumentas gimtąja kalba turėtų būti laikomas autoritetingu šaltiniu. Esant svarbiai informacijai rekomenduojama kreiptis į profesionalų žmogaus vertėją. Mes neprisiimame atsakomybės už bet kokius nesusipratimus ar neteisingus interpretavimus, kilusius dėl šio vertimo naudojimo.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

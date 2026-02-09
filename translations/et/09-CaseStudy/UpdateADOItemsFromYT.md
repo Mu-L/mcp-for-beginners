@@ -1,30 +1,30 @@
-# Juhtumiuuring: Azure DevOps üksuste uuendamine YouTube'i andmetega MCP abil
+# Juhtumiuuring: Azure DevOpsi üksuste värskendamine YouTube'i andmetega MCP abil
 
-> **Vastutusest loobumine:** Olemas on veebipõhised tööriistad ja aruanded, mis automatiseerivad Azure DevOps üksuste uuendamise protsessi platvormide, nagu YouTube, andmetega. Järgnevat stsenaariumi esitatakse ainult näidisjuhtumina, et illustreerida, kuidas MCP tööriistu saab kasutada automatiseerimise ja integreerimise ülesannete jaoks.
+> **Erlus:** On olemas veebipõhised tööriistad ja aruanded, mis võimaldavad automatiseerida Azure DevOpsi üksuste värskendamist platvormidelt nagu YouTube pärinevate andmetega. Järgmine stsenaarium esitatakse puhtalt näitena, et illustreerida, kuidas MCP tööriistu saab rakendada automatiseerimise ja integreerimise ülesannete jaoks.
 
 ## Ülevaade
 
-See juhtumiuuring näitab üht näidet, kuidas Model Context Protocol (MCP) ja selle tööriistu saab kasutada Azure DevOps (ADO) tööüksuste uuendamise automatiseerimiseks, kasutades teavet, mis pärineb veebiplatvormidelt, nagu YouTube. Kirjeldatud stsenaarium on vaid üks illustratsioon nende tööriistade laiematest võimalustest, mida saab kohandada paljudele sarnastele automatiseerimisvajadustele.
+See juhtumiuuring demonstreerib üht näidet, kuidas Mudelikonteksti Protokolli (MCP) ja selle tööriistu saab kasutada Azure DevOpsi (ADO) tööülesannete värskendamise protsessi automatiseerimiseks, kasutades veebiplatvormidelt, näiteks YouTube'ist, pärinevat teavet. Kirjeldatud stsenaarium on üks illustratsioon laiematest tööriistade võimalustest, mida saab kohandada paljudele sarnastele automatiseerimisvajadustele.
 
-Näites jälgib advokaat veebisessioone, kasutades ADO üksusi, kus iga üksus sisaldab YouTube'i video URL-i. MCP tööriistade abil saab advokaat hoida ADO üksusi ajakohasena, lisades neile uusimad videomeetrikad, nagu vaatamiste arv, korduvate ja automatiseeritud protsesside kaudu. Seda lähenemist saab üldistada ka teistele juhtumitele, kus veebiallikatest pärit teavet tuleb integreerida ADO-sse või teistesse süsteemidesse.
+Selles näites jälgib Advokaat veebisessioone ADO üksuste kaudu, kus igaüks sisaldab YouTube'i videosisu URL-i. MCP tööriistade abil saab Advokaat hoida ADO üksused ajakohastatuna viimaste video mõõdikute, näiteks vaatamiste arvuga, korduva ja automaatse protsessina. Seda lähenemist saab üldistada teistele kasutusjuhtudele, kus veebiallikatest pärinev teave tuleb integreerida ADO-sse või teistesse süsteemidesse.
 
 ## Stsenaarium
 
-Advokaat vastutab veebisessioonide ja kogukonna kaasamiste mõju jälgimise eest. Iga sessioon logitakse ADO tööüksusena projektis 'DevRel', kus tööüksus sisaldab välja YouTube'i video URL-i. Sessiooni ulatuse täpseks aruandluseks peab advokaat uuendama ADO üksust, lisades praeguse videovaatamiste arvu ja kuupäeva, millal see teave hangiti.
+Advokaat on vastutav veebisessioonide ja kogukonnaga seotud tegevuste mõjude jälgimise eest. Iga sessioon registreeritakse ADO tööülesandena 'DevRel' projektis ning tööülesande sees on väli YouTube'i video URL-iga. Et täpselt aru anda sessiooni ulatusest, peab Advokaat värskendama ADO üksust videot vaatamiste arvu ja selle kuupäevaga, millal see teave saadi.
 
-## Kasutatud tööriistad
+## Kasutatavad tööriistad
 
-- [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp): Võimaldab MCP kaudu ADO tööüksustele programmilist juurdepääsu ja nende uuendamist.
-- [Playwright MCP](https://github.com/microsoft/playwright-mcp): Automatiseerib brauseri toiminguid, et hankida reaalajas andmeid veebilehtedelt, näiteks YouTube'i videostatistikat.
+- [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp): Võimaldab programmiliselt ligi pääseda ja värskendada ADO tööülesandeid MCP kaudu.
+- [Playwright MCP](https://github.com/microsoft/playwright-mcp): Automatiseerib brauseri tegevusi, et väljavõtta otseveebilehtedelt andmeid, näiteks YouTube'i video statistikat.
 
 ## Samm-sammuline töövoog
 
-1. **ADO üksuse tuvastamine**: Alusta ADO tööüksuse ID-ga (nt 1234) projektis 'DevRel'.
-2. **YouTube'i URL-i hankimine**: Kasuta Azure DevOps MCP tööriista, et saada tööüksusest YouTube'i URL.
-3. **Videovaatamiste arvu väljavõtmine**: Kasuta Playwright MCP tööriista, et navigeerida YouTube'i URL-ile ja hankida praegune vaatamiste arv.
-4. **ADO üksuse uuendamine**: Kirjuta uusim vaatamiste arv ja hankimise kuupäev ADO tööüksuse jaotisse 'Impact and Learnings', kasutades Azure DevOps MCP tööriista.
+1. **Tuvaste ADO üksus**: Alusta ADO tööülesande ID-ga (nt 1234) 'DevRel' projektis.
+2. **Hangi YouTube URL**: Kasuta Azure DevOps MCP tööriista, et saada tööülesandest YouTube URL.
+3. **Võta videovaate arv**: Kasuta Playwright MCP tööriista, et minna YouTube URL-ile ja väljavõtta praegune vaatamiste arv.
+4. **Värskenda ADO üksust**: Kirjuta kõige uuem vaatamiste arv ja väljavõtmise kuupäev 'Mõju ja õppetunnid' sektsiooni ADO tööülesandes, kasutades Azure DevOps MCP tööriista.
 
-## Näidisviip
+## Näidispäring
 
 ```bash
 - Work with the ADO Item ID: 1234
@@ -34,35 +34,41 @@ Advokaat vastutab veebisessioonide ja kogukonna kaasamiste mõju jälgimise eest
 - Update the ADO item with the current video views and the updated date of the information
 ```
 
-## Mermaid vooskeem
+## Mermaid voo diagramm
 
 ```mermaid
 flowchart TD
-    A[Start: Advocate identifies ADO Item ID] --> B[Get YouTube URL from ADO Item using Azure DevOps MCP]
-    B --> C[Extract current video views using Playwright MCP]
-    C --> D[Update ADO Item's Impact and Learnings section with view count and date]
-    D --> E[End]
+    A[Algus: Eesväljendaja tuvastab ADO üksuse ID] --> B[Hangi ADO üksusest YouTube'i URL Azure DevOps MCP abil]
+    B --> C[Ekstrakti praegused video vaatamised Playwright MCP abil]
+    C --> D[Uuenda ADO üksuse Mõju ja Õppetunnid sektsiooni vaatamiste arvu ja kuupäevaga]
+    D --> E[Lõpp]
 ```
+## Tehniline rakendus
 
-## Tehniline teostus
-
-- **MCP orkestreerimine**: Töövoogu juhib MCP server, mis koordineerib nii Azure DevOps MCP kui ka Playwright MCP tööriistade kasutamist.
-- **Automatiseerimine**: Protsessi saab käivitada käsitsi või ajastada regulaarselt töötama, et hoida ADO üksused ajakohasena.
-- **Laiendatavus**: Sama mustrit saab laiendada, et uuendada ADO üksusi teiste veebimõõdikute (nt meeldimised, kommentaarid) või teiste platvormide andmetega.
+- **MCP orkestreerimine**: Töövoogu juhib MCP server, mis koordineerib nii Azure DevOpsi MCP kui ka Playwright MCP tööriistade kasutamist.
+- **Automatiseerimine**: Protsess võib käivituda käsitsi või olla ajastatud regulaarselt, et hoida ADO üksused ajakohasena.
+- **Laiendatavus**: Sama mustrit saab laiendada ADO üksuste värskendamiseks teiste veebimõõdikutega (nt meeldimised, kommentaarid) või muudelt platvormidelt.
 
 ## Tulemused ja mõju
 
-- **Tõhusus**: Vähendab advokaatide käsitsi tööd, automatiseerides videomeetrikate hankimise ja uuendamise.
-- **Täpsus**: Tagab, et ADO üksused kajastavad kõige ajakohasemat veebiallikatest saadavat teavet.
-- **Korduvus**: Pakub korduvkasutatavat töövoogu sarnaste stsenaariumide jaoks, mis hõlmavad muid andmeallikaid või mõõdikuid.
+- **Tõhusus**: Vähendab Automaatiseerimine vähendab Advokaatide käsitsi pingutust videomõõdikute kogumisel ja värskendamisel.
+- **Täpsus**: Kindlustab, et ADO üksused peegeldavad veebiallikatest saadavaid kõige uuemaid andmeid.
+- **Korduvkasutatavus**: Pakub korduvkasutatavat töövoogu sarnaste stsenaariumite jaoks, mis hõlmavad teisi andmeallikaid või mõõdikuid.
 
 ## Viited
 
 - [Azure DevOps MCP](https://github.com/microsoft/azure-devops-mcp)
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp)
-- [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
+- [Mudelikonteksti protokoll (MCP)](https://modelcontextprotocol.io/)
+
+## Mis järgmiseks
+
+- Tagasi: [Juhtumiuuringute ülevaade](./README.md)
+- Järgmine: [Reaalajas dokumentide päring MCP-ga](./docs-mcp/README.md)
 
 ---
 
-**Lahtiütlus**:  
-See dokument on tõlgitud AI tõlketeenuse [Co-op Translator](https://github.com/Azure/co-op-translator) abil. Kuigi püüame tagada täpsust, palume arvestada, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Algne dokument selle algses keeles tuleks pidada autoriteetseks allikaks. Olulise teabe puhul soovitame kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tulenevate arusaamatuste või valesti tõlgenduste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Teatise**:
+See dokument on tõlgitud kasutades tehisintellektil põhinevat tõlke teenust [Co-op Translator](https://github.com/Azure/co-op-translator). Kuigi püüame tagada täpsuse, palun arvestage, et automaatsed tõlked võivad sisaldada vigu või ebatäpsusi. Originaaldokument omakeelses versioonis tuleks pidada usaldusväärseks allikaks. Olulise teabe puhul soovitatakse kasutada professionaalset inimtõlget. Me ei vastuta selle tõlke kasutamisest tingitud arusaamatuste või valesti mõistmiste eest.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

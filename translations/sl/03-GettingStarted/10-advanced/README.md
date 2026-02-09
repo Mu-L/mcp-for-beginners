@@ -1,20 +1,20 @@
 # Napredna uporaba strežnika
 
-V MCP SDK sta na voljo dva različna tipa strežnikov: običajni strežnik in strežnik na nizki ravni. Običajno uporabljate običajni strežnik za dodajanje funkcionalnosti. V nekaterih primerih pa se boste morda želeli zanašati na strežnik na nizki ravni, na primer:
+V MCP SDK so predstavljeni dve različni vrsti strežnikov, vaš običajni strežnik in nizkonivojski strežnik. Običajno bi uporabljali običajni strežnik za dodajanje funkcij. V nekaterih primerih pa želite zaupati nizkonivojskemu strežniku, na primer:
 
-- Boljša arhitektura. Možno je ustvariti čisto arhitekturo tako z običajnim kot s strežnikom na nizki ravni, vendar bi lahko trdili, da je to nekoliko lažje s strežnikom na nizki ravni.
-- Razpoložljivost funkcij. Nekatere napredne funkcije so na voljo samo s strežnikom na nizki ravni. To boste videli v kasnejših poglavjih, ko bomo dodajali vzorčenje in pridobivanje podatkov.
+- Boljša arhitektura. Možno je ustvariti čisto arhitekturo z običajnim strežnikom in nizkonivojskim strežnikom, vendar lahko trdimo, da je nekoliko lažje z nizkonivojskim strežnikom.
+- Razpoložljivost funkcij. Nekatere napredne funkcije so na voljo le pri nizkonivojskem strežniku. To boste videli v kasnejših poglavjih, ko bomo dodajali vzorčenje in pridobivanje.
 
-## Običajni strežnik vs strežnik na nizki ravni
+## Običajni strežnik proti nizkonivojskemu strežniku
 
-Tako izgleda ustvarjanje MCP strežnika z običajnim strežnikom:
+Tako izgleda ustvarjanje MCP strežnika z običajnim strežnikom
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# Dodaj orodje za seštevanje
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// Dodajte orodje za seštevanje
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,16 +42,16 @@ server.registerTool("add",
 );
 ```
 
-Ključno je, da eksplicitno dodate vsako orodje, vir ali poziv, ki ga želite imeti na strežniku. Nič narobe s tem.
+Pomen je v tem, da eksplicitno dodate vsako orodje, vir ali poziv, ki ga želite, da ga ima strežnik. Ni nič narobe s tem.
 
-### Pristop strežnika na nizki ravni
+### Pristop nizkonivojskega strežnika
 
-Ko pa uporabljate pristop strežnika na nizki ravni, morate razmišljati drugače, in sicer namesto registracije vsakega orodja ustvarite dva obdelovalca za vsak tip funkcije (orodja, viri ali pozivi). Na primer, za orodja obstajata samo dve funkciji, kot sledi:
+Ko pa uporabite pristop nizkonivojskega strežnika, morate razmišljati drugače, in sicer, da namesto registracije vsakega orodja ustvarite dva upravljavca na vrsto funkcije (orodja, viri ali pozivi). Na primer, orodja imajo samo dve funkciji, kot sledi:
 
-- Seznam vseh orodij. Ena funkcija je odgovorna za vse poskuse seznamov orodij.
-- Obdelava klicev vseh orodij. Tudi tukaj obstaja samo ena funkcija, ki obravnava klice orodja.
+- Prikaz vseh orodij. Ena funkcija bi bila odgovorna za vse poskuse prikaza orodij.
+- Upravljanje klica vseh orodij. Tudi tukaj obstaja le ena funkcija, ki upravlja klice orodja.
 
-To se sliši kot potencialno manj dela, kajne? Namesto registracije orodja moram samo zagotoviti, da je orodje navedeno, ko navajam vsa orodja, in da se pokliče, ko pride zahteva za klic orodja.
+To se sliši kot potencialno manj dela, kajne? Namesto da registriram orodje, moram samo zagotoviti, da so orodja prikazana, ko prikažem vsa orodja, in da se kliče, ko pride zahteva za klic orodja.
 
 Poglejmo, kako zdaj izgleda koda:
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Vrni seznam registriranih orodij
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Tukaj imamo funkcijo, ki vrne seznam funkcij. Vsak vnos v seznamu orodij zdaj vsebuje polja, kot so `name`, `description` in `inputSchema`, da ustreza vrsti vrnitve. To nam omogoča, da naša orodja in definicije funkcij postavimo drugam. Zdaj lahko ustvarimo vsa naša orodja v mapi orodij, enako pa velja za vse vaše funkcije, tako da je vaš projekt nenadoma organiziran takole:
+Tukaj imamo funkcijo, ki vrne seznam funkcij. Vsak vnos na seznamu orodij zdaj vsebuje polja, kot so `name`, `description` in `inputSchema`, da ustreza tipu vrnitve. To nam omogoča, da orodja in definicije funkcij postavimo drugam. Zdaj lahko ustvarimo vsa orodja v mapi tools in enako velja za vse funkcije, tako da je vaš projekt lahko organiziran takole:
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-Odlično, naša arhitektura je lahko videti precej čista.
+To je super, naša arhitektura je lahko zelo čista.
 
-Kaj pa klicanje orodij, je potem ista ideja, en obdelovalec za klic orodja, ne glede na to, katero orodje? Da, točno tako, tukaj je koda za to:
+Kaj pa klic orodij, je potem ista ideja, en upravljalec za klic orodja, katerega koli orodja? Da, točno tako, tukaj je koda za to:
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools je slovar z imeni orodij kot ključih
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO pokliči orodje,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-Kot lahko vidite iz zgornje kode, moramo razčleniti orodje za klicanje in s katerimi argumenti, nato pa nadaljevati s klicanjem orodja.
+Kot lahko vidite iz zgornje kode, moramo razčleniti, katero orodje pokličemo in s katerimi argumenti, nato pa nadaljujemo s klicem orodja.
 
-## Izboljšanje pristopa z validacijo
+## Izboljšava pristopa z validacijo
 
-Do sedaj ste videli, kako lahko vse vaše registracije za dodajanje orodij, virov in pozivov nadomestite s tema dvema obdelovalcema na tip funkcije. Kaj še moramo storiti? No, dodati bi morali neko obliko validacije, da zagotovimo, da je orodje poklicano s pravimi argumenti. Vsako okolje ima svojo rešitev za to, na primer Python uporablja Pydantic, TypeScript pa Zod. Ideja je, da naredimo naslednje:
+Doslej ste videli, kako lahko vse vaše registracije za dodajanje orodij, virov in pozivov nadomestimo s temi dvema upravljalcema na vrsto funkcije. Kaj še moramo storiti? Dodati moramo nekakšno validacijo, da zagotovimo, da je orodje poklicano z ustreznimi argumenti. Vsako izvajanje ima svojo rešitev za to, na primer Python uporablja Pydantic, TypeScript pa Zod. Ideja je, da naredimo naslednje:
 
-- Premaknemo logiko za ustvarjanje funkcije (orodja, vira ali poziva) v njeno namensko mapo.
-- Dodamo način za validacijo dohodne zahteve, ki na primer zahteva klic orodja.
+- Prenesemo logiko ustvarjanja funkcije (orodje, vir ali poziv) v namensko mapo.
+- Dodamo način za validacijo prihajajoče zahteve, na primer za klic orodja.
 
 ### Ustvarjanje funkcije
 
-Za ustvarjanje funkcije moramo ustvariti datoteko za to funkcijo in zagotoviti, da ima obvezna polja, ki jih zahteva ta funkcija. Katera polja se razlikujejo med orodji, viri in pozivi.
+Za ustvarjanje funkcije bomo morali ustvariti datoteko za to funkcijo in zagotoviti, da vsebuje obvezna polja, ki jih zahteva ta funkcija. Polja se nekoliko razlikujejo med orodji, viri in pozivi.
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Preveri vhod z uporabo Pydantic modela
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: dodaj Pydantic, da lahko ustvarimo AddInputModel in preverimo argumente
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -216,18 +216,18 @@ tool_add = {
 Tukaj lahko vidite, kako naredimo naslednje:
 
 - Ustvarimo shemo z uporabo Pydantic `AddInputModel` s polji `a` in `b` v datoteki *schema.py*.
-- Poskusimo razčleniti dohodno zahtevo, da je tipa `AddInputModel`, če pride do neskladja v parametrih, bo to povzročilo napako:
+- Poskušamo razčleniti prihajajočo zahtevo kot tip `AddInputModel`, če pride do neskladnosti v parametrih, se bo program zrušil:
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Preveri vhod z uporabo Pydantic modela
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-Lahko se odločite, ali želite to logiko razčlenjevanja postaviti v sam klic orodja ali v funkcijo obdelovalca.
+Lahko izberete, ali to logiko razčlenjevanja položite neposredno v klic orodja ali v funkcijo upravljalca.
 
 **TypeScript**
 
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- V obdelovalcu, ki obravnava vse klice orodij, zdaj poskušamo razčleniti dohodno zahtevo v shemo, ki jo je določilo orodje:
+- V upravljalcu, ki obravnava vse klice orodij, zdaj poskušamo razčleniti prihajajočo zahtevo v shemo, določeno za orodje:
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    če to deluje, nadaljujemo s klicanjem dejanskega orodja:
+    Če to deluje, nadaljujemo s klicem dejanskega orodja:
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-Kot lahko vidite, ta pristop ustvarja odlično arhitekturo, saj ima vse svoje mesto, *server.ts* je zelo majhna datoteka, ki samo povezuje obdelovalce zahtev, vsaka funkcija pa je v svoji ustrezni mapi, tj. tools/, resources/ ali /prompts.
+Kot vidite, ta pristop ustvarja odlično arhitekturo, saj ima vse svoj prostor, *server.ts* je zelo majhna datoteka, ki samo poveže upravljalce zahtev, vsaka funkcija pa je v svoji ustrezni mapi, npr. tools/, resources/ ali /prompts.
 
-Odlično, poskusimo to zgraditi naslednjič.
+Super, poskusimo to zdaj zgraditi.
 
-## Vaja: Ustvarjanje strežnika na nizki ravni
+## Vaja: Ustvarjanje nizkonivojskega strežnika
 
 V tej vaji bomo naredili naslednje:
 
-1. Ustvarili strežnik na nizki ravni, ki obravnava seznam orodij in klicanje orodij.
-1. Implementirali arhitekturo, na kateri lahko gradite.
-1. Dodali validacijo, da zagotovimo, da so vaši klici orodij pravilno validirani.
+1. Ustvarili nizkonivojski strežnik, ki obravnava prikazovanje orodij in klic orodij.
+2. Implementirali arhitekturo, na kateri lahko gradite.
+3. Dodali validacijo, da zagotovimo pravilno validacijo vaših klicev orodij.
 
 ### -1- Ustvarjanje arhitekture
 
-Prva stvar, ki jo moramo obravnavati, je arhitektura, ki nam pomaga pri skaliranju, ko dodajamo več funkcij. Tukaj je, kako izgleda:
+Prva stvar, ki jo moramo rešiti, je arhitektura, ki nam pomaga skalirati, ko dodajamo več funkcij, tako izgleda:
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-Zdaj imamo arhitekturo, ki zagotavlja, da lahko zlahka dodajamo nova orodja v mapo orodij. Po želji lahko sledite temu, da dodate podmape za vire in pozive.
+Zdaj smo vzpostavili arhitekturo, ki zagotavlja, da lahko z lahkoto dodajamo nova orodja v mapo tools. Lahko dodate tudi podmape za vire in pozive.
 
 ### -2- Ustvarjanje orodja
 
-Poglejmo, kako izgleda ustvarjanje orodja. Najprej ga je treba ustvariti v njegovi podmapi *tool*, kot sledi:
+Poglejmo, kako izgleda ustvarjanje orodja. Najprej ga je treba ustvariti v njegovi podmapi *tool*, tako:
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Validiraj vhod z uporabo Pydantic modela
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO: dodaj Pydantic, da lahko ustvarimo AddInputModel in validiramo argumente
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,7 +371,7 @@ tool_add = {
 }
 ```
 
-Tukaj vidimo, kako definiramo ime, opis, vhodno shemo z uporabo Pydantic in obdelovalca, ki bo poklican, ko bo to orodje uporabljeno. Na koncu izpostavimo `tool_add`, ki je slovar, ki vsebuje vse te lastnosti.
+Tukaj vidimo, kako definiramo ime, opis, vhodno shemo s Pydantic in upravljalca, ki bo klican, ko je orodje poklicano. Nazadnje eksponiramo `tool_add`, ki je slovar z vsemi temi lastnostmi.
 
 Obstaja tudi *schema.py*, ki se uporablja za definiranje vhodne sheme, ki jo uporablja naše orodje:
 
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Prav tako moramo napolniti *__init__.py*, da zagotovimo, da se mapa orodij obravnava kot modul. Poleg tega moramo izpostaviti module znotraj nje, kot sledi:
+Prav tako moramo napolniti *__init__.py*, da zagotovimo, da je mapa tools obravnavana kot modul. Poleg tega moramo izpostaviti module v njej, tako:
 
 ```python
 from .add import tool_add
@@ -417,11 +417,11 @@ export default {
 Tukaj ustvarimo slovar, ki vsebuje lastnosti:
 
 - name, to je ime orodja.
-- rawSchema, to je Zod shema, ki se bo uporabljala za validacijo dohodnih zahtev za klic tega orodja.
-- inputSchema, to shemo bo uporabljal obdelovalec.
-- callback, to se uporablja za klicanje orodja.
+- rawSchema, to je Zod shema, ki se uporablja za validacijo prihajajočih zahtev za klic tega orodja.
+- inputSchema, to shemo uporablja upravljalec.
+- callback, to se uporablja za klic orodja.
 
-Obstaja tudi `Tool`, ki se uporablja za pretvorbo tega slovarja v tip, ki ga lahko sprejme obdelovalec strežnika MCP, in izgleda takole:
+Obstaja tudi `Tool`, ki se uporablja za pretvorbo tega slovarja v tip, ki ga lahko sprejme upravljalec MCP strežnika, in izgleda takole:
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-In obstaja *schema.ts*, kjer shranjujemo vhodne sheme za vsako orodje, ki trenutno izgleda tako z eno samo shemo, vendar lahko dodajamo več vnosov, ko dodajamo orodja:
+Obstaja tudi *schema.ts*, kamor shranjujemo vhodne sheme za vsako orodje, ki izgleda takole, trenutno s samo eno shemo, a ko dodajamo orodja, lahko dodamo več vnosov:
 
 ```typescript
 import { z } from 'zod';
@@ -442,16 +442,16 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Odlično, nadaljujmo z obravnavo seznama naših orodij.
+Super, nadaljujmo z upravljanjem prikaza našega orodja.
 
-### -3- Obravnava seznama orodij
+### -3- Upravljanje prikaza orodij
 
-Naslednje, za obravnavo seznama naših orodij, moramo nastaviti obdelovalec zahtev za to. Tukaj je, kaj moramo dodati v našo datoteko strežnika:
+Nato, da upravljamo prikaz naših orodij, moramo nastaviti upravljalca zahtev za to. Tukaj je, kar moramo dodati v našo datoteko strežnika:
 
 **Python**
 
 ```python
-# code omitted for brevity
+# koda izpuščena zaradi jedrnatosti
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-Tukaj dodamo dekorator `@server.list_tools` in implementacijsko funkcijo `handle_list_tools`. V slednji moramo ustvariti seznam orodij. Opazite, kako mora imeti vsako orodje ime, opis in inputSchema.
+Tukaj dodamo dekorator `@server.list_tools` in implementacijsko funkcijo `handle_list_tools`. V slednji moramo proizvesti seznam orodij. Upoštevajte, da mora vsako orodje imeti `name`, `description` in `inputSchema`.
 
 **TypeScript**
 
-Za nastavitev obdelovalca zahtev za seznam orodij moramo poklicati `setRequestHandler` na strežniku s shemo, ki ustreza temu, kar poskušamo narediti, v tem primeru `ListToolsRequestSchema`.
+Da nastavimo upravljalca zahtev za prikaz orodij, moramo na strežniku poklicati `setRequestHandler` z ustrezno shemo za naš namen, v tem primeru `ListToolsRequestSchema`.
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// koda izpuščena zaradi jedrnatosti
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Vrni seznam registriranih orodij
   return {
     tools: tools
   };
 });
 ```
 
-Odlično, zdaj smo rešili del seznama orodij, poglejmo, kako bi lahko naslednje klicali orodja.
+Super, zdaj smo rešili prikaz orodij, poglejmo, kako lahko nato kličemo orodja.
 
-### -4- Obravnava klicanja orodja
+### -4- Upravljanje klica orodja
 
-Za klicanje orodja moramo nastaviti še en obdelovalec zahtev, tokrat osredotočen na obravnavo zahteve, ki določa, katero funkcijo poklicati in s katerimi argumenti.
+Za klic orodja moramo nastaviti še enega upravljalca zahtev, tokrat osredotočenega na zahtevo, ki določa, katero funkcijo poklicati in s kakšnimi argumenti.
 
 **Python**
 
-Uporabimo dekorator `@server.call_tool` in ga implementirajmo s funkcijo, kot je `handle_call_tool`. Znotraj te funkcije moramo razčleniti ime orodja, njegove argumente in zagotoviti, da so argumenti veljavni za zadevno orodje. Argumente lahko validiramo bodisi v tej funkciji bodisi v nadaljevanju v dejanskem orodju.
+Uporabimo dekorator `@server.call_tool` in ga implementiramo s funkcijo, na primer `handle_call_tool`. V tej funkciji moramo razčleniti ime orodja, njegov argument in zagotoviti, da so argumenti veljavni za dano orodje. Argumente lahko validiramo v tej funkciji ali kasneje v samem orodju.
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools je slovar z imeni orodij kot ključi
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # pokliči orodje
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -535,25 +535,31 @@ async def handle_call_tool(
 
 Tukaj se dogaja naslednje:
 
-- Ime našega orodja je že prisotno kot vhodni parameter `name`, kar velja tudi za naše argumente v obliki slovarja `arguments`.
+- Ime našega orodja je že prisotno kot vhodni parameter `name`, kar velja tudi za argumente v obliki slovarja `arguments`.
 
-- Orodje se pokliče z `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Validacija argumentov se zgodi v lastnosti `handler`, ki kaže na funkcijo, če to ne uspe, bo sprožila izjemo.
+- Orodje se kliče z `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Validacija argumentov poteka v lastnosti `handler`, ki kaže na funkcijo; če to ne uspe, sproži izjemo.
 
-Tako, zdaj imamo popolno razumevanje seznama in klicanja orodij z uporabo strežnika na nizki ravni.
+Tako, zdaj imamo popolno razumevanje prikaza in klica orodij z uporabo nizkonivojskega strežnika.
 
-Celoten primer si oglejte [tukaj](./code/README.md).
+Oglejte si [popoln primer](./code/README.md) tukaj
 
 ## Naloga
 
-Razširite kodo, ki ste jo prejeli, z več orodji, viri in pozivi ter razmislite, kako opazite, da morate dodajati datoteke samo v mapo orodij in nikjer drugje.
+Razširite dano kodo z več orodji, viri in pozivi ter razmislite, kako opazite, da morate dodajati datoteke samo v mapo tools in nikjer drugje.
 
 *Rešitev ni podana*
 
 ## Povzetek
 
-V tem poglavju smo videli, kako deluje pristop strežnika na nizki ravni in kako nam lahko pomaga ustvariti lepo arhitekturo, na kateri lahko še naprej gradimo. Prav tako smo razpravljali o validaciji in pokazali smo vam, kako delati z validacijskimi knjižnicami za ustvarjanje shem za validacijo vhodnih podatkov.
+V tem poglavju smo videli, kako deluje pristop nizkonivojskega strežnika in kako nam lahko pomaga ustvariti lepo arhitekturo, na kateri lahko nadaljujemo z gradnjo. Prav tako smo razpravljali o validaciji in pokazali, kako delati z validacijskimi knjižnicami za ustvarjanje shem za validacijo vhodnih podatkov.
+
+## Kaj sledi
+
+- Naprej: [Preprosta avtentikacija](../11-simple-auth/README.md)
 
 ---
 
-**Omejitev odgovornosti**:  
-Ta dokument je bil preveden z uporabo storitve AI za prevajanje [Co-op Translator](https://github.com/Azure/co-op-translator). Čeprav si prizadevamo za natančnost, vas prosimo, da upoštevate, da lahko avtomatizirani prevodi vsebujejo napake ali netočnosti. Izvirni dokument v njegovem maternem jeziku naj se šteje za avtoritativni vir. Za ključne informacije priporočamo profesionalni človeški prevod. Ne prevzemamo odgovornosti za morebitna nesporazumevanja ali napačne razlage, ki izhajajo iz uporabe tega prevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Izjava o omejitvi odgovornosti**:
+Ta dokument je bil preveden s pomočjo umetne inteligence preko storitve [Co-op Translator](https://github.com/Azure/co-op-translator). Čeprav si prizadevamo za natančnost, vas prosimo, da upoštevate, da avtomatizirani prevodi lahko vsebujejo napake ali netočnosti. Izvirni dokument v prvotnem jeziku velja za avtoritativni vir. Za ključne informacije priporočamo strokovni prevod s strani človeka. Nismo odgovorni za morebitna nesporazume ali napačne interpretacije, ki izhajajo iz uporabe tega prevoda.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->
