@@ -2,7 +2,7 @@
 
 本项目展示了一个在将用户提示传递给计算器服务之前，先进行内容安全检查的网页应用，采用了模型上下文协议（MCP）。
 
-![系统架构图](../../../../../../translated_images/zh-CN/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![系统架构图](../../../../../../translated_images/zh-CN/plant.b079fed84e945b7c.webp)
 
 ### 工作原理
 

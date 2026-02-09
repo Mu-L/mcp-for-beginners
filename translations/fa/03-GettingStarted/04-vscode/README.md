@@ -29,9 +29,9 @@
 
 ### تصاویر
 
-![پیکربندی راهنمایی شده سرور MCP در ویژوال استودیو کد](../../../../translated_images/fa/chat-mode-agent.729a22473f822216dd1e723aaee1f7d4a2ede571ee0948037a2d9357a63b9d0b.png)  
-![انتخاب ابزار برای هر جلسه Agent](../../../../translated_images/fa/agent-mode-select-tools.522c7ba5df0848f8f0d1e439c2e96159431bc620cb39ccf3f5dc611412fd0006.png)  
-![اشکال‌زدایی آسان خطاها در طول توسعه MCP](../../../../translated_images/fa/mcp-list-servers.fce89eefe3f30032bed8952e110ab9d82fadf043fcfa071f7d40cf93fb1ea9e9.png)  
+![پیکربندی راهنمایی شده سرور MCP در ویژوال استودیو کد](../../../../translated_images/fa/chat-mode-agent.729a22473f822216.webp)  
+![انتخاب ابزار برای هر جلسه Agent](../../../../translated_images/fa/agent-mode-select-tools.522c7ba5df0848f8.webp)  
+![اشکال‌زدایی آسان خطاها در طول توسعه MCP](../../../../translated_images/fa/mcp-list-servers.fce89eefe3f30032.webp)  
 
 در بخش‌های بعدی بیشتر درباره استفاده از رابط کاربری صحبت خواهیم کرد.
 
@@ -94,15 +94,15 @@
 
 1. ورودی خود را در فایل *mcp.json* پیدا کنید و مطمئن شوید که آیکون "پخش" (play) را مشاهده می‌کنید:
 
-  ![راه‌اندازی سرور در ویژوال استودیو کد](../../../../translated_images/fa/vscode-start-server.8e3c986612e3555de47e5b1e37b2f3020457eeb6a206568570fd74a17e3796ad.png)  
+  ![راه‌اندازی سرور در ویژوال استودیو کد](../../../../translated_images/fa/vscode-start-server.8e3c986612e3555d.webp)  
 
 1. روی آیکون "پخش" کلیک کنید. باید مشاهده کنید که تعداد ابزارهای موجود در آیکون ابزار گیت‌هاب کوپایلوت افزایش می‌یابد. اگر روی این آیکون ابزار کلیک کنید، لیستی از ابزارهای ثبت‌شده را مشاهده خواهید کرد. می‌توانید هر ابزار را بسته به نیاز خود فعال/غیرفعال کنید:
 
-  ![راه‌اندازی سرور در ویژوال استودیو کد](../../../../translated_images/fa/vscode-tool.0b3bbea2fb7d8c26ddf573cad15ef654e55302a323267d8ee6bd742fe7df7fed.png)
+  ![راه‌اندازی سرور در ویژوال استودیو کد](../../../../translated_images/fa/vscode-tool.0b3bbea2fb7d8c26.webp)
 
 1. برای اجرای یک ابزار، یک دستور (prompt) تایپ کنید که با توضیحات یکی از ابزارهای شما مطابقت داشته باشد، مثلاً دستوری مانند "add 22 to 1":
 
-  ![اجرای ابزار از گیت‌هاب کوپایلوت](../../../../translated_images/fa/vscode-agent.d5a0e0b897331060518fe3f13907677ef52b879db98c64d68a38338608f3751e.png)
+  ![اجرای ابزار از گیت‌هاب کوپایلوت](../../../../translated_images/fa/vscode-agent.d5a0e0b897331060.webp)
 
   باید پاسخی مانند 23 دریافت کنید.
 
