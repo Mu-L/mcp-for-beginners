@@ -2,7 +2,7 @@
 
 このプロジェクトは、ユーザーのプロンプトを計算サービスに渡す前にコンテンツの安全性チェックを行うウェブアプリケーションを示しています。通信はModel Context Protocol（MCP）を使用しています。
 
-![System Architecture Diagram](../../../../../../translated_images/ja/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![System Architecture Diagram](../../../../../../translated_images/ja/plant.b079fed84e945b7c.webp)
 
 ### 動作の仕組み
 
