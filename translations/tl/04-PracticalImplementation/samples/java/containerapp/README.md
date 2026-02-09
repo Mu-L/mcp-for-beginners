@@ -2,7 +2,7 @@
 
 Ipinapakita ng proyektong ito ang isang web application na gumagamit ng content safety checking bago ipasa ang mga user prompt sa isang calculator service gamit ang Model Context Protocol (MCP).
 
-![System Architecture Diagram](../../../../../../translated_images/tl/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![System Architecture Diagram](../../../../../../translated_images/tl/plant.b079fed84e945b7c.webp)
 
 ### Paano Ito Gumagana
 

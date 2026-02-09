@@ -17,7 +17,7 @@ Ang iba pang mga proyekto ay mula sa [.NET Aspire](https://learn.microsoft.com/d
 
 1. Kapag nagbukas ang web browser ng .NET Aspire dashboard, tandaan ang `http` URL. Dapat ito ay parang `http://localhost:5058/`.
 
-   ![.NET Aspire Dashboard](../../../../../translated_images/tl/dotnet-aspire-dashboard.0a7095710e9301e90df2efd867e1b675b3b9bc2ccd7feb1ebddc0751522bc37c.png)
+   ![.NET Aspire Dashboard](../../../../../translated_images/tl/dotnet-aspire-dashboard.0a7095710e9301e9.webp)
 
 ## Subukan ang Streamable HTTP gamit ang MCP Inspector
 
@@ -29,7 +29,7 @@ Simulan ang server at patakbuhin ang sumusunod na utos sa terminal:
 npx @modelcontextprotocol/inspector http://localhost:5058
 ```
 
-![MCP Inspector](../../../../../translated_images/tl/mcp-inspector.c223422b9b494fb4a518a3b3911b3e708e6a5715069470f9163ee2ee8d5f1ba9.png)
+![MCP Inspector](../../../../../translated_images/tl/mcp-inspector.c223422b9b494fb4.webp)
 
 - Piliin ang `Streamable HTTP` bilang Transport type.
 - Sa Url field, ilagay ang URL ng server na naitala kanina, at idagdag ang `/mcp`. Dapat ito ay `http` (hindi `https`) na parang `http://localhost:5058/mcp`.
@@ -74,7 +74,7 @@ azd up
 
 Kapag natapos na ang deployment, makakakita ka ng mensahe na ganito:
 
-![Azd deployment success](../../../../../translated_images/tl/azd-deployment-success.bd42940493f1b834a5ce6251a6f88966546009b350df59d0cc4a8caabe94a4f1.png)
+![Azd deployment success](../../../../../translated_images/tl/azd-deployment-success.bd42940493f1b834.webp)
 
 Kunin ang URL at gamitin ito sa MCP Inspector at sa GitHub Copilot Chat.
 

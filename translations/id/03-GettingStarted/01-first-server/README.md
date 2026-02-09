@@ -147,7 +147,7 @@ Saat Anda menjalankan perintah di atas, MCP Inspector akan meluncurkan antarmuka
 
 Berikut tangkapan layar seperti apa tampilannya:
 
-![MCP Inspector server connection](../../../../translated_images/id/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/id/connected.73d1e042c24075d3.webp)
 
 ## Masalah Umum Pengaturan dan Solusinya
 
@@ -1293,7 +1293,7 @@ Di antarmuka web inspector:
 2. Atur URL ke: `http://localhost:8080/sse`
 3. Klik "Connect"
 
-![Connect](../../../../translated_images/id/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/id/tool.163d33e3ee307e20.webp)
 
 **Anda sekarang terhubung ke server**
 **Bagian pengujian server Java sekarang selesai**
@@ -1302,18 +1302,18 @@ Bagian berikutnya adalah tentang berinteraksi dengan server.
 
 Anda harus melihat antarmuka pengguna berikut:
 
-![Connect](../../../../translated_images/id/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/id/connect.141db0b2bd05f096.webp)
 
 1. Hubungkan ke server dengan memilih tombol Connect
   Setelah Anda terhubung ke server, Anda sekarang harus melihat yang berikut:
 
-  ![Connected](../../../../translated_images/id/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/id/connected.73d1e042c24075d3.webp)
 
 1. Pilih "Tools" dan "listTools", Anda harus melihat "Add" muncul, pilih "Add" dan isi nilai parameter.
 
   Anda harus melihat respons berikut, yaitu hasil dari alat "add":
 
-  ![Result of running add](../../../../translated_images/id/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/id/ran-tool.a5a6ee878c1369ec.webp)
 
 Selamat, Anda berhasil membuat dan menjalankan server pertama Anda!
 

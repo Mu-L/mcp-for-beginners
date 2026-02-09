@@ -55,7 +55,7 @@ Alat debugging yang kuat yang menyediakan:
 2. **Buat agen baru** dengan konfigurasi berikut:  
    - Nama Agen: `WeatherAgent`
 
-![Agent Creation](../../../../translated_images/id/Agent.c9c33f6a412b4cdedfb973fe5448bdb33de3f400055603111b875610e9b917ab.png)
+![Agent Creation](../../../../translated_images/id/Agent.c9c33f6a412b4cde.webp)
 
 ### Langkah 2: Inisialisasi Proyek Server MCP
 
@@ -65,7 +65,7 @@ Alat debugging yang kuat yang menyediakan:
 4. **Pilih template `python-weather`**  
 5. **Beri nama server Anda:** `weather_mcp`
 
-![Python Template Selection](../../../../translated_images/id/Pythontemplate.9d0a2913c6491500bd673430f024dc44676af2808a27b5da9dcc0eb7063adc28.png)
+![Python Template Selection](../../../../translated_images/id/Pythontemplate.9d0a2913c6491500.webp)
 
 ### Langkah 3: Buka dan Periksa Proyek
 
@@ -331,7 +331,7 @@ USER_PROMPT
 How's the weather like in Seattle
 ```
 
-![Agent Builder Debug Result](../../../../translated_images/id/Result.6ac570f7d2b1d5389c561ab0566970fe0f13e75bdd976b6a7f0270bc715d07f8.png)
+![Agent Builder Debug Result](../../../../translated_images/id/Result.6ac570f7d2b1d538.webp)
 
 ### Langkah 8: Debug dengan MCP Inspector
 
@@ -343,7 +343,7 @@ How's the weather like in Seattle
    - Pantau permintaan jaringan  
    - Debug respons server  
 
-![MCP Inspector Interface](../../../../translated_images/id/Inspector.5672415cd02fe8731774586cc0a1083e3275d2f8491602aecc8ac4d61f2c0d57.png)
+![MCP Inspector Interface](../../../../translated_images/id/Inspector.5672415cd02fe873.webp)
 
 ---
 
