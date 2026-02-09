@@ -14,7 +14,7 @@
 
     你應該會看到工具顯示在聊天文字框上方，提示你選擇執行該工具，如下圖所示：
 
-    ![VS Code indicating it wanting to run a tool](../../../../../translated_images/zh-HK/vscode-agent.d5a0e0b897331060518fe3f13907677ef52b879db98c64d68a38338608f3751e.png)
+    ![VS Code indicating it wanting to run a tool](../../../../../translated_images/zh-HK/vscode-agent.d5a0e0b897331060.webp)
 
     選擇該工具後，如果你的提示如前所述，應該會得到數字結果「23」。
 
