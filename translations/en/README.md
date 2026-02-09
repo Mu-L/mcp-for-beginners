@@ -51,10 +51,12 @@ By the time you complete this journey, you'll have the confidence to build your 
 
 ### Official Documentation and Specifications
 
+This curriculum is aligned with **MCP Specification 2025-11-25** (the latest stable release). The MCP specification uses date-based versioning (YYYY-MM-DD format) to ensure clear protocol version tracking.
+
 These resources become more valuable as your understanding grows, but don't feel pressured to read everything immediately. Start with the areas that interest you most!
 - 📘 [MCP Documentation](https://modelcontextprotocol.io/) – This is your go-to resource for step-by-step tutorials and user guides. The documentation is written with beginners in mind, providing clear examples you can follow along with at your own pace.
-- 📜 [MCP Specification](https://modelcontextprotocol.io/docs/) – Think of this as your comprehensive reference manual. As you work through the curriculum, you'll find yourself returning here to look up specific details and explore advanced features.
-- 📜 [Original MCP Specification](https://modelcontextprotocol.io/specification/versioning) – This contains additional technical details that can be helpful for advanced implementations. It's there when you need it, but don't worry about it when you're starting out.
+- 📜 [MCP Specification](https://modelcontextprotocol.io/specification/2025-11-25) – Think of this as your comprehensive reference manual. As you work through the curriculum, you'll find yourself returning here to look up specific details and explore advanced features.
+- 📜 [MCP Specification Versioning](https://modelcontextprotocol.io/specification/versioning) – This contains information about protocol version history and how MCP uses date-based versioning (YYYY-MM-DD format).
 - 🧑‍💻 [MCP GitHub Repository](https://github.com/modelcontextprotocol) –  Here you'll find SDKs, tools, and code samples in multiple programming languages. It's like a treasure trove of practical examples and ready-to-use components.
 - 🌐 [MCP Community](https://github.com/orgs/modelcontextprotocol/discussions) – Join fellow learners and experienced developers in discussions about MCP. It's a supportive community where questions are welcome and knowledge is shared freely.
   
@@ -113,8 +115,8 @@ This is where your adventure begins! We'll introduce you to MCP concepts using f
 ### 🔨 Building Phase: Creating Your First Implementations (Module 3)
 
 Now the real fun begins! You'll get hands-on experience building actual MCP servers and clients. Don't worry - we'll start simple and guide you through every step.
-
 This module includes multiple hands-on guides that let you practice in your preferred programming language. You'll create your first server, build a client to connect to it, and even integrate with popular development tools like VS Code.
+
 Each guide includes complete code examples, troubleshooting tips, and explanations of why we make specific design choices. By the end of this phase, you'll have working MCP implementations you can be proud of!
 
 ### 🚀 Growing Phase: Advanced Concepts and Real-World Application (Modules 4-5)
@@ -133,7 +135,7 @@ Module 11 deserves special mention - it's a complete 13-lab hands-on learning pa
 
 | Module | Topic | Description | Link |
 |--------|-------|-------------|------|
-| **Module 1-3: Fundamentals** | | | |
+| **Module 0-3: Fundamentals** | | | |
 | 00 | Introduction to MCP | Overview of the Model Context Protocol and its significance in AI pipelines | [Read more](./00-Introduction/README.md) |
 | 01 | Core Concepts Explained | In-depth exploration of core MCP concepts | [Read more](./01-CoreConcepts/README.md) |
 | 02 | Security in MCP | Security threats and best practices | [Read more](./02-Security/README.md) |
@@ -150,8 +152,11 @@ Module 11 deserves special mention - it's a complete 13-lab hands-on learning pa
 | 3.9 | Deployment | Deploy MCP servers to production | [Guide](./03-GettingStarted/09-deployment/README.md) |
 | 3.10 | Advanced server usage | Use advanced servers for advanced feature usage and improved architecture | [Guide](./03-GettingStarted/10-advanced/README.md) |
 | 3.11 | Simple auth | A chapter showing you auth from the beginning and RBAC | [Guide](./03-GettingStarted/11-simple-auth/README.md) |
+| 3.12 | MCP Hosts | Configure Claude Desktop, Cursor, Cline, and other MCP hosts | [Guide](./03-GettingStarted/12-mcp-hosts/README.md) |
+| 3.13 | MCP Inspector | Debug and test MCP servers with the Inspector tool | [Guide](./03-GettingStarted/13-mcp-inspector/README.md) |
 | **Module 4-5: Practical & Advanced** | | | |
 | 04 | Practical Implementation | SDKs, debugging, testing, reusable prompt templates | [Read more](./04-PracticalImplementation/README.md) |
+| 4.1 | Pagination | Handle large result sets with cursor-based pagination | [Guide](./04-PracticalImplementation/pagination/README.md) |
 | 05 | Advanced Topics in MCP | Multi-modal AI, scaling, enterprise use | [Read more](./05-AdvancedTopics/README.md) |
 | 5.1 | Azure Integration | MCP Integration with Azure | [Guide](./05-AdvancedTopics/mcp-integration/README.md) |
 | 5.2 | Multi-modality | Working with multiple modalities | [Guide](./05-AdvancedTopics/mcp-multi-modality/README.md) |
@@ -168,9 +173,10 @@ Module 11 deserves special mention - it's a complete 13-lab hands-on learning pa
 | 5.13 | Foundry Integration | Integrate with Azure AI Foundry | [Guide](./05-AdvancedTopics/mcp-foundry-agent-integration/README.md) |
 | 5.14 | Context Engineering | Techniques for effective context engineering | [Guide](./05-AdvancedTopics/mcp-contextengineering/README.md) |
 | 5.15 | MCP Custom Transport | Custom Transport implementations | [Guide](./05-AdvancedTopics/mcp-transport/README.md) |
+| 5.16 | Protocol Features | Progress notifications, cancellation, resource templates | [Guide](./05-AdvancedTopics/mcp-protocol-features/README.md) |
 | **Module 6-10: Community & Best Practices** | | | |
 | 06 | Community Contributions | How to contribute to the MCP ecosystem | [Guide](./06-CommunityContributions/README.md) |
-| 07 | Insights from Early Adoption | Real-world implementation stories | [Guide](./07-LessonsFromEarlyAdoption/README.md) |
+| 07 | Insights from Early Adoption | Real-world implementation stories | [Guide](./07-LessonsfromEarlyAdoption/README.md) |
 | 08 | Best Practices for MCP | Performance, fault-tolerance, resilience | [Guide](./08-BestPractices/README.md) |
 | 09 | MCP Case Studies | Practical implementation examples | [Guide](./09-CaseStudy/README.md) |
 | 10 | Hands-on Workshop | Building an MCP Server with AI Toolkit | [Lab](./10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/README.md) |
@@ -212,7 +218,7 @@ One of the most exciting parts of learning MCP is seeing your code skills develo
 | C# | Advanced Sample | [View Code](./04-PracticalImplementation/samples/csharp/README.md) |
 | Java with Spring | Container App Example | [View Code](./04-PracticalImplementation/samples/java/containerapp/README.md) |
 | JavaScript | Advanced Sample | [View Code](./04-PracticalImplementation/samples/javascript/README.md) |
-| Python | Complex Implementation | [View Code](../../04-PracticalImplementation/samples/python/READMEmd) |
+| Python | Complex Implementation | [View Code](./04-PracticalImplementation/samples/python/README.md) |
 | TypeScript | Container Sample | [View Code](./04-PracticalImplementation/samples/typescript/README.md) |
 
 
@@ -232,7 +238,6 @@ To get the most out of this curriculum, you should have:
 This repository includes several resources to help you navigate and learn effectively:
 
 ### Study Guide
-
 A comprehensive [Study Guide](./study_guide.md) is available to help you navigate this repository effectively. This visual curriculum map shows how all the topics connect and provides guidance on how to use the sample projects effectively. It's especially helpful if you're a visual learner who likes to see the big picture.
 
 The guide includes:
@@ -253,45 +258,11 @@ We maintain a detailed [Changelog](./changelog.md) that tracks all significant u
 ## 🛠️ How to Use This Curriculum Effectively
 
 Each lesson in this guide includes:
+
 1. Clear explanations of MCP concepts  
 2. Live code examples in multiple languages  
 3. Exercises to build real MCP applications  
 4. Extra resources for advanced learners
-
-## On Demand Content 
-
-### [MCP Dev Days July 2025](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
-#### [➡️Watch on Demand - MCP Dev Days](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
-Get ready for two days of deep technical insight, community connection, and hands-on learning at MCP Dev Days, a virtual event dedicated to the Model Context Protocol (MCP) — the emerging standard that bridges AI models and the tools they rely on.
-You can watch MCP Dev Days by registering on our event page: https://aka.ms/mcpdevdays. 
-
-#### [Day 1: MCP Productivity, DevTools, & Community:](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
-
-Is all about empowering developers to use MCP in their developer workflow and celebrating the amazing MCP community. We’ll be joined with community members and partners such as Arcade, Block, Okta, and Neon to see how they are collaborating with Microsoft to shape an open, extensible MCP ecosystem. Real-world demos across VS Code, Visual Studio, GitHub Copilot, and popular community tools
-Practical, context-driven dev workflows
-Community-led sessions and insights
-Whether you’re just getting started with MCP or already building with it, Day 1 will set the stage with inspiration and actionable takeaways.
-
-#### [Day 2: Build MCP Servers with Confidence](https://developer.microsoft.com/en-us/reactor/series/S-1563/)
-
-Is for MCP builders. We’ll go deep into implementation strategies and best practices for creating MCP servers and integrating MCP into your AI workflows.
-
-#### Topics include:
-
-- Building MCP Servers and integrating them into agent experiences
-- Prompt-driven development
-- Security best practices
-- Using building blocks like Functions, ACA, and API Management
-- Registry alignment and tooling (1P + 3P)
-
-If you’re a developer, tool builder, or AI product strategist, this day is packed with the insights you need to build scalable, secure, and future-ready MCP solutions.
-
-### MCP Boot Camp August 2025
-Learn in intensive video sessions how to create MCP servers, integrate with VS Code, and deploy professionally on Azure based on content from the MCP for Beginners curriculum. Walk away with practical skills in a technology that major companies are already using.
-
-#### [➡️Watch on Demand MCP Bootcamp | English](https://developer.microsoft.com/en-us/reactor/series/s-1568/)
-#### [➡️Watch on Demand MCP Bootcamp | Brasil](https://developer.microsoft.com/en-us/reactor/series/S-1566/)
-#### [➡️Watch on Demand MCP Bootcamp | Spanish](https://developer.microsoft.com/en-us/reactor/series/S-1567/)
 
 ### Let's Learn MCP with C# - Tutorial Series
 Let's learn about the Model Context Protocol (MCP), a cutting-edge framework designed to standardize interactions between AI models and client applications. Through this beginner-friendly session, we'll introduce you to MCP and guide you through creating your first MCP server.

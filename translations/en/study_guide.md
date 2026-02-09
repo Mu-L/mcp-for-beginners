@@ -1,10 +1,10 @@
 # Model Context Protocol (MCP) for Beginners - Study Guide
 
-This study guide offers an overview of the repository structure and content for the "Model Context Protocol (MCP) for Beginners" curriculum. Use it to navigate the repository effectively and maximize the available resources.
+This study guide provides an overview of the repository structure and content for the "Model Context Protocol (MCP) for Beginners" curriculum. Use this guide to navigate the repository efficiently and make the most of the available resources.
 
 ## Repository Overview
 
-The Model Context Protocol (MCP) is a standardized framework for facilitating interactions between AI models and client applications. Originally developed by Anthropic, MCP is now maintained by the broader MCP community through its official GitHub organization. This repository provides a detailed curriculum with hands-on code examples in C#, Java, JavaScript, Python, and TypeScript, tailored for AI developers, system architects, and software engineers.
+The Model Context Protocol (MCP) is a standardized framework for interactions between AI models and client applications. Initially created by Anthropic, MCP is now maintained by the broader MCP community through the official GitHub organization. This repository provides a comprehensive curriculum with hands-on code examples in C#, Java, JavaScript, Python, and TypeScript, designed for AI developers, system architects, and software engineers.
 
 ## Visual Curriculum Map
 
@@ -23,6 +23,8 @@ mindmap
       (Protocol Components)
       (Messaging Patterns)
       (Transport Mechanisms)
+      (Tasks - Experimental)
+      (Tool Annotations)
     02. Security
       ::icon(fa fa-shield)
       (AI-Specific Threats)
@@ -30,6 +32,8 @@ mindmap
       (Azure Content Safety)
       (Auth & Authorization)
       (Microsoft Prompt Shields)
+      (OWASP MCP Top 10)
+      (Sherpa Security Workshop)
     03. Getting Started
       ::icon(fa fa-rocket)
       (First Server Implementation)
@@ -43,6 +47,8 @@ mindmap
       (Advanced Server Usage)
       (Simple Auth)
       (Deployment Strategies)
+      (MCP Hosts Setup)
+      (MCP Inspector)
     04. Practical Implementation
       ::icon(fa fa-code)
       (Multi-Language SDKs)
@@ -50,6 +56,7 @@ mindmap
       (Prompt Templates)
       (Sample Projects)
       (Production Patterns)
+      (Pagination Strategies)
     05. Advanced Topics
       ::icon(fa fa-graduation-cap)
       (Context Engineering)
@@ -65,6 +72,7 @@ mindmap
       (Security Hardening)
       (Entra ID Integration)
       (Web Search MCP)
+      (Protocol Features Deep Dive)
       
     06. Community
       ::icon(fa fa-users)
@@ -113,20 +121,18 @@ mindmap
       (13-Lab Structure)
       (Hands-on Learning)
 ```
-
-
 ## Repository Structure
 
-The repository is divided into eleven main sections, each focusing on different aspects of MCP:
+The repository is organized into eleven main sections, each focusing on different aspects of MCP:
 
 1. **Introduction (00-Introduction/)**
    - Overview of the Model Context Protocol
-   - Importance of standardization in AI pipelines
+   - Why standardization matters in AI pipelines
    - Practical use cases and benefits
 
 2. **Core Concepts (01-CoreConcepts/)**
    - Client-server architecture
-   - Key components of the protocol
+   - Key protocol components
    - Messaging patterns in MCP
 
 3. **Security (02-Security/)**
@@ -147,10 +153,10 @@ The repository is divided into eleven main sections, each focusing on different 
      - Microsoft Prompt Shields integration
 
 4. **Getting Started (03-GettingStarted/)**
-   - Setting up and configuring your environment
-   - Building basic MCP servers and clients
-   - Integrating MCP with existing applications
-   - Includes sections on:
+   - Environment setup and configuration
+   - Creating basic MCP servers and clients
+   - Integration with existing applications
+   - Includes sections for:
      - First server implementation
      - Client development
      - LLM client integration
@@ -163,9 +169,9 @@ The repository is divided into eleven main sections, each focusing on different 
      - Deployment guidelines
 
 5. **Practical Implementation (04-PracticalImplementation/)**
-   - Using SDKs across various programming languages
+   - Using SDKs across different programming languages
    - Debugging, testing, and validation techniques
-   - Creating reusable prompt templates and workflows
+   - Crafting reusable prompt templates and workflows
    - Sample projects with implementation examples
 
 6. **Advanced Topics (05-AdvancedTopics/)**
@@ -184,17 +190,17 @@ The repository is divided into eleven main sections, each focusing on different 
    - Web search integration
 
 7. **Community Contributions (06-CommunityContributions/)**
-   - Guidelines for contributing code and documentation
+   - How to contribute code and documentation
    - Collaborating via GitHub
    - Community-driven enhancements and feedback
    - Using various MCP clients (Claude Desktop, Cline, VSCode)
-   - Working with popular MCP servers, including image generation
+   - Working with popular MCP servers including image generation
 
 8. **Lessons from Early Adoption (07-LessonsfromEarlyAdoption/)**
    - Real-world implementations and success stories
    - Building and deploying MCP-based solutions
    - Trends and future roadmap
-   - **Microsoft MCP Servers Guide**: Detailed guide to 10 production-ready Microsoft MCP servers, including:
+   - **Microsoft MCP Servers Guide**: Comprehensive guide to 10 production-ready Microsoft MCP servers including:
      - Microsoft Learn Docs MCP Server
      - Azure MCP Server (15+ specialized connectors)
      - GitHub MCP Server
@@ -212,7 +218,7 @@ The repository is divided into eleven main sections, each focusing on different 
    - Testing and resilience strategies
 
 10. **Case Studies (09-CaseStudy/)**
-    - **Seven detailed case studies** showcasing MCP's versatility across various scenarios:
+    - **Seven comprehensive case studies** demonstrating MCP versatility across diverse scenarios:
     - **Azure AI Travel Agents**: Multi-agent orchestration with Azure OpenAI and AI Search
     - **Azure DevOps Integration**: Automating workflow processes with YouTube data updates
     - **Real-Time Documentation Retrieval**: Python console client with streaming HTTP
@@ -224,7 +230,7 @@ The repository is divided into eleven main sections, each focusing on different 
 
 11. **Hands-on Workshop (10-StreamliningAIWorkflowsBuildingAnMCPServerWithAIToolkit/)**
     - Comprehensive hands-on workshop combining MCP with AI Toolkit
-    - Building intelligent applications that bridge AI models with real-world tools
+    - Building intelligent applications bridging AI models with real-world tools
     - Practical modules covering fundamentals, custom server development, and production deployment strategies
     - **Lab Structure**:
       - Lab 1: MCP Server Fundamentals
@@ -330,9 +336,11 @@ This repository welcomes contributions from the community. See the Community Con
 
 ----
 
-*This study guide was updated on October 6th, 2025, and provides an overview of the repository as of that date. Repository content may be updated after this date.*
+*This study guide was last updated on February 5, 2026, reflecting the latest MCP Specification 2025-11-25 and provides an overview of the repository as of that date. Repository content may be updated after this date.*
 
 ---
 
-**Disclaimer**:  
-This document has been translated using the AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). While we aim for accuracy, please note that automated translations may contain errors or inaccuracies. The original document in its native language should be regarded as the authoritative source. For critical information, professional human translation is recommended. We are not responsible for any misunderstandings or misinterpretations resulting from the use of this translation.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Disclaimer**:
+This document has been translated using the AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). While we strive for accuracy, please be aware that automated translations may contain errors or inaccuracies. The original document in its native language should be considered the authoritative source. For critical information, professional human translation is recommended. We are not liable for any misunderstandings or misinterpretations arising from the use of this translation.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

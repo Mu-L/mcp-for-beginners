@@ -1,13 +1,13 @@
 # Advanced server usage
 
-The MCP SDK provides two types of servers: the regular server and the low-level server. Typically, you would use the regular server to add features. However, there are cases where the low-level server is preferable, such as:
+There are two different types of servers exposed in the MCP SDK, your normal server and the low-level server. Normally, you would use the regular server to add features to it. For some cases though, you want to rely on the low-level server such as:
 
-- **Improved architecture**: While both server types can support clean architecture, the low-level server may make it slightly easier to achieve.
-- **Feature availability**: Some advanced features, like sampling and elicitation (covered in later chapters), are only accessible via the low-level server.
+- Better architecture. It's possible to create a clean architecture with both the regular server and a low-level server but it can be argued that it's slightly easier with a low-level server.
+- Feature availability. Some advanced features can only be used with a low-level server. You will see this in later chapters as we add sampling and elicitation.
 
 ## Regular server vs low-level server
 
-Here’s an example of how an MCP Server is created using the regular server:
+Here's what the creation of an MCP Server looks like with the regular server
 
 **Python**
 
@@ -42,18 +42,18 @@ server.registerTool("add",
 );
 ```
 
-With the regular server, you explicitly add each tool, resource, or prompt that you want the server to include. This approach works well.
+The point being is that you explicitly add each tool, resource or prompt that you want the server to have. Nothing wrong with that.  
 
 ### Low-level server approach
 
-Using the low-level server requires a different mindset. Instead of registering each tool individually, you create two handlers for each feature type (tools, resources, or prompts). For example, tools would have:
+However, when you use the low-level server approach you need to think about it differently namely that instead of registering each tool you instead create two handlers per feature type (tools, resources or prompts). So for example tools then only have two functions like so:
 
-- **Listing all tools**: A single function responsible for listing all tools.
-- **Handling tool calls**: A single function responsible for handling calls to any tool.
+- Listing all tools. One function would be responsible for all attempts to list tools.
+- handle calling all tools. Here also, there's only one function handling calls to a tool
 
-This approach might seem like less work. Instead of registering each tool, you ensure the tool is listed when tools are requested and that it is called when an incoming request specifies it.
+That sounds like potentially less work right? So instead of registering a tool, I just need to make sure the tool is listed when I list all tools and that it's called when there's an incoming request to call a tool. 
 
-Here’s how the code looks:
+Let's have a look at how the code now looks:
 
 **Python**
 
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-In this example, a function returns a list of features. Each entry in the tools list includes fields like `name`, `description`, and `inputSchema` to match the expected return type. This allows you to organize your tools and feature definitions in separate folders, resulting in a project structure like this:
+Here we now have a function that returns a list of features. Each entry in the tools list now has fields like `name`, `description` and `inputSchema` to adhere to the return type. This enables us to put our tools and feature definition elsewhere. We can now create all our tools in a tools folder and the same goes for all your features so your project can suddenly be organized like so:
 
 ```text
 app
@@ -113,9 +113,9 @@ app
 ----| product-description
 ```
 
-This organization helps create a clean architecture.
+That's great, our architecture can be made to look quite clean.
 
-What about calling tools? Is it the same idea—one handler for calling any tool? Yes, exactly. Here’s the code for that:
+What about calling tools, is it the same idea then, one handler to call a tool, whichever tool? Yes, exactly, here's the code for that:
 
 **Python**
 
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     
     // args: request.params.arguments
-    // TODO call the tool, 
+    // TODO call the tool,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-As shown, the handler parses the tool to be called, along with its arguments, and then proceeds to invoke the tool.
+As you can see from above code, we need to parse out the tool to call, and with what arguments, and then we need to proceed to calling the tool.
 
 ## Improving the approach with validation
 
-So far, we’ve replaced individual registrations for tools, resources, and prompts with two handlers per feature type. What’s next? Adding validation to ensure tools are called with the correct arguments. Each runtime has its own solution for this—for example, Python uses Pydantic, and TypeScript uses Zod. The process involves:
+So far, you've seen how all your registrations to add tools, resources and prompts can be replaced with these two handlers per feature type. What else do we need to do? Well, we should add some form of validation to ensure that the tool is called with right arguments. Each runtime has their own solution for this, for example Python uses Pydantic and TypeScript uses Zod. The idea is that we do the following:
 
-- Moving the logic for creating a feature (tool, resource, or prompt) to its dedicated folder.
-- Adding validation for incoming requests, such as calls to tools.
+- Move the logic for creating a feature (tool, resource or prompt) to its dedicated folder.
+- Add a way to validate an incoming request asking to for example call a tool.
 
-### Creating a feature
+### Create a feature
 
-To create a feature, you need to create a file for it and ensure it includes the mandatory fields required for that feature. The required fields vary slightly between tools, resources, and prompts.
+To create a feature, we will need to create a file for that feature and make sure it has the mandatory fields required of that feature. Which fields differ a bit between tools, resources and prompts.
 
 **Python**
 
@@ -213,10 +213,10 @@ tool_add = {
 }
 ```
 
-Here’s what happens:
+here you can see how we do the following:
 
-- A schema is created using Pydantic (`AddInputModel`) with fields `a` and `b` in the file *schema.py*.
-- The incoming request is parsed to match the `AddInputModel` type. If the parameters don’t match, the process will fail:
+- Create a schema using Pydantic `AddInputModel` with fields `a` and `b` in file *schema.py*.
+- Attempt to parse the incoming request to be of type `AddInputModel`, if there's a mismatch in parameters this will crash:
 
    ```python
    # add.py
@@ -227,7 +227,7 @@ Here’s what happens:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-You can decide whether to include this parsing logic in the tool call itself or in the handler function.
+You can choose whether to put this parsing logic in the tool call itself or in the handler function.
 
 **TypeScript**
 
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-In the handler for all tool calls, the incoming request is parsed into the tool’s defined schema:
+- In the handler dealing with all tool calls, we now try to parse the incoming request into the tool's defined schema:
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ In the handler for all tool calls, the incoming request is parsed into the tool�
        const input = Schema.parse(request.params.arguments);
     ```
 
-If the parsing succeeds, the tool is invoked:
+    if that works then we proceed to call the actual tool:
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-This approach results in a well-organized architecture. The *server.ts* file remains small, handling only request wiring, while each feature resides in its respective folder (e.g., tools/, resources/, or prompts/).
+As you can see, this approach creates a great architecture as everything has its place, the *server.ts* is a very small file that only wires up the request handlers and each feature is in their respective folder i.e tools/, resources/ or /prompts.
 
-Great! Let’s build this next.
+Great, let's try to build this next. 
 
 ## Exercise: Creating a low-level server
 
-In this exercise, we will:
+In this exercise, we will do the following:
 
-1. Create a low-level server to handle tool listing and tool calls.
-2. Implement a scalable architecture.
-3. Add validation to ensure tool calls are properly validated.
+1. Create a low-level server handling listing of tools and calling of tools.
+1. Implement an architecture you can build upon.
+1. Add validation to ensure your tool calls are properly validated.
 
 ### -1- Create an architecture
 
-First, we need an architecture that supports scalability as we add more features. Here’s an example:
+The first thing we need to address is an architecture that helps us scale as we add more features, here's what it looks like:
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-This setup ensures that new tools can be added easily in the tools folder. You can follow the same structure to add subdirectories for resources and prompts.
+Now we have set up an architecture that ensures we can easily add new tools in a tools folder. Feel free to follow this to add subdirectories for resources and prompts.
 
 ### -2- Creating a tool
 
-Next, let’s create a tool. It should be placed in the *tools* subdirectory like this:
+Let's see what creating a tool looks like next. First, it needs to be created in its *tool* subdirectory like so:
 
 **Python**
 
@@ -371,13 +371,9 @@ tool_add = {
 }
 ```
 
-Here’s what happens:
+What we see here is how we define name, description, an input schema using Pydantic and a handler that will be invoked once this tool is being called. Lastly, we expose `tool_add` which is a dictionary holding all these properties.
 
-- The tool’s name, description, and input schema (defined using Pydantic) are specified.
-- A handler is defined to be invoked when the tool is called.
-- The `tool_add` dictionary is exposed, containing all these properties.
-
-The *schema.py* file defines the input schema for the tool:
+There's also *schema.py* that's used to define the input schema used by our tool:
 
 ```python
 from pydantic import BaseModel
@@ -387,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Additionally, *__init__.py* must be populated to treat the tools directory as a module. It should expose the modules within it:
+We also need to populate *__init__.py* to ensure the tools directory is treated as a module. Additionally, we need to expose the modules within it like so:
 
 ```python
 from .add import tool_add
@@ -397,7 +393,7 @@ tools = {
 }
 ```
 
-You can update this file as you add more tools.
+We can keep adding to this file as we add more tools.
 
 **TypeScript**
 
@@ -418,14 +414,14 @@ export default {
 } as Tool;
 ```
 
-Here, a dictionary is created with the following properties:
+Here we create a dictionary consisting of properties:
 
-- **name**: The tool’s name.
-- **rawSchema**: A Zod schema for validating incoming requests.
-- **inputSchema**: A schema used by the handler.
-- **callback**: A function to invoke the tool.
+- name, this is the name of the tool.
+- rawSchema, this is the Zod schema, it will be used to validate incoming requests to call this tool.
+- inputSchema, this schema will be used by the handler.
+- callback, this is used to invoke the tool.
 
-The `Tool` type converts this dictionary into a format the MCP server handler can accept:
+There is also `Tool` that's used to convert this dictionary into a type the mcp server handler can accept and it looks like so:
 
 ```typescript
 import { z } from 'zod';
@@ -438,7 +434,7 @@ export interface Tool {
 }
 ```
 
-The *schema.ts* file stores input schemas for tools. Currently, it contains one schema, but more can be added as needed:
+And there's *schema.ts* where we store the input schemas for each tool that looks like so with only one schema at present but as we add tools we can add more entries:
 
 ```typescript
 import { z } from 'zod';
@@ -446,11 +442,11 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Great! Let’s move on to handling tool listing.
+Great, let's proceed to handle the listing of our tools next.
 
 ### -3- Handle tool listing
 
-To handle tool listing, we need to set up a request handler. Here’s what to add to the server file:
+Next, to handle listing our tools, we need to set up a request handler for that. Here's what we need to add to our server file:
 
 **Python**
 
@@ -474,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-The `@server.list_tools` decorator is used, along with the `handle_list_tools` function. This function generates a list of tools, each with a name, description, and inputSchema.
+Here we add the decorator `@server.list_tools` and the implementing function `handle_list_tools`. In the latter, we need to produce a list of tools. Note how each tool needs to have a name, description and inputSchema.   
 
 **TypeScript**
 
-To set up the request handler for listing tools, use `setRequestHandler` on the server with a schema like `ListToolsRequestSchema`:
+To set up the request handler for listing tools, we need to call `setRequestHandler` on the server with a schema fitting what we're trying to do, in this case `ListToolsRequestSchema`. 
 
 ```typescript
 // index.ts
@@ -503,15 +499,15 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Now that tool listing is handled, let’s look at calling tools.
+Great, now we have solved the piece of listing tools, let's look at how we could be calling tools next.
 
 ### -4- Handle calling a tool
 
-To call a tool, set up another request handler to process requests specifying the feature to call and its arguments.
+To call a tool, we need to set up another request handler, this time focused on dealing with a request specifying which feature to call and with what arguments.
 
 **Python**
 
-Use the `@server.call_tool` decorator and implement it with a function like `handle_call_tool`. This function parses the tool name and arguments, ensuring the arguments are valid for the specified tool. Validation can occur here or downstream in the tool itself.
+Let's use the decorator `@server.call_tool` and implement it with a function like `handle_call_tool`. Within that function, we need to parse out the tool name, its argument and ensure the arguments are valid for the tool in question. We can either validate the arguments in this function or downstream in the actual tool.
 
 ```python
 @server.call_tool()
@@ -537,26 +533,33 @@ async def handle_call_tool(
     ] 
 ```
 
-Here’s what happens:
+Here's what goes on:
 
-- The tool name is extracted from the `name` parameter, and arguments are extracted from the `arguments` dictionary.
-- The tool is invoked using `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. Argument validation occurs in the `handler` function, raising an exception if validation fails.
+- Our tool name is already present as the input parameter `name` which is true for our arguments in the form of the `arguments` dictionary.
 
-Now you have a complete understanding of listing and calling tools using a low-level server.
+- The tool is called with `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. The validation of the arguments happens in the `handler` property which points to a function, if that fails it will raise an exception. 
 
-See the [full example](./code/README.md) here.
+There, now we have a full understanding of listing and calling tools using a low-level server.
+
+See the [full example](./code/README.md) here
 
 ## Assignment
 
-Extend the provided code by adding tools, resources, and prompts. Reflect on how this approach allows you to add files only in the tools directory without modifying other parts of the project.
+Extend the code you've been given with a number of tools, resources and prompt and reflect over how you notice that you only need to add files in tools directory and nowhere else. 
 
-*No solution provided*
+*No solution given*
 
 ## Summary
 
-In this chapter, we explored the low-level server approach and how it helps create a scalable architecture. We also discussed validation and demonstrated how to use validation libraries to create schemas for input validation.
+In this chapter, we saw how the low-level server approach worked and how that can help us create a nice architecture we can keep building on. We also discussed validation and you were shown how to work with validation libraries to create schemas for input validation.
+
+## What's Next
+
+- Next: [Simple Authentication](../11-simple-auth/README.md)
 
 ---
 
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
 **Disclaimer**:  
-This document has been translated using the AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). While we aim for accuracy, please note that automated translations may contain errors or inaccuracies. The original document in its native language should be regarded as the authoritative source. For critical information, professional human translation is recommended. We are not responsible for any misunderstandings or misinterpretations resulting from the use of this translation.
+This document has been translated using the AI translation service [Co-op Translator](https://github.com/Azure/co-op-translator). While we strive for accuracy, please be aware that automated translations may contain errors or inaccuracies. The original document in its native language should be considered the authoritative source. For critical information, professional human translation is recommended. We are not liable for any misunderstandings or misinterpretations arising from the use of this translation.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

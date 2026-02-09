@@ -58,7 +58,7 @@ flowchart LR
     subgraph "Internet"
         S3 <-->|"Web APIs"| D3[("Remote\Services")]
     end
-```
+```  
 - **MCP Hosts**: Programs like VSCode, Claude Desktop, IDEs, or AI tools that want to access data through MCP  
 - **MCP Clients**: Protocol clients that maintain 1:1 connections with servers  
 - **MCP Servers**: Lightweight programs that each expose specific capabilities through the standardized Model Context Protocol  
@@ -132,7 +132,7 @@ file://documents/project-spec.md
 database://production/users/schema
 api://weather/current
 ```
-
+  
 #### Prompts
 
 **Prompts** are reusable templates that help structure interactions with language models. They provide standardized interaction patterns and templated workflows:
@@ -148,7 +148,7 @@ Prompts support variable substitution and can be discovered via `prompts/list` a
 ```markdown
 Generate a {{task_type}} for {{product}} targeting {{audience}} with the following requirements: {{requirements}}
 ```
-
+  
 #### Tools
 
 **Tools** are executable functions that AI models can invoke to perform specific actions. They represent the "verbs" of the MCP ecosystem, enabling models to interact with external systems:
@@ -159,7 +159,11 @@ Generate a {{task_type}} for {{product}} targeting {{audience}} with the followi
 - **Structured I/O**: Tools accept validated parameters and return structured, typed responses  
 - **Action Capabilities**: Enable models to perform real-world actions and retrieve live data
 
-Tools are defined with JSON Schema for parameter validation and discovered through `tools/list` and executed via `tools/call`:
+Tools are defined with JSON Schema for parameter validation and discovered through `tools/list` and executed via `tools/call`. Tools can also include **icons** as additional metadata for better UI presentation.
+
+**Tool Annotations**: Tools support behavioral annotations (e.g., `readOnlyHint`, `destructiveHint`) that describe whether a tool is read-only or destructive, helping clients make informed decisions about tool execution.
+
+Example tool definition:
 
 ```typescript
 server.tool(
@@ -175,7 +179,7 @@ server.tool(
   }
 );
 ```
-
+  
 ## Client Primitives
 
 In the Model Context Protocol (MCP), **clients** can expose primitives that enable servers to request additional capabilities from the host application. These client-side primitives allow for richer, more interactive server implementations that can access AI model capabilities and user interactions.
@@ -187,9 +191,21 @@ In the Model Context Protocol (MCP), **clients** can expose primitives that enab
 - **Model-Independent Access**: Servers can request completions without including LLM SDKs or managing model access  
 - **Server-Initiated AI**: Enables servers to autonomously generate content using the client's AI model  
 - **Recursive LLM Interactions**: Supports complex scenarios where servers need AI assistance for processing  
-- **Dynamic Content Generation**: Allows servers to create contextual responses using the host's model
+- **Dynamic Content Generation**: Allows servers to create contextual responses using the host's model  
+- **Tool Calling Support**: Servers can include `tools` and `toolChoice` parameters to enable the client's model to invoke tools during sampling
 
 Sampling is initiated through the `sampling/complete` method, where servers send completion requests to clients.
+
+### Roots
+
+**Roots** provide a standardized way for clients to expose filesystem boundaries to servers, helping servers understand which directories and files they have access to:
+
+- **Filesystem Boundaries**: Define the boundaries of where servers can operate within the filesystem  
+- **Access Control**: Help servers understand which directories and files they have permission to access  
+- **Dynamic Updates**: Clients can notify servers when the list of roots changes  
+- **URI-Based Identification**: Roots use `file://` URIs to identify accessible directories and files
+
+Roots are discovered through the `roots/list` method, with clients sending `notifications/roots/list_changed` when roots change.
 
 ### Elicitation  
 
@@ -201,6 +217,8 @@ Sampling is initiated through the `sampling/complete` method, where servers send
 - **Dynamic Parameter Collection**: Gather missing or optional parameters during tool execution
 
 Elicitation requests are made using the `elicitation/request` method to collect user input through the client's interface.
+
+**URL Mode Elicitation**: Servers can also request URL-based user interactions, allowing servers to direct users to external web pages for authentication, confirmation, or data entry.
 
 ### Logging
 
@@ -231,7 +249,7 @@ The Model Context Protocol (MCP) defines a structured flow of information betwee
   - If the model determines that a tool is needed (e.g., to fetch data, perform a calculation, or call an API), the client sends a tool invocation request to the server, specifying the tool name and parameters.
 
 - **Server Execution**  
-  The server receives the resource or tool request, executes the necessary operations (such as running a function, querying a database, or retrieving a file), and returns the results to the client in a structured format.
+The server receives the resource or tool request, executes the necessary operations (such as running a function, querying a database, or retrieving a file), and returns the results to the client in a structured format.
 
 - **Response Generation**  
   The client integrates the server's responses (resource data, tool outputs, etc.) into the ongoing model interaction. The model uses this information to generate a comprehensive and contextually relevant response.
@@ -640,13 +658,25 @@ All MCP messages follow JSON-RPC 2.0 format with:
 
 This structured communication ensures reliable, traceable, and extensible interactions supporting advanced scenarios like real-time updates, tool chaining, and robust error handling.
 
+### Tasks (Experimental)
+
+**Tasks** are an experimental feature that provides durable execution wrappers enabling deferred result retrieval and status tracking for MCP requests:
+
+- **Long-Running Operations**: Track expensive computations, workflow automation, and batch processing
+- **Deferred Results**: Poll for task status and retrieve results when operations complete
+- **Status Tracking**: Monitor task progress through defined lifecycle states
+- **Multi-Step Operations**: Support complex workflows that span multiple interactions
+
+Tasks wrap standard MCP requests to enable asynchronous execution patterns for operations that cannot complete immediately.
+
 ## Key Takeaways
 
 - **Architecture**: MCP uses a client-server architecture where hosts manage multiple client connections to servers
 - **Participants**: The ecosystem includes hosts (AI applications), clients (protocol connectors), and servers (capability providers)
 - **Transport Mechanisms**: Communication supports STDIO (local) and Streamable HTTP with optional SSE (remote)
 - **Core Primitives**: Servers expose tools (executable functions), resources (data sources), and prompts (templates)
-- **Client Primitives**: Servers can request sampling (LLM completions), elicitation (user input), and logging from clients
+- **Client Primitives**: Servers can request sampling (LLM completions with tool calling support), elicitation (user input including URL mode), roots (filesystem boundaries), and logging from clients
+- **Experimental Features**: Tasks provide durable execution wrappers for long-running operations
 - **Protocol Foundation**: Built on JSON-RPC 2.0 with date-based versioning (current: 2025-11-25)
 - **Real-time Capabilities**: Supports notifications for dynamic updates and real-time synchronization
 - **Security First**: Explicit user consent, data privacy protection, and secure transport are core requirements
