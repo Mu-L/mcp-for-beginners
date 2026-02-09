@@ -147,7 +147,7 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 ಇದೀಗ ಇದು ಹೇಗಿರಬಹುದು ಎಂಬುದರ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಇಲ್ಲಿದೆ:
 
-![MCP Inspector server connection](../../../../translated_images/kn/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/kn/connected.73d1e042c24075d3.webp)
 
 ## ಸಾಮಾನ್ಯ ಸೆಟ್‌ಅಪ್ ಸಮಸ್ಯೆಗಳು ಮತ್ತು ಪರಿಹಾರಗಳು
 
@@ -1135,7 +1135,7 @@ npx @modelcontextprotocol/inspector
 2. URL ಅನ್ನು ಈ ರೀತಿಯಾಗಿ ಹೊಂದಿಸಿ: `http://localhost:8080/sse`
 3. "Connect" ಕ್ಲಿಕ್ ಮಾಡಿ
 
-![Connect](../../../../translated_images/kn/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/kn/tool.163d33e3ee307e20.webp)
 
 **ನೀವು ಈಗ ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದ್ದೀರಿ**
 **ಜಾವಾ ಸರ್ವರ್ ಪರೀಕ್ಷಾ ವಿಭಾಗ ಈಗ ಪೂರ್ಣಗೊಂಡಿದೆ**
@@ -1144,18 +1144,18 @@ npx @modelcontextprotocol/inspector
 
 ನೀವು ಕೆಳಗಿನ ಬಳಕೆದಾರ ಇಂಟರ್ಫೇಸ್ ಅನ್ನು ನೋಡಬೇಕು:
 
-![Connect](../../../../translated_images/kn/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/kn/connect.141db0b2bd05f096.webp)
 
 1. Connect ಬಟನ್ ಆಯ್ಕೆಮಾಡಿ ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕ ಹೊಂದಿ
   ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದ ನಂತರ, ನೀವು ಕೆಳಗಿನವುಗಳನ್ನು ನೋಡಬೇಕು:
 
-  ![Connected](../../../../translated_images/kn/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/kn/connected.73d1e042c24075d3.webp)
 
 1. "Tools" ಮತ್ತು "listTools" ಆಯ್ಕೆಮಾಡಿ, "Add" ಕಾಣಿಸಿಕೊಳ್ಳಬೇಕು, "Add" ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಪ್ಯಾರಾಮೀಟರ್ ಮೌಲ್ಯಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ.
 
   ನೀವು ಕೆಳಗಿನ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ನೋಡಬೇಕು, ಅಂದರೆ "add" ಟೂಲ್‌ನಿಂದ ಫಲಿತಾಂಶ:
 
-  ![Result of running add](../../../../translated_images/kn/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/kn/ran-tool.a5a6ee878c1369ec.webp)
 
 ಅಭಿನಂದನೆಗಳು, ನೀವು ನಿಮ್ಮ ಮೊದಲ ಸರ್ವರ್ ಅನ್ನು ರಚಿಸಿ ಚಾಲನೆ ಮಾಡಿದ್ದೀರಿ!
 

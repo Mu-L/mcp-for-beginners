@@ -55,7 +55,7 @@ Model Context Protocol Python SDK കസ്റ്റം MCP സർവറുക�
 2. **പുതിയ ഏജന്റ് സൃഷ്ടിക്കുക** താഴെപ്പറയുന്ന കോൺഫിഗറേഷൻ ഉപയോഗിച്ച്:
    - ഏജന്റ് നാമം: `WeatherAgent`
 
-![Agent Creation](../../../../translated_images/ml/Agent.c9c33f6a412b4cdedfb973fe5448bdb33de3f400055603111b875610e9b917ab.png)
+![Agent Creation](../../../../translated_images/ml/Agent.c9c33f6a412b4cde.webp)
 
 ### ഘട്ടം 2: MCP സർവർ പ്രോജക്ട് ആരംഭിക്കുക
 
@@ -65,7 +65,7 @@ Model Context Protocol Python SDK കസ്റ്റം MCP സർവറുക�
 4. **`python-weather` ടെംപ്ലേറ്റ് തിരഞ്ഞെടുക്കുക**
 5. **സർവർ നാമം നൽകുക:** `weather_mcp`
 
-![Python Template Selection](../../../../translated_images/ml/Pythontemplate.9d0a2913c6491500bd673430f024dc44676af2808a27b5da9dcc0eb7063adc28.png)
+![Python Template Selection](../../../../translated_images/ml/Pythontemplate.9d0a2913c6491500.webp)
 
 ### ഘട്ടം 3: പ്രോജക്ട് തുറന്ന് പരിശോധിക്കുക
 
@@ -334,7 +334,7 @@ USER_PROMPT
 How's the weather like in Seattle
 ```
 
-![Agent Builder Debug Result](../../../../translated_images/ml/Result.6ac570f7d2b1d5389c561ab0566970fe0f13e75bdd976b6a7f0270bc715d07f8.png)
+![Agent Builder Debug Result](../../../../translated_images/ml/Result.6ac570f7d2b1d538.webp)
 
 ### ഘട്ടം 8: MCP ഇൻസ്പെക്ടർ ഉപയോഗിച്ച് ഡീബഗ് ചെയ്യുക
 
@@ -346,7 +346,7 @@ How's the weather like in Seattle
    - നെറ്റ്‌വർക്ക് അഭ്യർത്ഥനകൾ നിരീക്ഷിക്കുക
    - സർവർ പ്രതികരണങ്ങൾ ഡീബഗ് ചെയ്യുക
 
-![MCP Inspector Interface](../../../../translated_images/ml/Inspector.5672415cd02fe8731774586cc0a1083e3275d2f8491602aecc8ac4d61f2c0d57.png)
+![MCP Inspector Interface](../../../../translated_images/ml/Inspector.5672415cd02fe873.webp)
 
 ---
 
