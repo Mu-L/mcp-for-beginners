@@ -51,7 +51,7 @@ Ob koncu tega modula boste znali:
 
 **Korak 3: Namestite in aktivirajte**
 
-![AI Toolkit Extension](../../../../translated_images/sl/aitkext.d28945a03eed003c39fc39bc96ae655af9b64b9b922e78e88b07214420ed7985.png)
+![AI Toolkit Extension](../../../../translated_images/sl/aitkext.d28945a03eed003c.webp)
 
 ### ✅ Kontrolni seznam preverjanja
 - [ ] Ikona AI Toolkit se prikaže v stranski vrstici VS Code
@@ -70,7 +70,7 @@ Katalog modelov je vaš vhod v AI ekosistem. Združuje modele iz različnih viro
 
 Kliknite na **MODELS - Catalog** v stranski vrstici AI Toolkit
 
-![Model Catalog](../../../../translated_images/sl/aimodel.263ed2be013d8fb0e2265c4f742cfe490f6f00eca5e132ec50438c8e826e34ed.png)
+![Model Catalog](../../../../translated_images/sl/aimodel.263ed2be013d8fb0.webp)
 
 **💡 Nasvet**: Poiščite modele s specifičnimi zmogljivostmi, ki ustrezajo vašim potrebam (npr. generiranje kode, ustvarjalno pisanje, analiza).
 
@@ -88,7 +88,7 @@ Kliknite na **MODELS - Catalog** v stranski vrstici AI Toolkit
 3. Izberite **Try in Playground** za zagon testnega okolja
 4. Počakajte na inicializacijo modela (prvič lahko traja nekaj trenutkov)
 
-![Playground Setup](../../../../translated_images/sl/playground.dd6f5141344878ca4d4f3de819775da7b113518941accf37c291117c602f85db.png)
+![Playground Setup](../../../../translated_images/sl/playground.dd6f5141344878ca.webp)
 
 **⚙️ Razumevanje parametrov modela:**
 - **Temperature**: Nadzoruje ustvarjalnost (0 = determinističen, 1 = ustvarjalen)
@@ -117,7 +117,7 @@ Playground je vaše laboratorij za AI eksperimentiranje. Tako lahko izkoristite 
 "Analyze this sales data and provide insights: [paste your data]. Focus on trends, anomalies, and actionable recommendations."
 ```
 
-![Testing Results](../../../../translated_images/sl/result.1dfcf211fb359cf65902b09db191d3bfc65713ca15e279c1a30be213bb526949.png)
+![Testing Results](../../../../translated_images/sl/result.1dfcf211fb359cf6.webp)
 
 ### 🏆 Izziv: Primerjava zmogljivosti modelov
 
@@ -127,12 +127,12 @@ Playground je vaše laboratorij za AI eksperimentiranje. Tako lahko izkoristite 
 1. Dodajte **Phi-4-mini** v svoje delovno okolje
 2. Uporabite isti poziv za GPT-4.1 in Phi-4-mini
 
-![set](../../../../translated_images/sl/set.88132df189ecde2cbbda256c1841db5aac8e9bdeba1a4e343dfa031b9545d6c9.png)
+![set](../../../../translated_images/sl/set.88132df189ecde2c.webp)
 
 3. Primerjajte kakovost, hitrost in natančnost odgovorov
 4. Zabeležite ugotovitve v razdelek z rezultati
 
-![Model Comparison](../../../../translated_images/sl/compare.97746cd0f907495503c1fc217739f3890dc76ea5f6fd92379a6db0cc331feb58.png)
+![Model Comparison](../../../../translated_images/sl/compare.97746cd0f9074955.webp)
 
 **💡 Ključne ugotovitve:**
 - Kdaj uporabiti LLM proti SLM
@@ -154,7 +154,7 @@ Agent Builder je srce AI Toolkit-a. Omogoča ustvarjanje namensko zgrajenih AI p
 - **Integracija orodij**: Povezava z zunanjimi API-ji in MCP storitvami
 - **Pomnilnik**: Kontekst pogovora in trajnost seje
 
-![Agent Builder Interface](../../../../translated_images/sl/agentbuilder.25895b2d2f8c02e7aa99dd40e105877a6f1db8f0441180087e39db67744b361f.png)
+![Agent Builder Interface](../../../../translated_images/sl/agentbuilder.25895b2d2f8c02e7.webp)
 
 ### ⚙️ Korak 2: Podrobna konfiguracija agenta
 
@@ -228,7 +228,7 @@ You are a senior Python developer with 10+ years of experience. You excel at wri
    - Max Tokens: 2000 (podrobna pojasnila)
    - Top-p: 0.9 (uravnotežena ustvarjalnost)
 
-![Python Agent Configuration](../../../../translated_images/sl/pythonagent.5e51b406401c165fcabfd66f2d943c27f46b5fed0f9fb73abefc9e91ca3489d4.png)
+![Python Agent Configuration](../../../../translated_images/sl/pythonagent.5e51b406401c165f.webp)
 
 ### 🧪 Korak 4: Testiranje vašega Python agenta
 

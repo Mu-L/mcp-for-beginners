@@ -147,7 +147,7 @@ Kada pokrenete gore navedene naredbe, MCP Inspector će pokrenuti lokalno web su
 
 Evo snimke zaslona kako to može izgledati:
 
-![MCP Inspector server connection](../../../../translated_images/hr/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/hr/connected.73d1e042c24075d3.webp)
 
 ## Uobičajeni problemi s postavljanjem i rješenja
 
@@ -1293,7 +1293,7 @@ U web sučelju inspektora:
 2. Postavite URL na: `http://localhost:8080/sse`
 3. Kliknite "Connect"
 
-![Connect](../../../../translated_images/hr/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/hr/tool.163d33e3ee307e20.webp)
 
 **Sada ste povezani sa serverom**
 **Sekcija testiranja Java servera je sada završena**
@@ -1302,18 +1302,18 @@ Sljedeća sekcija odnosi se na interakciju sa serverom.
 
 Trebali biste vidjeti sljedeće korisničko sučelje:
 
-![Connect](../../../../translated_images/hr/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/hr/connect.141db0b2bd05f096.webp)
 
 1. Povežite se sa serverom odabirom gumba Connect
   Nakon povezivanja sa serverom, trebali biste vidjeti sljedeće:
 
-  ![Connected](../../../../translated_images/hr/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/hr/connected.73d1e042c24075d3.webp)
 
 1. Odaberite "Tools" i "listTools", trebali biste vidjeti da se pojavljuje "Add", odaberite "Add" i ispunite vrijednosti parametara.
 
   Trebali biste vidjeti sljedeći odgovor, tj. rezultat iz "add" alata:
 
-  ![Result of running add](../../../../translated_images/hr/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/hr/ran-tool.a5a6ee878c1369ec.webp)
 
 Čestitamo, uspjeli ste kreirati i pokrenuti svoj prvi server!
 

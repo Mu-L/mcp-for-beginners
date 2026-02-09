@@ -2,7 +2,7 @@
 
 Ta projekt prikazuje spletno aplikacijo, ki pred posredovanjem uporabniških pozivov kalkulatorju prek Model Context Protocol (MCP) uporablja preverjanje varnosti vsebine.
 
-![System Architecture Diagram](../../../../../../translated_images/sl/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![System Architecture Diagram](../../../../../../translated_images/sl/plant.b079fed84e945b7c.webp)
 
 ### Kako deluje
 

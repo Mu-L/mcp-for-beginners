@@ -29,9 +29,9 @@ MCP server možete kontrolirati na dva različita načina:
 
 ### Snimke zaslona
 
-![Vođena konfiguracija MCP servera u Visual Studio Code-u](../../../../translated_images/hr/chat-mode-agent.729a22473f822216dd1e723aaee1f7d4a2ede571ee0948037a2d9357a63b9d0b.png)
-![Odabir alata po sesiji agenta](../../../../translated_images/hr/agent-mode-select-tools.522c7ba5df0848f8f0d1e439c2e96159431bc620cb39ccf3f5dc611412fd0006.png)
-![Jednostavno otklanjanje grešaka tijekom razvoja MCP-a](../../../../translated_images/hr/mcp-list-servers.fce89eefe3f30032bed8952e110ab9d82fadf043fcfa071f7d40cf93fb1ea9e9.png)
+![Vođena konfiguracija MCP servera u Visual Studio Code-u](../../../../translated_images/hr/chat-mode-agent.729a22473f822216.webp)
+![Odabir alata po sesiji agenta](../../../../translated_images/hr/agent-mode-select-tools.522c7ba5df0848f8.webp)
+![Jednostavno otklanjanje grešaka tijekom razvoja MCP-a](../../../../translated_images/hr/mcp-list-servers.fce89eefe3f30032.webp)
 
 Razgovarajmo više o tome kako koristiti vizualno sučelje u sljedećim odjeljcima.
 
@@ -94,15 +94,15 @@ Sada kada ste dodali unos, pokrenimo server:
 
 1. Pronađite svoj unos u *mcp.json* i uvjerite se da vidite ikonu "play":
 
-  ![Pokretanje servera u Visual Studio Code-u](../../../../translated_images/hr/vscode-start-server.8e3c986612e3555de47e5b1e37b2f3020457eeb6a206568570fd74a17e3796ad.png)  
+  ![Pokretanje servera u Visual Studio Code-u](../../../../translated_images/hr/vscode-start-server.8e3c986612e3555d.webp)  
 
 1. Kliknite na ikonu "play". Trebali biste vidjeti da se broj dostupnih alata u GitHub Copilot Chat sučelju povećava. Ako kliknete na ikonu alata, vidjet ćete popis registriranih alata. Možete označiti/odznačiti svaki alat ovisno o tome želite li da ih GitHub Copilot koristi kao kontekst:
 
-  ![Pokretanje servera u Visual Studio Code-u](../../../../translated_images/hr/vscode-tool.0b3bbea2fb7d8c26ddf573cad15ef654e55302a323267d8ee6bd742fe7df7fed.png)
+  ![Pokretanje servera u Visual Studio Code-u](../../../../translated_images/hr/vscode-tool.0b3bbea2fb7d8c26.webp)
 
 1. Za pokretanje alata, unesite upit za koji znate da odgovara opisu jednog od vaših alata, na primjer upit poput "dodaj 22 i 1":
 
-  ![Pokretanje alata iz GitHub Copilota](../../../../translated_images/hr/vscode-agent.d5a0e0b897331060518fe3f13907677ef52b879db98c64d68a38338608f3751e.png)
+  ![Pokretanje alata iz GitHub Copilota](../../../../translated_images/hr/vscode-agent.d5a0e0b897331060.webp)
 
   Trebali biste vidjeti odgovor koji kaže 23.
 
