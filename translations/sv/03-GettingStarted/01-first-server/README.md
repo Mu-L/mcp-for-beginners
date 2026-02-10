@@ -147,7 +147,7 @@ När du kör ovanstående kommandon startar MCP Inspector ett lokalt webbgränss
 
 Här är en skärmbild av hur det kan se ut:
 
-![MCP Inspector server connection](../../../../translated_images/sv/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/sv/connected.73d1e042c24075d3.webp)
 
 ## Vanliga installationsproblem och lösningar
 
@@ -1293,7 +1293,7 @@ I inspektörens webbgränssnitt:
 2. Ange URL:en till: `http://localhost:8080/sse`
 3. Klicka på "Connect"
 
-![Connect](../../../../translated_images/sv/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/sv/tool.163d33e3ee307e20.webp)
 
 **Du är nu ansluten till servern**
 **Testavsnittet för Java-servern är nu slutfört**
@@ -1302,18 +1302,18 @@ Nästa avsnitt handlar om att interagera med servern.
 
 Du bör se följande användargränssnitt:
 
-![Connect](../../../../translated_images/sv/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/sv/connect.141db0b2bd05f096.webp)
 
 1. Anslut till servern genom att välja Connect-knappen
   När du ansluter till servern bör du nu se följande:
 
-  ![Connected](../../../../translated_images/sv/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/sv/connected.73d1e042c24075d3.webp)
 
 1. Välj "Tools" och "listTools", du bör se "Add" dyka upp, välj "Add" och fyll i parametervärdena.
 
   Du bör se följande svar, dvs ett resultat från "add"-verktyget:
 
-  ![Result of running add](../../../../translated_images/sv/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/sv/ran-tool.a5a6ee878c1369ec.webp)
 
 Grattis, du har lyckats skapa och köra din första server!
 

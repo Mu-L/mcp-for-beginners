@@ -29,9 +29,9 @@ Du kan kontrollera din MCP-server på två olika sätt:
 
 ### Skärmdumpar
 
-![Guidad MCP-serverkonfiguration i Visual Studio Code](../../../../translated_images/sv/chat-mode-agent.729a22473f822216dd1e723aaee1f7d4a2ede571ee0948037a2d9357a63b9d0b.png)
-![Verktygsval per agent-session](../../../../translated_images/sv/agent-mode-select-tools.522c7ba5df0848f8f0d1e439c2e96159431bc620cb39ccf3f5dc611412fd0006.png)
-![Enkelt felsöka fel under MCP-utveckling](../../../../translated_images/sv/mcp-list-servers.fce89eefe3f30032bed8952e110ab9d82fadf043fcfa071f7d40cf93fb1ea9e9.png)
+![Guidad MCP-serverkonfiguration i Visual Studio Code](../../../../translated_images/sv/chat-mode-agent.729a22473f822216.webp)
+![Verktygsval per agent-session](../../../../translated_images/sv/agent-mode-select-tools.522c7ba5df0848f8.webp)
+![Enkelt felsöka fel under MCP-utveckling](../../../../translated_images/sv/mcp-list-servers.fce89eefe3f30032.webp)
 
 Låt oss prata mer om hur vi använder det visuella gränssnittet i nästa avsnitt.
 
@@ -94,15 +94,15 @@ Nu när du har lagt till en post, låt oss starta servern:
 
 1. Hitta din post i *mcp.json* och se till att du hittar "play"-ikonen:
 
-  ![Starta server i Visual Studio Code](../../../../translated_images/sv/vscode-start-server.8e3c986612e3555de47e5b1e37b2f3020457eeb6a206568570fd74a17e3796ad.png)  
+  ![Starta server i Visual Studio Code](../../../../translated_images/sv/vscode-start-server.8e3c986612e3555d.webp)  
 
 1. Klicka på "play"-ikonen, du bör se att verktygsikonen i GitHub Copilot Chat ökar antalet tillgängliga verktyg. Om du klickar på verktygsikonen ser du en lista över registrerade verktyg. Du kan markera/avmarkera varje verktyg beroende på om du vill att GitHub Copilot ska använda dem som kontext:
 
-  ![Starta server i Visual Studio Code](../../../../translated_images/sv/vscode-tool.0b3bbea2fb7d8c26ddf573cad15ef654e55302a323267d8ee6bd742fe7df7fed.png)
+  ![Starta server i Visual Studio Code](../../../../translated_images/sv/vscode-tool.0b3bbea2fb7d8c26.webp)
 
 1. För att köra ett verktyg, skriv en prompt som du vet matchar beskrivningen av ett av dina verktyg, till exempel en prompt som "lägg till 22 och 1":
 
-  ![Köra ett verktyg från GitHub Copilot](../../../../translated_images/sv/vscode-agent.d5a0e0b897331060518fe3f13907677ef52b879db98c64d68a38338608f3751e.png)
+  ![Köra ett verktyg från GitHub Copilot](../../../../translated_images/sv/vscode-agent.d5a0e0b897331060.webp)
 
   Du bör se ett svar som säger 23.
 

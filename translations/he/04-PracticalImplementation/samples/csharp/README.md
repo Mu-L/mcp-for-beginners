@@ -17,7 +17,7 @@
 
 1. כאשר דפדפן האינטרנט יפתח את לוח הבקרה של .NET Aspire, שים לב לכתובת ה-`http`. היא אמורה להיות משהו כמו `http://localhost:5058/`.
 
-   ![לוח בקרה של .NET Aspire](../../../../../translated_images/he/dotnet-aspire-dashboard.0a7095710e9301e90df2efd867e1b675b3b9bc2ccd7feb1ebddc0751522bc37c.png)
+   ![לוח בקרה של .NET Aspire](../../../../../translated_images/he/dotnet-aspire-dashboard.0a7095710e9301e9.webp)
 
 ## בדיקת Streamable HTTP עם MCP Inspector
 
@@ -29,7 +29,7 @@
 npx @modelcontextprotocol/inspector http://localhost:5058
 ```
 
-![MCP Inspector](../../../../../translated_images/he/mcp-inspector.c223422b9b494fb4a518a3b3911b3e708e6a5715069470f9163ee2ee8d5f1ba9.png)
+![MCP Inspector](../../../../../translated_images/he/mcp-inspector.c223422b9b494fb4.webp)
 
 - בחר את סוג ההעברה `Streamable HTTP`.
 - בשדה ה-Url, הזן את כתובת השרת שנרשמה קודם, והוסף `/mcp`. זה אמור להיות `http` (לא `https`) משהו כמו `http://localhost:5058/mcp`.
@@ -74,7 +74,7 @@ azd up
 
 לאחר שהפריסה תסתיים, אמור להופיע לך הודעה כזו:
 
-![הצלחה בפריסת Azd](../../../../../translated_images/he/azd-deployment-success.bd42940493f1b834a5ce6251a6f88966546009b350df59d0cc4a8caabe94a4f1.png)
+![הצלחה בפריסת Azd](../../../../../translated_images/he/azd-deployment-success.bd42940493f1b834.webp)
 
 קח את הכתובת והשתמש בה ב-MCP Inspector וב-GitHub Copilot Chat.
 

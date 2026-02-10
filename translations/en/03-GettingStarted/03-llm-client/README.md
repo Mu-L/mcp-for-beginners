@@ -1,6 +1,6 @@
 # Creating a client with LLM
 
-So far, you've seen how to create a server and a client. The client has been able to call the server explicitly to list its tools, resources and prompts. However, it's not a very practical approach. Your user lives in the agentic era and expects to use prompts and communicate with an LLM to do so. For your user, it doesn't matter if you use MCP or not to store your capabilities but they do expect to use natural language to interact. So how do we solve this? The solution is about adding an LLM to the client.
+So far, you've seen how to create a server and a client. The client has been able to call the server explicitly to list its tools, resources, and prompts. However, it's not a very practical approach. Your user lives in the agentic era and expects to use prompts and communicate with an LLM to do so. For your user, it doesn't matter if you use MCP or not to store your capabilities but they do expect to use natural language to interact. So how do we solve this? The solution is about adding an LLM to the client.
 
 ## Overview
 
@@ -12,7 +12,7 @@ By the end of this lesson, you will be able to:
 
 - Create a client with an LLM.
 - Seamlessly interact with an MCP server using an LLM.
-- Provide a better end user experience on the client side.
+- Provide a better end-user experience on the client side.
 
 ## Approach
 
@@ -20,9 +20,9 @@ Let's try to understand the approach we need to take. Adding an LLM sounds simpl
 
 Here's how the client will interact with the server:
 
-1. Establish connection with server.
+1. Establish connection with the server.
 
-1. List capabilities, prompts, resources and tools, and save down their schema.
+1. List capabilities, prompts, resources, and tools, and save down their schema.
 
 1. Add an LLM and pass the saved capabilities and their schema in a format the LLM understands.
 
@@ -539,7 +539,7 @@ ChatCompletionsToolDefinition ConvertFrom(string name, string description, JsonE
 
 In the preceding code we've:
 
-- Created a function `ConvertFrom` that takes name, description and input schema.
+- Created a function `ConvertFrom` that takes, name, description and input schema.
 - Defined functionality that creates a FunctionDefinition that gets passed to a ChatCompletionsDefinition. The latter is something the LLM can understand.
 
 1. Let's see how we can update some existing code to take advantage of this function above:
@@ -728,9 +728,9 @@ In this part of the code, we will handle user requests.
 
     console.log("Querying LLM: ", messages[0].content);
 
-    // 2. Calling the LLM
+    // 2. Call the LLM
     let response = this.openai.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4.1-mini",
         max_tokens: 1000,
         messages,
         tools: tools,
@@ -856,7 +856,7 @@ class MyClient {
 
         console.log("Querying LLM: ", messages[0].content);
         let response = this.openai.chat.completions.create({
-            model: "gpt-4o-mini",
+            model: "gpt-4.1-mini",
             max_tokens: 1000,
             messages,
             tools: tools,
@@ -999,7 +999,7 @@ client.connectToServer(transport);
     // 2. Define options, including the tools
     var options = new ChatCompletionsOptions(chatHistory)
     {
-        Model = "gpt-4o-mini",
+        Model = "gpt-4.1-mini",
         Tools = { tools[0] }
     };
 
@@ -1140,7 +1140,7 @@ chatHistory.Add(new ChatRequestUserMessage(userMessage));
 // 3. Define options, including the tools
 var options = new ChatCompletionsOptions(chatHistory)
 {
-    Model = "gpt-4o-mini",
+    Model = "gpt-4.1-mini",
     Tools = { tools[0] }
 };
 
@@ -1176,7 +1176,7 @@ Console.WriteLine($"Assistant response: {content}");
 
 ```java
 try {
-    // Execute natural language requests that automatically use MCP tools
+    // Run natural language requests that automatically use MCP tools
     String response = bot.chat("Calculate the sum of 24.5 and 17.3 using the calculator service");
     System.out.println(response);
 

@@ -2,7 +2,7 @@
 
 See projekt demonstreerib veebirakendust, mis kasutab sisuturvalisuse kontrolli enne kasutaja sisendite edastamist kalkulaatoriteenusele Model Context Protocol (MCP) kaudu.
 
-![Süsteemi arhitektuuri diagramm](../../../../../../translated_images/et/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![Süsteemi arhitektuuri diagramm](../../../../../../translated_images/et/plant.b079fed84e945b7c.webp)
 
 ### Kuidas see töötab
 

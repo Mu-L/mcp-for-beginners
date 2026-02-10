@@ -147,7 +147,7 @@ Quando executar os comandos acima, o MCP Inspector irá lançar uma interface we
 
 Aqui está uma captura de ecrã do que pode parecer:
 
-![MCP Inspector server connection](../../../../translated_images/pt-PT/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/pt-PT/connected.73d1e042c24075d3.webp)
 
 ## Problemas Comuns de Configuração e Soluções
 
@@ -1293,7 +1293,7 @@ Na interface web do inspetor:
 2. Defina a URL para: `http://localhost:8080/sse`
 3. Clique em "Connect"
 
-![Connect](../../../../translated_images/pt-PT/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/pt-PT/tool.163d33e3ee307e20.webp)
 
 **Está agora ligado ao servidor**
 **A secção de teste do servidor Java está agora concluída**
@@ -1302,18 +1302,18 @@ A próxima secção é sobre interagir com o servidor.
 
 Deverá ver a seguinte interface de utilizador:
 
-![Connect](../../../../translated_images/pt-PT/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/pt-PT/connect.141db0b2bd05f096.webp)
 
 1. Ligue-se ao servidor selecionando o botão Connect
   Uma vez ligado ao servidor, deverá agora ver o seguinte:
 
-  ![Connected](../../../../translated_images/pt-PT/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/pt-PT/connected.73d1e042c24075d3.webp)
 
 1. Selecione "Tools" e "listTools", deverá ver "Add" aparecer, selecione "Add" e preencha os valores dos parâmetros.
 
   Deverá ver a seguinte resposta, ou seja, um resultado da ferramenta "add":
 
-  ![Result of running add](../../../../translated_images/pt-PT/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/pt-PT/ran-tool.a5a6ee878c1369ec.webp)
 
 Parabéns, conseguiu criar e executar o seu primeiro servidor!
 

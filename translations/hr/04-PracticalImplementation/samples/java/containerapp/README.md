@@ -2,7 +2,7 @@
 
 Ovaj projekt prikazuje web aplikaciju koja koristi provjeru sigurnosti sadržaja prije nego što korisničke upite proslijedi kalkulatoru putem Model Context Protocol (MCP).
 
-![Dijagram arhitekture sustava](../../../../../../translated_images/hr/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![Dijagram arhitekture sustava](../../../../../../translated_images/hr/plant.b079fed84e945b7c.webp)
 
 ### Kako funkcionira
 

@@ -2,7 +2,7 @@
 
 Αυτό το έργο παρουσιάζει μια web εφαρμογή που χρησιμοποιεί έλεγχο ασφάλειας περιεχομένου πριν προωθήσει τα αιτήματα των χρηστών σε μια υπηρεσία αριθμομηχανής μέσω του Model Context Protocol (MCP).
 
-![System Architecture Diagram](../../../../../../translated_images/el/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![System Architecture Diagram](../../../../../../translated_images/el/plant.b079fed84e945b7c.webp)
 
 ### Πώς Λειτουργεί
 

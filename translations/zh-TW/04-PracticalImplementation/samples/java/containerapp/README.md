@@ -2,7 +2,7 @@
 
 此專案展示了一個網頁應用程式，會在將使用者輸入的提示傳送給計算服務（透過 Model Context Protocol，MCP）之前，先進行內容安全檢查。
 
-![System Architecture Diagram](../../../../../../translated_images/zh-TW/plant.b079fed84e945b7c2978993a16163bb53f0517cfe3548d2e442ff40d619ba4b4.png)
+![System Architecture Diagram](../../../../../../translated_images/zh-TW/plant.b079fed84e945b7c.webp)
 
 ### 運作方式
 

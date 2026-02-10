@@ -55,7 +55,7 @@ Močno orodje za odpravljanje napak, ki omogoča:
 2. **Ustvarite novega agenta** z naslednjo konfiguracijo:
    - Ime agenta: `WeatherAgent`
 
-![Agent Creation](../../../../translated_images/sl/Agent.c9c33f6a412b4cdedfb973fe5448bdb33de3f400055603111b875610e9b917ab.png)
+![Agent Creation](../../../../translated_images/sl/Agent.c9c33f6a412b4cde.webp)
 
 ### Korak 2: Inicializirajte MCP Server projekt
 
@@ -65,7 +65,7 @@ Močno orodje za odpravljanje napak, ki omogoča:
 4. **Izberite predlogo `python-weather`**
 5. **Poimenujte strežnik:** `weather_mcp`
 
-![Python Template Selection](../../../../translated_images/sl/Pythontemplate.9d0a2913c6491500bd673430f024dc44676af2808a27b5da9dcc0eb7063adc28.png)
+![Python Template Selection](../../../../translated_images/sl/Pythontemplate.9d0a2913c6491500.webp)
 
 ### Korak 3: Odprite in preglejte projekt
 
@@ -331,7 +331,7 @@ USER_PROMPT
 How's the weather like in Seattle
 ```
 
-![Agent Builder Debug Result](../../../../translated_images/sl/Result.6ac570f7d2b1d5389c561ab0566970fe0f13e75bdd976b6a7f0270bc715d07f8.png)
+![Agent Builder Debug Result](../../../../translated_images/sl/Result.6ac570f7d2b1d538.webp)
 
 ### Korak 8: Odpravljanje napak z MCP Inspectorjem
 
@@ -343,7 +343,7 @@ How's the weather like in Seattle
    - Spremljanje omrežnih zahtevkov
    - Odpravljanje napak odgovorov strežnika
 
-![MCP Inspector Interface](../../../../translated_images/sl/Inspector.5672415cd02fe8731774586cc0a1083e3275d2f8491602aecc8ac4d61f2c0d57.png)
+![MCP Inspector Interface](../../../../translated_images/sl/Inspector.5672415cd02fe873.webp)
 
 ---
 

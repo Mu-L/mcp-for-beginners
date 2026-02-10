@@ -1,20 +1,20 @@
 # Utilisation avancée du serveur
 
-Il existe deux types de serveurs exposés dans le SDK MCP : le serveur classique et le serveur bas-niveau. En général, vous utilisez le serveur classique pour y ajouter des fonctionnalités. Cependant, dans certains cas, vous pourriez préférer utiliser le serveur bas-niveau, notamment pour :
+Il existe deux types différents de serveurs exposés dans le SDK MCP, votre serveur normal et le serveur bas niveau. Normalement, vous utiliseriez le serveur régulier pour y ajouter des fonctionnalités. Cependant, dans certains cas, vous souhaitez vous appuyer sur le serveur bas niveau, par exemple :
 
-- Une meilleure architecture. Bien qu'il soit possible de créer une architecture propre avec le serveur classique et le serveur bas-niveau, il est souvent considéré comme légèrement plus facile avec le serveur bas-niveau.
-- Disponibilité des fonctionnalités. Certaines fonctionnalités avancées ne peuvent être utilisées qu'avec un serveur bas-niveau. Vous verrez cela dans les chapitres suivants lorsque nous ajouterons l'échantillonnage et l'élucidation.
+- Meilleure architecture. Il est possible de créer une architecture propre avec le serveur régulier et un serveur bas niveau, mais on peut avancer que c'est un peu plus facile avec un serveur bas niveau.
+- Disponibilité des fonctionnalités. Certaines fonctionnalités avancées ne peuvent être utilisées qu'avec un serveur bas niveau. Vous verrez cela dans les chapitres suivants lorsque nous ajouterons l'échantillonnage et l'élucidation.
 
-## Serveur classique vs serveur bas-niveau
+## Serveur régulier vs serveur bas niveau
 
-Voici à quoi ressemble la création d'un serveur MCP avec le serveur classique :
+Voici à quoi ressemble la création d'un serveur MCP avec le serveur régulier
 
 **Python**
 
 ```python
 mcp = FastMCP("Demo")
 
-# Add an addition tool
+# Ajouter un outil d'addition
 @mcp.tool()
 def add(a: int, b: int) -> int:
     """Add two numbers"""
@@ -29,7 +29,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Add an addition tool
+// Ajouter un outil d'addition
 server.registerTool("add",
   {
     title: "Addition Tool",
@@ -42,16 +42,16 @@ server.registerTool("add",
 );
 ```
 
-L'idée ici est que vous ajoutez explicitement chaque outil, ressource ou invite que vous souhaitez que le serveur possède. Rien de problématique à cela.  
+Le point est que vous ajoutez explicitement chaque outil, ressource ou invite que vous voulez que le serveur ait. Il n'y a rien de mal à cela.
 
-### Approche du serveur bas-niveau
+### Approche serveur bas niveau
 
-Cependant, lorsque vous utilisez l'approche du serveur bas-niveau, vous devez penser différemment. Au lieu d'enregistrer chaque outil, vous créez deux gestionnaires par type de fonctionnalité (outils, ressources ou invites). Par exemple, pour les outils, vous n'avez que deux fonctions comme suit :
+Cependant, lorsque vous utilisez l'approche serveur bas niveau, vous devez penser différemment, à savoir qu'au lieu d'enregistrer chaque outil, vous créez plutôt deux gestionnaires par type de fonctionnalité (outils, ressources ou invites). Par exemple, les outils ont seulement deux fonctions comme suit :
 
-- Lister tous les outils. Une fonction est responsable de toutes les tentatives de lister les outils.
-- Gérer l'appel de tous les outils. Ici aussi, une seule fonction gère les appels à un outil.
+- Lister tous les outils. Une fonction serait responsable de toutes les tentatives de liste des outils.
+- Gérer l'appel de tous les outils. Ici aussi, il n'y a qu'une seule fonction qui gère les appels à un outil.
 
-Cela semble être potentiellement moins de travail, non ? Donc, au lieu d'enregistrer un outil, je dois simplement m'assurer que l'outil est listé lorsque je liste tous les outils et qu'il est appelé lorsqu'une requête arrive pour appeler un outil.
+Cela semble potentiellement moins de travail, non ? Donc au lieu d'enregistrer un outil, je dois juste m'assurer que l'outil est listé lorsque je liste tous les outils et qu'il est appelé lorsqu'il y a une requête entrante pour appeler un outil.
 
 Voyons à quoi ressemble le code maintenant :
 
@@ -81,7 +81,7 @@ async def handle_list_tools() -> list[types.Tool]:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Retourner la liste des outils enregistrés
   return {
     tools: [{
         name="add",
@@ -99,7 +99,7 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
 });
 ```
 
-Ici, nous avons maintenant une fonction qui retourne une liste de fonctionnalités. Chaque entrée dans la liste des outils possède désormais des champs comme `name`, `description` et `inputSchema` pour respecter le type de retour. Cela nous permet de définir nos outils et fonctionnalités ailleurs. Nous pouvons maintenant créer tous nos outils dans un dossier dédié et faire de même pour toutes vos fonctionnalités, ce qui permet à votre projet d'être organisé comme suit :
+Ici, nous avons maintenant une fonction qui retourne une liste de fonctionnalités. Chaque entrée dans la liste des outils a désormais des champs comme `name`, `description` et `inputSchema` pour respecter le type de retour. Cela nous permet de placer nos outils et la définition des fonctionnalités ailleurs. Nous pouvons maintenant créer tous nos outils dans un dossier tools et il en va de même pour toutes vos fonctionnalités, de sorte que votre projet peut soudainement être organisé comme suit :
 
 ```text
 app
@@ -115,7 +115,7 @@ app
 
 C'est génial, notre architecture peut être rendue assez propre.
 
-Qu'en est-il de l'appel des outils ? Est-ce la même idée, un gestionnaire pour appeler un outil, quel qu'il soit ? Oui, exactement, voici le code pour cela :
+Qu'en est-il de l'appel des outils, est-ce la même idée, un gestionnaire pour appeler un outil, quel que soit l'outil ? Oui, exactement, voici le code pour cela :
 
 **Python**
 
@@ -125,7 +125,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools est un dictionnaire avec les noms des outils comme clés
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -157,8 +157,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
        };
     }
     
-    // args: request.params.arguments
-    // TODO call the tool, 
+    // args : request.params.arguments
+    // TODO appeler l'outil,
 
     return {
        content: [{ type: "text", text: `Tool ${name} called with arguments: ${JSON.stringify(input)}, result: ${JSON.stringify(result)}` }]
@@ -166,18 +166,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-Comme vous pouvez le voir dans le code ci-dessus, nous devons extraire l'outil à appeler, avec quels arguments, puis procéder à l'appel de l'outil.
+Comme vous pouvez le voir dans le code ci-dessus, nous devons extraire l'outil à appeler, avec quels arguments, puis nous devons procéder à l'appel de l'outil.
 
-## Améliorer l'approche avec la validation
+## Amélioration de l'approche avec validation
 
-Jusqu'à présent, vous avez vu comment toutes vos inscriptions pour ajouter des outils, des ressources et des invites peuvent être remplacées par ces deux gestionnaires par type de fonctionnalité. Que devons-nous faire d'autre ? Eh bien, nous devrions ajouter une forme de validation pour garantir que l'outil est appelé avec les bons arguments. Chaque runtime a sa propre solution pour cela, par exemple Python utilise Pydantic et TypeScript utilise Zod. L'idée est de faire ce qui suit :
+Jusqu'à présent, vous avez vu comment toutes vos inscriptions pour ajouter des outils, ressources et invites peuvent être remplacées par ces deux gestionnaires par type de fonctionnalité. Que devons-nous faire d'autre ? Eh bien, nous devrions ajouter une forme de validation pour nous assurer que l'outil est appelé avec les bons arguments. Chaque runtime a sa propre solution pour cela, par exemple Python utilise Pydantic et TypeScript utilise Zod. L'idée est que nous faisons ce qui suit :
 
-- Déplacer la logique de création d'une fonctionnalité (outil, ressource ou invite) dans son dossier dédié.
-- Ajouter un moyen de valider une requête entrante demandant, par exemple, d'appeler un outil.
+- Déplacer la logique de création d'une fonctionnalité (outil, ressource ou invite) vers son dossier dédié.
+- Ajouter un moyen de valider une requête entrante demandant par exemple d'appeler un outil.
 
 ### Créer une fonctionnalité
 
-Pour créer une fonctionnalité, nous devons créer un fichier pour cette fonctionnalité et nous assurer qu'il contient les champs obligatoires requis pour cette fonctionnalité. Les champs diffèrent légèrement entre les outils, les ressources et les invites.
+Pour créer une fonctionnalité, nous devons créer un fichier pour cette fonctionnalité et nous assurer qu'il possède les champs obligatoires requis de cette fonctionnalité. Certains champs diffèrent un peu entre outils, ressources et invites.
 
 **Python**
 
@@ -195,12 +195,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Valider l'entrée en utilisant le modèle Pydantic
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # TODO : ajouter Pydantic, afin que nous puissions créer un AddInputModel et valider les arguments
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -213,26 +213,26 @@ tool_add = {
 }
 ```
 
-Ici, vous pouvez voir comment nous faisons ce qui suit :
+ici vous pouvez voir comment nous faisons ce qui suit :
 
-- Créer un schéma en utilisant Pydantic `AddInputModel` avec les champs `a` et `b` dans le fichier *schema.py*.
-- Tenter de parser la requête entrante pour qu'elle soit de type `AddInputModel`. Si les paramètres ne correspondent pas, cela échouera :
+- Créer un schéma avec Pydantic `AddInputModel` avec les champs `a` et `b` dans le fichier *schema.py*.
+- Tenter de parser la requête entrante pour qu'elle soit de type `AddInputModel`, s'il y a une incompatibilité dans les paramètres, cela plantera :
 
    ```python
    # add.py
     try:
-        # Validate input using Pydantic model
+        # Valider l'entrée en utilisant le modèle Pydantic
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
    ```
 
-Vous pouvez choisir de placer cette logique de parsing dans l'appel de l'outil lui-même ou dans la fonction du gestionnaire.
+Vous pouvez choisir de mettre cette logique de parsing dans l'appel de l'outil lui-même ou dans la fonction gestionnaire.
 
 **TypeScript**
 
 ```typescript
-// server.ts
+// serveur.ts
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const { params: { name } } = request;
     let tool = tools.find(t => t.name === name);
@@ -266,12 +266,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 
 });
 
-// schema.ts
+// schéma.ts
 import { z } from 'zod';
 
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 
-// add.ts
+// ajouter.ts
 import { Tool } from "./tool.js";
 import { MathInputSchema } from "./schema.js";
 import { zodToJsonSchema } from "zod-to-json-schema";
@@ -288,7 +288,7 @@ export default {
 } as Tool;
 ```
 
-- Dans le gestionnaire qui traite tous les appels d'outils, nous essayons maintenant de parser la requête entrante dans le schéma défini de l'outil :
+- Dans le gestionnaire traitant tous les appels d'outils, nous essayons maintenant de parser la requête entrante dans le schéma défini de l'outil :
 
     ```typescript
     const Schema = tool.rawSchema;
@@ -297,27 +297,27 @@ export default {
        const input = Schema.parse(request.params.arguments);
     ```
 
-    si cela fonctionne, nous procédons à l'appel de l'outil réel :
+    si cela fonctionne, alors nous procédons à appeler l'outil réel :
 
     ```typescript
     const result = await tool.callback(input);
     ```
 
-Comme vous pouvez le voir, cette approche crée une excellente architecture où tout a sa place. Le fichier *server.ts* est très petit et ne fait que connecter les gestionnaires de requêtes, tandis que chaque fonctionnalité est dans son dossier respectif, c'est-à-dire tools/, resources/ ou prompts/.
+Comme vous pouvez le voir, cette approche crée une excellente architecture car tout a sa place, le *server.ts* est un fichier très petit qui ne fait que relier les gestionnaires de requêtes et chaque fonctionnalité est dans leur dossier respectif, c’est-à-dire tools/, resources/ ou /prompts.
 
-Super, essayons de construire cela maintenant.
+Super, essayons de construire cela ensuite.
 
-## Exercice : Créer un serveur bas-niveau
+## Exercice : Création d’un serveur bas niveau
 
-Dans cet exercice, nous allons faire ce qui suit :
+Dans cet exercice, nous ferons ce qui suit :
 
-1. Créer un serveur bas-niveau gérant la liste des outils et l'appel des outils.
+1. Créer un serveur bas niveau gérant la liste des outils et l'appel des outils.
 1. Implémenter une architecture sur laquelle vous pouvez construire.
-1. Ajouter une validation pour garantir que vos appels d'outils sont correctement validés.
+1. Ajouter la validation pour assurer que vos appels d’outil sont correctement validés.
 
 ### -1- Créer une architecture
 
-La première chose à aborder est une architecture qui nous aide à évoluer à mesure que nous ajoutons plus de fonctionnalités. Voici à quoi cela ressemble :
+La première chose à aborder est une architecture qui nous aide à évoluer au fur et à mesure que nous ajoutons des fonctionnalités, voici à quoi cela ressemble :
 
 **Python**
 
@@ -340,11 +340,11 @@ server.ts
 client.ts
 ```
 
-Nous avons maintenant mis en place une architecture qui garantit que nous pouvons facilement ajouter de nouveaux outils dans un dossier tools. N'hésitez pas à suivre cela pour ajouter des sous-répertoires pour les ressources et les invites.
+Nous avons maintenant mis en place une architecture qui garantit que nous pouvons facilement ajouter de nouveaux outils dans un dossier tools. N’hésitez pas à suivre cela pour ajouter des sous-répertoires pour les ressources et les invites.
 
 ### -2- Créer un outil
 
-Voyons à quoi ressemble la création d'un outil. Tout d'abord, il doit être créé dans son sous-répertoire *tool* comme suit :
+Voyons alors à quoi ressemble la création d’un outil. D'abord, il doit être créé dans son sous-répertoire *tool* comme suit :
 
 **Python**
 
@@ -353,12 +353,12 @@ from .schema import AddInputModel
 
 async def add_handler(args) -> float:
     try:
-        # Validate input using Pydantic model
+        # Valider l'entrée en utilisant le modèle Pydantic
         input_model = AddInputModel(**args)
     except Exception as e:
         raise ValueError(f"Invalid input: {str(e)}")
 
-    # TODO: add Pydantic, so we can create an AddInputModel and validate args
+    # À FAIRE : ajouter Pydantic, pour que nous puissions créer un AddInputModel et valider les arguments
 
     """Handler function for the add tool."""
     return float(input_model.a) + float(input_model.b)
@@ -371,9 +371,9 @@ tool_add = {
 }
 ```
 
-Ce que nous voyons ici, c'est comment nous définissons le nom, la description, un schéma d'entrée en utilisant Pydantic et un gestionnaire qui sera invoqué une fois que cet outil sera appelé. Enfin, nous exposons `tool_add`, qui est un dictionnaire contenant toutes ces propriétés.
+Ce que nous voyons ici, c’est comment nous définissons le nom, la description, un schéma d'entrée avec Pydantic et un gestionnaire qui sera invoqué une fois que cet outil sera appelé. Enfin, nous exposons `tool_add` qui est un dictionnaire tenant toutes ces propriétés.
 
-Il y a aussi *schema.py*, utilisé pour définir le schéma d'entrée utilisé par notre outil :
+Il y a aussi *schema.py* qui est utilisé pour définir le schéma d'entrée utilisé par notre outil :
 
 ```python
 from pydantic import BaseModel
@@ -383,7 +383,7 @@ class AddInputModel(BaseModel):
     b: float
 ```
 
-Nous devons également remplir *__init__.py* pour garantir que le répertoire tools est traité comme un module. De plus, nous devons exposer les modules qu'il contient comme suit :
+Nous devons également remplir *__init__.py* pour assurer que le répertoire tools est traité comme un module. De plus, nous devons exposer les modules qu’il contient de cette façon :
 
 ```python
 from .add import tool_add
@@ -416,12 +416,12 @@ export default {
 
 Ici, nous créons un dictionnaire composé de propriétés :
 
-- name, c'est le nom de l'outil.
-- rawSchema, c'est le schéma Zod, il sera utilisé pour valider les requêtes entrantes pour appeler cet outil.
+- name, c’est le nom de l'outil.
+- rawSchema, c’est le schéma Zod, il sera utilisé pour valider les requêtes entrantes pour appeler cet outil.
 - inputSchema, ce schéma sera utilisé par le gestionnaire.
-- callback, utilisé pour invoquer l'outil.
+- callback, ceci est utilisé pour invoquer l'outil.
 
-Il y a aussi `Tool`, utilisé pour convertir ce dictionnaire en un type que le gestionnaire du serveur MCP peut accepter, et cela ressemble à ceci :
+Il y a aussi `Tool` qui est utilisé pour convertir ce dictionnaire en un type que le gestionnaire du serveur mcp peut accepter et cela ressemble à ceci :
 
 ```typescript
 import { z } from 'zod';
@@ -434,7 +434,7 @@ export interface Tool {
 }
 ```
 
-Et il y a *schema.ts*, où nous stockons les schémas d'entrée pour chaque outil, qui ressemble à ceci avec un seul schéma pour l'instant, mais à mesure que nous ajoutons des outils, nous pouvons ajouter plus d'entrées :
+Et il y a *schema.ts* où nous stockons les schémas d’entrée pour chaque outil qui ressemble à ceci avec un seul schéma pour le moment mais à mesure que nous ajoutons des outils, nous pouvons ajouter plus d’entrées :
 
 ```typescript
 import { z } from 'zod';
@@ -442,7 +442,7 @@ import { z } from 'zod';
 export const MathInputSchema = z.object({ a: z.number(), b: z.number() });
 ```
 
-Super, passons à la gestion de la liste de nos outils.
+Super, passons maintenant à la gestion de la liste de nos outils.
 
 ### -3- Gérer la liste des outils
 
@@ -451,7 +451,7 @@ Ensuite, pour gérer la liste de nos outils, nous devons configurer un gestionna
 **Python**
 
 ```python
-# code omitted for brevity
+# code omis pour plus de concision
 from tools import tools
 
 @server.list_tools()
@@ -470,11 +470,11 @@ async def handle_list_tools() -> list[types.Tool]:
     return tool_list
 ```
 
-Ici, nous ajoutons le décorateur `@server.list_tools` et la fonction d'implémentation `handle_list_tools`. Dans cette dernière, nous devons produire une liste d'outils. Notez que chaque outil doit avoir un nom, une description et un inputSchema.   
+Ici nous ajoutons le décorateur `@server.list_tools` et la fonction d’implémentation `handle_list_tools`. Dans cette dernière, nous devons produire une liste d’outils. Notez que chaque outil doit avoir un nom, une description et un inputSchema.
 
 **TypeScript**
 
-Pour configurer le gestionnaire de requêtes pour lister les outils, nous devons appeler `setRequestHandler` sur le serveur avec un schéma correspondant à ce que nous essayons de faire, dans ce cas `ListToolsRequestSchema`. 
+Pour configurer le gestionnaire de requêtes pour la liste des outils, nous devons appeler `setRequestHandler` sur le serveur avec un schéma adapté à ce que nous essayons de faire, dans ce cas `ListToolsRequestSchema`.
 
 ```typescript
 // index.ts
@@ -488,26 +488,26 @@ tools.push(addTool);
 tools.push(subtractTool);
 
 // server.ts
-// code omitted for brevity
+// code omis pour des raisons de concision
 import { tools } from './tools/index.js';
 
 server.setRequestHandler(ListToolsRequestSchema, async (request) => {
-  // Return the list of registered tools
+  // Retourner la liste des outils enregistrés
   return {
     tools: tools
   };
 });
 ```
 
-Super, nous avons maintenant résolu la partie de la liste des outils. Regardons comment nous pourrions appeler des outils ensuite.
+Super, maintenant que nous avons résolu la partie listage des outils, voyons comment nous pourrions appeler les outils ensuite.
 
-### -4- Gérer l'appel d'un outil
+### -4- Gérer l'appel d’un outil
 
-Pour appeler un outil, nous devons configurer un autre gestionnaire de requêtes, cette fois axé sur le traitement d'une requête spécifiant quelle fonctionnalité appeler et avec quels arguments.
+Pour appeler un outil, nous devons configurer un autre gestionnaire de requêtes, cette fois focalisé sur la gestion d’une requête spécifiant quelle fonctionnalité appeler et avec quels arguments.
 
 **Python**
 
-Utilisons le décorateur `@server.call_tool` et implémentons-le avec une fonction comme `handle_call_tool`. Dans cette fonction, nous devons extraire le nom de l'outil, ses arguments et garantir que les arguments sont valides pour l'outil en question. Nous pouvons valider les arguments dans cette fonction ou en aval dans l'outil lui-même.
+Utilisons le décorateur `@server.call_tool` et implémentons-le avec une fonction comme `handle_call_tool`. Dans cette fonction, nous devons extraire le nom de l’outil, ses arguments et s’assurer que les arguments sont valides pour l’outil en question. Nous pouvons valider les arguments dans cette fonction ou en aval dans l’outil réel.
 
 ```python
 @server.call_tool()
@@ -515,7 +515,7 @@ async def handle_call_tool(
     name: str, arguments: dict[str, str] | None
 ) -> list[types.TextContent]:
     
-    # tools is a dictionary with tool names as keys
+    # tools est un dictionnaire avec des noms d'outils comme clés
     if name not in tools.tools:
         raise ValueError(f"Unknown tool: {name}")
     
@@ -523,7 +523,7 @@ async def handle_call_tool(
 
     result = "default"
     try:
-        # invoke the tool
+        # invoquer l'outil
         result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)
     except Exception as e:
         raise ValueError(f"Error calling tool {name}: {str(e)}")
@@ -535,25 +535,31 @@ async def handle_call_tool(
 
 Voici ce qui se passe :
 
-- Le nom de notre outil est déjà présent en tant que paramètre d'entrée `name`, ce qui est également vrai pour nos arguments sous forme de dictionnaire `arguments`.
+- Le nom de notre outil est déjà présent en tant que paramètre d’entrée `name` qui est vrai pour nos arguments dans le dictionnaire `arguments`.
 
-- L'outil est appelé avec `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. La validation des arguments se produit dans la propriété `handler`, qui pointe vers une fonction. Si cela échoue, une exception sera levée. 
+- L’outil est appelé avec `result = await tool["handler"](../../../../03-GettingStarted/10-advanced/arguments)`. La validation des arguments se passe dans la propriété `handler` qui pointe vers une fonction, si cela échoue cela lèvera une exception.
 
-Voilà, nous avons maintenant une compréhension complète de la liste et de l'appel des outils en utilisant un serveur bas-niveau.
+Voilà, nous avons maintenant une compréhension complète du listage et de l’appel des outils en utilisant un serveur bas niveau.
 
-Voir l'[exemple complet](./code/README.md) ici.
+Voir l’[exemple complet](./code/README.md) ici
 
-## Devoir
+## Travail à faire
 
-Étendez le code qui vous a été donné avec plusieurs outils, ressources et invites, et réfléchissez à la manière dont vous remarquez que vous n'avez besoin d'ajouter des fichiers que dans le répertoire tools et nulle part ailleurs. 
+Étendez le code qui vous a été donné avec un certain nombre d’outils, ressources et invites et réfléchissez à la façon dont vous constatez que vous n’avez besoin d’ajouter des fichiers que dans le répertoire tools et nulle part ailleurs.
 
-*Aucune solution donnée*
+*Pas de solution fournie*
 
 ## Résumé
 
-Dans ce chapitre, nous avons vu comment fonctionne l'approche du serveur bas-niveau et comment cela peut nous aider à créer une architecture propre sur laquelle nous pouvons continuer à construire. Nous avons également discuté de la validation et vous avez vu comment travailler avec des bibliothèques de validation pour créer des schémas de validation des entrées.
+Dans ce chapitre, nous avons vu comment fonctionnait l’approche serveur bas niveau et comment cela peut nous aider à créer une belle architecture que nous pouvons continuer à développer. Nous avons également discuté de la validation et vous avez vu comment travailler avec des bibliothèques de validation pour créer des schémas de validation des entrées.
+
+## Ce qui suit
+
+- Suivant : [Authentification simple](../11-simple-auth/README.md)
 
 ---
 
-**Avertissement** :  
-Ce document a été traduit à l'aide du service de traduction automatique [Co-op Translator](https://github.com/Azure/co-op-translator). Bien que nous nous efforcions d'assurer l'exactitude, veuillez noter que les traductions automatisées peuvent contenir des erreurs ou des inexactitudes. Le document original dans sa langue d'origine doit être considéré comme la source faisant autorité. Pour des informations critiques, il est recommandé de recourir à une traduction humaine professionnelle. Nous déclinons toute responsabilité en cas de malentendus ou d'interprétations erronées résultant de l'utilisation de cette traduction.
+<!-- CO-OP TRANSLATOR DISCLAIMER START -->
+**Avis de non-responsabilité** :  
+Ce document a été traduit à l’aide du service de traduction automatique [Co-op Translator](https://github.com/Azure/co-op-translator). Bien que nous nous efforcions d’assurer l’exactitude, veuillez noter que les traductions automatiques peuvent contenir des erreurs ou des inexactitudes. Le document original dans sa langue d’origine doit être considéré comme la source faisant foi. Pour toute information critique, il est recommandé de recourir à une traduction professionnelle humaine. Nous déclinons toute responsabilité en cas de malentendus ou d’interprétations erronées résultant de l’utilisation de cette traduction.
+<!-- CO-OP TRANSLATOR DISCLAIMER END -->

@@ -192,7 +192,7 @@ MCP Inspector ایک مفید ٹول ہے جو MCP سروسز کے ساتھ ان
    - "List Tools" پر کلک کر کے دستیاب کیلکولیٹر آپریشنز دیکھیں
    - کسی ٹول کو منتخب کریں اور "Run Tool" پر کلک کر کے آپریشن چلائیں
 
-![MCP Inspector Screenshot](../../../../../../translated_images/ur/tool.c75a0b2380efcf1a47a8478f54380a36ddcca7943b98f56dabbac8b07e15c3bb.png)
+![MCP Inspector Screenshot](../../../../../../translated_images/ur/tool.c75a0b2380efcf1a.webp)
 
 ### Docker کا استعمال
 

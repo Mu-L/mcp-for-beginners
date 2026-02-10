@@ -14,7 +14,7 @@
 
     תראה כלי שמוצג מעל תיבת הטקסט של הצ'אט שמבקש ממך לבחור להפעיל את הכלי, כפי שמוצג בתמונה:
 
-    ![VS Code indicating it wanting to run a tool](../../../../../translated_images/he/vscode-agent.d5a0e0b897331060518fe3f13907677ef52b879db98c64d68a38338608f3751e.png)
+    ![VS Code indicating it wanting to run a tool](../../../../../translated_images/he/vscode-agent.d5a0e0b897331060.webp)
 
     בחירת הכלי אמורה להניב תוצאה מספרית שאומרת "23" אם הפקודה שהקלדת הייתה כפי שהזכרנו קודם.
 

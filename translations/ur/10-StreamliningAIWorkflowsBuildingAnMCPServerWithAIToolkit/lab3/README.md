@@ -55,7 +55,7 @@ Model Context Protocol Python SDK کسٹم MCP سرورز بنانے کی بنی
 2. **نیا ایجنٹ بنائیں** درج ذیل کنفیگریشن کے ساتھ:
    - ایجنٹ کا نام: `WeatherAgent`
 
-![Agent Creation](../../../../translated_images/ur/Agent.c9c33f6a412b4cdedfb973fe5448bdb33de3f400055603111b875610e9b917ab.png)
+![Agent Creation](../../../../translated_images/ur/Agent.c9c33f6a412b4cde.webp)
 
 ### مرحلہ 2: MCP سرور پروجیکٹ شروع کریں
 
@@ -65,7 +65,7 @@ Model Context Protocol Python SDK کسٹم MCP سرورز بنانے کی بنی
 4. **`python-weather` ٹیمپلیٹ منتخب کریں**
 5. **اپنے سرور کا نام رکھیں:** `weather_mcp`
 
-![Python Template Selection](../../../../translated_images/ur/Pythontemplate.9d0a2913c6491500bd673430f024dc44676af2808a27b5da9dcc0eb7063adc28.png)
+![Python Template Selection](../../../../translated_images/ur/Pythontemplate.9d0a2913c6491500.webp)
 
 ### مرحلہ 3: پروجیکٹ کھولیں اور جائزہ لیں
 
@@ -331,7 +331,7 @@ USER_PROMPT
 How's the weather like in Seattle
 ```
 
-![Agent Builder Debug Result](../../../../translated_images/ur/Result.6ac570f7d2b1d5389c561ab0566970fe0f13e75bdd976b6a7f0270bc715d07f8.png)
+![Agent Builder Debug Result](../../../../translated_images/ur/Result.6ac570f7d2b1d538.webp)
 
 ### مرحلہ 8: MCP Inspector کے ساتھ ڈیبگ کریں
 
@@ -343,7 +343,7 @@ How's the weather like in Seattle
    - نیٹ ورک درخواستوں کی نگرانی کریں
    - سرور کے جوابات کی ڈیبگنگ کریں
 
-![MCP Inspector Interface](../../../../translated_images/ur/Inspector.5672415cd02fe8731774586cc0a1083e3275d2f8491602aecc8ac4d61f2c0d57.png)
+![MCP Inspector Interface](../../../../translated_images/ur/Inspector.5672415cd02fe873.webp)
 
 ---
 

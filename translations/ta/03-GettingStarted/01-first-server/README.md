@@ -147,7 +147,7 @@ npx @modelcontextprotocol/inspector node build/index.js
 
 இதோ அது எப்படி தோன்றும் என்பதற்கான ஒரு ஸ்கிரீன்ஷாட்:
 
-![MCP Inspector server connection](../../../../translated_images/ta/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+![MCP Inspector server connection](../../../../translated_images/ta/connected.73d1e042c24075d3.webp)
 
 ## பொதுவான அமைப்பு பிரச்சனைகள் மற்றும் தீர்வுகள்
 
@@ -1277,7 +1277,7 @@ npx @modelcontextprotocol/inspector
 2. URL ஐ இதுவரை அமைக்கவும்: `http://localhost:8080/sse`
 3. "Connect" கிளிக் செய்யவும்
 
-![Connect](../../../../translated_images/ta/tool.163d33e3ee307e209ef146d8f85060d2f7e83e9f59b3b1699a77204ae0454ad2.png)
+![Connect](../../../../translated_images/ta/tool.163d33e3ee307e20.webp)
 
 **நீங்கள் இப்போது சர்வருடன் இணைக்கப்பட்டுள்ளீர்கள்**
 **Java சர்வர் சோதனை பகுதி இப்போது முடிந்தது**
@@ -1286,18 +1286,18 @@ npx @modelcontextprotocol/inspector
 
 நீங்கள் பின்வரும் பயனர் இடைமுகத்தை காண வேண்டும்:
 
-![Connect](../../../../translated_images/ta/connect.141db0b2bd05f096fb1dd91273771fd8b2469d6507656c3b0c9df4b3c5473929.png)
+![Connect](../../../../translated_images/ta/connect.141db0b2bd05f096.webp)
 
 1. Connect பொத்தானை தேர்ந்தெடுத்து சர்வருடன் இணைக்கவும்
   சர்வருடன் இணைந்தவுடன், பின்வரும் காண்பிக்கப்படும்:
 
-  ![Connected](../../../../translated_images/ta/connected.73d1e042c24075d386cacdd4ee7cd748c16364c277d814e646ff2f7b5eefde85.png)
+  ![Connected](../../../../translated_images/ta/connected.73d1e042c24075d3.webp)
 
 1. "Tools" மற்றும் "listTools" ஐ தேர்ந்தெடுக்கவும், "Add" தோன்றும், "Add" ஐ தேர்ந்தெடுத்து அளவுரு மதிப்புகளை நிரப்பவும்.
 
   பின்வரும் பதிலை நீங்கள் காண வேண்டும், அதாவது "add" கருவியிலிருந்து பெறப்பட்ட முடிவு:
 
-  ![Result of running add](../../../../translated_images/ta/ran-tool.a5a6ee878c1369ec1e379b81053395252a441799dbf23416c36ddf288faf8249.png)
+  ![Result of running add](../../../../translated_images/ta/ran-tool.a5a6ee878c1369ec.webp)
 
 வாழ்த்துக்கள், நீங்கள் உங்கள் முதல் சர்வரை உருவாக்கி இயக்கியுள்ளீர்கள்!
 

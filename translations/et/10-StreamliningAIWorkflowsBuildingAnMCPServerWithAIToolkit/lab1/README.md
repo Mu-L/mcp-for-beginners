@@ -51,7 +51,7 @@ Selle mooduli lõpuks oskad:
 
 **Samm 3: Installi ja aktiveeri**
 
-![AI Toolkit'i laiendus](../../../../translated_images/et/aitkext.d28945a03eed003c39fc39bc96ae655af9b64b9b922e78e88b07214420ed7985.png)
+![AI Toolkit'i laiendus](../../../../translated_images/et/aitkext.d28945a03eed003c.webp)
 
 ### ✅ Kontroll-loend
 - [ ] AI Toolkit'i ikoon ilmub VS Code'i külgribale
@@ -70,7 +70,7 @@ Mudelikataloog on sinu värav AI ökosüsteemi. See koondab mudeleid mitmelt pak
 
 Klõpsa **MODELS - Catalog** AI Toolkit'i külgribal
 
-![Mudelikataloog](../../../../translated_images/et/aimodel.263ed2be013d8fb0e2265c4f742cfe490f6f00eca5e132ec50438c8e826e34ed.png)
+![Mudelikataloog](../../../../translated_images/et/aimodel.263ed2be013d8fb0.webp)
 
 **💡 Näpunäide**: Otsi mudeleid, millel on spetsiifilised võimed, mis sobivad sinu kasutusjuhtumiga (nt koodi genereerimine, loovkirjutamine, analüüs).
 
@@ -88,7 +88,7 @@ Klõpsa **MODELS - Catalog** AI Toolkit'i külgribal
 3. Vali **Try in Playground**, et käivitada testimiskeskkond
 4. Oota mudeli initsialiseerimist (esmakordne seadistamine võib võtta hetke)
 
-![Playground'i seadistamine](../../../../translated_images/et/playground.dd6f5141344878ca4d4f3de819775da7b113518941accf37c291117c602f85db.png)
+![Playground'i seadistamine](../../../../translated_images/et/playground.dd6f5141344878ca.webp)
 
 **⚙️ Mudeli parameetrite mõistmine:**
 - **Temperature**: Kontrollib loovust (0 = deterministlik, 1 = loov)
@@ -117,7 +117,7 @@ Playground on sinu AI katsetamise labor. Siin on, kuidas selle potentsiaali maks
 "Analyze this sales data and provide insights: [paste your data]. Focus on trends, anomalies, and actionable recommendations."
 ```
 
-![Testimistulemused](../../../../translated_images/et/result.1dfcf211fb359cf65902b09db191d3bfc65713ca15e279c1a30be213bb526949.png)
+![Testimistulemused](../../../../translated_images/et/result.1dfcf211fb359cf6.webp)
 
 ### 🏆 Väljakutse harjutus: Mudelite jõudluse võrdlemine
 
@@ -127,12 +127,12 @@ Playground on sinu AI katsetamise labor. Siin on, kuidas selle potentsiaali maks
 1. Lisa **Phi-4-mini** oma tööruumi
 2. Kasuta sama prompti nii GPT-4.1 kui Phi-4-mini puhul
 
-![Seadistamine](../../../../translated_images/et/set.88132df189ecde2cbbda256c1841db5aac8e9bdeba1a4e343dfa031b9545d6c9.png)
+![Seadistamine](../../../../translated_images/et/set.88132df189ecde2c.webp)
 
 3. Võrdle vastuste kvaliteeti, kiirust ja täpsust
 4. Dokumenteeri oma järeldused tulemuste jaotises
 
-![Mudelite võrdlus](../../../../translated_images/et/compare.97746cd0f907495503c1fc217739f3890dc76ea5f6fd92379a6db0cc331feb58.png)
+![Mudelite võrdlus](../../../../translated_images/et/compare.97746cd0f9074955.webp)
 
 **💡 Olulised avastused:**
 - Millal kasutada LLM-i vs SLM-i
@@ -154,7 +154,7 @@ Agent Builder on koht, kus AI Toolkit tõeliselt särab. See võimaldab luua ees
 - **Tööriistade integreerimine**: Ühendus väliste API-de ja MCP teenustega
 - **Mälu**: Vestluse kontekst ja sessiooni püsivus
 
-![Agent Builder'i liides](../../../../translated_images/et/agentbuilder.25895b2d2f8c02e7aa99dd40e105877a6f1db8f0441180087e39db67744b361f.png)
+![Agent Builder'i liides](../../../../translated_images/et/agentbuilder.25895b2d2f8c02e7.webp)
 
 ### ⚙️ Samm 2: Agendi konfiguratsiooni süvaanalüüs
 
@@ -228,7 +228,7 @@ You are a senior Python developer with 10+ years of experience. You excel at wri
    - Max Tokens: 2000 (üksikasjalikud selgitused)
    - Top-p: 0.9 (tasakaalustatud loovus)
 
-![Python agendi konfiguratsioon](../../../../translated_images/et/pythonagent.5e51b406401c165fcabfd66f2d943c27f46b5fed0f9fb73abefc9e91ca3489d4.png)
+![Python agendi konfiguratsioon](../../../../translated_images/et/pythonagent.5e51b406401c165f.webp)
 
 ### 🧪 Samm 4: Testi oma Python'i agenti
 
