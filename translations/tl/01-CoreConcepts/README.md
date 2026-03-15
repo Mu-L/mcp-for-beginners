@@ -1,50 +1,50 @@
-# MCP Core Concepts: Mastering the Model Context Protocol for AI Integration
+# MCP Core Concepts: Pag-master ng Model Context Protocol para sa AI Integration
 
 [![MCP Core Concepts](../../../translated_images/tl/02.8203e26c6fb5a797.webp)](https://youtu.be/earDzWGtE84)
 
-_(I-click ang larawan sa itaas upang panoorin ang video ng araling ito)_
+_(I-click ang larawan sa itaas upang panoorin ang video ng leksyong ito)_
 
-Ang [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) ay isang makapangyarihan, standardisadong balangkas na nag-o-optimize ng komunikasyon sa pagitan ng Mga Malalaking Modelo ng Wika (LLMs) at mga panlabas na kasangkapan, aplikasyon, at mga pinagkukunan ng data.  
-Ang gabay na ito ay dadalhin ka sa mga pangunahing konsepto ng MCP. Matututuhan mo ang tungkol sa client-server architecture nito, mahahalagang bahagi, mekanismo ng komunikasyon, at pinakamahusay na kasanayan sa pagpapatupad.
+Ang [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) ay isang makapangyarihang, standardized na balangkas na nag-ooptimize ng komunikasyon sa pagitan ng Large Language Models (LLMs) at mga panlabas na tools, aplikasyon, at mga pinagkukunan ng data.  
+Ang gabay na ito ay maghahatid sa iyo sa mga pangunahing konsepto ng MCP. Matututuhan mo ang tungkol sa client-server arkitektura nito, mahahalagang bahagi, mekaniks ng komunikasyon, at mga pinakamahusay na praktis sa pagpapatupad.
 
-- **Tahasang Pahintulot ng Gumagamit**: Lahat ng pag-access sa data at operasyon ay nangangailangan ng tahasang pag-apruba ng gumagamit bago isagawa. Kailangan malinaw na maunawaan ng mga gumagamit kung anong data ang maa-access at anong mga aksyon ang gagawin, na may detalyadong kontrol sa mga pahintulot at awtorisasyon.
+- **Explicit User Consent**: Lahat ng pag-access sa data at mga operasyon ay nangangailangan ng malinaw na pahintulot mula sa gumagamit bago isagawa. Dapat malinaw na maunawaan ng mga gumagamit kung anong data ang aaksesin at anong mga aksyon ang gagawin, na may masusing kontrol sa mga pahintulot at otorisasyon.
 
-- **Proteksyon ng Pagkapribado ng Data**: Ang data ng gumagamit ay ipinapakita lamang sa tahasang pahintulot at dapat maprotektahan ng matibay na mga kontrol sa pag-access sa buong lifecycle ng interaksyon. Dapat pigilan ng mga pagpapatupad ang hindi awtorisadong paglipat ng data at panatilihin ang mahigpit na mga hangganan ng privacy.
+- **Proteksyon sa Privacy ng Data**: Ang data ng gumagamit ay ipinapakita lamang sa may malinaw na pahintulot at dapat protektahan ng matibay na access controls sa buong lifecycle ng interaksyon. Ang mga implementasyon ay dapat pumigil sa hindi awtorisadong pagpapadala ng data at panatilihin ang mahigpit na hangganan ng privacy.
 
-- **Kaligtasan sa Pagpapatupad ng Kasangkapan**: Bawat pag-gamit ng kasangkapan ay nangangailangan ng tahasang pahintulot ng gumagamit na may malinaw na pagkaunawa sa pag-andar ng kasangkapan, mga parameter, at posibleng epekto. Dapat pigilan ng matibay na mga hangganan ng seguridad ang hindi sinasadyang, hindi ligtas, o malisyosong pagpapatupad ng kasangkapan.
+- **Kaligtasan sa Pagpapatakbo ng Tools**: Bawat pagtawag ng tool ay nangangailangan ng malinaw na pahintulot ng gumagamit na may malinaw na pagkaunawa sa functionality ng tool, mga parametro nito, at potensyal na epekto. Ang matibay na hangganan sa seguridad ay dapat pumigil sa hindi sinasadyang, hindi ligtas, o malisyosong pagpapatakbo ng tool.
 
-- **Seguridad sa Layer ng Transportasyon**: Lahat ng mga kanal ng komunikasyon ay dapat gumamit ng angkop na encryption at mga mekanismo ng pagpapatunay. Dapat ipatupad ng mga remote na koneksyon ang mga secure na protocol sa transportasyon at wastong pamamahala ng kredensyal.
+- **Transport Layer Security**: Lahat ng daluyan ng komunikasyon ay dapat gumamit ng angkop na encryption at mga mekanismo ng awtentikasyon. Ang mga remote na koneksyon ay dapat magpatupad ng secure na transport protocols at tamang pamamahala ng kredensyal.
 
 #### Mga Panuntunan sa Pagpapatupad:
 
-- **Pamamahala ng Pahintulot**: Magpatupad ng mga sistemang may pinong-grained na pahintulot na nagpapahintulot sa mga gumagamit na kontrolin kung aling mga server, kasangkapan, at mga pinagkukunan ang maa-access  
-- **Pagpapatunay at Awtorisasyon**: Gumamit ng mga secure na paraan ng pagpapatunay (OAuth, API keys) na may wastong pamamahala ng token at expiration  
-- **Pag-validate ng Input**: Suriin ang lahat ng mga parameter at input ng data ayon sa mga tinukoy na schema upang maiwasan ang injection attacks  
-- **Audit Logging**: Panatilihin ang komprehensibong mga log ng lahat ng operasyon para sa seguridad na pagmamanman at pagsunod  
+- **Pamamahala sa Pahintulot**: Magpatupad ng masusing sistema ng pahintulot na nagpapahintulot sa mga gumagamit na kontrolin kung anong mga server, tool, at resources ang maaakses  
+- **Authentication & Authorization**: Gumamit ng ligtas na paraan ng awtentikasyon (OAuth, API keys) na may tamang pamamahala ng token at pag-expire  
+- **Pag-validate ng Input**: I-validate ang lahat ng parametro at input ng data ayon sa mga tinukoy na schema upang maiwasan ang injection attacks  
+- **Audit Logging**: Panatilihin ang komprehensibong logs ng lahat ng operasyon para sa pagsubaybay sa seguridad at pagsunod
 
-## Pangkalahatang-ideya
+## Pangkalahatang Pagsilip
 
-Sinusuri ng araling ito ang pangunahing arkitektura at mga bahagi na bumubuo sa ekosistema ng Model Context Protocol (MCP). Matututuhan mo ang tungkol sa client-server architecture, mahahalagang bahagi, at mga mekanismo ng komunikasyon na nagpapagana sa pakikipag-ugnayan ng MCP.
+Tinutuklas ng leksyong ito ang pundamental na arkitektura at mga bahagi na bumubuo sa Model Context Protocol (MCP) ecosystem. Matututuhan mo ang tungkol sa client-server arkitektura, mga pangunahing bahagi, at mga mekanismo ng komunikasyon na nagpapatakbo sa mga interaksyon ng MCP.
 
-## Mga Pangunahing Layunin ng Pagkatuto
+## Pangunahing Mga Layunin sa Pagkatuto
 
-Sa pagtatapos ng araling ito, malalaman mo:
+Pagkatapos ng leksyong ito, magagawa mo:
 
-- Mauunawaan ang MCP client-server architecture.  
-- Matutukoy ang mga papel at responsibilidad ng Hosts, Clients, at Servers.  
-- Masusuri ang mga pangunahing tampok na ginagawang flexible ang MCP bilang integration layer.  
-- Matutuhan kung paano dumadaloy ang impormasyon sa loob ng ekosistema ng MCP.  
-- Makuha ang praktikal na kaalaman sa pamamagitan ng mga halimbawang code sa .NET, Java, Python, at JavaScript.  
+- Maunawaan ang MCP client-server arkitektura.  
+- Tukuyin ang mga papel at responsibilidad ng Hosts, Clients, at Servers.  
+- Suriin ang mga pangunahing katangian na nagpapatalino sa MCP bilang isang flexible na integration layer.  
+- Matutunan kung paano dumadaloy ang impormasyon sa loob ng MCP ecosystem.  
+- Magkaroon ng praktikal na kaalaman sa pamamagitan ng mga halimbawa ng code sa .NET, Java, Python, at JavaScript.
 
-## MCP Architecture: Mas Malalim na Pagsilip
+## MCP Arkitektura: Mas Malalim na Pagsilip
 
-Ang ekosistema ng MCP ay nakabatay sa client-server na modelo. Ang modular na istrukturang ito ay nagpapahintulot sa mga AI na aplikasyon na makipag-ugnayan sa mga kasangkapan, database, API, at mga kontekstwal na pinagkukunan nang mahusay. Hatiin natin ang arkitekturang ito sa mga pangunahing bahagi nito.
+Ang MCP ecosystem ay itinayo sa client-server na modelo. Ang modular na estrukturang ito ay nagpapahintulot sa mga AI application na makipag-ugnayan sa mga tool, databases, APIs, at mga contextual na resources nang epektibo. Himayin natin ang arkitekturang ito sa mga pangunahing bahagi nito.
 
-Sa kanyang pinakapuso, sinusunod ng MCP ang client-server architecture kung saan ang host application ay maaaring kumonekta sa maraming mga server:
+Sa pinakapuso nito, sumusunod ang MCP sa client-server na arkitektura kung saan ang isang host application ay maaaring kumonekta sa maramihang mga server:
 
 ```mermaid
 flowchart LR
-    subgraph "Ang Iyong Kompyuter"
+    subgraph "Iyong Kompyuter"
         Host["Host na may MCP (Visual Studio, VS Code, IDEs, Mga Kasangkapan)"]
         S1["MCP Server A"]
         S2["MCP Server B"]
@@ -52,80 +52,80 @@ flowchart LR
         Host <-->|"MCP Protocol"| S1
         Host <-->|"MCP Protocol"| S2
         Host <-->|"MCP Protocol"| S3
-        S1 <--> D1[("Lokal\Data Source A")]
-        S2 <--> D2[("Lokal\Data Source B")]
+        S1 <--> D1[("Lokal\Pinagmulan ng Data A")]
+        S2 <--> D2[("Lokal\Pinagmulan ng Data B")]
     end
     subgraph "Internet"
-        S3 <-->|"Web APIs"| D3[("Umuutay na Mga Serbisyo")]
+        S3 <-->|"Web APIs"| D3[("Remote\Mga Serbisyo")]
     end
 ```
-- **MCP Hosts**: Mga programa tulad ng VSCode, Claude Desktop, IDEs, o AI tools na nais mag-access ng data sa pamamagitan ng MCP  
-- **MCP Clients**: Mga kliyenteng protocol na nagpapanatili ng 1:1 na koneksyon sa mga server  
-- **MCP Servers**: Mga magagaan na programa na nagpapakita ng partikular na mga kakayahan sa pamamagitan ng standardisadong Model Context Protocol  
-- **Local Data Sources**: Mga file, database, at serbisyo sa iyong kompyuter na maaaring ma-access nang ligtas ng MCP servers  
-- **Remote Services**: Mga panlabas na sistema na available sa internet na maaaring konektahan ng MCP servers sa pamamagitan ng mga API.
+- **MCP Hosts**: Mga programa gaya ng VSCode, Claude Desktop, IDEs, o mga AI tool na nais mag-access ng data sa pamamagitan ng MCP  
+- **MCP Clients**: Mga protocol client na nagpapanatili ng 1:1 na koneksyon sa mga server  
+- **MCP Servers**: Magaan na mga programa na bawat isa ay naglalantad ng mga partikular na kakayahan gamit ang standardized na Model Context Protocol  
+- **Local Data Sources**: Mga file, database, at serbisyo sa iyong kompyuter na maaring ma-access nang ligtas ng mga MCP server  
+- **Remote Services**: Mga panlabas na sistema na available sa internet na maaaring ikonekta ng MCP servers sa pamamagitan ng APIs.
 
-Ang MCP Protocol ay isang nagbabagong standard gamit ang date-based versioning (format na YYYY-MM-DD). Ang kasalukuyang bersyon ng protocol ay **2025-11-25**. Maaari mong makita ang pinakabagong mga update sa [protocol specification](https://modelcontextprotocol.io/specification/2025-11-25/).
+Ang MCP Protocol ay isang umuusbong na standard na gumagamit ng date-based versioning (YYYY-MM-DD format). Ang kasalukuyang bersyon ng protocol ay **2025-11-25**. Makikita mo ang pinakabagong mga update sa [protocol specification](https://modelcontextprotocol.io/specification/2025-11-25/)
 
-### 1. Hosts
+### 1. Mga Hosts
 
-Sa Model Context Protocol (MCP), ang **Hosts** ay mga AI application na nagsisilbing pangunahing interface kung saan nakikipag-ugnayan ang mga gumagamit sa protocol. Pinamumunuan ng mga Host ang koordinasyon at pamamahala ng mga koneksyon sa maraming MCP server sa pamamagitan ng paglikha ng dedikadong mga MCP client para sa bawat koneksyon sa server. Ilan sa mga halimbawa ng Hosts ay:
+Sa Model Context Protocol (MCP), ang **Hosts** ay mga AI application na nagsisilbing pangunahing interface kung saan nakikipag-ugnayan ang mga gumagamit sa protocol. Ang mga Hosts ay nagkokoordinate at nagmamanage ng mga koneksyon sa maramihang MCP server sa pamamagitan ng paglikha ng dedikadong MCP clients para sa bawat server connection. Halimbawa ng mga Hosts ay:
 
 - **AI Applications**: Claude Desktop, Visual Studio Code, Claude Code  
-- **Development Environments**: Mga IDE at code editor na may integrasyon ng MCP  
-- **Mga Custom na Aplikasyon**: Mga purpose-built na AI agent at kasangkapan  
+- **Mga Development Environments**: IDEs at mga code editor na may integrasyon sa MCP  
+- **Custom Applications**: Mga purpose-built AI agent at mga tool
 
-Ang **Hosts** ay mga aplikasyon na nagko-coordinate ng mga interaksyon ng AI modelo. Sila ay:
+Ang **Hosts** ay mga aplikasyon na nagkokoordinate ng pakikipag-ugnayan sa mga AI model. Sila ay:
 
-- **Naka-orchestrate ng AI Models**: Isinasagawa o nakikipag-ugnayan sa LLM upang makagawa ng mga tugon at mag-coordinate ng mga workflow ng AI  
-- **Nagpapanatili ng Client Connections**: Lumilikha at nagpapanatili ng isang MCP client bawat MCP server connection  
-- **Nagkokontrol ng User Interface**: Pinangangasiwaan ang daloy ng usapan, interaksyon ng gumagamit, at presentasyon ng mga tugon  
-- **Nagpapatupad ng Seguridad**: Kinokontrol ang mga pahintulot, mga limitasyon sa seguridad, at pagpapatunay  
-- **Pinangangasiwaan ang Pahintulot ng Gumagamit**: Namamahala sa pag-apruba ng gumagamit para sa pagbabahagi ng data at pagpapatupad ng kasangkapan  
+- **Nangunguna sa AI Models**: Nagsasagawa o nakikipag-ugnayan sa LLMs upang bumuo ng mga sagot at magkoordina ng mga workflow ng AI  
+- **Nagmamanage ng Client Connections**: Lumilikha at nagpapanatili ng isang MCP client para sa bawat koneksyon ng MCP server  
+- **Nagkokontrol ng User Interface**: Namamahala sa daloy ng usapan, pakikipag-ugnayan ng gumagamit, at presentasyon ng tugon  
+- **Nagpapatupad ng Seguridad**: Kinokontrol ang mga pahintulot, security constraints, at awtentikasyon  
+- **Nangangalaga ng Pahintulot ng User**: Nammamanage ang pag-apruba ng user para sa pagbabahagi ng data at pagpapatakbo ng tool
 
-### 2. Clients
+### 2. Mga Clients
 
-Ang **Clients** ay mga mahalagang bahagi na nagpapanatili ng dedikadong one-to-one na koneksyon sa pagitan ng Hosts at MCP servers. Bawat MCP client ay binubuo ng Host para kumonekta sa partikular na MCP server, na nagsisiguro ng organisado at ligtas na mga kanal ng komunikasyon. Ang maraming client ay nagpapahintulot sa mga Host na kumonekta sa maraming server nang sabay-sabay.
+Ang **Clients** ay mga mahalagang bahagi na nagpapanatili ng dedikadong one-to-one na koneksyon sa pagitan ng Hosts at MCP servers. Ang bawat MCP client ay ini-instatiate ng Host upang kumonekta sa isang partikular na MCP server, na nagsisiguro ng maayos at ligtas na mga channel ng komunikasyon. Pinapayagan ng maramihang clients ang Hosts na kumonekta sa maramihang server nang sabay-sabay.
 
-Ang **Clients** ay mga konektor na bahagi sa loob ng host application. Sila ay:
+Ang **Clients** ay mga connector na bahagi sa loob ng host application. Sila ay:
 
-- **Nagpapaandar ng Protocol Communication**: Nagpapadala ng JSON-RPC 2.0 requests sa mga server na may mga prompt at instruksyon  
-- **Nag-negotiate ng Kakayahan**: Nakikipag-negosasyon sa mga server tungkol sa sinusuportahang mga tampok at bersyon ng protocol sa panahon ng inisyal na koneksyon  
-- **Namamahala ng Pagpapatupad ng Kasangkapan**: Pinamamahalaan ang mga request sa pagpapatupad ng kasangkapan mula sa mga modelo at pinoproseso ang mga tugon  
-- **Nag-aasikaso ng Real-time Updates**: Pinangangasiwaan ang mga notification at real-time na update mula sa mga server  
-- **Nagpoproseso ng Tugon**: Pinoproseso at ini-format ang mga tugon ng server para ipakita sa mga gumagamit
+- **Nangangalaga ng Protocol Communication**: Nagpapadala ng JSON-RPC 2.0 na mga kahilingan sa mga server na may mga prompt at mga tagubilin  
+- **Nagkokontrata ng Kakayahan**: Nakikipagnegosasyon sa mga suportadong feature at mga bersyon ng protocol kasama ang mga server sa panahon ng inisyal na pagsisimula  
+- **Nagmamanage ng Pagpapatakbo ng Tool**: Namamahala sa mga kahilingan sa pagpapatakbo ng tool mula sa mga modelo at pinoproseso ang mga tugon  
+- **Nagha-handle ng Real-time Updates**: Pinamamahalaan ang mga notification at real-time na update mula sa mga server  
+- **Nagpoproseso ng Tugon**: Pinoproseso at inaayos ang mga tugon mula sa server para ipakita sa mga gumagamit
 
-### 3. Servers
+### 3. Mga Servers
 
-Ang **Servers** ay mga programa na nagbibigay ng konteksto, mga kasangkapan, at mga kakayahan sa mga MCP client. Maaari silang tumakbo nang lokal (sa parehong makina ng Host) o remote (sa mga panlabas na platform), at responsable sa paghawak ng mga request ng client at pagbibigay ng naka-istraktura na mga tugon. Ipinapakita ng mga server ang partikular na pag-andar sa pamamagitan ng standardisadong Model Context Protocol.
+Ang **Servers** ay mga programa na nagbibigay ng konteksto, mga tool, at mga kakayahan sa MCP clients. Maaari silang tumakbo nang lokal (sa parehong makina ng Host) o remote (sa mga panlabas na platform), at responsable sa paghawak ng mga kahilingan ng client at pagbibigay ng mga nakabalangkas na tugon. Ang mga Servers ay naglalantad ng partikular na functionality sa pamamagitan ng standardized na Model Context Protocol.
 
-Ang **Servers** ay mga serbisyo na nagbibigay ng konteksto at mga kakayahan. Sila ay:
+Ang mga **Servers** ay mga serbisyo na nagbibigay ng konteksto at mga kakayahan. Sila ay:
 
-- **Nagpaparehistro ng Tampok**: Nagrerehistro at nagpapakita ng mga available na primitive (mga resource, prompt, kasangkapan) sa mga client  
-- **Nagpoproseso ng Request**: Tumanggap at nagpapatupad ng mga tool call, resource request, at prompt request mula sa mga client  
-- **Nagbibigay ng Konteksto**: Nagbibigay ng kontekstwal na impormasyon at data upang pagandahin ang mga tugon ng modelo  
-- **Nagpapanatili ng Estado**: Pinapanatili ang estado ng session at humahawak ng mga stateful na interaksyon kapag kinakailangan  
-- **Nagpapadala ng Real-time Notifications**: Nagpapadala ng mga notification tungkol sa pagbabago ng kakayahan at mga update sa mga nakakonektang client
+- **Nagre-register ng Feature**: Nagpaparehistro at naglalantad ng mga available na primitives (resources, prompts, tools) sa mga client  
+- **Nagpoproseso ng Kahilingan**: Tumatanggap at nagsasagawa ng mga tawag sa tools, kahilingan sa resources, at prompt mula sa mga client  
+- **Nagbibigay ng Konteksto**: Nagbibigay ng upang pagandahin ang mga tugon mula sa modelo gamit ang contextual na impormasyon at datos  
+- **Nagmamantine ng State**: Pinananatili ang estado ng session at humahawak ng mga stateful na interaksyon kung kinakailangan  
+- **Nagpapadala ng Real-time Notifications**: Nagpapadala ng mga abiso tungkol sa pagbabago sa kakayahan at mga update sa mga nakakonektang client
 
-Maaaring paunlarin ng sinuman ang mga server upang palawakin ang kakayahan ng modelo gamit ang espesyalisadong functionality, at sinusuportahan ang parehong lokal at remote na deployment na mga senaryo.
+Maaaring paunlarin ng sinumang tao ang mga server upang palawakin ang kakayahan ng modelo gamit ang espesyal na functionality, at sinusuportahan nila ang lokal at remote deployment scenarios.
 
-### 4. Server Primitives
+### 4. Mga Primitive ng Server
 
-Ang mga server sa Model Context Protocol (MCP) ay nagbibigay ng tatlong pangunahing **primitive** na nagtatakda ng mga pundamental na bloke para sa mayamang interaksyon sa pagitan ng client, host, at mga language model. Itong mga primitive ay nagsasaad ng mga uri ng kontekstwal na impormasyon at mga aksyon na available sa pamamagitan ng protocol.
+Ang mga server sa Model Context Protocol (MCP) ay nagbibigay ng tatlong pangunahing **primitive** na naglalarawan ng pundamental na mga bloke ng mga interaksyon sa pagitan ng mga client, host, at mga language model. Ang mga primitive na ito ay tumutukoy sa mga uri ng contextual na impormasyon at mga aksyon na available sa protocol.
 
-Maaaring ipakita ng mga MCP server ang anumang kombinasyon ng sumusunod na tatlong pangunahing primitive:
+Maaaring maglantad ang mga MCP server ng anumang kombinasyon ng mga sumusunod na tatlong pangunahing primitive:
 
-#### Resources 
+#### Mga Resources
 
-Ang **Resources** ay mga pinagkukunan ng data na nagbibigay ng kontekstwal na impormasyon sa mga AI application. Kinakatawan nila ang static o dynamic na nilalaman na maaaring pagandahin ang pagkaunawa at paggawa ng desisyon ng modelo:
+Ang **Mga Resources** ay mga pinagkukunan ng data na nagbibigay ng contextual na impormasyon sa mga AI application. Kinakatawan nila ang static o dynamic na nilalaman na maaaring magpapahusay sa pag-unawa at paggawa ng desisyon ng modelo:
 
-- **Kontekstwal na Data**: Naka-istrakturang impormasyon at konteksto para sa konsumo ng AI model  
-- **Knowledge Bases**: Repositori ng mga dokumento, artikulo, manual, at mga pananaliksik  
-- **Local Data Sources**: Mga file, database, at impormasyon ng lokal na sistema  
-- **External Data**: Mga tugon mula sa API, web services, at mga data mula sa malalayong sistema  
-- **Dynamic Content**: Real-time na data na nag-a-update batay sa panlabas na mga kondisyon
+- **Contextual Data**: Nakabalangkas na impormasyon at konteksto para sa paggamit ng AI model  
+- **Knowledge Bases**: Mga repositoryo ng dokumento, artikulo, mga manwal, at mga papel sa pananaliksik  
+- **Local Data Sources**: Mga file, database, at lokal na impormasyon ng sistema  
+- **External Data**: Tugon ng API, mga web service, at remote na impormasyon ng sistema  
+- **Dynamic Content**: Real-time na data na nagbabago base sa panlabas na mga kondisyon
 
-Ang mga resource ay kinikilala gamit ang mga URI at sinusuportahan ang discovery sa pamamagitan ng `resources/list` at retrieval gamit ang `resources/read` na mga method:
+Ang mga resources ay tinutukoy ng mga URI at sumusuporta sa discovery sa pamamagitan ng `resources/list` at pagkuha gamit ang `resources/read` na mga method:
 
 ```text
 file://documents/project-spec.md
@@ -133,37 +133,37 @@ database://production/users/schema
 api://weather/current
 ```
 
-#### Prompts
+#### Mga Prompts
 
-Ang **Prompts** ay mga reusable template na tumutulong mag-istraktura ng interaksyon sa mga language model. Nagbibigay sila ng standardisadong pattern ng interaksyon at templated na mga workflow:
+Ang **Mga Prompts** ay mga reusable na template na tumutulong sa pagsasaayos ng mga interaksyon sa mga language model. Nagbibigay sila ng standardized na pattern ng interaksyon at mga template na workflow:
 
-- **Template-based Interactions**: Pre-structured na mga mensahe at panimulang usapan  
-- **Workflow Templates**: Standardisadong mga pagkakasunod-sunod para sa mga karaniwang gawain at interaksyon  
-- **Few-shot Examples**: Mga halimbawang batay sa template para sa instruksiyon ng modelo  
-- **System Prompts**: Pangunahing prompts na nagtatakda ng pag-uugali ng modelo at konteksto  
-- **Dynamic Templates**: Parameterized prompts na umaangkop sa partikular na mga konteksto
+- **Template-based Interactions**: Paunang naistrukturang mga mensahe at panimulang usapan  
+- **Workflow Templates**: Standardized na mga sunud-sunod para sa mga karaniwang gawain at interaksyon  
+- **Few-shot Examples**: Mga template base sa halimbawa para sa instruksiyon ng modelo  
+- **System Prompts**: Pundamental na mga prompt na nagtatakda ng ugali at konteksto ng modelo  
+- **Dynamic Templates**: Parameterized na mga prompt na umaangkop sa partikular na konteksto
 
-Sinusuportahan ng mga prompt ang variable substitution at maaaring madiskubre gamit ang `prompts/list` at ma-retrieve sa pamamagitan ng `prompts/get`:
+Sinusuportahan ng prompts ang variable substitution at maaaring makita gamit ang `prompts/list` at makuha gamit ang `prompts/get`:
 
 ```markdown
 Generate a {{task_type}} for {{product}} targeting {{audience}} with the following requirements: {{requirements}}
 ```
 
-#### Tools
+#### Mga Tools
 
-Ang **Tools** ay mga executable na function na maaaring tawagin ng mga AI model upang isagawa ang partikular na mga aksyon. Kinakatawan nila ang mga "pandiwa" ng ekosistema ng MCP, na nagbibigay-daan sa mga modelo na makipag-ugnayan sa mga panlabas na sistema:
+Ang **Mga Tools** ay executable na mga function na maaaring tawagin ng mga AI model upang magsagawa ng partikular na aksyon. Kinakatawan nila ang mga "pandiwa" ng MCP ecosystem, na nagpapahintulot sa mga modelo na makipag-ugnayan sa mga panlabas na sistema:
 
-- **Executable Functions**: Mga hiwalay na operasyon na maaaring tawagin ng mga modelo na may tiyak na mga parameter  
-- **External System Integration**: Tawag sa API, query sa database, mga operasyon sa file, mga kalkulasyon  
-- **Natanging Identidad**: Bawat kasangkapan ay may natatanging pangalan, paglalarawan, at schema ng mga parameter  
-- **Structured I/O**: Tumanggap ng nasuring mga parameter ang mga kasangkapan at nagbabalik ng naka-istrukturang, typed na mga tugon  
-- **Mga Kapasidad ng Aksyon**: Pinapahintulutan ang mga modelo na magsagawa ng mga totoong aksyon at kumuha ng live na data
+- **Executable Functions**: Mga discrete na operasyon na maaaring tawagin ng mga modelo gamit ang partikular na mga parametro  
+- **Integrasyon ng Panlabas na Sistema**: Mga tawag sa API, mga query sa database, mga operasyon sa file, mga kalkulasyon  
+- **Natanging Identidad**: Ang bawat tool ay may natatanging pangalan, deskripsyon, at parameter schema  
+- **Structured I/O**: Tumatanggap ang mga tool ng validated parameters at nagbabalik ng istrakturadong, typed na mga tugon  
+- **Mga Kakayahan sa Aksyon**: Pinapahintulutan ang mga modelo na magsagawa ng totoong aksyon at kumuha ng live na data
 
-Ang mga tool ay nade-define gamit ang JSON Schema para sa pag-validate ng parameter at madiskubre sa pamamagitan ng `tools/list` at ginagamit sa `tools/call`. Maaari ring maglaman ang mga tool ng **icons** bilang karagdagang metadata para sa mas magandang presentasyon sa UI.
+Ang mga tool ay tinutukoy gamit ang JSON Schema para sa validation ng parameter at matutuklasan sa pamamagitan ng `tools/list` at pinapatakbo gamit ang `tools/call`. Maaari ring kasama sa mga tool ang mga **icon** bilang karagdagang metadata para sa mas magandang presentasyon sa UI.
 
-**Mga Anotasyon ng Tool**: Sinusuportahan ng mga tool ang mga behavioral annotation (e.g., `readOnlyHint`, `destructiveHint`) na naglalarawan kung ang kasangkapan ay read-only o mapanira, na tumutulong sa mga client na gumawa ng matalinong desisyon tungkol sa pagpapatupad ng tool.
+**Mga Anotasyon ng Tool**: Sinusuportahan ng mga tool ang mga behavioral annotation (hal., `readOnlyHint`, `destructiveHint`) na naglalarawan kung ang tool ay read-only o mapanira, na tumutulong sa mga client na gumawa ng may kaalamang desisyon tungkol sa pagpapatakbo ng tool.
 
-Halimbawa ng depinisyon ng tool:
+Halimbawang depinisyon ng tool:
 
 ```typescript
 server.tool(
@@ -180,148 +180,147 @@ server.tool(
 );
 ```
 
-## Client Primitives
+## Mga Primitive ng Client
 
-Sa Model Context Protocol (MCP), ang **clients** ay maaaring magpakita ng mga primitive na nagbibigay-daan sa mga server na humiling ng karagdagang kakayahan mula sa host application. Pinapayagan ng mga client-side primitive na ito ang mas mayamang, mas interactive na mga implementasyon ng server na maaaring ma-access ang mga kakayahan ng AI modelo at mga interaksyon ng gumagamit.
+Sa Model Context Protocol (MCP), ang mga **client** ay maaaring maglantad ng mga primitive na nagpapahintulot sa mga server na humiling ng karagdagang kakayahan mula sa host application. Ang mga primitive na ito sa client-side ay nagbibigay daan para sa mas mayaman, mas interaktibong implementasyon ng server na maaaring ma-access ang kakayahan ng AI model at mga interaksyon ng gumagamit.
 
 ### Sampling
 
-Pinapahintulutan ng **Sampling** ang mga server na humiling ng mga kompletong sagot mula sa language model sa AI application ng client. Pinapahintulutan ng primitive na ito ang mga server na ma-access ang kakayahan ng LLM nang hindi kinakailangang isama ang sariling mga model dependencies:
+Pinapayagan ng **Sampling** ang mga server na humiling ng language model completions mula sa AI application ng client. Pinapayagan ng primitive na ito ang mga server na ma-access ang LLM capabilities nang hindi kinakailangang isama ang kanilang sariling dependencies:
 
-- **Model-Independent Access**: Maaaring humiling ang server ng mga kompleton nang hindi kinakailangang isama ang mga LLM SDK o pamahalaan ang pag-access sa modelo  
-- **Server-Initiated AI**: Pinapahintulutan ang mga server na autonomously na makagawa ng nilalaman gamit ang AI model ng client  
-- **Recursive LLM Interactions**: Sinusuportahan ang mga komplikadong senaryo kung saan kailangan ng mga server ang tulong ng AI para sa pagproseso  
-- **Dynamic Content Generation**: Pinahihintulutan ang mga server na lumikha ng mga kontekstwal na tugon gamit ang modelo ng host  
-- **Tool Calling Support**: Maaaring isama ng mga server ang `tools` at `toolChoice` na mga parameter upang payagan ang modelo ng client na tumawag ng mga kasangkapan habang nagsasagawa ng sampling
+- **Model-Independent Access**: Maaaring humiling ang mga server ng completions nang hindi kasama ang LLM SDKs o pamamahala sa access ng modelo  
+- **Server-Initiated AI**: Pinapahintulutan ang mga server na autonomously lumikha ng nilalaman gamit ang AI model ng client  
+- **Recursive LLM Interactions**: Sinusuportahan ang komplikadong mga senaryo kung saan kailangan ng mga server ang AI para sa pagproseso  
+- **Dynamic Content Generation**: Pinapayagan ang mga server na lumikha ng contextual na tugon gamit ang modelo ng host  
+- **Suporta sa Pagtawag ng Tool**: Maaaring isama ng mga server ang `tools` at `toolChoice` na mga parametro upang payagan ang modelo ng client na tumawag ng mga tool habang nagsa-sampling
 
-Sinisimulan ang sampling gamit ang `sampling/complete` na pamamaraan, kung saan nagpapadala ng mga kahilingan para sa kompletong sagot ang mga server sa mga client.
+Ang sampling ay sinimulan sa pamamagitan ng `sampling/complete` na pamamaraan, kung saan nagpapadala ang mga server ng kahilingan para sa completion sa mga client.
 
-### Roots
+### Mga Roots
 
-Ang **Roots** ay nagbibigay ng standardisadong paraan para ipakita ng mga client ang mga hangganan ng filesystem sa mga server, na tumutulong sa mga server na maunawaan kung aling mga direktoryo at file ang may access:
+Nagbibigay ang **Roots** ng standardized na paraan para sa mga client na ilantad ang mga hangganan ng filesystem sa mga server, na tumutulong sa mga server na maunawaan kung anong mga direktoryo at file ang maa-access nila:
 
-- **Filesystem Boundaries**: Itinakda ang hangganan kung saan maaaring mag-operate ang mga server sa filesystem  
-- **Access Control**: Tinutulungan ang mga server na maunawaan kung anong mga direktoryo at file ang may pahintulot silang i-access  
-- **Dynamic Updates**: Maaaring ipaalam ng client sa mga server kapag nagbago ang listahan ng mga roots  
-- **URI-Based Identification**: Ginagamit ng roots ang `file://` URI upang kilalanin ang mga accessible na direktoryo at mga file
+- **Filesystem Boundaries**: Itinatakda ang hangganan kung saan maaaring mag-operate ang mga server sa loob ng filesystem  
+- **Access Control**: Tinutulungan ang mga server na maunawaan kung anong mga direktoryo at file ang may pahintulot silang ma-access  
+- **Dynamic Updates**: Maaaring i-notify ng client ang mga server kapag nagbago ang listahan ng mga roots  
+- **URI-Based Identification**: Gumagamit ang roots ng `file://` URI upang tukuyin ang mga direktoryo at file na maa-access
 
-Nadidiskubre ang mga roots sa pamamagitan ng `roots/list` na pamamaraan, at nagpapadala ang client ng `notifications/roots/list_changed` kapag may pagbabagong nangyari sa roots.
+Ang roots ay matutuklasan gamit ang `roots/list` method, at nagpapadala ang client ng `notifications/roots/list_changed` kapag nagbago ang mga roots.
 
 ### Elicitation  
 
-Pinapahintulutan ng **Elicitation** ang mga server na humiling ng karagdagang impormasyon o kumpirmasyon mula sa mga gumagamit sa pamamagitan ng interface ng client:
+Pinapayagan ng **Elicitation** ang mga server na humiling ng karagdagang impormasyon o kumpirmasyon mula sa mga gumagamit sa pamamagitan ng interface ng client:
 
-- **User Input Requests**: Maaaring humiling ang mga server ng karagdagang impormasyon kapag kailangan para sa pagpapatupad ng kasangkapan  
-- **Confirmation Dialogs**: Humihiling ng pag-apruba ng gumagamit para sa mga sensitibo o may malaking epekto na operasyon  
-- **Interactive Workflows**: Pinapayagan ang mga server na lumikha ng hakbang-hakbang na mga interaksyon ng gumagamit  
-- **Dynamic Parameter Collection**: Nangongolekta ng nawawala o opsyonal na mga parameter habang pinapatakbo ang tool
+- **Mga Kahilingan sa Input ng User**: Maaaring humingi ang mga server ng dagdag na impormasyon kapag kailangan para sa pagpapatakbo ng tool  
+- **Mga Dialogong Pang-kumpirmasyon**: Humihiling ng pag-apruba mula sa user para sa sensitibo o may epekto na mga operasyon  
+- **Interactive Workflows**: Pinapayagan ang mga server na lumikha ng hakbang-hakbang na interaksyon ng gumagamit  
+- **Dynamic Parameter Collection**: Kinokolekta ang nawawala o opsyonal na mga parametro habang nagpapatakbo ng tool
 
-Ginagawa ang mga elicitation request gamit ang `elicitation/request` na paraan upang mangolekta ng input ng gumagamit sa pamamagitan ng interface ng client.
+Ang mga kahilingan sa elicitation ay ginagawa gamit ang `elicitation/request` na pamamaraan upang kolektahin ang input ng gumagamit sa interface ng client.
 
-**URL Mode Elicitation**: Maaari ring humiling ang mga server ng user interaction gamit ang URL, na nagpapahintulot sa mga server na idirekta ang mga gumagamit sa mga panlabas na web page para sa pagpapatunay, kumpirmasyon, o pagpasok ng data.
+**URL Mode Elicitation**: Maaari ring humiling ang mga server ng user interaction gamit ang URL mode, na nagpapahintulot sa mga server na idirekta ang mga gumagamit sa panlabas na mga web page para sa awtentikasyon, kumpirmasyon, o pagpasok ng data.
 
 ### Logging
 
-Pinapayagan ng **Logging** ang mga server na magpadala ng mga naka-istrukturang log message sa mga client para sa debugging, pagmamanman, at operational visibility:
+Pinapayagan ng **Logging** ang mga server na magpadala ng mga istrakturadong log message sa mga client para sa debugging, pagsubaybay, at operational visibility:
 
-- **Debugging Support**: Pinapayagan ang mga server na magbigay ng detalyadong mga log ng pagpapatupad para sa troubleshooting  
-- **Operational Monitoring**: Nagpapadala ng mga update sa status at mga sukatan ng performans sa mga client  
-- **Error Reporting**: Nagbibigay ng detalyadong konteksto ng error at diagnostic na impormasyon  
-- **Audit Trails**: Lumilikha ng komprehensibong mga log ng mga operasyon at desisyon ng server
+- **Suporta sa Debugging**: Pinapayagan ang mga server na magbigay ng detalyadong log ng pagpapatakbo para sa troubleshooting  
+- **Operational Monitoring**: Nagpapadala ng mga update sa katayuan at mga sukatan ng performance sa mga client  
+- **Pag-uulat ng Error**: Nagbibigay ng detalyadong konteksto ng error at diagnostic na impormasyon  
+- **Audit Trails**: Lumilikha ng komprehensibong log ng mga operasyon at desisyon ng server
 
-Ipinapadala ang mga logging message sa mga client upang magbigay ng transparency sa mga operasyon ng server at mapadali ang debugging.
+Ang mga logging message ay ipinapadala sa mga client upang magbigay ng transparency sa mga operasyon ng server at magpadali ng debugging.
 
-## Pagdaloy ng Impormasyon sa MCP
+## Daloy ng Impormasyon sa MCP
 
-Ang Model Context Protocol (MCP) ay nagtatakda ng naka-istrakturang daloy ng impormasyon sa pagitan ng mga host, client, server, at modelo. Ang pag-unawa sa daloy na ito ay tumutulong na linawin kung paano pinoproseso ang mga kahilingan ng gumagamit at kung paano pinagsasama ang mga panlabas na kasangkapan at data sa mga tugon ng modelo.
-
-- **Nagsisimula ang Host ng Koneksyon**  
-  Ang host application (tulad ng IDE o chat interface) ay nagtatatag ng koneksyon sa isang MCP server, karaniwang sa pamamagitan ng STDIO, WebSocket, o iba pang suportadong transportasyon.
+Itinatakda ng Model Context Protocol (MCP) ang nakabalangkas na daloy ng impormasyon sa pagitan ng mga host, client, server, at mga modelo. Ang pag-unawa sa daloy na ito ay nakatutulong upang linawin kung paano pinoproseso ang mga kahilingan ng user at kung paano isinasama ang mga panlabas na tool at data sa mga tugon ng modelo.
+- **Simula ng Host ang Koneksyon**  
+  Ang host na aplikasyon (tulad ng isang IDE o chat interface) ay nagtatatag ng koneksyon sa isang MCP server, karaniwang sa pamamagitan ng STDIO, WebSocket, o isang suportadong transport.
 
 - **Negosasyon ng Kakayahan**  
-  Nagpapalitan ng impormasyon ang client (na naka-embed sa host) at ang server tungkol sa kanilang mga sinusuportahang tampok, kasangkapan, resource, at mga bersyon ng protocol. Tinitiyak nito na naiintindihan ng dalawang panig kung anong mga kakayahan ang available para sa sesyon.
+  Nagpapalitan ng impormasyon ang kliyente (nakalakip sa host) at ang server tungkol sa kanilang sinusuportahang mga tampok, kasangkapan, pinagkukunan, at mga bersyon ng protokol. Tinitiyak nito na nauunawaan ng parehong panig kung anong mga kakayahan ang magagamit para sa session.
 
-- **Kahilingan ng Gumagamit**  
-  Nakikipag-ugnayan ang gumagamit sa host (hal., nagpapasok ng prompt o utos). Kinokolekta ng host ang input na ito at ipinapasa ito sa client para iproseso.
+- **Hiling ng Gumagamit**  
+  Nakikipag-ugnayan ang gumagamit sa host (hal. naglalagay ng prompt o utos). Kinokolekta ng host ang input na ito at ipinapasa ito sa kliyente para sa pagproseso.
 
-- **Paggamit ng Resource o Kasangkapan**  
-  - Maaaring humiling ang client ng karagdagang konteksto o resource mula sa server (tulad ng mga file, database entry, o knowledge base article) upang pagandahin ang pagkaunawa ng modelo.  
-  - Kung ipinalagay ng modelo na kailangan ang isang kasangkapan (hal., upang kumuha ng data, magsagawa ng kalkulasyon, o tumawag ng API), nagpapadala ang client ng kahilingan na gamitin ang tool sa server, na tinutukoy ang pangalan ng tool at mga parametro.
+- **Paggamit ng Pinagkukunan o Kasangkapan**  
+  - Maaaring humiling ang kliyente ng karagdagang konteksto o mga pinagkukunan mula sa server (tulad ng mga file, talaan sa database, o mga artikulo sa knowledge base) upang payamanin ang pag-unawa ng modelo.  
+  - Kung matukoy ng modelo na kailangan ng kasangkapan (hal. para kumuha ng data, magsagawa ng kalkulasyon, o tumawag ng API), nagpapadala ang kliyente ng kahilingan para sa pagtawag ng kasangkapan sa server, na tinutukoy ang pangalan ng kasangkapan at mga parametro.
 
 - **Pagpapatupad ng Server**  
-  Tumatanggap ang server ng request para sa resource o tool, isinasagawa ang mga kinakailangang operasyon (tulad ng pagpapatakbo ng isang function, pag-query sa database, o pagkuha ng file), at ibinabalik ang mga resulta sa client sa isang nakaayos na format.
+  Tinatanggap ng server ang kahilingan para sa pinagkukunan o kasangkapan, isinasagawa ang kinakailangang operasyon (tulad ng pagpapatakbo ng isang function, pagtatanong sa database, o pagkuha ng file), at ibinabalik ang mga resulta sa kliyente sa isang nakaayos na format.
 
 - **Pagbuo ng Tugon**  
-  Isinasama ng client ang mga tugon ng server (data ng resource, output ng tool, atbp.) sa kasalukuyang pakikipag-ugnayan sa modelo. Ginagamit ng modelo ang impormasyong ito upang makabuo ng isang komprehensibo at may kaugnayang tugon ayon sa konteksto.
+  Isinasama ng kliyente ang mga tugon ng server (data ng pinagkukunan, output ng kasangkapan, atbp.) sa kasalukuyang interaksyon ng modelo. Ginagamit ng modelo ang impormasyong ito upang bumuo ng komprehensibo at may kaugnayang tugon batay sa konteksto.
 
 - **Pagpapakita ng Resulta**  
-  Tumatanggap ang host ng panghuling output mula sa client at ipinapakita ito sa user, kadalasan ay isinasama ang text na nilikha ng modelo at anumang resulta mula sa mga pagpapatupad ng tool o paghahanap ng resource.
+  Tinatanggap ng host ang panghuling output mula sa kliyente at ipinapakita ito sa gumagamit, kadalasan ay kabilang ang parehong text na nilikha ng modelo at anumang mga resulta mula sa pagpapatupad ng mga kasangkapan o pagsilip sa mga pinagkukunan.
 
-Pinahihintulutan ng daloy na ito ang MCP na suportahan ang advanced, interactive, at context-aware na mga aplikasyon ng AI sa pamamagitan ng tuloy-tuloy na pagkonekta ng mga modelo sa mga panlabas na tool at pinagmumulan ng data.
+Pinapagana ng daloy na ito ang MCP na suportahan ang mga advanced, interactive, at kontekstuwal na AI na aplikasyon sa pamamagitan ng tuloy-tuloy na pagkonekta ng mga modelo sa mga panlabas na kasangkapan at pinagkukunan ng data.
 
-## Arkitektura ng Protocol at mga Layer
+## Arkitektura ng Protokol at mga Layer
 
-Binubuo ang MCP ng dalawang magkakaibang arkitekturang layer na nagtutulungan upang maghatid ng kumpletong balangkas ng komunikasyon:
+Binubuo ang MCP ng dalawang hiwalay na arkitektural na layer na nagtutulungan upang magbigay ng kumpletong balangkas ng komunikasyon:
 
 ### Data Layer
 
-Ang **Data Layer** ang nagpatupad ng pangunahing MCP protocol gamit ang **JSON-RPC 2.0** bilang pundasyon nito. Dito tinutukoy ang istruktura ng mensahe, semantika, at mga pattern ng interaksyon:
+Ipinatutupad ng **Data Layer** ang pangunahing protokol ng MCP gamit ang **JSON-RPC 2.0** bilang pundasyon. Tinukoy ng layer na ito ang istruktura ng mensahe, semantika, at mga pattern ng interaksyon:
 
-#### Pangunahing Bahagi:
+#### Pangunahing Mga Bahagi:
 
-- **JSON-RPC 2.0 Protocol**: Lahat ng komunikasyon ay gumagamit ng standard na JSON-RPC 2.0 na format ng mensahe para sa pagtawag ng method, mga tugon, at mga notipikasyon
-- **Lifecycle Management**: Pinangangasiwaan ang pagsisimula ng koneksyon, negosasyon ng mga kakayahan, at pagtatapos ng session sa pagitan ng mga client at server
-- **Server Primitives**: Pinapayagan ang mga server na magbigay ng pangunahing functionality gamit ang mga tool, resource, at prompt
-- **Client Primitives**: Pinapayagan ang mga server na humiling ng sampling mula sa LLMs, mangalap ng input mula sa user, at magpadala ng mga log message
-- **Real-time Notifications**: Sumusuporta sa asynchronous na mga notipikasyon para sa mga dynamic na update nang hindi nangangailangan ng polling
+- **JSON-RPC 2.0 Protocol**: Lahat ng komunikasyon ay gumagamit ng standard na format ng mensahe ng JSON-RPC 2.0 para sa mga method call, tugon, at mga notification  
+- **Pamamahala ng Lifecycle**: Humahawak ng inisyal na koneksyon, negosasyon ng kakayahan, at pagtatapos ng session sa pagitan ng mga kliyente at server  
+- **Primitibo ng Server**: Pinapahintulutan ang mga server na magbigay ng pangunahing functionality sa pamamagitan ng mga kasangkapan, pinagkukunan, at mga prompt  
+- **Primitibo ng Kliyente**: Pinapahintulutan ang mga server na humiling ng sampling mula sa LLMs, humikayat ng input ng gumagamit, at magpadala ng log messages  
+- **Real-time Notifications**: Sumusuporta sa asynchronous na mga notification para sa dynamic na mga update nang hindi nangangailangan ng polling
 
-#### Pangunahing Katangian:
+#### Pangunahing Mga Tampok:
 
-- **Protocol Version Negotiation**: Gumagamit ng date-based na pag-version (YYYY-MM-DD) upang matiyak ang pagiging compatible
-- **Capability Discovery**: Nagpapalitan ng impormasyon ang mga client at server tungkol sa mga suportadong katangian habang nagsisimula
-- **Stateful Sessions**: Pinapanatili ang estado ng koneksyon sa maraming interaksyon para sa tuloy-tuloy na konteksto
+- **Negosasyon ng Bersyon ng Protokol**: Gumagamit ng bersyong nakabase sa petsa (YYYY-MM-DD) upang matiyak ang pagiging compatible  
+- **Pagtuklas ng Kakayahan**: Nagpapalitan ng impormasyon ang mga kliyente at server tungkol sa sinusuportahang mga tampok sa panahon ng inisyal na koneksyon  
+- **Stateful Sessions**: Pinananatili ang estado ng koneksyon sa maraming interaksyon para sa pagpapatuloy ng konteksto
 
 ### Transport Layer
 
-Pinamamahalaan ng **Transport Layer** ang mga channel ng komunikasyon, framing ng mensahe, at authentication sa pagitan ng mga kalahok sa MCP:
+Pinangangasiwaan ng **Transport Layer** ang mga channel ng komunikasyon, framing ng mga mensahe, at pagpapatunay sa pagitan ng mga kalahok ng MCP:
 
-#### Sinusuportahang Transport Mechanisms:
+#### Mga Sinusuportahang Mekanismo ng Transport:
 
-1. **STDIO Transport**:
-   - Gumagamit ng standard input/output streams para sa direktang komunikasyon ng proseso
-   - Pinakamainam para sa mga lokal na proseso sa parehong makina nang walang overhead ng network
+1. **STDIO Transport**:  
+   - Gumagamit ng standard input/output streams para sa direktang komunikasyon ng proseso  
+   - Pinakamainam para sa mga lokal na proseso sa iisang makina nang walang overhead ng network  
    - Karaniwang ginagamit para sa mga lokal na implementasyon ng MCP server
 
-2. **Streamable HTTP Transport**:
-   - Gumagamit ng HTTP POST para sa mga mensahe mula client patungong server  
-   - Opsyonal na Server-Sent Events (SSE) para sa streaming mula sa server patungo sa client
-   - Pinapahintulutan ang komunikasyon sa mga remote server sa buong network
-   - Sinusuportahan ang standard HTTP authentication (bearer tokens, API keys, custom headers)
-   - Rekomendado ng MCP ang OAuth para sa secure na token-based authentication
+2. **Streamable HTTP Transport**:  
+   - Gumagamit ng HTTP POST para sa mga mensahe mula kliyente papuntang server  
+   - Opsyonal na Server-Sent Events (SSE) para sa streaming mula server papuntang kliyente  
+   - Pinapagana ang komunikasyon ng remote server sa mga network  
+   - Sumusuporta sa karaniwang HTTP authentication (bearer tokens, API keys, custom headers)  
+   - Inirerekomenda ng MCP ang OAuth para sa ligtas na token-based authentication
 
-#### Abstraction ng Transport:
+#### Abstraksyon ng Transport:
 
-Iniaalis ng transport layer ang mga detalye ng komunikasyon mula sa data layer, na nagpapahintulot sa parehong JSON-RPC 2.0 na format ng mensahe sa lahat ng mekanismo ng transport. Pinapayagan ng abstraction na ito ang mga aplikasyon na malayang magpalit-palit sa pagitan ng lokal at remote na mga server.
+Iniaalis ng transport layer ang mga detalye ng komunikasyon mula sa data layer, na nagpapahintulot sa parehong format ng mensahe na JSON-RPC 2.0 na magamit sa lahat ng mekanismo ng transport. Pinapahintulutan nito ang mga aplikasyon na madaling lumipat mula lokal hanggang remote na mga server.
 
 ### Mga Pagsasaalang-alang sa Seguridad
 
-Dapat sumunod ang mga implementasyon ng MCP sa ilang mahahalagang prinsipyo ng seguridad upang matiyak ang ligtas, mapagkakatiwalaan, at seguradong mga interaksyon sa lahat ng operasyon ng protocol:
+Dapat sumunod ang mga implementasyon ng MCP sa ilang mahahalagang prinsipyo sa seguridad upang matiyak ang ligtas, mapagkakatiwalaan, at seguradong pakikipag-ugnayan sa lahat ng operasyon ng protokol:
 
-- **Pahintulot at Kontrol ng User**: Dapat magbigay ang mga user ng malinaw at tahasang pahintulot bago ma-access ang anumang data o maisagawa ang mga operasyon. Dapat mayroon silang malinaw na kontrol sa kung anong data ang ibabahagi at kung anong mga aksyon ang pinapayagan, na suportado ng madaling gamitin na mga interface para sa pagsusuri at pag-apruba ng mga gawain.
+- **Pahintulot at Kontrol ng Gumagamit**: Dapat magbigay ng malinaw na pahintulot ang mga gumagamit bago ma-access ang anumang data o maisagawa ang anumang operasyon. Dapat may malinaw na kontrol sila sa kung anong data ang ibabahagi at kung aling mga aksyon ang pinapayagan, suportado ng mga madaling gamitin na interface para suriin at aprubahan ang mga aktibidad.
 
-- **Pribadong Data**: Ang data ng user ay dapat mailantad lamang sa tahasang pahintulot at dapat protektahan gamit ang angkop na kontrol sa pag-access. Dapat tiyakin ng mga implementasyon ng MCP na walang hindi awtorisadong pagpapadala ng data at nananatiling pribado ang data sa lahat ng interaksyon.
+- **Pribasiya ng Data**: Ang data ng gumagamit ay dapat ilantad lamang sa malinaw na pahintulot at dapat protektahan ng angkop na mga kontrol sa access. Dapat siguruhing hindi makakalusot ang hindi awtorisadong transmisyon ng data at panatilihin ang pribasiya sa lahat ng interaksyon.
 
-- **Kaligtasan ng Tool**: Bago gamitin ang anumang tool, kinakailangan ang tahasang pahintulot ng user. Dapat maintindihan ng mga user nang mabuti ang functionality ng bawat tool, at kailangang ipatupad ang matitibay na hangganan sa seguridad upang maiwasan ang hindi inaasahan o delikadong pagpapatakbo ng tool.
+- **Kaligtasan ng Kasangkapan**: Bago gamitin ang anumang kasangkapan, kinakailangan ang malinaw na pahintulot ng gumagamit. Dapat maliwanagan ang mga gumagamit patungkol sa bawat gamit ng kasangkapan, at dapat ipatupad ang matitibay na hangganan sa seguridad upang maiwasan ang hindi inaasahan o hindi ligtas na paggamit.
 
-Sa pamamagitan ng pagsunod sa mga prinsipyong ito sa seguridad, tinitiyak ng MCP ang tiwala ng user, privacy, at kaligtasan sa lahat ng interaksyon ng protocol habang pinapagana ang makapangyarihang AI integrations.
+Sa pagsunod sa mga prinsipyo ng seguridad na ito, tiniyak ng MCP ang tiwala, pribasiya, at kaligtasan ng gumagamit sa lahat ng interaksyon ng protokol habang pinapagana ang makapangyarihang integrasyon ng AI.
 
-## Mga Halimbawa ng Code: Pangunahing Bahagi
+## Mga Halimbawang Kodigo: Pangunahing Mga Bahagi
 
-Narito ang mga halimbawa ng code sa ilang popular na programming languages na naglalarawan kung paano ipatupad ang mga pangunahing bahagi ng MCP server at mga tool.
+Narito ang mga halimbawa ng kodigo sa ilang sikat na programming na wika na nagpapakita kung paano ipatupad ang mga pangunahing bahagi ng MCP server at mga kasangkapan.
 
-### Halimbawa sa .NET: Paggawa ng Simpleng MCP Server na may mga Tool
+### Halimbawa sa .NET: Paglikha ng Simpleng MCP Server na may mga Kasangkapan
 
-Narito ang praktikal na halimbawa ng code sa .NET na nagpapakita kung paano gumawa ng simpleng MCP server na may custom na mga tool. Tinatalakay dito kung paano ideklara at irehistro ang mga tool, hawakan ang mga request, at ikonekta ang server gamit ang Model Context Protocol.
+Narito ang praktikal na halimbawa ng .NET na naglalarawan kung paano gumawa ng isang simpleng MCP server na may custom na mga kasangkapan. Ipinapakita ng halimbawang ito kung paano magdeklara at magrehistro ng mga kasangkapan, humawak ng mga kahilingan, at ikonekta ang server gamit ang Model Context Protocol.
 
 ```csharp
 using System;
@@ -380,9 +379,9 @@ public class WeatherData
 }
 ```
 
-### Halimbawa sa Java: MCP Server Components
+### Halimbawa sa Java: Mga Bahagi ng MCP Server
 
-Ipinapakita ng halimbawa na ito ang parehong MCP server at pagpaparehistro ng tool katulad ng sa .NET na halimbawa sa itaas, ngunit ipinatupad sa Java.
+Ipinapakita ng halimbawa na ito ang katulad na MCP server at pagrerehistro ng kasangkapan tulad ng .NET na halimbawa sa itaas, ngunit ipinatupad sa Java.
 
 ```java
 import io.modelcontextprotocol.server.McpServer;
@@ -406,10 +405,10 @@ public class WeatherMcpServer {
             .execute((ToolExecutionContext ctx) -> {
                 String location = ctx.getParameter("location", String.class);
                 
-                // Kumuha ng datos ng panahon (pinasimple)
+                // Kumuha ng datos ng panahon (pinadali)
                 WeatherData data = getWeatherData(location);
                 
-                // Ibalik ang naka-format na sagot
+                // Ibalik ang naayos na tugon
                 return ToolResponse.content(
                     String.format("Temperature: %.1f°F, Conditions: %s, Location: %s", 
                     data.getTemperature(), 
@@ -423,14 +422,14 @@ public class WeatherMcpServer {
         try (StdioServerTransport transport = new StdioServerTransport()) {
             server.connect(transport);
             System.out.println("Weather MCP Server started");
-            // Panatilihing tumatakbo ang server hanggang matapos ang proseso
+            // Panatilihing tumatakbo ang server hanggang sa itigil ang proseso
             Thread.currentThread().join();
         }
     }
     
     private static WeatherData getWeatherData(String location) {
-        // Ang implementasyon ay tatawag ng isang weather API
-        // Pinasimple para sa mga layunin ng halimbawa
+        // Ang implementasyon ay tatawag sa isang weather API
+        // Pinadali para sa layunin ng halimbawa
         return new WeatherData(72.5, "Sunny", location);
     }
 }
@@ -460,9 +459,9 @@ class WeatherData {
 }
 ```
 
-### Halimbawa sa Python: Paggawa ng MCP Server
+### Halimbawa sa Python: Pagbuo ng MCP Server
 
-Gumagamit ang halimbawa na ito ng fastmcp, kaya siguraduhing naka-install ito:
+Gumagamit ang halimbawang ito ng fastmcp, kaya siguraduhing mai-install muna ito:
 
 ```python
 pip install fastmcp
@@ -475,7 +474,7 @@ import asyncio
 from fastmcp import FastMCP
 from fastmcp.transports.stdio import serve_stdio
 
-# Gumawa ng isang FastMCP server
+# Gumawa ng FastMCP server
 mcp = FastMCP(
     name="Weather MCP Server",
     version="1.0.0"
@@ -490,7 +489,7 @@ def get_weather(location: str) -> dict:
         "location": location
     }
 
-# Alternatibong pamamaraan gamit ang isang klase
+# Alternatibong paraan gamit ang isang klase
 class WeatherTools:
     @mcp.tool()
     def forecast(self, location: str, days: int = 1) -> dict:
@@ -503,7 +502,7 @@ class WeatherTools:
             ]
         }
 
-# Irehistro ang mga tool ng klase
+# Irehistro ang mga kagamitang klase
 weather_tools = WeatherTools()
 
 # Simulan ang server
@@ -511,23 +510,23 @@ if __name__ == "__main__":
     asyncio.run(serve_stdio(mcp))
 ```
 
-### Halimbawa sa JavaScript: Paggawa ng MCP Server
+### Halimbawa sa JavaScript: Paglikha ng MCP Server
 
-Ipinapakita ng halimbawang ito kung paano gumawa ng MCP server sa JavaScript at kung paano irehistro ang dalawang tool na may kinalaman sa panahon.
+Ipinapakita ng halimbawang ito kung paano gumawa ng MCP server sa JavaScript at paano magrehistro ng dalawang kasangkapan tungkol sa panahon.
 
 ```javascript
 // Paggamit ng opisyal na Model Context Protocol SDK
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod"; // Para sa pagpapatunay ng parameter
+import { z } from "zod"; // Para sa pag-validate ng parameter
 
-// Gumawa ng MCP server
+// Gumawa ng isang MCP server
 const server = new McpServer({
   name: "Weather MCP Server",
   version: "1.0.0"
 });
 
-// Tukuyin ang isang tool ng panahon
+// Tukuyin ang isang weather tool
 server.tool(
   "weatherTool",
   {
@@ -572,9 +571,9 @@ server.tool(
   }
 );
 
-// Mga helper function
+// Mga helper na function
 async function getWeatherData(location) {
-  // I-simulate ang tawag sa API
+  // Gawing kahalintulad ang tawag sa API
   return {
     temperature: 72.5,
     conditions: "Sunny",
@@ -583,7 +582,7 @@ async function getWeatherData(location) {
 }
 
 async function getForecastData(location, days) {
-  // I-simulate ang tawag sa API
+  // Gawing kahalintulad ang tawag sa API
   return Array.from({ length: days }, (_, i) => ({
     day: i + 1,
     temperature: 70 + Math.floor(Math.random() * 10),
@@ -598,107 +597,106 @@ server.connect(transport).catch(console.error);
 console.log("Weather MCP Server started");
 ```
 
-Ipinapakita ng halimbawang ito sa JavaScript kung paano gumawa ng MCP client na kumokonekta sa server, nagpapadala ng prompt, at pinoproseso ang tugon kabilang ang anumang tool calls na nagawa.
+Ipinapakita ng halimbawang JavaScript kung paano lumikha ng MCP server na nagrerehistro ng mga kasangkapan na may kaugnayan sa panahon at kumokonekta gamit ang stdio transport upang tumanggap ng mga papasok na kahilingan ng kliyente.
 
 ## Seguridad at Awtorisasyon
 
-Kasama sa MCP ang ilang built-in na konsepto at mekanismo para sa pamamahala ng seguridad at awtorisasyon sa buong protocol:
+Kasama sa MCP ang ilang nakapaloob na mga konsepto at mekanismo para sa pamamahala ng seguridad at awtorisasyon sa buong protokol:
 
-1. **Kontrol sa Pahintulot ng Tool**:  
-  Maaaring tukuyin ng mga client kung aling mga tool ang pinapayagan gamitin ng modelo sa panahon ng session. Tinitiyak nito na ang mga tool na naa-access ay tanging yaong tahasang pinahihintulutan lamang, na nagpapababa ng panganib ng di-sinasadyang o mapanganib na operasyon. Maaaring i-configure ang mga pahintulot nang dinamiko batay sa kagustuhan ng user, polisiya ng organisasyon, o konteksto ng interaksyon.
+1. **Kontrol ng Pahintulot sa Kasangkapan**:  
+  Maaaring tukuyin ng mga kliyente kung aling mga kasangkapan ang pinapayagang gamitin ng modelo sa panahon ng session. Tinitiyak nito na ang mga kasangkapan na pormal na pinahintulutan lamang ang maa-access, na nagpapababa ng panganib ng hindi inaasahan o hindi ligtas na operasyon. Maaaring i-configure ang mga pahintulot nang dinamiko batay sa mga preference ng gumagamit, patakaran ng organisasyon, o konteksto ng interaksyon.
 
-2. **Authentication**:  
-  Maaaring mangailangan ang mga server ng authentication bago payagan ang access sa mga tool, resource, o sensitibong operasyon. Maaari itong gumamit ng API keys, OAuth tokens, o iba pang paraan ng authentication. Tinitiyak ng wastong authentication na tanging pinagkakatiwalaang client at user lamang ang makakapagpatakbo ng mga kakayahan ng server.
+2. **Pagpapatunay (Authentication)**:  
+  Maaaring mangailangan ang mga server ng pagpapatunay bago payagan ang access sa mga kasangkapan, pinagkukunan, o sensitibong operasyon. Maaaring kabilang dito ang mga API key, mga OAuth token, o iba pang mga scheme sa pagpapatunay. Tinitiyak ng wastong pagpapatunay na tanging mga pinagkakatiwalaang kliyente at gumagamit lamang ang maaaring gumamit ng kakayahan ng server.
 
-3. **Validation**:  
-  Pinatutupad ang validation ng mga parameter sa lahat ng pagtawag sa tool. Itinatakda ng bawat tool ang inaasahang uri, format, at limitasyon para sa mga parameter nito, at sinisiyasat ng server ang mga papasok na request nang naaayon. Pinipigilan nito ang malisyoso o maling input mula sa pag-abot sa mga tool at tumutulong sa pagpapanatili ng integridad ng mga operasyon.
+3. **Pag-validate**:  
+  Pinatutupad ang pagpapatunay ng parametro para sa lahat ng pagtawag sa kasangkapan. Bawat kasangkapan ay nagtatakda ng inaasahang mga uri, format, at mga limitasyon para sa mga parametro nito, at pinapatunayan ng server ang mga papasok na kahilingan ayon dito. Pinipigilan nito ang maling o mapanirang input mula sa pag-abot sa implementasyon ng kasangkapan at tumutulong mapanatili ang integridad ng mga operasyon.
 
-4. **Rate Limiting**:  
-  Upang maiwasan ang pang-aabuso at matiyak ang patas na paggamit ng mga resource ng server, maaaring magpatupad ng rate limiting ang mga MCP server para sa mga pagtawag sa tool at access sa resource. Maaaring ipatupad ang rate limits kada user, kada session, o global, at tumutulong ito upang protektahan laban sa denial-of-service attacks o labis na paggamit ng resource.
+4. **Paghihigpit ng Rate**:  
+  Upang maiwasan ang pang-aabuso at matiyak ang patas na paggamit ng mga yaman ng server, maaaring magpatupad ang mga MCP server ng rate limiting para sa mga pagtawag ng kasangkapan at pag-access ng pinagkukunan. Maaaring ipatupad ang mga rate limit kada gumagamit, kada session, o sa kabuuan, at tumutulong ito na protektahan laban sa denial-of-service attack o sobrang paggamit ng mga yaman.
 
-Sa pamamagitan ng kombinasyon ng mga mekanismong ito, nagbibigay ang MCP ng ligtas na pundasyon para sa pagsasama ng mga language model sa mga panlabas na tool at pinagmumulan ng data, habang nagbibigay ng detalyadong kontrol sa mga user at developer tungkol sa access at paggamit.
+Sa pagsasama-sama ng mga mekanismong ito, naglalaan ang MCP ng ligtas na pundasyon para sa integrasyon ng mga language model sa panlabas na kasangkapan at pinagkukunan ng data, habang nagbibigay sa mga gumagamit at developer ng masusukat na kontrol sa pag-access at paggamit.
 
-## Mga Mensahe ng Protocol at Daloy ng Komunikasyon
+## Mga Mensahe ng Protokol at Daloy ng Komunikasyon
 
-Gumagamit ang komunikasyon ng MCP ng nakaayos na **JSON-RPC 2.0** na mga mensahe upang mapadali ang malinaw at maaasahang interaksyon sa pagitan ng mga host, client, at server. Itinatakda ng protocol ang mga espesipikong pattern ng mensahe para sa iba't ibang uri ng operasyon:
+Gumagamit ang komunikasyon ng MCP ng istrukturadong mga mensahe na **JSON-RPC 2.0** upang mapadali ang malinaw at maaasahang mga interaksyon sa pagitan ng mga host, kliyente, at server. Itinakda ng protokol ang mga partikular na pattern ng mensahe para sa iba't ibang uri ng operasyon:
 
 ### Pangunahing Uri ng Mensahe:
 
-#### **Mga Mensahe ng Initialization**
-- **`initialize` Request**: Nagtatayo ng koneksyon at pinapagusapan ang bersyon ng protocol at mga kakayahan
-- **`initialize` Response**: Nagkukumpirma ng mga suportadong katangian at impormasyon ng server  
-- **`notifications/initialized`**: Nagbibigay-signal na kumpleto na ang initialization at handa na ang session
+#### **Mga Mensahe para sa Inisialisasyon**
+- **Request na `initialize`**: Itinatag ang koneksyon at pinag-uusapan ang bersyon ng protokol at mga kakayahan  
+- **Response na `initialize`**: Kinukumpirma ang sinusuportahang mga tampok at impormasyon ng server  
+- **`notifications/initialized`**: Nagpapaalam na tapos na ang inisialisasyon at handa na ang session
 
-#### **Mga Mensahe ng Discovery**
-- **`tools/list` Request**: Naghahanap ng mga tool na maaaring magamit mula sa server
-- **`resources/list` Request**: Nagsasaad ng mga available na resource (pinagmumulan ng data)
-- **`prompts/list` Request**: Kinukuha ang mga magagamit na prompt templates
+#### **Mga Mensahe ng Pagtuklas**
+- **Request na `tools/list`**: Nagtutuklas ng mga available na kasangkapan mula sa server  
+- **Request na `resources/list`**: Naglilista ng mga available na pinagkukunan (mga pinagmumulan ng data)  
+- **Request na `prompts/list`**: Kumukuha ng mga template ng prompt na magagamit
 
-#### **Mga Mensahe ng Execution**  
-- **`tools/call` Request**: Pinapatakbo ang espesipikong tool gamit ang mga ibinigay na parameter
-- **`resources/read` Request**: Kinukuha ang nilalaman mula sa espesipikong resource
-- **`prompts/get` Request**: Kumukuha ng prompt template na may opsyonal na mga parameter
+#### **Mga Mensahe ng Pagpapatupad**  
+- **Request na `tools/call`**: Nagpapatupad ng isang partikular na kasangkapan gamit ang mga ibinigay na parametro  
+- **Request na `resources/read`**: Kumukuha ng nilalaman mula sa isang partikular na pinagkukunan  
+- **Request na `prompts/get`**: Kumukuha ng isang template ng prompt na may opsyonal na mga parametro
 
-#### **Mga Mensahe sa Client-side**
-- **`sampling/complete` Request**: Humihiling ang server ng LLM completion mula sa client
-- **`elicitation/request`**: Humihiling ang server ng input ng user sa pamamagitan ng client interface
-- **Logging Messages**: Nagpapadala ang server ng mga nakaayos na log message sa client
+#### **Mga Mensahe mula sa Kliyente**
+- **Request na `sampling/complete`**: Humihiling ang server ng kumpletong output mula sa LLM sa kliyente  
+- **`elicitation/request`**: Humihiling ang server ng input ng gumagamit sa pamamagitan ng interface ng kliyente  
+- **Mga Logging Messages**: Nagpapadala ang server ng mga nakaayos na log message sa kliyente
 
-#### **Mga Mensahe ng Notipikasyon**
-- **`notifications/tools/list_changed`**: Pinapaalam ng server sa client ang mga pagbabago sa listahan ng tool
-- **`notifications/resources/list_changed`**: Pinapaalam ng server sa client ang mga pagbabago sa listahan ng resource  
-- **`notifications/prompts/list_changed`**: Pinapaalam ng server sa client ang mga pagbabago sa listahan ng prompt
+#### **Mga Mensahe ng Notification**
+- **`notifications/tools/list_changed`**: Nagbibigay-alam ang server sa kliyente tungkol sa mga pagbabago sa listahan ng kasangkapan  
+- **`notifications/resources/list_changed`**: Nagbibigay-alam ang server sa kliyente tungkol sa mga pagbabago sa listahan ng pinagkukunan  
+- **`notifications/prompts/list_changed`**: Nagbibigay-alam ang server sa kliyente tungkol sa mga pagbabago sa listahan ng mga prompt
 
 ### Istruktura ng Mensahe:
 
-Lahat ng mensahe ng MCP ay sumusunod sa JSON-RPC 2.0 format na may:
-- **Request Messages**: Kinabibilangan ng `id`, `method`, at opsyonal na `params`
-- **Response Messages**: Kinabibilangan ng `id` at alinman sa `result` o `error`  
-- **Notification Messages**: Kinabibilangan ng `method` at opsyonal na `params` (walang `id` at walang inaasahang tugon)
+Lahat ng mga mensahe ng MCP ay sumusunod sa format ng JSON-RPC 2.0 na may:  
+- **Request Messages**: May kasamang `id`, `method`, at opsyonal na `params`  
+- **Response Messages**: May kasamang `id` at alinman sa `result` o `error`  
+- **Notification Messages**: May kasamang `method` at opsyonal na `params` (walang `id` o inaasahang tugon)
 
-Tinitiyak ng nakaayos na komunikasyon na ito ang maaasahan, masusubaybayan, at makapagpapalawak na mga interaksyon na sumusuporta sa mga advanced na senaryo tulad ng real-time na mga update, chaining ng mga tool, at matibay na paghawak ng error.
+Tinitiyak ng istrukturadong komunikasyon na ito ang maaasahan, madaling subaybayan, at maaaring palawigin na mga interaksyon na sumusuporta sa mga advanced na senaryo tulad ng real-time updates, pag-chain ng mga tool, at matibay na paghawak ng error.
 
-### Mga Task (Eksperimental)
+### Mga Task (Eksperimento)
 
-Ang **Mga Task** ay isang eksperimental na tampok na nagbibigay ng matibay na execution wrappers na nagpapahintulot sa deferred na pagkuha ng resulta at pagsubaybay sa status para sa mga MCP request:
+Ang **Mga Task** ay isang eksperimentong feature na nagbibigay ng matibay na wrapper para sa pagpapatupad na nagpapahintulot sa deferred na pagkuha ng resulta at pagsubaybay ng status para sa mga kahilingan ng MCP:
 
-- **Mga Pangmatagalang Operasyon**: Sinusubaybayan ang mamahaling komputasyon, automation ng workflow, at batch processing
-- **Deferred Results**: Nagpapahintulot sa pagsilip sa status ng task at pagkuha ng mga resulta kapag natapos na ang operasyon
-- **Pagsubaybay sa Status**: Minomonitor ang progreso ng task sa pamamagitan ng mga tinukoy na yugto ng lifecycle
-- **Multi-Step Operations**: Sinusuportahan ang mga kumplikadong workflow na sumasaklaw sa maraming interaksyon
+- **Mahahabang Operasyon**: Pagsubaybay sa mamahaling computation, workflow automation, at batch processing  
+- **Deferred na Resulta**: Polling para sa estado ng task at pagkuha ng resulta kapag tapos na ang operasyon  
+- **Pagsubaybay ng Status**: Pagmamanman sa progreso ng task sa pamamagitan ng tinukoy na mga estado ng lifecycle  
+- **Multi-Step na Operasyon**: Sumusuporta sa mga komplikadong workflow na sumasaklaw sa maraming interaksyon
 
-Ina-wrap ng mga task ang karaniwang mga MCP request upang payagan ang asynchronous na mga pattern ng pagpapatupad para sa mga operasyong hindi agad natatapos.
+Pinapalibutan ng mga task ang karaniwang mga kahilingan ng MCP upang paganahin ang asynchronous na mga pattern ng pagpapatupad para sa mga operasyong hindi agad natatapos.
 
-## Mga Pangunahing Punto
+## Mahahalagang Punto
 
-- **Arkitektura**: Gumagamit ang MCP ng client-server architecture kung saan ang mga host ay namamahala ng maraming koneksyon ng client papunta sa mga server
-- **Mga Kalahok**: Kasama sa ekosistema ang mga host (AI applications), mga client (protocol connectors), at mga server (mga provider ng kakayahan)
-- **Mga Mekanismo ng Transport**: Sinusuportahan ng komunikasyon ang STDIO (lokal) at Streamable HTTP na may opsyonal na SSE (remote)
-- **Core Primitives**: Nagbibigay ang mga server ng mga tool (mga executable na function), mga resource (pinagmumulan ng data), at mga prompt (mga template)
-- **Client Primitives**: Maaaring humiling ang mga server ng sampling (LLM completions na may suporta sa pagtawag sa tool), elicitation (input ng user kasama ang URL mode), roots (mga hangganan ng filesystem), at pag-log mula sa mga client
-- **Mga Eksperimental na Tampok**: Nagbibigay ang mga task ng matibay na execution wrappers para sa mga pangmatagalang operasyon
-- **Pundasyon ng Protocol**: Nakabatay sa JSON-RPC 2.0 na may date-based na pag-version (kasalukuyan: 2025-11-25)
-- **Real-time na Kakayahan**: Sinusuportahan ang mga notipikasyon para sa mga dynamic na update at real-time na pagsasabay
-- **Seguridad na Unang Prayoridad**: Tahasang pahintulot ng user, proteksyon sa privacy ng data, at secure na transport ang mga pangunahing kinakailangan
+- **Arkitektura**: Gumagamit ang MCP ng client-server na arkitektura kung saan pinamamahalaan ng mga host ang maraming koneksyon ng kliyente sa mga server  
+- **Mga Kalahok**: Kasama sa ecosystem ang mga host (AI na aplikasyon), mga kliyente (mga connector ng protokol), at mga server (mga tagapagbigay ng kakayahan)  
+- **Mga Mekanismo ng Transport**: Sinusuportahan ang komunikasyon gamit ang STDIO (lokal) at Streamable HTTP na may opsyonal na SSE (remote)  
+- **Pangunahing Primitibo**: Nagpapakita ang mga server ng mga kasangkapan (mga executable function), mga pinagkukunan (pinagmumulan ng data), at mga prompt (template)  
+- **Primitibo ng Kliyente**: Maaaring humiling ang mga server ng sampling (LLM completions na may suporta sa pagtawag kasangkapan), elicitation (input ng gumagamit kabilang ang URL mode), roots (mga hangganan ng filesystem), at pag-log mula sa mga kliyente  
+- **Eksperimentong Mga Tampok**: Nagbibigay ang mga Task ng matibay na execution wrappers para sa mahahabang operasyon  
+- **Pundasyon ng Protokol**: Itinatag sa JSON-RPC 2.0 na may bersyong nakabase sa petsa (kasalukuyan: 2025-11-25)  
+- **Mga Real-time na Kakayahan**: Sumusuporta sa mga notification para sa dynamic na update at real-time na pagsi-synchronize  
+- **Seguridad Bilang Prayoridad**: Malinaw na pahintulot ng gumagamit, proteksyon ng pribasiya ng data, at ligtas na transport ang mga pangunahing pangangailangan
 
 ## Ehersisyo
 
-Magdisenyo ng isang simpleng MCP tool na magiging kapaki-pakinabang sa iyong domain. Tukuyin:
-1. Ano ang magiging pangalan ng tool
-2. Ano ang mga tatanggapin nitong parameter
-3. Ano ang ibabalik nitong output
-4. Paano maaaring gamitin ng isang modelo ang tool na ito upang lutasin ang mga problema ng user
-
+Disenyuhin ang isang simpleng MCP tool na magiging kapaki-pakinabang sa iyong larangan. Tukuyin ang:  
+1. Ano ang magiging pangalan ng kasangkapan  
+2. Anong mga parametro ang tatanggapin nito  
+3. Anong output ang ibabalik nito  
+4. Kung paano maaaring gamitin ng modelo ang kasangkapan na ito upang lutasin ang mga problema ng gumagamit
 
 ---
 
-## Ano ang susunod
+## Ano ang Susunod
 
 Susunod: [Chapter 2: Security](../02-Security/README.md)
 
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Paunawa**:  
-Ang dokumentong ito ay naisalin gamit ang serbisyong AI na pagsasalin na [Co-op Translator](https://github.com/Azure/co-op-translator). Bagamat nagsusumikap kami ng katumpakan, pakatandaan na ang mga awtomatikong pagsasalin ay maaaring magkaroon ng mga pagkakamali o hindi pagkakatugma. Ang orihinal na dokumento sa kanyang katutubong wika ang dapat ituring na pangunahing sanggunian. Para sa mahahalagang impormasyon, ipinapayo ang propesyonal na pagsasalin ng tao. Hindi kami mananagot sa anumang hindi pagkakaunawaan o maling interpretasyon na maaaring magmula sa paggamit ng pagsasaling ito.
+**Pahayag ng Pagsuway**:
+Ang dokumentong ito ay isinalin gamit ang AI na serbisyo sa pagsasalin na [Co-op Translator](https://github.com/Azure/co-op-translator). Bagamat aming pinagsisikapang maging tumpak ang pagsasalin, pakitandaan na ang awtomatikong pagsasalin ay maaaring maglaman ng mga pagkakamali o hindi pagkakatugma. Ang orihinal na dokumento sa orihinal nitong wika ang dapat ituring na pinakapinagkakatiwalaang sanggunian. Para sa mahahalagang impormasyon, inirerekomenda ang propesyonal na pagsasalin ng tao. Hindi kami mananagot sa anumang maling pagkakaunawa o maling interpretasyon na nagmula sa paggamit ng pagsasaling ito.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
