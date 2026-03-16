@@ -1,51 +1,51 @@
 # MCP Alapfogalmak: A Model Context Protocol mesteri elsajátítása az AI integrációhoz
 
-[![MCP Core Concepts](../../../translated_images/hu/02.8203e26c6fb5a797.webp)](https://youtu.be/earDzWGtE84)
+[![MCP Alapfogalmak](../../../translated_images/hu/02.8203e26c6fb5a797.webp)](https://youtu.be/earDzWGtE84)
 
-_(Kattints a fenti képre a tanóra videójának megtekintéséhez)_
+_(Kattints a fenti képre a leckevideó megtekintéséhez)_
 
-A [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) egy erőteljes, szabványosított keretrendszer, amely optimalizálja a kommunikációt a nagy nyelvi modellek (LLM-ek) és külső eszközök, alkalmazások, valamint adatforrások között.  
-Ez az útmutató végigvezet a MCP alapfogalmain. Megismered a kliens-szerver architektúrát, az alapvető összetevőket, a kommunikációs mechanizmusokat és a megvalósítás legjobb gyakorlatait.
+A [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol) egy hatékony, szabványosított keretrendszer, amely optimalizálja a kommunikációt a Nagyméretű Nyelvi Modellek (LLM-ek) és külső eszközök, alkalmazások, valamint adatforrások között. 
+Ez az útmutató végigvezet az MCP alapfogalmain. Megismered az ügyfél-szerver architektúrát, az alapvető komponenseket, a kommunikációs mechanizmusokat és a megvalósítási legjobb gyakorlatokat.
 
-- **Explicit felhasználói hozzájárulás**: Minden adat-hozzáférés és művelet explicit felhasználói jóváhagyást igényel a végrehajtás előtt. A felhasználóknak világosan érteniük kell, milyen adatokhoz férnek hozzá és milyen műveletek lesznek végrehajtva, részletes engedélyezési és jogosultsági irányítással.
+- **Explicit felhasználói hozzájárulás**: Minden adat-hozzáférés és művelet előfeltétele az explicit felhasználói jóváhagyás. A felhasználónak világosan értenie kell, hogy milyen adatokhoz férnek hozzá és milyen műveletek hajtódnak végre, miközben részletes ellenőrzést kap a jogosultságok és engedélyek felett.
 
-- **Adatvédelmi védelem**: A felhasználói adatok csak explicit hozzájárulással kerülnek nyilvánosságra, és azokat erős hozzáférésvezérléssel kell védeni az egész interakciós ciklus alatt. A megvalósításoknak meg kell akadályozniuk az illetéktelen adatátvitelt, és szigorú adatvédelmi határokat kell betartaniuk.
+- **Adatvédelmi védelem**: A felhasználói adatokat csak explicit hozzájárulással teszik hozzáférhetővé, és az egész interakciós életciklus alatt robusztus hozzáférési korlátozásokkal kell védeni. A megvalósításoknak meg kell akadályozniuk az illetéktelen adatátvitelt és szigorú adatvédelmi határokat kell fenntartaniuk.
 
-- **Eszközvégrehajtás biztonsága**: Minden eszközhívás explicit felhasználói jóváhagyást igényel, amely tisztán megismerteti az eszköz működését, paramétereit és lehetséges hatását. Erős biztonsági határoknak kell megakadályozniuk a nem szándékolt, veszélyes vagy rosszindulatú eszközvégrehajtást.
+- **Eszközvégrehajtási biztonság**: Minden eszközhasználat explicit felhasználói engedélyhez kötött, ahol világosan érthető az eszköz működése, paraméterei és potenciális hatása. Robusztus biztonsági határok megakadályozzák a nem szándékolt, veszélyes vagy rosszindulatú eszközvégrehajtást.
 
-- **Transzport réteg biztonsága**: Minden kommunikációs csatornán megfelelő titkosítási és hitelesítési mechanizmusokat kell alkalmazni. A távoli kapcsolatok biztonságos transzport protokollokat és megfelelő hitelesítő adatkezelést kell, hogy használjanak.
+- **Transzport réteg biztonság**: Minden kommunikációs csatornán megfelelő titkosítási és hitelesítési mechanizmusokat kell alkalmazni. A távoli kapcsolatok biztonságos transzport protokollokat és megfelelő hitelesítőkezelést használjanak.
 
 #### Megvalósítási irányelvek:
 
-- **Engedélyezés kezelése**: Finomhangolt engedélyezési rendszerek megvalósítása, melyek lehetővé teszik a felhasználók számára, hogy kontrollálják, mely szerverek, eszközök és erőforrások érhetők el  
-- **Hitelesítés és jogosultságkezelés**: Biztonságos hitelesítési módszerek (OAuth, API kulcsok) alkalmazása megfelelő token-kezeléssel és lejáratkezeléssel  
-- **Bemeneti érvényesítés**: Minden paraméter és adatok érvényesítése a meghatározott sémák szerint az injekciós támadások megelőzése érdekében  
-- **Auditnaplózás**: Átfogó naplók vezetése minden műveletről biztonsági megfigyelés és megfelelőség céljából
+- **Engedélykezelés**: Finomhangolt engedélyrendszerek megvalósítása, amelyek lehetővé teszik a felhasználók számára, hogy szabályozzák, mely szerverek, eszközök és erőforrások érhetők el
+- **Hitelesítés és engedélyezés**: Biztonságos hitelesítési módszerek (OAuth, API kulcsok) használata megfelelő tokenkezeléssel és lejárati időkkel  
+- **Bemeneti érvényesítés**: Az összes paraméter és adatbevitel érvényesítése meghatározott sémák szerint, hogy megelőzzék a befecskendezéses támadásokat
+- **Audit naplózás**: Minden működés részletes naplózása biztonsági megfigyelés és megfelelőség érdekében
 
 ## Áttekintés
 
-Ez a tanóra feltárja a Model Context Protocol (MCP) környezetének alapvető architektúráját és elemeit. Megismerheted a kliens-szerver architektúrát, a kulcsfontosságú összetevőket és azokat a kommunikációs mechanizmusokat, amelyek az MCP interakciókat működtetik.
+Ez a lecke bemutatja a Model Context Protocol (MCP) ökoszisztéma alapvető architektúráját és összetevőit. Megtanulod az ügyfél-szerver architektúrát, kulcselemeket és a kommunikációs mechanizmusokat, amelyek az MCP interakciók mögött állnak.
 
 ## Fő tanulási célok
 
-A tanóra végére képes leszel:
+A lecke végére képes leszel:
 
-- Megérteni a MCP kliens-szerver architektúrát.
-- Felismerni a Hostok, Kliensek és Szerverek szerepét és felelősségeit.
-- Elemezni azokat az alapvető funkciókat, amelyek a MCP-t rugalmas integrációs réteggé teszik.
-- Megtanulni, hogyan áramlik az információ az MCP ökoszisztémán belül.
-- Gyakorlati betekintést nyerni kódpéldákon keresztül .NET, Java, Python és JavaScript nyelven.
+- Megérteni az MCP ügyfél-szerver architektúrát.
+- Azonosítani a Házigazdák, Ügyfelek és Szerverek szerepét és felelősségeit.
+- Elemezni az MCP rugalmasságát biztosító alapvető jellemzőket.
+- Megérteni az információáramlást az MCP ökoszisztémán belül.
+- Gyakorlati betekintést nyerni .NET, Java, Python és JavaScript példákon keresztül.
 
 ## MCP Architektúra: Mélyebb betekintés
 
-Az MCP ökoszisztéma kliens-szerver modellre épül. Ez a moduláris struktúra lehetővé teszi az AI alkalmazások számára, hogy hatékonyan lépjenek kapcsolatba eszközökkel, adatbázisokkal, API-kkal és kontextuális erőforrásokkal. Nézzük meg ezt az architektúrát alapvető összetevőire bontva.
+Az MCP ökoszisztéma egy ügyfél-szerver modellen alapul. Ez a moduláris felépítés lehetővé teszi az AI alkalmazások számára az eszközökkel, adatbázisokkal, API-kkal és kontextuális erőforrásokkal való hatékony interakciót. Nézzük meg ezt az architektúrát alapvető összetevői mentén.
 
-Az MCP alapvetően kliens-szerver architektúrát követ, ahol egy host alkalmazás több szerverhez csatlakozhat:
+Az MCP alapja egy ügyfél-szerver architektúra, ahol egy host alkalmazás több szerverhez tud kapcsolódni:
 
 ```mermaid
 flowchart LR
-    subgraph "A számítógéped"
-        Host["Host MCP-vel (Visual Studio, VS Code, IDE-k, Eszközök)"]
+    subgraph "A Te Számítógéped"
+        Host["Kiszolgáló MCP-vel (Visual Studio, VS Code, IDE-k, Eszközök)"]
         S1["MCP Szerver A"]
         S2["MCP Szerver B"]
         S3["MCP Szerver C"]
@@ -59,73 +59,74 @@ flowchart LR
         S3 <-->|"Web API-k"| D3[("Távoli\Szolgáltatások")]
     end
 ```
-- **MCP Hostok**: Olyan programok, mint a VSCode, Claude Desktop, IDE-k vagy AI eszközök, amelyek adatokat akarnak elérni az MCP-n keresztül  
-- **MCP Kliensek**: Protokoll kliensek, amelyek 1:1 kapcsolatot tartanak fenn a szerverekkel  
-- **MCP Szerverek**: Könnyű súlyú programok, amelyek specifikus képességeket tesznek elérhetővé a szabványosított Model Context Protocol által  
-- **Helyi adatforrások**: A számítógéped fájljai, adatbázisai és szolgáltatásai, amelyekhez az MCP szerverek biztonságosan hozzáférhetnek  
-- **Távoli szolgáltatások**: Külső rendszerek, amelyek az interneten keresztül érhetők el, és amelyekhez MCP szerverek API-kon keresztül kapcsolódhatnak
+- **MCP Házigazdák**: Olyan programok, mint VSCode, Claude Desktop, IDE-k vagy AI eszközök, amelyek MCP-n keresztül szeretnének adatokat elérni
+- **MCP Ügyfelek**: Protokoll ügyfelek, amelyek 1:1 kapcsolatokat tartanak fenn a szerverekkel
+- **MCP Szerverek**: Könnyűsúlyú programok, amelyek szabványos Model Context Protocol-en keresztül specifikus képességeket tesznek elérhetővé
+- **Helyi Adatforrások**: A számítógéped fájljai, adatbázisai és szolgáltatásai, amelyekhez az MCP szerverek biztonságosan hozzáférhetnek
+- **Távoli Szolgáltatások**: Külső rendszerek az interneten, amelyekhez az MCP szerverek API-kon keresztül tudnak kapcsolódni.
 
-Az MCP protokoll egy fejlődő szabvány, mely dátum-alapú verziókezelést használ (YYYY-MM-DD formátumban). A jelenlegi protokoll verzió **2025-11-25**. A legújabb frissítéseket a [protokoll specifikációban](https://modelcontextprotocol.io/specification/2025-11-25/) találhatod meg.
+Az MCP Protokoll fejlődő szabvány, amely időalapú verziózást használ (ÉÉÉÉ-HH-NN formátum). A jelenlegi protokoll verzió a **2025-11-25**. A protokoll specifikáció [legfrissebb frissítéseit](https://modelcontextprotocol.io/specification/2025-11-25/) megtekintheted.
 
-### 1. Hostok
+### 1. Házigazdák
 
-A Model Context Protocol (MCP) esetén a **Hostok** azok az AI alkalmazások, amelyek a protokoll elsődleges felhasználói interfészét szolgáltatják. A Hostok koordinálják és kezelik a kapcsolódásokat több MCP szerverhez azzal, hogy dedikált MCP kliens példányokat hoznak létre minden szerverkapcsolathoz. Host példák:
+A Model Context Protocol (MCP) esetében a **Házigazdák** azok az AI alkalmazások, amelyek a fő interfészt képezik a protokollal való felhasználói interakciókhoz. A házigazdák koordinálják és kezelik a több MCP szerverhez való kapcsolódást az adott szerverhez dedikált MCP ügyfelek létrehozásával. Házigazdák példái:
 
-- **AI alkalmazások**: Claude Desktop, Visual Studio Code, Claude Code  
-- **Fejlesztői környezetek**: IDE-k és kódszerkesztők, melyek MCP integrációval rendelkeznek  
-- **Egyedi alkalmazások**: Kifejezetten AI ügynökök és eszközök
+- **AI alkalmazások**: Claude Desktop, Visual Studio Code, Claude Code
+- **Fejlesztői környezetek**: IDE-k és kódszerkesztők MCP integrációval  
+- **Egyedi alkalmazások**: Célzott AI ügynökök és eszközök
 
-A **Hostok** az AI modell interakciók koordinálói. Ezek:
+A **Házigazdák** AI modell interakciókat koordináló alkalmazások. Ezek:
 
-- **AI modellek orkestrálása**: LLM-eket indítanak vagy lépnek kapcsolatba velük válasz generálására és AI munkafolyamatok koordinálására  
-- **Klienskapcsolatok kezelése**: Minden MCP szerverkapcsolathoz létrehoznak és fenntartanak egy MCP klienst  
-- **Felhasználói felület vezérlése**: Kezelik a beszélgetés folyamatát, a felhasználói interakciókat és a válaszok bemutatását  
-- **Biztonság érvényesítése**: Engedélyeket, biztonsági korlátokat és hitelesítést kezelnek  
-- **Felhasználói hozzájárulás kezelése**: Kezelik a felhasználói jóváhagyást az adatmegosztáshoz és eszközvégrehajtáshoz
+- **AI modellek irányítása**: LLM-ek futtatása vagy használata válaszgeneráláshoz és AI munkafolyamatok koordinációjához
+- **Ügyfélkapcsolatok kezelése**: Minden MCP szerverkapcsolathoz egy-egy MCP ügyfél létrehozása és fenntartása
+- **Felhasználói felület irányítása**: A beszélgetések kezelése, felhasználói interakciók és válaszok megjelenítése  
+- **Biztonsági szabályok érvényesítése**: Jogosultságok, biztonsági korlátok és hitelesítés kezelése
+- **Felhasználói hozzájárulás kezelése**: Adatmegosztás és eszközhasználat jóváhagyásának kezelése
 
-### 2. Kliensek
 
-A **Kliensek** alapvető összetevők, amelyek fenntartanak dedikált egy-egy kapcsolódást a Hostok és az MCP szerverek között. Minden MCP kliens a Host által jön létre egy adott MCP szerverhez való kapcsolódáshoz, biztosítva a rendszerezett és biztonságos kommunikációs csatornákat. Több kliens lehetővé teszi, hogy a Host egyszerre több szerverhez csatlakozzon.
+### 2. Ügyfelek
 
-A **Kliensek** olyan komponensek a host alkalmazáson belül, amelyek:
+Az **Ügyfelek** létfontosságú összetevők, amelyek dedikált egy-egy kapcsolatok fenntartásáért felelősek a Házigazdák és MCP szerverek között. Minden MCP ügyfelet a Házigazda hoz létre egy adott MCP szerverhez való kapcsolódáshoz, biztosítva a szervezett és biztonságos kommunikációs csatornákat. Több ügyfél lehetővé teszi, hogy a Házigazdák egyszerre több szerverhez csatlakozzanak.
 
-- **Protokoll kommunikáció**: JSON-RPC 2.0 kéréseket küldenek a szerverekhez promptokkal és utasításokkal  
-- **Képesség-egyeztetés**: A szerverekkel egyeztetik a támogatott funkciókat és protokoll verziókat inicializáláskor  
-- **Eszközvégrehajtás**: Kezelik a modellek eszközvégrehajtási kérelmeit és feldolgozzák a válaszokat  
-- **Valós idejű frissítések**: Kezelik a szerverek értesítéseit és frissítéseit valós időben  
-- **Válasz feldolgozás**: Feldolgozzák és formázzák a szerver válaszait a felhasználók számára
+Az **Ügyfelek** a házigazda alkalmazáson belüli kapcsolódó komponenst jelentenek. Ezek:
+
+- **Protokoll kommunikáció**: JSON-RPC 2.0 kérések küldése a szervereknek promptokkal és utasításokkal
+- **Képesség egyeztetés**: A támogatott funkciók és protokollverziók egyeztetése a szerverekkel inicializáláskor
+- **Eszközvégrehajtás kezelése**: Eszközhasználati kérések kezelése modellektől, válaszok feldolgozása
+- **Valós idejű frissítések**: Értesítések és valós idejű frissítések kezelése a szerverektől
+- **Válasz feldolgozás**: A szerverválaszok feldolgozása és formázása a felhasználók felé való megjelenítéshez
 
 ### 3. Szerverek
 
-A **Szerverek** olyan programok, amelyek kontextust, eszközöket és képességeket biztosítanak az MCP kliensek számára. Ezek futtathatók helyileg (ugyanazon a gépen, ahol a Host) vagy távolról (külső platformokon), és felelősek a kliens kérések kezeléséért és strukturált válaszok biztosításáért. A szerverek specifikus funkcionalitást tesznek elérhetővé a szabványos Model Context Protocol-on keresztül.
+A **Szerverek** olyan programok, amelyek kontextust, eszközöket és képességeket biztosítanak az MCP ügyfelek számára. Futtathatók lokálisan (ugyanazon a gépen, ahol a Házigazda van), vagy távolról (külső platformokon) és felelősek az ügyfél kérések kezeléséért és strukturált válaszadásért. A szerverek a szabványos Model Context Protocolon keresztül tesznek elérhetővé specifikus funkcionalitást.
 
 A **Szerverek** olyan szolgáltatások, amelyek kontextust és képességeket nyújtanak. Ezek:
 
-- **Funkciók regisztrálása**: Regisztrálják és elérhetővé teszik az elérhető primitíveket (erőforrások, promptok, eszközök) a klienseknek  
-- **Kérések feldolgozása**: Fogadják és végrehajtják az eszközhívásokat, erőforráskéréseket és promptkéréseket a kliensektől  
-- **Kontextus szolgáltatása**: Kontextuális információkat és adatokat biztosítanak a modell válaszok javításához  
-- **Állapot kezelés**: Fenntartják a munkamenet állapotát és szükség esetén kezelik az állapottartó interakciókat  
-- **Valós idejű értesítések**: Értesítéseket küldenek a képességváltozásokról és frissítésekről a kapcsolódó klienseknek
+- **Funkció regisztráció**: Az elérhető primitívek (erőforrások, promptok, eszközök) regisztrálása és elérhetővé tétele az ügyfelek számára
+- **Kérések feldolgozása**: Eszközhívások, erőforrás kérdések és prompt kérések fogadása és végrehajtása az ügyfelektől
+- **Kontextus biztosítása**: Kontextuális információ és adat szolgáltatása a modell válaszok javításához
+- **Állapotkezelés**: Munkamenet állapotának fenntartása és állapotfüggő interakciók kezelése, ha szükséges
+- **Valós idejű értesítések**: Értesítések küldése a képességváltozásokról és frissítésekről a csatlakozott ügyfeleknek
 
-A szervereket bárki fejlesztheti, hogy kiterjessze a modell képességeit speciális funkcionalitással, és támogatják mind a helyi, mind a távoli telepítést.
+A szervereket bárki fejlesztheti, hogy specializált funkcionalitással bővítse a modell képességeit, és támogatják a helyi és távoli telepítési forgatókönyveket is.
 
 ### 4. Szerver primitívek
 
-A Model Context Protocol (MCP) szerverei három alapvető **primitívet** biztosítanak, amelyek meghatározzák a kliens, a host és a nyelvi modellek közötti gazdag interakciók alapját. Ezek a primitívek szabályozzák az elérhető kontextuális információk és műveletek típusait a protokollon keresztül.
+Az Model Context Protocol (MCP) szerverei három alapvető **primitívet** biztosítanak, amelyek meghatározzák a kliens, házigazda és nyelvi modell közti gazdag interakciók fundamentális építőköveit. Ezek a primitívek specifikálják a protokollon keresztül elérhető kontextuális információk és műveletek típusait.
 
-Az MCP szerverek bármilyen kombinációban elérhetővé tehetik a következő három alap primitívet:
+Az MCP szerverek az alábbi három alapvető primitív bármely kombinációját tehetik elérhetővé:
 
 #### Erőforrások
 
-Az **erőforrások** olyan adatforrások, amelyek kontextuális információkat szolgáltatnak az AI alkalmazások számára. Statikus vagy dinamikus tartalmat képviselnek, amelyek javíthatják a modell megértését és döntéshozatalát:
+Az **Erőforrások** olyan adatforrások, amelyek kontextuális információt szolgáltatnak AI alkalmazások számára. Statikus vagy dinamikus tartalmakat képviselnek, amelyek javítják a modell megértését és döntéshozatalát:
 
-- **Kontextuális adatok**: Strukturált információ és kontextus AI modell fogyasztáshoz  
-- **Tudásbázisok**: Dokumentum tárolók, cikkek, kézikönyvek és kutatási anyagok  
-- **Helyi adatforrások**: Fájlok, adatbázisok és helyi rendszer információk  
-- **Külső adatok**: API válaszok, webszolgáltatások és távoli rendszeradatok  
-- **Dinamikus tartalom**: Valós idejű adatok, melyek külső feltételek alapján frissülnek
+- **Kontextuális adatok**: Strukturált információ és kontextus AI modell fogyasztáshoz
+- **Tudásbázisok**: Dokumentum tárak, cikkek, kézikönyvek és tudományos dolgozatok
+- **Helyi adatforrások**: Fájlok, adatbázisok és helyi rendszerinformációk  
+- **Külső adatok**: API válaszok, webszolgáltatások és távoli rendszeradatok
+- **Dinamikus tartalom**: Valós idejű adatok, amelyek külső feltételek változására frissülnek
 
-Az erőforrások URI-k alapján azonosíthatók, és felfedezésüket a `resources/list`, lekérésüket a `resources/read` metódusok segítik:
+Az erőforrások URI-k alapján azonosíthatók és `resources/list` segítségével felfedezhetők, `resources/read` metódussal lekérdezhetők:
 
 ```text
 file://documents/project-spec.md
@@ -135,15 +136,15 @@ api://weather/current
 
 #### Promptok
 
-A **promptok** újrahasznosítható sablonok, amelyek segítik a nyelvi modellekkel való interakciók strukturálását. Standardizált interakciós mintákat és sablonos munkafolyamatokat biztosítanak:
+A **Promptok** újrahasznosítható sablonok, amelyek segítik a nyelvi modellekkel való interakciók struktúrálását. Szabványosított interakciós mintákat és sablonozott munkafolyamatokat biztosítanak:
 
-- **Sablonalapú interakciók**: Előre strukturált üzenetek és beszélgetésindítók  
-- **Munkafolyamat sablonok**: Szabványosított lépéssorozatok gyakori feladatokhoz és interakciókhoz  
-- **Few-shot példák**: Minta alapú sablonok modell instrukcióhoz  
-- **Rendszer promptok**: Alapvető promptok, amelyek definiálják a modell viselkedését és kontextusát  
-- **Dinamikus sablonok**: Paraméterezett promptok, amelyek alkalmazkodnak a speciális kontextusokhoz
+- **Sablonalapú interakciók**: Előre strukturált üzenetek és beszélgetés indítók
+- **Munkafolyamat sablonok**: Szabványosított lépések gyakori feladatokhoz és interakciókhoz
+- **Few-shot példák**: Példákon alapuló utasítás sablonok modelleknek
+- **Rendszer promptok**: Alapvető promptok, amelyek meghatározzák a modell viselkedését és kontextusát
+- **Dinamikus sablonok**: Paraméterezett promptok, amelyek specifikus kontextusokhoz igazodnak
 
-A promptok támogatják a változók behelyettesítését, felfedezhetők `prompts/list` metódussal, lekérhetők a `prompts/get` segítségével:
+A promptok változóhelyettesítést támogatnak, `prompts/list` metódussal felfedezhetők és `prompts/get` hívással lekérdezhetők:
 
 ```markdown
 Generate a {{task_type}} for {{product}} targeting {{audience}} with the following requirements: {{requirements}}
@@ -151,19 +152,19 @@ Generate a {{task_type}} for {{product}} targeting {{audience}} with the followi
 
 #### Eszközök
 
-Az **eszközök** végrehajtható funkciók, amelyeket az AI modellek hívhatnak meg konkrét műveletek elvégzésére. Ezek az MCP ökoszisztéma „igéi”, amelyek lehetővé teszik a modellek számára, hogy külső rendszerekkel lépjenek kapcsolatba:
+Az **Eszközök** végrehajtható funkciók, amelyeket az AI modellek hívhatnak meg specifikus műveletek végrehajtására. Ezek az MCP ökoszisztéma "igéi", amelyek lehetővé teszik modelleknek a külső rendszerekkel való interakciót:
 
-- **Végrehajtható funkciók**: Elkülönült műveletek, amelyeket a modellek specifikus paraméterekkel hívhatnak meg  
-- **Külső rendszer integráció**: API hívások, adatbázis lekérdezések, fájlműveletek, számítások  
-- **Egyedi azonosító**: Minden eszköznek megvan a saját neve, leírása és paraméter sémája  
-- **Strukturált bemenet-kimenet**: Az eszközök validált paramétereket fogadnak és strukturált, típusos válaszokat adnak vissza  
-- **Akció képességek**: Lehetővé teszik a modellek számára a valós világban történő műveleteket és élő adatok lekérését
+- **Végrehajtható funkciók**: Elkülönült műveletek, amelyeket modellek adott paraméterekkel hívhatnak meg
+- **Külső rendszer integráció**: API hívások, adatbázis lekérdezések, fájlműveletek, számítások
+- **Egyedi azonosító**: Minden eszköznek egyedi neve, leírása és paramétersémája van
+- **Strukturált I/O**: Az eszközök validált paramétereket fogadnak be és strukturált, típusos válaszokat adnak vissza
+- **Műveleti képességek**: Lehetővé teszi a modelleknek valós világ műveletek végrehajtását és élő adatok lekérését
 
-Az eszközök paramétervalidációja JSON Sémával történik, felfedezésük a `tools/list`, végrehajtásuk a `tools/call`. Az eszközök tartalmazhatnak **ikonokat** is további metaadatként a jobb UI bemutatáshoz.
+Az eszközök JSON Sémával vannak definiálva a paramétervalidáláshoz, felfedezhetők a `tools/list` végponton, és végrehajthatók a `tools/call` segítségével. Az eszközök tartalmazhatnak **ikonokat** is a jobb felhasználói megjelenítés érdekében.
 
-**Eszköz annotációk**: Az eszközök viselkedési annotációkat támogatnak (pl. `readOnlyHint`, `destructiveHint`), amelyek leírják, hogy egy eszköz csak olvasható vagy destruktív jellegű-e, segítve ezzel a klienseket a megalapozott döntések meghozatalában az eszközvégrehajtást illetően.
+**Eszköz annotációk**: Az eszközök támogatnak viselkedési annotációkat (pl. `readOnlyHint`, `destructiveHint`), amelyek leírják, hogy az adott eszköz csak olvasható vagy destruktív-e, segítve az ügyfeleket az eszköz végrehajtási döntések meghozatalában.
 
-Példa eszköz definícióra:
+Példa eszköz definíció:
 
 ```typescript
 server.tool(
@@ -174,153 +175,153 @@ server.tool(
     max_results: z.number().default(10).describe("Maximum results to return")
   }, 
   async (params) => {
-    // Hajtsa végre a keresést, és adjon vissza strukturált eredményeket
+    // Végrehajtja a keresést és visszaadja a strukturált eredményeket
     return await productService.search(params);
   }
 );
 ```
 
-## Kliens primitívek
+## Ügyfél primitívek
 
-A Model Context Protocol (MCP) esetén a **kliensek** is kiállíthatnak primitíveket, amelyek lehetővé teszik a szerverek számára, hogy további képességeket kérjenek a host alkalmazástól. Ezek a kliens oldali primitívek gazdagabb, interaktívabb szerver implementációkat tesznek lehetővé, amelyek hozzáférnek az AI modell képességeihez és a felhasználói interakciókhoz.
+Az Model Context Protocol (MCP) esetében az **ügyfelek** olyan primitíveket tehetnek elérhetővé, amelyek lehetővé teszik, hogy a szerverek további képességeket kérjenek a házigazda alkalmazástól. Ezek az ügyféloldali primitívek gazdagabb, interaktívabb szerver megvalósításokat tesznek lehetővé, amelyek hozzáférnek AI modell képességekhez és felhasználói interakciókhoz.
 
 ### Mintavételezés
 
-A **mintavételezés** lehetővé teszi a szerverek számára, hogy nyelvi modell kiegészítéseket kérjenek a kliens AI alkalmazásától. Ez a primitív lehetővé teszi, hogy a szerverek a saját LLM függőségek nélkül férjenek hozzá az LLM képességekhez:
+A **Mintavételezés** lehetővé teszi a szerverek számára, hogy nyelvi modell kiegészítéseket kérjenek az ügyfél AI alkalmazásától. Ez a primitív lehetővé teszi, hogy a szerverek LLM képességekhez férjenek hozzá anélkül, hogy saját modell függőségeik lennének:
 
-- **Modelltől független hozzáférés**: A szerverek kiegészítési kéréseket intézhetnek anélkül, hogy magukba ágyaznák az LLM SDK-kat vagy kezelnék a modell hozzáférést  
-- **Szerver által kezdeményezett AI**: A szerverek önállóan generálhatnak tartalmat a kliens AI modell segítségével  
-- **Rekurzív LLM interakciók**: Támogatja az összetett forgatókönyveket, ahol a szerverek AI segítséget kérnek a feldolgozáshoz  
-- **Dinamikus tartalom generálás**: A szerverek kontextuális válaszokat hozhatnak létre a host modelljének használatával  
-- **Eszközhívás támogatás**: A szerverek beilleszthetnek `tools` és `toolChoice` paramétereket, amelyek lehetővé teszik a kliens modelljének eszközök meghívását mintavételezés közben.
+- **Modelltől független hozzáférés**: A szerverek kérhetnek kiegészítéseket anélkül, hogy LLM SDK-kat tartalmaznának vagy kezelnék a modell hozzáférést
+- **Szerver által indított AI**: Lehetővé teszi a szerverek számára, hogy önállóan generáljanak tartalmat az ügyfél modelljével
+- **Rekurzív LLM interakciók**: Támogat komplex forgatókönyveket, ahol a szerverek AI segítséget igényelnek a feldolgozáshoz
+- **Dinamikus tartalom generálás**: A szerverek kontextuális válaszokat hozhatnak létre a házigazda modelljével
+- **Eszközhívási támogatás**: A szerverek `tools` és `toolChoice` paramétereket is megadhatnak, hogy az ügyfél modell eszközöket hívhasson mintavételezés közben
 
-A mintavételezés a `sampling/complete` metóduson keresztül indul, ahol a szerverek kiegészítési kérelmeket küldenek a klienseknek.
+A mintavételezés a `sampling/complete` metóduson keresztül történik, ahol a szerverek kiegészítési kérelmeket küldenek az ügyfeleknek.
 
 ### Gyökerek
 
-A **Gyökerek** szabványos módot biztosítanak a kliensek számára, hogy fájlrendszer határokat fedjenek fel a szervereknek, így segítve a szervereket abban, hogy megértsék, mely könyvtárakhoz és fájlokhoz van hozzáférésük:
+A **Gyökerek** szabványos módszert biztosítanak az ügyfeleknek a fájlrendszer-határok szerverek felé való kitettségére, hogy a szerverek megértsék, mely könyvtárakhoz és fájlokhoz férnek hozzá:
 
-- **Fájlrendszer határai**: Meghatározzák, hol tudnak működni a szerverek a fájlrendszerben  
-- **Hozzáférés-vezérlés**: Segítik a szervereket annak megértésében, mely könyvtárakhoz és fájlokhoz van engedélyük hozzáférni  
-- **Dinamikus frissítések**: A kliensek értesíthetik a szervereket a gyökérlista változásairól  
-- **URI alapú azonosítás**: A gyökerek `file://` URI-ket használnak az elérhető könyvtárak és fájlok azonosítására
+- **Fájlrendszer határok**: Meghatározzák, hogy a szerverek mely helyeken működhetnek a fájlrendszerben
+- **Hozzáférés szabályozás**: Segítenek a szervereknek megérteni, mely könyvtárakhoz és fájlokhoz van engedélyük
+- **Dinamikus frissítések**: Az ügyfelek értesíthetik a szervereket, ha változik a gyökerek listája
+- **URI alapú azonosítás**: A gyökerek `file://` URI-k segítségével azonosítják az elérhető könyvtárakat és fájlokat
 
-A gyökerek felfedezése a `roots/list` metódussal történik, a kliens pedig `notifications/roots/list_changed` értesítést küld, ha a gyökerek változnak.
+A gyökerek a `roots/list` metódusan keresztül érhetők el, az ügyfelek `notifications/roots/list_changed` értesítést küldenek gyökérváltozás esetén.
 
-### Kérdezés  
+### Kérés
 
-A **Kérdezés** lehetővé teszi a szerverek számára, hogy további információkat vagy megerősítést kérjenek a felhasználóktól a kliens felületén keresztül:
+Az **Kérés** lehetővé teszi a szerverek számára, hogy további információt vagy megerősítést kérjenek a felhasználóktól az ügyfél interfészen keresztül:
 
-- **Felhasználói bemenet kérése**: A szerverek plusz információt kérhetnek, amikor eszköz végrehajtáshoz szükséges  
-- **Megerősítő párbeszédek**: Felhasználói jóváhagyást kérnek érzékeny vagy jelentős műveletekhez  
-- **Interaktív munkafolyamatok**: Lehetővé teszik lépésről-lépésre haladó felhasználói interakciók létrehozását  
-- **Dinamikus paramétergyűjtés**: Hiányzó vagy opcionális paraméterek begyűjtése eszközvégrehajtás közben
+- **Felhasználói bemeneti kérések**: A szerverek kérhetnek további információkat, ha szükséges az eszközhasználathoz
+- **Megerősítő párbeszédek**: Kérelmezhetik a felhasználói jóváhagyást érzékeny vagy kritikus műveletekhez
+- **Interaktív munkafolyamatok**: Lehetővé teszi a szervereknek, hogy lépésről lépésre létező felhasználói interakciókat hozzanak létre
+- **Dinamikus paramétergyűjtés**: Hiányzó vagy opcionális paraméterek összegyűjtése az eszköz végrehajtása közben
 
-A kérdezési kéréseket a `elicitation/request` metóduson keresztül intézik a felhasználói bemenet összegyűjtésére a kliens interfészén.
+A kérések a `elicitation/request` metódussal történnek, felhasználói bemenet gyűjtésére az ügyfél interfészen.
 
-**URL módú kérdezés**: A szerverek URL alapú felhasználói interakciókat is kérhetnek, amelyek során a felhasználókat külső weboldalakra irányítják hitelesítés, megerősítés vagy adatbevitel céljából.
+**URL módú kérés**: A szerverek URL alapú felhasználói interakciókat is kérhetnek, amelyek lehetővé teszik, hogy a felhasználókat hitelesítés, megerősítés vagy adatbevitel céljából külső weboldalakra irányítsák.
 
 ### Naplózás
 
-A **naplózás** lehetővé teszi a szerverek számára, hogy strukturált naplóüzeneteket küldjenek a klienseknek hibakeresés, megfigyelés és üzemeltetési átláthatóság céljából:
+A **Naplózás** lehetővé teszi a szerverek számára, hogy strukturált naplóüzeneteket küldjenek az ügyfeleknek hibakeresés, megfigyelés és működési átláthatóság céljából:
 
-- **Hibakeresési támogatás**: A szerverek részletes végrehajtási naplókat biztosíthatnak a hibaelhárításhoz  
-- **Üzemeltetési megfigyelés**: Állapotfrissítéseket és teljesítmény mutatókat küldenek a klienseknek  
-- **Hibajelentés**: Részletes hibakörnyezetet és diagnosztikai információkat nyújtanak  
-- **Audit nyomvonalak**: Átfogó naplókat hoznak létre a szerver működéséről és döntéseiről
+- **Hibakeresési támogatás**: A szerverek részletes végrehajtási naplókat küldhetnek hibák elhárításához
+- **Üzemeltetési megfigyelés**: Állapotfrissítéseket és teljesítménymutatókat továbbítanak az ügyfeleknek
+- **Hibajelentés**: Részletes hibakontextust és diagnosztikai információkat szolgáltatnak
+- **Audit nyomok**: Átfogó naplókat hoznak létre a szerver műveletekről és döntésekről
 
-A naplóüzeneteket a klienseknek küldik az átláthatóság biztosítása és a hibakeresés megkönnyítése érdekében.
+A naplóüzeneteket az ügyfelek felé küldik a szerver működésének átláthatósága és a hibakeresés megkönnyítése érdekében.
 
-## Az információáramlás az MCP-ben
+## Információáramlás az MCP-ben
 
-A Model Context Protocol (MCP) definiál egy strukturált információáramlást a hostok, kliensek, szerverek és modellek között. Ennek megértése segít tisztázni, hogy miként dolgozódnak fel a felhasználói kérések és hogyan integrálódnak a külső eszközök és adatok a modell válaszaiba.
-- **A gazda kezdeményezi a kapcsolatot**  
-  A gazdaalkalmazás (például egy IDE vagy chat felület) létrehoz egy kapcsolatot egy MCP szerverrel, általában STDIO, WebSocket vagy más támogatott közlekedési módon keresztül.
+A Model Context Protocol (MCP) meghatároz egy strukturált információáramlást a házigazdák, ügyfelek, szerverek és modellek között. Ennek az áramlásnak az ismerete segít megérteni, hogyan dolgozódnak fel a felhasználói kérések, és hogyan integrálódnak a külső eszközök és adatok a modell válaszaiba.
+- **A host kezdeményezi a kapcsolatot**  
+  A host alkalmazás (például egy IDE vagy chat felület) kapcsolatot létesít egy MCP szerverrel, általában STDIO, WebSocket vagy más támogatott protokollon keresztül.
 
-- **Képesség egyeztetés**  
-  Az ügyfél (a gazdába ágyazva) és a szerver információt cserél a támogatott funkciókról, eszközökről, erőforrásokról és protokoll verziókról. Ez biztosítja, hogy mindkét fél értse, milyen képességek állnak rendelkezésre a munkamenet során.
+- **Képességek egyeztetése**  
+  Az ügyfél (ami a hostban van beágyazva) és a szerver információt cserél a támogatott funkcióikról, eszközeikről, forrásaikról és a protokoll verziókról. Ez biztosítja, hogy mindkét fél értse, milyen képességek állnak rendelkezésre az adott munkamenet során.
 
 - **Felhasználói kérés**  
-  A felhasználó interakcióba lép a gazdával (pl. promptot vagy parancsot ad meg). A gazda begyűjti ezt a bemenetet, és továbbítja az ügyfélnek feldolgozásra.
+  A felhasználó interakcióba lép a hosttal (például beír egy parancsot vagy kérést). A host összegyűjti ezt a bemenetet, és továbbítja az ügyfélnek feldolgozásra.
 
-- **Erőforrás vagy eszköz használata**  
-  - Az ügyfél további kontextust vagy erőforrásokat kérhet a szervertől (például fájlokat, adatbázis bejegyzéseket vagy tudásbázis cikkeket), hogy gazdagítsa a modell megértését.  
-  - Ha a modell úgy ítéli meg, hogy eszközre van szükség (például adat lekérése, számítás végrehajtása vagy API hívás), az ügyfél eszköz meghívási kérelmet küld a szervernek az eszköz nevének és paramétereinek megadásával.
+- **Forrás vagy eszköz használata**  
+  - Az ügyfél kérhet további kontextust vagy erőforrásokat a szervertől (például fájlokat, adatbázis-bejegyzéseket vagy tudásbázis cikkeket), hogy gazdagítsa a modell megértését.  
+  - Ha a modell úgy dönt, hogy eszköz szükséges (például adat lekéréséhez, számítás elvégzéséhez vagy API híváshoz), az ügyfél eszköz meghívási kérelmet küld a szervernek, megadva az eszköz nevét és paramétereit.
 
 - **Szerver végrehajtás**  
-  A szerver fogadja az erőforrás- vagy eszközkérést, végrehajtja a szükséges műveleteket (pl. függvény futtatása, adatbázis lekérdezés vagy fájl letöltés), és strukturált formátumban visszaküldi az eredményeket az ügyfélnek.
+  A szerver megkapja az erőforrás- vagy eszközkérést, végrehajtja a szükséges műveleteket (például függvény futtatása, adatbázis lekérdezése vagy fájl lekérése), majd strukturált formátumban visszaküldi az eredményeket az ügyfélnek.
 
-- **Válaszgenerálás**  
-  Az ügyfél integrálja a szerver válaszait (erőforrásadatok, eszköz kimenetek stb.) a folyamatban lévő modell interakcióba. A modell ezt az információt felhasználva állít elő részletes és kontextusban releváns választ.
+- **Válasz generálása**  
+  Az ügyfél integrálja a szerver válaszait (erőforrásadatok, eszköz eredmények stb.) az aktuális modell interakcióba. A modell ezeket az információkat felhasználva generál egy átfogó és kontextusban releváns választ.
 
-- **Eredmény bemutatása**  
-  A gazda megkapja az ügyféltől a végső eredményt, és bemutatja a felhasználónak, gyakran tartalmazva a modell által generált szöveget és az eszközvégrehajtás vagy erőforrás lekérések eredményeit.
+- **Eredmény megjelenítése**  
+  A host megkapja az ügyféltől a végső kimenetet, és megjeleníti a felhasználónak, általában tartalmazva a modell által generált szöveget, valamint az eszközök végrehajtásából vagy forrás lekérdezésből származó eredményeket.
 
-Ez a folyamat lehetővé teszi az MCP számára, hogy fejlett, interaktív és kontextusérzékeny MI-alkalmazásokat támogasson azáltal, hogy zökkenőmentesen összekapcsolja a modelleket külső eszközökkel és adatforrásokkal.
+Ez a folyamat lehetővé teszi, hogy az MCP támogassa az előrehaladott, interaktív és kontextus-érzékeny AI alkalmazásokat azáltal, hogy zökkenőmentesen kapcsolja össze a modelleket külső eszközökkel és adatforrásokkal.
 
-## Protokoll Architektúra és Rétegek
+## Protokoll architektúra és rétegek
 
-Az MCP két elkülönült architekturális rétegből áll, amelyek együtt működnek egy teljes kommunikációs keretrendszer biztosításához:
+Az MCP két különálló architekturális rétegből áll, amelyek együttműködve nyújtanak teljes kommunikációs keretrendszert:
 
-### Adat Réteg
+### Adat réteg
 
-Az **Adat Réteg** az MCP protokoll magját valósítja meg a **JSON-RPC 2.0** használatával alapként. Ez a réteg definiálja az üzenetszerkezetet, szemantikát és az interakciós mintákat:
+Az **Adat réteg** az MCP protokoll magját valósítja meg, alapja a **JSON-RPC 2.0**. Ez a réteg határozza meg az üzenetszerkezetet, szemantikát és interakciós mintákat:
 
-#### Fő komponensek:
+#### Fő összetevők:
 
-- **JSON-RPC 2.0 protokoll**: Minden kommunikáció szabványosított JSON-RPC 2.0 üzenetformátumban történik metódushívások, válaszok és értesítések esetén  
-- **Életciklus kezelése**: Kezeli a kapcsolat inicializálását, a képességek egyeztetését és a munkamenet lezárását ügyfelek és szerverek között  
-- **Szerver primitívek**: Lehetővé teszi, hogy a szerverek eszközökkel, erőforrásokkal és promptokkal nyújtsanak alapfunkciókat  
-- **Ügyfél primitívek**: Lehetővé teszi a szerverek számára, hogy LLM mintavételezést kérjenek, felhasználói bemenetet kérjenek, valamint naplóüzeneteket küldjenek  
+- **JSON-RPC 2.0 protokoll**: Az összes kommunikáció szabványosított JSON-RPC 2.0 üzenetformátumot használ metódushívásokhoz, válaszokhoz és értesítésekhez  
+- **Életciklus-kezelés**: Kezeli a kapcsolat létrehozását, képességek egyeztetését és a munkamenet lezárását kliens és szerver között  
+- **Szerver primitívek**: Lehetővé teszi, hogy a szerverek alapvető funkciókat nyújtsanak eszközök, erőforrások és promptok formájában  
+- **Kliens primitívek**: Engedélyezi, hogy a szerverek kéréseket küldjenek LLM mintavételezésére, felhasználói bemenet kérésére és naplóüzenetek küldésére  
 - **Valós idejű értesítések**: Támogatja az aszinkron értesítéseket dinamikus frissítésekhez lekérdezés nélkül
 
-#### Kulcsfunkciók:
+#### Kulcsjellemzők:
 
 - **Protokoll verzió egyeztetés**: Dátumalapú verziókezelést (ÉÉÉÉ-HH-NN) használ a kompatibilitás biztosítására  
-- **Képesség felfedezés**: Az ügyfelek és szerverek a inicializáció során cserélnek információkat a támogatott funkciókról  
-- **Állapotmegőrző munkamenetek**: Fenntartja a kapcsolat állapotát több interakción keresztül a kontextus következetessége érdekében
+- **Képesség felfedezés**: A kliensek és szerverek egyeztetik a támogatott funkciókat inicializáláskor  
+- **Állapotfüggő munkamenetek**: Kapcsolat állapotának megőrzése több interakción keresztül a kontextus folytonossága érdekében
 
-### Közlekedési Réteg
+### Szállítási réteg
 
-A **Közlekedési Réteg** kezeli a kommunikációs csatornákat, az üzenetkeretezést és az azonosítást az MCP résztvevők között:
+A **Szállítási réteg** kezeli a kommunikációs csatornákat, üzenetkeretezést és az MCP résztvevők közti hitelesítést:
 
-#### Támogatott közlekedési módok:
+#### Támogatott szállítási mechanizmusok:
 
-1. **STDIO közlekedés**:  
-   - Szabványos bemenet/kimeneti csatornákat használ a közvetlen folyamatok közötti kommunikációhoz  
-   - Optimális egyazon gépen futó helyi folyamatok számára hálózati terhelés nélkül  
-   - Gyakran használt helyi MCP szerver megvalósításoknál
+1. **STDIO szállítás**:  
+   - Szabványos bemenet/kimeneten keresztüli közvetlen folyamatközi kommunikáció  
+   - Kiváló helyi folyamatokhoz ugyanazon gépen belül hálózati overhead nélkül  
+   - Gyakran használt helyi MCP szerver implementációkhoz
 
-2. **Streamelhető HTTP közlekedés**:  
-   - HTTP POST-t használ ügyfél-szerver üzenetekhez  
-   - Opcionális Server-Sent Events (SSE) a szerver-ügyfél streameléshez  
-   - Lehetővé teszi távoli szerver kommunikációját hálózatokon keresztül  
+2. **Streamelhető HTTP szállítás**:  
+   - HTTP POST használata kliens-szerver üzenetekhez  
+   - Opcionális Server-Sent Events (SSE) szerver-kliens folyamatos adatátvitelhez  
+   - Távoli szerverek közti hálózati kommunikáció engedélyezése  
    - Támogatja a szabványos HTTP hitelesítést (bearer tokenek, API kulcsok, egyedi fejlécek)  
-   - Az MCP az OAuth használatát ajánlja a biztonságos token-alapú hitelesítéshez
+   - Az MCP az OAuth használatát javasolja biztonságos token-alapú hitelesítéshez
 
-#### Közlekedési absztrakció:
+#### Szállítási absztrakció:
 
-A közlekedési réteg elrejti a kommunikáció részleteit az adat réteg elől, lehetővé téve ugyanazon JSON-RPC 2.0 üzenetformátum használatát minden közlekedési mechanizmuson keresztül. Ez az absztrakció lehetővé teszi a helyi és távoli szerverek közti zökkenőmentes váltást.
+A szállítási réteg elvonja a kommunikáció részleteit az adat rétegtől, lehetővé téve, hogy ugyanaz a JSON-RPC 2.0 üzenetformátum működjön minden szállítási mechanizmuson keresztül. Ez az absztrakció zökkenőmentes váltást tesz lehetővé helyi és távoli szerverek között.
 
 ### Biztonsági megfontolások
 
-Az MCP megvalósításoknak több kritikus biztonsági elvet kell követniük a biztonságos, megbízható és biztonságos interakciók érdekében a teljes protokoll működés során:
+Az MCP implementációknak több kritikus biztonsági elvet kell követniük a protokollműveletek biztonságos, megbízható és biztonságos végrehajtása érdekében:
 
-- **Felhasználói beleegyezés és irányítás**: A felhasználóknak kifejezett hozzájárulást kell adniuk bármilyen adat elérése vagy művelet végrehajtása előtt. Világos kontrollt kell biztosítani a megosztott adatok és engedélyezett műveletek felett, intuitív felhasználói felületekkel az események áttekintésére és jóváhagyására.
+- **Felhasználói hozzájárulás és irányítás**: A felhasználónak explicit hozzájárulást kell adnia, mielőtt adatokat érnének el vagy műveleteket végeznének. Világos irányítást kell kapniuk arról, hogy milyen adatokat osztanak meg és mely műveletek engedélyezettek, támogatva intuitív felhasználói felületekkel a tevékenységek áttekinhetősége és jóváhagyása érdekében.
 
-- **Adatvédelem**: A felhasználói adatokat csak kifejezett hozzájárulással szabad megosztani, megfelelő hozzáférés-szabályozás mellett. Az MCP implementációknak meg kell akadályozniuk az illetéktelen adatátvitelt, és biztosítaniuk kell a magánszféra megőrzését minden interakció során.
+- **Adatvédelem**: A felhasználói adatokat csak explicit hozzájárulással szabad megosztani, és megfelelő hozzáférés-vezérléssel kell védeni. Az MCP implementációknak meg kell akadályozniuk az illetéktelen adatátvitelt, és biztosítaniuk kell az adatvédelem fenntartását minden interakció során.
 
-- **Eszközbiztonság**: Minden eszköz meghívása előtt kifejezett felhasználói beleegyezés szükséges. A felhasználóknak tisztában kell lenniük az eszközök működésével, és erős biztonsági határokat kell alkalmazni a nem szándékos vagy nem biztonságos eszközvégrehajtás megakadályozására.
+- **Eszközbiztonság**: Mielőtt bármilyen eszközt meghívnának, explicit felhasználói hozzájárulás szükséges. A felhasználóknak világos képük kell, hogy legyen az eszközök funkcióiról, és szigorú biztonsági határokat kell alkalmazni nem kívánt vagy veszélyes végrehajtások megakadályozására.
 
-Ezeknek a biztonsági elveknek a betartásával az MCP biztosítja a felhasználói bizalmat, az adatvédelmet és a biztonságot a teljes protokoll interakció során, miközben erőteljes MI integrációkat tesz lehetővé.
+Ezeknek a biztonsági elveknek a betartásával az MCP garantálja a felhasználói bizalmat, adatvédelmet és biztonságot a protokollműveletek során miközben lehetővé teszi az erős AI integrációkat.
 
-## Kódpéldák: Kulcsfontosságú komponensek
+## Kód példák: Kulcsösszetevők
 
-Az alábbiakban néhány népszerű programozási nyelven mutatunk be kódpéldákat, amelyek illusztrálják, hogyan lehet megvalósítani az MCP szerver kulcselemeit és eszközeit.
+Az alábbiakban több népszerű programozási nyelven mutatunk be kódpéldákat, amelyek illusztrálják, hogyan lehet implementálni az MCP szerver kulcsfontosságú összetevőit és eszközeit.
 
 ### .NET példa: Egyszerű MCP szerver létrehozása eszközökkel
 
-Itt egy gyakorlati .NET kódpélda, amely bemutatja, hogyan lehet egyszerű MCP szervert létrehozni egyedi eszközökkel. Ez a példa szemlélteti az eszközök definiálását és regisztrálását, kérések kezelését és a szerverhez való kapcsolódást a Model Context Protocol segítségével.
+Íme egy gyakorlati .NET kód példa, amely bemutatja, hogyan lehet egyszerű MCP szervert létrehozni egyedi eszközökkel. A példa szemlélteti, hogyan definiálhatók és regisztrálhatók eszközök, hogyan kezelődik a kérések és hogyan kapcsolódik a szerver a Model Context Protokol segítségével.
 
 ```csharp
 using System;
@@ -379,9 +380,9 @@ public class WeatherData
 }
 ```
 
-### Java példa: MCP szerver komponensek
+### Java példa: MCP szerver összetevők
 
-Ez a példa ugyanazt az MCP szervert és eszközregisztrációt mutatja be, mint a fenti .NET példa, de Java nyelven megvalósítva.
+Ez a példa ugyanazt az MCP szervert és eszköz regisztrációt mutatja be, mint a fenti .NET példa, de Java nyelven megvalósítva.
 
 ```java
 import io.modelcontextprotocol.server.McpServer;
@@ -405,10 +406,10 @@ public class WeatherMcpServer {
             .execute((ToolExecutionContext ctx) -> {
                 String location = ctx.getParameter("location", String.class);
                 
-                // Szerezze be az időjárási adatokat (egyszerűsített)
+                // Szerezzen időjárás adatokat (egyszerűsítve)
                 WeatherData data = getWeatherData(location);
                 
-                // Adja vissza a formázott választ
+                // Adjon vissza formázott választ
                 return ToolResponse.content(
                     String.format("Temperature: %.1f°F, Conditions: %s, Location: %s", 
                     data.getTemperature(), 
@@ -418,18 +419,18 @@ public class WeatherMcpServer {
             })
             .build());
         
-        // Csatlakoztassa a szervert stdio átvitel használatával
+        // Csatlakoztassa a szervert stdio szállításon keresztül
         try (StdioServerTransport transport = new StdioServerTransport()) {
             server.connect(transport);
             System.out.println("Weather MCP Server started");
-            // Tartsa futva a szervert, amíg a folyamat le nem áll
+            // Tartsa futva a szervert, amíg a folyamat be nem fejeződik
             Thread.currentThread().join();
         }
     }
     
     private static WeatherData getWeatherData(String location) {
         // A megvalósítás egy időjárás API-t hívna meg
-        // Egyszerűsítve példa célokra
+        // Egyszerűsített a példa kedvéért
         return new WeatherData(72.5, "Sunny", location);
     }
 }
@@ -461,12 +462,12 @@ class WeatherData {
 
 ### Python példa: MCP szerver építése
 
-Ez a példa a fastmcp csomagot használja, ezért kérjük, előzetesen telepítse azt:
+Ez a példa a fastmcp-t használja, kérjük, először telepítse azt:
 
 ```python
 pip install fastmcp
 ```
-Kódminta:
+Kódminták:
 
 ```python
 #!/usr/bin/env python3
@@ -474,7 +475,7 @@ import asyncio
 from fastmcp import FastMCP
 from fastmcp.transports.stdio import serve_stdio
 
-# FastMCP szerver létrehozása
+# Hozzon létre egy FastMCP szervert
 mcp = FastMCP(
     name="Weather MCP Server",
     version="1.0.0"
@@ -502,17 +503,17 @@ class WeatherTools:
             ]
         }
 
-# Osztály eszközök regisztrálása
+# Regisztrálja az osztály eszközöket
 weather_tools = WeatherTools()
 
-# Szerver indítása
+# Indítsa el a szervert
 if __name__ == "__main__":
     asyncio.run(serve_stdio(mcp))
 ```
 
 ### JavaScript példa: MCP szerver létrehozása
 
-Ez a példa megmutatja, hogyan hozhat létre MCP szervert JavaScript-ben, és hogyan lehet regisztrálni két időjárással kapcsolatos eszközt.
+Ez a példa bemutatja az MCP szerver létrehozását JavaScriptben, és két időjárással kapcsolatos eszköz regisztrálását.
 
 ```javascript
 // Az hivatalos Model Context Protocol SDK használata
@@ -533,8 +534,8 @@ server.tool(
     location: z.string().describe("The location to get weather for")
   },
   async ({ location }) => {
-    // Ez normálisan egy időjárás API-t hívna meg
-    // Egyszerűsítve a bemutatóhoz
+    // Ez normál esetben egy időjárás API-t hívna meg
+    // Egyszerűsítve bemutató céljából
     const weatherData = await getWeatherData(location);
     
     return {
@@ -548,7 +549,7 @@ server.tool(
   }
 );
 
-// Előrejelzés eszköz definiálása
+// Előrejelző eszköz definiálása
 server.tool(
   "forecastTool",
   {
@@ -556,8 +557,8 @@ server.tool(
     days: z.number().default(3).describe("Number of days for forecast")
   },
   async ({ location, days }) => {
-    // Ez normálisan egy időjárás API-t hívna meg
-    // Egyszerűsítve a bemutatóhoz
+    // Ez normál esetben egy időjárás API-t hívna meg
+    // Egyszerűsítve bemutató céljából
     const forecast = await getForecastData(location, days);
     
     return {
@@ -597,39 +598,39 @@ server.connect(transport).catch(console.error);
 console.log("Weather MCP Server started");
 ```
 
-Ez a JavaScript példa bemutatja, hogyan lehet MCP szervert létrehozni, amely időjárás témájú eszközöket regisztrál és stdio közlekedésen keresztül kapcsolódik, hogy kezelje a bejövő ügyfél kéréseket.
+Ez a JavaScript példa megmutatja, hogyan lehet MCP szervert létrehozni a Model Context Protocol SDK használatával. Bemutatja, hogyan lehet regisztrálni két, `weatherTool` és `forecastTool` nevű eszközt, és hogyan lehet ezeket elérhetővé tenni MCP ügyfelek számára a `StdioServerTransport` segítségével.
 
 ## Biztonság és jogosultságkezelés
 
-Az MCP több beépített koncepciót és mechanizmust foglal magában a protokoll biztonságának és engedélyezésének kezelésére:
+Az MCP tartalmaz több beépített koncepciót és mechanizmust a biztonság és jogosultságkezelés kezelésére a protokoll egészében:
 
-1. **Eszköz engedélyezés szabályozás**:  
-  Az ügyfelek megadhatják, hogy a modell mely eszközöket használhatja egy munkamenet során. Ez biztosítja, hogy kizárólag kifejezetten engedélyezett eszközök legyenek elérhetőek, csökkentve a nem kívánt vagy nem biztonságos műveletek kockázatát. Az engedélyek dinamikusan konfigurálhatók felhasználói preferenciák, szervezeti szabályzatok vagy az interakció kontextusa alapján.
+1. **Eszköz engedélyezés kezelése**:  
+  A kliensek megadhatják, hogy egy modell mely eszközöket használhat egy munkamenet alatt. Ez biztosítja, hogy csak explicit engedélyezett eszközök legyenek elérhetőek, csökkentve a nem szándékos vagy nem biztonságos műveletek kockázatát. Az engedélyeket dinamikusan lehet konfigurálni felhasználói beállítások, szervezeti szabályzatok vagy az interakció kontextusa alapján.
 
 2. **Hitelesítés**:  
-  A szerverek előírhatják a hitelesítést az eszközök, erőforrások vagy érzékeny műveletek elérése előtt. Ez magában foglalhat API kulcsokat, OAuth tokeneket vagy más hitelesítési rendszereket. A megfelelő hitelesítés biztosítja, hogy csak megbízható ügyfelek és felhasználók férjenek hozzá a szerver oldali képességekhez.
+  A szerverek megkövetelhetik a hitelesítést, mielőtt hozzáférést adnának eszközökhöz, erőforrásokhoz vagy érzékeny műveletekhez. Ez magában foglalhat API kulcsokat, OAuth tokeneket vagy más hitelesítési rendszereket. A megfelelő hitelesítés biztosítja, hogy csak megbízható kliensek és felhasználók hívhassák meg a szerver oldali képességeket.
 
 3. **Érvényesítés**:  
-  Minden eszköz meghívásnál paraméterellenőrzés érvényesül. Minden eszköz definiálja a paraméterek elvárt típusait, formátumait és korlátait, és a szerver ennek megfelelően érvényesíti a bejövő kéréseket. Ez megakadályozza a hibás vagy rosszindulatú bemenetek eljutását az eszközimplementációkhoz, és védi a műveletek integritását.
+  Minden eszköz hívás paramétereit érvényesíteni kell. Minden eszköz definiálja a paramétereinek várt típusait, formátumait és korlátait, a szerver pedig ezt figyelmeztetően ellenőrzi. Ez megakadályozza a hibás vagy rosszindulatú inputok eljutását az eszköz megvalósításokhoz, elősegítve a műveletek integritását.
 
-4. **Korlátozás**:  
-  Az erőforrások visszaélésszerű használatának megakadályozására és a méltányos hozzáférés biztosítására az MCP szerverek eszköz meghívásokra és erőforrás elérésre korlátozásokat vezethetnek be. Ezek alkalmazhatók felhasználóra, munkamenetre vagy globálisan, és segítenek a szolgáltatásmegtagadásos támadások és a túlzott erőforrás-felhasználás megelőzésében.
+4. **Korlátozás (rate limiting)**:  
+  Az MCP szerverek képesek korlátozni az eszközhasználatot és az erőforrások elérését visszaélések megelőzése és erőforrások igazságos használata érdekében. A korlátozások alkalmazhatók felhasználó, munkamenet vagy globális szinten, és segítenek védeni a szolgáltatás megtagadásos támadásokkal és túlzott erőforrás-felhasználással szemben.
 
-E mechanizmusok együttes alkalmazásával az MCP biztonságos alapot szolgáltat a nyelvi modellek külső eszközökkel és adatforrásokkal való integrációjához, miközben a felhasználóknak és fejlesztőknek finomhangolt hozzáférés- és használatszabályozást kínál.
+Ezeknek a mechanizmusoknak a kombinálásával az MCP biztonságos alapot nyújt a nyelvi modellek integrálásához külső eszközökkel és adatforrásokkal, miközben részletes kontrollt biztosít a felhasználók és fejlesztők számára a hozzáférés és használat felett.
 
 ## Protokoll üzenetek és kommunikációs folyamat
 
-Az MCP kommunikáció szabványosított **JSON-RPC 2.0** üzeneteket használ, hogy világos és megbízható interakciókat biztosítson a gazda, az ügyfél és a szerver között. A protokoll specifikus üzenetmintákat definiál különböző művelettípusokhoz:
+Az MCP kommunikáció strukturált **JSON-RPC 2.0** üzeneteket használ a világos és megbízható interakciók biztosítására a hostok, kliensek és szerverek között. A protokoll külön üzenetmintákat definiál különböző típusú műveletekhez:
 
 ### Alapvető üzenettípusok:
 
 #### **Inicializációs üzenetek**
-- **`initialize` kérés**: Kapcsolat létesítése és protokoll verzió, képességek egyeztetése  
-- **`initialize` válasz**: A támogatott funkciók és szerver információ megerősítése  
-- **`notifications/initialized`**: Jelzi, hogy az inicializáció befejeződött, és a munkamenet készen áll
+- **`initialize` kérés**: Kapcsolat létesítése és a protokoll verzió, képességek egyeztetése  
+- **`initialize` válasz**: Megerősíti a támogatott funkciókat és szerver információkat  
+- **`notifications/initialized`**: Jelzi, hogy az inicializáció befejeződött és a munkamenet készen áll
 
-#### **Felfedezési üzenetek**
-- **`tools/list` kérés**: Elérhető eszközök listázása a szerverről  
+#### **Felfedező üzenetek**
+- **`tools/list` kérés**: Elérhető eszközök felfedezése a szerveren  
 - **`resources/list` kérés**: Elérhető erőforrások (adatforrások) listázása  
 - **`prompts/list` kérés**: Elérhető prompt sablonok lekérése
 
@@ -638,56 +639,55 @@ Az MCP kommunikáció szabványosított **JSON-RPC 2.0** üzeneteket használ, h
 - **`resources/read` kérés**: Egy adott erőforrás tartalmának lekérése  
 - **`prompts/get` kérés**: Prompt sablon lekérése opcionális paraméterekkel
 
-#### **Ügyfél oldali üzenetek**
-- **`sampling/complete` kérés**: Szerver kér LLM kiegészítést az ügyféltől  
-- **`elicitation/request`**: Szerver kéri a felhasználói bemenetet az ügyfélen keresztül  
-- **Naplózási üzenetek**: Szerver strukturált naplóüzeneteket küld az ügyfélnek
+#### **Kliens-oldali üzenetek**
+- **`sampling/complete` kérés**: A szerver kéri az LLM kitöltést az ügyféltől  
+- **`elicitation/request`**: A szerver felhasználói bemenetet kér az ügyfél felületén keresztül  
+- **Naplózási üzenetek**: A szerver strukturált naplóüzeneteket küld az ügyfélnek
 
 #### **Értesítési üzenetek**
-- **`notifications/tools/list_changed`**: Szerver értesíti az ügyfelet az eszközváltozásokról  
-- **`notifications/resources/list_changed`**: Szerver értesíti az ügyfelet az erőforrásváltozásokról  
-- **`notifications/prompts/list_changed`**: Szerver értesíti az ügyfelet a promptváltozásokról
+- **`notifications/tools/list_changed`**: A szerver értesíti a klienst az eszközök változásáról  
+- **`notifications/resources/list_changed`**: A szerver értesíti a klienst az erőforrások változásáról  
+- **`notifications/prompts/list_changed`**: A szerver értesíti a klienst a promptok változásáról
 
-### Üzenetszerkezet:
+### Üzenet szerkezete:
 
-Minden MCP üzenet JSON-RPC 2.0 formátumot követ:  
-- **Kérés üzenetek**: Tartalmazzák az `id`-t, a `method`-ot és opcionálisan a `params`-t  
-- **Válasz üzenetek**: Tartalmazzák az `id`-t és vagy a `result`-ot vagy az `error`-t  
-- **Értesítés üzenetek**: Tartalmazzák a `method`-ot és opcionálisan a `params`-t (nincs `id` és válasz nem várható)
+Minden MCP üzenet a JSON-RPC 2.0 formátumot követi:  
+- **Kérés üzenetek**: tartalmazzák az `id`-t, `method`-ot, és opcionálisan `params`-t  
+- **Válasz üzenetek**: tartalmazzák az `id`-t és vagy `result`-ot vagy `error`-t  
+- **Értesítési üzenetek**: tartalmazzák a `method`-ot és opcionálisan `params`-t (nem tartalmaz `id`-t, válasz nem várható)
 
-Ez a strukturált kommunikáció megbízható, nyomon követhető és kiterjeszthető interakciókat tesz lehetővé, támogatva fejlett forgatókönyveket, mint például valós idejű frissítések, eszközláncok és robosztus hibakezelés.
+Ez a strukturált kommunikáció megbízható, nyomon követhető és kiterjeszthető interakciókat biztosít, támogatva előrehaladott forgatókönyveket, mint például valós idejű frissítések, eszköz láncolás és robosztus hibakezelés.
 
 ### Feladatok (kísérleti)
 
-A **Feladatok** egy kísérleti funkció, amely tartós végrehajtás burkolókat biztosít, lehetővé téve halasztott eredmény lekérést és státusz követést MCP kéréseknél:
+A **Feladatok** egy kísérleti funkció, amely tartós végrehajtási csomagokat nyújt, lehetővé téve a késleltetett eredmény lekérést és állapotkövetést MCP kérések esetén:
 
-- **Hosszú ideig tartó műveletek**: Költséges számítások, munkafolyamat automatizálás és kötegelt feldolgozás követése  
-- **Eredmény késleltetés**: A feladat állapotának lekérdezése és az eredmények elérése a befejezés után  
-- **Státusz nyomon követés**: A feladat előrehaladásának követése definiált életciklus állapotokon keresztül  
-- **Többlépcsős műveletek**: Támogat komplex munkafolyamatokat, melyek több interakciót érintenek
+- **Hosszú lefutású műveletek**: drága számítások, munkafolyamat automatizálás és kötegelt feldolgozás nyomon követése  
+- **Késleltetett eredmények**: lekérdezhető a feladat állapota és az eredmények elérhetővé válnak a művelet befejeződésekor  
+- **Állapotkövetés**: a feladat előrehaladásának figyelése meghatározott életciklus állapotokon keresztül  
+- **Többlépcsős műveletek**: komplex munkafolyamatok támogatása, amelyek több interakciót foglalnak magukban
 
-A feladatok csomagolják a szokásos MCP kéréseket, hogy lehetővé tegyék az aszinkron végrehajtási mintákat azon műveletekhez, amelyek nem fejeződnek be azonnal.
+A feladatok becsomagolják a szabványos MCP kéréseket, lehetővé téve az aszinkron végrehajtási mintákat azoknál a műveleteknél, amelyek azonnal nem fejeződnek be.
 
 ## Főbb tanulságok
 
-- **Architektúra**: Az MCP kliens-szerver architektúrát használ, ahol a gazdák több kliens kapcsolatát kezelik a szerverekhez  
-- **Résztvevők**: Az ökoszisztéma részei a gazdák (MI alkalmazások), ügyfelek (protokoll csatlakozók) és szerverek (képesség szolgáltatók)  
-- **Közlekedési mechanizmusok**: Kommunikációt támogat az STDIO (helyi) és a streamelhető HTTP opcionális SSE-vel (távoli)  
-- **Mag primítívek**: A szerverek eszközöket (végrehajtható funkciók), erőforrásokat (adatforrások) és promptokat (sablonok) tesznek elérhetővé  
-- **Ügyfél primitívek**: A szerverek kérhetnek mintavételezést (LLM kiegészítések eszközhívással), elicitation-t (felhasználói bemenet URL móddal), root-ok (fájlrendszer határok) és naplózást az ügyfelektől  
-- **Kísérleti funkciók**: A Feladatok tartós végrehajtás burkolókat biztosítanak hosszú működésű műveletekhez  
-- **Protokoll alapja**: JSON-RPC 2.0 használata dátumalapú verziózással (aktuális: 2025-11-25)  
-- **Valós idejű képességek**: Támogat értesítéseket dinamikus frissítésekhez és valós idejű szinkronizációhoz  
-- **Biztonsági szempontok elsődlegesek**: Kifejezett felhasználói beleegyezés, adatvédelem és biztonságos közlekedés alapkövetelmény
+- **Architektúra**: Az MCP kliens-szerver architektúrát használ, ahol a hostok több kliens kapcsolatot kezelnek szerverekhez  
+- **Résztvevők**: Az ökoszisztéma tartalmaz hostokat (AI alkalmazások), kliens csatlakozókat és szerver kapacitás szolgáltatókat  
+- **Szállítási mechanizmusok**: Kommunikáció támogatja a STDIO-t (helyi) és a streamelhető HTTP-t opcionális SSE-vel (távoli)  
+- **Alapvető primitívek**: A szerverek expozíciója eszközök (végrehajtható függvények), erőforrások (adatforrások) és promptok (sablonok) formájában  
+- **Kliens primitívek**: A szerverek kérhetnek mintavételezést (LLM kitöltések eszköz hívás támogatással), bemenet kérését (felhasználói input URL móddal), gyökereket (fájlrendszerhatárok) és naplózást az ügyfelektől  
+- **Kísérleti funkciók**: Feladatok tartós végrehajtási csomagokat nyújtanak hosszú futású műveletekhez  
+- **Protokoll alapja**: A JSON-RPC 2.0 alapú, dátumalapú verziókezeléssel (aktuális: 2025-11-25)  
+- **Valós idejű képességek**: Támogatja az értesítéseket dinamikus frissítésekhez és valós idejű szinkronizációhoz  
+- **Biztonság előtérben**: Explicit felhasználói hozzájárulás, adatvédelem, és biztonságos szállítás alapfeltételek
 
 ## Gyakorlat
 
-Tervezzen egy egyszerű MCP eszközt, amely hasznos lenne az Ön szakterületén. Határozza meg:  
-1. Az eszköz nevét  
-2. Milyen paramétereket fogadna  
+Tervezzen egy egyszerű MCP eszközt, amely hasznos lehet az Ön területén. Határozza meg:  
+1. Mi lenne az eszköz neve  
+2. Milyen paramétereket fogadna el  
 3. Milyen kimenetet adna vissza  
 4. Hogyan használhatná a modell ezt az eszközt a felhasználói problémák megoldására
-
 
 ---
 
@@ -698,6 +698,6 @@ Következő: [2. fejezet: Biztonság](../02-Security/README.md)
 ---
 
 <!-- CO-OP TRANSLATOR DISCLAIMER START -->
-**Nyilatkozat**:
-Ezt a dokumentumot az AI fordítási szolgáltatás, a [Co-op Translator](https://github.com/Azure/co-op-translator) használatával fordítottuk le. Bár a pontosságra törekszünk, kérjük, vegye figyelembe, hogy az automatikus fordítások tartalmazhatnak hibákat vagy pontatlanságokat. Az eredeti dokumentum, annak anyanyelvén tekintendő hivatalos forrásnak. Kritikus információk esetén professzionális emberi fordítást javaslunk. Nem vállalunk felelősséget a fordítás használatából eredő félreértésekért vagy félreértelmezésekért.
+**Jogi nyilatkozat**:
+Ez a dokumentum az AI fordító szolgáltatás [Co-op Translator](https://github.com/Azure/co-op-translator) használatával készült. Bár igyekszünk a pontosságra, kérjük, vegye figyelembe, hogy az automatikus fordítások hibákat vagy pontatlanságokat tartalmazhatnak. Az eredeti dokumentum az anyanyelvén tekintendő hivatalos forrásnak. Kritikus információk esetén professzionális emberi fordítást javaslunk. Nem vállalunk felelősséget a fordítás használatából eredő félreértések vagy értelmezési hibák miatt.
 <!-- CO-OP TRANSLATOR DISCLAIMER END -->
