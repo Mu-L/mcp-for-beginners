@@ -137,7 +137,7 @@ APIM は JWKS を取得し、すべてのリクエストを検証します。
 
 ## 次のステップ
 
-- [5.4 Root contexts](../mcp-root-contexts/README.md)
+- [5.4 ルートコンテキスト](../mcp-root-contexts/README.md)
 
 ---
 
