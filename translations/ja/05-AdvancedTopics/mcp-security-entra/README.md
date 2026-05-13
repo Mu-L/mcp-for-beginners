@@ -396,7 +396,7 @@ MCPサーバー用の新しいアプリケーションを登録します。
    [Managed Identities Overview on Microsoft Learn](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/)
 
 4. **Azure API Management: MCPサーバー向け認証ゲートウェイ**  
-   システム割り当てまたはユーザー割り当てのマネージドIDを使ってシークレットを排除する方法：  
+   MCPサーバー向けの安全なOAuth2ゲートウェイとしてのAPIMの活用方法：  
    [Azure API Management Your Auth Gateway For MCP Servers](https://techcommunity.microsoft.com/blog/integrationsonazureblog/azure-api-management-your-auth-gateway-for-mcp-servers/4402690)
 
 5. **Microsoft Graphのアクセス許可リファレンス**  
