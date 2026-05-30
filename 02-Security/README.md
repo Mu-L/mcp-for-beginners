@@ -489,7 +489,7 @@ For comprehensive security guidance, refer to these specialized documents in thi
 - **[Azure Content Safety Implementation](./azure-content-safety-implementation.md)** - Practical implementation examples for Azure Content Safety integration  
 - **[MCP Security Controls 2025](./mcp-security-controls-2025.md)** - Latest security controls and techniques for MCP deployments
 - **[MCP Best Practices Quick Reference](./mcp-best-practices.md)** - Quick reference guide for essential MCP security practices
-- **[BlueHat 2026: Securing the future of AI](https://youtu.be/cVWB58kEt-Y?si=GXDduD8ztt5HLV8M)** - Securing MCP with defense-in-depth patterns from the Microsoft Security Response Center (MSRC)
+- **[BlueHat 2026: Securing the future of AI: Securing MCP with defense in depth patterns](https://www.youtube.com/watch?v=cVWB58kEt-Y)** - Defense-in-depth patterns from the Microsoft Security Response Center (MSRC)
 
 ### **Hands-On Security Training**
 
