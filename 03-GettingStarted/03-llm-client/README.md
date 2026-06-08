@@ -863,7 +863,7 @@ class MyClient {
 
         let results: any[] = [];
     
-        // 3. Go through the LLM response,for each choice, check if it has tool calls 
+        // 3. Go through the LLM response, for each choice, check if it has tool calls 
         (await response).choices.map(async (choice: { message: any; }) => {
           const message = choice.message;
           if (message.tool_calls) {
