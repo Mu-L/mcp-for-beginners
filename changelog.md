@@ -38,6 +38,28 @@ Verified the curriculum already covers all primitives introduced/expanded in MCP
 - **Tasks (experimental, long-running operations)**: Documented in 01-CoreConcepts and 05-AdvancedTopics/mcp-protocol-features
 - **Tool Annotations** (`readOnlyHint` / `destructiveHint`): Documented in 01-CoreConcepts and 05-AdvancedTopics/mcp-protocol-features
 
+### Security Hardening & Dependency Vulnerability Remediation
+
+Ran a full security pass across every dependency manifest and the sample source code, then remediated all reported npm advisories and one code-level finding. After remediation, `npm audit` reports **0 vulnerabilities** in every audited directory.
+
+#### npm Dependency Vulnerabilities (transitive) — Fixed
+
+Audited all 15 committed `package-lock.json` files. Vulnerabilities were limited to transitive dependencies pulled in by the MCP Inspector dev tool, the OpenAI client, and the MCP SDK; all are now resolved without breaking the samples:
+- **10-StreamliningAIWorkflows.../lab4/code/github_mcp_server/inspector** and **lab3/code/weather_mcp/inspector**: Bumped `@modelcontextprotocol/inspector` (`0.16.6` / `0.14.1` → `0.22.0`), which cleared the bundled `ajv`, `brace-expansion`, `diff`, `path-to-regexp` and `ws` advisories. Added an npm `overrides` entry forcing the patched `shell-quote@1.8.4` to eliminate the remaining critical advisory carried by `concurrently`; regenerated both lockfiles (now 0 vulnerabilities)
+- **03-GettingStarted/samples/typescript**: `npm audit fix` updated the transitive `qs` (moderate) to a patched release
+- **03-GettingStarted/samples/javascript**: `npm audit fix` updated the transitive `hono` (moderate) to a patched release
+- **03-GettingStarted/03-llm-client/solution/typescript**: `npm audit fix` updated the transitive `form-data` (high) to a patched release
+- **03-GettingStarted/11-simple-auth/solution/typescript**: Generated the missing `package-lock.json` so the project is reproducible and auditable (0 vulnerabilities)
+
+#### Code-Level Security Fix (OWASP A03: Injection)
+
+- **10-StreamliningAIWorkflows.../lab4/code/github_mcp_server/src/server.py**: Removed `shell=True` from the `open_in_vscode` tool. The previous `subprocess.run(["start", "", vscode_path, folder_path], shell=True)` allowed shell metacharacters in a folder path to be interpreted by `cmd.exe` (command-injection vector). It now launches the resolved `Code.exe` directly with the folder as an argument — no shell — which is functionally equivalent and safe
+
+#### Python Dependency Audit
+
+- Audited every Python requirements set with `pip-audit`. `05-AdvancedTopics` and `03-GettingStarted/samples/python` reported **no known vulnerabilities** (their `mcp` / `httpx` / `pydantic` / `python-dotenv` ranges resolve to current patched releases)
+- **09-CaseStudy/docs-mcp/solution/python/requirements.txt**: `pip-audit` flagged the transitive dependency **`werkzeug` 3.1.1** with three `safe_join` Windows device-name DoS advisories — `CVE-2025-66221`, `CVE-2026-21860`, and `CVE-2026-27199` (all fixed in 3.1.6). Added an explicit security pin `werkzeug>=3.1.6` so the patched release is resolved; verified the constraint resolves cleanly with the `chainlit` / `mcp` / `semantic-kernel` stack
+
 ### Product Name Rebranding
 
 Updated all curriculum content to reflect Microsoft's product rebranding:
