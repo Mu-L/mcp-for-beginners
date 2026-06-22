@@ -35,7 +35,7 @@ This is your control center. You add, remove, enable, and disable servers here. 
 
 ## Step 2: Connecting a Documentation Server
 
-Let's do something immediately useful. The Microsoft Docs MCP server gives Copilot access to official Microsoft documentation—Azure, .NET, TypeScript, and more. Instead of the agent relying on its training data (which has a cutoff date), it can pull current docs at query time.
+Let's do something immediately useful. The Microsoft Docs MCP server gives Copilot access to official Microsoft documentation. This includes Azure, .NET, TypeScript, and more. Instead of the agent relying on its training data (which has a cutoff date), it can pull current docs at query time.
 
 Here's how to add it:
 
@@ -116,6 +116,7 @@ The Copilot App treats MCP servers as first-class extensions of the agent's capa
 ### Official docs
 
 - [GitHub Copilot App](https://github.com/github/app)
+- [MCP Specification](https://modelcontextprotocol.io/specification/2025-03-26) - Model Context Protocol specification
 
 ### Community
 - [MCP Community Discord](https://discord.com/invite/ByRwuEEgH4) - Live discussions
