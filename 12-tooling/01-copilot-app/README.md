@@ -2,7 +2,7 @@
 
 By now you know how MCP works. You've built servers, defined tools and resources, and wired up clients. What we haven't done yet is flip the perspective: instead of you being the one building the server, what does it look like to be on the *consuming* side—as a user of an AI-powered app that supports MCP?
 
-GitHub Copilot App is a desktop app that can use MCP Servers. By connecting MCP servers to it, you unlock a new level: Copilot can now reach into your documentation, call your internal APIs, query your database, or talk to any service you've wrapped in a server. The app becomes the host; your MCP servers become its tools.
+[GitHub Copilot App](https://github.com/github/app) is a desktop app that can use MCP Servers. By connecting MCP servers to it, you unlock a new level: Copilot can now reach into your documentation, call your internal APIs, query your database, or talk to any service you've wrapped in a server. The app becomes the host; your MCP servers become its tools.
 
 This lesson walks you through that experience end-to-end—from finding the MCP settings panel to connecting a real documentation server and then wiring up a custom one of your own.
 
