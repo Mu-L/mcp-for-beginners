@@ -16,6 +16,11 @@ Added coverage of the upcoming `2026-07-28` MCP specification release candidate 
   - [03-GettingStarted/14-sampling/README.md](./03-GettingStarted/14-sampling/README.md): Sampling deprecation callout
   - [05-AdvancedTopics/mcp-protocol-features/README.md](./05-AdvancedTopics/mcp-protocol-features/README.md): Logging deprecation and Tasks extension callout
   - [05-AdvancedTopics/mcp-transport/README.md](./05-AdvancedTopics/mcp-transport/README.md): stateless/session-routing callout
+  - [README.md](./README.md): "Looking ahead" note in the specification section and a new `1.1` entry in the curriculum module table
+  - [study_guide.md](./study_guide.md): forward-looking bullet under the Core Concepts overview and a dated addendum note
+  - [03-GettingStarted/11-simple-auth/README.md](./03-GettingStarted/11-simple-auth/README.md): callout on the `mcp-session-id` transport map ahead of the stateless request model
+  - [05-AdvancedTopics/README.md](./05-AdvancedTopics/README.md): module overview callout on Root Contexts/Sampling deprecations and the Tasks extension
+  - [05-AdvancedTopics/mcp-security/README.md](./05-AdvancedTopics/mcp-security/README.md): authorization hardening callout
 
 ## June 24th, 2026
 
