@@ -63,7 +63,7 @@ By the time you complete this journey, you'll have the confidence to build your 
 
 This curriculum is aligned with **MCP Specification 2025-11-25** (the latest stable release). The MCP specification uses date-based versioning (YYYY-MM-DD format) to ensure clear protocol version tracking.
 
-> **Looking ahead:** a release candidate for the next specification version, **2026-07-28**, is scheduled to ship July 28, 2026. It makes the protocol stateless at the transport layer, formalizes an Extensions framework (MCP Apps, Tasks), hardens authorization, and deprecates Roots, Sampling, and Logging. See [What's Changing in MCP: The 2026-07-28 Release Candidate](./01-CoreConcepts/mcp-2026-07-28-release-candidate.md) for a full breakdown.
+> **Looking ahead:** a release candidate for the next specification version, **2026-07-28**, is scheduled to ship on July 28, 2026. It makes the protocol stateless at the transport layer, formalizes an Extensions framework (MCP Apps, Tasks), hardens authorization, and deprecates Roots, Sampling, and Logging. See [What's Changing in MCP: The 2026-07-28 Release Candidate](./01-CoreConcepts/mcp-2026-07-28-release-candidate.md) for a full breakdown.
 
 These resources become more valuable as your understanding grows, but don't feel pressured to read everything immediately. Start with the areas that interest you most!
 - 📘 [MCP Documentation](https://modelcontextprotocol.io/) – This is your go-to resource for step-by-step tutorials and user guides. The documentation is written with beginners in mind, providing clear examples you can follow along with at your own pace.
