@@ -73,7 +73,7 @@ sequenceDiagram
     Server->>Model: result { ok: true }
 ```
 
-This makes state visible and reason-able to the model instead of hiding it in transport metadata, and it lets any server instance handle any call.
+This makes state visible and reasonable to the model instead of hiding it in transport metadata, and it lets any server instance handle any call.
 
 ### Server-to-client requests, restructured
 
